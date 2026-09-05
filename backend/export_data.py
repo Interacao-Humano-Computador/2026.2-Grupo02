@@ -46,12 +46,20 @@ def main():
         all_commits_raw.extend(commits)
         
     unique_commits = {}
+    # Data de corte: 1 de setembro de 2026 (tudo do mês 8 para trás será ignorado)
+    DATA_CORTE = datetime(2026, 9, 1, 0, 0, 0, tzinfo=timezone(timedelta(hours=-3)))
+
     for c in all_commits_raw:
         if 'sha' in c:
             author_login = c.get('author', {}).get('login') if c.get('author') else None
             
             if author_login in TEAM_MEMBERS:
-                unique_commits[c['sha']] = c
+                commit_date_str = c['commit']['author']['date']
+                commit_date = datetime.fromisoformat(commit_date_str.replace('Z', '+00:00'))
+                
+                # Só aceita commits a partir de setembro de 2026
+                if commit_date >= DATA_CORTE:
+                    unique_commits[c['sha']] = c
 
     all_commits = sorted(list(unique_commits.values()), key=lambda x: x['commit']['author']['date'], reverse=True)
     
