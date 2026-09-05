@@ -3,89 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma - Grupo 02</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Cronograma | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
     <style>
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: #161b22;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        h1 {
-            color: #58a6ff;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 12px 15px;
-            border: 1px solid #30363d;
-            text-align: left;
-        }
-        th {
-            background-color: #21262d;
-            color: #58a6ff;
-        }
-        tr:nth-child(even) {
-            background-color: #0d1117;
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #58a6ff;
+        .page-header { text-align: center; padding: 4rem 2rem 2rem; }
+        .page-header h1 { font-size: 3rem; font-weight: 900; color: #fafafa; margin-bottom: 1rem; letter-spacing: -1px; }
+        .page-header p { color: #a1a1aa; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        
+        .cronograma-container { max-width: 800px; margin: 0 auto; padding: 2rem; width: 100%; }
+        
+        .cronograma-row {
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(9, 9, 11, 0.6); border: 1px solid #27272a; border-left: 4px solid #a855f7;
+            padding: 1.5rem 2rem; border-radius: 12px; margin-bottom: 1rem; transition: all 0.2s ease; cursor: pointer;
             text-decoration: none;
         }
-        .back-link:hover {
-            text-decoration: underline;
-        }
+        .cronograma-row:hover { background: rgba(168, 85, 247, 0.05); border-color: #3f3f46; transform: translateX(5px); }
+        .cronograma-title { color: #fafafa; font-size: 1.2rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
     </style>
 </head>
-<body>
-    <div class="container">
-        <a href="index.html" class="back-link">← Voltar para a Página Principal</a>
-        <h1>Cronograma do Projeto</h1>
-        <p>Acompanhe abaixo o planejamento e as entregas das etapas da disciplina de Interação Humano-Computador.</p>
+<body style="background: #000000; color: #fafafa; min-height: 100vh; display: flex; flex-direction: column;">
+
+    <nav class="navbar" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50;">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <a href="index.html" style="text-decoration: none;"><span class="logo-text">IHC G2</span></a>
+        </div>
+        <div class="navbar-links" style="display: flex; gap: 2rem; align-items: center;">
+            <a href="index.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Início</a>
+            <a href="equipe.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Equipe</a>
+            <a href="atas.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Atas</a>
+            <a href="cronograma.html" style="color: #a855f7; text-decoration: none; font-weight: 500;">Cronograma</a>
+            <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600; text-decoration: none;">Dashboard ➔</a>
+        </div>
+    </nav>
+
+    <main style="flex: 1;">
+        <header class="page-header" id="header-principal">
+            <h1>Cronograma do Projeto</h1>
+            <p>Documentos de planejamento e cronograma extraídos automaticamente do repositório.</p>
+        </header>
+
+        <div class="cronograma-container">
+            <div id="lista-cronograma">
+                <p style="text-align: center; color: #a855f7; font-weight: 600;">⏳ Sincronizando diretório de cronograma...</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const repoOwner = 'Interacao-Humano-Computador';
+        const repoName = '2026.2-Grupo02';
+        const folderPath = 'documentos/cronograma'; // Pasta dedicada ao cronograma no repositório
         
-        <table>
-            <thead>
-                <tr>
-                    <th>Etapa / Módulo</th>
-                    <th>Atividades / Descrição</th>
-                    <th>Período / Prazo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Planejamento do Projeto</strong></td>
-                    <td>Definição do tema, ricos, ferramentas, cronograma e site do grupo.</td>
-                    <td>Início da Disciplina</td>
-                </tr>
-                <tr>
-                    <td><strong>Análise de Requisitos</strong></td>
-                    <td>Perfil do usuário, características, personas, cenários e análise de tarefas.</td>
-                    <td>Em Andamento</td>
-                </tr>
-                <tr>
-                    <td><strong>Design, Avaliação e Desenvolvimento</strong></td>
-                    <td>Planejamento da avaliação, relato dos resultados e prototipagem.</td>
-                    <td>Próximas Semanas</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        const listaContainer = document.getElementById('lista-cronograma');
+
+        async function carregarListaCronograma() {
+            try {
+                const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error("Pasta de cronograma ainda não criada ou repositório vazio.");
+                }
+
+                const arquivos = await response.json();
+                
+                // Filtra apenas os arquivos PDF
+                const pdfs = arquivos.filter(arq => arq.name.toLowerCase().endsWith('.pdf'));
+
+                if (pdfs.length === 0) {
+                    listaContainer.innerHTML = '<p style="text-align: center; color: #a1a1aa;">Nenhum PDF de cronograma encontrado na pasta documentos/cronograma/.</p>';
+                    return;
+                }
+
+                listaContainer.innerHTML = '';
+                
+                // Ordena os PDFs e desenha a lista na tela
+                pdfs.sort((a, b) => b.name.localeCompare(a.name)).forEach(arq => {
+                    const nomeFormatado = arq.name.replace(/\.pdf$/i, '').replace(/-/g, ' ');
+                    
+                    const aEl = document.createElement('a');
+                    aEl.className = 'cronograma-row';
+                    aEl.href = arq.html_url; 
+                    aEl.target = '_blank';
+                    
+                    aEl.innerHTML = `
+                        <span class="cronograma-title">${nomeFormatado}</span>
+                        <span style="color: #a855f7; font-weight: 600;">Abrir PDF ↗</span>
+                    `;
+                    listaContainer.appendChild(aEl);
+                });
+
+            } catch (error) {
+                listaContainer.innerHTML = `
+                    <div style="text-align: center; border: 1px dashed #3f3f46; padding: 2rem; border-radius: 12px;">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 1rem;">📁</span>
+                        <p style="color: #a1a1aa;">${error.message}</p>
+                        <p style="color: #71717a; font-size: 0.85rem; margin-top: 0.5rem;">Crie a pasta <strong>documentos/cronograma/</strong> na branch principal com arquivos .pdf para iniciar.</p>
+                    </div>`;
+            }
+        }
+
+        window.onload = carregarListaCronograma;
+    </script>
 </body>
 </html>
