@@ -1,17 +1,19 @@
 name: Deploy Frontend to GitHub Pages
 
-# 1. GATILHOS
+# 1. GATILHOS OTIMIZADOS
 on:
-  # Dispara em pushes para qualquer branch
+  # Dispara apenas em pushes na branch onde o projeto está
   push:
     branches:
-      - '**' 
+      - 'gitpages' 
 
-  # Dispara em eventos de Pull Request
+  # Dispara em PRs direcionados à branch principal do projeto
   pull_request:
+    branches:
+      - 'gitpages'
     types: [opened, synchronize, reopened, closed]
 
-  # Dispara em eventos de Issues
+  # Mantém a atualização do painel em tempo real quando as issues mudam
   issues:
     types: [opened, edited, closed, reopened]
 

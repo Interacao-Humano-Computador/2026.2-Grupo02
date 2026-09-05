@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
 
 # Token atualizado para a nova nomenclatura
@@ -65,8 +65,11 @@ def main():
         if user_login in TEAM_MEMBERS:
             issues.append(i)
     
+   # Configura o fuso horário para Brasília (UTC-3)
+    fuso_br = timezone(timedelta(hours=-3))
+
     data_package = {
-        "generated_at": datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "generated_at": datetime.now(fuso_br).strftime("%d/%m/%Y %H:%M"),
         "team_members": TEAM_MEMBERS,
         "raw_commits": all_commits,
         "raw_issues": issues
