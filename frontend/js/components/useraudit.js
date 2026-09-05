@@ -1,6 +1,4 @@
-// js/components/userAudit.js
-
-export const renderUserAudit = (commits, issues) => {
+export const renderUserAudit = (commits, issues, teamMembers = []) => {
     const select = document.getElementById('audit-user-select');
     const logList = document.getElementById('audit-log-list');
     const badgeCommits = document.getElementById('audit-badge-commits');
@@ -8,50 +6,34 @@ export const renderUserAudit = (commits, issues) => {
 
     if (!select || !logList) return;
 
-    //Extrair usuários únicos do JSON
-    const users = new Set();
-    commits.forEach(c => {
-        const login = c.author?.login || c.commit.author.name;
-        if (login) users.add(login);
-    });
-    issues.forEach(i => {
-        const login = i.user?.login;
-        if (login) users.add(login);
-    });
-
-    //Limpar e Popular o Select
     select.innerHTML = '<option value="all">Todos os Membros</option>';
-    Array.from(users).sort().forEach(user => {
+    teamMembers.sort().forEach(user => {
         const option = document.createElement('option');
         option.value = user;
         option.textContent = `@${user}`;
         select.appendChild(option);
     });
 
-    //Função de Filtro e Renderização
     const updateAudit = (selectedUser) => {
         logList.innerHTML = '';
 
         let userCommits = commits;
         let userIssues = issues;
 
-        // Se escolher um específico, aplica o filtro
         if (selectedUser !== 'all') {
             userCommits = commits.filter(c => (c.author?.login || c.commit.author.name) === selectedUser);
             userIssues = issues.filter(i => i.user?.login === selectedUser);
         }
 
-        // Atualiza os selos (badges) do topo
         if (badgeCommits) badgeCommits.textContent = `${userCommits.length} Commits`;
         if (badgeIssues) badgeIssues.textContent = `${userIssues.length} Issues/PRs`;
 
-        //Junta Commits e Issues em uma lista só e ordena por data
         const combinedLog = [
             ...userCommits.map(c => ({
                 type: 'commit',
                 date: new Date(c.commit.author.date),
                 title: c.commit.message.split('\n')[0].replace(/"/g, '&quot;'),
-                url: `https://github.com/unb-mds/2026-1-P.R.I.S.M.A/commit/${c.sha}`
+                url: `https://github.com/Interacao-Humano-Computador/2026.2-Grupo02/commit/${c.sha}`
             })),
             ...userIssues.map(i => ({
                 type: i.pull_request ? 'pr' : 'issue',
@@ -60,20 +42,18 @@ export const renderUserAudit = (commits, issues) => {
                 url: i.html_url,
                 state: i.state
             }))
-        ].sort((a, b) => b.date - a.date).slice(0, 50); // Mostra as 50 ações mais recentes
+        ].sort((a, b) => b.date - a.date).slice(0, 50);
 
         if (combinedLog.length === 0) {
-            logList.innerHTML = `<div class="placeholder-text">Nenhuma atividade recente encontrada.</div>`;
+            logList.innerHTML = `<div class="placeholder-text" style="padding: 16px; text-align: center; color: var(--text-muted);">Nenhuma atividade registrada ainda.</div>`;
             return;
         }
 
-        //Desenha a lista na tela
         combinedLog.forEach(item => {
             const dateStr = item.date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
             
-            // Define o Ícone e a Cor com base no tipo da ação
             let icon = '⚲';
-            let color = 'var(--accent-cyan)';
+            let color = 'var(--accent-primary)';
             let typeTitle = 'Commit';
             
             if (item.type === 'issue') { 
@@ -83,7 +63,7 @@ export const renderUserAudit = (commits, issues) => {
             }
             if (item.type === 'pr') { 
                 icon = '⎇'; 
-                color = '#818cf8'; // Roxo claro para Pull Requests
+                color = '#d8b4fe'; 
                 typeTitle = 'Pull Request';
             }
 
@@ -103,9 +83,6 @@ export const renderUserAudit = (commits, issues) => {
         });
     };
 
-    // Garante que o evento de filtro funcione toda vez que você trocar o usuário
     select.onchange = (e) => updateAudit(e.target.value);
-    
-    // Inicia mostrando os dados de todo mundo
     updateAudit('all');
 };

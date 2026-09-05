@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atas de Reunião | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        .page-header { text-align: center; padding: 4rem 2rem 2rem; }
+        .page-header h1 { font-size: 3rem; font-weight: 900; color: #fafafa; margin-bottom: 1rem; letter-spacing: -1px; }
+        .page-header p { color: #a1a1aa; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        
+        .atas-container { max-width: 800px; margin: 0 auto; padding: 2rem; width: 100%; }
+        
+        .ata-row {
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(9, 9, 11, 0.6); border: 1px solid #27272a; border-left: 4px solid #a855f7;
+            padding: 1.5rem 2rem; border-radius: 12px; margin-bottom: 1rem; transition: all 0.2s ease; cursor: pointer;
+            text-decoration: none;
+        }
+        .ata-row:hover { background: rgba(168, 85, 247, 0.05); border-color: #3f3f46; transform: translateX(5px); }
+        .ata-title { color: #fafafa; font-size: 1.2rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+    </style>
+</head>
+<body style="background: #000000; color: #fafafa; min-height: 100vh; display: flex; flex-direction: column;">
+
+    <nav class="navbar" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50;">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <a href="index.html" style="text-decoration: none;"><span class="logo-text">IHC G2</span></a>
+        </div>
+        <div class="navbar-links" style="display: flex; gap: 2rem; align-items: center;">
+            <a href="index.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Início</a>
+            <a href="equipe.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Equipe</a>
+            <a href="atas.html" style="color: #a855f7; text-decoration: none; font-weight: 500;">Atas</a>
+            <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600; text-decoration: none;">Dashboard ➔</a>
+        </div>
+    </nav>
+
+    <main style="flex: 1;">
+        <header class="page-header" id="header-principal">
+            <h1>Atas de Reunião</h1>
+            <p>Arquivos em PDF extraídos automaticamente do repositório.</p>
+        </header>
+
+        <div class="atas-container">
+            <div id="lista-atas">
+                <p style="text-align: center; color: #a855f7; font-weight: 600;">⏳ Sincronizando diretório de atas...</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const repoOwner = 'Interacao-Humano-Computador';
+        const repoName = '2026.2-Grupo02';
+        const folderPath = 'documentos/atas'; // A pasta onde você vai colocar os PDFs no GitHub
+        
+        const listaContainer = document.getElementById('lista-atas');
+
+        async function carregarListaAtas() {
+            try {
+                const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error("Pasta de atas ainda não criada ou repositório vazio.");
+                }
+
+                const arquivos = await response.json();
+                
+                // Filtra apenas os arquivos PDF
+                const pdfs = arquivos.filter(arq => arq.name.toLowerCase().endsWith('.pdf'));
+
+                if (pdfs.length === 0) {
+                    listaContainer.innerHTML = '<p style="text-align: center; color: #a1a1aa;">Nenhum PDF de ata encontrado na pasta documentos/atas/.</p>';
+                    return;
+                }
+
+                listaContainer.innerHTML = '';
+                
+                // Ordena os PDFs e desenha a lista na tela
+                pdfs.sort((a, b) => b.name.localeCompare(a.name)).forEach(arq => {
+                    const nomeFormatado = arq.name.replace(/\.pdf$/i, '').replace(/-/g, ' ');
+                    
+                    const a = document.createElement('a');
+                    a.className = 'ata-row';
+                    // arq.html_url abre o leitor nativo de PDF do próprio GitHub
+                    a.href = arq.html_url; 
+                    a.target = '_blank';
+                    
+                    a.innerHTML = `
+                        <span class="ata-title">${nomeFormatado}</span>
+                        <span style="color: #a855f7; font-weight: 600;">Abrir PDF ↗</span>
+                    `;
+                    listaContainer.appendChild(a);
+                });
+
+            } catch (error) {
+                listaContainer.innerHTML = `
+                    <div style="text-align: center; border: 1px dashed #3f3f46; padding: 2rem; border-radius: 12px;">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 1rem;">📁</span>
+                        <p style="color: #a1a1aa;">${error.message}</p>
+                        <p style="color: #71717a; font-size: 0.85rem; margin-top: 0.5rem;">Crie a pasta <strong>documentos/atas/</strong> na branch principal com arquivos .pdf para iniciar.</p>
+                    </div>`;
+            }
+        }
+
+        window.onload = carregarListaAtas;
+    </script>
+</body>
+</html>

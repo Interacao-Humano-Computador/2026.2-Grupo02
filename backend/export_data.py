@@ -4,19 +4,16 @@ import requests
 from datetime import datetime
 from urllib.parse import quote
 
-TOKEN = os.getenv('PRISMA_GITHUB_TOKEN')
-REPO = "unb-mds/2026-1-P.R.I.S.M.A"
+# Token atualizado para a nova nomenclatura
+TOKEN = os.getenv('IHC_GITHUB_TOKEN')
+REPO = "Interacao-Humano-Computador/2026.2-Grupo02"
 BASE_URL = f"https://api.github.com/repos/{REPO}"
 HEADERS = {"Authorization": f"token {TOKEN}", "Accept": "application/vnd.github.v3+json"}
 
-# MÓDULO DE TIME
-# Apenas os commits e métricas destes usuários oficiais irão para o Dashboard
 TEAM_MEMBERS = [
-    "CauaoClemente",
-    "delvale412",
-    "kaikysousa",
-    "millapereira1",
-    "otheomls"
+    "andreozzi",
+    "darkymeubem",
+    "delvale412"
 ]
 
 def fetch_all_pages(endpoint):
@@ -38,7 +35,7 @@ def fetch_all_pages(endpoint):
     return all_data
 
 def main():
-    print("Iniciando extração purificada de dados do PRISMA...")
+    print("Iniciando extração de dados do IHC Grupo 2...")
     
     branches = fetch_all_pages("branches")
     
@@ -51,7 +48,6 @@ def main():
     unique_commits = {}
     for c in all_commits_raw:
         if 'sha' in c:
-            # Captura o login de quem fez o commit
             author_login = c.get('author', {}).get('login') if c.get('author') else None
             
             if author_login in TEAM_MEMBERS:
@@ -66,12 +62,12 @@ def main():
             continue
             
         user_login = i.get('user', {}).get('login')
-
         if user_login in TEAM_MEMBERS:
             issues.append(i)
     
     data_package = {
         "generated_at": datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "team_members": TEAM_MEMBERS,
         "raw_commits": all_commits,
         "raw_issues": issues
     }
@@ -80,7 +76,7 @@ def main():
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(data_package, f, ensure_ascii=False)
         
-    print(f"Sucesso! {len(all_commits)} commits e {len(issues)} issues processadas exclusivamente para o time oficial.")
+    print(f"Sucesso! {len(all_commits)} commits e {len(issues)} issues processadas.")
 
 if __name__ == "__main__":
     main()

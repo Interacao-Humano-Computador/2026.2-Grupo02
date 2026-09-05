@@ -53,7 +53,7 @@ jobs:
 
       - name: Executar ETL (Extrair, Tratar e Carregar Dados JSON)
         env:
-          PRISMA_GITHUB_TOKEN: ${{ secrets.PRISMA_GITHUB_TOKEN }}
+          IHC_GITHUB_TOKEN: ${{ secrets.IHC_GITHUB_TOKEN }}
         run: python backend/export_data.py
       # ========================================================
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | PRISMA</title>
+    <title>Dashboard | IHC Grupo 2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
@@ -19,8 +19,8 @@
                 <a href="index.html" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem; margin-right: 1rem; text-decoration: none;">Voltar</a>
                 <div class="logo-icon"></div>
                 <div>
-                    <h2>PRISMA</h2>
-                    <p>unb-mds / 2026-1-P.R.I.S.M.A</p>
+                    <h2>IHC G2</h2>
+                    <p>Interacao-Humano-Computador / 2026.2-Grupo02</p>
                 </div>
             </div>
             
@@ -33,7 +33,7 @@
             <div class="metrics-grid">
                 <div class="card">
                     <span class="card-title">Volume de Entregas</span>
-                    <div class="card-value"><span id="total-commits">0</span> <small class="text-cyan">Total</small></div>
+                    <div class="card-value"><span id="total-commits">0</span> <small class="text-purple">Total</small></div>
                 </div>
                 <div class="card">
                     <span class="card-title">Issues Resolvidas</span>
@@ -46,8 +46,8 @@
                 </div>
                 <div class="card">
                     <span class="card-title">Última Sincronização</span>
-                    <div class="card-value"><span id="build-timestamp" style="font-size: 1.5rem; color: var(--text-cyan);">Carregando...</span></div>
-                    <div class="card-footer text-cyan flex-center"><span class="dot-pulse"></span> INTEGRAÇÃO CONTÍNUA</div>
+                    <div class="card-value"><span id="build-timestamp" style="font-size: 1.5rem; color: var(--accent-primary);">Carregando...</span></div>
+                    <div class="card-footer text-purple flex-center"><span class="dot-pulse"></span> INTEGRAÇÃO CONTÍNUA</div>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
                             <h3>Monitoramento Analítico</h3>
                         </div>
                         <div class="panel-legend">
-                            <span class="dot cyan"></span> Commits
+                            <span class="dot purple"></span> Commits
                             <span class="dot dark"></span> Issues
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                             </div>
                         </div>
                         <div class="timeline-stats">
-                            <div class="stat-box cyan-box">
+                            <div class="stat-box purple-box">
                                 <span class="stat-label">Commits</span>
                                 <span id="week-commits-count" class="stat-num">0</span>
                             </div>
@@ -142,13 +142,13 @@
                         <div class="timeline-logs" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color);">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                                 <h4 class="logs-title" style="margin: 0;">Auditoria Individual</h4>
-                                <select id="audit-user-select" style="background: rgba(15, 23, 42, 0.8); color: var(--accent-cyan); border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.7rem; outline: none; cursor: pointer;">
+                                <select id="audit-user-select" style="background: rgba(9, 9, 11, 0.8); color: var(--accent-primary); border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.7rem; outline: none; cursor: pointer;">
                                     <option value="all">Todos os Membros</option>
                                 </select>
                             </div>
                             
                             <div style="display: flex; gap: 8px; margin-bottom: 16px;">
-                                <span id="audit-badge-commits" style="background: rgba(34, 211, 238, 0.1); color: var(--accent-cyan); padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; border: 1px solid rgba(34, 211, 238, 0.2);">0 Commits</span>
+                                <span id="audit-badge-commits" style="background: rgba(168, 85, 247, 0.1); color: var(--accent-primary); padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; border: 1px solid rgba(168, 85, 247, 0.2);">0 Commits</span>
                                 <span id="audit-badge-issues" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); padding: 4px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; border: 1px solid rgba(16, 185, 129, 0.2);">0 Issues/PRs</span>
                             </div>
                             

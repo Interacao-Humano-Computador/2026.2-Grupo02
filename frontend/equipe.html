@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        .page-header { text-align: center; padding: 4rem 2rem 2rem; }
+        .page-header h1 { font-size: 3rem; font-weight: 900; color: #fafafa; margin-bottom: 1rem; letter-spacing: -1px; }
+        .page-header p { color: #a1a1aa; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        
+        .team-card { 
+            background: rgba(9, 9, 11, 0.4); 
+            border: 1px solid #27272a; 
+            border-radius: 16px; 
+            padding: 3rem 2rem; 
+            text-align: center; 
+            transition: all 0.3s ease; 
+        }
+        .team-card:hover { 
+            background: rgba(168, 85, 247, 0.05); 
+            border-color: #a855f7; 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        }
+        .team-avatar { 
+            width: 120px; height: 120px; 
+            border-radius: 50%; 
+            border: 3px solid #a855f7; 
+            margin: 0 auto 1.5rem; 
+            object-fit: cover; 
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+        .team-card h3 { color: #fafafa; font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .team-card span { display: block; font-family: 'JetBrains Mono', monospace; color: #a855f7; font-size: 0.85rem; margin-bottom: 1rem; }
+        .team-card p { color: #a1a1aa; font-size: 0.9rem; line-height: 1.5; }
+    </style>
+</head>
+<body style="background: #000000; color: #fafafa; min-height: 100vh; display: flex; flex-direction: column;">
+
+    <nav class="navbar" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50;">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <a href="index.html" style="text-decoration: none;"><span class="logo-text">IHC G2</span></a>
+        </div>
+        <div class="navbar-links" style="display: flex; gap: 2rem; align-items: center;">
+            <a href="index.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Início</a>
+            <a href="equipe.html" style="color: #a855f7; text-decoration: none; font-weight: 500;">Equipe</a>
+            <a href="atas.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Atas</a>
+            <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600; text-decoration: none;">Dashboard ➔</a>
+        </div>
+    </nav>
+
+    <main style="flex: 1;">
+        <header class="page-header">
+            <h1>Nossa Equipe</h1>
+            <p>Conheça os desenvolvedores por trás do projeto de Interação Humano Computador do Grupo 2.</p>
+        </header>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://github.com/andreozzi.png" alt="Victor Andreozzi" class="team-avatar">
+                <h3>Victor Andreozzi</h3>
+                <span>@andreozzi</span>
+                <p>algo</p>
+            </div>
+            
+            <div class="team-card">
+                <img src="https://github.com/darkymeubem.png" alt="Felipe Pedroza" class="team-avatar">
+                <h3>Felipe Pedroza</h3>
+                <span>@darkymeubem</span>
+                <p>algo</p>
+            </div>
+
+            <div class="team-card">
+                <img src="https://github.com/delvale412.png" alt="Matheus Do Vale Lameira" class="team-avatar">
+                <h3>Matheus Do Vale Lameira</h3>
+                <span>@delvale412</span>
+                <p>algo</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-institutional" style="padding: 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
+        <p style="color: #71717a; font-size: 0.85rem;">Universidade de Brasília (UnB) &copy; 2026 | IHC - Grupo 2</p>
+    </footer>
+</body>
+</html>
