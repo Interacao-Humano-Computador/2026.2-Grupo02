@@ -1,74 +1,21 @@
-// js/components/timeline.js
+// Caminho: frontend/js/components/timeline.js
 
-let currentWeekOffset = 0;
-let globalCommits = [];
-let globalIssues = [];
+const previousButton = document.getElementById('btn-prev-week');
+const nextButton = document.getElementById('btn-next-week');
 
-// Calcula o Domingo e o Sábado de uma semana específica
-const getWeekBoundaries = (offset) => {
-    const now = new Date();
-    const currentDay = now.getDay(); // 0 = Domingo
-    const start = new Date(now);
-    start.setDate(now.getDate() - currentDay - (offset * 7));
-    start.setHours(0,0,0,0);
-    
-    const end = new Date(start);
-    end.setDate(start.getDate() + 6);
-    end.setHours(23,59,59,999);
-    
-    return { start, end };
-};
+if (!previousButton || !nextButton) {
+    console.warn('[Timeline] Botões de navegação não encontrados.');
+    return;
+}
 
-const formatDateDayMonth = (date) => {
-    const d = date.getDate().toString().padStart(2, '0');
-    const m = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'][date.getMonth()];
-    return `${d} ${m}`;
-};
-
-export const initTimeline = (commits, issues) => {
-    globalCommits = commits;
-    globalIssues = issues;
-    
-    document.getElementById('btn-prev-week').addEventListener('click', () => {
-        currentWeekOffset++;
-        renderCurrentWeek();
-    });
-    
-    document.getElementById('btn-next-week').addEventListener('click', () => {
-        if (currentWeekOffset > 0) {
-            currentWeekOffset--;
-            renderCurrentWeek();
-        }
-    });
-
+previousButton.onclick = () => {
+    currentWeekOffset++;
     renderCurrentWeek();
 };
 
-const renderCurrentWeek = () => {
-    const boundaries = getWeekBoundaries(currentWeekOffset);
-    
-    // Atualiza o Rótulo "21 JUN - 27 JUN"
-    document.getElementById('current-week-label').textContent = 
-        `${formatDateDayMonth(boundaries.start)} - ${formatDateDayMonth(boundaries.end)}`;
-    
-    // Habilita/Desabilita botão de avançar
-    document.getElementById('btn-next-week').disabled = currentWeekOffset === 0;
-
-    // Filtra dados da semana
-    const weekCommits = globalCommits.filter(c => {
-        const d = new Date(c.commit.author.date);
-        return d >= boundaries.start && d <= boundaries.end;
-    });
-
-    const weekIssues = globalIssues.filter(i => {
-        const d = new Date(i.created_at);
-        return d >= boundaries.start && d <= boundaries.end;
-    });
-
-    // Atualiza Cards Numéricos
-    document.getElementById('week-commits-count').textContent = weekCommits.length;
-    document.getElementById('week-issues-count').textContent = weekIssues.length;
-
-    // O código antigo que tentava renderizar logs na div 'weekly-logs-list' foi removido.
-    // A renderização dos logs agora é gerenciada com excelência pelo userAudit.js!
+nextButton.onclick = () => {
+    if (currentWeekOffset > 0) {
+        currentWeekOffset--;
+        renderCurrentWeek();
+    }
 };
