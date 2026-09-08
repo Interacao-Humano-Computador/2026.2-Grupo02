@@ -1,2 +1,39 @@
+# ========================================================
+# SEGURANÇA E AMBIENTE (NUNCA SUBIR)
+# ========================================================
 .env
+.env.*
+secrets/
+*.pem
+
+# ========================================================
+# CACHE E COMPILADOS (PYTHON)
+# ========================================================
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ========================================================
+# AMBIENTES VIRTUAIS (PYTHON)
+# ========================================================
+venv/
+.venv/
+env/
+ENV/
+
+# ========================================================
+# ARQUIVOS GERADOS AUTOMATICAMENTE (ETL)
+# ========================================================
+# Descomente a linha abaixo se não quiser versionar o JSON 
+# gerado localmente pelo seu script export_data.py
+# frontend/dados.json
+
+# ========================================================
+# SISTEMA OPERACIONAL E EDITORES (VS CODE)
+# ========================================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
