@@ -13,7 +13,10 @@ HEADERS = {"Authorization": f"token {TOKEN}", "Accept": "application/vnd.github.
 TEAM_MEMBERS = [
     "andreozzi",
     "darkymeubem",
-    "delvale412"
+    "delvale412",
+    "rafaelbdmelo117",
+    "wandinhawright" ,
+    "TiagoCTnepo’s"
 ]
 
 def fetch_all_pages(endpoint):
