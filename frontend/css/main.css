@@ -146,3 +146,10 @@ body {
 .collab-footer { border-top: 1px solid var(--border-color); padding-top: 12px; }
 .c-footer-label { font-size: 0.55rem; font-weight: 900; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
 .c-footer-msg { font-size: 0.75rem; font-style: italic; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Cores ativas da Navbar */
+.nav-link { transition: color 0.2s ease; }
+.nav-link:hover, .nav-link.active { color: #a855f7 !important; font-weight: 600 !important; }
+
+/* Submenu de Planejamento (Ativo) */
+.submenu-nav a.active { color: #000 !important; background: #a855f7 !important; font-weight: 600; box-shaAdow: 0 0 15px rgba(168, 85, 247, 0.4); }

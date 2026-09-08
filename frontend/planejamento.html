@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução | Planejamento - IHC Grupo 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #000000; color: #fafafa; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Navbar e Submenu (Padronizado com as outras 6 páginas) */
+        .navbar { background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; }
+        .submenu-nav { background: rgba(15, 15, 18, 0.95); border-bottom: 1px solid #27272a; padding: 0.8rem 2rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; position: sticky; top: 65px; z-index: 40; backdrop-filter: blur(10px); }
+        .submenu-nav a { color: #a1a1aa; text-decoration: none; padding: 0.4rem 1rem; border-radius: 99px; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; white-space: nowrap; }
+        .submenu-nav a:hover { color: #fafafa; background: rgba(255,255,255,0.05); }
+        .submenu-nav a.active { color: #000; background: #a855f7; font-weight: 600; }
+        
+        /* Cabeçalho */
+        .page-header { text-align: center; padding: 3rem 2rem 1.5rem; }
+        .page-header h1 { font-size: 2.5rem; font-weight: 900; color: #fafafa; margin-bottom: 0.5rem; }
+        
+        /* Layout do Conteúdo da Introdução */
+        .content-wrapper { max-width: 900px; margin: 0 auto; padding: 0 2rem 4rem; width: 100%; }
+        .content-section h2 { color: #a855f7; border-bottom: 1px solid #27272a; padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .content-section p { color: #d4d4d8; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
+        
+        /* Box Destacada para os Links */
+        .links-box { background: rgba(9, 9, 11, 0.6); border: 1px solid #27272a; border-left: 4px solid #a855f7; padding: 2rem; border-radius: 12px; margin-top: 2rem; }
+        .links-box h3 { color: #fafafa; margin-bottom: 1.2rem; font-size: 1.2rem; font-weight: 700; }
+        .links-box ul { list-style: none; padding: 0; }
+        .links-box li { margin-bottom: 1rem; color: #a1a1aa; line-height: 1.6; display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem;}
+        .links-box li:last-child { margin-bottom: 0; }
+        .links-box a { color: #d8b4fe; text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; transition: all 0.2s; }
+        .links-box a:hover { color: #a855f7; border-bottom-color: #a855f7; }
+        .icon-bullet { color: #a855f7; font-size: 1.2rem; line-height: 1; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: #fafafa; font-weight: 900; font-size: 1.2rem; font-style: italic;">IHC G2</a></div>
+        <div class="navbar-links" style="display: flex; gap: 2rem; align-items: center;">
+            <a href="index.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Início</a>
+            <a href="equipe.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Equipe</a>
+            <a href="atas.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Atas</a>
+            <a href="cronograma.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Cronograma</a>
+            <a href="planejamento.html" style="color: #a855f7; text-decoration: none; font-weight: 500;">Planejamento</a>
+            <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600; text-decoration: none;">Dashboard ➔</a>
+        </div>
+    </nav>
+
+    <div class="submenu-nav">
+        <a href="planejamento.html">1. Introdução</a>
+        <a href="plan_equipe.html">2. Equipe</a>
+        <a href="plan_heatmap.html">3. Heatmap</a>
+        <a href="plan_ferramentas.html">4. Ferramentas</a>
+        <a href="plan_design.html">5. Processo de Design</a>
+        <a href="plan_sites.html">6. Sites Avaliados</a>
+        <a href="plan_cronograma.html">7. Cronograma</a>
+    </div>
+
+    <header class="page-header">
+        <h1>Planejamento do Projeto</h1>
+        <p style="color: #a1a1aa;">Universidade de Brasília - Campus UnB Gama</p>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="content-section">
+            <h2>1. Introdução</h2>
+            
+            <p>Este documento apresenta o planejamento do projeto desenvolvido pela equipe na disciplina de Interação Humano-Computador (IHC), ministrada pelo professor André Barros de Sales na Universidade de Brasília, Campus UnB Gama[cite: 3].</p>
+            
+            <p>O documento corresponde à Entrega 1 do projeto e descreve a equipe responsável, o heatmap de disponibilidade dos integrantes, as ferramentas utilizadas, o processo de design adotado, a lista de sites avaliados e o site selecionado como objeto de estudo, além do cronograma detalhado das atividades desta etapa[cite: 3].</p>
+
+            <div class="links-box">
+                <h3>Links da Entrega</h3>
+                <ul>
+                    <li>
+                        <span class="icon-bullet">▶</span>
+                        <div>
+                            <strong style="color: #fafafa;">Vídeo da apresentação (YouTube):</strong> A gravação está prevista para 05-06/09/2026, conforme o cronograma do projeto – o link será publicado após a gravação[cite: 3].
+                        </div>
+                    </li>
+                    <li>
+                        <span class="icon-bullet">🔗</span>
+                        <div>
+                            <strong style="color: #fafafa;">GitHub Pages da entrega:</strong> 
+                            <a href="https://interacao-humano-computador.github.io/2026.2-Grupo02" target="_blank">interacao-humano-computador.github.io/2026.2-Grupo02[cite: 3]</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+        </section>
+    </main>
+
+    <script src="js/planejamento.js"></script>
+</body>
+</html>

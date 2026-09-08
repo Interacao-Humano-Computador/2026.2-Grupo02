@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sites Avaliados | Planejamento - IHC Grupo 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #000000; color: #fafafa; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        .navbar { background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; }
+        .submenu-nav { background: rgba(15, 15, 18, 0.95); border-bottom: 1px solid #27272a; padding: 0.8rem 2rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; position: sticky; top: 65px; z-index: 40; backdrop-filter: blur(10px); }
+        .submenu-nav a { color: #a1a1aa; text-decoration: none; padding: 0.4rem 1rem; border-radius: 99px; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; white-space: nowrap; }
+        .submenu-nav a:hover { color: #fafafa; background: rgba(255,255,255,0.05); }
+        .submenu-nav a.active { color: #000; background: #a855f7; font-weight: 600; }
+        .page-header { text-align: center; padding: 3rem 2rem 1.5rem; }
+        .page-header h1 { font-size: 2.5rem; font-weight: 900; color: #fafafa; margin-bottom: 0.5rem; }
+        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 0 2rem 4rem; width: 100%; }
+        .content-section h2 { color: #a855f7; border-bottom: 1px solid #27272a; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        .content-section p { color: #d4d4d8; line-height: 1.7; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: #fafafa; font-weight: 900; font-size: 1.2rem; font-style: italic;">IHC G2</a></div>
+        <div class="navbar-links" style="display: flex; gap: 2rem; align-items: center;">
+            <a href="index.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Início</a>
+            <a href="equipe.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Equipe</a>
+            <a href="atas.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Atas</a>
+            <a href="cronograma.html" style="color: #a1a1aa; text-decoration: none; font-weight: 500;">Cronograma</a>
+            <a href="planejamento.html" style="color: #a855f7; text-decoration: none; font-weight: 500;">Planejamento</a>
+            <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600; text-decoration: none;">Dashboard ➔</a>
+        </div>
+    </nav>
+
+    <div class="submenu-nav">
+        <a href="planejamento.html">1. Introdução</a>
+        <a href="plan_equipe.html">2. Equipe</a>
+        <a href="plan_heatmap.html">3. Heatmap</a>
+        <a href="plan_ferramentas.html">4. Ferramentas</a>
+        <a href="plan_design.html">5. Processo de Design</a>
+        <a href="plan_sites.html">6. Sites Avaliados</a>
+        <a href="plan_cronograma.html">7. Cronograma</a>
+    </div>
+
+    <header class="page-header">
+        <h1>Sites Avaliados</h1>
+        <p style="color: #a1a1aa;">Universidade de Brasília - Campus UnB Gama</p>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="content-section">
+            <h2>6. Sites Avaliados e Site Selecionado</h2>
+            <p>Como parte da análise competitiva do processo de design escolhido, a equipe avaliou os seguintes sites antes de definir o objeto de estudo do projeto:</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+                
+                <div style="display: grid; grid-template-columns: 220px 1fr; gap: 2rem; background: rgba(9, 9, 11, 0.6); border: 1px solid #27272a; padding: 1.2rem; border-radius: 8px; align-items: center;">
+                    <div><a href="https://telabrasil.org.br" target="_blank" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 12px; border-radius: 6px; text-decoration: none; display: inline-block; text-align: center; width: 100%;">Tela Brasil ↗</a></div>
+                    <div style="color: #d4d4d8; font-size: 0.95rem;">Site avaliado preliminarmente na análise competitiva.</div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 220px 1fr; gap: 2rem; background: rgba(9, 9, 11, 0.6); border: 1px solid #27272a; padding: 1.2rem; border-radius: 8px; align-items: center;">
+                    <div><a href="https://portal.stf.jus.br" target="_blank" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 12px; border-radius: 6px; text-decoration: none; display: inline-block; text-align: center; width: 100%;">Portal STF ↗</a></div>
+                    <div style="color: #d4d4d8; font-size: 0.95rem;">Site avaliado preliminarmente na análise competitiva.</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 220px 1fr; gap: 2rem; background: rgba(9, 9, 11, 0.6); border: 1px solid #27272a; padding: 1.2rem; border-radius: 8px; align-items: center;">
+                    <div><a href="https://www.gov.br/anvisa/pt-br" target="_blank" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 12px; border-radius: 6px; text-decoration: none; display: inline-block; text-align: center; width: 100%;">Consultas ANVISA ↗</a></div>
+                    <div style="color: #d4d4d8; font-size: 0.95rem;">Site avaliado preliminarmente na análise competitiva.</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 220px 1fr; gap: 2rem; background: rgba(9, 9, 11, 0.6); border: 1px solid #27272a; padding: 1.2rem; border-radius: 8px; align-items: center;">
+                    <div><a href="https://www.gov.br/inep/pt-br" target="_blank" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 12px; border-radius: 6px; text-decoration: none; display: inline-block; text-align: center; width: 100%;">Portal do INEP ↗</a></div>
+                    <div style="color: #d4d4d8; font-size: 0.95rem;">Site avaliado preliminarmente na análise competitiva.</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 220px 1fr; gap: 2rem; background: rgba(9, 9, 11, 0.6); border: 1px solid #27272a; border-left: 4px solid #10b981; padding: 1.2rem; border-radius: 8px; align-items: center; margin-top: 1rem;">
+                    <div><a href="https://no-fluxo.crianex.com" target="_blank" style="color: #10b981; border: 1px solid #10b981; padding: 6px 12px; border-radius: 6px; text-decoration: none; display: inline-block; text-align: center; width: 100%; font-weight: bold;">NoFluxoUnB ↗</a></div>
+                    <div style="color: #d4d4d8; font-size: 0.95rem;"><strong>Objeto Selecionado:</strong> Após essa avaliação, a equipe optou por selecionar o NoFluxoUnB (no-fluxo.crianex.com) como site do projeto da disciplina. O NoFluxoUnB é uma plataforma de planejamento acadêmico inteligente voltada a estudantes da UnB, já em desenvolvimento pela equipe, o que permite aplicar as técnicas de IHC estudadas na disciplina sobre um produto real e em evolução contínua.</div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <script src="js/planejamento.js"></script>
+</body>
+</html>
