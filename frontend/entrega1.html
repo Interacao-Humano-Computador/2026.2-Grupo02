@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrega 1: Planejamento | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <nav class="navbar" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50;">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <a href="index.html" style="text-decoration: none;"><span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span></a>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html" style="font-weight: 500;">Início</a>
+            <a href="equipe.html" style="font-weight: 500;">Equipe</a>
+            <a href="entregas.html" class="btn-outline" style="border-color: #a855f7; color: #a855f7;">Entregas</a>
+            <a href="atas.html" style="font-weight: 500;">Atas</a>
+            <a href="planejamento.html" style="font-weight: 500;">Planejamento</a>
+            <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600;">Dashboard ➔</a>
+        </div>
+    </nav>
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <section class="section-container">
+            
+            <nav class="doc-nav">
+                <a href="entregas.html" style="color: #d8b4fe;">← Voltar ao Menu</a>
+                <a href="#intro">1. Introdução</a>
+                <a href="#equipe">2. Equipe</a>
+                <a href="#heatmap">3. Heatmap</a>
+                <a href="#ferramentas">4. Ferramentas</a>
+                <a href="#design">5. Processo de Design</a>
+                <a href="#sites">6. Sites Avaliados</a>
+                <a href="#cronograma">7. Cronograma</a>
+            </nav>
+
+            <div class="header-info">
+                <p><strong>Universidade de Brasília - Campus UnB Gama</strong></p>
+                <p><strong>Disciplina:</strong> Interação Humano-Computador (IHC)</p>
+                <p><strong>Professor:</strong> André Barros de Sales</p>
+                <p><strong>Projeto:</strong> NoFluxoUnB</p>
+                <p><strong>Equipe:</strong> Felipe Lopes Pedroza, João Pedro Silveira dos Santos, Matheus do Vale Lameira, Rafael Barbosa de Melo, Tiago Sousa Nepomuceno, Victor Andreozzi de La Rocque Couto, Wanda Maria Wright dos Santos</p>
+                <p><strong>Data:</strong> Brasília, setembro de 2026</p>
+            </div>
+
+            <h1 class="doc-title">Entrega 1 - Planejamento do Projeto<span class="text-gradient">.</span></h1>
+
+            <h2 id="intro" class="doc-section">1. Introdução</h2>
+            <p class="doc-text">Este documento apresenta o planejamento do projeto desenvolvido pela equipe na disciplina de Interação Humano-Computador (IHC), ministrada pelo professor André Barros de Sales na Universidade de Brasília, Campus UnB Gama. O documento corresponde à Entrega 1 do projeto e descreve a equipe responsável, o heatmap de disponibilidade dos integrantes, as ferramentas utilizadas, o processo de design adotado, a lista de sites avaliados e o site selecionado como objeto de estudo, além do cronograma detalhado das atividades desta etapa.</p>
+            
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p style="color: #fafafa; font-weight: 600; margin-bottom: 0.5rem;">Links da entrega</p>
+                <p><strong>Vídeo da apresentação (YouTube):</strong> <a href="https://youtu.be/lpGtLAkQfqA" target="_blank">youtu.be/lpGtLAkQfqA</a>.</p>
+                <p><strong>GitHub Pages da entrega:</strong> <a href="https://interacao-humano-computador.github.io/2026.2-Grupo02" target="_blank">interacao-humano-computador.github.io/2026.2-Grupo02</a>.</p>
+            </div>
+
+            <h2 id="equipe" class="doc-section">2. Equipe</h2>
+            <p class="doc-text">A equipe do projeto é composta por sete integrantes, com Felipe Lopes Pedroza atuando como gerente do grupo e responsável, entre outras atividades, pelo planejamento do projeto, pelas atas de reunião e pela definição do processo de design.</p>
+            
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead>
+                        <tr>
+                            <th>Cargo</th>
+                            <th>Nome</th>
+                            <th>Matrícula</th>
+                            <th>E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color: #fafafa;">Gerente</td><td>Felipe Lopes Pedroza</td><td style="font-family: 'JetBrains Mono', monospace;">231026330</td><td>felipelp2910@gmail.com</td></tr>
+                        <tr><td style="color: #fafafa;">Integrante</td><td>João Pedro Silveira dos Santos</td><td style="font-family: 'JetBrains Mono', monospace;">232014718</td><td>-</td></tr>
+                        <tr><td style="color: #fafafa;">Integrante</td><td>Matheus do Vale Lameira</td><td style="font-family: 'JetBrains Mono', monospace;">202070064</td><td>mvlameira@gmail.com</td></tr>
+                        <tr><td style="color: #fafafa;">Integrante</td><td>Rafael Barbosa de Melo</td><td style="font-family: 'JetBrains Mono', monospace;">231026563</td><td>rafaelbdmelo@outlook.com</td></tr>
+                        <tr><td style="color: #fafafa;">Integrante</td><td>Tiago Sousa Nepomuceno</td><td style="font-family: 'JetBrains Mono', monospace;">222009732</td><td>tiago.nepo21@gmail.com</td></tr>
+                        <tr><td style="color: #fafafa;">Integrante</td><td>Victor Andreozzi de La Rocque Couto</td><td style="font-family: 'JetBrains Mono', monospace;">221029285</td><td>victor.andreozzi.dev@outlook.com</td></tr>
+                        <tr><td style="color: #fafafa;">Integrante</td><td>Wanda Maria Wright dos Santos</td><td style="font-family: 'JetBrains Mono', monospace;">232006921</td><td>-</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text" style="font-size: 0.9rem; color: #71717a;"><em>E-mails não listados serão complementados pelos respectivos integrantes ao longo do projeto.</em></p>
+
+            <h2 id="heatmap" class="doc-section">3. Heatmap de Disponibilidade dos Integrantes</h2>
+            <p class="doc-text">A grade a seguir apresenta a disponibilidade semanal dos integrantes da equipe, cruzando dias da semana e faixas de horário. A intensidade da cor e o número em cada célula indicam a quantidade de integrantes disponíveis naquele intervalo, permitindo identificar os melhores horários para reuniões e sessões de trabalho conjunto.</p>
+            
+            <div class="table-wrapper">
+                <table class="table-standard" style="text-align: center;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Grade Horária</th><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">08:00-09:00</td><td>5</td><td>3</td><td>2</td><td>3</td><td>4</td><td>2</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">09:00-10:00</td><td>3</td><td>5</td><td>2</td><td>2</td><td>2</td><td>3</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">10:00-11:00</td><td>7</td><td>3</td><td>2</td><td>2</td><td>2</td><td>3</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">11:00-12:00</td><td>7</td><td>3</td><td>2</td><td>2</td><td>3</td><td>4</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">12:00-13:00</td><td>7</td><td>3</td><td>3</td><td>3</td><td>4</td><td>2</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">13:00-14:00</td><td>6</td><td>3</td><td>3</td><td>3</td><td>2</td><td>4</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">14:00-15:00</td><td>6</td><td>3</td><td>3</td><td>2</td><td>4</td><td>3</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">15:00-16:00</td><td>3</td><td>6</td><td>3</td><td>2</td><td>3</td><td>4</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">16:00-17:00</td><td>5</td><td>6</td><td>3</td><td>3</td><td>4</td><td>3</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">17:00-18:00</td><td>5</td><td>6</td><td>3</td><td>3</td><td>3</td><td>4</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">18:00-19:00</td><td>6</td><td>6</td><td>4</td><td>4</td><td>4</td><td>5</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">19:00-20:00</td><td>7</td><td>6</td><td>5</td><td>6</td><td>7</td><td>5</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">20:00-21:00</td><td>7</td><td>7</td><td>6</td><td>7</td><td>7</td><td>6</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">21:00-22:00</td><td>7</td><td>7</td><td>6</td><td>7</td><td>7</td><td>7</td><td>7</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h2 id="ferramentas" class="doc-section">4. Ferramentas do Projeto</h2>
+            <p class="doc-text">Para viabilizar a organização da equipe, a comunicação, a produção dos artefatos e o apoio com inteligência artificial generativa, foram selecionadas as ferramentas apresentadas na Tabela a seguir.</p>
+            
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead>
+                        <tr><th style="width: 30%;">Ferramenta</th><th>Finalidade</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color: #fafafa;">GitHub</td><td>Versionamento e documentação dos artefatos produzidos para o projeto.</td></tr>
+                        <tr><td style="color: #fafafa;">GitHub Pages (Pelican)</td><td>Publicação da wiki e da documentação do projeto.</td></tr>
+                        <tr><td style="color: #fafafa;">Visual Studio Code</td><td>Edição dos arquivos de documentação e código do projeto.</td></tr>
+                        <tr><td style="color: #fafafa;">Google Meet</td><td>Realização das reuniões da equipe.</td></tr>
+                        <tr><td style="color: #fafafa;">WhatsApp</td><td>Principal canal de comunicação da equipe.</td></tr>
+                        <tr><td style="color: #fafafa;">Google Docs</td><td>Elaboração de documentos e atas de reunião.</td></tr>
+                        <tr><td style="color: #fafafa;">Microsoft Excel (SharePoint)</td><td>Criação da grade horária e do heatmap de disponibilidade.</td></tr>
+                        <tr><td style="color: #fafafa;">YouTube</td><td>Hospedagem dos vídeos das apresentações.</td></tr>
+                        <tr><td style="color: #fafafa;">Gemini</td><td>Apoio de inteligência artificial generativa na produção dos artefatos.</td></tr>
+                        <tr><td style="color: #fafafa;">Claude</td><td>Apoio de inteligência artificial generativa na produção dos artefatos.</td></tr>
+                        <tr><td style="color: #fafafa;">NotebookLM</td><td>Apoio de inteligência artificial generativa na síntese de conteúdo.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 id="design" class="doc-section">5. Processo de Design Selecionado</h2>
+            <p class="doc-text">A equipe adotou como referência metodológica a Engenharia de Usabilidade de Nielsen (Barbosa e Silva, 2010), processo de design de IHC estruturado nas seguintes atividades:</p>
+            <ul class="doc-list">
+                <li>Conheça seu usuário</li>
+                <li>Realize uma análise competitiva</li>
+                <li>Defina as metas de usabilidade</li>
+                <li>Faça designs paralelos</li>
+                <li>Adote o design participativo</li>
+                <li>Faça o design coordenado da interface como um todo</li>
+                <li>Aplique diretrizes e análise heurística</li>
+                <li>Faça protótipos</li>
+                <li>Realize testes empíricos</li>
+                <li>Pratique design iterativo</li>
+            </ul>
+            <p class="doc-text">A escolha desse processo se justifica por dois motivos principais. Primeiro, a etapa de "análise competitiva" corresponde diretamente à comparação entre sites realizada pela equipe antes da seleção do objeto de estudo do projeto (Seção 6). Segundo, o item "conheça seu usuário" já está parcialmente atendido, uma vez que o site selecionado, o NoFluxoUnB, é uma plataforma em desenvolvimento pela equipe com usuários reais estudantes da UnB - e um histórico de decisões de produto já consolidado.</p>
+            <p class="doc-text">As demais atividades do processo (definição de metas de usabilidade, prototipação, testes empíricos e design iterativo) se encaixam no formato de entregas sucessivas ao longo do semestre da disciplina.</p>
+
+            <h2 id="sites" class="doc-section">6. Sites Avaliados e Site Selecionado</h2>
+            <p class="doc-text">Como parte da análise competitiva do processo de design escolhido, a equipe avaliou os seguintes sites antes de definir o objeto de estudo do projeto:</p>
+            <ul class="doc-list">
+                <li>Tela Brasil</li>
+                <li>Portal STF</li>
+                <li>Consultas ANVISA</li>
+                <li>Portal do INEP</li>
+            </ul>
+            <p class="doc-text">Após essa avaliação, a equipe optou por selecionar o NoFluxoUnB (no-fluxo.crianex.com) como site do projeto da disciplina. O NoFluxoUnB é uma plataforma de planejamento acadêmico inteligente voltada a estudantes da UnB, já em desenvolvimento pela equipe, o que permite aplicar as técnicas de IHC estudadas na disciplina sobre um produto real e em evolução contínua.</p>
+
+            <h2 id="cronograma" class="doc-section">7. Cronograma Detalhado das Atividades</h2>
+            <p class="doc-text">O cronograma a seguir apresenta o planejamento completo do projeto ao longo do semestre, da Entrega 1 à Entrega Final, com data de início e término de cada atividade, os responsáveis pela execução, e o período e os responsáveis pela revisão. Cada etapa inclui uma atividade específica de gravação do vídeo de apresentação, com seu respectivo período. Esta tabela poderá sofrer alterações ao longo do desenvolvimento do projeto.</p>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead>
+                        <tr>
+                            <th>Atividade</th>
+                            <th>Desenvolvimento</th>
+                            <th>Responsáveis</th>
+                            <th>Revisão</th>
+                            <th>Revisores</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="5" class="table-header-highlight">Entrega 1 - Planejamento do Projeto (Data de entrega: 06/09/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Planejamento do Projeto</td><td>18/08-24/08</td><td>Todos os integrantes</td><td>25/08-26/08</td><td>João Pedro Silveira</td></tr>
+                        <tr><td style="color: #fafafa;">Documentar Equipe e Heatmap</td><td>18/08-24/08</td><td>Victor Andreozzi, Felipe Lopes</td><td>25/08-26/08</td><td>João Pedro Silveira</td></tr>
+                        <tr><td style="color: #fafafa;">Ferramentas utilizadas</td><td>20/08-26/08</td><td>Matheus Lameira, Rafael Barbosa</td><td>27/08-28/08</td><td>Wanda Wright</td></tr>
+                        <tr><td style="color: #fafafa;">Processo de Design</td><td>22/08-29/08</td><td>Tiago Sousa, Wanda Wright</td><td>30/08-31/08</td><td>Felipe Lopes</td></tr>
+                        <tr><td style="color: #fafafa;">Lista de sites e site selecionado</td><td>20/08-30/08</td><td>Todos os integrantes</td><td>31/08-01/09</td><td>Victor Andreozzi, Matheus Lameira</td></tr>
+                        <tr><td style="color: #fafafa;">Cronograma das atividades</td><td>25/08-02/09</td><td>Victor Andreozzi</td><td>03/09-04/09</td><td>Tiago Sousa</td></tr>
+                        <tr><td style="color: #fafafa;">Criação da Wiki e Atas</td><td>25/08-03/09</td><td>Felipe Lopes, Rafael Barbosa</td><td>04/09-05/09</td><td>Wanda Wright</td></tr>
+                        <tr><td style="color: #fafafa;">Gravar video da apresentação</td><td>05/09-06/09</td><td>Todos os integrantes</td><td>06/09-06/09</td><td>Todos os integrantes</td></tr>
+                        <tr><td style="color: #fafafa;">Inspeção do Grupo +1</td><td>07/09-07/09</td><td>Todos os integrantes</td><td>07/09-07/09</td><td>Todos os integrantes</td></tr>
+                        <tr><td style="color: #fafafa;">Ajustes pós-feedback</td><td>09/09-12/09</td><td>Todos os integrantes</td><td>13/09-13/09</td><td>Victor Andreozzi, Felipe Lopes</td></tr>
+
+                        <tr><td colspan="5" class="table-header-highlight">Entrega 2 - Perfil do Usuário, Personas e Análise de Tarefas (Data: 27/09/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Aspectos Éticos e TCLE</td><td>09/09-14/09</td><td>Victor Andreozzi, Rafael Barbosa</td><td>15/09-16/09</td><td>Wanda Wright</td></tr>
+                        <tr><td style="color: #fafafa;">Traçar perfil de usuários</td><td>12/09-20/09</td><td>Felipe, João, Matheus</td><td>21/09-22/09</td><td>Tiago Sousa</td></tr>
+                        <tr><td style="color: #fafafa;">Personas e Mapa de Empatia</td><td>15/09-21/09</td><td>Tiago Sousa, Wanda Wright</td><td>22/09-23/09</td><td>Victor Andreozzi</td></tr>
+                        <tr><td style="color: #fafafa;">Cenários de Uso</td><td>16/09-22/09</td><td>Matheus Lameira, Rafael Barbosa</td><td>23/09-24/09</td><td>Felipe Lopes</td></tr>
+                        <tr><td style="color: #fafafa;">Análise de tarefas - HTΑ</td><td>16/09-23/09</td><td>Victor, Felipe, João, Matheus</td><td>24/09-25/09</td><td>Rafael, Tiago, Wanda</td></tr>
+                        <tr><td style="color: #fafafa;">Análise de tarefas - GOMS/CTT</td><td>16/09-23/09</td><td>Rafael, Tiago, Wanda</td><td>24/09-25/09</td><td>Victor, Felipe, João</td></tr>
+                        <tr><td style="color: #fafafa;">Gravar video da apresentação</td><td>26/09-27/09</td><td>Todos os integrantes</td><td>27/09-27/09</td><td>Todos os integrantes</td></tr>
+
+                        <tr><td colspan="5" class="table-header-highlight">Entrega 3 - Princípios, Metas e Guia de Estilo (Data: 06/10/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Características da plataforma</td><td>28/09-01/10</td><td>Victor Andreozzi, Matheus Lameira</td><td>02/10-02/10</td><td>Felipe Lopes</td></tr>
+                        <tr><td style="color: #fafafa;">Princípios Gerais de Projeto</td><td>29/09-03/10</td><td>Felipe Lopes, Rafael, Wanda</td><td>04/10-04/10</td><td>João Pedro Silveira</td></tr>
+                        <tr><td style="color: #fafafa;">Metas de usabilidade</td><td>29/09-02/10</td><td>João Pedro Silveira, Tiago Sousa</td><td>03/10-03/10</td><td>Victor Andreozzi</td></tr>
+                        <tr><td style="color: #fafafa;">Guia de Estilo do projeto</td><td>30/09-04/10</td><td>Todos os integrantes</td><td>05/10-05/10</td><td>Matheus Lameira, Rafael</td></tr>
+
+                        <tr><td colspan="5" class="table-header-highlight">Entrega 4 - Planejamento das Avaliações (Data: 13/10/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Criação dos Storyboards</td><td>07/10-10/10</td><td>Todos os integrantes</td><td>11/10-11/10</td><td>Victor Andreozzi, João</td></tr>
+                        <tr><td style="color: #fafafa;">Planejamento Avaliação Storyboard</td><td>07/10-11/10</td><td>Victor, Felipe, Matheus</td><td>12/10-12/10</td><td>Rafael Barbosa, Tiago</td></tr>
+                        <tr><td style="color: #fafafa;">Planejamento relato Storyboard</td><td>08/10-11/10</td><td>Rafael Barbosa, Wanda Wright</td><td>12/10-12/10</td><td>Felipe Lopes</td></tr>
+                        <tr><td style="color: #fafafa;">Planejamento Avaliação Análise</td><td>07/10-11/10</td><td>Tiago Sousa, João Pedro Silveira</td><td>12/10-12/10</td><td>Victor Andreozzi</td></tr>
+                        <tr><td style="color: #fafafa;">Planejamento relato Análise</td><td>08/10-11/10</td><td>Matheus Lameira, Wanda Wright</td><td>12/10-12/10</td><td>João Pedro Silveira</td></tr>
+
+                        <tr><td colspan="5" class="table-header-highlight">Entrega 5 - Avaliação dos Storyboards e Protótipo de Papel (Data: 25/10/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Avaliação dos Storyboards</td><td>14/10-19/10</td><td>Todos os integrantes</td><td>20/10-20/10</td><td>Felipe, Matheus</td></tr>
+                        <tr><td style="color: #fafafa;">Relato resultados Storyboards</td><td>19/10-22/10</td><td>Victor, Felipe, João</td><td>23/10-23/10</td><td>Rafael, Wanda</td></tr>
+                        <tr><td style="color: #fafafa;">Relato resultados Análise</td><td>19/10-22/10</td><td>Matheus, Rafael, Tiago</td><td>23/10-23/10</td><td>Victor, Wanda</td></tr>
+                        <tr><td style="color: #fafafa;">Planejamento Avaliação Prot. Papel</td><td>18/10-23/10</td><td>Victor Andreozzi, Wanda Wright</td><td>23/10-24/10</td><td>João Pedro Silveira</td></tr>
+
+                        <tr><td colspan="5" class="table-header-highlight">Entrega 6 - Protótipo de Papel e Alta Fidelidade (Data: 03/11/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Confecção do Protótipo de Papel</td><td>10/10-28/10</td><td>Todos os integrantes</td><td>28/10-29/10</td><td>Victor, Rafael</td></tr>
+                        <tr><td style="color: #fafafa;">Avaliação Protótipo de Papel</td><td>28/10-31/10</td><td>Todos os integrantes</td><td>31/10-01/11</td><td>João, Matheus</td></tr>
+                        <tr><td style="color: #fafafa;">Relato resultados Prot. Papel</td><td>31/10-02/11</td><td>Victor, João, Rafael</td><td>02/11-02/11</td><td>Felipe, Wanda</td></tr>
+                        <tr><td style="color: #fafafa;">Plan. Avaliação Alta Fidelidade</td><td>29/10-01/11</td><td>Felipe, Matheus, Tiago</td><td>02/11-02/11</td><td>Victor Andreozzi</td></tr>
+
+                        <tr><td colspan="5" class="table-header-highlight">Entrega 7 - Protótipo de Alta Fidelidade (Data: 15/11/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Construção do Protótipo Alta Fid.</td><td>03/11-09/11</td><td>Todos os integrantes</td><td>10/11-10/11</td><td>Felipe, Rafael</td></tr>
+                        <tr><td style="color: #fafafa;">Teste piloto Alta Fidelidade</td><td>09/11-10/11</td><td>Victor Andreozzi, Matheus Lameira</td><td>10/11-10/11</td><td>João Pedro Silveira</td></tr>
+                        <tr><td style="color: #fafafa;">Execução dos testes com usuários</td><td>10/11-13/11</td><td>Todos os integrantes</td><td>13/11-14/11</td><td>Tiago, Wanda</td></tr>
+                        <tr><td style="color: #fafafa;">Relato resultados Alta Fidelidade</td><td>12/11-14/11</td><td>Todos os integrantes</td><td>14/11-15/11</td><td>Victor, João</td></tr>
+
+                        <tr><td colspan="5" class="table-header-highlight">Entrega 8 - Verificação dos Artefatos (Data: 22/11/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Planejamento da verificação</td><td>16/11-18/11</td><td>Victor Andreozzi, João Pedro</td><td>18/11-19/11</td><td>Rafael Barbosa</td></tr>
+                        <tr><td style="color: #fafafa;">Criação das listas (Checklists)</td><td>17/11-19/11</td><td>Felipe, Matheus, Wanda</td><td>19/11-20/11</td><td>Tiago Sousa</td></tr>
+                        <tr><td style="color: #fafafa;">Execução da verificação (1 a 7)</td><td>18/11-21/11</td><td>Todos os integrantes</td><td>21/11-21/11</td><td>Todos os integrantes</td></tr>
+                        <tr><td style="color: #fafafa;">Relato resultados e do Grupo +1</td><td>20/11-21/11</td><td>Rafael, Tiago, Wanda</td><td>22/11-22/11</td><td>Felipe, Matheus</td></tr>
+
+                        <tr><td colspan="5" class="table-header-highlight">Entrega Final - Consolidação do Projeto (Data: 30/11/2026)</td></tr>
+                        <tr><td style="color: #fafafa;">Sintese do Ciclo de Vida</td><td>23/11-26/11</td><td>Victor Andreozzi, Felipe Lopes</td><td>27/11-27/11</td><td>João Pedro Silveira</td></tr>
+                        <tr><td style="color: #fafafa;">Tabelas síntese técnicas e ferr.</td><td>24/11-27/11</td><td>João Pedro Silveira, Matheus Lameira</td><td>27/11-28/11</td><td>Victor Andreozzi</td></tr>
+                        <tr><td style="color: #fafafa;">Tabela de contribuição e artefatos</td><td>24/11-27/11</td><td>Todos os integrantes</td><td>28/11-28/11</td><td>Todos os integrantes</td></tr>
+                        <tr><td style="color: #fafafa;">Tabelas de vídeos, reuniões</td><td>25/11-28/11</td><td>Rafael, Tiago, Wanda</td><td>28/11-29/11</td><td>Felipe Lopes</td></tr>
+                        <tr><td style="color: #fafafa;">Facilidades, dificuldades e IA</td><td>25/11-28/11</td><td>Todos os integrantes</td><td>29/11-29/11</td><td>Todos os integrantes</td></tr>
+                        <tr><td style="color: #fafafa;">Revisão final da Wiki</td><td>27/11-29/11</td><td>Todos os integrantes</td><td>29/11-30/11</td><td>Todos os integrantes</td></tr>
+                        <tr><td style="color: #fafafa;">Gravar vídeo final de apresentação</td><td>29/11-30/11</td><td>Todos os integrantes</td><td>30/11-30/11</td><td>Todos os integrantes</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
