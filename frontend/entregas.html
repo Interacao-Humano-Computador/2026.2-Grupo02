@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Entregas | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .delivery-card { background: rgba(9, 9, 11, 0.6); padding: 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1.5rem; transition: border-color 0.3s; }
+        .delivery-card:hover { border-color: rgba(168, 85, 247, 0.3); }
+        .delivery-card h2 { color: #fafafa; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .delivery-links { list-style: none; padding: 0; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .delivery-links a { text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
+        .delivery-links a.doc-link { color: #a855f7; }
+        .delivery-links a.doc-link:hover { color: #d8b4fe; }
+        .delivery-links a.video-link { color: #e4e4e7; }
+        .delivery-links a.video-link:hover { color: #fff; }
+        .delivery-links a.insp-link { color: #10b981; }
+        .delivery-links a.insp-link:hover { color: #34d399; }
+        
+        .pending-card { opacity: 0.5; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <nav class="navbar" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50;">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <a href="index.html" style="text-decoration: none;"><span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span></a>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html" style="font-weight: 500;">Início</a>
+            <a href="equipe.html" style="font-weight: 500;">Equipe</a>
+            <a href="entregas.html" class="btn-outline" style="border-color: #a855f7; color: #a855f7;">Entregas</a>
+            <a href="atas.html" style="font-weight: 500;">Atas</a>
+            <a href="planejamento.html" style="font-weight: 500;">Planejamento</a>
+            <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600;">Dashboard ➔</a>
+        </div>
+    </nav>
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <section class="section-container">
+            <h1 style="font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2.5rem; color: #fafafa;">Menu de Entregas<span class="text-gradient">.</span></h1>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                
+                <div class="delivery-card">
+                    <h2>Entrega 1: Planejamento do Projeto</h2>
+                    <ul class="delivery-links">
+                        <li><a href="entrega1.html" class="doc-link">📄 Documento de Planejamento</a></li>
+                        <li><a href="https://youtu.be/lpGtLAkQfqA" target="_blank" class="video-link">▶️ Vídeo da Apresentação</a></li>
+                    </ul>
+                </div>
+
+                <div class="delivery-card">
+                    <h2>Inspeção do Grupo + 1</h2>
+                    <ul class="delivery-links">
+                        <li><a href="inspecao1.html" class="insp-link">📄 Documento de Inspeção</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=sc6WnkltUWU" target="_blank" class="video-link">▶️ Vídeo da Inspeção</a></li>
+                    </ul>
+                </div>
+
+                <div class="delivery-card pending-card">
+                    <h2 style="color: #a1a1aa;">Entrega 2: Perfil do Usuário e Tarefas</h2>
+                    <p style="color: #71717a; margin: 0; font-size: 0.9rem;"><em>Conteúdo pendente (conforme cronograma)</em></p>
+                </div>
+
+                <div class="delivery-card pending-card">
+                    <h2 style="color: #a1a1aa;">Entrega 3: Princípios e Metas</h2>
+                    <p style="color: #71717a; margin: 0; font-size: 0.9rem;"><em>Conteúdo pendente (conforme cronograma)</em></p>
+                </div>
+
+                <div class="delivery-card pending-card">
+                    <h2 style="color: #a1a1aa;">Entrega 4: Planejamento das Avaliações</h2>
+                    <p style="color: #71717a; margin: 0; font-size: 0.9rem;"><em>Conteúdo pendente (conforme cronograma)</em></p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: andreozzi, darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
