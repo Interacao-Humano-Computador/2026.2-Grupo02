@@ -189,10 +189,7 @@ body.alto-contraste .navbar-links a:visited {
     color: #000000 !important;
 }
 
-body.alto-contraste .navbar-links a:hover {
-    color: #002752 !important;
-    text-decoration: underline !important;
-}
+
 
 /* Barra de navegação com fundo claro e borda bem definida */
 body.alto-contraste nav {
@@ -254,13 +251,7 @@ body.alto-contraste .btn-outline:hover {
     color: #ffffff !important;
 }
 
-/* Botão de alternar Contraste */
-body.alto-contraste #btnContraste {
-    background-color: #a855f7 !important;
-    color: #ffffff !important;
-    border: 2px solid #a855f7 !important;
-    font-weight: bold !important;
-}
+
 
 
 /* Barra do Submenu */
@@ -497,4 +488,35 @@ body.alto-contraste .navbar-links a.active {
     color: #a855f7 !important;
     -webkit-text-fill-color: #a855f7 !important;
     font-weight: 700 !important;
+}
+
+/* Botão Minimalista de Estrela (Contraste/Brilho) */
+.btn-contraste-icon {
+    background: transparent !important;
+    border: none !important;
+    color: #a855f7 !important;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-contraste-icon:hover {
+    transform: scale(1.15);
+    color: #d8b4fe !important;
+}
+
+/* Troca para a Estrela com Lua no Alto Contraste */
+body.alto-contraste .btn-contraste-icon {
+    color: #000000 !important;
+}
+
+body.alto-contraste .btn-contraste-icon .icon-sun {
+    display: none !important;
+}
+
+body.alto-contraste .btn-contraste-icon .icon-moon {
+    display: block !important;
 }
