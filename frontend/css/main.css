@@ -153,3 +153,102 @@ body {
 
 /* Submenu de Planejamento (Ativo) */
 .submenu-nav a.active { color: #000 !important; background: #a855f7 !important; font-weight: 600; box-shaAdow: 0 0 15px rgba(168, 85, 247, 0.4); }
+
+/* --- MODO CLARO DE ALTO CONTRASTE --- */
+body.alto-contraste {
+    background: #ffffff !important;
+    background-image: none !important; /* Remove gradientes de fundo */
+    color: #0d0d0d !important;
+}
+
+/* Força cores de texto e títulos para preto absoluto de alta legibilidade */
+body.alto-contraste h1, 
+body.alto-contraste h2, 
+body.alto-contraste h3,
+body.alto-contraste p,
+body.alto-contraste span,
+body.alto-contraste td,
+body.alto-contraste th,
+body.alto-contraste div {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important; /* Remove efeito de texto em gradiente */
+    text-shadow: none !important; /* Remove sombras/glow do logo */
+}
+
+/* Links e Navegação em Azul Acessível (WCAG AAA) */
+body.alto-contraste a {
+    color: #004085 !important;
+}
+
+body.alto-contraste .navbar-links a:hover {
+    color: #002752 !important;
+    text-decoration: underline !important;
+}
+
+/* Barra de navegação com fundo claro e borda bem definida */
+body.alto-contraste nav {
+    background: #f8f9fa !important;
+    border-bottom: 2px solid #000000 !important;
+    backdrop-filter: none !important;
+}
+
+/* Faixa de destaques e rodapé com fundo cinza-claro */
+body.alto-contraste .trust-bar,
+body.alto-contraste .footer-institutional {
+    background: #f1f3f5 !important;
+    border-color: #cccccc !important;
+}
+
+body.alto-contraste .trust-item {
+    color: #1a1a1a !important;
+}
+
+/* Badges da Stack com bordas e texto escuros */
+body.alto-contraste .tech-badge {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* Tabela de versão com contraste ideal em fundo claro */
+body.alto-contraste table {
+    background: #ffffff !important;
+    border: 1px solid #000000 !important;
+}
+
+body.alto-contraste th {
+    background: #e9ecef !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+body.alto-contraste tr {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+/* Botão principal de ação (Acessar Dashboard) */
+body.alto-contraste .btn-primary,
+body.alto-contraste .btn-outline,
+body.alto-contraste .navbar-links a[href="dashboard.html"] {
+    background-color: #a855f7 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border: 2px solid #a855f7 !important;
+    font-weight: bold !important;
+}
+
+/* Hover nos botões principais */
+body.alto-contraste .btn-primary:hover,
+body.alto-contraste .btn-outline:hover {
+    background-color: #9333ea !important;
+    border-color: #9333ea !important;
+    color: #ffffff !important;
+}
+
+/* Botão de alternar Contraste */
+body.alto-contraste #btnContraste {
+    background-color: #a855f7 !important;
+    color: #ffffff !important;
+    border: 2px solid #a855f7 !important;
+    font-weight: bold !important;
+}
