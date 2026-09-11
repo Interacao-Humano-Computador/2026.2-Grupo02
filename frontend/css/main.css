@@ -152,4 +152,371 @@ body {
 .nav-link:hover, .nav-link.active { color: #a855f7 !important; font-weight: 600 !important; }
 
 /* Submenu de Planejamento (Ativo) */
-.submenu-nav a.active { color: #000 !important; background: #a855f7 !important; font-weight: 600; box-shaAdow: 0 0 15px rgba(168, 85, 247, 0.4); }
+.submenu-nav a.active { color: #000 !important; background: #a855f7 !important; font-weight: 600; box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
+
+/* --- MODO CLARO DE ALTO CONTRASTE --- */
+body.alto-contraste {
+    background: #ffffff !important;
+    background-image: none !important; /* Remove gradientes de fundo */
+    color: #0d0d0d !important;
+}
+
+/* Força cores de texto e títulos para preto absoluto de alta legibilidade */
+body.alto-contraste h1, 
+body.alto-contraste h2, 
+body.alto-contraste h3,
+body.alto-contraste p,
+body.alto-contraste span,
+body.alto-contraste td,
+body.alto-contraste th,
+body.alto-contraste div,
+body.alto-contraste ul,
+body.alto-contraste ol,
+body.alto-contraste li {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important; /* Remove efeito de texto em gradiente */
+    text-shadow: none !important; /* Remove sombras/glow do logo */
+}
+
+/* Links e Navegação em Azul Acessível (WCAG AAA) */
+body.alto-contraste a {
+    color: #004085 !important;
+}
+
+body.alto-contraste .navbar-links a,
+body.alto-contraste .navbar-links a:visited {
+    text-decoration: none !important;
+    color: #000000 !important;
+}
+
+
+
+/* Barra de navegação com fundo claro e borda bem definida */
+body.alto-contraste nav {
+    background: #f8f9fa !important;
+    border-bottom: 2px solid #000000 !important;
+    backdrop-filter: none !important;
+}
+
+/* Faixa de destaques e rodapé com fundo cinza-claro */
+body.alto-contraste .trust-bar,
+body.alto-contraste .footer-institutional {
+    background: #f1f3f5 !important;
+    border-color: #cccccc !important;
+}
+
+body.alto-contraste .trust-item {
+    color: #1a1a1a !important;
+}
+
+/* Badges da Stack com bordas e texto escuros */
+body.alto-contraste .tech-badge {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* Tabela de versão com contraste ideal em fundo claro */
+body.alto-contraste table {
+    background: #ffffff !important;
+    border: 1px solid #000000 !important;
+}
+
+body.alto-contraste th {
+    background: #e9ecef !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+body.alto-contraste tr {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+/* Botão principal de ação (Acessar Dashboard) */
+body.alto-contraste .btn-primary,
+body.alto-contraste .btn-outline,
+body.alto-contraste .navbar-links a[href="dashboard.html"] {
+    background-color: #a855f7 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border: 2px solid #a855f7 !important;
+    font-weight: bold !important;
+}
+
+/* Hover nos botões principais */
+body.alto-contraste .btn-primary:hover,
+body.alto-contraste .btn-outline:hover {
+    background-color: #9333ea !important;
+    border-color: #9333ea !important;
+    color: #ffffff !important;
+}
+
+
+
+
+/* Barra do Submenu */
+body.alto-contraste .submenu-nav {
+    background-color: #f8f9fa !important;
+    border-bottom: 2px solid #000000 !important;
+    backdrop-filter: none !important;
+}
+
+/* Links do Submenu (Visíveis em preto sólido) */
+body.alto-contraste .submenu-nav a,
+body.alto-contraste .submenu-nav a:visited {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+/* Hover/Foco nos links */
+body.alto-contraste .submenu-nav a:hover,
+body.alto-contraste .submenu-nav a:focus {
+    background-color: #e2e8f0 !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    border-radius: 99px;
+}
+
+/* Link da Aba Ativa (Destaque Roxo com texto Branco) */
+body.alto-contraste .submenu-nav a.active {
+    background-color: #a855f7 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-weight: bold !important;
+}
+
+.footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); }
+
+
+/* Cabeçalho do Dashboard coontraste */
+body.alto-contraste .dash-header {
+    background: #f8f9fa !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+body.alto-contraste .dash-logo h2,
+body.alto-contraste .dash-logo p {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-shadow: none !important;
+}
+
+/* Cards de Métricas do Topo */
+body.alto-contraste .card {
+    background: #ffffff !important;
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+}
+
+body.alto-contraste .card-title,
+body.alto-contraste .card-value,
+body.alto-contraste .card-footer {
+    color: #000000 !important;
+}
+
+body.alto-contraste .card-value small {
+    color: #004085 !important; /* Destaque numérico em azul escuro acessível */
+    font-weight: bold !important;
+}
+
+/* Painéis Principais e Seções de Gráficos */
+body.alto-contraste .panel {
+    background: #ffffff !important;
+    border: 2px solid #000000 !important;
+}
+
+body.alto-contraste .panel-header {
+    border-bottom: 1px solid #000000 !important;
+}
+
+body.alto-contraste .panel-title h3,
+body.alto-contraste .panel-legend,
+body.alto-contraste h4 {
+    color: #000000 !important;
+}
+
+/* Heatmap, Logs, Timeline e Controles de Auditoria */
+body.alto-contraste .heatmap-container,
+body.alto-contraste .timeline-container,
+body.alto-contraste .log-container,
+body.alto-contraste .collaborators-grid,
+body.alto-contraste .timeline-logs {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+body.alto-contraste #audit-user-select {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+body.alto-contraste .log-table-header {
+    background: #e9ecef !important;
+    color: #000000 !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+body.alto-contraste .stat-box {
+    background: #f1f3f5 !important;
+    border: 1px solid #000000 !important;
+}
+
+body.alto-contraste .stat-label,
+body.alto-contraste .stat-num,
+body.alto-contraste .placeholder-text {
+    color: #000000 !important;
+}
+
+/* Ajustes dos Botões de Ação do Dashboard */
+body.alto-contraste .dash-controls .btn-primary,
+body.alto-contraste .dash-controls .btn-outline {
+    background-color: #a855f7 !important;
+    color: #ffffff !important;
+    border: 2px solid #a855f7 !important;
+    font-weight: bold !important;
+}
+
+
+/*
+   ESTRUTURA DA NAVBAR EM TODAS AS PÁGINAS
+   */
+.navbar {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-links {
+    display: flex !important;
+    gap: 2rem !important; /* Mantém o espaçamento correto de 2rem entre os links */
+    font-size: 0.9rem;
+    font-weight: 500;
+    align-items: center !important;
+}
+
+.navbar-links a {
+    color: #a1a1aa;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #a855f7;
+}
+
+/* 
+   Ajuste da Navbar no Modo de Alto Contraste (Tema Claro)
+    */
+body.alto-contraste .navbar {
+    background: #f8f9fa !important;
+    border-bottom: 2px solid #000000 !important;
+    backdrop-filter: none !important;
+}
+
+body.alto-contraste .navbar-links {
+    display: flex !important;
+    gap: 2rem !important;
+    align-items: center !important;
+}
+
+body.alto-contraste .navbar-links a,
+body.alto-contraste .navbar-links a:visited {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+body.alto-contraste .navbar-links a:hover {
+    color: #a855f7 !important;
+    text-decoration: none !important;
+}
+
+
+/* 
+   AJUSTE DE CARDS E BOTÕES DE LINKS (EX: SITES AVALIADOS)
+   
+   */
+/* Força o fundo branco e borda sólida nos grids/cards com estilos inline */
+body.alto-contraste .content-section div[style*="display: grid"],
+body.alto-contraste .content-section div[style*="background"] {
+    background: #ffffff !important;
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+}
+
+/* Ajusta as cores do texto explicativo dentro dos cards */
+body.alto-contraste .content-section div[style*="display: grid"] div {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+/* Botões de links padrão (Tela Brasil, STF, ANVISA, INEP) */
+body.alto-contraste .content-section a[href*="http"] {
+    background-color: #a855f7 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border: 2px solid #a855f7 !important;
+    font-weight: bold !important;
+}
+
+/* Destaque especial do objeto selecionado (NoFluxoUnB em Verde Acessível) */
+body.alto-contraste .content-section a[href*="no-fluxo.crianex.com"] {
+    background-color: #059669 !important; /* Verde sólido de alto contraste */
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border: 2px solid #059669 !important;
+    font-weight: bold !important;
+}
+
+/* Mantém a borda esquerda verde de destaque no card do NoFluxoUnB */
+body.alto-contraste .content-section div[style*="border-left"] {
+    border-left: 6px solid #059669 !important;
+}
+
+/* Destaque do link ativo da Navbar principal no modo de Alto Contraste */
+body.alto-contraste .navbar-links a.active {
+    color: #a855f7 !important;
+    -webkit-text-fill-color: #a855f7 !important;
+    font-weight: 700 !important;
+}
+
+/* Botão Minimalista de Estrela (Contraste/Brilho) */
+.btn-contraste-icon {
+    background: transparent !important;
+    border: none !important;
+    color: #a855f7 !important;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-contraste-icon:hover {
+    transform: scale(1.15);
+    color: #d8b4fe !important;
+}
+
+/* Troca para a Estrela com Lua no Alto Contraste */
+body.alto-contraste .btn-contraste-icon {
+    color: #000000 !important;
+}
+
+body.alto-contraste .btn-contraste-icon .icon-sun {
+    display: none !important;
+}
+
+body.alto-contraste .btn-contraste-icon .icon-moon {
+    display: block !important;
+}

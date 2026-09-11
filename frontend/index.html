@@ -47,22 +47,25 @@
         .tech-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
         .tech-badge { background: #09090b; color: #d4d4d8; padding: 0.75rem 1.5rem; border-radius: 99px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; border: 1px solid #27272a; }
 
-        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); }
+        
+    
     </style>
 </head>
 <body class="landing-body">
     <nav class="navbar" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50;">
         <div class="logo">
-            <div class="logo-icon"></div>
-            <a href="index.html" style="text-decoration: none;"><span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span></a>
+        <div class="logo-icon"></div>
+        <a href="index.html" style="text-decoration: none;"><span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span></a>
         </div>
         <div class="navbar-links">
-            <a href="index.html" style="color: #a855f7; font-weight: 500;">Início</a>
-            <a href="equipe.html" style="font-weight: 500;">Equipe</a>
-            <a href="entregas.html" class="btn-outline" style="border-color: #a855f7; color: #a855f7;">Entregas</a>
-            <a href="atas.html" style="font-weight: 500;">Atas</a>
-            <a href="planejamento.html" style="color: #a855f7; text-decoration: none; font-weight: 500;">Planejamento</a>
-            <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600;">Dashboard ➔</a>
+        <a href="index.html" style="font-weight: 500;">Início</a>
+        <a href="equipe.html" style="font-weight: 500;">Equipe</a>
+        <a href="entregas.html" class="btn-outline" style="border-color: #a855f7; color: #a855f7;">Entregas</a>
+        <a href="atas.html" style="font-weight: 500;">Atas</a>
+        <a href="planejamento.html" style="font-weight: 500;">Planejamento</a>
+        <a href="dashboard.html" style="color: #d8b4fe; border: 1px solid #d8b4fe; padding: 6px 16px; border-radius: 99px; font-weight: 600;">Dashboard ➔</a>
+
+        <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
         </div>
     </nav>
 
@@ -132,12 +135,17 @@
         <div style="max-width: 600px; margin: 0 auto;">
             <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
             <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
-                Dashboard desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
             </p>
             <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
-                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: andreozzi, darkymeubem, delvale412
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
             </div>
         </div>
     </footer>
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/youHere.js"></script>
+
+
 </body>
 </html>
