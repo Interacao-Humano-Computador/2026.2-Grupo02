@@ -289,7 +289,7 @@ body.alto-contraste .submenu-nav a.active {
 .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); }
 
 
-/* Cabeçalho do Dashboard coontraste */
+/* Cabeçalho do Dashboard alto contraste */
 body.alto-contraste .dash-header {
     background: #f8f9fa !important;
     border-bottom: 2px solid #000000 !important;
@@ -327,6 +327,7 @@ body.alto-contraste .panel {
 }
 
 body.alto-contraste .panel-header {
+    background-color: #fafafa;
     border-bottom: 1px solid #000000 !important;
 }
 
@@ -378,6 +379,23 @@ body.alto-contraste .dash-controls .btn-outline {
     border: 2px solid #a855f7 !important;
     font-weight: bold !important;
 }
+
+/* collab-cards de alto contraste */
+body.alto-contraste .collaborators-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 24px; }
+body.alto-contraste .collab-card { background: #f1f3f5; border: 1px solid #cccccc; border-radius: 16px; padding: 20px; transition: all 0.2s; border-bottom: 4px solid #cccccc; }
+body.alto-contraste .collab-card:hover { border-bottom-color: var(--accent-primary); background: #a855f70d; transform: translateY(-2px); box-shadow: 0 10px 20px #00000080; }
+body.alto-contraste .collab-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+body.alto-contraste .collab-avatar { width: 50px; height: 50px; border-radius: 12px; border: 2px solid var(--border-color); background: var(--bg-main); object-fit: cover; }
+body.alto-contraste .collab-info { min-width: 0; }
+body.alto-contraste .collab-info h4 { font-size: 0.9rem; font-weight: 900; color: var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.alto-contraste .collab-info span { font-size: 0.65rem; font-family: var(--font-mono); color: var(--accent-primary); text-transform: uppercase; letter-spacing: 1px; }
+body.alto-contraste .collab-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+body.alto-contraste .c-stat-box { background: #fafafa; padding: 10px; border-radius: 10px; text-align: center; border: 1px solid var(--border-color); }
+body.alto-contraste .c-stat-label { font-size: 0.55rem; font-weight: 900; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px; }
+body.alto-contraste .c-stat-val { font-size: 1.2rem; font-weight: 900; color: var(--text-light); }
+body.alto-contraste .collab-footer { border-top: 1px solid var(--border-color); padding-top: 12px; }
+body.alto-contraste .c-footer-label { font-size: 0.55rem; font-weight: 900; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+body.alto-contraste .c-footer-msg { font-size: 0.75rem; font-style: italic; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 
 /*
