@@ -149,7 +149,7 @@ body {
 
 /* Cores ativas da Navbar */
 .nav-link { transition: color 0.2s ease; }
-.nav-link:hover, .nav-link.active { color: #a855f7 !important; font-weight: 600 !important; }
+.nav-link:hover, .nav-link.active { color: #a855f7; font-weight: 600 !important; }
 
 /* Submenu de Planejamento (Ativo) */
 .submenu-nav a.active { color: #000 !important; background: #a855f7 !important; font-weight: 600; box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); }
@@ -250,7 +250,6 @@ body.alto-contraste .btn-outline:hover {
     border-color: #9333ea !important;
     color: #ffffff !important;
 }
-
 
 
 
@@ -484,7 +483,7 @@ body.alto-contraste .content-section div[style*="border-left"] {
 }
 
 /* Destaque do link ativo da Navbar principal no modo de Alto Contraste */
-body.alto-contraste .navbar-links a.active {
+body.alto-contraste .navbar-links a.active:not(.btn-outline) {
     color: #a855f7 !important;
     -webkit-text-fill-color: #a855f7 !important;
     font-weight: 700 !important;
