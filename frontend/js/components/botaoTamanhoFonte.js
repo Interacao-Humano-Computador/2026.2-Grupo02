@@ -1,6 +1,6 @@
 (function () {
     const CHAVE = 'tamanhoFonte';
-    const TAMANHOS = [85, 90, 95, 100, 110, 120, 130, 140, 150];
+    const TAMANHOS = [87.5, 100, 112.5, 125, 137.5, 150];
     const INDICE_PADRAO = 1;
 
     function getIndiceSalvo() {
@@ -15,7 +15,7 @@
         const botaoMenos = document.getElementById('botaoDiminuiFonte');
         const botaoMais = document.getElementById('botaoAumentaFonte');
         if(botaoMenos) botaoMenos.disabled = indice === 0;
-        if (botaoMais) botaoMais.disabled = indice === TAMANHOS.lenght - 1;
+        if (botaoMais) botaoMais.disabled = indice === TAMANHOS.length - 1;
     }
 
     function aplicaAlteracao(indice) {
@@ -69,4 +69,4 @@
         }
         aplicaAlteracao(getIndiceSalvo());
     })
-})
+})()

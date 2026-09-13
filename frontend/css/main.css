@@ -537,3 +537,41 @@ body.alto-contraste .btn-contraste-icon .icon-sun {
 body.alto-contraste .btn-contraste-icon .icon-moon {
     display: block !important;
 }
+
+/* secao dos botoes de aumentar e diminuir fonte */
+/* transicao suave entre as fontes */
+html {
+    transition: font-size 0.2s ease;
+}
+
+/* botoes A- e A+ */
+.botao-fonte-icon {
+    background: transparent;
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.7rem;
+    transition: all 0.2s ease;
+}
+.botao-fonte-icon:hover:not(:disabled){
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+}
+.botao-fonte-icon:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* botoes A- e A+ no modo de alto contraste */
+body.alto-contraste .botao-fonte-icon {
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+body.alto-contraste .botao-fonte-icon:hover:not(:disabled) {
+    background-color: var(--accent-primary) !important;
+    color: #FFFFFF !important;
+}
