@@ -397,6 +397,68 @@ body.alto-contraste .collab-footer { border-top: 1px solid var(--border-color); 
 body.alto-contraste .c-footer-label { font-size: 0.55rem; font-weight: 900; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
 body.alto-contraste .c-footer-msg { font-size: 0.75rem; font-style: italic; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+/* cartoes da equioe em alto contraste */
+body.alto-contraste .team-card {
+    background: #f1f3f5 !important;
+    border: 1px solid #cccccc !important;
+}
+body.alto-contraste .team-card:hover {
+    background: #a855f70d !important;
+    border-color: var(--accent-primary) !important;
+}
+body.alto-contraste .team-avatar {
+    border-color: var(--accent-primary) !important;
+}
+body.alto-contraste .team-card span {
+    color: var(--accent-primary) !important;
+    -webkit-text-fill-color: var(--accent-primary) !important;
+}
+body.alto-contraste .team-card p {
+    color: var(--text-muted) !important;
+}
+
+/*correcao do contraste da aba entregas */
+body.alto-contraste .delivery-card {
+    background: #f1f3f5 !important;
+    border: 1px solid #cccccc !important;
+}
+body.alto-contraste .delivery-card:hover {
+    border-color: var(--accent-primary) !important;
+}
+body.alto-contraste .delivery-links a.doc-link { color: #7e22ce !important; }
+body.alto-contraste .delivery-links a.video-link { color: #1f2937 !important; }
+body.alto-contraste .delivery-links a.insp-link { color: #047857 !important; }
+
+/* correcao do contraste das atas */
+body.alto-contraste .ata-row {
+    background: #f1f3f5 !important;
+    border-color: #cccccc !important;
+    border-left-color: var(--accent-primary) !important;
+}
+body.alto-contraste .ata-row:hover {
+    background: #a855f70d !important;
+    border-left-color: var(--accent-primary) !important;
+}
+body.alto-contraste .ata-title {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+/* correcao do contraste da parte de entrega do planejamento */
+body.alto-contraste .links-box {
+    background: #f1f3f5 !important;
+    border-color: #cccccc !important;
+    border-left-color: var(--accent-primary) !important;
+}
+body.alto-contraste .links-box h3 {
+    color: #000000 !important;
+}
+body.alto-contraste .links-box li {
+    color: #1a1a1a !important;
+}
+body.alto-contraste .links-box a {
+    color: #7e22ce !important;
+}
 
 /*
    ESTRUTURA DA NAVBAR EM TODAS AS PÁGINAS
