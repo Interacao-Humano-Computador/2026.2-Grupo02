@@ -4,12 +4,21 @@ import requests
 from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
 
-from config import settings
+# Carrega arquivo .env local se existir (sem precisar de dependências externas como pydantic-settings)
+if not os.getenv('IHC_GITHUB_TOKEN') and not os.getenv('GITHUB_TOKEN'):
+    env_file = os.path.join(os.path.dirname(__file__), '.env')
+    if os.path.exists(env_file):
+        with open(env_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#') and '=' in line:
+                    k, v = line.split('=', 1)
+                    os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
-TOKEN = os.getenv('IHC_GITHUB_TOKEN') or settings.GITHUB_TOKEN
-REPO = f"{settings.PROJECT_OWNER}/{settings.PROJECT_REPO}"
+TOKEN = os.getenv('IHC_GITHUB_TOKEN') or os.getenv('GITHUB_TOKEN')
+REPO = "Interacao-Humano-Computador/2026.2-Grupo02"
 BASE_URL = f"https://api.github.com/repos/{REPO}"
-HEADERS = {"Authorization": f"token {TOKEN}", "Accept": "application/vnd.github.v3+json"}
+HEADERS = {"Authorization": f"token {TOKEN}", "Accept": "application/vnd.github.v3+json"} if TOKEN else {"Accept": "application/vnd.github.v3+json"}
 
 TEAM_MEMBERS = [
     "andreozzi",
