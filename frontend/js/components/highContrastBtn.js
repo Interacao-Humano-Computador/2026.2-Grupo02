@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Se não encontrar o botão na página, ele cria e insere automaticamente na navbar
     if (!btnContraste) {
-        const navbarLinks = document.querySelector('.navbar-links');
+        const navbarLinks = document.querySelector('.sidebar-accessibility') || document.querySelector('.navbar-links');
         if (navbarLinks) {
             btnContraste = document.createElement('button');
             btnContraste.id = 'btnContraste';

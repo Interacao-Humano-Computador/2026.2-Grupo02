@@ -637,3 +637,267 @@ body.alto-contraste .botao-fonte-icon:hover:not(:disabled) {
     background-color: var(--accent-primary) !important;
     color: #FFFFFF !important;
 }
+
+/* =========================================
+   MENU LATERAL (SIDEBAR NAVIGATION)
+   ========================================= */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: rgba(10, 10, 12, 0.96);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem 1.25rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 100;
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    overflow-y: auto;
+}
+
+.sidebar-section-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #71717a;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    padding-left: 0.5rem;
+}
+
+.sidebar-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    list-style: none;
+}
+
+.sidebar-links a {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    color: #fafafa;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-links a.active:not(.btn-outline):not(.sidebar-btn-outline) {
+    color: #a855f7 !important;
+    font-weight: 600;
+    background: rgba(168, 85, 247, 0.1);
+    border-left: 3px solid #a855f7;
+}
+
+.sidebar-links .btn-outline,
+.sidebar-links .sidebar-btn-outline {
+    display: inline-block;
+    color: #a855f7;
+    border: 1px solid #a855f7;
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin: 0.25rem 0.5rem;
+    text-align: center;
+}
+
+.sidebar-links .btn-outline:hover,
+.sidebar-links .sidebar-btn-outline:hover {
+    background-color: #a855f7;
+    color: #ffffff !important;
+}
+
+.sidebar-dashboard-box {
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+}
+
+.btn-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d8b4fe;
+    border: 1px solid #d8b4fe;
+    padding: 8px 16px;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: rgba(168, 85, 247, 0.06);
+}
+
+.btn-dashboard:hover {
+    background: rgba(168, 85, 247, 0.25);
+    color: #ffffff;
+    border-color: #a855f7;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+    transform: translateY(-1px);
+}
+
+.sidebar-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-accessibility {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.main-wrapper {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--bg-main);
+}
+
+/* Submenu de planejamento mantido no topo da área de conteúdo */
+.main-wrapper .submenu-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.sidebar-toggle-close {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #a1a1aa;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.sidebar-mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 99;
+    background: #18181b;
+    border: 1px solid #27272a;
+    color: #fafafa;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8);
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    .sidebar-toggle-close {
+        display: block;
+    }
+    .sidebar-mobile-toggle {
+        display: block;
+    }
+    .main-wrapper {
+        width: 100%;
+    }
+}
+
+/* Regras de Alto Contraste para Sidebar */
+body.alto-contraste .sidebar {
+    background: #ffffff !important;
+    border-right: 2px solid #000000 !important;
+}
+body.alto-contraste .sidebar-header {
+    border-bottom: 2px solid #000000 !important;
+}
+body.alto-contraste .sidebar-section-title {
+    color: #000000 !important;
+}
+body.alto-contraste .sidebar-links a {
+    color: #000000 !important;
+}
+body.alto-contraste .sidebar-links a:hover {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+body.alto-contraste .sidebar-links a.active:not(.btn-outline):not(.sidebar-btn-outline) {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border-left: 4px solid var(--accent-primary) !important;
+}
+body.alto-contraste .sidebar-links .btn-outline,
+body.alto-contraste .sidebar-links .sidebar-btn-outline {
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+body.alto-contraste .sidebar-links .btn-outline:hover,
+body.alto-contraste .sidebar-links .sidebar-btn-outline:hover {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+body.alto-contraste .btn-dashboard {
+    color: #000000 !important;
+    border-color: #000000 !important;
+    background: transparent !important;
+}
+body.alto-contraste .btn-dashboard:hover {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+body.alto-contraste .sidebar-footer {
+    border-top: 2px solid #000000 !important;
+}
