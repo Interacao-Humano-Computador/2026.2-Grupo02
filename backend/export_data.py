@@ -4,9 +4,10 @@ import requests
 from datetime import datetime, timedelta, timezone
 from urllib.parse import quote
 
-# Token atualizado para a nova nomenclatura
-TOKEN = os.getenv('IHC_GITHUB_TOKEN')
-REPO = "Interacao-Humano-Computador/2026.2-Grupo02"
+from config import settings
+
+TOKEN = os.getenv('IHC_GITHUB_TOKEN') or settings.GITHUB_TOKEN
+REPO = f"{settings.PROJECT_OWNER}/{settings.PROJECT_REPO}"
 BASE_URL = f"https://api.github.com/repos/{REPO}"
 HEADERS = {"Authorization": f"token {TOKEN}", "Accept": "application/vnd.github.v3+json"}
 
