@@ -49,7 +49,7 @@
         botaoMais.textContent = 'A+';
         botaoMais.addEventListener('click', () => alteraTamanhoFonte(1));
 
-        const container = document.querySelector('.navbar-links') || document.querySelector('.dash-controls');
+        const container = document.querySelector('.sidebar-accessibility') || document.querySelector('.navbar-links') || document.querySelector('.dash-controls');
         const botaoContraste = document.getElementById('btnContraste');
 
         if(container){
