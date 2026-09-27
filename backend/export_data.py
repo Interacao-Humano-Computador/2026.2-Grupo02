@@ -25,8 +25,8 @@ TEAM_MEMBERS = [
     "darkymeubem",
     "delvale412",
     "rafaelbdmelo117",
-    "wandinhawright" ,
-    "TiagoCTnepo’s"
+    "wandinhawright",
+    "TiagoCTnepo"
 ]
 
 def fetch_all_pages(endpoint):
