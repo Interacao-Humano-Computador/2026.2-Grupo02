@@ -59,14 +59,19 @@ jobs:
         run: python backend/export_data.py
       # ========================================================
 
+      # PRs não têm permissão para publicar no ambiente github-pages
+      # (regra de proteção do ambiente); nesses eventos só validamos o ETL acima.
       - name: Configurar o Pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v4
 
       - name: Fazer o Upload dos Artefatos (Pasta frontend)
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: './frontend'
 
       - name: Fazer o Deploy para o GitHub Pages
+        if: github.event_name != 'pull_request'
         id: deployment
         uses: actions/deploy-pages@v4
