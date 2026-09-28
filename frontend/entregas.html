@@ -49,6 +49,8 @@
         .delivery-links a.insp-link:hover { color: #34d399; }
         
         .pending-card { opacity: 0.5; }
+        .delivery-links .pending-link { color: #71717a; font-weight: 600; font-size: 0.95rem; font-style: italic; }
+        body.alto-contraste .delivery-links .pending-link { color: #555555 !important; -webkit-text-fill-color: #555555 !important; }
     </style>
 </head>
 <body class="landing-body">
@@ -115,9 +117,13 @@
                     </ul>
                 </div>
 
-                <div class="delivery-card pending-card">
-                    <h2 style="color: #a1a1aa;">Entrega 2: Perfil do Usuário e Tarefas</h2>
-                    <p style="color: #71717a; margin: 0; font-size: 0.9rem;"><em>Conteúdo pendente (conforme cronograma)</em></p>
+                <div class="delivery-card">
+                    <h2>Entrega 2: Perfil do Usuário, Personas e Análise de Tarefas</h2>
+                    <ul class="delivery-links">
+                        <li><a href="entrega2.html" class="doc-link">📄 Documento da Entrega 2</a></li>
+                        <li><span class="pending-link">▶️ Vídeo da Apresentação (a publicar)</span></li>
+                        <li><a href="entrega2.html#apendice-a" class="video-link">🎥 Gravações das Sessões com Usuários</a></li>
+                    </ul>
                 </div>
 
                 <div class="delivery-card pending-card">
@@ -168,10 +174,17 @@
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
                         </tr>
-                        <tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
                             <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
                             <td style="padding: 1.5rem 1rem; color: #a1a1aa;">26/09/2026</td>
                             <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição de referências bibliográficas</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da Entrega 2 (documento e gravações das sessões com usuários)</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
                         </tr>
