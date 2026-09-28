@@ -857,6 +857,10 @@ body.alto-contraste .botao-fonte-icon:hover:not(:disabled) {
 }
 
 /* Regras de Alto Contraste para Sidebar */
+/* As regras genéricas acima fixam -webkit-text-fill-color em preto e essa
+   propriedade é herdada (e vence "color"), então cada estado do link precisa
+   definir o próprio text-fill-color, senão o texto branco sobre fundo preto
+   (hover/ativo) fica preto sobre preto. */
 body.alto-contraste .sidebar {
     background: #ffffff !important;
     border-right: 2px solid #000000 !important;
@@ -869,35 +873,85 @@ body.alto-contraste .sidebar-section-title {
 }
 body.alto-contraste .sidebar-links a {
     color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
 }
 body.alto-contraste .sidebar-links a:hover {
     background: #000000 !important;
     color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 body.alto-contraste .sidebar-links a.active:not(.btn-outline):not(.sidebar-btn-outline) {
     background: #000000 !important;
     color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     border-left: 4px solid var(--accent-primary) !important;
 }
 body.alto-contraste .sidebar-links .btn-outline,
 body.alto-contraste .sidebar-links .sidebar-btn-outline {
     color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
     border-color: #000000 !important;
 }
 body.alto-contraste .sidebar-links .btn-outline:hover,
 body.alto-contraste .sidebar-links .sidebar-btn-outline:hover {
     background: #000000 !important;
     color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 body.alto-contraste .btn-dashboard {
     color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
     border-color: #000000 !important;
     background: transparent !important;
 }
 body.alto-contraste .btn-dashboard:hover {
     background: #000000 !important;
     color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 body.alto-contraste .sidebar-footer {
     border-top: 2px solid #000000 !important;
+}
+body.alto-contraste .sidebar-toggle-close {
+    color: #000000 !important;
+}
+body.alto-contraste .sidebar-mobile-toggle {
+    background: #ffffff !important;
+    border: 2px solid #000000 !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+/* Área principal do layout com menu lateral: sem isso o .main-wrapper
+   mantém o fundo preto do tema escuro e o texto preto some. */
+body.alto-contraste .app-layout,
+body.alto-contraste .main-wrapper {
+    background-color: #ffffff !important;
+}
+
+/* Links das páginas de conteúdo: text-fill-color herdado do <li>/<div> pintava
+   qualquer link de preto; segue a cor definida para o link. */
+body.alto-contraste a {
+    -webkit-text-fill-color: currentColor;
+}
+
+/* Caixas de cabeçalho/wrappers que usam fundo escuro translúcido do tema escuro */
+body.alto-contraste .header-info {
+    background: #f1f3f5 !important;
+    border: 1px solid #000000 !important;
+}
+body.alto-contraste .table-wrapper,
+body.alto-contraste div[style*="background: #000000"] {
+    background: #ffffff !important;
+    border-color: #000000 !important;
+}
+
+/* Legendas e textos de apoio (caption, fonte) legíveis sobre fundo claro */
+body.alto-contraste caption,
+body.alto-contraste .content-section p[style*="color: #71717a"],
+body.alto-contraste .content-section p[style*="color: #a1a1aa"],
+body.alto-contraste strong,
+body.alto-contraste em {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
 }
