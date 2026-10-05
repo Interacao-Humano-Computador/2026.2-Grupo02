@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visão geral | Entrega 2 | IHC Grupo 2</title>
+    <title>6. Personas | Entrega 2 | IHC Grupo 2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -159,14 +159,14 @@
                     <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
                     <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
                     <ul>
-                        <li><a href="entrega2.html" class="active" aria-current="page">Visão geral</a></li>
+                        <li><a href="entrega2.html">Visão geral</a></li>
                         <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
                         <li><a href="entrega2_intro.html">1. Introdução</a></li>
                         <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
                         <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
                         <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
                         <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
-                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_personas.html" class="active" aria-current="page">6. Personas</a></li>
                         <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
                         <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
                         <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
@@ -176,43 +176,113 @@
                     </ul>
                 </aside>
             <article class="doc-content">
-                
-<div class="header-info">
-                <p><strong>Universidade de Brasília - Campus UnB Gama</strong></p>
-                <p><strong>Disciplina:</strong> Interação Humano-Computador (IHC)</p>
-                <p><strong>Professor:</strong> André Barros de Sales</p>
-                <p><strong>Projeto:</strong> NoFluxoUnB</p>
-                <p><strong>Grupo:</strong> 02</p>
-                <p><strong>Equipe:</strong> Felipe Lopes Pedroza, Matheus do Vale Lameira, Rafael Barbosa de Melo, Tiago Sousa Nepomuceno, Victor Andreozzi de La Rocque Couto</p>
-                <p><strong>Data:</strong> Brasília, setembro de 2026</p>
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a></p>
+<h1 id="personas" class="doc-title doc-page-title">6. Personas</h1>
+            <p class="doc-text">Nomes, idades e histórias são fictícios. Para ilustrar, recomenda-se usar esboço desenhado em vez de foto de banco de imagens (Cooper, p. 88). Cada ficha termina com a relação entre a persona e os achados da pesquisa (Seção 3).</p>
+            <article class="persona-card">
+                <h3 class="doc-subsection">Larissa Mendes <span class="persona-tag">— Fora do fluxo/atrasado · Persona Primária</span></h3>
+                <blockquote class="persona-quote">“Eu só queria saber se ainda dá pra formar em cinco anos ou se já era.”</blockquote>
+            <p class="doc-text">Larissa tem 21 anos, cursa Engenharia de Software na FCTE, no Gama, e está no 5º semestre. Mora em Taguatinga, pega dois ônibus até o campus e faz quase tudo pelo celular no trajeto. No semestre passado reprovou em Cálculo 2 e descobriu tarde que três disciplinas do semestre seguinte dependiam dela. Tentou entender o impacto no SIGAA e desistiu: a tela mostra componentes e códigos, não mostra consequência.</p>
+                <dl class="persona-list">
+                    <dt>Objetivo de experiência</dt><dd>Sentir que está no controle do próprio curso.</dd>
+                    <dt>Objetivos finais</dt><dd>Ver claramente o que a reprovação travou; saber em quantos semestres forma se seguir o plano; montar uma grade viável para o próximo período sem choque de horário; entender o efeito das próximas escolhas no IRA.</dd>
+                    <dt>Objetivo de vida</dt><dd>Formar a tempo.</dd>
+                    <dt>Frustrações</dt><dd>O SIGAA não mostra dependências entre disciplinas; descobre pré-requisito quando a matrícula é negada.</dd>
+                    <dt>Experiência prévia</dt><dd>Usuária de celular fluente, já usou ChatGPT para estudar. Nunca leu o projeto pedagógico do curso.</dd>
+                    <dt>Como usa o NoFluxo</dt><dd>Upload do histórico, fluxograma interativo para ver a cadeia travada, conversa com a Darcy para simular cenários de formatura, montador de grade na semana de matrícula.</dd>
+                    <dt>Relação com a pesquisa</dt><dd>A sugestão de simular o IRA do próximo semestre é a pergunta que a Larissa faz ao decidir se refaz Cálculo 2 junto com outras disciplinas. A avaliação de dificuldade mais precisa ajuda a montar uma grade viável.</dd>
+                </dl>
+            </article>
+            <article class="persona-card">
+                <h3 class="doc-subsection">Bruna Castro <span class="persona-tag">— Fluxo regular · Persona Secundária</span></h3>
+                <blockquote class="persona-quote">“Eu só quero confirmar que continuo no trilho antes de me matricular.”</blockquote>
+            <p class="doc-text">Bruna tem 19 anos, está no 3º semestre de Pedagogia no Darcy Ribeiro, nunca trancou nem reprovou e segue exatamente a grade sugerida pelo curso. Não tem urgência: usa o NoFluxo mais como checklist de confirmação do que como ferramenta de resgate.</p>
+                <dl class="persona-list">
+                    <dt>Objetivo de experiência</dt><dd>Rapidez e confirmação, sem susto.</dd>
+                    <dt>Objetivos finais</dt><dd>Ver o fluxograma sem nenhum bloqueio antes de cada matrícula; saber com antecedência se alguma disciplina do semestre que vem tem pré-requisito que ela já cumpriu.</dd>
+                    <dt>Frustrações</dt><dd>Telas que mostram alerta ou complexidade para uma situação que, no caso dela, é simples.</dd>
+                    <dt>Como usa o NoFluxo</dt><dd>Abre o fluxograma rapidamente antes da matrícula, sem interagir muito com a Darcy; confia que, se não houver bloqueio destacado, está tudo certo.</dd>
+                    <dt>Relação com a pesquisa</dt><dd>O feedback de que o site é intuitivo e útil representa bem a Bruna: ela não precisa de funcionalidade nova, e sim que a ausência de problema continue tão visível quanto a presença dele. Os ajustes de cor de fundo e de contraste do modo noturno se aplicam ao uso rápido dela.</dd>
+                </dl>
+            </article>
+            <article class="persona-card">
+                <h3 class="doc-subsection">Caio Ferreira <span class="persona-tag">— Ingressante · Persona Secundária</span></h3>
+                <blockquote class="persona-quote">“Pré-requisito, correquisito, optativa, módulo livre... ninguém me explicou nada disso.”</blockquote>
+            <p class="doc-text">Caio tem 18 anos, acabou de entrar em Ciência da Computação no Darcy Ribeiro vindo do PAS e é o primeiro da família na universidade. Na primeira semana, recebeu um código de acesso ao SIGAA e uma lista de disciplinas já matriculadas, e não sabe o que vem depois. Tem vergonha de perguntar coisas que acha que "todo mundo sabe".</p>
+                <dl class="persona-list">
+                    <dt>Objetivo de experiência</dt><dd>Não se sentir perdido.</dd>
+                    <dt>Objetivos finais</dt><dd>Entender a estrutura do curso inteiro de uma vez; saber o que precisa cursar no segundo semestre; entender como funciona o processo de matrícula.</dd>
+                    <dt>Frustrações</dt><dd>Termos técnicos sem explicação; medo de fazer escolha errada.</dd>
+                    <dt>Como usa o NoFluxo</dt><dd>Navega pelo fluxograma do curso ainda quase vazio, pergunta à Darcy o significado dos termos, consulta as avaliações de disciplinas feitas por veteranos.</dd>
+                    <dt>Relação com a pesquisa</dt><dd>A pesquisa pediu diretamente uma IA capaz de responder "perguntas bobas" — é a necessidade central do Caio, que não pergunta a colegas por vergonha. A proposta de usuários "legados" opinarem sobre materiais também o atende, já que ele depende de quem já cursou a disciplina.</dd>
+                </dl>
+            </article>
+            <article class="persona-card">
+                <h3 class="doc-subsection">Yasmin Prado <span class="persona-tag">— Fluxo adiantado · Persona Suplementar</span></h3>
+                <blockquote class="persona-quote">“Se eu já tenho base, por que não posso cursar a disciplina do semestre seguinte agora?”</blockquote>
+            <p class="doc-text">Yasmin tem 20 anos, está no 3º semestre de Estatística mas já cursa duas disciplinas do 4º e do 5º semestre, porque entrou com boa base do ensino médio técnico e não quer perder tempo. Organiza-se sozinha, mas se preocupa em confirmar se pode mesmo adiantar uma disciplina sem que isso gere problema de correquisito.</p>
+                <dl class="persona-list">
+                    <dt>Objetivo de experiência</dt><dd>Autonomia sem risco.</dd>
+                    <dt>Objetivos finais</dt><dd>Confirmar se pode cursar uma disciplina fora da ordem prevista; ver o impacto do adiantamento no restante do plano.</dd>
+                    <dt>Frustrações</dt><dd>Regra de correquisito nem sempre óbvia; medo de adiantar algo que depois "trava" outra coisa.</dd>
+                    <dt>Como usa o NoFluxo</dt><dd>Fluxograma para verificar pré-requisitos cumpridos, montador de grade para encaixar disciplinas de semestres diferentes na mesma matrícula.</dd>
+                    <dt>Relação com a pesquisa</dt><dd>É suplementar: o mesmo motor de pré-requisitos e replanejamento pensado para a Larissa resolve o caso dela. A avaliação de dificuldade mais precisa pesa na decisão de adiantar uma disciplina.</dd>
+                </dl>
+            </article>
+            <article class="persona-card">
+                <h3 class="doc-subsection">Eduardo Sales <span class="persona-tag">— Reintegrado · Persona Secundária</span></h3>
+                <blockquote class="persona-quote">“Fiquei quatro anos fora. Não sei nem se o que cursei antes ainda vale.”</blockquote>
+            <p class="doc-text">Eduardo tem 27 anos, foi jubilado de Engenharia Civil há quatro anos por excesso de reprovações, conseguiu reintegração e voltou este semestre. A matriz curricular mudou desde que ele saiu, e parte do que cursou antes pode não valer mais do mesmo jeito. Está inseguro sobre o que precisa refazer.</p>
+                <dl class="persona-list">
+                    <dt>Objetivo de experiência</dt><dd>Recuperar confiança.</dd>
+                    <dt>Objetivos finais</dt><dd>Entender quais disciplinas antigas ainda contam na matriz atual; ter um plano realista para os próximos semestres, sem repetir o padrão que levou ao jubilamento.</dd>
+                    <dt>Frustrações</dt><dd>Histórico com disciplinas de uma matriz antiga que o sistema pode não reconhecer bem; medo de errar de novo.</dd>
+                    <dt>Como usa o NoFluxo</dt><dd>Upload do histórico antigo, conferência disciplina por disciplina do que foi aproveitado na matriz atual, plano de semestres com ritmo mais cauteloso.</dd>
+                    <dt>Relação com a pesquisa</dt><dd>A sugestão de um sistema que mostre o que é aproveitado e o que precisa ser refeito no plano de formatura, feita pensando em transferidos, resolve também o caso do Eduardo, cuja matriz antiga funciona como a de outro curso.</dd>
+                </dl>
+            </article>
+            <article class="persona-card">
+                <h3 class="doc-subsection">Talita Farias <span class="persona-tag">— Mudança de curso + Mobilidade · Persona Secundária</span></h3>
+                <blockquote class="persona-quote">“Cursei três disciplinas em outra faculdade durante o intercâmbio. Preciso saber o que delas entra aqui.”</blockquote>
+            <p class="doc-text">Talita tem 23 anos, migrou de Administração para Relações Internacionais por mudança interna de curso e, antes disso, fez um semestre de mobilidade acadêmica em outra instituição. Chega ao NoFluxo com um histórico misto: disciplinas de duas matrizes diferentes mais um bloco de equivalência externa pendente de análise pela coordenação.</p>
+                <dl class="persona-list">
+                    <dt>Objetivo de experiência</dt><dd>Clareza sobre uma situação que ela mesma acha confusa.</dd>
+                    <dt>Objetivos finais</dt><dd>Ver o que foi efetivamente aproveitado da mudança de curso; acompanhar o status das equivalências externas da mobilidade; ter um fluxograma que faça sentido mesmo com essa mistura de origens.</dd>
+                    <dt>Frustrações</dt><dd>Equivalência que demora para ser processada pela coordenação; disciplinas "duplicadas" com nomes diferentes em cada currículo.</dd>
+                    <dt>Como usa o NoFluxo</dt><dd>Fluxograma do curso de destino com marcação clara do que veio de equivalência, consulta à Darcy sobre o status de disciplinas ainda em análise.</dd>
+                    <dt>Relação com a pesquisa</dt><dd>É a persona mais diretamente confirmada pela pesquisa: os participantes pediram tanto um sistema para transferidos verificarem o aproveitamento quanto uma simulação de mudança de curso. A segunda sugestão amplia a persona para o momento anterior à mudança, quando a Talita ainda estava decidindo se migraria.</dd>
+                </dl>
+            </article>
+            <article class="persona-card">
+                <h3 class="doc-subsection">Diego Rocha <span class="persona-tag">— Formando · Persona Suplementar</span></h3>
+                <blockquote class="persona-quote">“Faltam seis coisas: quatro disciplinas, o TCC e o estágio. Não posso errar nenhuma.”</blockquote>
+            <p class="doc-text">Diego tem 26 anos, está no 9º e último semestre previsto de Engenharia Elétrica. O que falta não é mais sobre entender a matriz, é sobre fechar contas: disciplinas remanescentes, TCC em andamento, estágio e atividades complementares. Conhece bem as regras e conversa com a coordenação com frequência.</p>
+                <dl class="persona-list">
+                    <dt>Objetivo de experiência</dt><dd>Sentir segurança de que nada vai passar despercebido.</dd>
+                    <dt>Objetivos finais</dt><dd>Ver numa lista só tudo que falta, incluindo TCC, estágio e atividades complementares; montar a grade do último semestre sem choque de horário.</dd>
+                    <dt>Frustrações</dt><dd>Atividades complementares e estágio muitas vezes não aparecem junto das disciplinas, ficando em outro lugar (papel, planilha, e-mail do coordenador).</dd>
+                    <dt>Como usa o NoFluxo</dt><dd>Fluxograma quase completo, checklist de requisitos de conclusão além das disciplinas, montador de grade do semestre final.</dd>
+                    <dt>Relação com a pesquisa</dt><dd>É suplementar: usa o mesmo replanejamento pensado para a Larissa, com menos disciplinas e mais urgência. A simulação do IRA também lhe interessa, para acompanhar o rendimento final do curso.</dd>
+                </dl>
+            </article>
+            <p class="doc-text">A Tabela 8 registra a contribuição de cada integrante e das ferramentas de IA nesta seção.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 8 — Contribuição dos integrantes e das ferramentas de IA — Personas</caption>
+                    <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Felipe Lopes Pedroza</td><td>Redação da persona Larissa Mendes (primária).</td></tr>
+                        <tr><td class="td-strong">Matheus do Vale Lameira</td><td>Redação da persona Caio Ferreira.</td></tr>
+                        <tr><td class="td-strong">Rafael Barbosa de Melo</td><td>Redação das personas Bruna Castro e Yasmin Prado.</td></tr>
+                        <tr><td class="td-strong">Tiago Sousa Nepomuceno</td><td>Redação das personas Eduardo Sales e Diego Rocha.</td></tr>
+                        <tr><td class="td-strong">Victor Andreozzi de La Rocque Couto</td><td>Redação da persona Talita Farias.</td></tr>
+                        <tr><td class="td-strong">Claude e Gemini</td><td>Padronização do formato de ficha (citação, dados, história, objetivos, frustrações, experiência prévia) e redação da relação de cada persona com os achados da pesquisa.</td></tr>
+                    </tbody>
+                </table>
             </div>
-
-            <h1 class="doc-title">Entrega 2 - Perfil do Usuário, Personas e Análise de Tarefas<span class="text-gradient">.</span></h1>
-
-            <div class="header-info" style="border-left: 4px solid #a855f7;">
-                <p style="color: #fafafa; font-weight: 600; margin-bottom: 0.5rem;">Links da entrega</p>
-                <p><strong>Vídeo da apresentação (YouTube):</strong> <a href="https://youtu.be/S1QbYlfRmTg" target="_blank" rel="noopener">youtu.be/S1QbYlfRmTg</a>.</p>
-                <p><strong>GitHub Pages do projeto:</strong> <a href="https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html" target="_blank" rel="noopener">interacao-humano-computador.github.io/2026.2-Grupo02</a>.</p>
-                <p><strong>Gravações das sessões de coleta de dados com usuários:</strong> ver <a href="entrega2_apendice-a.html">Apêndice A</a>.</p>
-            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
 
 
-            <h2 id="artefatos" class="doc-section">Artefatos desta entrega</h2>
-            <ul class="doc-list doc-artifact-list">
-                <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
-                <li><a href="entrega2_intro.html">1. Introdução</a></li>
-                <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
-                <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
-                <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
-                <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
-                <li><a href="entrega2_personas.html">6. Personas</a></li>
-                <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
-                <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
-                <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
-                <li><a href="entrega2_referencias.html">10. Referências</a></li>
-                <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
-                <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
-            </ul>
 <div class="doc-history">
 <section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
             <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
@@ -249,8 +319,8 @@
                 </div>
 
                 <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
-                    <span></span>
-                    <a class="next" href="entrega2_contribuicao.html"><span>Próximo →</span>Tabela de Contribuição</a>
+                    <a class="prev" href="entrega2_elenco.html"><span>← Anterior</span>5. Elenco de personas</a>
+                    <a class="next" href="entrega2_cenarios.html"><span>Próximo →</span>7. Cenários</a>
                 </nav>
             </article>
                 <nav class="doc-toc" aria-label="Índice desta página">
