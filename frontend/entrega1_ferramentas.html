@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu de Entregas | IHC Grupo 2</title>
+    <title>4. Ferramentas do Projeto | Entrega 1 | IHC Grupo 2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -34,24 +34,32 @@
         }
 
         .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
         .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
 
-        .delivery-card { background: rgba(9, 9, 11, 0.6); padding: 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1.5rem; transition: border-color 0.3s; }
-        .delivery-card:hover { border-color: rgba(168, 85, 247, 0.3); }
-        .delivery-card h2 { color: #fafafa; margin-bottom: 1.5rem; font-size: 1.5rem; }
-        .delivery-links { list-style: none; padding: 0; display: flex; gap: 1.5rem; flex-wrap: wrap; }
-        .delivery-links a { text-decoration: none; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
-        .delivery-links a.doc-link { color: #a855f7; }
-        .delivery-links a.doc-link:hover { color: #d8b4fe; }
-        .delivery-links a.video-link { color: #e4e4e7; }
-        .delivery-links a.video-link:hover { color: #fff; }
-        .delivery-links a.insp-link { color: #10b981; }
-        .delivery-links a.insp-link:hover { color: #34d399; }
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
         
-        .pending-card { opacity: 0.5; }
-        .delivery-links .pending-link { color: #71717a; font-weight: 600; font-size: 0.95rem; font-style: italic; }
-        body.alto-contraste .delivery-links .pending-link { color: #555555 !important; -webkit-text-fill-color: #555555 !important; }
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
     </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
 </head>
 <body class="landing-body">
     
@@ -96,65 +104,54 @@
 
 
     <main style="display: flex; flex-direction: column; flex: 1;">
-        <section class="section-container">
-            <h1 style="font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2.5rem; color: #fafafa;">Menu de Entregas<span class="text-gradient">.</span></h1>
-
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                
-                <div class="delivery-card">
-                    <h2>Entrega 1: Planejamento do Projeto</h2>
-                    <ul class="delivery-links">
-                        <li><a href="entrega1.html" class="doc-link">📄 Documento de Planejamento</a></li>
-                        <li><a href="https://youtu.be/lpGtLAkQfqA" target="_blank" class="video-link">▶️ Vídeo da Apresentação</a></li>
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 1 · Planejamento do Projeto</p>
+                    <ul>
+                        <li><a href="entrega1.html">Visão geral</a></li>
+                        <li><a href="entrega1_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega1_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega1_equipe.html">2. Equipe</a></li>
+                        <li><a href="entrega1_heatmap.html">3. Heatmap de Disponibilidade dos Integrantes</a></li>
+                        <li><a href="entrega1_ferramentas.html" class="active" aria-current="page">4. Ferramentas do Projeto</a></li>
+                        <li><a href="entrega1_design.html">5. Processo de Design Selecionado</a></li>
+                        <li><a href="entrega1_sites.html">6. Sites Avaliados e Site Selecionado</a></li>
+                        <li><a href="entrega1_cronograma.html">7. Cronograma Detalhado das Atividades</a></li>
+                        <li><a href="entrega1_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega1_referencias.html">Referências</a></li>
                     </ul>
-                </div>
-
-                <div class="delivery-card">
-                    <h2>Inspeção do Grupo + 1 (Etapa 1)</h2>
-                    <ul class="delivery-links">
-                        <li><a href="inspecao1.html" class="insp-link">📄 Documento de Inspeção</a></li>
-                        <li><a href="https://www.youtube.com/watch?v=sc6WnkltUWU" target="_blank" class="video-link">▶️ Vídeo da Inspeção</a></li>
-                    </ul>
-                </div>
-
-                <div class="delivery-card">
-                    <h2>Entrega 2: Perfil do Usuário, Personas e Análise de Tarefas</h2>
-                    <ul class="delivery-links">
-                        <li><a href="entrega2.html" class="doc-link">📄 Documento da Entrega 2</a></li>
-                        <li><a href="https://youtu.be/S1QbYlfRmTg" target="_blank" class="video-link">▶️ Vídeo da Apresentação</a></li>
-                        <li><a href="entrega2_apendice-a.html" class="video-link">🎥 Gravações das Sessões com Usuários</a></li>
-                    </ul>
-                </div>
-
-                <div class="delivery-card">
-                    <h2>Inspeção da Etapa 2 (Grupos 1 e 3)</h2>
-                    <ul class="delivery-links">
-                        <li><a href="inspecao2.html" class="insp-link">📄 Documento de Inspeção</a></li>
-                        <li><a href="docs/PerfilPersonasAnaTarefasPlanejamentoNoFluxo.pdf" target="_blank" class="video-link">📥 Baixar PDF da Inspeção</a></li>
-                    </ul>
-                </div>
-
-                <div class="delivery-card pending-card">
-                    <h2 style="color: #a1a1aa;">Entrega 3: Princípios e Metas</h2>
-                    <p style="color: #71717a; margin: 0; font-size: 0.9rem;"><em>Conteúdo pendente (conforme cronograma)</em></p>
-                </div>
-
-                <div class="delivery-card pending-card">
-                    <h2 style="color: #a1a1aa;">Entrega 4: Planejamento das Avaliações</h2>
-                    <p style="color: #71717a; margin: 0; font-size: 0.9rem;"><em>Conteúdo pendente (conforme cronograma)</em></p>
-                </div>
-
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega1.html">Entrega 1</a></p>
+<h1 id="ferramentas" class="doc-title doc-page-title">4. Ferramentas do Projeto</h1>
+            <p class="doc-text">Para viabilizar a organização da equipe, a comunicação, a produção dos artefatos e o apoio com inteligência artificial generativa, foram selecionadas as ferramentas apresentadas na Tabela a seguir.</p>
+            
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption style="text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem;">Tabela 4 — Ferramentas utilizadas pela equipe. Fonte: elaborado pelos autores, 2026.</caption>
+                    <thead>
+                        <tr><th style="width: 30%;">Ferramenta</th><th>Finalidade</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color: #fafafa;">GitHub</td><td>Versionamento e documentação dos artefatos produzidos para o projeto.</td></tr>
+                        <tr><td style="color: #fafafa;">GitHub Pages (Pelican)</td><td>Publicação da wiki e da documentação do projeto.</td></tr>
+                        <tr><td style="color: #fafafa;">Visual Studio Code</td><td>Edição dos arquivos de documentação e código do projeto.</td></tr>
+                        <tr><td style="color: #fafafa;">Google Meet</td><td>Realização das reuniões da equipe.</td></tr>
+                        <tr><td style="color: #fafafa;">WhatsApp</td><td>Principal canal de comunicação da equipe.</td></tr>
+                        <tr><td style="color: #fafafa;">Google Docs</td><td>Elaboração de documentos e atas de reunião.</td></tr>
+                        <tr><td style="color: #fafafa;">Microsoft Excel (SharePoint)</td><td>Criação da grade horária e do heatmap de disponibilidade.</td></tr>
+                        <tr><td style="color: #fafafa;">YouTube</td><td>Hospedagem dos vídeos das apresentações.</td></tr>
+                        <tr><td style="color: #fafafa;">Gemini</td><td>Apoio de inteligência artificial generativa na produção dos artefatos.</td></tr>
+                        <tr><td style="color: #fafafa;">Claude</td><td>Apoio de inteligência artificial generativa na produção dos artefatos.</td></tr>
+                        <tr><td style="color: #fafafa;">NotebookLM</td><td>Apoio de inteligência artificial generativa na síntese de conteúdo.</td></tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
 
-        <section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
-            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Referências</h2>
-            <ul style="color: #a1a1aa; line-height: 1.8; padding-left: 1.5rem; font-size: 0.95rem;">
-                <li>ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. <em>ABNT NBR 14724</em>: informação e documentação — trabalhos acadêmicos — apresentação. Rio de Janeiro: ABNT, 2011.</li>
-            </ul>
-        </section>
 
-        <section class="section-container" style="max-width: 1000px; margin: 2rem auto 0; padding: 0 1rem;">
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
             <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
             <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
                 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
@@ -171,7 +168,7 @@
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
                             <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
                             <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/09/2026</td>
-                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Criação da página de índice das entregas</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Criação do documento unificado da Entrega 1</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
                         </tr>
@@ -185,35 +182,14 @@
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
                             <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
                             <td style="padding: 1.5rem 1rem; color: #a1a1aa;">26/09/2026</td>
-                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição de referências bibliográficas</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição da tabela de contribuição, legendas nas tabelas, agradecimentos e referências bibliográficas</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
-                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
-                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da Entrega 2 (documento e gravações das sessões com usuários)</td>
-                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
-                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
-                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
-                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição do link do vídeo da apresentação da Entrega 2</td>
-                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
-                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
-                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">02/10/2026</td>
-                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do documento de Inspeção da Etapa 2 (Grupos 1 e 3) e link para download do PDF</td>
-                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
-                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes</td>
                         </tr>
                         <tr>
-                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
                             <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
-                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Atualização do link das gravações das sessões para a página do Apêndice A, após a separação em artefatos (issue #32)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Separação do documento em uma página por artefato; mudança apenas de estrutura, sem alteração de conteúdo (issue #30)</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
                         </tr>
@@ -221,6 +197,18 @@
                 </table>
             </div>
         </section>
+                </div>
+
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega1_heatmap.html"><span>← Anterior</span>3. Heatmap de Disponibilidade dos Integrantes</a>
+                    <a class="next" href="entrega1_design.html"><span>Próximo →</span>5. Processo de Design Selecionado</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
     </main>
 
     <footer class="footer-institutional">
@@ -230,7 +218,7 @@
                 Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
             </p>
             <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
-                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: andreozzi, darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
             </div>
         </div>
     </footer>
@@ -239,6 +227,7 @@
 
     <script src="js/components/highContrastBtn.js"></script>
     <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
     <script src="js/components/youHere.js"></script>
 </body>
 </html>

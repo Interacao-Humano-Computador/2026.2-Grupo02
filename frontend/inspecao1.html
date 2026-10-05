@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inspeção 1 | IHC Grupo 2</title>
+    <title>Visão geral | Inspeção Etapa 1 | IHC Grupo 2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -61,6 +61,7 @@
         .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .table-standard tr:last-child td { border-bottom: none; }
     </style>
+    <style>:root { --doc-accent: #10b981; }</style>
 </head>
 <body class="landing-body">
     
@@ -105,17 +106,21 @@
 
 
     <main style="display: flex; flex-direction: column; flex: 1;">
-        <section class="section-container">
-            
-            <nav class="doc-nav">
-                <a href="entregas.html" style="color: #34d399;">← Voltar ao Menu</a>
-                <a href="#intro">1. Introdução</a>
-                <a href="#metodologia">2. Metodologia</a>
-                <a href="#checklists">3. Checklists</a>
-                <a href="#referencias">4. Referências</a>
-            </nav>
-
-            <div class="header-info">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Inspeção do Grupo + 1 · Etapa 1</p>
+                    <ul>
+                        <li><a href="inspecao1.html" class="active" aria-current="page">Visão geral</a></li>
+                        <li><a href="inspecao1_intro.html">1. Introdução</a></li>
+                        <li><a href="inspecao1_metodologia.html">2. Metodologia</a></li>
+                        <li><a href="inspecao1_checklists.html">3. Checklists de Inspeção</a></li>
+                        <li><a href="inspecao1_referencias.html">4. Bibliografia e Referências Bibliográficas</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                
+<div class="header-info">
                 <p><strong>Universidade de Brasília - Faculdade UnB Gama (FGA)</strong></p>
                 <p><strong>Disciplina:</strong> Interação Humano Computador</p>
                 <p><strong>Professor:</strong> André Barros de Sales</p>
@@ -126,164 +131,16 @@
 
             <h1 class="doc-title">Planejamento e Inspeção da Verificação: Etapa 1 - Grupo 3<span class="text-gradient">.</span></h1>
 
-            <h2 id="intro" class="doc-section">1. Introdução</h2>
-            <p class="doc-text">O presente documento tem como objetivo relatar o planejamento e a estruturação da verificação dos artefatos produzidos na Etapa 1: Planejamento do Projeto pelo Grupo 3. A avaliação será conduzida pelos integrantes do Grupo 2, visando identificar possíveis defeitos, garantir a conformidade com as exigências da disciplina e propor melhorias para os documentos avaliados.</p>
-            <p class="doc-text">Conforme os critérios estabelecidos para a Etapa 1, os artefatos a serem inspecionados são:</p>
-            <ul class="doc-list">
-                <li>3) Apresentação da Equipe e Heatmap de Disponibilidade</li>
-                <li>4) Processo de Design Selecionado</li>
-                <li>5) Lista de Sites Avaliados e Site Selecionado</li>
-                <li>6) Cronograma Detalhado</li>
-                <li>7) Ferramentas do Projeto</li>
+
+            <h2 id="artefatos" class="doc-section">Artefatos desta entrega</h2>
+            <ul class="doc-list doc-artifact-list">
+                <li><a href="inspecao1_intro.html">1. Introdução</a></li>
+                <li><a href="inspecao1_metodologia.html">2. Metodologia</a></li>
+                <li><a href="inspecao1_checklists.html">3. Checklists de Inspeção</a></li>
+                <li><a href="inspecao1_referencias.html">4. Bibliografia e Referências Bibliográficas</a></li>
             </ul>
-
-            <h2 id="metodologia" class="doc-section">2. Metodologia</h2>
-            <p class="doc-text">A metodologia adotada para esta verificação é a Inspeção, guiada pelo uso de Checklists (Listas de Verificação). As checklists foram construídas levando em consideração os padrões gerais esperados para qualquer artefato acadêmico e as especificidades técnicas exigidas na elaboração de cada item da Etapa 1.</p>
-            <p class="doc-text">Durante a inspeção, o avaliador do Grupo 2 deverá analisar a versão mais recente do artefato do Grupo 3 no GitPages e preencher a tabela com os seguintes parâmetros na coluna "Avaliação":</p>
-            <ol class="doc-list">
-                <li><strong>Sim (S):</strong> O artefato atende totalmente ao critério.</li>
-                <li><strong>Não (N):</strong> O artefato não atende ao critério.</li>
-                <li><strong>Incompleto (1):</strong> O artefato atende parcialmente ao critério.</li>
-                <li><strong>Não se Aplica (NA):</strong> O critério não se enquadra no contexto do artefato avaliado.</li>
-            </ol>
-            <p class="doc-text">Na coluna "Observação", o avaliador deve registrar justificativas, apontar a localização do erro ou sugerir correções.</p>
-
-            <h2 id="checklists" class="doc-section">3. Checklists de Inspeção</h2>
-            <p class="doc-text">Para organizar a verificação, os 4 critérios gerais (Introdução, Bibliografia, Histórico de Versões e Norma Padrão) foram incorporados no início de cada checklist específica, garantindo que todo artefato seja avaliado em sua estrutura básica e em seu conteúdo específico.</p>
-
-            <h3 class="doc-subsection">3.1. Verificação da Equipe e Disponibilidade</h3>
-            <p class="doc-text">A Tabela 1 apresenta a checklist para a inspeção do artefato referente à apresentação da equipe e seus horários.</p>
-            <div class="table-wrapper">
-                <table class="table-standard">
-                    <caption>Tabela 1 - Checklist para a Verificação da Equipe e Heatmap.</caption>
-                    <thead>
-                        <tr><th>ID</th><th>Descrição</th><th>Avaliação</th><th>Observação</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">1</td><td>O artefato possui Introdução?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">2</td><td>O artefato possui uma Bibliografia/Referência Bibliográfica padronizada?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">3</td><td>O artefato possui um Histórico de Versões com ID, descrição, data, autores e revisores?</td><td style="color: #fafafa;">I</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">4</td><td>Todos os textos estão redigidos na norma padrão da língua portuguesa?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">5</td><td>O artefato apresenta a equipe do projeto de forma clara (ex: nomes, matrículas, papéis)?</td><td style="color: #fafafa;">1</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">6</td><td>O artefato apresenta o Heatmap (mapa de calor) de disponibilidade dos integrantes?</td><td style="color: #fafafa;">S</td><td>Heatmap confuso.</td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">7</td><td>O Heatmap cruza os horários de todos os membros de forma a evidenciar os horários comuns para reuniões?</td><td style="color: #fafafa;">N</td><td>Não está padronizado.</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="doc-subsection">3.2. Verificação do Processo de Design</h3>
-            <p class="doc-text">A Tabela 2 apresenta a checklist para a inspeção do artefato de Processo de Design selecionado.</p>
-            <div class="table-wrapper">
-                <table class="table-standard">
-                    <caption>Tabela 2 - Checklist para a Verificação do Processo de Design.</caption>
-                    <thead>
-                        <tr><th>ID</th><th>Descrição</th><th>Avaliação</th><th>Observação</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">1</td><td>O artefato possui Introdução?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">2</td><td>O artefato possui uma Bibliografia/Referência Bibliográfica padronizada?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">3</td><td>O artefato possui um Histórico de Versões com ID, descrição, data, autores e revisores?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">4</td><td>Todos os textos estão redigidos na norma padrão da língua portuguesa?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">5</td><td>As figuras do ciclo de vida referenciam a sua respectiva fonte de acordo com a ABNT?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">6</td><td>A escolha do ciclo de vida para o projeto foi devidamente justificada no texto?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">7</td><td>O processo de design/ciclo de vida selecionado pelo grupo foi detalhado de forma clara?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">8</td><td>A forma como o ciclo de vida será executado e adaptado no decorrer do projeto está detalhada?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="doc-subsection">3.3. Verificação dos Sites Avaliados e Site Selecionado</h3>
-            <p class="doc-text">A Tabela 3 apresenta a checklist para a inspeção dos sites avaliados pela equipe e da escolha do site definitivo da disciplina.</p>
-            <div class="table-wrapper">
-                <table class="table-standard">
-                    <caption>Tabela 3 - Checklist para a Verificação do Site Selecionado e Sites Avaliados.</caption>
-                    <thead>
-                        <tr><th>ID</th><th>Descrição</th><th>Avaliação</th><th>Observação</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">1</td><td>O artefato possui Introdução?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">2</td><td>O artefato possui uma Bibliografia/Referência Bibliográfica padronizada?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">3</td><td>O artefato possui um Histórico de Versões com ID, descrição, data, autores e revisores?</td><td style="color: #fafafa;">I</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">4</td><td>Todos os textos estão redigidos na norma padrão da língua portuguesa?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">5</td><td>O artefato apresenta a lista completa de sites que foram avaliados preliminarmente pelos membros?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">6</td><td>Cada site analisado individualmente possui um tópico explicando a unicidade e o motivo de sua análise?</td><td style="color: #fafafa;">S</td><td>No pdf se encontra.</td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">7</td><td>O site selecionado para o projeto da disciplina está claramente definido?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">8</td><td>Os motivos e critérios utilizados para a escolha do site definitivo estão presentes no artefato?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">9</td><td>O artefato apresenta a avaliação (heurística ou outra) feita do site selecionado?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">10</td><td>Na avaliação do site, foi explicada a metodologia utilizada pela equipe?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">11</td><td>Na avaliação heuristica, todas as heuristicas utilizadas foram detalhadas apropriadamente?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">12</td><td>As heurísticas apresentam imagens (capturas de tela) do site para ilustrar os problemas encontrados?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">13</td><td>Os problemas encontrados possuem suas tabelas de detalhamento adequadas?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="doc-subsection">3.4. Verificação do Cronograma Detalhado</h3>
-            <p class="doc-text">A Tabela 4 apresenta a checklist para a inspeção do artefato de Cronograma de atividades, garantindo o planejamento temporal do projeto.</p>
-            <div class="table-wrapper">
-                <table class="table-standard">
-                    <caption>Tabela 4 - Checklist para a Verificação do Cronograma.</caption>
-                    <thead>
-                        <tr><th>ID</th><th>Descrição</th><th>Avaliação</th><th>Observação</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">1</td><td>O artefato possui Introdução?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">2</td><td>O artefato possui uma Bibliografia/Referência Bibliográfica padronizada?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">3</td><td>O artefato possui um Histórico de Versões com ID, descrição, data, autores e revisores?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">4</td><td>Todos os textos estão redigidos na norma padrão da língua portuguesa?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">5</td><td>As atividades/tarefas do projeto estão detalhadas no cronograma com nomes condizentes?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">6</td><td>Todas as tarefas possuem data de início e data de fim claramente definidas?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">7</td><td>As tarefas do cronograma foram distribuídas, indicando os responsáveis (autores e revisores)?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">8</td><td>O cronograma prevê explicitamente o período de gravação da apresentação de cada etapa do projeto?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">9</td><td>O cronograma foi construído em tabelas contendo título e fonte (norma ABNT)?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">10</td><td>As tabelas do cronograma são devidamente chamadas/citadas no corpo do texto?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">11</td><td>O cronograma executado/planejado está livre de atividades redundantes ou sobreposições irreais?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">12</td><td>Os revisores estipulados para as atividades são pessoas diferentes de seus respectivos autores?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 class="doc-subsection">3.5. Verificação das Ferramentas</h3>
-            <p class="doc-text">A Tabela 5 apresenta a checklist para a inspeção do artefato de Ferramentas utilizadas pelo grupo no decorrer do projeto.</p>
-            <div class="table-wrapper">
-                <table class="table-standard">
-                    <caption>Tabela 5 - Checklist para a Verificação das Ferramentas.</caption>
-                    <thead>
-                        <tr><th>ID</th><th>Descrição</th><th>Avaliação</th><th>Observação</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">1</td><td>O artefato possui Introdução?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">2</td><td>O artefato possui uma Bibliografia/Referência Bibliográfica padronizada?</td><td style="color: #fafafa;">IN</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">3</td><td>O artefato possui um Histórico de Versões com ID, descrição, data, autores e revisores?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">4</td><td>Todos os textos estão redigidos na norma padrão da língua portuguesa?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">5</td><td>As ferramentas utilizadas estão listadas e referenciadas na bibliografia do artefato?</td><td style="color: #fafafa;">N</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">6</td><td>As ferramentas utilizadas possuem descrições sobre o que são?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">7</td><td>Na descrição, está explícito qual será a finalidade/uso daquela ferramenta dentro do projeto?</td><td style="color: #fafafa;">S</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">8</td><td>Todas as ferramentas que a equipe utiliza (GitHub, Miro, Figma, Teams, etc.) constam no artefato?</td><td style="color: #fafafa;">IN</td><td></td></tr>
-                        <tr><td style="font-family: 'JetBrains Mono', monospace; color: #fafafa;">9</td><td>As ferramentas estão devidamente nomeadas e, se aplicável, com suas logomarcas ou links oficiais?</td><td style="color: #fafafa;">IN</td><td></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2 id="referencias" class="doc-section">4. Bibliografia e Referências Bibliográficas</h2>
-            <h3 class="doc-subsection">4.1. Referências Bibliográficas</h3>
-            <p class="doc-text">Obras efetivamente citadas ou diretamente utilizadas como base na elaboração deste artefato:</p>
-            <ul class="doc-list" style="list-style: none; padding-left: 0;">
-                <li style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">ASSOCIAÇÃO BRASILEIRA DE NORMAS TÉCNICAS. ABNT NBR 14724: Informação e documentação Trabalhos acadêmicos Apresentação. Rio de Janeiro: ABNT, 2011.</li>
-                <li>MELO, Arthur; FERREIRA, Rafael. Artefatos de Checklists para Verificação. Documentação de referência utilizada como base para a formulação da inspeção da Etapa 1. Universidade de Brasília, 2023.</li>
-            </ul>
-
-            <h3 class="doc-subsection">4.2. Bibliografia</h3>
-            <p class="doc-text">Obras consultadas como exemplos de artefatos de verificação de etapas anteriores da disciplina, sem citação direta no corpo do texto:</p>
-            <ul class="doc-list" style="list-style: none; padding-left: 0;">
-                <li style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">BILHETERIA DIGITAL. Planejamento da Verificação - Grupo 2 (Etapa 1). Repositório do Grupo 2 da disciplina de Interação Humano Computador da Universidade de Brasília, 2023. Disponível em: &lt;https://interacao-humano-computador.github.io/2023.1-BilheteriaDigital/verificacao/grupo2/etapa1/planejamento/#verificacao-das-ferramentas&gt;. Acesso em: 7 set. 2026.</li>
-                <li style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">ESTEVES, Luíza. Planejamento da Verificação da Etapa 5. Repositório do Grupo Agência Virtual Neoenergia Brasília da disciplina de Interação Humano Computador da Universidade de Brasília, 2022. Disponível em: &lt;https://interacao-humano-computador.github.io/2022.1-Agencia VirtualNeoenergia/verifica%C3%A7%C3%A3o_dos_artefatos/etapa_5/planejamento/&gt;. Acesso em: 7 set. 2026.</li>
-                <li>MACEDO, Lucas. Planejamento da Verificação - PC5. Repositório do Grupo Lichess da disciplina de Interação Humano Computador da Universidade de Brasília, 2022. Disponível em: &lt;https://interacao-humano-computador.github.io/2022.2-Lichess/verificacao_validacao/pc5-planejamento/&gt;. Acesso em: 7 set. 2026.</li>
-            </ul>
-
-        </section>
-
-        <section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
             <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
             <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
                 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
@@ -311,10 +168,17 @@
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
                         </tr>
-                        <tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
                             <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
                             <td style="padding: 1.5rem 1rem; color: #a1a1aa;">26/09/2026</td>
                             <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Separação correta entre Referências Bibliográficas (obras citadas) e Bibliografia (obras consultadas)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Separação do documento em uma página por artefato; mudança apenas de estrutura, sem alteração de conteúdo (issue #31)</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
                         </tr>
@@ -322,6 +186,18 @@
                 </table>
             </div>
         </section>
+                </div>
+
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <span></span>
+                    <a class="next" href="inspecao1_intro.html"><span>Próximo →</span>1. Introdução</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
     </main>
 
     <footer class="footer-institutional">
@@ -339,6 +215,7 @@
     </div> <!-- fim app-layout -->
     <script src="js/components/highContrastBtn.js"></script>
     <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
     <script src="js/components/youHere.js"></script>
 </body>
 </html>

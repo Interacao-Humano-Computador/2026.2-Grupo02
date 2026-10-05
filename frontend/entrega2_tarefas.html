@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Análise de tarefas | Entrega 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega2.html">Visão geral</a></li>
+                        <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega2_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
+                        <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
+                        <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
+                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
+                        <li><a href="entrega2_tarefas.html" class="active" aria-current="page">8. Análise de tarefas</a></li>
+                        <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
+                        <li><a href="entrega2_referencias.html">10. Referências</a></li>
+                        <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a></p>
+<h1 id="tarefas" class="doc-title doc-page-title">8. Análise de tarefas</h1>
+            <p class="doc-text">A análise de tarefas usa principalmente a Análise Hierárquica de Tarefas (HTA, Hierarchical Task Analysis), de Annett e Duncan (1967), conforme o Capítulo 6 de Barbosa e Silva (2010). A HTA decompõe o objetivo do usuário em subobjetivos e estes em operações — as ações físicas e cognitivas concretas —, e usa planos para dizer em que ordem e sob quais condições cada parte é executada. Na avaliação em IHC, cada subobjetivo e operação recebe ainda os problemas de usabilidade identificados e a recomendação de reprojeto correspondente.</p>
+            <p class="doc-text">Cada integrante analisa duas tarefas, derivadas das personas e dos cenários das Seções 6 e 7. Para cada tarefa, a análise traz o diagrama de decomposição e a tabela com operações, planos, problemas e recomendações. A décima análise, de Victor, usa a notação CTT (ConcurTaskTrees) para modelar o objetivo geral que liga as demais: planejar e matricular-se no semestre. Uma décima primeira análise, do perfil Administrador (TAR-11, Seção 8.8), foi acrescentada depois.</p>
+            <p class="doc-text"><strong>Notação dos planos.</strong> "A &gt; B": B só depois de A. "A ou B": uma das duas. "em qualquer ordem": todas, sem ordem fixa. "(opcional)": pode ser omitida. "(condicional)" ou "se … fazer": só ocorre quando a condição indicada é verdadeira. Subobjetivos sem decomposição são operações e aparecem com o tipo da ação no lugar do plano.</p>
+            <p class="doc-text"><strong>Origem dos problemas.</strong> Os problemas registrados vêm dos achados das sessões com usuários (Seção 3), dos cenários (Seção 7) e da inspeção da plataforma feita por cada integrante. São hipóteses a confirmar com usuários na etapa de avaliação. Nas tabelas, "—" indica operação sem problema próprio além do já registrado no subobjetivo.</p>
+            <h3 class="doc-subsection">8.1 Matriz de tarefas</h3>
+            <p class="doc-text">A Tabela 10 relaciona as onze tarefas analisadas, sua origem, a técnica usada e o responsável.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 10 — Matriz geral de tarefas analisadas</caption>
+                    <thead><tr><th>ID</th><th>Tarefa</th><th>Origem</th><th>Técnica</th><th>Responsável</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">TAR-01</td><td>Enviar o histórico e identificar disciplinas bloqueadas</td><td>Cenário 1 (Larissa), Cenário 5 (Eduardo)</td><td>HTA</td><td>Felipe Lopes Pedroza</td></tr>
+                        <tr><td class="td-strong">TAR-02</td><td>Simular o plano de formatura após uma reprovação</td><td>Cenário 1 (Larissa)</td><td>HTA</td><td>Felipe Lopes Pedroza</td></tr>
+                        <tr><td class="td-strong">TAR-03</td><td>Consultar o significado de um termo acadêmico</td><td>Cenário 3 (Caio); achados da pesquisa</td><td>HTA</td><td>Matheus do Vale Lameira</td></tr>
+                        <tr><td class="td-strong">TAR-04</td><td>Simular o IRA do próximo semestre</td><td>Achados da pesquisa (3.1); Larissa e Diego</td><td>HTA</td><td>Matheus do Vale Lameira</td></tr>
+                        <tr><td class="td-strong">TAR-05</td><td>Confirmar ausência de pendências antes da matrícula</td><td>Cenário 2 (Bruna)</td><td>HTA</td><td>Rafael Barbosa de Melo</td></tr>
+                        <tr><td class="td-strong">TAR-06</td><td>Verificar se uma disciplina adiantada pode ser cursada</td><td>Cenário 4 (Yasmin)</td><td>HTA</td><td>Rafael Barbosa de Melo</td></tr>
+                        <tr><td class="td-strong">TAR-07</td><td>Montar a grade do semestre com disciplina obrigatória fixada</td><td>Cenários 1 e 7 (Larissa, Diego)</td><td>HTA</td><td>Tiago Sousa Nepomuceno</td></tr>
+                        <tr><td class="td-strong">TAR-08</td><td>Conferir os requisitos de conclusão além das disciplinas</td><td>Cenário 7 (Diego)</td><td>HTA</td><td>Tiago Sousa Nepomuceno</td></tr>
+                        <tr><td class="td-strong">TAR-09</td><td>Simular o aproveitamento em uma mudança de curso</td><td>Cenário 6 (Talita); achados da pesquisa (3.1)</td><td>HTA</td><td>Victor Andreozzi de La Rocque Couto</td></tr>
+                        <tr><td class="td-strong">TAR-10</td><td>Planejar e matricular-se no semestre (visão geral do fluxo)</td><td>Todas as personas; síntese dos cenários</td><td>CTT</td><td>Victor Andreozzi de La Rocque Couto</td></tr>
+                        <tr><td class="td-strong">TAR-11</td><td>Atualizar a matriz curricular de um curso e publicar a mudança</td><td>Cenário 8 (Helena); persona sem base nas sessões (Seção 9)</td><td>HTA</td><td>Matheus do Vale Lameira</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+            <h3 class="doc-subsection">8.2 Tarefas de Felipe Lopes Pedroza</h3>
+            <h3 id="tar-01" class="doc-subsection">8.2.1 TAR-01 — Enviar o histórico e identificar disciplinas bloqueadas</h3>
+            <p class="doc-text">Origem: Cenário 1 (Larissa), Cenário 5 (Eduardo). A decomposição hierárquica está na Figura 1, e as operações, planos, problemas e recomendações, na Tabela 11.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 1 — Diagrama HTA da TAR-01</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Enviar o histórico e identificar disciplinas bloqueadas</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3; se o arquivo for recusado em 2, repetir 1; se o motivo de um bloqueio não ficar claro em 3, fazer 4.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Obter o histórico no SIGAA</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Emitir o histórico em PDF</li><li>1.2 Salvar o arquivo no dispositivo</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Enviar o histórico ao NoFluxo</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2; se houver erro, voltar a 1</span></div>
+                        <ul class="hta-ops"><li>2.1 Selecionar o arquivo na área de upload</li><li>2.2 Conferir o curso e o currículo reconhecidos</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Identificar disciplinas bloqueadas</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2</span></div>
+                        <ul class="hta-ops"><li>3.1 Localizar as disciplinas bloqueadas</li><li>3.2 Seguir a cadeia de pré-requisitos até a que falta</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Entender o motivo do bloqueio</span><span class="hta-plan">Plano 4: 4.1 ou 4.2 (opcional)</span></div>
+                        <ul class="hta-ops"><li>4.1 Abrir os detalhes da disciplina</li><li>4.2 Perguntar à Darcy</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Felipe Lopes Pedroza (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 11.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 11 — Análise HTA da TAR-01</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Enviar o histórico e identificar disciplinas bloqueadas</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3; se o arquivo for recusado em 2, repetir 1; se o motivo de um bloqueio não ficar claro em 3, fazer 4.</td><td>A tarefa começa fora do NoFluxo: o estudante precisa saber emitir o histórico no SIGAA antes de conseguir qualquer resultado na plataforma.</td><td>Colocar, no próprio ponto de upload, um passo a passo curto de como emitir o histórico no SIGAA, com link direto para a página.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Obter o histórico no SIGAA</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Ingressantes e reintegrados (Caio, Eduardo) não sabem onde fica a emissão do histórico no SIGAA.</td><td>Guia visual com capturas de tela do caminho no SIGAA, revisado a cada mudança do sistema.</td></tr>
+                        <tr><td>1.1 Emitir o histórico em PDF</td><td><em>Ação física</em></td><td>O caminho de menus do SIGAA muda entre versões, e o guia fica desatualizado.</td><td>Manter o guia versionado e datado, com canal para o usuário avisar quando estiver desatualizado.</td></tr>
+                        <tr><td>1.2 Salvar o arquivo no dispositivo</td><td><em>Ação física</em></td><td>Erro por deslize (Reason, 1990): o estudante envia um histórico antigo que já estava salvo.</td><td>Após o upload, exibir a data de emissão e o último semestre lido do histórico.</td></tr>
+                        <tr class="tr-main"><td><strong>2. Enviar o histórico ao NoFluxo</strong></td><td>Plano 2: 2.1 &gt; 2.2; se houver erro, voltar a 1</td><td>Quando a leitura falha (PDF digitalizado, histórico de matriz antiga), a mensagem não diz a causa nem o que fazer.</td><td>Mensagem de erro específica: causa provável e ação corretiva ("emita o histórico novamente pelo SIGAA").</td></tr>
+                        <tr><td>2.1 Selecionar o arquivo na área de upload</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>2.2 Conferir o curso e o currículo reconhecidos</td><td><em>Ação cognitiva</em></td><td>Não fica claro qual currículo o sistema atribuiu ao histórico.</td><td>Tela de confirmação com curso, currículo e número de disciplinas lidas antes de abrir o fluxograma.</td></tr>
+                        <tr class="tr-main"><td><strong>3. Identificar disciplinas bloqueadas</strong></td><td>Plano 3: 3.1 &gt; 3.2</td><td>O estado da disciplina (cursada, liberada, bloqueada) depende da cor, o que não atende a quem não distingue cores (achado 3.2 da pesquisa).</td><td>Combinar cor com ícone e rótulo textual, e manter a legenda visível durante a navegação.</td></tr>
+                        <tr><td>3.1 Localizar as disciplinas bloqueadas</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>3.2 Seguir a cadeia de pré-requisitos até a que falta</td><td><em>Ação cognitiva</em></td><td>Seguir setas uma a uma é custoso em fluxogramas grandes.</td><td>Ao selecionar a disciplina, destacar toda a cadeia de pré-requisitos pendentes.</td></tr>
+                        <tr class="tr-main"><td><strong>4. Entender o motivo do bloqueio</strong></td><td>Plano 4: 4.1 ou 4.2 (opcional)</td><td>Erro baseado em regra (Reason, 1990): o estudante confunde pré-requisito com co-requisito e conclui errado o que o impede.</td><td>No painel da disciplina, dizer em linguagem simples qual requisito falta e de que tipo ele é.</td></tr>
+                        <tr><td>4.1 Abrir os detalhes da disciplina</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Perguntar à Darcy</td><td><em>Ação física</em></td><td>A resposta não remete ao ponto do fluxograma em questão.</td><td>Resposta com link para a disciplina no fluxograma.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Felipe Lopes Pedroza (2026).</p>
+            <h3 id="tar-02" class="doc-subsection">8.2.2 TAR-02 — Simular o plano de formatura após uma reprovação</h3>
+            <p class="doc-text">Origem: Cenário 1 (Larissa). A decomposição hierárquica está na Figura 2, e as operações, planos, problemas e recomendações, na Tabela 12.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 2 — Diagrama HTA da TAR-02</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Simular o plano de formatura após uma reprovação</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3; se o prazo em 3 ultrapassar o limite de permanência, repetir 2 com outra distribuição; 4 opcional.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Registrar a reprovação</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Localizar a disciplina reprovada</li><li>1.2 Ver as dependentes bloqueadas em cascata</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Redistribuir as disciplinas nos semestres</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2; repetir até não sobrar disciplina sem semestre</span></div>
+                        <ul class="hta-ops"><li>2.1 Mover a disciplina reprovada</li><li>2.2 Realocar as dependentes</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Verificar o novo prazo de formatura</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2</span></div>
+                        <ul class="hta-ops"><li>3.1 Ler o semestre previsto de conclusão</li><li>3.2 Comparar com o prazo máximo de permanência</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Salvar o cenário</span><span class="hta-plan">Plano 4: 4.1 &gt; 4.2 (opcional)</span></div>
+                        <ul class="hta-ops"><li>4.1 Nomear o cenário</li><li>4.2 Salvar para comparação</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Felipe Lopes Pedroza (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 12.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 12 — Análise HTA da TAR-02</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Simular o plano de formatura após uma reprovação</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3; se o prazo em 3 ultrapassar o limite de permanência, repetir 2 com outra distribuição; 4 opcional.</td><td>A simulação e o plano real podem se misturar: o estudante não sabe se está mexendo numa hipótese ou no seu planejamento salvo.</td><td>Modo de simulação visualmente distinto (faixa "Simulação — não salvo"), com ação explícita para adotar o cenário como plano.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Registrar a reprovação</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Se o semestre ainda não fechou, a reprovação não está no histórico e o sistema mostra a disciplina como em curso.</td><td>Permitir marcar manualmente uma disciplina como reprovada apenas na simulação.</td></tr>
+                        <tr><td>1.1 Localizar a disciplina reprovada</td><td><em>Ação cognitiva</em></td><td>Em cursos com muitas disciplinas, localizar uma delas no fluxograma exige rolagem e zoom, sobretudo no celular.</td><td>Busca por nome ou código da disciplina no fluxograma.</td></tr>
+                        <tr><td>1.2 Ver as dependentes bloqueadas em cascata</td><td><em>Ação cognitiva</em></td><td>O efeito cascata não é mostrado de uma vez: o estudante segue as setas uma a uma.</td><td>Destacar, ao selecionar a disciplina, toda a cadeia de dependentes afetadas.</td></tr>
+                        <tr class="tr-main"><td><strong>2. Redistribuir as disciplinas nos semestres</strong></td><td>Plano 2: 2.1 &gt; 2.2; repetir até não sobrar disciplina sem semestre</td><td>A simulação não considera que algumas disciplinas são ofertadas só uma vez por ano, e o prazo resultante sai otimista.</td><td>Usar a periodicidade de oferta ao validar a posição de cada disciplina e avisar quando o semestre escolhido não tem oferta.</td></tr>
+                        <tr><td>2.1 Mover a disciplina reprovada</td><td><em>Ação física</em></td><td>Arrastar blocos pequenos no celular é impreciso.</td><td>Alternativa por menu ("mover para o semestre…") além do arrastar.</td></tr>
+                        <tr><td>2.2 Realocar as dependentes</td><td><em>Ação física</em></td><td>Não há aviso quando um semestre passa do limite de créditos.</td><td>Mostrar o total de créditos por semestre e alertar quando ultrapassar o limite.</td></tr>
+                        <tr class="tr-main"><td><strong>3. Verificar o novo prazo de formatura</strong></td><td>Plano 3: 3.1 &gt; 3.2</td><td>O semestre previsto de conclusão não é comparado ao prazo máximo de permanência, que é o que preocupa a Larissa.</td><td>Exibir o prazo previsto ao lado do prazo máximo, com alerta quando a diferença for pequena.</td></tr>
+                        <tr><td>3.1 Ler o semestre previsto de conclusão</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>3.2 Comparar com o prazo máximo de permanência</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>4. Salvar o cenário</strong></td><td>Plano 4: 4.1 &gt; 4.2 (opcional)</td><td>Sem cenários nomeados, o estudante não compara duas estratégias (por exemplo, refazer no verão ou no semestre seguinte).</td><td>Salvar cenários com nome e compará-los lado a lado.</td></tr>
+                        <tr><td>4.1 Nomear o cenário</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Salvar para comparação</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Felipe Lopes Pedroza (2026).</p>
+            <h3 class="doc-subsection">8.3 Tarefas de Matheus do Vale Lameira</h3>
+            <h3 id="tar-03" class="doc-subsection">8.3.1 TAR-03 — Consultar o significado de um termo acadêmico</h3>
+            <p class="doc-text">Origem: Cenário 3 (Caio); achados da pesquisa. A decomposição hierárquica está na Figura 3, e as operações, planos, problemas e recomendações, na Tabela 13.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 3 — Diagrama HTA da TAR-03</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Consultar o significado de um termo acadêmico</span><span class="hta-plan">Plano 0: 1 &gt; 2; se a explicação de 2 não resolver a dúvida, fazer 3; depois 4.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Identificar o termo desconhecido</span><span class="hta-plan">Operação (cognitiva)</span></div>
+
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Consultar a ajuda contextual</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2</span></div>
+                        <ul class="hta-ops"><li>2.1 Tocar ou passar o mouse no termo</li><li>2.2 Ler a definição</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Perguntar à Darcy</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2 (condicional)</span></div>
+                        <ul class="hta-ops"><li>3.1 Abrir o chat</li><li>3.2 Formular a pergunta</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Aplicar a explicação à própria situação</span><span class="hta-plan">Operação (cognitiva)</span></div>
+
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 13.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 13 — Análise HTA da TAR-03</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Consultar o significado de um termo acadêmico</strong></td><td>Plano 0: 1 &gt; 2; se a explicação de 2 não resolver a dúvida, fazer 3; depois 4.</td><td>O ingressante evita perguntar o que acha que "todo mundo sabe" — a pesquisa pediu uma IA que responda "perguntas bobas" (achado 3.1).</td><td>Tratar a explicação de termos como função de primeira classe: ajuda contextual no próprio termo, antes de depender do chat.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Identificar o termo desconhecido</strong></td><td><em>Operação (cognitiva)</em></td><td>Termos como "co-requisito", "optativa" e "módulo livre" aparecem sem explicação na interface.</td><td>Sublinhado pontilhado nos termos técnicos, indicando que há explicação disponível.</td></tr>
+                        <tr class="tr-main"><td><strong>2. Consultar a ajuda contextual</strong></td><td>Plano 2: 2.1 &gt; 2.2</td><td>Não há dica (tooltip) nem glossário acessível a partir do termo.</td><td>Dica ao passar o mouse ou tocar, com definição em uma frase e link para o glossário completo.</td></tr>
+                        <tr><td>2.1 Tocar ou passar o mouse no termo</td><td><em>Ação física</em></td><td>No celular não existe "passar o mouse", e dicas baseadas em hover ficam inacessíveis.</td><td>Abrir a dica também por toque.</td></tr>
+                        <tr><td>2.2 Ler a definição</td><td><em>Ação cognitiva</em></td><td>Definições copiadas do regulamento usam o mesmo jargão que se quer explicar.</td><td>Definição em linguagem simples, com exemplo do próprio curso do estudante.</td></tr>
+                        <tr class="tr-main"><td><strong>3. Perguntar à Darcy</strong></td><td>Plano 3: 3.1 &gt; 3.2 (condicional)</td><td>Abrir o chat cobre o fluxograma, e o estudante perde o contexto da dúvida.</td><td>Chat em painel lateral, com a disciplina selecionada já anexada à pergunta.</td></tr>
+                        <tr><td>3.1 Abrir o chat</td><td><em>Ação física</em></td><td>O ponto de entrada da Darcy não indica que ela responde dúvidas básicas.</td><td>Sugestões de perguntas prontas ("O que é co-requisito?").</td></tr>
+                        <tr><td>3.2 Formular a pergunta</td><td><em>Ação cognitiva</em></td><td>Quem não sabe o termo tem dificuldade de formular a pergunta.</td><td>Ação "Perguntar à Darcy sobre isto" direto no termo.</td></tr>
+                        <tr class="tr-main"><td><strong>4. Aplicar a explicação à própria situação</strong></td><td><em>Operação (cognitiva)</em></td><td>A resposta é genérica e não diz o que o termo significa para o histórico do estudante (por exemplo, quantas optativas faltam).</td><td>Resposta contextualizada com os dados do histórico importado e link para o ponto do fluxograma.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            <h3 id="tar-04" class="doc-subsection">8.3.2 TAR-04 — Simular o IRA do próximo semestre</h3>
+            <p class="doc-text">Origem: Achados da pesquisa (3.1); Larissa e Diego. A decomposição hierárquica está na Figura 4, e as operações, planos, problemas e recomendações, na Tabela 14.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 4 — Diagrama HTA da TAR-04</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Simular o IRA do próximo semestre</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3 &gt; 4. Hoje a tarefa é feita em grande parte fora do NoFluxo — a HTA descreve o caminho atual para mostrar onde ele se rompe.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Levantar o IRA e os créditos atuais</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Consultar o IRA no histórico do SIGAA</li><li>1.2 Somar os créditos já cursados</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Estimar as menções das disciplinas planejadas</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2</span></div>
+                        <ul class="hta-ops"><li>2.1 Atribuir uma menção esperada a cada disciplina</li><li>2.2 Considerar trancamento ou reprovação</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Calcular o IRA projetado</span><span class="hta-plan">Plano 3: 3.1 ou 3.2</span></div>
+                        <ul class="hta-ops"><li>3.1 Calcular em planilha ou calculadora externa</li><li>3.2 Pedir o cálculo à Darcy</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Decidir o plano do semestre</span><span class="hta-plan">Plano 4: 4.1 &gt; 4.2</span></div>
+                        <ul class="hta-ops"><li>4.1 Comparar os cenários de IRA</li><li>4.2 Ajustar a grade</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 14.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 14 — Análise HTA da TAR-04</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Simular o IRA do próximo semestre</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3 &gt; 4. Hoje a tarefa é feita em grande parte fora do NoFluxo — a HTA descreve o caminho atual para mostrar onde ele se rompe.</td><td>O NoFluxo não oferece simulação de IRA; a funcionalidade foi a sugestão mais recorrente da pesquisa (achado 3.1).</td><td>Simulador de IRA integrado ao montador de grade, calculado pelo sistema a partir do histórico importado.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Levantar o IRA e os créditos atuais</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>O IRA atual está no histórico do SIGAA, mas não é exibido no NoFluxo depois da importação.</td><td>Exibir o IRA atual e os créditos integralizados no painel do estudante.</td></tr>
+                        <tr><td>1.1 Consultar o IRA no histórico do SIGAA</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>1.2 Somar os créditos já cursados</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>2. Estimar as menções das disciplinas planejadas</strong></td><td>Plano 2: 2.1 &gt; 2.2</td><td>O estudante não tem referência de quão difícil cada disciplina é para estimar a menção.</td><td>Mostrar a dificuldade média das avaliações de disciplinas do próprio NoFluxo no momento da estimativa.</td></tr>
+                        <tr><td>2.1 Atribuir uma menção esperada a cada disciplina</td><td><em>Ação cognitiva</em></td><td>Tendência a otimismo: todas as disciplinas recebem a menção máxima.</td><td>Oferecer cenários prontos (otimista, provável, pessimista).</td></tr>
+                        <tr><td>2.2 Considerar trancamento ou reprovação</td><td><em>Ação cognitiva</em></td><td>O efeito de um trancamento no IRA não é intuitivo.</td><td>Opção de marcar a disciplina como "trancar" e ver o efeito separadamente.</td></tr>
+                        <tr class="tr-main"><td><strong>3. Calcular o IRA projetado</strong></td><td>Plano 3: 3.1 ou 3.2</td><td>A fórmula do IRA da UnB pondera as menções pelos créditos e pelo período em que a disciplina foi cursada e desconta trancamentos; poucos estudantes a conhecem.</td><td>Cálculo feito pelo sistema, com a fórmula documentada em linguagem simples.</td></tr>
+                        <tr><td>3.1 Calcular em planilha ou calculadora externa</td><td><em>Ação física</em></td><td>A tarefa sai do NoFluxo e fica sujeita a erro de digitação e de fórmula.</td><td>Eliminar o passo com o simulador integrado.</td></tr>
+                        <tr><td>3.2 Pedir o cálculo à Darcy</td><td><em>Ação física</em></td><td>Modelos de linguagem erram aritmética; o número pode sair errado com aparência de certo.</td><td>A Darcy só explica o resultado; o cálculo vem de código determinístico do sistema.</td></tr>
+                        <tr class="tr-main"><td><strong>4. Decidir o plano do semestre</strong></td><td>Plano 4: 4.1 &gt; 4.2</td><td>Sem ligação entre o IRA simulado e a grade, o estudante precisa refazer a conta a cada troca de disciplina.</td><td>Recalcular o IRA projetado automaticamente a cada alteração da grade.</td></tr>
+                        <tr><td>4.1 Comparar os cenários de IRA</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Ajustar a grade</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            <h3 class="doc-subsection">8.4 Tarefas de Rafael Barbosa de Melo</h3>
+            <h3 id="tar-05" class="doc-subsection">8.4.1 TAR-05 — Confirmar ausência de pendências antes da matrícula</h3>
+            <p class="doc-text">Origem: Cenário 2 (Bruna). A decomposição hierárquica está na Figura 5, e as operações, planos, problemas e recomendações, na Tabela 15.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 5 — Diagrama HTA da TAR-05</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Confirmar ausência de pendências antes da matrícula</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3; se 2 indicar pendência, fazer 4; caso contrário, encerrar.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Atualizar o histórico</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Emitir o histórico atualizado</li><li>1.2 Enviar ao NoFluxo</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Verificar a situação no fluxo</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2</span></div>
+                        <ul class="hta-ops"><li>2.1 Ler o indicador de situação</li><li>2.2 Conferir as disciplinas do semestre previsto</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Conferir a oferta do próximo semestre</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2</span></div>
+                        <ul class="hta-ops"><li>3.1 Ver a oferta das disciplinas previstas</li><li>3.2 Ver as vagas disponíveis</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Tratar a pendência encontrada</span><span class="hta-plan">Plano 4: 4.1 ou 4.2 (condicional)</span></div>
+                        <ul class="hta-ops"><li>4.1 Entender o bloqueio (ver TAR-01)</li><li>4.2 Incluir a pendência na grade (ver TAR-07)</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Rafael Barbosa de Melo (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 15.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 15 — Análise HTA da TAR-05</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Confirmar ausência de pendências antes da matrícula</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3; se 2 indicar pendência, fazer 4; caso contrário, encerrar.</td><td>A Bruna quer um "sim ou não" rápido, mas precisa percorrer o fluxograma inteiro para concluir que está em dia.</td><td>Resumo de situação no topo da página ("Você está no fluxo: nenhuma pendência") antes do fluxograma.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Atualizar o histórico</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>É preciso reenviar o histórico a cada semestre, e o estudante não sabe se o que está no sistema é o mais recente.</td><td>Mostrar a data da última importação e lembrar a atualização no período de matrícula.</td></tr>
+                        <tr><td>1.1 Emitir o histórico atualizado</td><td><em>Ação física</em></td><td>Passo repetido fora do sistema (ver TAR-01).</td><td>Mesma recomendação da TAR-01: guia de emissão no ponto de upload.</td></tr>
+                        <tr><td>1.2 Enviar ao NoFluxo</td><td><em>Ação física</em></td><td>Não fica claro se o novo envio substitui o anterior.</td><td>Confirmar a substituição e mostrar o que mudou desde o envio anterior.</td></tr>
+                        <tr class="tr-main"><td><strong>2. Verificar a situação no fluxo</strong></td><td>Plano 2: 2.1 &gt; 2.2</td><td>Não há um indicador único de situação (regular, atrasado, adiantado).</td><td>Classificação explícita da situação de fluxo com a justificativa ("todas as obrigatórias até o 4º semestre concluídas").</td></tr>
+                        <tr><td>2.1 Ler o indicador de situação</td><td><em>Ação cognitiva</em></td><td>Sem indicador, a Bruna infere a situação pela cor das disciplinas.</td><td>Indicador textual, não apenas visual.</td></tr>
+                        <tr><td>2.2 Conferir as disciplinas do semestre previsto</td><td><em>Ação cognitiva</em></td><td>O fluxograma não destaca quais disciplinas são do próximo semestre ideal.</td><td>Realçar a coluna do próximo semestre previsto pelo PPC.</td></tr>
+                        <tr class="tr-main"><td><strong>3. Conferir a oferta do próximo semestre</strong></td><td>Plano 3: 3.1 &gt; 3.2</td><td>A informação de vagas pode estar defasada em relação ao SIGAA.</td><td>Exibir o horário da última atualização das vagas.</td></tr>
+                        <tr><td>3.1 Ver a oferta das disciplinas previstas</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>3.2 Ver as vagas disponíveis</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>4. Tratar a pendência encontrada</strong></td><td>Plano 4: 4.1 ou 4.2 (condicional)</td><td>Quando há pendência, o sistema não indica o próximo passo.</td><td>Encaminhar para a TAR-01 (entender o bloqueio) ou para a montagem da grade com a pendência já incluída.</td></tr>
+                        <tr><td>4.1 Entender o bloqueio (ver TAR-01)</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Incluir a pendência na grade (ver TAR-07)</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Rafael Barbosa de Melo (2026).</p>
+            <h3 id="tar-06" class="doc-subsection">8.4.2 TAR-06 — Verificar se uma disciplina adiantada pode ser cursada</h3>
+            <p class="doc-text">Origem: Cenário 4 (Yasmin). A decomposição hierárquica está na Figura 6, e as operações, planos, problemas e recomendações, na Tabela 16.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 6 — Diagrama HTA da TAR-06</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Verificar se uma disciplina adiantada pode ser cursada</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3; se 2 ou 3 impedirem, fazer 4.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Localizar a disciplina de semestre futuro</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Buscar a disciplina</li><li>1.2 Abrir os detalhes</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Verificar pré-requisitos e co-requisitos</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2</span></div>
+                        <ul class="hta-ops"><li>2.1 Conferir pré-requisitos cumpridos</li><li>2.2 Identificar co-requisitos</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Verificar compatibilidade com a grade</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2</span></div>
+                        <ul class="hta-ops"><li>3.1 Verificar choque com as obrigatórias</li><li>3.2 Verificar o limite de créditos</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Buscar alternativa</span><span class="hta-plan">Plano 4: 4.1 ou 4.2 (condicional)</span></div>
+                        <ul class="hta-ops"><li>4.1 Escolher uma disciplina equivalente</li><li>4.2 Escolher uma optativa liberada</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Rafael Barbosa de Melo (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 16.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 16 — Análise HTA da TAR-06</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Verificar se uma disciplina adiantada pode ser cursada</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3; se 2 ou 3 impedirem, fazer 4.</td><td>O fluxograma organizado por semestre sugere que o estudante siga a ordem padrão e não deixa evidente o que pode ser adiantado.</td><td>Filtro "disciplinas que já posso cursar", incluindo as de semestres futuros com requisitos cumpridos.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Localizar a disciplina de semestre futuro</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Disciplinas de semestres avançados ficam fora da área visível e exigem rolagem.</td><td>Busca por nome ou código.</td></tr>
+                        <tr><td>1.1 Buscar a disciplina</td><td><em>Ação física</em></td><td>Sem busca, a localização é visual.</td><td>Campo de busca no topo do fluxograma.</td></tr>
+                        <tr><td>1.2 Abrir os detalhes</td><td><em>Ação física</em></td><td>O painel de detalhes não mostra de forma direta "pode cursar: sim/não".</td><td>Veredito no topo do painel, com o motivo logo abaixo.</td></tr>
+                        <tr class="tr-main"><td><strong>2. Verificar pré-requisitos e co-requisitos</strong></td><td>Plano 2: 2.1 &gt; 2.2</td><td>Pré-requisitos alternativos ("A ou B") e co-requisitos são difíceis de representar em setas.</td><td>Lista textual dos requisitos, com o operador lógico explícito e o estado de cada item.</td></tr>
+                        <tr><td>2.1 Conferir pré-requisitos cumpridos</td><td><em>Ação cognitiva</em></td><td>Setas cruzando vários semestres ficam ilegíveis.</td><td>Destacar apenas as setas da disciplina selecionada.</td></tr>
+                        <tr><td>2.2 Identificar co-requisitos</td><td><em>Ação cognitiva</em></td><td>O estudante não percebe que o co-requisito precisa ser cursado no mesmo semestre.</td><td>Aviso: "exige matrícula simultânea em X".</td></tr>
+                        <tr class="tr-main"><td><strong>3. Verificar compatibilidade com a grade</strong></td><td>Plano 3: 3.1 &gt; 3.2</td><td>Adiantar uma disciplina pode passar do limite de créditos ou chocar com obrigatórias do semestre.</td><td>Levar a disciplina direto para o montador de grade, com a verificação de choque e de créditos.</td></tr>
+                        <tr><td>3.1 Verificar choque com as obrigatórias</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>3.2 Verificar o limite de créditos</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>4. Buscar alternativa</strong></td><td>Plano 4: 4.1 ou 4.2 (condicional)</td><td>Quando não é possível adiantar, o sistema não sugere o que fazer no lugar.</td><td>Sugerir disciplinas equivalentes ou optativas liberadas no mesmo horário.</td></tr>
+                        <tr><td>4.1 Escolher uma disciplina equivalente</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Escolher uma optativa liberada</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Rafael Barbosa de Melo (2026).</p>
+            <h3 class="doc-subsection">8.5 Tarefas de Tiago Sousa Nepomuceno</h3>
+            <h3 id="tar-07" class="doc-subsection">8.5.1 TAR-07 — Montar a grade do semestre com disciplina obrigatória fixada</h3>
+            <p class="doc-text">Origem: Cenários 1 e 7 (Larissa, Diego). A decomposição hierárquica está na Figura 7, e as operações, planos, problemas e recomendações, na Tabela 17.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 7 — Diagrama HTA da TAR-07</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Montar a grade do semestre com disciplina obrigatória fixada</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3 &gt; 4; se 3 encontrar choque de horário, voltar a 2.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Fixar a disciplina obrigatória</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Selecionar a disciplina</li><li>1.2 Escolher a turma</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Adicionar as demais disciplinas</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2; repetir até completar a carga desejada</span></div>
+                        <ul class="hta-ops"><li>2.1 Escolher as disciplinas liberadas</li><li>2.2 Escolher as turmas</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Resolver conflitos de horário</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2</span></div>
+                        <ul class="hta-ops"><li>3.1 Identificar o choque</li><li>3.2 Trocar turma ou disciplina</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Salvar a grade</span><span class="hta-plan">Plano 4: 4.1 &gt; 4.2</span></div>
+                        <ul class="hta-ops"><li>4.1 Revisar a grade</li><li>4.2 Salvar ou exportar</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Tiago Sousa Nepomuceno (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 17.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 17 — Análise HTA da TAR-07</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Montar a grade do semestre com disciplina obrigatória fixada</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3 &gt; 4; se 3 encontrar choque de horário, voltar a 2.</td><td>A matrícula real acontece no SIGAA; a grade montada no NoFluxo precisa ser transcrita manualmente.</td><td>Resumo final com códigos e turmas prontos para copiar para o SIGAA.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Fixar a disciplina obrigatória</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Não existe forma de marcar uma disciplina como fixa; ao reorganizar, ela pode ser removida sem querer.</td><td>Ação "fixar" (cadeado) que impede remoção e troca de turma acidentais.</td></tr>
+                        <tr><td>1.1 Selecionar a disciplina</td><td><em>Ação física</em></td><td>A lista de disciplinas disponíveis mistura liberadas e bloqueadas.</td><td>Separar ou filtrar as liberadas.</td></tr>
+                        <tr><td>1.2 Escolher a turma</td><td><em>Ação cognitiva</em></td><td>Turmas com o mesmo código diferem em horário e professor, e a comparação exige abrir uma a uma.</td><td>Tabela comparativa das turmas (horário, vagas, avaliação do professor).</td></tr>
+                        <tr class="tr-main"><td><strong>2. Adicionar as demais disciplinas</strong></td><td>Plano 2: 2.1 &gt; 2.2; repetir até completar a carga desejada</td><td>O estudante não vê quantos créditos já somou.</td><td>Contador de créditos do semestre sempre visível.</td></tr>
+                        <tr><td>2.1 Escolher as disciplinas liberadas</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>2.2 Escolher as turmas</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>3. Resolver conflitos de horário</strong></td><td>Plano 3: 3.1 &gt; 3.2</td><td>O choque só é percebido depois que a disciplina já foi adicionada.</td><td>Indicar o choque antes de adicionar, ao passar sobre a turma.</td></tr>
+                        <tr><td>3.1 Identificar o choque</td><td><em>Ação cognitiva</em></td><td>O alerta não diz com qual disciplina ocorre o conflito.</td><td>Nomear as duas disciplinas e o horário em conflito.</td></tr>
+                        <tr><td>3.2 Trocar turma ou disciplina</td><td><em>Ação física</em></td><td>Trocar a turma exige remover e adicionar de novo.</td><td>Troca de turma direto no bloco da grade.</td></tr>
+                        <tr class="tr-main"><td><strong>4. Salvar a grade</strong></td><td>Plano 4: 4.1 &gt; 4.2</td><td>Sem confirmação clara, o estudante não sabe se a grade ficou salva.</td><td>Confirmação visível e acesso à grade salva a partir do painel principal.</td></tr>
+                        <tr><td>4.1 Revisar a grade</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Salvar ou exportar</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Tiago Sousa Nepomuceno (2026).</p>
+            <h3 id="tar-08" class="doc-subsection">8.5.2 TAR-08 — Conferir os requisitos de conclusão além das disciplinas</h3>
+            <p class="doc-text">Origem: Cenário 7 (Diego). A decomposição hierárquica está na Figura 8, e as operações, planos, problemas e recomendações, na Tabela 18.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 8 — Diagrama HTA da TAR-08</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Conferir os requisitos de conclusão além das disciplinas</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3; se algo estiver pendente, fazer 4.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Verificar as disciplinas remanescentes</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Listar as obrigatórias restantes</li><li>1.2 Somar os créditos optativos restantes</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Verificar os componentes não disciplinares</span><span class="hta-plan">Plano 2: 2.1, 2.2 e 2.3 em qualquer ordem</span></div>
+                        <ul class="hta-ops"><li>2.1 Estágio obrigatório</li><li>2.2 TCC</li><li>2.3 Atividades complementares e extensão</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Verificar os requisitos institucionais</span><span class="hta-plan">Operação (cognitiva)</span></div>
+
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Planejar a regularização</span><span class="hta-plan">Plano 4: 4.1 ou 4.2 (condicional)</span></div>
+                        <ul class="hta-ops"><li>4.1 Reservar o semestre de cumprimento no plano</li><li>4.2 Consultar a coordenação</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Tiago Sousa Nepomuceno (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 18.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 18 — Análise HTA da TAR-08</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Conferir os requisitos de conclusão além das disciplinas</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3; se algo estiver pendente, fazer 4.</td><td>O NoFluxo é centrado em disciplinas; estágio, TCC, atividades complementares e extensão não aparecem, e o Diego sai do sistema para conferir.</td><td>Lista de verificação de conclusão de curso com todos os componentes exigidos pelo PPC.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Verificar as disciplinas remanescentes</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Créditos optativos restantes não aparecem somados.</td><td>Contadores separados: obrigatórias restantes e créditos optativos restantes.</td></tr>
+                        <tr><td>1.1 Listar as obrigatórias restantes</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>1.2 Somar os créditos optativos restantes</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>2. Verificar os componentes não disciplinares</strong></td><td>Plano 2: 2.1, 2.2 e 2.3 em qualquer ordem</td><td>Nenhum desses componentes aparece no NoFluxo.</td><td>Exibir cada componente com a carga exigida e a carga cumprida lida do histórico.</td></tr>
+                        <tr><td>2.1 Estágio obrigatório</td><td><em>Ação cognitiva</em></td><td>O estudante não sabe a carga exigida.</td><td>Mostrar a carga exigida pelo PPC.</td></tr>
+                        <tr><td>2.2 TCC</td><td><em>Ação cognitiva</em></td><td>Pré-requisitos do TCC ficam escondidos no regulamento.</td><td>Tratar o TCC como nó do fluxograma, com seus requisitos.</td></tr>
+                        <tr><td>2.3 Atividades complementares e extensão</td><td><em>Ação cognitiva</em></td><td>As horas registradas não são mostradas.</td><td>Barra de progresso de horas.</td></tr>
+                        <tr class="tr-main"><td><strong>3. Verificar os requisitos institucionais</strong></td><td><em>Operação (cognitiva)</em></td><td>Exigências como o ENADE não aparecem no planejamento.</td><td>Aviso no semestre em que o estudante se torna habilitado ao exame.</td></tr>
+                        <tr class="tr-main"><td><strong>4. Planejar a regularização</strong></td><td>Plano 4: 4.1 ou 4.2 (condicional)</td><td>Sem prazo associado, a pendência é descoberta tarde.</td><td>Associar cada pendência ao último semestre possível para cumpri-la.</td></tr>
+                        <tr><td>4.1 Reservar o semestre de cumprimento no plano</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Consultar a coordenação</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Tiago Sousa Nepomuceno (2026).</p>
+            <h3 class="doc-subsection">8.6 Tarefas de Victor Andreozzi de La Rocque Couto</h3>
+            <h3 id="tar-09" class="doc-subsection">8.6.1 TAR-09 — Simular o aproveitamento em uma mudança de curso</h3>
+            <p class="doc-text">Origem: Cenário 6 (Talita); achados da pesquisa (3.1). A decomposição hierárquica está na Figura 9, e as operações, planos, problemas e recomendações, na Tabela 19.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 9 — Diagrama HTA da TAR-09</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Simular o aproveitamento em uma mudança de curso</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3 &gt; 4.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Enviar o histórico do curso atual</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Emitir o histórico</li><li>1.2 Enviar ao NoFluxo</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Selecionar o curso de destino</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2</span></div>
+                        <ul class="hta-ops"><li>2.1 Buscar o curso</li><li>2.2 Escolher o currículo</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Analisar as equivalências</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2 &gt; 3.3</span></div>
+                        <ul class="hta-ops"><li>3.1 Ver as disciplinas aproveitadas</li><li>3.2 Ver as disciplinas a cursar</li><li>3.3 Ver as pendentes de análise</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Estimar o tempo restante no novo curso</span><span class="hta-plan">Plano 4: 4.1 &gt; 4.2</span></div>
+                        <ul class="hta-ops"><li>4.1 Ver os créditos restantes no destino</li><li>4.2 Comparar com o prazo no curso atual</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026); diagrama gerado com apoio de IA (Claude) e reproduzido em HTML a partir da Tabela 19.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 19 — Análise HTA da TAR-09</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Simular o aproveitamento em uma mudança de curso</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3 &gt; 4.</td><td>A pesquisa pediu esta simulação para a fase de decisão, antes da mudança (achado 3.1); hoje o fluxograma só mostra o curso em que o estudante já está.</td><td>Seletor "e se eu mudar para…" que aplica o histórico atual à matriz de outro curso.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Enviar o histórico do curso atual</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Disciplinas cursadas em outra instituição (mobilidade) podem não aparecer ou aparecer só como aproveitamento.</td><td>Permitir adicionar manualmente disciplinas externas, marcadas como "a validar".</td></tr>
+                        <tr><td>1.1 Emitir o histórico</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>1.2 Enviar ao NoFluxo</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>2. Selecionar o curso de destino</strong></td><td>Plano 2: 2.1 &gt; 2.2</td><td>Cursos com mais de um currículo ativo confundem a escolha.</td><td>Mostrar o currículo vigente como padrão e explicar a diferença para os demais.</td></tr>
+                        <tr><td>2.1 Buscar o curso</td><td><em>Ação física</em></td><td>Nomes de cursos com habilitações parecidas.</td><td>Busca com campus e turno.</td></tr>
+                        <tr><td>2.2 Escolher o currículo</td><td><em>Ação cognitiva</em></td><td>O estudante não sabe qual currículo se aplica a quem entra por mudança de curso.</td><td>Pré-selecionar o currículo vigente.</td></tr>
+                        <tr class="tr-main"><td><strong>3. Analisar as equivalências</strong></td><td>Plano 3: 3.1 &gt; 3.2 &gt; 3.3</td><td>Equivalências automáticas e as que dependem de análise da coordenação aparecem da mesma forma.</td><td>Três estados distintos: aproveitada, a cursar e sujeita à análise da coordenação.</td></tr>
+                        <tr><td>3.1 Ver as disciplinas aproveitadas</td><td><em>Ação cognitiva</em></td><td>Não fica claro por qual regra a disciplina foi aproveitada.</td><td>Mostrar a equivalência usada (disciplina de origem → disciplina de destino).</td></tr>
+                        <tr><td>3.2 Ver as disciplinas a cursar</td><td><em>Ação cognitiva</em></td><td>A lista não indica o impacto no tempo de curso.</td><td>Somar os créditos restantes.</td></tr>
+                        <tr><td>3.3 Ver as pendentes de análise</td><td><em>Ação cognitiva</em></td><td>O estudante trata como garantido o que ainda depende da coordenação.</td><td>Rótulo e cor próprios, com orientação sobre como pedir a análise.</td></tr>
+                        <tr class="tr-main"><td><strong>4. Estimar o tempo restante no novo curso</strong></td><td>Plano 4: 4.1 &gt; 4.2</td><td>Sem essa estimativa, a Talita não consegue comparar ficar ou mudar.</td><td>Comparar lado a lado o prazo de conclusão no curso atual e no curso de destino.</td></tr>
+                        <tr><td>4.1 Ver os créditos restantes no destino</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Comparar com o prazo no curso atual</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <h3 id="tar-10" class="doc-subsection">8.6.2 TAR-10 — Planejar e matricular-se no semestre (CTT)</h3>
+            <p class="doc-text">Esta análise usa a notação ConcurTaskTrees (CTT), de Paternò (2000), com base no Capítulo 6 de Barbosa e Silva (2010). Enquanto as HTAs acima detalham tarefas isoladas, a CTT mostra a relação temporal entre elas no objetivo geral do estudante: T1 corresponde à TAR-01; T3, às TAR-02, TAR-03 e TAR-06; e T4, à TAR-07. A árvore está na Figura 10.</p>
+            <p class="doc-text"><strong>Categorias de tarefa.</strong> Tarefas do usuário: executadas fora do sistema (círculo). Tarefas do sistema: executadas automaticamente, sem diálogo imediato (retângulo preenchido). Tarefas interativas: diálogo direto entre usuário e sistema (retângulo de bordas arredondadas). Tarefas abstratas: composições que estruturam a decomposição (retângulo de borda dupla).</p>
+            <p class="doc-text"><strong>Operadores temporais usados.</strong> Ativação (T1 &gt;&gt; T2): T2 só inicia após o término de T1. Ativação com passagem de informação (T1 []&gt;&gt; T2): T2 inicia após T1 e recebe dados gerados por ela. Escolha (T1 [] T2): duas tarefas alternativas; iniciar uma desabilita a outra. Concorrência (T1 ||| T2): tarefas executáveis em qualquer ordem ou ao mesmo tempo.</p>
+            <div class="note-box"><strong>Nota de revisão:</strong> a versão original não indicava o operador entre T3 e T4, entre T4 e T5, nem entre os dois subfluxos de T3 — toda transição de uma CTT precisa de operador explícito. T3 avança para T4 por ativação; T3.1 e T3.2 são alternativos (o estudante consulta a Darcy ou explora o fluxograma sozinho para a mesma finalidade), por isso ligados por escolha; e T4 avança para T5 por ativação.</div>
+            <figure class="doc-figure">
+                <figcaption>Figura 10 — Árvore CTT da TAR-10</figcaption>
+                <ul class="ctt-tree">
+                    <li>T0 (Abstrata): Planejar e matricular-se no semestre.
+                        <ul>
+                            <li>T1 (Interativa): Importar histórico do SIGAA <span class="ctt-op">&gt;&gt;</span></li>
+                            <li>T2 (Sistema): Processar e validar histórico acadêmico <span class="ctt-op">[]&gt;&gt;</span></li>
+                            <li>T3 (Abstrata): Análise e simulação de cenários <span class="ctt-op">&gt;&gt;</span>
+                                <ul>
+                                    <li>T3.1 (Interativa): Consultar a assistente Darcy sobre dependências</li>
+                                    <li><span class="ctt-op">[]</span> <em>(escolha)</em></li>
+                                    <li>T3.2 (Interativa): Simular atrasos/adiantamentos no fluxograma</li>
+                                </ul>
+                            </li>
+                            <li>T4 (Interativa): Montar grade horária <span class="ctt-op">|||</span> Consultar ementas de disciplinas <span class="ctt-op">&gt;&gt;</span></li>
+                            <li>T5 (Interativa): Efetivar e exportar o planejamento final</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            </figure>
+            <div class="note-box"><strong>Nota de revisão:</strong> a versão original da lista de verificação marcava os 8 critérios como "Conforme", mas dois deles não tinham correspondência na árvore. Os itens 6 e 8 foram recategorizados, com a justificativa abaixo da Tabela 20.</div>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 20 — Lista de verificação da árvore CTT</caption>
+                    <thead><tr><th>#</th><th>Critério de verificação</th><th>Conforme</th><th>Não conf.</th><th>N/A</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">1</td><td>A CTT inicia com uma tarefa raiz abstrata representando o objetivo global?</td><td>X</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">2</td><td>As tarefas elementares estão categorizadas corretamente nas 4 categorias do CTT?</td><td>X</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">3</td><td>O operador de ativação (&gt;&gt;) foi aplicado corretamente nas dependências sequenciais?</td><td>X</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">4</td><td>O operador de escolha ([]) foi empregado em bifurcações mutuamente exclusivas?</td><td>X</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">5</td><td>O operador de concorrência (|||) foi aplicado corretamente em fluxos paralelos?</td><td>X</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">6</td><td>O operador de interrupção ou suspensão (|&gt;) modela falhas/cancelamentos?</td><td></td><td>X</td><td></td></tr>
+                        <tr><td class="td-strong">7</td><td>A decomposição reflete as atividades reais obtidas no perfil de usuários e cenários?</td><td>X</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">8</td><td>A CTT contempla a diversidade de papéis (personas primárias e secundárias)?</td><td></td><td>X</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <p class="doc-text"><strong>Item 6:</strong> a árvore não modela interrupção nem suspensão — por exemplo, cancelar a simulação com a Darcy e retomá-la depois, ou abandonar a montagem da grade sem salvar.</p>
+            <p class="doc-text"><strong>Item 8:</strong> a árvore é única para "o estudante". As HTAs das Seções 8.2 a 8.6.1 cobrem essa diversidade tarefa a tarefa (Larissa, Caio, Bruna, Yasmin, Diego, Talita), mas a CTT em si continua genérica; ramificar T3 por tipo de necessidade atenderia ao critério.</p>
+            <h3 class="doc-subsection">8.7 Síntese dos problemas recorrentes</h3>
+            <p class="doc-text">Quatro padrões aparecem em mais de uma tarefa e indicam onde o reprojeto rende mais:</p>
+            <ul class="doc-list">
+                <li><strong>Dependência do SIGAA.</strong> TAR-01, TAR-05, TAR-07 e TAR-09 começam ou terminam fora do NoFluxo (emitir o histórico, efetivar a matrícula). Orientar esses passos dentro da plataforma e mostrar a data dos dados importados reduz erros de histórico desatualizado.</li>
+                <li><strong>Estado comunicado só por cor.</strong> TAR-01, TAR-05 e TAR-06 dependem de distinguir disciplinas cursadas, liberadas e bloqueadas pela cor, o que conflita com o pedido de acessibilidade da pesquisa (achado 3.2).</li>
+                <li><strong>Funcionalidades pedidas na pesquisa que ainda não existem.</strong> Simulação de IRA (TAR-04), simulação de mudança de curso (TAR-09) e requisitos de conclusão não disciplinares (TAR-08) obrigam o estudante a sair do sistema. As três coincidem com as sugestões da Seção 3.1.</li>
+                <li><strong>Papel da Darcy.</strong> Em TAR-01, TAR-03 e TAR-04 a Darcy funciona melhor explicando e contextualizando do que calculando: números como IRA e prazos devem vir do sistema, e a assistente explica o resultado.</li>
+            </ul>
+            <h3 class="doc-subsection">8.8 Tarefa do Administrador</h3>
+            <p class="doc-text">Esta análise cobre a persona Helena Duarte (Administrador, Perfil 9) e foi acrescentada depois das demais, a partir do Cenário 8. Como a persona não tem base nas sessões com usuários (Seção 9), os problemas e as recomendações abaixo são hipóteses da equipe sobre a operação da plataforma e precisam ser confirmados com quem a administra antes de orientar decisões de projeto.</p>
+            <h3 id="tar-11" class="doc-subsection">8.8.1 TAR-11 — Atualizar a matriz curricular de um curso e publicar a mudança</h3>
+            <p class="doc-text">Origem: Cenário 8 (Helena). A decomposição hierárquica está na Figura 11, e as operações, planos, problemas e recomendações, na Tabela 21.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 11 — Diagrama HTA da TAR-11</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Atualizar a matriz curricular de um curso e publicar a mudança</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3 &gt; 4; se 3 mostrar efeito inesperado, voltar a 2.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Localizar a matriz do curso</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Buscar o curso</li><li>1.2 Abrir a matriz vigente</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Editar a matriz e as equivalências</span><span class="hta-plan">Plano 2: 2.1, 2.2 e 2.3 em qualquer ordem</span></div>
+                        <ul class="hta-ops"><li>2.1 Ajustar disciplinas e pré-requisitos</li><li>2.2 Cadastrar ou revisar equivalências</li><li>2.3 Registrar a fonte da mudança</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Conferir o efeito da mudança</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2</span></div>
+                        <ul class="hta-ops"><li>3.1 Ver quantos estudantes seriam afetados</li><li>3.2 Abrir exemplos de fluxogramas afetados</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Publicar a mudança</span><span class="hta-plan">Plano 4: 4.1 &gt; 4.2 (opcional)</span></div>
+                        <ul class="hta-ops"><li>4.1 Confirmar a publicação</li><li>4.2 Avisar os estudantes afetados</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: rascunho elaborado com apoio de IA (Claude) (2026); diagrama reproduzido em HTML a partir da Tabela 21.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 21 — Análise HTA da TAR-11</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Atualizar a matriz curricular de um curso e publicar a mudança</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3 &gt; 4; se 3 mostrar efeito inesperado, voltar a 2.</td><td>Uma matriz alterada vale de uma vez para todos os estudantes do curso, mas a interface não deixa claro o que é rascunho e o que já está publicado.</td><td>Separar rascunho de publicado, com a publicação como ação explícita e reversível.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Localizar a matriz do curso</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Cursos com mais de um currículo ativo se confundem na lista.</td><td>Mostrar, em cada item, curso, currículo, ano de vigência e número de estudantes ativos.</td></tr>
+                        <tr><td>1.1 Buscar o curso</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>1.2 Abrir a matriz vigente</td><td><em>Ação física</em></td><td>Não fica claro qual versão da matriz está em vigor, nem quando e por quem foi alterada pela última vez.</td><td>Exibir a versão vigente, a data da última alteração e quem a fez.</td></tr>
+                        <tr class="tr-main"><td><strong>2. Editar a matriz e as equivalências</strong></td><td>Plano 2: 2.1, 2.2 e 2.3 em qualquer ordem</td><td>Erro por deslize (Reason, 1990): um código de pré-requisito digitado errado passa despercebido e chega ao fluxograma de todos os estudantes.</td><td>Validar durante a edição: código inexistente, pré-requisito circular e disciplina sem semestre.</td></tr>
+                        <tr><td>2.1 Ajustar disciplinas e pré-requisitos</td><td><em>Ação cognitiva</em></td><td>Pré-requisitos alternativos ("A ou B") e co-requisitos são difíceis de editar em formulário linear (ver TAR-06).</td><td>Editar a expressão de requisitos em texto, no mesmo formato mostrado ao estudante.</td></tr>
+                        <tr><td>2.2 Cadastrar ou revisar equivalências</td><td><em>Ação cognitiva</em></td><td>A equivalência é regra da coordenação, e o administrador não registra de onde ela veio.</td><td>Campo obrigatório para a fonte (resolução ou ofício), mostrado também ao estudante.</td></tr>
+                        <tr><td>2.3 Registrar a fonte da mudança</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>3. Conferir o efeito da mudança</strong></td><td>Plano 3: 3.1 &gt; 3.2</td><td>O efeito só aparece depois da publicação, quando um estudante reclama.</td><td>Prévia de impacto antes de publicar.</td></tr>
+                        <tr><td>3.1 Ver quantos estudantes seriam afetados</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>3.2 Abrir exemplos de fluxogramas afetados</td><td><em>Ação cognitiva</em></td><td>Sem um exemplo concreto, o número de afetados não diz se a mudança está certa.</td><td>Abrir o fluxograma de um estudante de exemplo, antes e depois, lado a lado.</td></tr>
+                        <tr class="tr-main"><td><strong>4. Publicar a mudança</strong></td><td>Plano 4: 4.1 &gt; 4.2 (opcional)</td><td>Publicar não tem volta fácil: o erro descoberto depois exige nova correção enquanto os estudantes já planejaram com o dado errado.</td><td>Reverter para a versão anterior em um passo, com histórico de versões da matriz.</td></tr>
+                        <tr><td>4.1 Confirmar a publicação</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Avisar os estudantes afetados</td><td><em>Ação física</em></td><td>Quem já tinha plano salvo não sabe que o fluxograma mudou.</td><td>Aviso no painel do estudante, na próxima visita, dizendo o que mudou.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: rascunho elaborado com apoio de IA (Claude) (2026), a validar pelos integrantes.</p>
+            <p class="doc-text">A Tabela 22 registra a contribuição de cada integrante e das ferramentas de IA nesta seção.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 22 — Contribuição dos integrantes e das ferramentas de IA — Análise de tarefas</caption>
+                    <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Felipe Lopes Pedroza</td><td>HTA da TAR-01 e da TAR-02 (persona Larissa) e revisão da notação dos planos de todas as análises.</td></tr>
+                        <tr><td class="td-strong">Matheus do Vale Lameira</td><td>HTA da TAR-03 (persona Caio) e da TAR-04.</td></tr>
+                        <tr><td class="td-strong">Rafael Barbosa de Melo</td><td>HTA da TAR-05 (persona Bruna) e da TAR-06 (persona Yasmin).</td></tr>
+                        <tr><td class="td-strong">Tiago Sousa Nepomuceno</td><td>HTA da TAR-07 e da TAR-08 (persona Diego).</td></tr>
+                        <tr><td class="td-strong">Victor Andreozzi de La Rocque Couto</td><td>HTA da TAR-09 (persona Talita) e CTT da TAR-10: árvore, categorias de tarefa, operadores temporais e lista de verificação.</td></tr>
+                        <tr><td class="td-strong">Claude</td><td>Rascunho da HTA da TAR-11 (Administrador), do diagrama e da linha na matriz de tarefas, a validar pelos integrantes.</td></tr>
+                        <tr><td class="td-strong">Claude e Gemini</td><td>Geração dos diagramas HTA, apoio à redação dos problemas e recomendações, verificação de consistência entre planos e operações e correção da CTT (operadores faltantes e itens 6 e 8 da lista de verificação).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 2 (perfis, personas, cenários e análise de tarefas) a partir do documento consolidado do grupo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes (conteúdo); Matheus (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição do link do vídeo de apresentação da Entrega 2</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Separação do documento em uma página por artefato; mudança apenas de estrutura, sem alteração de conteúdo (issue #32)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Perfil 9 (Administrador) e da persona Helena Duarte, com ajustes de contagem e ressalvas nos textos relacionados (issue #40)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Cenário 8 e da análise de tarefas TAR-11 do Administrador, com renumeração das tabelas seguintes e ressalvas atualizadas (issue #41)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da Tabela 7: todos os integrantes ativos e autoria da persona Helena Duarte (issue #42)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega2_cenarios.html"><span>← Anterior</span>7. Cenários</a>
+                    <a class="next" href="entrega2_questoes.html"><span>Próximo →</span>9. Questões em aberto</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

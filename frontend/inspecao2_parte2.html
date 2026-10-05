@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Relatório de Inspeção da Etapa 2 (Perfil de Usuário, Personas e Análise de Tarefas) dos Grupos 1 (Microsoft Teams) e 3 (Portal Detran) realizado pelo Grupo 2 na disciplina de Interação Humano-Computador da UnB.">
+    <title>Parte II — Inspeção do Grupo 3 (Portal Detran) | Inspeção Etapa 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1080px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        /* Estilos do Documento */
+        .doc-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(9, 9, 11, 0.6);
+            backdrop-filter: blur(12px);
+            font-size: 0.88rem;
+            margin-bottom: 3rem;
+            border-radius: 12px;
+            position: sticky;
+            top: 1rem;
+            z-index: 50;
+        }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: all 0.2s; padding: 0.35rem 0.75rem; border-radius: 6px; }
+        .doc-nav a:hover { color: #fafafa; background: rgba(255,255,255,0.05); }
+        .doc-nav a.highlight-back { color: #34d399; font-weight: 600; }
+        
+        .header-info {
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .header-info { grid-template-columns: 1fr; }
+        }
+        .header-info-content { color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info-content strong { color: #fafafa; }
+        .header-info-content a { color: #10b981; text-decoration: none; }
+        .header-info-content a:hover { text-decoration: underline; }
+
+        .btn-download-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: #ffffff !important;
+            padding: 0.85rem 1.4rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-download-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+            color: #ffffff !important;
+        }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; letter-spacing: -0.5px; }
+        h2.doc-section { font-size: 1.75rem; color: #10b981; margin-top: 3.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        h3.doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        
+        p.doc-text, ul.doc-list li, ol.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list, ol.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        /* Dashboard de Métricas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .stat-card {
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        .stat-card.teams::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .stat-card.detran::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+        .stat-header { display: flex; justify-content: space-between; align-items: center; }
+        .stat-group-name { font-size: 1.1rem; font-weight: 700; color: #ffffff; }
+        .stat-target { font-size: 0.8rem; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 999px;
+            overflow: hidden;
+            display: flex;
+        }
+        .progress-segment { height: 100%; transition: width 0.6s ease; }
+        .segment-conforme { background-color: #10b981; }
+        .segment-incompleto { background-color: #f59e0b; }
+        .segment-nao-conforme { background-color: #ef4444; }
+        .segment-nao-avaliado { background-color: #71717a; }
+
+        .stat-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.8rem;
+            color: #d4d4d8;
+        }
+        .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+        .legend-indicator { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+        /* Tabelas padronizadas */
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: #09090b;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .table-standard {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.93rem;
+        }
+        .table-standard caption {
+            text-align: left;
+            padding: 1.2rem 1.25rem 0.5rem 1.25rem;
+            color: #a1a1aa;
+            font-style: italic;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        .table-standard th {
+            padding: 1.1rem 1.25rem;
+            font-weight: 700;
+            color: #fafafa;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.88rem;
+            letter-spacing: 0.5px;
+        }
+        .table-standard td {
+            padding: 1rem 1.25rem;
+            color: #d4d4d8;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-standard tr:hover td { background: rgba(255,255,255,0.02); }
+
+        /* Badges de Avaliação */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.28rem 0.65rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-conforme {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+        .badge-incompleto {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+        .badge-nao-conforme {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+        .badge-nao-avaliado {
+            background: rgba(113, 113, 122, 0.15);
+            color: #a1a1aa;
+            border: 1px solid rgba(113, 113, 122, 0.3);
+        }
+
+        /* Caixas de Observação / Destaque */
+        .note-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            color: #d1fae5;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .note-box.alert-amber {
+            background: rgba(245, 158, 11, 0.05);
+            border-left-color: #f59e0b;
+            color: #fef3c7;
+        }
+        .note-box strong { color: #ffffff; }
+
+        /* Cartões de lista para Aspectos Éticos e Coleta */
+        .details-card {
+            background: rgba(9, 9, 11, 0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .details-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .details-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            line-height: 1.7;
+            color: #e4e4e7;
+            font-size: 0.96rem;
+        }
+        .details-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+        }
+        .details-list li strong { color: #fafafa; }
+
+        /* Estilos Alto Contraste */
+        body.alto-contraste .landing-body { background: #ffffff !important; color: #000000 !important; }
+        body.alto-contraste .doc-nav { background: #f4f4f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .doc-nav a { color: #000000 !important; }
+        body.alto-contraste .header-info,
+        body.alto-contraste .stat-card,
+        body.alto-contraste .details-card,
+        body.alto-contraste .table-wrapper { background: #ffffff !important; border-color: #000000 !important; box-shadow: none !important; }
+        body.alto-contraste .table-standard th { background: #e4e4e7 !important; color: #000000 !important; border-color: #000000 !important; }
+        body.alto-contraste .table-standard td { color: #000000 !important; border-color: #000000 !important; }
+        body.alto-contraste .badge-conforme { background: #dcfce7 !important; color: #166534 !important; border-color: #166534 !important; }
+        body.alto-contraste .badge-incompleto { background: #fef3c7 !important; color: #92400e !important; border-color: #92400e !important; }
+        body.alto-contraste .badge-nao-conforme { background: #fee2e2 !important; color: #991b1b !important; border-color: #991b1b !important; }
+        body.alto-contraste .badge-nao-avaliado { background: #f4f4f5 !important; color: #27272a !important; border-color: #27272a !important; }
+        body.alto-contraste .note-box { background: #f4f4f5 !important; border-left-color: #000000 !important; color: #000000 !important; }
+        body.alto-contraste h1.doc-title,
+        body.alto-contraste h2.doc-section,
+        body.alto-contraste h3.doc-subsection { color: #000000 !important; border-color: #000000 !important; }
+        body.alto-contraste .text-gradient { -webkit-text-fill-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #10b981; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Inspeção da Etapa 2 · Grupos 1 e 3</p>
+                    <ul>
+                        <li><a href="inspecao2.html">Visão geral</a></li>
+                        <li><a href="inspecao2_intro.html">1. Introdução e Contexto</a></li>
+                        <li><a href="inspecao2_resumo.html">2. Resumo das Respostas das Inspeções</a></li>
+                        <li><a href="inspecao2_parte1.html">Parte I — Inspeção do Grupo 1 (Microsoft Teams)</a></li>
+                        <li><a href="inspecao2_parte2.html" class="active" aria-current="page">Parte II — Inspeção do Grupo 3 (Portal Detran)</a></li>
+                        <li><a href="inspecao2_referencias.html">Referências Bibliográficas e Bibliografia</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="inspecao2.html">Inspeção Etapa 2</a></p>
+            <!-- PARTE II: GRUPO 3 -->
+            <div id="parte2" style="margin-top: 5rem;">
+                <div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-bottom: 2px solid rgba(245, 158, 11, 0.4); padding-bottom: 0.75rem; margin-bottom: 2rem;">
+                    <h1 class="doc-page-title" style="font-size: 2rem; color: #fbbf24; margin: 0; font-weight: 800;">
+                        Parte II — Inspeção do Grupo 3 (Portal Detran)
+                    </h1>
+                    <span style="color: #a1a1aa; font-size: 0.9rem;">Inspeção realizada em 02/10/2026</span>
+                </div>
+
+                <!-- II.1 Personas -->
+                <h3 id="g3-personas" class="doc-subsection">II.1 Personas</h3>
+                <div class="table-wrapper">
+                    <table class="table-standard">
+                        <caption>Tabela 6 — Lista de verificação de Personas (Grupo 3 - Portal Detran).</caption>
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">Nº</th>
+                                <th>Pergunta</th>
+                                <th style="width: 140px;">Resposta</th>
+                                <th>Justificativa dos Inspetores</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">1</td>
+                                <td>A persona possui dados demográficos definidos, tais como idade, sexo e status socioeconômico?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Há idade e demais dados na tabela de perfis. O sexo não está explícito, mas os nomes são todos masculinos, o que o indica.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">2</td>
+                                <td>A persona descreve a experiência no cargo atual, experiência prévia, tempo na empresa, responsabilidades, trabalhos anteriores e plano de carreira?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Há apenas a função (agente de trânsito) e a formação. Falta a profundidade exigida sobre experiência prévia, tempo na empresa e plano de carreira.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">3</td>
+                                <td>A persona especifica informações sobre a empresa em que atua, como o tamanho da empresa e sua área de atuação?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>A área de atuação consta, mas o tamanho da empresa não é informado; fica apenas implícito pelo impacto do Detran na comunidade.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">4</td>
+                                <td>A persona detalha o nível educacional, grau de instrução, área de formação, cursos realizados e alfabetismo?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Os perfis mostram o nível de cada persona (nem todos concursados; há estagiárias que cursam graduação).</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">5</td>
+                                <td>A persona descreve a experiência prévia com computadores, contemplando alfabetismo computacional, habilidade, anos de experiência, além de sistemas e hardwares conhecidos e utilizados?</td>
+                                <td><span class="badge badge-incompleto">⚠ Incompleto</span></td>
+                                <td>Só o perfil do Ricardo traz relação com tecnologia e nível de experiência (intermediário a avançado). As demais personas não têm essa descrição.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">6</td>
+                                <td>A persona apresenta a experiência com produtos específicos ou ferramentas semelhantes, incluindo concorrentes, hábitos de uso, preferências e descontentamentos?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Há o fluxo de uso do sistema e a experiência com o produto, ao menos no perfil do Ricardo.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">7</td>
+                                <td>A persona detalha a tecnologia disponível para o usuário, abrangendo especificações de hardware (como tamanho e resolução de tela, processamento) e softwares/ferramentas de acesso?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Item não listado nas personas. Os inspetores consideraram o requisito muito específico e sugerem registrá-lo como "não listado".</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">8</td>
+                                <td>A persona descreve as atitudes e valores do usuário, como preferências de produto, medo de tecnologia, disposição para assumir riscos/explorar novidades versus preferência por caminhos testados?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Atitudes, valores e expectativas estão presentes para cada perfil.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">9</td>
+                                <td>A persona define o conhecimento do domínio que o usuário possui e se é esperado que ele se torne um especialista?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Item não discutido na reunião de inspeção.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">10</td>
+                                <td>A persona especifica os principais objetivos dos usuários e como eles são alcançados atualmente?</td>
+                                <td><span class="badge badge-incompleto">⚠ Incompleto</span></td>
+                                <td>Item não discutido na reunião de inspeção.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">11</td>
+                                <td>A persona descreve as tarefas do usuário que precisam ser apoiadas (primárias e secundárias), frequência, tempo de realização e experiência prévia em tarefas semelhantes?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Item não discutido na reunião de inspeção.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">12</td>
+                                <td>A persona contempla a motivação para o trabalho (carga horária, prazer, interação social, ambição de promoção) e os idiomas, jargões profissionais ou vocabulários próprios utilizados?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Item não discutido na reunião de inspeção.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- II.2 Elenco de Personas -->
+                <h3 id="g3-elenco" class="doc-subsection">II.2 Elenco de Personas</h3>
+                <div class="note-box alert-amber">
+                    <strong>Nota da reunião:</strong> Os cinco itens do elenco de personas não foram avaliados separadamente na reunião; o Grupo 3 foi inspecionado fundamentalmente pela lista de Personas (seção 1).
+                </div>
+                <div class="table-wrapper">
+                    <table class="table-standard">
+                        <caption>Tabela 7 — Lista de verificação do Elenco de Personas (Grupo 3 - Portal Detran).</caption>
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">Nº</th>
+                                <th>Pergunta</th>
+                                <th style="width: 140px;">Resposta</th>
+                                <th>Justificativa dos Inspetores</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">1</td>
+                                <td>A persona primária foi claramente definida e diferenciada das personas secundárias e anti-personas, representando o foco principal das decisões de design?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Item não discutido na reunião de inspeção.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">2</td>
+                                <td>O perfil detalhado de cada persona inclui características demográficas, objetivos principais, motivações, habilidades técnicas e frustrações relevantes para o domínio do sistema?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Item não discutido na reunião de inspeção.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">3</td>
+                                <td>Cada persona possui um nome fictício, uma foto representativa e uma narrativa (background) verossímil que humaniza o artefato e estimula a empatia da equipe de desenvolvimento?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Item não discutido na reunião de inspeção.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">4</td>
+                                <td>Os dados que fundamentam a criação de cada persona foram extraídos de pesquisas empíricas reais com usuários (como entrevistas, questionários ou observações) e não apenas de suposições da equipe?</td>
+                                <td><span class="badge badge-incompleto">⚠ Incompleto</span></td>
+                                <td>Item não discutido. Observação relacionada: o grupo realizou apenas duas das três entrevistas exigidas.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">5</td>
+                                <td>O elenco de personas cobre adequadamente a diversidade dos principais stakeholders e os diferentes contextos de uso previstos para o sistema interativo?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Item não discutido na reunião de inspeção.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- II.3 CTT -->
+                <h3 id="g3-ctt" class="doc-subsection">II.3 Árvores de Tarefas Concorrentes (CTT)</h3>
+                <div class="note-box" style="border-left-color: #ef4444; background: rgba(239, 68, 68, 0.05); color: #fecaca;">
+                    <strong>Constatação Crítica:</strong> O Grupo 3 não apresentou o artefato CTT: a análise de tarefas do site contém exclusivamente o HTA, com a tarefa raiz "consulta de débitos" na metodologia. Em razão da ausência integral do artefato, todos os itens da lista de verificação foram classificados como <strong>Não conforme</strong>.
+                </div>
+                <div class="table-wrapper">
+                    <table class="table-standard">
+                        <caption>Tabela 8 — Lista de verificação da Árvore de Tarefas Concorrentes - CTT (Grupo 3 - Portal Detran).</caption>
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">Nº</th>
+                                <th>Pergunta</th>
+                                <th style="width: 140px;">Resposta</th>
+                                <th>Justificativa dos Inspetores</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">1</td>
+                                <td>A árvore de tarefas concorrentes (CTT) inicia-se com uma tarefa raiz do tipo abstrata, que representa claramente o objetivo global estratégico e de alto nível do usuário ao interagir com o sistema?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Não há diagrama CTT. A tarefa raiz aparece apenas na metodologia, sem a notação do artefato.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">2</td>
+                                <td>Cada tarefa elementar na árvore está corretamente categorizada e representada em uma das quatro categorias padrão de CTT (usuário, sistema, interativa ou abstrata)?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Não há divisão entre as categorias; o material está misturado e não segue a notação CTT.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">3</td>
+                                <td>O operador temporal de ativação (&gt;&gt;) foi utilizado corretamente para modelar dependências sequenciais estritas?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Artefato CTT ausente; nenhum operador temporal identificado.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">4</td>
+                                <td>O operador temporal de escolha ([]) foi empregado corretamente em pontos onde há bifurcações mutuamente exclusivas?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Artefato CTT ausente; nenhum operador temporal identificado.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">5</td>
+                                <td>O operador temporal de concorrência (|||) foi aplicado corretamente em fluxos de tarefas simultâneas?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Artefato CTT ausente; nenhum operador temporal identificado.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">6</td>
+                                <td>O operador temporal de interrupção ou suspensão ([&gt; ou |&gt;) foi utilizado corretamente para modelar cancelamentos ou falhas?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Artefato CTT ausente; nenhum operador temporal identificado.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">7</td>
+                                <td>A decomposição hierárquica das tarefas reflete fielmente as atividades reais identificadas no perfil dos usuários e nos cenários de uso?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Artefato CTT ausente; não há decomposição em árvore concorrente para avaliar.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">8</td>
+                                <td>A árvore contempla de forma abrangente a diversidade de papéis de usuários e cobre todos os contextos de uso previstos no escopo do projeto?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Artefato CTT ausente; não é possível verificar a cobertura de papéis e contextos.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- II.4 HTA -->
+                <h3 id="g3-hta" class="doc-subsection">II.4 Análise Hierárquica de Tarefas (HTA)</h3>
+                <div class="table-wrapper">
+                    <table class="table-standard">
+                        <caption>Tabela 9 — Lista de verificação da Análise Hierárquica de Tarefas - HTA (Grupo 3 - Portal Detran).</caption>
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">Nº</th>
+                                <th>Pergunta</th>
+                                <th style="width: 140px;">Resposta</th>
+                                <th>Justificativa dos Inspetores</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">1</td>
+                                <td>O artefato HTA define claramente o objetivo de alto nível e realiza a decomposição hierárquica em subobjetivos mutuamente exclusivos e exaustivos?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Cada objetivo complexo de alto nível no portal do Detran foi desdobrado seguindo redescrições lógicas e estruturadas.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">2</td>
+                                <td>O artefato HTA especifica explicitamente os planos (relações entre subobjetivos), indicando sequência fixa, seleção ou paralelo?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Todos os nós dos fluxos têm os planos correspondentes, com a lógica de progressão indicada.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">3</td>
+                                <td>As operações do nível mais baixo estão especificadas com a tupla de operação (input, ação e feedback)?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>O feedback não foi especificado nas operações; há apenas uma menção ao plano 0 (avaliação do serviço), que não equivale a feedback.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">4</td>
+                                <td>O artefato apresenta a análise em ambas as formas: diagrama hierárquico e tabela equivalente detalhada?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>Há as tabelas e o diagrama hierárquico, representado nos planos de ação.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">5</td>
+                                <td>Se há múltiplos agentes, o HTA separa as ações de cada agente em colunas distintas?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>A divisão de responsabilidades entre os papéis de usuário e o sistema atende à recomendação do livro; o artefato foca em um papel específico.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">6</td>
+                                <td>O artefato identifica potenciais problemas ou dificuldades de desempenho em cada subobjetivo ou operação e apresenta recomendações práticas de design?</td>
+                                <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                                <td>A tabela traz problemas, objeções e recomendações.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">7</td>
+                                <td>O artefato registra que a decomposição e os planos foram validados junto às partes interessadas?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Não há registro de validação. O grupo analisou apenas o site e não entrevistou usuários reais.</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold;">8</td>
+                                <td>O artefato examina e antecipa erros humanos com base na classificação de Reason (habilidades, regras e conhecimento)?</td>
+                                <td><span class="badge badge-nao-conforme">✕ Não conforme</span></td>
+                                <td>Antecipação de erros humanos não identificada de forma estruturada. Item sem consenso na reunião (um inspetor chegou a sugerir conforme).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- II.5 Coleta de dados e aspectos éticos -->
+                <h3 id="g3-etica" class="doc-subsection">II.5 Coleta de Dados e Aspectos Éticos</h3>
+                <div class="details-card">
+                    <ul class="details-list">
+                        <li>
+                            <strong>Termo de Consentimento Livre e Esclarecido (TCLE):</strong> Há somente o texto estático, sem qualquer assinatura registrada. Um inspetor pontuou a ausência de assinaturas ou de garantia formal de anonimato; outro ponderou que o modelo textual já resguarda o anonimato sem demandar assinatura pública no repositório. Ponto a alinhar e confirmar com o professor.
+                        </li>
+                        <li>
+                            <strong>Aspectos Éticos e Registro de Investigação:</strong> As seções correspondentes não puderam ser acessadas devido a links quebrados na navegação do site.
+                        </li>
+                        <li>
+                            <strong>Entrevistas com Usuários:</strong> Não foi disponibilizado link de vídeo funcional, e foram realizadas apenas duas entrevistas ao invés das três estipuladas por grupo. As gravações podem estar anexadas no PDF submetido pela equipe.
+                        </li>
+                        <li>
+                            <strong>Artefatos no Menu vs. Conteúdo:</strong> O site do Grupo 3 exibe itens de menu correspondentes a artefatos que o grupo não desenvolveu (como o caso do CTT).
+                        </li>
+                        <li>
+                            <strong>Itens Presentes:</strong> Identificou-se a presença de ferramentas utilizadas, tabela de contribuição individual e referências bibliográficas.
+                        </li>
+                        <li>
+                            <strong>Ausente:</strong> Falta o Histórico de Versões padronizado nos artefatos inspecionados.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+<div class="doc-history">
+<!-- Histórico de Versão -->
+            <h2 id="historico" class="doc-section">
+                <span>Histórico de Versão</span>
+            </h2>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 10 — Histórico de versionamento deste documento de inspeção.</caption>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">Versão</th>
+                            <th style="width: 110px;">Data</th>
+                            <th>Descrição</th>
+                            <th>Autor(es)</th>
+                            <th>Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.0</td>
+                            <td style="font-family: 'JetBrains Mono', monospace;">02/10/2026</td>
+                            <td>Consolidação e publicação das listas de verificação das inspeções da Etapa 2 dos Grupos 1 (Teams) e 3 (Detran).</td>
+                            <td style="color: #60a5fa;">Felipe Lopes Pedroza, Victor Andreozzi, Tiago Sousa, Matheus Do Vale</td>
+                            <td style="color: #34d399;">Felipe Pedroza</td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.1</td>
+                            <td style="font-family: 'JetBrains Mono', monospace;">05/10/2026</td>
+                            <td>Separação do documento em uma página por artefato; mudança apenas de estrutura, sem alteração de conteúdo (issue #33)</td>
+                            <td style="color: #60a5fa;">Matheus</td>
+                            <td style="color: #34d399;">Felipe Pedroza</td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.2</td>
+                            <td style="font-family: 'JetBrains Mono', monospace;">05/10/2026</td>
+                            <td>Preenchimento das 9 respostas pendentes do Grupo 3 (Personas e Elenco) e atualização do resumo (issue #43)</td>
+                            <td style="color: #60a5fa;">Matheus</td>
+                            <td style="color: #34d399;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                </div>
+
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="inspecao2_parte1.html"><span>← Anterior</span>Parte I — Inspeção do Grupo 1 (Microsoft Teams)</a>
+                    <a class="next" href="inspecao2_referencias.html"><span>Próximo →</span>Referências Bibliográficas e Bibliografia</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Documentação e verificação dos artefatos da disciplina de Interação Humano-Computador da Universidade de Brasília.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Campus UnB Gama (FGA)
+            </div>
+        </div>
+    </footer>
+
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
