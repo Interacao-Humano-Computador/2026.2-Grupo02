@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visão geral | Entrega 1 | IHC Grupo 2</title>
+    <title>3. Heatmap de Disponibilidade dos Integrantes | Entrega 1 | IHC Grupo 2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -109,11 +109,11 @@
                     <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
                     <p class="doc-stagenav-title">Entrega 1 · Planejamento do Projeto</p>
                     <ul>
-                        <li><a href="entrega1.html" class="active" aria-current="page">Visão geral</a></li>
+                        <li><a href="entrega1.html">Visão geral</a></li>
                         <li><a href="entrega1_contribuicao.html">Tabela de Contribuição</a></li>
                         <li><a href="entrega1_intro.html">1. Introdução</a></li>
                         <li><a href="entrega1_equipe.html">2. Equipe</a></li>
-                        <li><a href="entrega1_heatmap.html">3. Heatmap de Disponibilidade dos Integrantes</a></li>
+                        <li><a href="entrega1_heatmap.html" class="active" aria-current="page">3. Heatmap de Disponibilidade dos Integrantes</a></li>
                         <li><a href="entrega1_ferramentas.html">4. Ferramentas do Projeto</a></li>
                         <li><a href="entrega1_design.html">5. Processo de Design Selecionado</a></li>
                         <li><a href="entrega1_sites.html">6. Sites Avaliados e Site Selecionado</a></li>
@@ -123,32 +123,38 @@
                     </ul>
                 </aside>
             <article class="doc-content">
-                
-<div class="header-info">
-                <p><strong>Universidade de Brasília - Campus UnB Gama</strong></p>
-                <p><strong>Disciplina:</strong> Interação Humano-Computador (IHC)</p>
-                <p><strong>Professor:</strong> André Barros de Sales</p>
-                <p><strong>Projeto:</strong> NoFluxoUnB</p>
-                <p><strong>Equipe:</strong> Felipe Lopes Pedroza, João Pedro Silveira dos Santos, Matheus do Vale Lameira, Rafael Barbosa de Melo, Tiago Sousa Nepomuceno, Victor Andreozzi de La Rocque Couto, Wanda Maria Wright dos Santos</p>
-                <p><strong>Data:</strong> Brasília, setembro de 2026</p>
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega1.html">Entrega 1</a></p>
+<h1 id="heatmap" class="doc-title doc-page-title">3. Heatmap de Disponibilidade dos Integrantes</h1>
+            <p class="doc-text">A grade a seguir apresenta a disponibilidade semanal dos integrantes da equipe, cruzando dias da semana e faixas de horário. A intensidade da cor e o número em cada célula indicam a quantidade de integrantes disponíveis naquele intervalo, permitindo identificar os melhores horários para reuniões e sessões de trabalho conjunto.</p>
+            
+            <div class="table-wrapper">
+                <table class="table-standard" style="text-align: center;">
+                    <caption style="text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem;">Tabela 3 — Heatmap de disponibilidade semanal dos integrantes. Fonte: elaborado pelos autores, 2026.</caption>
+                    <thead>
+                        <tr>
+                            <th style="text-align: left;">Grade Horária</th><th>Dom</th><th>Seg</th><th>Ter</th><th>Qua</th><th>Qui</th><th>Sex</th><th>Sáb</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">08:00-09:00</td><td>5</td><td>3</td><td>2</td><td>3</td><td>4</td><td>2</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">09:00-10:00</td><td>3</td><td>5</td><td>2</td><td>2</td><td>2</td><td>3</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">10:00-11:00</td><td>7</td><td>3</td><td>2</td><td>2</td><td>2</td><td>3</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">11:00-12:00</td><td>7</td><td>3</td><td>2</td><td>2</td><td>3</td><td>4</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">12:00-13:00</td><td>7</td><td>3</td><td>3</td><td>3</td><td>4</td><td>2</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">13:00-14:00</td><td>6</td><td>3</td><td>3</td><td>3</td><td>2</td><td>4</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">14:00-15:00</td><td>6</td><td>3</td><td>3</td><td>2</td><td>4</td><td>3</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">15:00-16:00</td><td>3</td><td>6</td><td>3</td><td>2</td><td>3</td><td>4</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">16:00-17:00</td><td>5</td><td>6</td><td>3</td><td>3</td><td>4</td><td>3</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">17:00-18:00</td><td>5</td><td>6</td><td>3</td><td>3</td><td>3</td><td>4</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">18:00-19:00</td><td>6</td><td>6</td><td>4</td><td>4</td><td>4</td><td>5</td><td>6</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">19:00-20:00</td><td>7</td><td>6</td><td>5</td><td>6</td><td>7</td><td>5</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">20:00-21:00</td><td>7</td><td>7</td><td>6</td><td>7</td><td>7</td><td>6</td><td>7</td></tr>
+                        <tr><td style="text-align: left; font-family: 'JetBrains Mono', monospace; color: #fafafa;">21:00-22:00</td><td>7</td><td>7</td><td>6</td><td>7</td><td>7</td><td>7</td><td>7</td></tr>
+                    </tbody>
+                </table>
             </div>
+            
 
-            <h1 class="doc-title">Entrega 1 - Planejamento do Projeto<span class="text-gradient">.</span></h1>
-
-
-            <h2 id="artefatos" class="doc-section">Artefatos desta entrega</h2>
-            <ul class="doc-list doc-artifact-list">
-                <li><a href="entrega1_contribuicao.html">Tabela de Contribuição</a></li>
-                <li><a href="entrega1_intro.html">1. Introdução</a></li>
-                <li><a href="entrega1_equipe.html">2. Equipe</a></li>
-                <li><a href="entrega1_heatmap.html">3. Heatmap de Disponibilidade dos Integrantes</a></li>
-                <li><a href="entrega1_ferramentas.html">4. Ferramentas do Projeto</a></li>
-                <li><a href="entrega1_design.html">5. Processo de Design Selecionado</a></li>
-                <li><a href="entrega1_sites.html">6. Sites Avaliados e Site Selecionado</a></li>
-                <li><a href="entrega1_cronograma.html">7. Cronograma Detalhado das Atividades</a></li>
-                <li><a href="entrega1_agradecimentos.html">Agradecimentos</a></li>
-                <li><a href="entrega1_referencias.html">Referências</a></li>
-            </ul>
 <div class="doc-history">
 <section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
             <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
@@ -199,8 +205,8 @@
                 </div>
 
                 <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
-                    <span></span>
-                    <a class="next" href="entrega1_contribuicao.html"><span>Próximo →</span>Tabela de Contribuição</a>
+                    <a class="prev" href="entrega1_equipe.html"><span>← Anterior</span>2. Equipe</a>
+                    <a class="next" href="entrega1_ferramentas.html"><span>Próximo →</span>4. Ferramentas do Projeto</a>
                 </nav>
             </article>
                 <nav class="doc-toc" aria-label="Índice desta página">
