@@ -179,11 +179,11 @@
                 <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a></p>
 <h1 id="tarefas" class="doc-title doc-page-title">8. Análise de tarefas</h1>
             <p class="doc-text">A análise de tarefas usa principalmente a Análise Hierárquica de Tarefas (HTA, Hierarchical Task Analysis), de Annett e Duncan (1967), conforme o Capítulo 6 de Barbosa e Silva (2010). A HTA decompõe o objetivo do usuário em subobjetivos e estes em operações — as ações físicas e cognitivas concretas —, e usa planos para dizer em que ordem e sob quais condições cada parte é executada. Na avaliação em IHC, cada subobjetivo e operação recebe ainda os problemas de usabilidade identificados e a recomendação de reprojeto correspondente.</p>
-            <p class="doc-text">Cada integrante analisa duas tarefas, derivadas das personas e dos cenários das Seções 6 e 7. Para cada tarefa, a análise traz o diagrama de decomposição e a tabela com operações, planos, problemas e recomendações. A décima análise, de Victor, usa a notação CTT (ConcurTaskTrees) para modelar o objetivo geral que liga as demais: planejar e matricular-se no semestre.</p>
+            <p class="doc-text">Cada integrante analisa duas tarefas, derivadas das personas e dos cenários das Seções 6 e 7. Para cada tarefa, a análise traz o diagrama de decomposição e a tabela com operações, planos, problemas e recomendações. A décima análise, de Victor, usa a notação CTT (ConcurTaskTrees) para modelar o objetivo geral que liga as demais: planejar e matricular-se no semestre. Uma décima primeira análise, do perfil Administrador (TAR-11, Seção 8.8), foi acrescentada depois.</p>
             <p class="doc-text"><strong>Notação dos planos.</strong> "A &gt; B": B só depois de A. "A ou B": uma das duas. "em qualquer ordem": todas, sem ordem fixa. "(opcional)": pode ser omitida. "(condicional)" ou "se … fazer": só ocorre quando a condição indicada é verdadeira. Subobjetivos sem decomposição são operações e aparecem com o tipo da ação no lugar do plano.</p>
             <p class="doc-text"><strong>Origem dos problemas.</strong> Os problemas registrados vêm dos achados das sessões com usuários (Seção 3), dos cenários (Seção 7) e da inspeção da plataforma feita por cada integrante. São hipóteses a confirmar com usuários na etapa de avaliação. Nas tabelas, "—" indica operação sem problema próprio além do já registrado no subobjetivo.</p>
             <h3 class="doc-subsection">8.1 Matriz de tarefas</h3>
-            <p class="doc-text">A Tabela 10 relaciona as dez tarefas analisadas, sua origem, a técnica usada e o responsável.</p>
+            <p class="doc-text">A Tabela 10 relaciona as onze tarefas analisadas, sua origem, a técnica usada e o responsável.</p>
             <div class="table-wrapper">
                 <table class="table-standard">
                     <caption>Tabela 10 — Matriz geral de tarefas analisadas</caption>
@@ -199,6 +199,7 @@
                         <tr><td class="td-strong">TAR-08</td><td>Conferir os requisitos de conclusão além das disciplinas</td><td>Cenário 7 (Diego)</td><td>HTA</td><td>Tiago Sousa Nepomuceno</td></tr>
                         <tr><td class="td-strong">TAR-09</td><td>Simular o aproveitamento em uma mudança de curso</td><td>Cenário 6 (Talita); achados da pesquisa (3.1)</td><td>HTA</td><td>Victor Andreozzi de La Rocque Couto</td></tr>
                         <tr><td class="td-strong">TAR-10</td><td>Planejar e matricular-se no semestre (visão geral do fluxo)</td><td>Todas as personas; síntese dos cenários</td><td>CTT</td><td>Victor Andreozzi de La Rocque Couto</td></tr>
+                        <tr><td class="td-strong">TAR-11</td><td>Atualizar a matriz curricular de um curso e publicar a mudança</td><td>Cenário 8 (Helena); persona sem base nas sessões (Seção 9)</td><td>HTA</td><td>A definir (rascunho: Claude)</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -699,10 +700,62 @@
                 <li><strong>Funcionalidades pedidas na pesquisa que ainda não existem.</strong> Simulação de IRA (TAR-04), simulação de mudança de curso (TAR-09) e requisitos de conclusão não disciplinares (TAR-08) obrigam o estudante a sair do sistema. As três coincidem com as sugestões da Seção 3.1.</li>
                 <li><strong>Papel da Darcy.</strong> Em TAR-01, TAR-03 e TAR-04 a Darcy funciona melhor explicando e contextualizando do que calculando: números como IRA e prazos devem vir do sistema, e a assistente explica o resultado.</li>
             </ul>
-            <p class="doc-text">A Tabela 21 registra a contribuição de cada integrante e das ferramentas de IA nesta seção.</p>
+            <h3 class="doc-subsection">8.8 Tarefa do Administrador</h3>
+            <p class="doc-text">Esta análise cobre a persona Helena Duarte (Administrador, Perfil 9) e foi acrescentada depois das demais, a partir do Cenário 8. Como a persona não tem base nas sessões com usuários (Seção 9), os problemas e as recomendações abaixo são hipóteses da equipe sobre a operação da plataforma e precisam ser confirmados com quem a administra antes de orientar decisões de projeto.</p>
+            <h3 id="tar-11" class="doc-subsection">8.8.1 TAR-11 — Atualizar a matriz curricular de um curso e publicar a mudança</h3>
+            <p class="doc-text">Origem: Cenário 8 (Helena). A decomposição hierárquica está na Figura 11, e as operações, planos, problemas e recomendações, na Tabela 21.</p>
+            <figure class="doc-figure">
+                <figcaption>Figura 11 — Diagrama HTA da TAR-11</figcaption>
+            <div class="hta-tree" role="group">
+                <div class="hta-node hta-root"><span class="hta-title">0. Atualizar a matriz curricular de um curso e publicar a mudança</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3 &gt; 4; se 3 mostrar efeito inesperado, voltar a 2.</span></div>
+                <div class="hta-children">
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Localizar a matriz do curso</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <ul class="hta-ops"><li>1.1 Buscar o curso</li><li>1.2 Abrir a matriz vigente</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Editar a matriz e as equivalências</span><span class="hta-plan">Plano 2: 2.1, 2.2 e 2.3 em qualquer ordem</span></div>
+                        <ul class="hta-ops"><li>2.1 Ajustar disciplinas e pré-requisitos</li><li>2.2 Cadastrar ou revisar equivalências</li><li>2.3 Registrar a fonte da mudança</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Conferir o efeito da mudança</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2</span></div>
+                        <ul class="hta-ops"><li>3.1 Ver quantos estudantes seriam afetados</li><li>3.2 Abrir exemplos de fluxogramas afetados</li></ul>
+                    </div>
+                    <div class="hta-branch">
+                        <div class="hta-node hta-l1"><span class="hta-title">4. Publicar a mudança</span><span class="hta-plan">Plano 4: 4.1 &gt; 4.2 (opcional)</span></div>
+                        <ul class="hta-ops"><li>4.1 Confirmar a publicação</li><li>4.2 Avisar os estudantes afetados</li></ul>
+                    </div>
+                </div>
+            </div>
+                <p class="doc-source">Fonte: rascunho elaborado com apoio de IA (Claude) (2026); diagrama reproduzido em HTML a partir da Tabela 21.</p>
+            </figure>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 21 — Análise HTA da TAR-11</caption>
+                    <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td><strong>0. Atualizar a matriz curricular de um curso e publicar a mudança</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3 &gt; 4; se 3 mostrar efeito inesperado, voltar a 2.</td><td>Uma matriz alterada vale de uma vez para todos os estudantes do curso, mas a interface não deixa claro o que é rascunho e o que já está publicado.</td><td>Separar rascunho de publicado, com a publicação como ação explícita e reversível.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Localizar a matriz do curso</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Cursos com mais de um currículo ativo se confundem na lista.</td><td>Mostrar, em cada item, curso, currículo, ano de vigência e número de estudantes ativos.</td></tr>
+                        <tr><td>1.1 Buscar o curso</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>1.2 Abrir a matriz vigente</td><td><em>Ação física</em></td><td>Não fica claro qual versão da matriz está em vigor, nem quando e por quem foi alterada pela última vez.</td><td>Exibir a versão vigente, a data da última alteração e quem a fez.</td></tr>
+                        <tr class="tr-main"><td><strong>2. Editar a matriz e as equivalências</strong></td><td>Plano 2: 2.1, 2.2 e 2.3 em qualquer ordem</td><td>Erro por deslize (Reason, 1990): um código de pré-requisito digitado errado passa despercebido e chega ao fluxograma de todos os estudantes.</td><td>Validar durante a edição: código inexistente, pré-requisito circular e disciplina sem semestre.</td></tr>
+                        <tr><td>2.1 Ajustar disciplinas e pré-requisitos</td><td><em>Ação cognitiva</em></td><td>Pré-requisitos alternativos ("A ou B") e co-requisitos são difíceis de editar em formulário linear (ver TAR-06).</td><td>Editar a expressão de requisitos em texto, no mesmo formato mostrado ao estudante.</td></tr>
+                        <tr><td>2.2 Cadastrar ou revisar equivalências</td><td><em>Ação cognitiva</em></td><td>A equivalência é regra da coordenação, e o administrador não registra de onde ela veio.</td><td>Campo obrigatório para a fonte (resolução ou ofício), mostrado também ao estudante.</td></tr>
+                        <tr><td>2.3 Registrar a fonte da mudança</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr class="tr-main"><td><strong>3. Conferir o efeito da mudança</strong></td><td>Plano 3: 3.1 &gt; 3.2</td><td>O efeito só aparece depois da publicação, quando um estudante reclama.</td><td>Prévia de impacto antes de publicar.</td></tr>
+                        <tr><td>3.1 Ver quantos estudantes seriam afetados</td><td><em>Ação cognitiva</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>3.2 Abrir exemplos de fluxogramas afetados</td><td><em>Ação cognitiva</em></td><td>Sem um exemplo concreto, o número de afetados não diz se a mudança está certa.</td><td>Abrir o fluxograma de um estudante de exemplo, antes e depois, lado a lado.</td></tr>
+                        <tr class="tr-main"><td><strong>4. Publicar a mudança</strong></td><td>Plano 4: 4.1 &gt; 4.2 (opcional)</td><td>Publicar não tem volta fácil: o erro descoberto depois exige nova correção enquanto os estudantes já planejaram com o dado errado.</td><td>Reverter para a versão anterior em um passo, com histórico de versões da matriz.</td></tr>
+                        <tr><td>4.1 Confirmar a publicação</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
+                        <tr><td>4.2 Avisar os estudantes afetados</td><td><em>Ação física</em></td><td>Quem já tinha plano salvo não sabe que o fluxograma mudou.</td><td>Aviso no painel do estudante, na próxima visita, dizendo o que mudou.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: rascunho elaborado com apoio de IA (Claude) (2026), a validar pelos integrantes.</p>
+            <p class="doc-text">A Tabela 22 registra a contribuição de cada integrante e das ferramentas de IA nesta seção.</p>
             <div class="table-wrapper">
                 <table class="table-standard">
-                    <caption>Tabela 21 — Contribuição dos integrantes e das ferramentas de IA — Análise de tarefas</caption>
+                    <caption>Tabela 22 — Contribuição dos integrantes e das ferramentas de IA — Análise de tarefas</caption>
                     <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
                     <tbody>
                         <tr><td class="td-strong">Felipe Lopes Pedroza</td><td>HTA da TAR-01 e da TAR-02 (persona Larissa) e revisão da notação dos planos de todas as análises.</td></tr>
@@ -710,6 +763,7 @@
                         <tr><td class="td-strong">Rafael Barbosa de Melo</td><td>HTA da TAR-05 (persona Bruna) e da TAR-06 (persona Yasmin).</td></tr>
                         <tr><td class="td-strong">Tiago Sousa Nepomuceno</td><td>HTA da TAR-07 e da TAR-08 (persona Diego).</td></tr>
                         <tr><td class="td-strong">Victor Andreozzi de La Rocque Couto</td><td>HTA da TAR-09 (persona Talita) e CTT da TAR-10: árvore, categorias de tarefa, operadores temporais e lista de verificação.</td></tr>
+                        <tr><td class="td-strong">Claude</td><td>Rascunho da HTA da TAR-11 (Administrador), do diagrama e da linha na matriz de tarefas, a validar pelos integrantes.</td></tr>
                         <tr><td class="td-strong">Claude e Gemini</td><td>Geração dos diagramas HTA, apoio à redação dos problemas e recomendações, verificação de consistência entre planos e operações e correção da CTT (operadores faltantes e itens 6 e 8 da lista de verificação).</td></tr>
                     </tbody>
                 </table>
