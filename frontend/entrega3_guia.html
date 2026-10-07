@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Guia de estilo | Entrega 3 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 3 · Princípios Gerais de Projeto, Metas de Usabilidade e Guia de Estilo</p>
+                    <ul>
+                        <li><a href="entrega3.html">Visão geral</a></li>
+                        <li><a href="entrega3_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega3_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega3_principios.html">2. Princípios gerais de projeto</a></li>
+                        <li><a href="entrega3_plataforma.html">3. Características da plataforma</a></li>
+                        <li><a href="entrega3_metas.html">4. Metas de usabilidade</a></li>
+                        <li><a href="entrega3_guia.html" class="active" aria-current="page">5. Guia de estilo</a></li>
+                        <li><a href="entrega3_questoes.html">6. Questões em aberto</a></li>
+                        <li><a href="entrega3_referencias.html">7. Referências</a></li>
+                        <li><a href="entrega3_lv-principios.html">Lista de verificação — Princípios gerais de projeto</a></li>
+                        <li><a href="entrega3_lv-plataforma.html">Lista de verificação — Características da plataforma</a></li>
+                        <li><a href="entrega3_lv-metas.html">Lista de verificação — Metas de usabilidade</a></li>
+                        <li><a href="entrega3_lv-guia.html">Lista de verificação — Guia de estilo</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega3.html">Entrega 3</a></p>
+            <h1 id="guia" class="doc-title doc-page-title">5. Guia de estilo</h1>
+<p class="doc-text">Um guia de estilo reúne os princípios e as diretrizes adotados em um registro das principais decisões de design, serve de comunicação entre a equipe de design e a de desenvolvimento e permite consultar e reutilizar as decisões em extensões ou versões futuras (BARBOSA; SILVA, 2010, p. 282). Pode ter escopo de plataforma, corporativo, de família de produtos ou de um produto específico (p. 282); este guia tem escopo de produto específico, o NoFluxoUnB. Segue a estrutura comum de Marcus e Mayhew: introdução, resultados de análise, elementos de interface, de interação e de ação, e vocabulário e padrões (p. 283), e mantém o vínculo entre cada decisão e sua origem, o design rationale (p. 283). Como o livro alerta, o guia não é um conjunto de regras, e sim uma ferramenta de apoio ao trabalho e à criatividade (p. 284). Como referência de organização, o grupo consultou o Guia de Estilos BI da Dataprev, que reaproveita o cabeçalho, as cores e a tipografia dos sistemas transacionais do mesmo cliente para manter a familiaridade (DATAPREV, 2016, p. 8–11).</p>
+<h3 class="doc-subsection" id="guia-introducao-do-guia">5.1 Introdução do guia</h3>
+<p class="doc-text"><strong>Objetivo:</strong> registrar as decisões visuais e de interação do NoFluxoUnB para as propostas de reprojeto e para as avaliações seguintes. <strong>Público:</strong> integrantes do grupo e quem der continuidade ao projeto. <strong>Uso:</strong> consultar antes de desenhar uma tela e verificar, nas avaliações, se as decisões foram seguidas. <strong>Manutenção:</strong> revisar a cada etapa, registrando a mudança, o motivo e a origem (tarefa, cenário ou achado da Entrega 2).</p>
+<h3 class="doc-subsection" id="guia-resultados-de-analise">5.2 Resultados de análise</h3>
+<p class="doc-text">Os usuários são estudantes da UnB em sete personas, com Larissa como persona primária; usam o sistema no celular, a caminho do campus, e no computador, em casa (<a href="entrega2_elenco.html">Entrega 2, Seções 5</a> e <a href="entrega2_personas.html">6</a>). Os problemas que mais pesam no visual são o estado das disciplinas comunicado só por cor, a dificuldade de ler o fluxograma em tela pequena e os termos acadêmicos sem explicação (<a href="entrega2_tarefas.html">Seção 8.7 da Entrega 2</a>). A plataforma em uso já tem identidade visual definida: tema escuro (fundo #050507, texto #F7F7F8), logotipo em branco e roxo, destaques em roxo e fonte Inter. O guia parte dessa identidade e propõe ajustes de contraste e de comunicação dos estados.</p>
+<h3 class="doc-subsection" id="guia-cores">5.3 Elementos de interface: cores</h3>
+<div class="table-wrapper">
+<table class="table-standard">
+<caption>Tabela 4 — Paleta base</caption>
+<thead><tr><th>Elemento</th><th>Cor</th><th>Uso</th><th>Razão de contraste</th></tr></thead>
+<tbody>
+<tr><td class="td-strong">Fundo padrão</td><td style="background:#FFFFFF;color:#111;font-weight:700">#FFFFFF</td><td>Fundo das telas no tema claro.</td><td>—</td></tr>
+<tr><td class="td-strong">Texto principal</td><td style="background:#111111;color:#FFF;font-weight:700">#111111</td><td>Texto de corpo e títulos.</td><td>18,9:1 sobre o fundo padrão</td></tr>
+<tr><td class="td-strong">Texto secundário</td><td style="background:#4A4A4A;color:#FFF;font-weight:700">#4A4A4A</td><td>Legendas e dicas.</td><td>8,9:1 sobre o fundo padrão</td></tr>
+<tr><td class="td-strong">Roxo principal</td><td style="background:#5B2C83;color:#FFF;font-weight:700">#5B2C83</td><td>Botões, links e seleção (proposto para o tema claro).</td><td>9,8:1 sobre o fundo padrão; texto branco sobre o roxo 9,8:1</td></tr>
+<tr><td class="td-strong">Roxo escuro</td><td style="background:#2E1A47;color:#FFF;font-weight:700">#2E1A47</td><td>Cabeçalho da aplicação.</td><td>Texto branco sobre o roxo escuro 15,5:1</td></tr>
+<tr><td class="td-strong">Roxo claro</td><td style="background:#EDE7F6;color:#111;font-weight:700">#EDE7F6</td><td>Fundo de realce e de seleção.</td><td>Roxo principal sobre o roxo claro 8,1:1</td></tr>
+<tr><td class="td-strong">Fundo opcional: cinza claro</td><td style="background:#EDEDED;color:#111;font-weight:700">#EDEDED</td><td>Preferência do usuário.</td><td>Texto principal sobre este fundo 16,1:1</td></tr>
+<tr><td class="td-strong">Fundo opcional: neutro</td><td style="background:#F5F5F5;color:#111;font-weight:700">#F5F5F5</td><td>Preferência do usuário.</td><td>Texto principal sobre este fundo 17,3:1</td></tr>
+<tr><td class="td-strong">Tema escuro (atual): fundo</td><td style="background:#050507;color:#FFF;font-weight:700">#050507</td><td>Fundo das telas; valor medido na plataforma.</td><td>—</td></tr>
+<tr><td class="td-strong">Tema escuro (atual): texto</td><td style="background:#F7F7F8;color:#111;font-weight:700">#F7F7F8</td><td>Texto de corpo e títulos; valor medido na plataforma.</td><td>19,0:1 sobre o fundo escuro</td></tr>
+<tr><td class="td-strong">Tema escuro: roxo (proposto)</td><td style="background:#CDB4F0;color:#111;font-weight:700">#CDB4F0</td><td>Botões, links e seleção.</td><td>11,0:1 sobre o fundo escuro</td></tr>
+</tbody>
+</table>
+</div>
+<p class="doc-source">Fonte: elaborado pelo grupo (2026); razões de contraste calculadas pela fórmula de luminância relativa do WCAG 2.1.</p>
+<p class="doc-text">Regra geral: a plataforma já tem legenda e rótulos nos cartões (optativa, equivalência, módulo livre), e o guia reforça que o estado de uma disciplina nunca seja comunicado só pela cor; cada estado combina cor, ícone e rótulo (BARBOSA; SILVA, 2010, p. 277). Texto de corpo exige razão de contraste de pelo menos 4,5:1, critério de nível AA do WCAG 2.1; os tons abaixo atendem a esse valor nos dois temas.</p>
+<div class="table-wrapper">
+<table class="table-standard">
+<caption>Tabela 5 — Estados de disciplina</caption>
+<thead><tr><th>Estado</th><th>Tema claro</th><th>Tema escuro</th><th>Ícone</th><th>Rótulo</th><th>Quando se aplica</th></tr></thead>
+<tbody>
+<tr><td class="td-strong">Aprovado</td><td style="background:#1B7F3B;color:#FFF;font-weight:700">#1B7F3B<br><span style="font-weight:400;font-size:0.85em">5,1:1</span></td><td style="background:#6FCF8E;color:#111;font-weight:700">#6FCF8E<br><span style="font-weight:400;font-size:0.85em">9,8:1</span></td><td>Marca de verificação</td><td>Aprovado</td><td>Disciplina concluída no histórico (cor verde na plataforma).</td></tr>
+<tr><td class="td-strong">Matriculado</td><td style="background:#5B2C83;color:#FFF;font-weight:700">#5B2C83<br><span style="font-weight:400;font-size:0.85em">9,8:1</span></td><td style="background:#CDB4F0;color:#111;font-weight:700">#CDB4F0<br><span style="font-weight:400;font-size:0.85em">10,2:1</span></td><td>Relógio</td><td>Matriculado</td><td>Disciplina em curso no semestre (cor roxa na plataforma).</td></tr>
+<tr><td class="td-strong">Disponível</td><td style="background:#8A5A00;color:#FFF;font-weight:700">#8A5A00<br><span style="font-weight:400;font-size:0.85em">5,9:1</span></td><td style="background:#FFD180;color:#111;font-weight:700">#FFD180<br><span style="font-weight:400;font-size:0.85em">13,1:1</span></td><td>Círculo aberto</td><td>Disponível</td><td>Pré-requisitos cumpridos; pode ser cursada (cor laranja na plataforma).</td></tr>
+<tr><td class="td-strong">Reprovado</td><td style="background:#B3261E;color:#FFF;font-weight:700">#B3261E<br><span style="font-weight:400;font-size:0.85em">6,5:1</span></td><td style="background:#FF8A80;color:#111;font-weight:700">#FF8A80<br><span style="font-weight:400;font-size:0.85em">8,2:1</span></td><td>Marca de erro</td><td>Reprovado</td><td>Reprovada no histórico (cor vermelha na plataforma).</td></tr>
+<tr><td class="td-strong">Bloqueado</td><td style="background:#37474F;color:#FFF;font-weight:700">#37474F<br><span style="font-weight:400;font-size:0.85em">9,6:1</span></td><td style="background:#B0BEC5;color:#111;font-weight:700">#B0BEC5<br><span style="font-weight:400;font-size:0.85em">9,8:1</span></td><td>Cadeado</td><td>Bloqueado</td><td>Falta pré-requisito (cor cinza na plataforma).</td></tr>
+</tbody>
+</table>
+</div>
+<p class="doc-source">Fonte: elaborado pelo grupo (2026). Os cinco estados e a cor-base de cada um (verde, roxo, laranja, vermelho, cinza) foram observados na plataforma; os tons exatos, os ícones e os rótulos são propostas do grupo, com contraste calculado, e devem ser conferidos com a legenda do site. Abaixo de cada cor, a razão de contraste contra o branco (tema claro) ou contra o fundo escuro (tema escuro).</p>
+<p class="doc-text">Os fundos opcionais cinza claro e neutro atendem ao contraste, mas o livro desaconselha fundos cinza para texto (BARBOSA; SILVA, 2010, p. 276); por isso, entre os temas opcionais, o branco é o recomendado e os demais entram apenas como preferência do usuário.</p>
+<h3 class="doc-subsection" id="guia-tipografia">5.4 Elementos de interface: tipografia</h3>
+<p class="doc-text">A plataforma usa a família Inter, sem serifa, com alternativas genéricas do sistema; o guia mantém Inter. Corpo de texto com no mínimo 16 px no celular e rótulos com no mínimo 14 px. Dados numéricos, como IRA, créditos e prazo previsto, aparecem em tamanho e peso maiores que rótulos e instruções (BARBOSA; SILVA, 2010, p. 276–277). O layout deve suportar o aumento do tamanho da fonte pelo usuário sem perder conteúdo (p. 277).</p>
+<h3 class="doc-subsection" id="guia-layout">5.5 Elementos de interface: layout, símbolos e animações</h3>
+<p class="doc-text"><strong>Layout.</strong> No celular, uma coluna, com resumo de situação no topo, painel de detalhes da disciplina como gaveta inferior e Darcy em tela própria. No desktop, fluxograma na área principal e painel de detalhes e Darcy em painel lateral que não cobre o fluxograma (<a href="entrega2_tarefas.html">TAR-03</a>). Alvos de toque de pelo menos 44 x 44 px; margens laterais de 16 px no celular e de 24 px no desktop. O cabeçalho em roxo escuro mostra o nome da página atual, para que o estudante saiba onde está (p. 108). <strong>Símbolos.</strong> Um único conjunto de ícones, sempre acompanhados de rótulo; cada ícone tem um só significado (o cadeado indica apenas disciplina bloqueada; o alfinete, apenas disciplina fixada na grade). <strong>Animações.</strong> Curtas e discretas, desativadas quando o sistema do usuário pede redução de movimento.</p>
+<h3 class="doc-subsection" id="guia-interacao">5.6 Elementos de interação e de ação</h3>
+<div class="table-wrapper">
+<table class="table-standard">
+<caption>Tabela 6 — Padrões de interação e de ação</caption>
+<thead><tr><th>Elemento</th><th>Padrão</th><th>Origem</th></tr></thead>
+<tbody>
+<tr><td class="td-strong">Busca</td><td>Campo no topo do fluxograma e da grade, por nome ou código da disciplina.</td><td><a href="entrega2_tarefas.html">TAR-02</a>; <a href="entrega2_tarefas.html">TAR-06</a></td></tr>
+<tr><td class="td-strong">Seleção de disciplina</td><td>Toque ou clique abre o painel de detalhes, com o veredito “pode cursar: sim ou não” no topo, o motivo logo abaixo e a cadeia de pré-requisitos destacada.</td><td><a href="entrega2_tarefas.html">TAR-01</a>; <a href="entrega2_tarefas.html">TAR-06</a></td></tr>
+<tr><td class="td-strong">Mover disciplina</td><td>Arrastar sempre acompanhado da alternativa por menu “mover para o semestre…”.</td><td><a href="entrega2_tarefas.html">TAR-02, 2.1</a></td></tr>
+<tr><td class="td-strong">Fixar disciplina</td><td>Ação “fixar” (ícone de alfinete) que impede a remoção e a troca de turma por engano.</td><td><a href="entrega2_tarefas.html">TAR-07</a></td></tr>
+<tr><td class="td-strong">Modo simulação</td><td>Faixa “Simulação — não salvo” em todas as telas do modo e botão explícito “Adotar como plano”.</td><td><a href="entrega2_tarefas.html">TAR-02</a></td></tr>
+<tr><td class="td-strong">Salvar</td><td>Confirmação visível e acesso à grade salva a partir do painel principal.</td><td><a href="entrega2_tarefas.html">TAR-07</a></td></tr>
+<tr><td class="td-strong">Ações destrutivas</td><td>Separadas das ações de uso frequente e sempre reversíveis, por desfazer ou confirmação (p. 277).</td><td>Livro, p. 277</td></tr>
+<tr><td class="td-strong">Ajuda contextual</td><td>Termo técnico com sublinhado pontilhado; ao tocar ou passar o mouse, definição de uma frase e link para o glossário.</td><td><a href="entrega2_tarefas.html">TAR-03</a></td></tr>
+</tbody>
+</table>
+</div>
+<p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+<h3 class="doc-subsection" id="guia-vocabulario">5.7 Vocabulário e padrões de diálogo</h3>
+<div class="table-wrapper">
+<table class="table-standard">
+<caption>Tabela 7 — Terminologia padronizada</caption>
+<thead><tr><th>Termo</th><th>Definição e regra de uso</th></tr></thead>
+<tbody>
+<tr><td class="td-strong">Pré-requisito</td><td>Disciplina que precisa estar cumprida antes.</td></tr>
+<tr><td class="td-strong">Co-requisito</td><td>Disciplina que precisa ser cursada no mesmo semestre; o aviso diz “exige matrícula simultânea em” seguido da disciplina.</td></tr>
+<tr><td class="td-strong">Equivalência</td><td>Disciplina cursada que vale por outra da matriz; a plataforma a identifica com o rótulo “equiv.” no cartão.</td></tr>
+<tr><td class="td-strong">Matriculado e Disponível</td><td>Matriculado é a disciplina em curso no semestre; disponível é a que já pode ser cursada por ter os pré-requisitos cumpridos.</td></tr>
+<tr><td class="td-strong">Simulação, plano e cenário</td><td>Simulação é a hipótese não salva; plano é o planejamento salvo; cenário é uma simulação salva com nome.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir de <a href="entrega2_tarefas.html">TAR-03</a>, <a href="entrega2_tarefas.html">TAR-06</a> e <a href="entrega2_cenarios.html">Cenário 6</a> e da legenda da plataforma.</p>
+<p class="doc-text"><strong>Mensagens de erro:</strong> dizer o que aconteceu, a causa provável e o que fazer, como em “Não foi possível ler o histórico. O arquivo parece ser uma imagem digitalizada. Emita o histórico novamente pelo SIGAA” (<a href="entrega2_tarefas.html">TAR-01, 2</a>). <strong>Respostas da Darcy:</strong> iniciar com “Estimativa:” ou “Confirmado pelo sistema:”, conforme o caso (<a href="entrega2_cenarios.html">Cenário 6</a>; <a href="entrega2_tarefas.html">TAR-04</a>). <strong>Sequências de diálogo:</strong> ao enviar um novo histórico, confirmar a substituição do anterior e mostrar o que mudou (<a href="entrega2_tarefas.html">TAR-05, 1.2</a>); antes de abrir o fluxograma, confirmar o curso e o currículo lidos (<a href="entrega2_tarefas.html">TAR-01, 2.2</a>).</p>
+<p class="doc-text">Cada decisão deste guia traz sua origem entre parênteses ou na coluna de origem das tabelas; a manutenção do guia deve preservar esse vínculo (BARBOSA; SILVA, 2010, p. 283).</p>
+<h3 class="doc-subsection">Contribuição</h3>
+<p class="doc-text">A Tabela 13 registra a contribuição de cada integrante e das ferramentas de IA nesta seção.</p>
+<div class="table-wrapper">
+<table class="table-standard">
+<caption>Tabela 13 — Contribuição dos integrantes e das ferramentas de IA — 5. Guia de estilo</caption>
+<thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+<tbody>
+<tr><td class="td-strong">Felipe Lopes Pedroza</td><td>Elaboração do guia de estilo.</td></tr>
+<tr><td class="td-strong">Matheus do Vale Lameira</td><td>Elaboração do guia de estilo, em conjunto com Felipe.</td></tr>
+<tr><td class="td-strong">Tiago Sousa Nepomuceno</td><td>Revisão do documento.</td></tr>
+<tr><td class="td-strong">Victor Andreozzi de La Rocque Couto</td><td>Revisão do documento.</td></tr>
+<tr><td class="td-strong">Claude</td><td>Redação do texto, montagem das Tabelas 4 a 7 e cálculo das razões de contraste.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 3 (princípios gerais de projeto, metas de usabilidade, guia de estilo e características da plataforma) a partir do documento do grupo, separada por artefato, com o link do vídeo da apresentação e as tabelas de contribuição por seção (issue #49)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe e Matheus (conteúdo); Matheus (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Tiago e Victor (revisão do documento original)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das listas de verificação de princípios gerais de projeto, características da plataforma, metas de usabilidade e guia de estilo, com citação, página e capítulo de cada fonte (issue #50)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das chamadas no texto para as Tabelas 1 e 4 a 8 e das ligações da tabela de contribuição consolidada com as tabelas de cada seção (issue #49)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Capa e links da visão geral reproduzidos como no documento; retirados os textos de introdução e de referências por seção acrescentados na publicação, para manter o conteúdo do documento sem alterações (issue #49)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega3_metas.html"><span>← Anterior</span>4. Metas de usabilidade</a>
+                    <a class="next" href="entrega3_questoes.html"><span>Próximo →</span>6. Questões em aberto</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de verificação — Metas de usabilidade | Entrega 3 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 3 · Princípios Gerais de Projeto, Metas de Usabilidade e Guia de Estilo</p>
+                    <ul>
+                        <li><a href="entrega3.html">Visão geral</a></li>
+                        <li><a href="entrega3_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega3_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega3_principios.html">2. Princípios gerais de projeto</a></li>
+                        <li><a href="entrega3_plataforma.html">3. Características da plataforma</a></li>
+                        <li><a href="entrega3_metas.html">4. Metas de usabilidade</a></li>
+                        <li><a href="entrega3_guia.html">5. Guia de estilo</a></li>
+                        <li><a href="entrega3_questoes.html">6. Questões em aberto</a></li>
+                        <li><a href="entrega3_referencias.html">7. Referências</a></li>
+                        <li><a href="entrega3_lv-principios.html">Lista de verificação — Princípios gerais de projeto</a></li>
+                        <li><a href="entrega3_lv-plataforma.html">Lista de verificação — Características da plataforma</a></li>
+                        <li><a href="entrega3_lv-metas.html" class="active" aria-current="page">Lista de verificação — Metas de usabilidade</a></li>
+                        <li><a href="entrega3_lv-guia.html">Lista de verificação — Guia de estilo</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega3.html">Entrega 3</a></p>
+<h1 id="lv-metas" class="doc-title doc-page-title">Lista de verificação — Metas de usabilidade</h1>
+            <p class="doc-text">Esta lista serve para inspecionar o artefato de metas de usabilidade do projeto NoFluxoUnB. Reúne 10 itens. Cada item é uma pergunta de verificação, escrita com palavras do grupo a partir da bibliografia da disciplina, e traz o trecho literal da fonte, a página e o arquivo de onde saiu, para que qualquer resposta possa ser conferida.</p>
+            <p class="doc-text"><strong>Como responder.</strong> Cada item recebe uma das respostas Conforme, Não conforme ou Não se aplica, com base apenas no texto de origem citado. As citações foram conferidas automaticamente contra os PDFs; as páginas indicadas são as do livro (ou do slide) e, entre parênteses, as do arquivo PDF.</p>
+            <h3 class="doc-subsection">Contribuição</h3>
+            <p class="doc-text">A Tabela 19 registra a contribuição de cada integrante e das ferramentas de IA nesta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 19 — Contribuição dos integrantes e das ferramentas de IA — Lista de verificação — Metas de usabilidade</caption>
+                    <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Matheus do Vale Lameira</td><td>Elaboração dos itens e conferência de cada trecho citado contra o PDF de origem.</td></tr>
+                        <tr><td class="td-strong">Claude</td><td>Ferramenta de revisão e estrutura: conferência das citações contra os PDFs e organização das páginas.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+            <article class="lv-item" id="item-1">
+                <p class="lv-question"><strong>Item 1:</strong> Os fatores de qualidade de uso escolhidos como metas pertencem aos critérios de qualidade de uso descritos pelo livro (usabilidade, experiência do usuário, acessibilidade, comunicabilidade)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Facilidade de aprendizado, eficiência e satisfação são fatores de usabilidade; acessibilidade e comunicabilidade são critérios à parte.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Os critérios de qualidade de uso descritos neste livro são: usabilidade, experiência do usuário, acessibilidade e comunicabilidade. A usabilidade é o critério de qualidade de uso mais conhecido”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>28</strong> (página 35 do PDF), Capítulo 2 – Conceitos Básicos, 2.2 Qualidade em IHC. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-2">
+                <p class="lv-question"><strong>Item 2:</strong> O artefato declara quais fatores de qualidade de uso serão priorizados no projeto e como cada um será avaliado ao longo do processo de design?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Uma lista de metas em que cada fator aparece com um grau de prioridade e uma forma de avaliação prevista.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“A definição das metas de usabilidade envolve definir os fatores de qualidade de uso que devem ser priorizados no projeto, como serão avaliados ao longo do”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>105</strong> (página 111 do PDF), Capítulo 4 – Processos de Design de IHC, 4.3.2 Engenharia de Usabilidade de Nielsen. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-3">
+                <p class="lv-question"><strong>Item 3:</strong> Para cada indicador de interesse, o artefato estabelece as faixas de valores inaceitáveis, aceitáveis e ideais?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Indicador: tempo para concluir a tarefa; faixas: inaceitável, aceitável e ideal, cada uma com seus valores.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“e quais faixas de valores são inaceitáveis, aceitáveis e ideais para cada indicador de interesse”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>106</strong> (página 112 do PDF), Capítulo 4 – Processos de Design de IHC, 4.3.2 Engenharia de Usabilidade de Nielsen. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-4">
+                <p class="lv-question"><strong>Item 4:</strong> A priorização dos fatores justifica-se pelas necessidades dos usuários, reconhecendo que não é possível atingir todos os critérios ao mesmo tempo?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Um sistema com muitos atalhos é eficiente, mas os atalhos são mais difíceis de lembrar para usuários ocasionais.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Dificilmente um único sistema será muito bom em todos os critérios de usabilidade, porque não é fácil articular esses critérios sem que haja perdas em um ou mais deles (...) É importante conhecermos as necessidades dos usuários e estabelecermos quais critérios de usabilidade devem ser priorizados no sistema em questão”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>32</strong> (página 39 do PDF), Capítulo 2 – Conceitos Básicos, 2.2.1 Usabilidade e Experiência de Usuário. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-5">
+                <p class="lv-question"><strong>Item 5:</strong> O artefato informa em que se baseiam as faixas de valores (indicadores atuais de desempenho ou dados quantitativos coletados) ou declara que essa base ainda não existe?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>No livro, o quiosque de livraria em que 50% dos usuários desistem da busca serve de ponto de partida para as metas.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Com frequência, essa priorização se baseia nos indicadores atuais de desempenho dos usuários ao utilizarem o sistema (...) Com base nesses resultados e nos dados quantitativos coletados, podemos então estabelecer as faixas de valores aceitáveis e ideais para cada indicador”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>106</strong> (página 112 do PDF), Capítulo 4 – Processos de Design de IHC, 4.3.2 Engenharia de Usabilidade de Nielsen. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-6">
+                <p class="lv-question"><strong>Item 6:</strong> Cada meta está associada a um ou mais indicadores mensuráveis?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Proporção de usuários que completam ou abandonam a tarefa; tempo para concluir a tarefa com sucesso; número de erros.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“As metas de usabilidade para esse projeto podem ser: aumentar a facilidade de aprendizado e a eficiência do sistema. Os indicadores correspondentes poderiam ser: número de usuários que acessam o sistema em diferentes dias da semana; proporção de usuários que completam/abandonam a tarefa de busca; tempo que cada usuário leva para concluir a tarefa com sucesso”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>106</strong> (página 112 do PDF), Capítulo 4 – Processos de Design de IHC, Exemplo 4.1 – Metas de usabilidade para um sistema de busca de livros em uma livraria (Seção 4.3.2). <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-7">
+                <p class="lv-question"><strong>Item 7:</strong> As metas foram definidas com base no perfil dos usuários, na análise de tarefas, nas possibilidades e limitações da plataforma e nos princípios gerais de design de IHC?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Origem de cada meta indicada: perfil de usuário, tarefa analisada, restrição da plataforma ou princípio de design.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Na fase de análise de requisitos são definidas as metas de usabilidade com base no perfil dos usuários, análise de tarefas, possibilidades e limitações da plataforma em que o sistema será executado e princípios gerais de design de IHC”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>109</strong> (página 115 do PDF), Capítulo 4 – Processos de Design de IHC, 4.3.3 Engenharia de Usabilidade de Mayhew. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-8">
+                <p class="lv-question"><strong>Item 8:</strong> O artefato prevê que as metas serão verificadas a cada iteração de design e avaliação, até serem alcançadas?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Medir os indicadores a cada nova versão do protótipo e repetir o ciclo enquanto a meta não for atingida.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“o processo deve ser repetir até que as metas de usabilidade tenham sido alcançadas”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>109</strong> (página 115 do PDF), Capítulo 4 – Processos de Design de IHC, 4.3.2 Engenharia de Usabilidade de Nielsen. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-9">
+                <p class="lv-question"><strong>Item 9:</strong> Quando a facilidade de aprendizado é uma meta, ela é tratada em termos de tempo e esforço para o usuário atingir determinado nível de competência e desempenho?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Quanto tempo um usuário leva para aprender a realizar as atividades principais.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“A facilidade de aprendizado se refere ao tempo e esforço necessários para que o usuário aprenda a utilizar o sistema com determinado nível de competência e desempenho”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>29</strong> (página 36 do PDF), Capítulo 2 – Conceitos Básicos, 2.2.1 Usabilidade e Experiência de Usuário. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-10">
+                <p class="lv-question"><strong>Item 10:</strong> Quando acessibilidade e comunicabilidade são consideradas metas, o artefato as trata como critérios de qualidade de uso próprios (remoção de barreiras de acesso e comunicação ao usuário da lógica de design)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Acessibilidade: remover barreiras que impedem mais usuários de acessar a interface; comunicabilidade: comunicar a lógica do design.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“O critério de acessibilidade está relacionado à remoção das barreiras que impedem mais usuários de serem capazes de acessar a interface do sistema e interagirem com ele (...) O critério de comunicabilidade chama atenção para a responsabilidade de o designer comunicar ao usuário suas intenções de design e a lógica que rege o comportamento da interface”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>28</strong> (página 35 do PDF), Capítulo 2 – Conceitos Básicos, 2.2 Qualidade em IHC. <a href="#ref-barbosa2010livro">BARBOSA; SILVA (2010)</a>. Arquivo: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <h3 class="doc-subsection">Páginas das fontes utilizadas</h3>
+            <p class="doc-text">A Tabela 20 resume de quais obras, arquivos e páginas saíram os itens desta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 20 — Páginas das fontes utilizadas na lista de verificação — Metas de usabilidade</caption>
+                    <thead><tr><th>Obra</th><th>Arquivo</th><th>Páginas (livro ou slide)</th><th>Páginas (PDF)</th><th>Itens</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">BARBOSA; SILVA (2010)</td><td><code>INTERACAO_HUMANO_COMPUTADOR.pdf</code></td><td>28, 29, 32, 105, 106, 109</td><td>35, 36, 39, 111, 112, 115</td><td>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir dos itens desta lista.</p>
+            <h3 class="doc-subsection" id="referencias-lista">Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li id="ref-barbosa2010livro">BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. ISBN 978-85-352-3418-3. Arquivo consultado: <code>INTERACAO_HUMANO_COMPUTADOR.pdf</code> (livro completo; páginas citadas conforme a numeração impressa no livro, com a página do PDF entre parênteses).</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 3 (princípios gerais de projeto, metas de usabilidade, guia de estilo e características da plataforma) a partir do documento do grupo, separada por artefato, com o link do vídeo da apresentação e as tabelas de contribuição por seção (issue #49)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe e Matheus (conteúdo); Matheus (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Tiago e Victor (revisão do documento original)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das listas de verificação de princípios gerais de projeto, características da plataforma, metas de usabilidade e guia de estilo, com citação, página e capítulo de cada fonte (issue #50)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das chamadas no texto para as Tabelas 1 e 4 a 8 e das ligações da tabela de contribuição consolidada com as tabelas de cada seção (issue #49)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Capa e links da visão geral reproduzidos como no documento; retirados os textos de introdução e de referências por seção acrescentados na publicação, para manter o conteúdo do documento sem alterações (issue #49)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega3_lv-plataforma.html"><span>← Anterior</span>Lista de verificação — Características da plataforma</a>
+                    <a class="next" href="entrega3_lv-guia.html"><span>Próximo →</span>Lista de verificação — Guia de estilo</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
