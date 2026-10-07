@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de verificação — CTT | Entrega 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega2.html">Visão geral</a></li>
+                        <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega2_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
+                        <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
+                        <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
+                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
+                        <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
+                        <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
+                        <li><a href="entrega2_referencias.html">10. Referências</a></li>
+                        <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_lv-coleta.html">Lista de verificação — Coleta de dados</a></li>
+                        <li><a href="entrega2_lv-perfil.html">Lista de verificação — Perfil do usuário</a></li>
+                        <li><a href="entrega2_lv-personas.html">Lista de verificação — Personas e elenco de personas</a></li>
+                        <li><a href="entrega2_lv-cenarios.html">Lista de verificação — Cenários</a></li>
+                        <li><a href="entrega2_lv-hta.html">Lista de verificação — HTA</a></li>
+                        <li><a href="entrega2_lv-ctt.html" class="active" aria-current="page">Lista de verificação — CTT</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_atributos.html">Atributos dos perfis de usuário</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a></p>
+<h1 id="lv-ctt" class="doc-title doc-page-title">Lista de verificação — CTT</h1>
+            <p class="doc-text">Esta lista serve para inspecionar o artefato de árvores de tarefas concorrentes (CTT) do projeto NoFluxoUnB. Reúne 9 itens. Cada item é uma pergunta de verificação, escrita com palavras do grupo a partir da bibliografia da disciplina, e traz o trecho literal da fonte, a página e o arquivo de onde saiu, para que qualquer resposta possa ser conferida.</p>
+            <p class="doc-text"><strong>Como responder.</strong> Cada item recebe uma das respostas Conforme, Não conforme ou Não se aplica, com base apenas no texto de origem citado. As citações foram conferidas automaticamente contra os PDFs; as páginas indicadas são as do livro (ou do slide) e, entre parênteses, as do arquivo PDF.</p>
+            <h3 class="doc-subsection">Contribuição</h3>
+            <p class="doc-text">A Tabela 34 registra a contribuição de cada integrante e das ferramentas de IA nesta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 34 — Contribuição dos integrantes e das ferramentas de IA — Lista de verificação — CTT</caption>
+                    <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Matheus do Vale Lameira</td><td>Elaboração dos itens e conferência de cada trecho citado contra o PDF de origem.</td></tr>
+                        <tr><td class="td-strong">Claude</td><td>Ferramenta de revisão e estrutura: conferência das citações contra os PDFs e organização das páginas.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+            <article class="lv-item" id="item-1">
+                <p class="lv-question"><strong>Item 1:</strong> O artefato de CTT classifica corretamente cada tarefa representada em um dos quatro tipos definidos pela notação ConcurTaskTrees: tarefa do usuário (realizada fora do sistema), tarefa do sistema (processamento realizado pelo sistema sem interagir com o usuário), tarefa interativa (em que ocorrem os diálogos usuário–sistema) ou tarefa abstrata (que não é uma tarefa em si, mas uma representação de uma composição de tarefas que auxilia a decomposição)?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“existem 4 tipos de tarefas: • tarefas do usuário, realizadas fora do sistema • tarefas do sistema, em que o sistema realiza um processamento sem interagir com o usuário • tarefas interativas, em que ocorrem os diálogos usuário–sistema • tarefas abstratas, que não são tarefas em si, mas sim uma representação de uma composição de tarefas que auxilie a decomposição”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>25</strong> (página 25 do PDF), seção &quot;Árvores de Tarefas Concorrentes – ConcurTaskTrees (CTT)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-2">
+                <p class="lv-question"><strong>Item 2:</strong> Quando duas tarefas do artefato possuem uma relação de ativação simples, representada pela notação T1 &gt;&gt; T2, o modelo indica corretamente que a segunda tarefa (T2) somente pode iniciar depois que a primeira tarefa (T1) tiver terminado completamente?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“ativação: T1 &gt;&gt; T2 significa que a segunda tarefa (T2) só pode iniciar após a primeira tarefa (T1) terminar.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>26</strong> (página 26 do PDF), seção &quot;Relações entre Tarefas no CTT (1/3)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-3">
+                <p class="lv-question"><strong>Item 3:</strong> Quando há troca de dados entre duas tarefas sequenciais do artefato, essa relação é representada pela notação de ativação com passagem de informação (T1 [ ]&gt;&gt; T2), indicando que, além de T2 só poder iniciar após o término de T1, a informação produzida por T1 é efetivamente repassada para T2?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“ativação com passagem de informação: T1 [ ] &gt;&gt; T2 especifica que, além de T2 só poder ser iniciada após T1, a informação produzida por T1 é passada para T2.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>26</strong> (página 26 do PDF), seção &quot;Relações entre Tarefas no CTT (1/3)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-4">
+                <p class="lv-question"><strong>Item 4:</strong> Quando duas tarefas alternativas do artefato estão habilitadas em um mesmo momento, essa relação é representada pela notação de escolha (T1 [ ] T2), na qual o início de uma das tarefas desabilita automaticamente a outra?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“escolha (tarefas alternativas): T1 [ ] T2 especifica duas tarefas que estejam habilitadas num momento, mas que, uma vez que uma delas é iniciada, a outra é desabilitada.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>26</strong> (página 26 do PDF), seção &quot;Relações entre Tarefas no CTT (1/3)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-5">
+                <p class="lv-question"><strong>Item 5:</strong> Quando duas tarefas do artefato podem ser realizadas em qualquer ordem ou ao mesmo tempo, sem qualquer troca de informações entre elas, essa relação é representada pela notação de tarefas concorrentes (T1 ||| T2)?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“tarefas concorrentes: T1 ||| T2 especifica que as tarefas podem ser realizadas em qualquer ordem ou ao mesmo tempo.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>26</strong> (página 26 do PDF), seção &quot;Relações entre Tarefas no CTT (1/3)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-6">
+                <p class="lv-question"><strong>Item 6:</strong> Quando duas tarefas do artefato podem ser realizadas em qualquer ordem ou ao mesmo tempo e também trocam informações entre si durante a execução, essa relação é representada pela notação de tarefas concorrentes e comunicantes (T1 | [ ] | T2), distinguindo-a da relação de concorrência simples?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“tarefas concorrentes e comunicantes: T1 | [ ] | T2 especifica que, além de as tarefas poderem ser realizadas em qualquer ordem ou ao mesmo tempo, elas podem trocar informações.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>26</strong> (página 26 do PDF), seção &quot;Relações entre Tarefas no CTT (1/3)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-7">
+                <p class="lv-question"><strong>Item 7:</strong> Quando duas tarefas do artefato podem ocorrer em qualquer ordem, mas uma delas precisa necessariamente terminar antes que a outra possa ser iniciada (ou seja, sem execução simultânea entre elas), essa relação é representada pela notação de tarefas independentes (T1 |=| T2)?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“tarefas independentes: T1 |=| T2 especifica que as tarefas podem ser realizadas em qualquer ordem, mas quando uma delas é iniciada, precisa terminar para que a outra possa ser iniciada.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>27</strong> (página 27 do PDF), seção &quot;Relações entre Tarefas no CTT (2/3)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-8">
+                <p class="lv-question"><strong>Item 8:</strong> Quando a ocorrência de uma tarefa do artefato interrompe definitivamente (encerra por completo) a execução de outra tarefa que estava em andamento, essa relação é representada pela notação de desativação (T1 [&gt; T2)?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“desativação: T1 [&gt; T2 especifica que T1 é completamente interrompida por T2.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>27</strong> (página 27 do PDF), seção &quot;Relações entre Tarefas no CTT (2/3)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-9">
+                <p class="lv-question"><strong>Item 9:</strong> Quando uma tarefa do artefato pode ser temporariamente interrompida pela ocorrência de outra tarefa e, assim que esta última terminar, a primeira é retomada exatamente do ponto em que havia parado, essa relação é representada pela notação de suspensão/retomada (T1 |&gt; T2)?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“suspensão/retomada: T1 |&gt; T2 especifica que T1 pode ser interrompida por T2 e é retomada do ponto em que parou assim que T2 terminar.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>27</strong> (página 27 do PDF), seção &quot;Relações entre Tarefas no CTT (2/3)&quot;. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <h3 class="doc-subsection">Páginas das fontes utilizadas</h3>
+            <p class="doc-text">A Tabela 35 resume de quais obras, arquivos e páginas saíram os itens desta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 35 — Páginas das fontes utilizadas na lista de verificação — CTT</caption>
+                    <thead><tr><th>Obra</th><th>Arquivo</th><th>Páginas (livro ou slide)</th><th>Páginas (PDF)</th><th>Itens</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">BARBOSA; SILVA (2010)</td><td><code>Apresentacao cap06.pdf</code></td><td>25, 26, 27</td><td>25, 26, 27</td><td>1, 2, 3, 4, 5, 6, 7, 8, 9</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir dos itens desta lista.</p>
+            <h3 class="doc-subsection" id="referencias-lista">Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li id="ref-barbosa2010">BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. 1. ed. Rio de Janeiro: Campus/Elsevier, 2010. Fonte: slides de apoio do capítulo "Organização do Espaço de Problema", numerado como Capítulo 6 na apresentação.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 2 (perfis, personas, cenários e análise de tarefas) a partir do documento consolidado do grupo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes (conteúdo); Matheus (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição do link do vídeo de apresentação da Entrega 2</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Separação do documento em uma página por artefato; mudança apenas de estrutura, sem alteração de conteúdo (issue #32)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Perfil 9 (Administrador) e da persona Helena Duarte, com ajustes de contagem e ressalvas nos textos relacionados (issue #40)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Cenário 8 e da análise de tarefas TAR-11 do Administrador, com renumeração das tabelas seguintes e ressalvas atualizadas (issue #41)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da Tabela 7: todos os integrantes ativos e autoria da persona Helena Duarte (issue #42)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das listas de verificação de coleta de dados, perfil, personas e elenco, cenários, HTA e CTT, com citação, página e capítulo de cada fonte (issue #44)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.7</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da página de aspectos éticos: quatro princípios, onde se aplicam no projeto e relação dos cuidados do livro com o TCLE (issue #46)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.8</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da página de atributos dos perfis: faixa etária, experiência, atitudes e tarefas primárias dos nove perfis, com a fonte de cada valor (issue #47)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega2_lv-hta.html"><span>← Anterior</span>Lista de verificação — HTA</a>
+                    <a class="next" href="entrega2_etica.html"><span>Próximo →</span>Aspectos éticos da pesquisa com usuários</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

@@ -1135,3 +1135,44 @@ body.alto-contraste .doc-prevnext a { border: 2px solid #000000 !important; }
 body.alto-contraste .doc-prevnext a span { color: #333333 !important; -webkit-text-fill-color: #333333 !important; }
 body.alto-contraste .doc-prevnext a:hover { background: #e2e8f0 !important; }
 body.alto-contraste .doc-artifact-list a { color: #004085 !important; }
+
+/* =========================================
+   LISTAS DE VERIFICAÇÃO (item, citação literal e fonte)
+   ========================================= */
+.lv-item {
+    margin-bottom: 1.25rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--doc-accent, #a855f7);
+    border-radius: 8px;
+    background: rgba(9, 9, 11, 0.4);
+}
+.lv-question { margin: 0 0 0.5rem; color: #fafafa; line-height: 1.7; }
+.lv-fields { margin: 0; }
+.lv-fields dt {
+    margin-top: 0.75rem;
+    color: #a1a1aa;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.lv-fields dd { margin: 0.25rem 0 0; color: #e4e4e7; line-height: 1.7; }
+.lv-quote {
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(168, 85, 247, 0.4);
+    color: #d4d4d8;
+    font-style: italic;
+}
+.lv-fields code { color: #d8b4fe; font-family: var(--font-mono); font-size: 0.85em; word-break: break-all; }
+.lv-fields a { color: #d8b4fe; }
+
+body.alto-contraste .lv-item { background: #ffffff !important; border-color: #000000 !important; }
+body.alto-contraste .lv-question,
+body.alto-contraste .lv-fields dd,
+body.alto-contraste .lv-quote,
+body.alto-contraste .lv-fields dt { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+body.alto-contraste .lv-quote { border-left-color: #000000 !important; }
+body.alto-contraste .lv-fields code { color: #000000 !important; -webkit-text-fill-color: #000000 !important; background: #f1f3f5; padding: 0 0.25rem; }
+body.alto-contraste .lv-fields a { color: #004085 !important; }

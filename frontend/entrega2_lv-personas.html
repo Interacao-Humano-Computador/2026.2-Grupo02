@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de verificação — Personas e elenco de personas | Entrega 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega2.html">Visão geral</a></li>
+                        <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega2_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
+                        <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
+                        <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
+                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
+                        <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
+                        <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
+                        <li><a href="entrega2_referencias.html">10. Referências</a></li>
+                        <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_lv-coleta.html">Lista de verificação — Coleta de dados</a></li>
+                        <li><a href="entrega2_lv-perfil.html">Lista de verificação — Perfil do usuário</a></li>
+                        <li><a href="entrega2_lv-personas.html" class="active" aria-current="page">Lista de verificação — Personas e elenco de personas</a></li>
+                        <li><a href="entrega2_lv-cenarios.html">Lista de verificação — Cenários</a></li>
+                        <li><a href="entrega2_lv-hta.html">Lista de verificação — HTA</a></li>
+                        <li><a href="entrega2_lv-ctt.html">Lista de verificação — CTT</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_atributos.html">Atributos dos perfis de usuário</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a></p>
+<h1 id="lv-personas" class="doc-title doc-page-title">Lista de verificação — Personas e elenco de personas</h1>
+            <p class="doc-text">Esta lista serve para inspecionar o artefato de personas e elenco de personas do projeto NoFluxoUnB. Reúne 12 itens. Cada item é uma pergunta de verificação, escrita com palavras do grupo a partir da bibliografia da disciplina, e traz o trecho literal da fonte, a página e o arquivo de onde saiu, para que qualquer resposta possa ser conferida.</p>
+            <p class="doc-text"><strong>Como responder.</strong> Cada item recebe uma das respostas Conforme, Não conforme ou Não se aplica, com base apenas no texto de origem citado. As citações foram conferidas automaticamente contra os PDFs; as páginas indicadas são as do livro (ou do slide) e, entre parênteses, as do arquivo PDF.</p>
+            <h3 class="doc-subsection">Contribuição</h3>
+            <p class="doc-text">A Tabela 28 registra a contribuição de cada integrante e das ferramentas de IA nesta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 28 — Contribuição dos integrantes e das ferramentas de IA — Lista de verificação — Personas e elenco de personas</caption>
+                    <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Matheus do Vale Lameira</td><td>Elaboração dos itens e conferência de cada trecho citado contra o PDF de origem.</td></tr>
+                        <tr><td class="td-strong">Claude</td><td>Ferramenta de revisão e estrutura: conferência das citações contra os PDFs e organização das páginas.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+            <article class="lv-item" id="item-1">
+                <p class="lv-question"><strong>Item 1:</strong> A persona é apresentada como um personagem fictício que modela um grupo de usuários reais e descreve um usuário típico desse grupo?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: &quot;Marta Batista, professora&quot; representa os professores que configuram o sistema sob medida para cada turma.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“uma persona é um personagem fictício, modelo hipotético de um grupo de usuários reais, criado para descrever um usuário típico”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>6</strong> (página 6 do PDF), Capítulo 6 – Organização do Espaço de Problema (slides de Barbosa e Silva, 2010), Personas. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-2">
+                <p class="lv-question"><strong>Item 2:</strong> A persona foi construída a partir de observação de usuários reais em seu contexto (por exemplo, entrevistas e observação de campo), e não a partir de suposições da equipe?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: cada característica da persona pode ser rastreada até uma fala ou comportamento observado em uma entrevista.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“Personas, like any models, must be based on real-world observation.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>80</strong> (página 21 do PDF), Chapter 5. Modeling Users: Personas and Goals, Personas are based on research. <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-3">
+                <p class="lv-question"><strong>Item 3:</strong> A persona tem identidade definida (nome, sobrenome, idade, foto) e indica seu status no elenco (primária, secundária ou de outro stakeholder)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: Marta Batista, 38 anos, foto de uma professora; status: persona primária.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“identidade: nome, sobrenome, idade, foto, etc. • status: primária, secundária, outro stakeholder”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>7</strong> (página 7 do PDF), Capítulo 6 – Organização do Espaço de Problema (slides de Barbosa e Silva, 2010), Características das Personas. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-4">
+                <p class="lv-question"><strong>Item 4:</strong> A descrição da persona contém seus objetivos, habilidades (educação, treinamento, competências), tarefas básicas ou críticas (com frequência, importância e duração), relacionamentos, requisitos e expectativas sobre como o produto funciona?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: tarefa crítica &quot;divulgar correções dos trabalhos&quot;, feita semanalmente; expectativa: encontrar tudo organizado por disciplina.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“objetivos: Quais são os objetivos desta persona? • habilidades: Qual é a especialidade da persona? Isso inclui educação, treinamento e competências específicas. (...) • relacionamentos: Com quem a persona se relaciona? • requisitos: De que a persona precisa? • expectativas: Como a persona acredita que o produto funciona?”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>7</strong> (página 7 do PDF), Capítulo 6 – Organização do Espaço de Problema (slides de Barbosa e Silva, 2010), Características das Personas. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-5">
+                <p class="lv-question"><strong>Item 5:</strong> Os objetivos da persona expressam suas motivações, isto é, o motivo pelo qual ela se comporta e realiza certas tarefas daquela maneira?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: &quot;não perder tempo&quot; explica por que a persona prefere atalhos para publicar material.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“All humans have motivations that drive their behaviors; some are obvious, and many are subtle. It is critical that personas capture these motivations in the form of goals.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>83</strong> (página 24 do PDF), Chapter 5. Modeling Users: Personas and Goals, Personas must have motivations. <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-6">
+                <p class="lv-question"><strong>Item 6:</strong> A persona tem uma narrativa curta (no máximo uma ou duas páginas) que a apresenta pelo trabalho ou estilo de vida, descreve de forma breve um dia da sua vida com incômodos, preocupações e interesses ligados ao produto, e termina dizendo o que ela busca no produto?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: texto em terceira pessoa que mostra a rotina da professora, suas queixas com o sistema atual e o que espera de uma nova ferramenta.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“This narrative should be no longer than one or two pages of prose. (...) The best narrative quickly introduces the persona in terms of his job or lifestyle, and briefly sketches a day in his life, including peeves, concerns, and interests that have direct bearing on the product. (...) The narrative should express what the persona is looking for in the product by way of a conclusion.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>102</strong> (página 43 do PDF), Chapter 5. Modeling Users: Personas and Goals, Step 6: Expand description of attributes and behaviors. <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-7">
+                <p class="lv-question"><strong>Item 7:</strong> A foto da persona foi escolhida com cuidado, de modo a transmitir dados demográficos, sugerir o ambiente em que ela atua e indicar sua atitude geral?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: para uma enfermeira, foto de uniforme em um ambiente clínico; para um funcionário sobrecarregado de papelada, expressão apressada.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“When you start developing your narrative, choose photographs of your personas. (...) The best photos capture demographic information, hint at the environment (a persona for a nurse should be wearing a nurse’s uniform and be in a clinical setting, perhaps with a patient), and capture the persona’s general attitude”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>103</strong> (página 44 do PDF), Chapter 5. Modeling Users: Personas and Goals, Step 6: Expand description of attributes and behaviors (photographs). <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-8">
+                <p class="lv-question"><strong>Item 8:</strong> O elenco foi conferido quanto à completude e à redundância, de modo que cada persona difira de todas as outras em pelo menos um comportamento significativo (e não apenas em dados demográficos)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: duas personas que só mudam de idade e cidade devem ser fundidas ou diferenciadas por comportamento.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“If you find that two personas seem to vary only by demographics, you may choose to eliminate one of the redundant personas or tweak the characteristics of your personas to make them more distinct. Each persona must vary from all others in at least one significant behavior.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>102</strong> (página 43 do PDF), Chapter 5. Modeling Users: Personas and Goals, Step 5: Check for completeness and redundancy. <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-9">
+                <p class="lv-question"><strong>Item 9:</strong> O elenco define uma única persona primária por interface do produto (e, quando o produto tem interfaces distintas, uma primária para cada uma)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: um sistema de saúde com interface clínica e interface financeira tem uma persona primária para cada interface.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“There can be only one primary persona per interface for a product, but it is possible for some products (especially enterprise products) to have multiple distinct interfaces, each targeted at a distinct primary persona.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>104</strong> (página 45 do PDF), Chapter 5. Modeling Users: Personas and Goals, Step 7: Designate persona types (Primary personas). <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-10">
+                <p class="lv-question"><strong>Item 10:</strong> As personas secundárias, quando existem, têm necessidades adicionais que podem ser atendidas sem prejudicar a persona primária, e a quantidade delas é justificada (mais de três ou quatro pode indicar escopo grande e sem foco)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: o elenco tem uma primária e duas secundárias, cada uma com uma necessidade extra que não altera a interface principal.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“A secondary persona is mostly satisfied with the primary persona’s interface but has specific additional needs that can be accommodated without upsetting the product’s ability to serve the primary persona. We do not always have a secondary persona, and more than three or four secondary personas can be a sign that the proposed product’s scope may be too large and unfocused.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>105</strong> (página 46 do PDF), Chapter 5. Modeling Users: Personas and Goals, Secondary personas. <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-11">
+                <p class="lv-question"><strong>Item 11:</strong> As personas suplementares, quando existem, têm necessidades totalmente cobertas pela combinação das personas primária e secundárias, e as personas políticas (incluídas para atender suposições ou pedidos de stakeholders) foram tratadas como suplementares?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: uma persona incluída por pedido da diretoria cujas necessidades já são atendidas pela interface da primária.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“User personas that are not primary or secondary are supplemental personas. Their needs are completely represented by a combination of primary and secondary personas and are completely satisfied by the solution we devise for one of our primaries. There can be any number of supplemental personas associated with an interface. Often political personas — the ones added to the cast to address stakeholder assumptions — become supplemental personas.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>105</strong> (página 46 do PDF), Chapter 5. Modeling Users: Personas and Goals, Supplemental personas. <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-12">
+                <p class="lv-question"><strong>Item 12:</strong> O elenco indica, quando for o caso, personas atendidas (pessoas que não usam o produto, mas são diretamente afetadas por ele) e personas negativas (tipos de usuário que o produto deliberadamente não pretende atender)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: o paciente de uma máquina de radioterapia é persona atendida; o usuário entusiasta de tecnologia pode ser persona negativa de um produto de consumo.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“Served personas are somewhat different from the persona types already discussed. They are not users of the product at all; however, they are directly affected by the use of the product. (...) Negative personas are used to communicate to stakeholders and product team members that there are specific types of users that the product is not being built to serve.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>106</strong> (página 47 do PDF), Chapter 5. Modeling Users: Personas and Goals, Served personas / Negative personas. <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <h3 class="doc-subsection">Páginas das fontes utilizadas</h3>
+            <p class="doc-text">A Tabela 29 resume de quais obras, arquivos e páginas saíram os itens desta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 29 — Páginas das fontes utilizadas na lista de verificação — Personas e elenco de personas</caption>
+                    <thead><tr><th>Obra</th><th>Arquivo</th><th>Páginas (livro ou slide)</th><th>Páginas (PDF)</th><th>Itens</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">BARBOSA; SILVA (2010)</td><td><code>Apresentacao cap06.pdf</code></td><td>6, 7</td><td>6, 7</td><td>1, 3, 4</td></tr>
+                        <tr><td class="td-strong">COOPER; REIMANN; CRONIN (2007)</td><td><code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></td><td>80, 83, 102, 103, 104, 105, 106</td><td>21, 24, 43, 44, 45, 46, 47</td><td>2, 5, 6, 7, 8, 9, 10, 11, 12</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir dos itens desta lista.</p>
+            <h3 class="doc-subsection" id="referencias-lista">Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li id="ref-barbosa2010">BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. 1. ed. Rio de Janeiro: Campus/Elsevier, 2010. Fonte: slides de apoio do capítulo "Organização do Espaço de Problema", numerado como Capítulo 6 na apresentação.</li>
+                <li id="ref-cooper2007">COOPER, Alan; REIMANN, Robert; CRONIN, Dave. <em>About Face 3</em>: The Essentials of Interaction Design. Indianapolis: Wiley Publishing, 2007. ISBN 978-0-470-08411-3.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 2 (perfis, personas, cenários e análise de tarefas) a partir do documento consolidado do grupo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes (conteúdo); Matheus (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição do link do vídeo de apresentação da Entrega 2</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Separação do documento em uma página por artefato; mudança apenas de estrutura, sem alteração de conteúdo (issue #32)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Perfil 9 (Administrador) e da persona Helena Duarte, com ajustes de contagem e ressalvas nos textos relacionados (issue #40)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Cenário 8 e da análise de tarefas TAR-11 do Administrador, com renumeração das tabelas seguintes e ressalvas atualizadas (issue #41)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da Tabela 7: todos os integrantes ativos e autoria da persona Helena Duarte (issue #42)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das listas de verificação de coleta de dados, perfil, personas e elenco, cenários, HTA e CTT, com citação, página e capítulo de cada fonte (issue #44)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.7</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da página de aspectos éticos: quatro princípios, onde se aplicam no projeto e relação dos cuidados do livro com o TCLE (issue #46)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.8</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da página de atributos dos perfis: faixa etária, experiência, atitudes e tarefas primárias dos nove perfis, com a fonte de cada valor (issue #47)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega2_lv-perfil.html"><span>← Anterior</span>Lista de verificação — Perfil do usuário</a>
+                    <a class="next" href="entrega2_lv-cenarios.html"><span>Próximo →</span>Lista de verificação — Cenários</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de verificação — Perfil do usuário | Entrega 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega2.html">Visão geral</a></li>
+                        <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega2_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
+                        <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
+                        <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
+                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
+                        <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
+                        <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
+                        <li><a href="entrega2_referencias.html">10. Referências</a></li>
+                        <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_lv-coleta.html">Lista de verificação — Coleta de dados</a></li>
+                        <li><a href="entrega2_lv-perfil.html" class="active" aria-current="page">Lista de verificação — Perfil do usuário</a></li>
+                        <li><a href="entrega2_lv-personas.html">Lista de verificação — Personas e elenco de personas</a></li>
+                        <li><a href="entrega2_lv-cenarios.html">Lista de verificação — Cenários</a></li>
+                        <li><a href="entrega2_lv-hta.html">Lista de verificação — HTA</a></li>
+                        <li><a href="entrega2_lv-ctt.html">Lista de verificação — CTT</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_atributos.html">Atributos dos perfis de usuário</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a></p>
+<h1 id="lv-perfil" class="doc-title doc-page-title">Lista de verificação — Perfil do usuário</h1>
+            <p class="doc-text">Esta lista serve para inspecionar o artefato de perfil do usuário do projeto NoFluxoUnB. Reúne 12 itens. Cada item é uma pergunta de verificação, escrita com palavras do grupo a partir da bibliografia da disciplina, e traz o trecho literal da fonte, a página e o arquivo de onde saiu, para que qualquer resposta possa ser conferida.</p>
+            <p class="doc-text"><strong>Como responder.</strong> Cada item recebe uma das respostas Conforme, Não conforme ou Não se aplica, com base apenas no texto de origem citado. As citações foram conferidas automaticamente contra os PDFs; as páginas indicadas são as do livro (ou do slide) e, entre parênteses, as do arquivo PDF.</p>
+            <h3 class="doc-subsection">Contribuição</h3>
+            <p class="doc-text">A Tabela 26 registra a contribuição de cada integrante e das ferramentas de IA nesta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 26 — Contribuição dos integrantes e das ferramentas de IA — Lista de verificação — Perfil do usuário</caption>
+                    <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Matheus do Vale Lameira</td><td>Elaboração dos itens e conferência de cada trecho citado contra o PDF de origem.</td></tr>
+                        <tr><td class="td-strong">Claude</td><td>Ferramenta de revisão e estrutura: conferência das citações contra os PDFs e organização das páginas.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+            <article class="lv-item" id="item-1">
+                <p class="lv-question"><strong>Item 1:</strong> O perfil de usuário traz uma descrição detalhada das características dos usuários, abrangendo a relação deles com tecnologia, o conhecimento que têm do domínio do produto (o assunto em que o produto atua) e as tarefas que realizam, em vez de apenas rótulos genéricos?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: não basta escrever &quot;professores&quot;; descreve-se quanto usam tecnologia, o que sabem do assunto e quais tarefas fazem.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“a categorização de usuários em determinados perfis destaca algumas características e abstrai outras (...) descrição detalhada das características dos usuários, sua relação com tecnologia, seu conhecimento sobre domínio e tarefas”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>3</strong> (página 3 do PDF), Capítulo 6 – Organização do Espaço de Problema (slides de Barbosa e Silva, 2010), Perfil do Usuário. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-2">
+                <p class="lv-question"><strong>Item 2:</strong> Os usuários com características semelhantes foram agrupados em perfis segundo atributos como faixa etária, nível de experiência, atitude em relação à tecnologia e tarefas principais?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: idade (criança, jovem, adulto, terceira idade); experiência (novato, especialista); atitude (gosta ou não gosta de tecnologia); tarefas principais (compra, venda).</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“podemos agrupar usuários que possuem características semelhantes, por exemplo: • idade (criança, jovem, adulto, terceira idade etc.); • experiência (leigo/novato, especialista); • atitudes (gosta de tecnologia, não gosta de tecnologia); e • tarefas principais (compra, venda).”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>3</strong> (página 3 do PDF), Capítulo 6 – Organização do Espaço de Problema (slides de Barbosa e Silva, 2010), Perfil do Usuário. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-3">
+                <p class="lv-question"><strong>Item 3:</strong> Cada perfil informa quanto da população de usuários ele representa (percentual e número de pessoas) e registra atributos mensuráveis, como faixa etária e tempo de atuação na função?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: perfil A com 47% dos professores (7 pessoas), faixa etária de 30 a 40 anos e de 5 a 10 anos como professor.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“percentual de professores no perfil (...) número de professores no perfil (...) faixa etária (...) quanto tempo como professor (anos)”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Slide <strong>4</strong> (página 4 do PDF), Capítulo 6 – Organização do Espaço de Problema (slides de Barbosa e Silva, 2010), Exemplo de Perfis de Usuários. <a href="#ref-barbosa2010">BARBOSA; SILVA (2010)</a>. Arquivo: <code>Apresentacao cap06.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-4">
+                <p class="lv-question"><strong>Item 4:</strong> Os perfis cobrem a diversidade real dos usuários, em vez de se concentrar apenas em um subgrupo restrito, como os usuários considerados melhores ou mais experientes?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: uma pessoa especialista em uma parte do sistema pode ser iniciante em outra; os perfis devem refletir isso.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Tenha em mente que não devemos nos concentrar apenas em um subgrupo restrito de usuários, como por exemplo os usuários “melhores” ou mais experientes.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>137</strong> (página 6 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.2 Que Dados Coletar?. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-5">
+                <p class="lv-question"><strong>Item 5:</strong> O perfil registra dados demográficos (idade, sexo, status socioeconômico) e o contexto profissional do usuário (cargo atual e experiência nele, tempo na empresa, tamanho e área de atuação da empresa)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: 35 anos, gerente há 4 anos, empresa de médio porte do setor de logística.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“dados demográficos: idade, sexo, status socioeconômico; • experiência no cargo que ocupa: cargo atual, experiência nesse cargo, tempo na empresa (...) • informações sobre a empresa: tamanho da empresa, área de atuação;”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>137</strong> (página 6 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.2 Que Dados Coletar? (tipos de dados sobre o usuário). <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-6">
+                <p class="lv-question"><strong>Item 6:</strong> O perfil descreve a formação do usuário (grau de instrução, área de formação, cursos, alfabetismo) e suas preferências de treinamento e aprendizado (aprender lendo, com outras pessoas ou fazendo; tempo disponível para aprender o produto)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: graduação em Administração; prefere aprender fazendo; não tem tempo para cursos.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“educação: grau de instrução, área de formação, cursos realizados, alfabetismo. (...) treinamento: o quanto o usuário valoriza treinamento? Prefere um estilo de aprendizado visual, auditivo ou outro? Pode investir tempo aprendendo a utilizar o produto em questão?;”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>137</strong> (página 6 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.2 Que Dados Coletar? (educação e treinamento). <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-7">
+                <p class="lv-question"><strong>Item 7:</strong> O perfil descreve a experiência do usuário com computadores (alfabetismo computacional, habilidade, anos de uso) e a tecnologia que ele tem disponível (hardware, software e outras ferramentas)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: usa computador diariamente há 10 anos; tela de notebook de 14 polegadas; acessa o produto também pelo celular.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“experiência com computadores: alfabetismo computacional, habilidade com computadores, anos de experiência. (...) tecnologia disponível: hardware (tamanho e resolução do monitor ou tela do dispositivo, velocidade do processamento etc.), software e outras ferramentas aos quais tem acesso;”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>137</strong> (página 6 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.2 Que Dados Coletar? (experiência com computadores e tecnologia disponível). <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-8">
+                <p class="lv-question"><strong>Item 8:</strong> O perfil informa o nível de conhecimento do usuário sobre o assunto do produto (se é especialista ou se espera que se torne um), seus objetivos principais e suas tarefas, distinguindo as tarefas primárias das secundárias?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: conhece pouco de contabilidade; objetivo: fechar o mês sem erros; tarefa primária: lançar notas; tarefa secundária: gerar relatório.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“conhecimento do domínio: o que e quanto o usuário conhece sobre o assunto em questão? (...) objetivos: quais são os principais objetivos dos usuário? Como eles são alcançados atualmente?; (...) tarefas: quais são as tarefas do usuário que precisam ser apoiadas? Quais dessas são consideradas primárias, e quais são secundárias?”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>137</strong> (página 6 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.2 Que Dados Coletar? (conhecimento do domínio, objetivos e tarefas). <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-9">
+                <p class="lv-question"><strong>Item 9:</strong> O perfil registra a motivação do usuário para o trabalho e os idiomas e jargões que ele conhece e usa (idiomas fluentes, vocabulário profissional ou próprio da empresa)?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: trabalha além do expediente por gosto; usa termos técnicos da área e fala inglês fluentemente.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“motivação para o trabalho: o usuário se limita a cumprir a carga horária ou trabalha além do expediente, por prazer? (...) idiomas e jargões: que idiomas o usuário conhece e utiliza fluentemente?”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>138</strong> (página 7 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.2 Que Dados Coletar? (motivação, idiomas e jargões). <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-10">
+                <p class="lv-question"><strong>Item 10:</strong> Além dos usuários diretos (primários, que usam o produto regularmente, e secundários, que o usam ocasionalmente), o perfil considera também outras partes interessadas (stakeholders), isto é, pessoas que não usam o produto diretamente, mas são afetadas por ele?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: o cliente do supermercado é afetado pelo sistema que o operador de caixa utiliza, pois um sistema ruim torna o atendimento mais demorado.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“O termo “usuário” geralmente diz respeito aos usuários finais, aqueles que são ou serão usuários diretos do seu produto, sejam primários, que utilizam o produto regularmente, ou secundários, que o utilizam ocasionalmente (...) Além deles, pode ser importante traçar o perfil de outras partes interessadas (stakeholders), que não utilizam o produto diretamente mas são afetados pelo seu uso”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>138</strong> (página 7 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.3 De Quem Coletar Dados?. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-11">
+                <p class="lv-question"><strong>Item 11:</strong> Os perfis traçados inicialmente foram tratados como hipóteses a serem conferidas por observação de usuários reais (por exemplo, em estudos de campo), verificando-se se os usuários de fato correspondem a eles?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: após observar usuários no ambiente de trabalho, o grupo confirma ou ajusta os perfis iniciais.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“verificar se os usuários correspondem aos perfis de usuários traçados inicialmente;”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>159</strong> (página 28 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.6 Estudos de Campo. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-12">
+                <p class="lv-question"><strong>Item 12:</strong> O perfil vai além de um nome, uma foto e uma breve descrição demográfica, apoiando-se em dados de pesquisa com usuários e trazendo a profundidade de informação sobre comportamento e contexto, e não apenas dados demográficos?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: em vez de &quot;Carlos, 40 anos, motorista&quot;, o perfil traz hábitos de uso, objetivos e frustrações observados em campo.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="en">“There is no problem with this if the profile is truly generated from ethnographic data and encapsulates the depth of information the authors have described. (...) user profiles often consist of a name and a picture attached to a brief, mostly demographic”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>85</strong> (página 26 do PDF), Chapter 5. Modeling Users: Personas and Goals, Personas versus user profiles. <a href="#ref-cooper2007">COOPER; REIMANN; CRONIN (2007)</a>. Arquivo: <code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <h3 class="doc-subsection">Páginas das fontes utilizadas</h3>
+            <p class="doc-text">A Tabela 27 resume de quais obras, arquivos e páginas saíram os itens desta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 27 — Páginas das fontes utilizadas na lista de verificação — Perfil do usuário</caption>
+                    <thead><tr><th>Obra</th><th>Arquivo</th><th>Páginas (livro ou slide)</th><th>Páginas (PDF)</th><th>Itens</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">BARBOSA; SILVA (2010)</td><td><code>Apresentacao cap06.pdf</code></td><td>3, 4</td><td>3, 4</td><td>1, 2, 3</td></tr>
+                        <tr><td class="td-strong">BARBOSA et al. (2021)</td><td><code>ihc-ux cap 7.pdf</code></td><td>137, 138, 159</td><td>6, 7, 28</td><td>4, 5, 6, 7, 8, 9, 10, 11</td></tr>
+                        <tr><td class="td-strong">COOPER; REIMANN; CRONIN (2007)</td><td><code>About_Face_3__The_Essentials_of_Interaction_Design.pdf</code></td><td>85</td><td>26</td><td>12</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir dos itens desta lista.</p>
+            <h3 class="doc-subsection" id="referencias-lista">Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li id="ref-barbosa2010">BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. 1. ed. Rio de Janeiro: Campus/Elsevier, 2010. Fonte: slides de apoio do capítulo "Organização do Espaço de Problema", numerado como Capítulo 6 na apresentação.</li>
+                <li id="ref-barbosa2021">BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da; SILVEIRA, Milene Selbach; GASPARINI, Isabela; DARIN, Ticianne; BARBOSA, Gabriel D. J. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro: Autopublicação, 2021. ISBN 978-65-00-19677-1.</li>
+                <li id="ref-cooper2007">COOPER, Alan; REIMANN, Robert; CRONIN, Dave. <em>About Face 3</em>: The Essentials of Interaction Design. Indianapolis: Wiley Publishing, 2007. ISBN 978-0-470-08411-3.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 2 (perfis, personas, cenários e análise de tarefas) a partir do documento consolidado do grupo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes (conteúdo); Matheus (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição do link do vídeo de apresentação da Entrega 2</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Separação do documento em uma página por artefato; mudança apenas de estrutura, sem alteração de conteúdo (issue #32)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Perfil 9 (Administrador) e da persona Helena Duarte, com ajustes de contagem e ressalvas nos textos relacionados (issue #40)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Cenário 8 e da análise de tarefas TAR-11 do Administrador, com renumeração das tabelas seguintes e ressalvas atualizadas (issue #41)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da Tabela 7: todos os integrantes ativos e autoria da persona Helena Duarte (issue #42)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das listas de verificação de coleta de dados, perfil, personas e elenco, cenários, HTA e CTT, com citação, página e capítulo de cada fonte (issue #44)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.7</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da página de aspectos éticos: quatro princípios, onde se aplicam no projeto e relação dos cuidados do livro com o TCLE (issue #46)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.8</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da página de atributos dos perfis: faixa etária, experiência, atitudes e tarefas primárias dos nove perfis, com a fonte de cada valor (issue #47)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega2_lv-coleta.html"><span>← Anterior</span>Lista de verificação — Coleta de dados</a>
+                    <a class="next" href="entrega2_lv-personas.html"><span>Próximo →</span>Lista de verificação — Personas e elenco de personas</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de verificação — Coleta de dados | Entrega 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega2.html">Visão geral</a></li>
+                        <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega2_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
+                        <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
+                        <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
+                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
+                        <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
+                        <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
+                        <li><a href="entrega2_referencias.html">10. Referências</a></li>
+                        <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_lv-coleta.html" class="active" aria-current="page">Lista de verificação — Coleta de dados</a></li>
+                        <li><a href="entrega2_lv-perfil.html">Lista de verificação — Perfil do usuário</a></li>
+                        <li><a href="entrega2_lv-personas.html">Lista de verificação — Personas e elenco de personas</a></li>
+                        <li><a href="entrega2_lv-cenarios.html">Lista de verificação — Cenários</a></li>
+                        <li><a href="entrega2_lv-hta.html">Lista de verificação — HTA</a></li>
+                        <li><a href="entrega2_lv-ctt.html">Lista de verificação — CTT</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_atributos.html">Atributos dos perfis de usuário</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a></p>
+<h1 id="lv-coleta" class="doc-title doc-page-title">Lista de verificação — Coleta de dados</h1>
+            <p class="doc-text">Esta lista serve para inspecionar o artefato de coleta de dados com usuários (entrevistas, grupos de foco e brainstorming) do projeto NoFluxoUnB. Reúne 21 itens, divididos entre as três técnicas (entrevistas: 7; grupos de foco: 7; brainstorming de necessidades e desejos: 7). Cada item é uma pergunta de verificação, escrita com palavras do grupo a partir da bibliografia da disciplina, e traz o trecho literal da fonte, a página e o arquivo de onde saiu, para que qualquer resposta possa ser conferida.</p>
+            <p class="doc-text"><strong>Como responder.</strong> Cada item recebe uma das respostas Conforme, Não conforme ou Não se aplica, com base apenas no texto de origem citado. As citações foram conferidas automaticamente contra os PDFs; as páginas indicadas são as do livro (ou do slide) e, entre parênteses, as do arquivo PDF.</p>
+            <h3 class="doc-subsection">Contribuição</h3>
+            <p class="doc-text">A Tabela 24 registra a contribuição de cada integrante e das ferramentas de IA nesta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 24 — Contribuição dos integrantes e das ferramentas de IA — Lista de verificação — Coleta de dados</caption>
+                    <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Matheus do Vale Lameira</td><td>Elaboração dos itens e conferência de cada trecho citado contra o PDF de origem.</td></tr>
+                        <tr><td class="td-strong">Claude</td><td>Ferramenta de revisão e estrutura: conferência das citações contra os PDFs e organização das páginas.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+            <h3 class="doc-subsection">Entrevistas</h3>
+            <article class="lv-item" id="item-entrevistas-1">
+                <p class="lv-question"><strong>Item 1:</strong> O roteiro da entrevista semiestruturada reúne os tópicos ou perguntas que devem ser tratados (de preferência abertas), organizados em uma ordem lógica, deixando o entrevistador livre para aprofundar as respostas e até mudar a ordem dos tópicos, desde que mantenha o foco nos objetivos da entrevista?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: um roteiro com tópicos como &quot;mecanismo de busca – opinião geral&quot;, em vez de perguntas escritas por extenso.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Nessas entrevistas, o roteiro é composto dos tópicos ou perguntas (geralmente abertas) que devem ser endereçados na entrevista, em uma ordem lógica. O entrevistador tem liberdade para explorar em maior profundidade as respostas fornecidas pelo entrevistado e até mesmo modificar a ordem dos tópicos abordados, mas deve manter o foco nos objetivos da entrevista.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>145</strong> (página 14 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.1 Entrevistas. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-entrevistas-2">
+                <p class="lv-question"><strong>Item 2:</strong> Antes de gravar voz ou imagem e de começar a entrevista, o entrevistado deu permissão para a gravação e recebeu (e aceitou, por meio de um termo de consentimento) as informações sobre o objetivo do estudo, a duração estimada, os procedimentos de coleta, o uso dos dados e seus direitos como participante?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“É necessário obter permissão para gravar a voz ou imagem de qualquer pessoa, antes de começar a gravação. (...) Todo participante de qualquer estudo tem o direito de saber o objetivo do estudo, a duração estimada, os procedimentos de coleta de dados, o uso que será feito da informação coletada, os seus direitos enquanto participante do estudo e quaisquer riscos, desconfortos ou efeitos adversos relacionados à sua participação no estudo. Essas informações devem ser comunicadas ao participante durante o processo de recrutamento e depois reiteradas no início da atividade através de um termo de consentimento.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>141</strong> (página 10 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.4 Aspectos Éticos de Pesquisas Envolvendo Pessoas. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-entrevistas-3">
+                <p class="lv-question"><strong>Item 3:</strong> O entrevistador evita influenciar as respostas, tanto pela forma de redigir as perguntas (por exemplo, perguntas que já pressupõem que o entrevistado gosta de algo) quanto por expressões faciais, gestos ou entonação de voz?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: em vez de perguntar &quot;Por que você gosta do mecanismo de busca?&quot;, perguntar &quot;O que você acha do mecanismo de busca?&quot;.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“O entrevistador deve evitar influenciar as respostas dos entrevistados com a formulação das perguntas, expressões faciais, gestos ou entonação de voz. Ao perguntar já no início “Por que você gosta do mecanismo de busca do site CompreMais?”, por exemplo, o entrevistador está pressupondo que o entrevistado gosta desse mecanismo, o que pode não corresponder à realidade.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>146</strong> (página 15 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.1 Entrevistas. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-entrevistas-4">
+                <p class="lv-question"><strong>Item 4:</strong> As perguntas da entrevista são curtas e simples (perguntas compostas foram desdobradas em perguntas menores) e evitam termos técnicos ou jargões com os quais o entrevistado possa não estar familiarizado?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: em vez de uma única pergunta sobre a estrutura dos menus e a terminologia em comparação com outros sites, perguntar primeiro sobre a estrutura de menus, depois sobre os rótulos e só então sobre a comparação.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Como a entrevista se assemelha a uma conversa, devemos evitar perguntas muito longas ou complexas, que sobrecarreguem a memória do entrevistado e prejudiquem sua resposta. Perguntas compostas devem ser desdobradas em perguntas menores. (...) Devemos evitar utilizar termos técnicos com os quais os entrevistados não tenham familiaridade.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>147</strong> (página 16 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.1 Entrevistas. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-entrevistas-5">
+                <p class="lv-question"><strong>Item 5:</strong> A entrevista foi gravada em áudio e o entrevistador complementou a gravação com anotações feitas durante a conversa (por exemplo, em espaço reservado para isso no próprio roteiro)?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“As entrevistas costumam ser gravadas em áudio. Além dessa gravação, os entrevistadores podem fazer algumas anotações durante a entrevista. Nesse caso, o roteiro pode ser projetado com espaço para anotar as respostas.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>147</strong> (página 16 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.1 Entrevistas. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-entrevistas-6">
+                <p class="lv-question"><strong>Item 6:</strong> Quando era importante saber o que o participante realmente faz (e não só o que ele diz que faz), a entrevista incluiu a observação do entrevistado realizando uma ou mais atividades?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: o entrevistado executa uma tarefa no sistema enquanto o entrevistador observa.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Vale observar que nem sempre o que uma pessoa diz que faz é o que ela realmente faz. (...) Para evitar esse tipo de problema, algumas entrevistas podem envolver a observação do entrevistado enquanto ele realiza uma ou mais atividades.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>148</strong> (página 17 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.1 Entrevistas. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-entrevistas-7">
+                <p class="lv-question"><strong>Item 7:</strong> Na análise das entrevistas, as respostas foram examinadas tanto por entrevistado (todas as respostas de cada pessoa, buscando conflitos e inconsistências) quanto por pergunta (as respostas de todos os entrevistados a cada item do roteiro, buscando tendências centrais)?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Na análise intraparticipante, para cada entrevistado individual, todas as suas respostas (para todas as perguntas) são analisadas, buscando identificar possíveis conflitos de opiniões, inconsistências entre respostas, sentimentos contraditórios etc. Já na análise interparticipante, para cada pergunta (ou item do roteiro) individual, todas as respostas de todos os entrevistados são analisadas sistemática e rigorosamente, buscando identificar tendências centrais das respostas.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>148</strong> (página 17 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.1 Entrevistas. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <h3 class="doc-subsection">Grupos de foco</h3>
+            <article class="lv-item" id="item-grupos-de-foco-1">
+                <p class="lv-question"><strong>Item 1:</strong> O grupo de foco foi planejado com um número de participantes e uma duração compatíveis com a técnica (geralmente de três a dez pessoas, por uma ou duas horas) e como uma discussão coletiva guiada por um moderador experiente?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Em um grupo de foco, diversas pessoas (geralmente entre três e dez) são reunidas por uma ou duas horas numa espécie de discussão ou entrevista coletiva, guiada por um moderador experiente.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>152</strong> (página 21 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.3 Grupos de Foco. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-grupos-de-foco-2">
+                <p class="lv-question"><strong>Item 2:</strong> O grupo de foco tem um propósito definido entre os que a técnica atende (por exemplo, gerar ideias, obter opiniões sobre tópicos, conceitos ou demonstrações, identificar expectativas ou descobrir frustrações e preferências que só surgem em contexto social), de preferência sobre um público-alvo a respeito do qual se tem pouca informação?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Grupos de foco permitem coletar informações sobre um público-alvo sobre quem tenhamos pouca informação. Podem ser realizados para gerar ideias; obter opiniões de pessoas sobre tópicos, conceitos ou demonstrações; obter respostas a uma série de questões; identificar conflitos relacionados a terminologias; identificar expectativas de diferentes grupos de pessoas; e descobrir problemas, desafios, frustrações, atitudes, preferências e aversões que surgem apenas num contexto social e por isso podem ser ignoradas por outras técnicas”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>152</strong> (página 21 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.3 Grupos de Foco. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-grupos-de-foco-3">
+                <p class="lv-question"><strong>Item 3:</strong> O moderador conduziu a discussão de modo a fazer com que as pessoas mais quietas ou tímidas participassem e a impedir que as extrovertidas e agressivas dominassem a conversa?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“O papel do moderador de um grupo de foco é muito importante para assegurar que pessoas mais quietas ou tímidas participem e evitar que as extrovertidas e agressivas dominem a discussão.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>152</strong> (página 21 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.3 Grupos de Foco. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-grupos-de-foco-4">
+                <p class="lv-question"><strong>Item 4:</strong> As perguntas e os temas do grupo de foco evitam pedir aos participantes previsões sobre algo que ainda não experimentaram (como avaliar a utilidade de algo que nunca usaram) e evitam tópicos polêmicos, como política e valores morais?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Courage e Baxter (2005) sugerem evitar pedir para os participantes fazerem previsões sobre algo que eles ainda não experimentaram, como, por exemplo, pedir para avaliar a utilidade de algo que ainda não utilizaram. Além disso, devemos evitar endereçar tópicos polêmicos, relacionados, por exemplo, com política e valores morais.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>152</strong> (página 21 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.3 Grupos de Foco. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-grupos-de-foco-5">
+                <p class="lv-question"><strong>Item 5:</strong> Os participantes foram informados sobre os objetivos da coleta de dados e consentiram com ela, com as condições de privacidade e anonimato previstas e com a forma como os dados serão usados, por quem e para quê (em geral, por meio de um formulário de consentimento assinado)?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Tendo definido os objetivos da coleta de dados, os participantes que fornecerão os dados devem ser informados sobre esses objetivos e consentir com a sua coleta, com as condições de privacidade e anonimato previstas, com a forma como os dados serão utilizados, por quem e para quê. (...) Em geral, a autorização dos participantes é obtida através da assinatura de um formulário de consentimento.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>136</strong> (página 5 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.1 Introdução. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-grupos-de-foco-6">
+                <p class="lv-question"><strong>Item 6:</strong> Foi verificado se os participantes do grupo de foco têm autonomia plena para decidir participar, evitando sujeitos vulneráveis (como menores de idade, alunos ou subordinados), a menos que esse seja explicitamente o perfil dos participantes e, nesse caso, com cuidado redobrado para não causar constrangimentos ou danos?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Os participantes devem preferencialmente ter autonomia plena para serem capazes de decidir participar ou não do estudo ou coleta de dados. Devemos evitar a participação de sujeitos vulneráveis, tais como: menores de idade, alunos ou subordinados, a menos que este seja explicitamente o perfil dos participantes. Nesses casos, o pesquisador deve tomar um cuidado ainda maior para não causar constrangimentos ou danos aos participantes.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>142</strong> (página 11 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.4 Aspectos Éticos de Pesquisas Envolvendo Pessoas. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-grupos-de-foco-7">
+                <p class="lv-question"><strong>Item 7:</strong> A equipe cuidou para que suas perguntas e suas reações aos comentários dos participantes não enviesassem os dados coletados, de modo que eles sejam corretos, válidos e confiáveis?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“As perguntas feitas aos participantes e as reações dos designers aos seus comentários podem afetar os dados coletados. Devemos assegurar que os dados coletados sejam livres de tendenciosidades ou inclinações indevidas (bias), sejam corretos, válidos e confiáveis.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>143</strong> (página 12 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.4 Aspectos Éticos de Pesquisas Envolvendo Pessoas (subseção sobre dados coletados, impressa na página 143 antes da Seção 7.5). <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <h3 class="doc-subsection">Brainstorming de necessidades e desejos</h3>
+            <article class="lv-item" id="item-brainstorming-1">
+                <p class="lv-question"><strong>Item 1:</strong> A sessão começou com uma pergunta inicial que resume o que se quer descobrir (as informações, tarefas ou características que os usuários querem e precisam no produto) e que se refere a um &quot;sistema ideal&quot;, para que os participantes não se limitem ao que acreditam que a tecnologia possa fazer?</p>
+                <dl class="lv-fields">
+                    <dt>Exemplo</dt><dd>Ex.: &quot;Que informações o sistema ideal deve fornecer?&quot;; &quot;Que tarefas você precisaria ou gostaria de realizar com o sistema ideal?&quot;; &quot;Que características o sistema ideal deve apresentar?&quot;.</dd>
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Uma sessão eficiente de brainstorming começa com uma pergunta que sumariza o objetivo de entender o que os usuários querem e precisam no produto. (...) A pergunta deve se referir ao “sistema ideal”, para que os participantes não se limitem ao que eles acreditam que a tecnologia possa fazer.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>153</strong> (página 22 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.4 Brainstorming de Necessidades e Desejos dos Usuários. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-brainstorming-2">
+                <p class="lv-question"><strong>Item 2:</strong> A sessão foi planejada para durar cerca de uma hora e reunir, em geral, de 8 a 12 usuários finais de perfil semelhante, com mais de uma sessão quando há mais de um perfil de usuário?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Uma sessão de brainstorming pode ser conduzida em aproximadamente uma hora, e leva menos tempo ainda para analisar os dados de uma sessão, o que torna essa técnica leve em termos de recursos, mas poderosa em termos de resultados. Em geral, uma sessão de brainstorming envolve entre 8 e 12 usuários finais, de preferência com perfil semelhante. Caso haja mais do que um perfil, recomenda-se conduzir mais de uma sessão.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>153</strong> (página 22 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.4 Brainstorming de Necessidades e Desejos dos Usuários. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-brainstorming-3">
+                <p class="lv-question"><strong>Item 3:</strong> A sessão teve um moderador que faz perguntas para esclarecer o que é dito, mantém o foco no objetivo, não dá opiniões próprias nem influencia indevidamente as respostas, mantém os participantes motivados, não critica o que eles dizem e garante que todos participem sem que ninguém domine a sessão?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Cada sessão deve ter um moderador, que é responsável por fazer perguntas para esclarecer o que for dito; manter o foco no objetivo da sessão; manter a atividade em andamento, mas sem oferecer suas próprias opiniões ou influenciar indevidamente as respostas dos participantes; manter os participantes motivados; não criticar o que eles disserem; certificar-se de que todos participem, mas que ninguém domine a sessão.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>153</strong> (página 22 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.4 Brainstorming de Necessidades e Desejos dos Usuários. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-brainstorming-4">
+                <p class="lv-question"><strong>Item 4:</strong> As ideias levantadas foram registradas por um secretário (escriba), que anota cada sugestão numerada somente depois de o moderador a parafrasear, e os participantes receberam papel e lápis para anotar as próprias ideias e não as perderem em momentos de grande atividade?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“entender o que os participantes realmente querem com cada sugestão, para então transmitir ao secretário o que deve ser registrado. O secretário então deve registrar a sugestão, numerando-a para facilitar referências futuras. (...) Devemos fornecer papel e lápis a fim de que os participantes possam registrar suas ideias para que, em momentos de grande atividade, as ideias individuais não se percam enquanto o moderador estiver tentando entender uma outra ideia fornecida anteriormente.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>154</strong> (página 23 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.4 Brainstorming de Necessidades e Desejos dos Usuários. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-brainstorming-5">
+                <p class="lv-question"><strong>Item 5:</strong> Depois do levantamento de ideias, houve uma etapa de priorização em que cada participante registrou em um formulário os cinco itens que considera essenciais para o produto, com o número, a descrição e o motivo da importância de cada um, sabendo que todos têm o mesmo peso e que votos duplicados serão descartados?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Na atividade de priorização dos itens registrados, geralmente solicitamos que cada participante registre, num formulário, os cinco itens que considera essenciais para o produto, indicando, para cada item, seu número, sua descrição e por que esse item é importante para ele. Devemos informar aos participantes que todos os cinco itens têm o mesmo peso, e que, caso um participante tente “votar” num mesmo item mais de uma vez, as duplicatas serão descartadas.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>154</strong> (página 23 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.4 Brainstorming de Necessidades e Desejos dos Usuários. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-brainstorming-6">
+                <p class="lv-question"><strong>Item 6:</strong> Os resultados foram sumarizados em uma tabela, ordenada da maior para a menor prioridade, com o item ou categoria, exemplos dados pelos próprios participantes e a porcentagem de participantes que o escolheram entre seus cinco itens prioritários, e a lista completa de ideias foi mantida em um relatório?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Em geral, os resultados de uma análise de desejos e necessidades dos usuários são sumarizados em uma tabela com: item ou categoria; exemplos do item ou categoria, obtidos dos exemplos que os próprios participantes forneceram; porcentagem de participantes que selecionaram o item como um dos cinco itens prioritários. A tabela deve ser ordenada por prioridade, da maior para a menor. Além disso, a lista completa de ideias deve ser incluída num relatório, para consulta futura sobre funcionalidades adicionais ou mesmo inspiração.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>155</strong> (página 24 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.4 Brainstorming de Necessidades e Desejos dos Usuários. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-brainstorming-7">
+                <p class="lv-question"><strong>Item 7:</strong> Antes das sessões, foi realizada uma sessão-piloto para avaliar a pergunta inicial, o procedimento, o treinamento e as habilidades do moderador e do escriba, o tempo estimado das atividades e todo o material preparado?</p>
+                <dl class="lv-fields">
+                    <dt>Texto de origem (citação literal)</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Finalmente, como toda atividade que envolve pessoas, é importante realizar uma sessão-piloto, para avaliar a questão oferecida, o procedimento, o treinamento e as habilidades do moderador e do escriba, o tempo estimado para as atividades e todo o material preparado.”</blockquote></dd>
+                    <dt>Fonte</dt><dd>Página <strong>155</strong> (página 24 do PDF), Capítulo 7 – Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, 7.5.4 Brainstorming de Necessidades e Desejos dos Usuários. <a href="#ref-barbosa2021">BARBOSA et al. (2021)</a>. Arquivo: <code>ihc-ux cap 7.pdf</code></dd>
+                    <dt>Autor do item</dt><dd>Matheus do Vale Lameira</dd>
+                </dl>
+            </article>
+            <h3 class="doc-subsection">Páginas das fontes utilizadas</h3>
+            <p class="doc-text">A Tabela 25 resume de quais obras, arquivos e páginas saíram os itens desta lista.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 25 — Páginas das fontes utilizadas na lista de verificação — Coleta de dados</caption>
+                    <thead><tr><th>Obra</th><th>Arquivo</th><th>Páginas (livro ou slide)</th><th>Páginas (PDF)</th><th>Itens</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">BARBOSA et al. (2021)</td><td><code>ihc-ux cap 7.pdf</code></td><td>136, 141, 142, 143, 145, 146, 147, 148, 152, 153, 154, 155</td><td>5, 10, 11, 12, 14, 15, 16, 17, 21, 22, 23, 24</td><td>1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir dos itens desta lista.</p>
+            <h3 class="doc-subsection" id="referencias-lista">Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li id="ref-barbosa2021">BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da; SILVEIRA, Milene Selbach; GASPARINI, Isabela; DARIN, Ticianne; BARBOSA, Gabriel D. J. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro: Autopublicação, 2021. ISBN 978-65-00-19677-1.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 2 (perfis, personas, cenários e análise de tarefas) a partir do documento consolidado do grupo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes (conteúdo); Matheus (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/09/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Adição do link do vídeo de apresentação da Entrega 2</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Todos os integrantes</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Separação do documento em uma página por artefato; mudança apenas de estrutura, sem alteração de conteúdo (issue #32)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Pedroza</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Perfil 9 (Administrador) e da persona Helena Duarte, com ajustes de contagem e ressalvas nos textos relacionados (issue #40)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão do Cenário 8 e da análise de tarefas TAR-11 do Administrador, com renumeração das tabelas seguintes e ressalvas atualizadas (issue #41)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">05/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da Tabela 7: todos os integrantes ativos e autoria da persona Helena Duarte (issue #42)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das listas de verificação de coleta de dados, perfil, personas e elenco, cenários, HTA e CTT, com citação, página e capítulo de cada fonte (issue #44)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.7</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da página de aspectos éticos: quatro princípios, onde se aplicam no projeto e relação dos cuidados do livro com o TCLE (issue #46)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.8</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da página de atributos dos perfis: faixa etária, experiência, atitudes e tarefas primárias dos nove perfis, com a fonte de cada valor (issue #47)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega2_etica.html"><span>← Anterior</span>Aspectos éticos da pesquisa com usuários</a>
+                    <a class="next" href="entrega2_lv-perfil.html"><span>Próximo →</span>Lista de verificação — Perfil do usuário</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
