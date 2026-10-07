@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Metas de usabilidade | Entrega 3 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 3 · Princípios Gerais de Projeto, Metas de Usabilidade e Guia de Estilo</p>
+                    <ul>
+                        <li><a href="entrega3.html">Visão geral</a></li>
+                        <li><a href="entrega3_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega3_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega3_principios.html">2. Princípios gerais de projeto</a></li>
+                        <li><a href="entrega3_plataforma.html">3. Características da plataforma</a></li>
+                        <li><a href="entrega3_metas.html" class="active" aria-current="page">4. Metas de usabilidade</a></li>
+                        <li><a href="entrega3_guia.html">5. Guia de estilo</a></li>
+                        <li><a href="entrega3_questoes.html">6. Questões em aberto</a></li>
+                        <li><a href="entrega3_referencias.html">7. Referências</a></li>
+                        <li><a href="entrega3_lv-principios.html">Lista de verificação — Princípios gerais de projeto</a></li>
+                        <li><a href="entrega3_lv-plataforma.html">Lista de verificação — Características da plataforma</a></li>
+                        <li><a href="entrega3_lv-metas.html">Lista de verificação — Metas de usabilidade</a></li>
+                        <li><a href="entrega3_lv-guia.html">Lista de verificação — Guia de estilo</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega3.html">Entrega 3</a></p>
+            <h1 id="metas" class="doc-title doc-page-title">4. Metas de usabilidade</h1>
+            <h3 class="doc-subsection" id="introducao-metas">Introdução</h3>
+            <p class="doc-text">Esta seção define os fatores de qualidade de uso que serão priorizados, como serão avaliados ao longo do processo de design e quais faixas de valores são inaceitáveis, aceitáveis e ideais para cada indicador. A priorização parte das personas e tarefas da Entrega 2 e dos achados da pesquisa. As faixas da Tabela 3 são valores iniciais propostos pelo grupo e serão calibradas com os dados da etapa de avaliação.</p>
+            <p class="doc-text">Definir as metas de usabilidade é definir os fatores de qualidade de uso que serão priorizados, como serão avaliados ao longo do processo de design e quais faixas de valores são inaceitáveis, aceitáveis e ideais para cada indicador (BARBOSA; SILVA, 2010, p. 105–106). Os fatores de usabilidade considerados por Nielsen são facilidade de aprendizado, facilidade de recordação, eficiência, segurança no uso e satisfação do usuário (p. 29); o livro trata ainda da acessibilidade e da comunicabilidade como critérios de qualidade de uso (p. 28).</p>
+            <p class="doc-text">A priorização parte das <a href="entrega2_elenco.html">personas</a> e <a href="entrega2_tarefas.html">tarefas</a> da Entrega 2. Têm prioridade alta a facilidade de aprendizado (Caio, ingressante que não conhece os termos), a eficiência (Bruna precisa de confirmação rápida; Larissa precisa replanejar), a segurança no uso (simulação que pode ser confundida com o plano real, <a href="entrega2_tarefas.html">TAR-02</a>) e a acessibilidade (pedido da pesquisa, <a href="entrega2_achados.html">achado 3.2</a>). Têm prioridade média a facilidade de recordação, porque a matrícula é semestral, exemplo de uso de baixa frequência dado pelo próprio livro (p. 30); a satisfação, porque o retorno da pesquisa já foi muito positivo (<a href="entrega2_achados.html">achado 3.3</a>); e a comunicabilidade, ligada ao papel da Darcy.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 3 — Metas de usabilidade, indicadores e faixas de valores</caption>
+                    <thead><tr><th>Meta (prioridade e origem)</th><th>Indicador</th><th>Inaceitável</th><th>Aceitável</th><th>Ideal</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Facilidade de aprendizado</strong><br>Alta (Caio; <a href="entrega2_tarefas.html">TAR-01</a>, <a href="entrega2_tarefas.html">TAR-03</a>)</td><td>Percentual de estudantes novos na plataforma que enviam o histórico e identificam uma disciplina bloqueada, sem ajuda externa, na primeira sessão; tempo até identificar a primeira disciplina bloqueada.</td><td>Menos de 60%; mais de 5 min</td><td>De 60% a 80%; de 2 a 5 min</td><td>Mais de 80%; até 2 min</td></tr>
+                        <tr><td><strong>Eficiência</strong><br>Alta (Bruna, Larissa; <a href="entrega2_tarefas.html">TAR-02</a>, <a href="entrega2_tarefas.html">TAR-05</a>)</td><td>Tempo para confirmar a ausência de pendências antes da matrícula (o <a href="entrega2_cenarios.html">Cenário 2</a> prevê menos de um minuto); tempo para simular o plano de formatura após uma reprovação.</td><td>Mais de 2 min; mais de 10 min</td><td>De 1 a 2 min; de 5 a 10 min</td><td>Até 1 min; até 5 min</td></tr>
+                        <tr><td><strong>Segurança no uso</strong><br>Alta (Larissa; <a href="entrega2_tarefas.html">TAR-01</a>, <a href="entrega2_tarefas.html">TAR-02</a>)</td><td>Alterações no plano salvo feitas por engano, por 10 sessões de teste; percentual de erros de upload em que o estudante se recupera na tentativa seguinte.</td><td>2 ou mais; menos de 50%</td><td>1; de 50% a 80%</td><td>Nenhuma; mais de 80%</td></tr>
+                        <tr><td><strong>Acessibilidade</strong><br>Alta (<a href="entrega2_achados.html">achado 3.2</a>)</td><td>Telas principais em que o estado das disciplinas só é distinguível pela cor; razão de contraste do texto principal.</td><td>Alguma tela depende só de cor; contraste abaixo de 4,5:1</td><td>Todas as telas com cor, ícone e rótulo; contraste de 4,5:1 ou mais</td><td>Tudo do aceitável, mais uso completo só pelo teclado; contraste de 7:1 ou mais</td></tr>
+                        <tr><td><strong>Facilidade de recordação</strong><br>Média (matrícula semestral)</td><td>Percentual de estudantes que, após um semestre sem usar a plataforma, montam a grade sem consultar a ajuda.</td><td>Menos de 60%</td><td>De 60% a 80%</td><td>Mais de 80%</td></tr>
+                        <tr><td><strong>Satisfação</strong><br>Média (<a href="entrega2_achados.html">achado 3.3</a>)</td><td>Nota média de satisfação, de 1 a 5, ao fim de cada tarefa.</td><td>Menos de 3,5</td><td>De 3,5 a 4,2</td><td>Mais de 4,2</td></tr>
+                        <tr><td><strong>Comunicabilidade</strong><br>Média (Darcy; <a href="entrega2_tarefas.html">TAR-03</a>, <a href="entrega2_tarefas.html">TAR-04</a>)</td><td>Percentual de respostas da Darcy sobre cálculos e prazos, em amostra, que informam se são estimativa ou confirmação.</td><td>Menos de 90%</td><td>De 90% a 99%</td><td>100%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: fatores de Barbosa e Silva (2010, p. 28–32); indicadores e faixas elaborados pelo grupo (2026).</p>
+            <p class="doc-text">Diferentemente do Exemplo 4.1 do livro, em que as faixas partem do desempenho atual do sistema (BARBOSA; SILVA, 2010, p. 106), o NoFluxoUnB ainda não tem linha de base medida. As faixas acima são, portanto, valores iniciais propostos pelo grupo e serão calibradas com os dados da etapa de avaliação.</p>
+            <h3 class="doc-subsection">Contribuição</h3>
+            <p class="doc-text">A Tabela 12 registra a contribuição de cada integrante e das ferramentas de IA nesta seção.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 12 — Contribuição dos integrantes e das ferramentas de IA — 4. Metas de usabilidade</caption>
+                    <thead><tr><th>Membro</th><th>Contribuição</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Felipe Lopes Pedroza</strong></td><td>Elaboração das metas de usabilidade.</td></tr>
+                        <tr><td><strong>Matheus do Vale Lameira</strong></td><td>Sem atividade própria nesta seção.</td></tr>
+                        <tr><td><strong>Tiago Sousa Nepomuceno</strong></td><td>Revisão do documento.</td></tr>
+                        <tr><td><strong>Victor Andreozzi de La Rocque Couto</strong></td><td>Revisão do documento.</td></tr>
+                        <tr><td><strong>Claude</strong></td><td>Redação do texto e montagem da Tabela 3.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+            <h3 class="doc-subsection" id="referencias-metas">Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, S. D. J.; SILVA, B. S. Interação Humano-Computador. Rio de Janeiro: Elsevier, 2010. Cap. 2 (p. 27–32), cap. 4 (p. 104–110) e cap. 8 (p. 264–284). P. 28–30, 105–106.</li>
+                <li>GRUPO 02. Entrega 2: perfis de usuário, personas, cenários e análise de tarefas do NoFluxoUnB. Universidade de Brasília, 2026.</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 3 (princípios gerais de projeto, metas de usabilidade, guia de estilo e características da plataforma) a partir do documento do grupo, separada por artefato, com o link do vídeo da apresentação e as tabelas de contribuição por seção (issue #49)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe e Matheus (conteúdo); Matheus (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Tiago e Victor (revisão do documento original)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">06/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão das listas de verificação de princípios gerais de projeto, características da plataforma, metas de usabilidade e guia de estilo, com citação, página e capítulo de cada fonte (issue #50)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega3_plataforma.html"><span>← Anterior</span>3. Características da plataforma</a>
+                    <a class="next" href="entrega3_guia.html"><span>Próximo →</span>5. Guia de estilo</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
