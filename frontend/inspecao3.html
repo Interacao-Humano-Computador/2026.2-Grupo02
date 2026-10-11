@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Relatório de Inspeção da Etapa 2 (Perfil de Usuário, Personas e Análise de Tarefas) dos Grupos 1 (Microsoft Teams) e 3 (Portal Detran) realizado pelo Grupo 2 na disciplina de Interação Humano-Computador da UnB.">
+    <title>Visão geral | Inspeção Etapa 3 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1080px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        /* Estilos do Documento */
+        .doc-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(9, 9, 11, 0.6);
+            backdrop-filter: blur(12px);
+            font-size: 0.88rem;
+            margin-bottom: 3rem;
+            border-radius: 12px;
+            position: sticky;
+            top: 1rem;
+            z-index: 50;
+        }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: all 0.2s; padding: 0.35rem 0.75rem; border-radius: 6px; }
+        .doc-nav a:hover { color: #fafafa; background: rgba(255,255,255,0.05); }
+        .doc-nav a.highlight-back { color: #34d399; font-weight: 600; }
+        
+        .header-info {
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .header-info { grid-template-columns: 1fr; }
+        }
+        .header-info-content { color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info-content strong { color: #fafafa; }
+        .header-info-content a { color: #10b981; text-decoration: none; }
+        .header-info-content a:hover { text-decoration: underline; }
+
+        .btn-download-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: #ffffff !important;
+            padding: 0.85rem 1.4rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-download-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+            color: #ffffff !important;
+        }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; letter-spacing: -0.5px; }
+        h2.doc-section { font-size: 1.75rem; color: #10b981; margin-top: 3.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        h3.doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        
+        p.doc-text, ul.doc-list li, ol.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list, ol.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        /* Dashboard de Métricas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .stat-card {
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+        .stat-card.teams::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .stat-card.detran::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+        .stat-header { display: flex; justify-content: space-between; align-items: center; }
+        .stat-group-name { font-size: 1.1rem; font-weight: 700; color: #ffffff; }
+        .stat-target { font-size: 0.8rem; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 999px;
+            overflow: hidden;
+            display: flex;
+        }
+        .progress-segment { height: 100%; transition: width 0.6s ease; }
+        .segment-conforme { background-color: #10b981; }
+        .segment-incompleto { background-color: #f59e0b; }
+        .segment-nao-conforme { background-color: #ef4444; }
+        .segment-nao-avaliado { background-color: #71717a; }
+
+        .stat-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.8rem;
+            color: #d4d4d8;
+        }
+        .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+        .legend-indicator { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+        /* Tabelas padronizadas */
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: #09090b;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .table-standard {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.93rem;
+        }
+        .table-standard caption {
+            text-align: left;
+            padding: 1.2rem 1.25rem 0.5rem 1.25rem;
+            color: #a1a1aa;
+            font-style: italic;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        .table-standard th {
+            padding: 1.1rem 1.25rem;
+            font-weight: 700;
+            color: #fafafa;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.88rem;
+            letter-spacing: 0.5px;
+        }
+        .table-standard td {
+            padding: 1rem 1.25rem;
+            color: #d4d4d8;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-standard tr:hover td { background: rgba(255,255,255,0.02); }
+
+        /* Badges de Avaliação */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.28rem 0.65rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-conforme {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+        .badge-incompleto {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+        .badge-nao-conforme {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+        .badge-nao-avaliado {
+            background: rgba(113, 113, 122, 0.15);
+            color: #a1a1aa;
+            border: 1px solid rgba(113, 113, 122, 0.3);
+        }
+
+        /* Caixas de Observação / Destaque */
+        .note-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            color: #d1fae5;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .note-box.alert-amber {
+            background: rgba(245, 158, 11, 0.05);
+            border-left-color: #f59e0b;
+            color: #fef3c7;
+        }
+        .note-box strong { color: #ffffff; }
+
+        /* Cartões de lista para Aspectos Éticos e Coleta */
+        .details-card {
+            background: rgba(9, 9, 11, 0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .details-list {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .details-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            line-height: 1.7;
+            color: #e4e4e7;
+            font-size: 0.96rem;
+        }
+        .details-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0.5rem;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+        }
+        .details-list li strong { color: #fafafa; }
+
+        /* Estilos Alto Contraste */
+        body.alto-contraste .landing-body { background: #ffffff !important; color: #000000 !important; }
+        body.alto-contraste .doc-nav { background: #f4f4f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .doc-nav a { color: #000000 !important; }
+        body.alto-contraste .header-info,
+        body.alto-contraste .stat-card,
+        body.alto-contraste .details-card,
+        body.alto-contraste .table-wrapper { background: #ffffff !important; border-color: #000000 !important; box-shadow: none !important; }
+        body.alto-contraste .table-standard th { background: #e4e4e7 !important; color: #000000 !important; border-color: #000000 !important; }
+        body.alto-contraste .table-standard td { color: #000000 !important; border-color: #000000 !important; }
+        body.alto-contraste .badge-conforme { background: #dcfce7 !important; color: #166534 !important; border-color: #166534 !important; }
+        body.alto-contraste .badge-incompleto { background: #fef3c7 !important; color: #92400e !important; border-color: #92400e !important; }
+        body.alto-contraste .badge-nao-conforme { background: #fee2e2 !important; color: #991b1b !important; border-color: #991b1b !important; }
+        body.alto-contraste .badge-nao-avaliado { background: #f4f4f5 !important; color: #27272a !important; border-color: #27272a !important; }
+        body.alto-contraste .note-box { background: #f4f4f5 !important; border-left-color: #000000 !important; color: #000000 !important; }
+        body.alto-contraste h1.doc-title,
+        body.alto-contraste h2.doc-section,
+        body.alto-contraste h3.doc-subsection { color: #000000 !important; border-color: #000000 !important; }
+        body.alto-contraste .text-gradient { -webkit-text-fill-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #10b981; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Inspeção da Etapa 3 — Grupo 3</p>
+                    <ul>
+                        <li><a href="inspecao3.html" class="active" aria-current="page">Visão geral</a></li>
+                        <li><a href="inspecao3_principios.html">1. Princípios Gerais de Projeto</a></li>
+                        <li><a href="inspecao3_metas.html">2. Metas de Usabilidade</a></li>
+                        <li><a href="inspecao3_guia.html">3. Guia de Estilo</a></li>
+                        <li><a href="inspecao3_plataforma.html">4. Características da Plataforma</a></li>
+                        <li><a href="inspecao3_resumo.html">Resumo da inspeção</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+<div class="header-info">
+                <div class="header-info-content">
+                    <p>Faculdade UnB Gama - FGA / Área Especial 1, Setor Central</p>
+                    <p>Site: www.fga.unb.br / Caixa Postal – 8114 E-mail: unbgama@unb.br / Gama - DF - CEP: 72.405-610</p>
+                    <p><strong>Universidade de Brasília — Faculdade UnB Gama</strong></p>
+                    <p>Disciplina: Interação Humano Computador</p>
+                    <p>Professor: André Barros de Sales</p>
+                    <p>Integrantes do Grupo 2 presentes na inspeção:</p>
+                    <p>Felipe Lopes Pedroza — Matrícula: 231026330</p>
+                    <p>Matheus do Vale Lameira — Matrícula: 202070064</p>
+                    <p>Victor Andreozzi de La Rocque Couto — Matrícula: 221029285</p>
+                    <p>Tópico: Princípios Gerais de Projeto, Metas de Usabilidade, Guia de Estilo e Características da Plataforma</p>
+                    <p>(Fase: Análise de Requisitos) — Atividade Avaliativa: Lista de Verificação da Entrega 3</p>
+                </div>
+                <div>
+                    <a href="docs/Lista_Verificacao_Entrega3_Inspecao_Grupo2_para_Grupo3.pdf" target="_blank" class="btn-download-pdf" title="Abrir arquivo PDF original da inspeção">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Baixar / Visualizar PDF</span>
+                    </a>
+                </div>
+            </div>
+
+            <h1 class="doc-title">Listas de Verificação — Inspeção da Etapa 3<span class="text-gradient">.</span></h1>
+
+            <h2 class="doc-section">Lista de Verificação — Entrega 3: Inspeção do Grupo 3 pelo Grupo 2</h2>
+            <p class="doc-text"><strong>Vídeo da apresentação:</strong> <a href="https://youtu.be/coEfItAoSF4" target="_blank" rel="noopener">https://youtu.be/coEfItAoSF4</a><br>
+            <strong>GitPages da entrega (Grupo 2):</strong> <a href="https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html" target="_blank" rel="noopener">https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html</a><br>
+            <strong>GitPages inspecionado (Grupo 3):</strong> <a href="https://interacao-humano-computador.github.io/2026.2-Grupo03/index.html" target="_blank" rel="noopener">https://interacao-humano-computador.github.io/2026.2-Grupo03/index.html</a></p>
+            <p class="doc-text">Artefatos inspecionados do Grupo 3 (projeto: Portal de Serviços do Detran-DF): Princípios Gerais, Metas de Usabilidade, Guia de Estilo e Contribuições. Bibliografia: BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. 1. ed. Rio de Janeiro: Campus, 2010.</p>
+
+            <h2 id="artefatos" class="doc-section">Artefatos desta entrega</h2>
+            <ul class="doc-list doc-artifact-list">
+                <li><a href="inspecao3_principios.html">1. Princípios Gerais de Projeto</a></li>
+                <li><a href="inspecao3_metas.html">2. Metas de Usabilidade</a></li>
+                <li><a href="inspecao3_guia.html">3. Guia de Estilo</a></li>
+                <li><a href="inspecao3_plataforma.html">4. Características da Plataforma</a></li>
+                <li><a href="inspecao3_resumo.html">Resumo da inspeção</a></li>
+            </ul>
+<div class="doc-history">
+<!-- Histórico de Versão -->
+            <h2 id="historico" class="doc-section">
+                <span>Histórico de Versão</span>
+            </h2>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Histórico de versionamento deste documento de inspeção.</caption>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">Versão</th>
+                            <th style="width: 110px;">Data</th>
+                            <th>Descrição</th>
+                            <th>Autor(es)</th>
+                            <th>Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.0</td>
+                            <td style="font-family: 'JetBrains Mono', monospace;">10/10/2026</td>
+                            <td>Publicação da Entrega da Inspeção do grupo mais 1 da Etapa 3 (Grupo 3 inspecionado pelo Grupo 2) a partir do documento do grupo, dividido em artefatos, com o link do vídeo da apresentação e o PDF para download (issue #55)</td>
+                            <td style="color: #60a5fa;">Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td style="color: #34d399;">Felipe Lopes Pedroza e Victor Andreozzi de La Rocque Couto</td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.1</td>
+                            <td style="font-family: 'JetBrains Mono', monospace;">10/10/2026</td>
+                            <td>Retirada da linha do aluno no cabeçalho da visão geral, que repetia o primeiro integrante; revisão atribuída a Felipe e Victor e autoria igual para os três participantes (issue #57)</td>
+                            <td style="color: #60a5fa;">Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td style="color: #34d399;">Felipe Lopes Pedroza e Victor Andreozzi de La Rocque Couto</td>
+                        </tr>
+                        <tr>
+                            <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.2</td>
+                            <td style="font-family: 'JetBrains Mono', monospace;">10/10/2026</td>
+                            <td>Título da entrega ajustado ao padrão da inspeção da Etapa 2: nome no menu lateral e título da visão geral (issue #58)</td>
+                            <td style="color: #60a5fa;">Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td style="color: #34d399;">Felipe Lopes Pedroza e Victor Andreozzi de La Rocque Couto</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <span></span>
+                    <a class="next" href="inspecao3_principios.html"><span>Próximo →</span>1. Princípios Gerais de Projeto</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Documentação e verificação dos artefatos da disciplina de Interação Humano-Computador da Universidade de Brasília.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Campus UnB Gama (FGA)
+            </div>
+        </div>
+    </footer>
+
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
