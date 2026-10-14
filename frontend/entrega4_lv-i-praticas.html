@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista do Storyboard: I, Questões práticas | Entrega 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 4 · Planejamento da Avaliação do Storyboard e da Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega4.html">Visão geral</a></li>
+                        <li><a href="entrega4_storyboard.html">1. Planejamento da Avaliação do Storyboard (framework DECIDE)</a></li>
+                        <li><a href="entrega4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="entrega4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas (HTA e CTT)</a></li>
+                        <li><a href="entrega4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="entrega4_referencias.html">Referências</a></li>
+                        <li><a href="entrega4_lv-visao.html">Lista de verificação do Storyboard</a></li>
+                        <li><a href="entrega4_lv-d-objetivos.html">Lista do Storyboard: D, Determinar os objetivos</a></li>
+                        <li><a href="entrega4_lv-e-perguntas.html">Lista do Storyboard: E, Explorar as perguntas</a></li>
+                        <li><a href="entrega4_lv-c-metodos.html">Lista do Storyboard: C, Escolher os métodos</a></li>
+                        <li><a href="entrega4_lv-i-praticas.html" class="active" aria-current="page">Lista do Storyboard: I, Questões práticas</a></li>
+                        <li><a href="entrega4_lv-d-eticas.html">Lista do Storyboard: D, Questões éticas</a></li>
+                        <li><a href="entrega4_lv-e-relato.html">Lista do Storyboard: E, Relato dos resultados</a></li>
+                        <li><a href="entrega4_lv-sintese.html">Lista do Storyboard: Síntese e referências</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega4.html">Entrega 4</a></p>
+<h1 id="lv-i-praticas" class="doc-title doc-page-title">I: Identificar e administrar as questões práticas</h1>
+            <h3 class="doc-subsection" id="introducao-lv-i-praticas">Introdução</h3>
+            <p class="doc-text">Os itens 6 a 11 verificam as questões práticas — participantes, material de apoio e, no cronograma, tempo de sessão, teste-piloto, agendamento e sequência das atividades (I).</p>
+            <h3 class="doc-subsection">I: Identificar e administrar as questões práticas — participantes e material</h3>
+            <article class="lv-item" id="item-6">
+                <p class="lv-question"><strong>Item 6:</strong> O planejamento define o perfil dos participantes, de modo a representar o público-alvo (considerando fatores como idade, sexo, formação acadêmica, grau de conhecimento sobre o domínio, nível de experiência na realização das tarefas e nível de experiência no uso do sistema avaliado e de sistemas semelhantes), e define e justifica o número de participantes (por exemplo, de cinco a 12 usuários, ou cinco usuários para encontrar a maioria dos problemas da interface)?</p>
+                <p class="lv-onde">Onde conferir no documento da <a href="entrega4.html">Entrega 4</a>: <a href="entrega4_storyboard.html">Seção 1</a>, linha “I — Identificar as questões práticas” (participantes) e <a href="entrega4_relato-storyboard.html">Seção 2</a> (perfil e número de participantes no relato).</p>
+                <p class="lv-resposta" aria-label="Resposta: [  ] CONFORME [  ] NÃO CONFORME [ x ] NÃO SE APLICA">Resposta: [ ] CONFORME [ ] NÃO CONFORME <strong>[ x ] NÃO SE APLICA</strong></p>
+                <dl class="lv-fields">
+                    <dt>Texto de Origem (Citação Literal):</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Os avaliadores devem buscar participantes que representem o público-alvo do sistema avaliado, ou seja, que possuam características semelhantes aos usuários típicos. A definição dos perfis de participantes pode considerar fatores como: idade, sexo, formação acadêmica, grau de conhecimento sobre o domínio, nível de experiência na realização das tarefas e nível de experiência no uso do sistema avaliado e de sistemas semelhantes, por exemplo. Sempre que possível e pertinente, o avaliador deve buscar equilibrar o número de homens e mulheres. Dumas e Redish (1999) relatam que uma avaliação de IHC em geral envolve de cinco a 12 usuários. Nielsen (2000), por sua vez, afirma que bastam cinco usuários para encontrarmos a maioria dos problemas na interface (85%, segundo o seu experimento), alcançando uma boa relação custo–benefício.”</blockquote></dd>
+                    <dt>Fonte:</dt><dd>Página: 274, Capítulo 11. Planejamento da Avaliação de IHC. Seção 11.7.2 Preparação. Livro: SIMONE DINIZ JUNQUEIRA BARBOSA, BRUNO SANTANA DA SILVA, MILENE SELBACH SILVEIRA, ISABELA GASPARINI, TICIANNE DARIN, GABRIEL DINIZ JUNQUEIRA BARBOSA, Interação Humano-Computador e Experiência do Usuário, 1ª Edição, Rio de Janeiro, 2021. Publicado em: 03/05/2021.</dd>
+                    <dt>Foto (trecho de origem destacado):</dt><dd><figure class="lv-foto"><img src="img/entrega4/lv-storyboard-item-06.jpg" alt="Foto da página 274 do livro com o trecho de origem do item 6 destacado em amarelo" loading="lazy" width="1200"></figure></dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-7">
+                <p class="lv-question"><strong>Item 7:</strong> O planejamento prevê o material de apoio da avaliação com participantes: termo de consentimento livre e esclarecido (TCLE); questionário pré-teste (ou roteiro de entrevista estruturada); roteiro de entrevista pós-teste; instruções e cenários das tarefas; e roteiro de acompanhamento da observação?</p>
+                <p class="lv-onde">Onde conferir no documento da <a href="entrega4.html">Entrega 4</a>: <a href="entrega4_storyboard.html">Seção 1</a>, linha “I — Identificar as questões práticas” (recursos: roteiro, formulário de consentimento) e linha “D — Decidir as questões éticas”.</p>
+                <p class="lv-resposta" aria-label="Resposta: [  ] CONFORME [  ] NÃO CONFORME [ x ] NÃO SE APLICA">Resposta: [ ] CONFORME [ ] NÃO CONFORME <strong>[ x ] NÃO SE APLICA</strong></p>
+                <dl class="lv-fields">
+                    <dt>Texto de Origem (Citação Literal):</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Antes de começar a coletar dados, o avaliador deve preparar e imprimir o material de apoio necessário. No caso de avaliações que envolvam participantes, esse material costuma incluir: • termo de consentimento livre e esclarecido (TCLE), de acordo com os cuidados éticos necessários (veja Seção 7.4); • questionário pré-teste (ou roteiro de entrevista estruturada) para coletar informações dos participantes que podem influenciar a interação usuário–sistema, tais como: características pessoais, experiências anteriores com tecnologia e conhecimento sobre o domínio; • roteiro de entrevista pós-teste para coletar informações sobre a opinião e os sentimentos do participante decorrentes da experiência de uso observada; • instruções e cenários para orientar os participantes sobre as tarefas a serem realizadas; • roteiro de acompanhamento da observação, de modo a facilitar a captura de dados e anotações.”</blockquote></dd>
+                    <dt>Fonte:</dt><dd>Página: 275, Capítulo 11. Planejamento da Avaliação de IHC. Seção 11.7.2 Preparação. Livro: SIMONE DINIZ JUNQUEIRA BARBOSA, BRUNO SANTANA DA SILVA, MILENE SELBACH SILVEIRA, ISABELA GASPARINI, TICIANNE DARIN, GABRIEL DINIZ JUNQUEIRA BARBOSA, Interação Humano-Computador e Experiência do Usuário, 1ª Edição, Rio de Janeiro, 2021. Publicado em: 03/05/2021.</dd>
+                    <dt>Foto (trecho de origem destacado):</dt><dd><figure class="lv-foto"><img src="img/entrega4/lv-storyboard-item-07.jpg" alt="Foto da página 275 do livro com o trecho de origem do item 7 destacado em amarelo" loading="lazy" width="1200"></figure></dd>
+                </dl>
+            </article>
+            <h3 class="doc-subsection">I: Identificar e administrar as questões práticas — cronograma do planejamento</h3>
+            <article class="lv-item" id="item-8">
+                <p class="lv-question"><strong>Item 8:</strong> O tempo planejado é compatível com o recomendado: cada tarefa estimada em, no máximo, 20 minutos (com pausa rápida se for necessário mais tempo) e cerca de uma hora por participante em cada sessão de avaliação?</p>
+                <p class="lv-onde">Onde conferir no documento da <a href="entrega4.html">Entrega 4</a>: <a href="entrega4_storyboard.html">Seção 1</a>, linha “I” (duração das sessões) e Seção 5.2 (plano dia a dia).</p>
+                <p class="lv-resposta" aria-label="Resposta: [ x ] CONFORME [  ] NÃO CONFORME [  ] NÃO SE APLICA">Resposta: <strong>[ x ] CONFORME</strong> [ ] NÃO CONFORME [ ] NÃO SE APLICA</p>
+                <dl class="lv-fields">
+                    <dt>Texto de Origem (Citação Literal):</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Quando for elaborar os cenários de tarefa, o avaliador deve estar atento ao tempo necessário para os participantes realizarem as tarefas descritas. O tempo estimado para um participante realizar cada tarefa não deveria ultrapassar 20 minutos. Se for necessário mais tempo, o participante deve poder fazer uma pausa rápida para evitar que sua fadiga física ou mental interfira no resultado da avaliação. Podemos sugerir, por exemplo, que o participante desvie o olhar para um ponto distante depois de passar algum tempo olhando somente para a tela, ou faça um alongamento das mãos e dos braços depois de usar o teclado e o mouse durante algum tempo. Cada participante normalmente despende cerca de uma hora numa sessão de avaliação.”</blockquote></dd>
+                    <dt>Fonte:</dt><dd>Página: 275, Capítulo 11. Planejamento da Avaliação de IHC. Seção 11.7.2 Preparação. Livro: SIMONE DINIZ JUNQUEIRA BARBOSA, BRUNO SANTANA DA SILVA, MILENE SELBACH SILVEIRA, ISABELA GASPARINI, TICIANNE DARIN, GABRIEL DINIZ JUNQUEIRA BARBOSA, Interação Humano-Computador e Experiência do Usuário, 1ª Edição, Rio de Janeiro, 2021. Publicado em: 03/05/2021.</dd>
+                    <dt>Foto (trecho de origem destacado):</dt><dd><figure class="lv-foto"><img src="img/entrega4/lv-storyboard-item-08.jpg" alt="Foto da página 275 do livro com o trecho de origem do item 8 destacado em amarelo" loading="lazy" width="1200"></figure></dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-9">
+                <p class="lv-question"><strong>Item 9:</strong> Está previsto um teste-piloto, conduzido como uma sessão normal de avaliação, para avaliar o próprio planejamento: verificar se a linguagem e os materiais são claros e suficientes, se o sistema, os equipamentos e os softwares de registro funcionam corretamente e se o tempo das tarefas é adequado?</p>
+                <p class="lv-onde">Onde conferir no documento da <a href="entrega4.html">Entrega 4</a>: <a href="entrega4_storyboard.html">Seção 1</a>, linha “I” (teste-piloto) e Seção 5.2 (período do piloto antes das sessões).</p>
+                <p class="lv-resposta" aria-label="Resposta: [ x ] CONFORME [  ] NÃO CONFORME [  ] NÃO SE APLICA">Resposta: <strong>[ x ] CONFORME</strong> [ ] NÃO CONFORME [ ] NÃO SE APLICA</p>
+                <dl class="lv-fields">
+                    <dt>Texto de Origem (Citação Literal):</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Concluído todo o planejamento da avaliação, é muito importante que o avaliador realize um teste-piloto. O objetivo desse teste é avaliar o próprio planejamento, e analisar se a avaliação, tal como planejada, produz os dados necessários para responder a questões e objetivos do estudo. O avaliador deve conduzir o teste-piloto como se fosse uma sessão normal de avaliação. Dessa forma, ele tem oportunidade de verificar se a linguagem nas explicações e nos materiais fornecidos é clara e objetiva, e se esses materiais contêm informações adequadas e suficientes para orientar o participante durante a avaliação. O teste-piloto também permite ao avaliador verificar se o sistema a ser avaliado, os equipamentos e os softwares para registrar os dados estão funcionando corretamente, e se o tempo necessário para executar as tarefas solicitadas é adequado.”</blockquote></dd>
+                    <dt>Fonte:</dt><dd>Página: 276, Capítulo 11. Planejamento da Avaliação de IHC. Seção 11.7.2 Preparação. Livro: SIMONE DINIZ JUNQUEIRA BARBOSA, BRUNO SANTANA DA SILVA, MILENE SELBACH SILVEIRA, ISABELA GASPARINI, TICIANNE DARIN, GABRIEL DINIZ JUNQUEIRA BARBOSA, Interação Humano-Computador e Experiência do Usuário, 1ª Edição, Rio de Janeiro, 2021. Publicado em: 03/05/2021.</dd>
+                    <dt>Foto (trecho de origem destacado):</dt><dd><figure class="lv-foto"><img src="img/entrega4/lv-storyboard-item-09.jpg" alt="Foto da página 276 do livro com o trecho de origem do item 9 destacado em amarelo" loading="lazy" width="1200"></figure></dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-10">
+                <p class="lv-question"><strong>Item 10:</strong> O planejamento prevê o agendamento, com cada participante, da data, do horário e do local de realização da avaliação?</p>
+                <p class="lv-onde">Onde conferir no documento da <a href="entrega4.html">Entrega 4</a>: Seção 5.2 (plano dia a dia: período das sessões com participantes) e Seção 5.1 (marcos fixos).</p>
+                <p class="lv-resposta" aria-label="Resposta: [  ] CONFORME [  ] NÃO CONFORME [ x ] NÃO SE APLICA">Resposta: [ ] CONFORME [ ] NÃO CONFORME <strong>[ x ] NÃO SE APLICA</strong></p>
+                <dl class="lv-fields">
+                    <dt>Texto de Origem (Citação Literal):</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Confirmada a disponibilidade e o interesse do participante, o avaliador deve agendar com ele a data, o horário e o local para a realização da avaliação.”</blockquote></dd>
+                    <dt>Fonte:</dt><dd>Página: 276, Capítulo 11. Planejamento da Avaliação de IHC. Seção 11.7.2 Preparação. Livro: SIMONE DINIZ JUNQUEIRA BARBOSA, BRUNO SANTANA DA SILVA, MILENE SELBACH SILVEIRA, ISABELA GASPARINI, TICIANNE DARIN, GABRIEL DINIZ JUNQUEIRA BARBOSA, Interação Humano-Computador e Experiência do Usuário, 1ª Edição, Rio de Janeiro, 2021. Publicado em: 03/05/2021.</dd>
+                    <dt>Foto (trecho de origem destacado):</dt><dd><figure class="lv-foto"><img src="img/entrega4/lv-storyboard-item-10.jpg" alt="Foto da página 276 do livro com o trecho de origem do item 10 destacado em amarelo" loading="lazy" width="1200"></figure></dd>
+                </dl>
+            </article>
+            <article class="lv-item" id="item-11">
+                <p class="lv-question"><strong>Item 11:</strong> O cronograma do planejamento ordena no tempo, com datas, as atividades básicas da avaliação — preparação, coleta de dados, interpretação, consolidação e relato dos resultados — e prevê o reprojeto do sistema caso a avaliação encontre problemas ou oportunidades de melhoria?</p>
+                <p class="lv-onde">Onde conferir no documento da <a href="entrega4.html">Entrega 4</a>: Seção 5 (Cronograma): 5.1 Entregas da fase, 5.2 Plano dia a dia e 5.3 Artefatos por integrante (versões v1 e v2 do storyboard).</p>
+                <p class="lv-resposta" aria-label="Resposta: [ x ] CONFORME [  ] NÃO CONFORME [  ] NÃO SE APLICA">Resposta: <strong>[ x ] CONFORME</strong> [ ] NÃO CONFORME [ ] NÃO SE APLICA</p>
+                <dl class="lv-fields">
+                    <dt>Texto de Origem (Citação Literal):</dt><dd><blockquote class="lv-quote" lang="pt-BR">“Os métodos de avaliação de IHC possuem as seguintes atividades básicas: preparação, coleta de dados, interpretação, consolidação e relato dos resultados. Caso a avaliação encontre problemas ou oportunidades de melhoria, também é planejado um reprojeto do sistema.”</blockquote></dd>
+                    <dt>Fonte:</dt><dd>Página: 273, Capítulo 11. Planejamento da Avaliação de IHC. Seção 11.7 Como Avaliar?. Livro: SIMONE DINIZ JUNQUEIRA BARBOSA, BRUNO SANTANA DA SILVA, MILENE SELBACH SILVEIRA, ISABELA GASPARINI, TICIANNE DARIN, GABRIEL DINIZ JUNQUEIRA BARBOSA, Interação Humano-Computador e Experiência do Usuário, 1ª Edição, Rio de Janeiro, 2021. Publicado em: 03/05/2021.</dd>
+                    <dt>Foto (trecho de origem destacado):</dt><dd><figure class="lv-foto"><img src="img/entrega4/lv-storyboard-item-11.jpg" alt="Foto da página 273 do livro com o trecho de origem do item 11 destacado em amarelo" loading="lazy" width="1200"></figure></dd>
+                </dl>
+            </article>
+
+            <h3 class="doc-subsection" id="referencias-lv-i-praticas">Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da; SILVEIRA, Milene Selbach; GASPARINI, Isabela; DARIN, Ticianne; BARBOSA, Gabriel Diniz Junqueira. Interação Humano-Computador e Experiência do Usuário. 1. ed. Rio de Janeiro, 2021 (versão de 03 de maio de 2021). [Material utilizado: Capítulo 11 – Planejamento da Avaliação de IHC, arquivo 'Cap. Planejamento ihc-ux (1).pdf', p. 264 a 280].</li>
+                <li>Documento inspecionado: No Fluxo UnB — Grupo 02 — <a href="entrega4.html">Entrega 4</a>: Planejamento da Avaliação e do Relato dos Resultados — Storyboard e Análise de Tarefas, com Cronograma até 03/11/2026 (arquivo 'PlajRelatoStoryBoardNoFluxo_GerenciadorFaltas (2).pdf').</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">12/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 4 (planejamento da avaliação do storyboard e da análise de tarefas) a partir do documento do grupo, dividida em artefatos, com nomes e matrículas de Felipe, Matheus e Victor (issue #59)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da lista de verificação do Storyboard (15 itens, com respostas, textos de origem, fontes e fotos dos trechos), em artefatos por atividade do DECIDE (issue #61)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega4_lv-c-metodos.html"><span>← Anterior</span>Lista do Storyboard: C, Escolher os métodos</a>
+                    <a class="next" href="entrega4_lv-d-eticas.html"><span>Próximo →</span>Lista do Storyboard: D, Questões éticas</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
