@@ -1176,3 +1176,16 @@ body.alto-contraste .lv-fields dt { color: #000000 !important; -webkit-text-fill
 body.alto-contraste .lv-quote { border-left-color: #000000 !important; }
 body.alto-contraste .lv-fields code { color: #000000 !important; -webkit-text-fill-color: #000000 !important; background: #f1f3f5; padding: 0 0.25rem; }
 body.alto-contraste .lv-fields a { color: #004085 !important; }
+
+/* Lista de verificação do Storyboard (Entrega 4): resposta, onde conferir e foto do trecho */
+.lv-onde { margin: 0.25rem 0 0.75rem; color: #a1a1aa; font-style: italic; line-height: 1.6; }
+.lv-onde a { color: #d8b4fe; }
+.lv-resposta { margin: 0.75rem 0; padding: 0.6rem 1rem; border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; color: #fafafa; line-height: 1.6; }
+.lv-resposta strong { color: #d8b4fe; }
+.lv-foto { margin: 0.5rem 0 0; }
+.lv-foto img { display: block; max-width: 100%; height: auto; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; background: #ffffff; }
+body.alto-contraste .lv-onde { color: #333333 !important; -webkit-text-fill-color: #333333 !important; }
+body.alto-contraste .lv-onde a { color: #004085 !important; }
+body.alto-contraste .lv-resposta { border-color: #000000 !important; color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+body.alto-contraste .lv-resposta strong { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+body.alto-contraste .lv-foto img { border-color: #000000 !important; }
