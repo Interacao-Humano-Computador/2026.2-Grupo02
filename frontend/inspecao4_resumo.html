@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resumo da Inspeção da Etapa 4 realizado pelo Grupo 2 na disciplina de Interação Humano-Computador da UnB.">
+    <title>Resumo da Inspeção | Inspeção Etapa 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1080px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        /* Estilos do Documento */
+        .doc-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(9, 9, 11, 0.6);
+            backdrop-filter: blur(12px);
+            font-size: 0.88rem;
+            margin-bottom: 3rem;
+            border-radius: 12px;
+            position: sticky;
+            top: 1rem;
+            z-index: 50;
+        }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: all 0.2s; padding: 0.35rem 0.75rem; border-radius: 6px; }
+        .doc-nav a:hover { color: #fafafa; background: rgba(255,255,255,0.05); }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; letter-spacing: -0.5px; }
+        h2.doc-section { font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1.5rem; color: #34d399; display: flex; align-items: center; gap: 0.5rem; }
+        h2.doc-section::before { content: ""; display: inline-block; width: 4px; height: 1.2rem; background: #10b981; border-radius: 2px; }
+        h3.doc-subsection { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: #f4f4f5; }
+
+        p.doc-paragraph { color: #a1a1aa; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1rem; text-align: justify; }
+        ul.doc-list { color: #a1a1aa; line-height: 1.8; margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        ul.doc-list li { margin-bottom: 0.5rem; }
+
+        /* Tabelas padronizadas */
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: #09090b;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard caption { text-align: left; padding: 1.25rem 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); }
+        .table-standard td { padding: 1.1rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+        .table-standard tr:hover td { background: rgba(255,255,255,0.015); }
+        .table-standard tr:last-child td { border-bottom: none; }
+
+        .note-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            color: #d1fae5;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .note-box strong { color: #ffffff; }
+
+        body.alto-contraste .landing-body { background: #ffffff !important; color: #000000 !important; }
+        body.alto-contraste .doc-nav { background: #f4f4f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .doc-nav a { color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #10b981; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                    <li><a href="reunioes.html">Reuniões</a></li>
+                </ul>
+
+                <div class="sidebar-section-title">Resultados das Etapas</div>
+                <ul class="sidebar-links">
+                    <li><a href="etapa1.html">Etapa 1 - Planejamento</a></li>
+                    <li><a href="etapa2.html">Etapa 2 - Perfil do Usuário</a></li>
+                    <li><a href="etapa3.html">Etapa 3 - Metas & Guia de Estilo</a></li>
+                    <li><a href="etapa4.html">Etapa 4 - Planejamento da Avaliação</a></li>
+                    <li><a href="etapa5.html">Etapa 5 - Relato da Avaliação</a></li>
+                    <li><a href="etapa6.html">Etapa 6 - Conclusão</a></li>
+                </ul>
+
+                <div class="sidebar-section-title">Inspeções</div>
+                <ul class="sidebar-links">
+                    <li><a href="entregas.html">Central de Entregas & Inspeções</a></li>
+                    <li><a href="inspecao1.html">Inspeção da Etapa 1</a></li>
+                    <li><a href="inspecao2.html">Inspeção da Etapa 2</a></li>
+                    <li><a href="inspecao3.html">Inspeção da Etapa 3</a></li>
+                    <li><a href="inspecao4.html" class="active">Inspeção da Etapa 4</a></li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>IHC 2026.2 - Grupo 2</p>
+                <div class="sidebar-accessibility-controls" style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.5rem;">
+                    <button id="btnAumentarFonte" class="btn-fonte" aria-label="Aumentar fonte" title="Aumentar fonte">A+</button>
+                    <button id="btnDiminuirFonte" class="btn-fonte" aria-label="Diminuir fonte" title="Diminuir fonte">A-</button>
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Inspeção da Etapa 4 — NoFluxoUnB</p>
+                    <ul>
+                        <li><a href="inspecao4.html">Visão geral</a></li>
+                        <li><a href="inspecao4_storyboard.html">1. Planejamento da Avaliação do Storyboard</a></li>
+                        <li><a href="inspecao4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="inspecao4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="inspecao4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="inspecao4_resumo.html" class="active" aria-current="page">Resumo da inspeção</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="inspecao4.html">Inspeção Etapa 4</a></p>
+                <h1 id="resumo" class="doc-title doc-page-title">Resumo da inspeção</h1>
+                
+                <p class="doc-paragraph">
+                    Este documento consolida o resultado da inspeção formal realizada pelo Grupo 2 sobre os artefatos de planejamento da Entrega 4 do projeto <strong>NoFluxoUnB</strong>, apresentada e gravada em vídeo pela equipe (<a href="https://youtu.be/C9DjEsyEbwM" target="_blank" rel="noopener" style="color: #34d399; text-decoration: underline;">https://youtu.be/C9DjEsyEbwM</a>).
+                </p>
+
+                <p class="doc-paragraph">
+                    Conforme registrado na lista de verificação homologada no documento de entrega (<em>"Lista de verificação aplicada na inspeção do Storyboard — NoFluxoUnB"</em>), foram avaliados <strong>15 itens objetivos</strong> fundamentados no framework DECIDE (Barbosa et al., 2021; Preece et al., 2005): <strong>11 conformes</strong>, <strong>0 não conformes</strong> e <strong>4 não se aplicam</strong> nesta fase de planejamento.
+                </p>
+
+                <h2 id="tabela-consolidada" class="doc-section">Consolidação por Artefato</h2>
+                <div class="table-wrapper">
+                    <table class="table-standard">
+                        <caption>Tabela consolidada do resultado da lista de verificação aplicada na Entrega 4.</caption>
+                        <thead>
+                            <tr>
+                                <th>Artefato</th>
+                                <th>Total de Itens</th>
+                                <th>Conforme</th>
+                                <th>Não conforme</th>
+                                <th>Não se aplica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Planejamento da Avaliação do Storyboard</strong></td>
+                                <td>12</td>
+                                <td style="color: #34d399; font-weight: bold;">8</td>
+                                <td>0</td>
+                                <td style="color: #60a5fa;">4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Planejamento do Relato dos Resultados do Storyboard</strong></td>
+                                <td>3</td>
+                                <td style="color: #34d399; font-weight: bold;">3</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Planejamento da Avaliação da Análise de Tarefas</strong></td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Planejamento do Relato dos Resultados da Análise de Tarefas</strong></td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>—</td>
+                            </tr>
+                            <tr style="background: rgba(255,255,255,0.03); font-weight: bold;">
+                                <td>Total da Lista de Verificação Aplicada</td>
+                                <td>15</td>
+                                <td style="color: #34d399;">11 (73,3%)</td>
+                                <td>0 (0,0%)</td>
+                                <td style="color: #60a5fa;">4 (26,7%)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="note-box">
+                    <strong>Observação sobre os Artefatos 3 e 4:</strong><br>
+                    O documento base inspecionado (<code>PlajRelatoStoryBoardNoFluxo_GerenciadorFaltas (2).pdf</code>) engloba tanto o Storyboard quanto a Análise de Tarefas. Na inspeção conduzida com gravação em vídeo, a lista de verificação formal estruturada aplicada pelo grupo (composta por 15 itens) concentrou-se nos aspectos de avaliação e relato do Storyboard. Por conseguinte, não foram criados itens numéricos artificiais para os artefatos 3 e 4, mantendo fielmente o registro do documento entregue.
+                </div>
+
+                <h2 id="sintese-decide" class="doc-section">Síntese por Fase do Framework DECIDE (15 Itens)</h2>
+                <ul class="doc-list">
+                    <li><strong>D — Determinar os objetivos gerais e propósitos (Itens 1 e 2):</strong> 2 itens avaliados, 2 conformes (100%). Os objetivos gerais e o propósito do protótipo/storyboard estão claramente estabelecidos.</li>
+                    <li><strong>E — Explorar as perguntas a serem respondidas (Item 3):</strong> 1 item avaliado, 1 conforme (100%). Perguntas operacionais específicas orientadas aos objetivos.</li>
+                    <li><strong>C — Escolher os métodos de avaliação (Itens 4 e 5):</strong> 2 itens avaliados, 2 conformes (100%). Métodos de investigação e inspeção adequadamente definidos e justificados.</li>
+                    <li><strong>I — Identificar questões práticas e cronograma (Itens 6 a 11):</strong> 6 itens avaliados, 3 conformes (Itens 8, 9 e 11) e 3 não se aplicam nesta etapa (Itens 6, 7 e 10, referentes a perfil de participantes, materiais e agendamento que ocorrem nas etapas seguintes).</li>
+                    <li><strong>D — Decidir cuidados éticos (Item 12):</strong> 1 item avaliado, marcado como Não se Aplica nesta fase inicial de planejamento, pois o documento formal de TCLE será aplicado junto à realização dos testes.</li>
+                    <li><strong>E — Avaliar, interpretar e relatar os dados (Itens 13 a 15):</strong> 3 itens avaliados, 3 conformes (100%). Critérios de validade (interna, externa e ecológica), confiabilidade, análise intersujeito e estrutura completa do relato contemplados.</li>
+                </ul>
+
+                <h2 id="referencias" class="doc-section">Referências Bibliográficas</h2>
+                <ul class="doc-list">
+                    <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da; SILVEIRA, Milene Selbach; GASPARINI, Isabela; DARIN, Ticianne; BARBOSA, Gabriel Diniz Junqueira. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro, 2021. Capítulo 11 — Planejamento da Avaliação de IHC (p. 264 a 280).</li>
+                    <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: além da interação homem-computador</em>. Porto Alegre: Bookman, 2005. Capítulo 8 — Design, Prototipação e Construção (p. 261).</li>
+                    <li>Documento inspecionado: No Fluxo UnB – Grupo 02 – Entrega 4: Planejamento da Avaliação e do Relato dos Resultados – Storyboard e Análise de Tarefas, com Cronograma até 03/11/2026 (arquivo <code>PlajRelatoStoryBoardNoFluxo_GerenciadorFaltas (2).pdf</code>).</li>
+                </ul>
+
+                <div class="doc-history">
+                <h2 id="historico" class="doc-section">
+                    <span>Histórico de Versão</span>
+                </h2>
+                <div class="table-wrapper">
+                    <table class="table-standard">
+                        <caption>Histórico de versionamento deste documento de inspeção.</caption>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">Versão</th>
+                                <th style="width: 110px;">Data</th>
+                                <th>Descrição</th>
+                                <th>Autor(es)</th>
+                                <th>Revisor(es)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.0</td>
+                                <td style="font-family: 'JetBrains Mono', monospace;">13/10/2026</td>
+                                <td>Consolidação dos resultados da inspeção da Entrega 4 gravada em vídeo pela equipe.</td>
+                                <td style="color: #60a5fa;">Felipe Lopes Pedroza, Matheus do Vale Lameira, Tiago Sousa Nepomuceno, Victor Andreozzi de La Rocque Couto</td>
+                                <td style="color: #34d399;">Felipe Lopes Pedroza e Victor Andreozzi de La Rocque Couto</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.1</td>
+                                <td style="font-family: 'JetBrains Mono', monospace;">14/10/2026</td>
+                                <td>Alinhamento estrito aos 15 itens da lista de verificação original e adequação ao padrão da Inspeção 3.</td>
+                                <td style="color: #60a5fa;">Victor Andreozzi de La Rocque Couto, Felipe Lopes Pedroza, Matheus do Vale Lameira</td>
+                                <td style="color: #34d399;">Felipe Lopes Pedroza</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="inspecao4_relato-tarefas.html"><span>← Anterior</span>4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a>
+                    <span></span>
+                </nav>
+            </article>
+
+            <nav class="doc-toc" aria-label="Índice desta página">
+                <p class="doc-toc-title">Índice</p>
+                <ul id="docTocList"></ul>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Documentação e verificação dos artefatos da disciplina de Interação Humano-Computador da Universidade de Brasília.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Campus UnB Gama (FGA)
+            </div>
+        </div>
+    </footer>
+
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

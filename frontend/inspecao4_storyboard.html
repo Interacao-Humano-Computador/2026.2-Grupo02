@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Relatório de Inspeção da Etapa 4 (Planejamento da Avaliação do Storyboard) realizado pelo Grupo 2 na disciplina de Interação Humano-Computador da UnB.">
+    <title>1. Planejamento da Avaliação do Storyboard | Inspeção Etapa 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1080px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        /* Estilos do Documento */
+        .doc-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(9, 9, 11, 0.6);
+            backdrop-filter: blur(12px);
+            font-size: 0.88rem;
+            margin-bottom: 3rem;
+            border-radius: 12px;
+            position: sticky;
+            top: 1rem;
+            z-index: 50;
+        }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: all 0.2s; padding: 0.35rem 0.75rem; border-radius: 6px; }
+        .doc-nav a:hover { color: #fafafa; background: rgba(255,255,255,0.05); }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; letter-spacing: -0.5px; }
+        h2.doc-section { font-size: 1.75rem; color: #10b981; margin-top: 3.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        h3.doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        
+        p.doc-text, ul.doc-list li, ol.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list, ol.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        /* Tabelas padronizadas */
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: #09090b;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard caption { text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+        .table-standard tr:last-child td { border-bottom: none; }
+
+        body.alto-contraste .landing-body { background: #ffffff !important; color: #000000 !important; }
+        body.alto-contraste .doc-nav { background: #f4f4f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .doc-nav a { color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #10b981; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Inspeção da Etapa 4 — NoFluxoUnB</p>
+                    <ul>
+                        <li><a href="inspecao4.html">Visão geral</a></li>
+                        <li><a href="inspecao4_storyboard.html" class="active" aria-current="page">1. Planejamento da Avaliação do Storyboard</a></li>
+                        <li><a href="inspecao4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="inspecao4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="inspecao4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="inspecao4_resumo.html">Resumo da inspeção</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="inspecao4.html">Inspeção Etapa 4</a></p>
+                <h1 id="planejamento-storyboard" class="doc-title doc-page-title">1. Planejamento da Avaliação do Storyboard</h1>
+
+                <div class="table-wrapper">
+                    <table class="table-standard">
+                        <thead>
+                            <tr>
+                                <th>Nº</th>
+                                <th>Item de verificação</th>
+                                <th>Conforme</th>
+                                <th>Não conforme</th>
+                                <th>Não se aplica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O planejamento da avaliação do storyboard determina os objetivos gerais da avaliação e identifica por que e para quem esses objetivos são importantes?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 280, Cap. 11. Seção 11.8 (D — Determinar). Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Consta na Seção 1 (Planejamento da Avaliação do Storyboard), linha “D — Determinar os objetivos”.</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Conforme">☒</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não se aplica">☐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O planejamento declara o propósito do storyboard (protótipo) como pelo menos um destes fins: testar a viabilidade técnica de uma ideia; esclarecer requisitos vagos; realizar testes com usuários e avaliações; ou verificar se o rumo tomado no design é compatível com o resto do desenvolvimento do sistema?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 261, Cap. 8. Seção 8.2.2. Livro: Preece, Rogers e Sharp (2005).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> O propósito do storyboard de seis quadros está declarado na Seção 1 (linha D).</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Conforme">☒</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não se aplica">☐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">Para cada objetivo definido, o planejamento elabora perguntas específicas a serem respondidas durante a avaliação do storyboard, considerando o perfil dos usuários-alvo e suas atividades?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 280, Cap. 11. Seção 11.8 (E — Explorar). Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Perguntas operacionais específicas constam na Seção 1 (linha E).</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Conforme">☒</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não se aplica">☐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O planejamento especifica os métodos de avaliação escolhidos e os justifica como os mais adequados para responder às perguntas e atingir os objetivos, considerando o prazo, o orçamento, os equipamentos disponíveis e o grau de conhecimento e experiência dos avaliadores?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 280, Cap. 11. Seção 11.8 (C — Escolher). Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Métodos especificados e justificados para as condições do projeto na Seção 1 (linha C).</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Conforme">☒</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não se aplica">☐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O método de avaliação do storyboard está identificado como pertencente a um dos três tipos: investigação (questionários, entrevistas, grupos de foco, estudos de campo), inspeção (o avaliador examina a solução, em geral sem usuários, para antever problemas de uso) ou observação de uso (registro de usuários realizando suas atividades para identificar problemas reais)?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 272, Cap. 11. Seção 11.6. Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Métodos identificados nas categorias de investigação e inspeção na Seção 1 (linha C).</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Conforme">☒</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não se aplica">☐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O planejamento define o perfil dos participantes, de modo a representar o público-alvo (considerando fatores como idade, sexo, formação acadêmica, grau de conhecimento sobre o domínio, nível de experiência na realização das tarefas e nível de experiência no uso do sistema avaliado e de sistemas semelhantes), e define e justifica o número de participantes (por exemplo, de cinco a 12 usuários, ou cinco usuários para encontrar a maioria dos problemas da interface)?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 274, Cap. 11. Seção 11.7.2. Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Perfil detalhado dos participantes ainda não definido nesta fase preliminar.</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Não se aplica">☒</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O planejamento prevê o material de apoio da avaliação com participantes: termo de consentimento livre e esclarecido (TCLE); questionário pré-teste (ou roteiro de entrevista estruturada); roteiro de entrevista pós-teste; instruções e cenários das tarefas; e roteiro de acompanhamento da observação?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 275, Cap. 11. Seção 11.7.2. Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Material de apoio impresso (TCLE etc.) fica para etapas seguintes de execução prática.</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Não se aplica">☒</td>
+                            </tr>
+                            <tr>
+                                <td><strong>8</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O tempo planejado é compatível com o recomendado: cada tarefa estimada em, no máximo, 20 minutos (com pausa rápida se for necessário mais tempo) e cerca de uma hora por participante em cada sessão de avaliação?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 275, Cap. 11. Seção 11.7.2. Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Duração das tarefas e tempo total de sessão compatíveis com a recomendação da literatura (Seção 1, linha I e Seção 5.2).</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Conforme">☒</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não se aplica">☐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>9</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">Está previsto um teste-piloto, conduzido como uma sessão normal de avaliação, para avaliar o próprio planejamento: verificar se a linguagem e os materiais são claros e suficientes, se o sistema, os equipamentos e os softwares de registro funcionam corretamente e se o tempo das tarefas é adequado?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 276, Cap. 11. Seção 11.7.2. Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Teste-piloto explicitamente previsto antes das sessões com os participantes (Seção 1, linha I e Seção 5.2).</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Conforme">☒</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não se aplica">☐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>10</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O planejamento prevê o agendamento, com cada participante, da data, do horário e do local de realização da avaliação?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 276, Cap. 11. Seção 11.7.2. Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Agendamento individual ainda não definido nesta fase preliminar de planejamento.</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Não se aplica">☒</td>
+                            </tr>
+                            <tr>
+                                <td><strong>11</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O cronograma do planejamento ordena no tempo, com datas, as atividades básicas da avaliação — preparação, coleta de dados, interpretação, consolidação e relato dos resultados — e prevê o reprojeto do sistema caso a avaliação encontre problemas ou oportunidades de melhoria?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 273, Cap. 11. Seção 11.7. Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Cronograma detalha etapas com datas fixas, marcos de entrega e ciclo de reprojeto com v1 e v2 (Seção 5).</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Conforme">☒</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não se aplica">☐</td>
+                            </tr>
+                            <tr>
+                                <td><strong>12</strong></td>
+                                <td>
+                                    <p style="margin: 0 0 0.5rem;">O planejamento define os cuidados éticos necessários com os participantes: eles são respeitados e não são prejudicados direta ou indiretamente, nem durante os experimentos, nem após a divulgação dos resultados da avaliação?</p>
+                                    <p style="margin: 0 0 0.5rem;"><strong>Fonte:</strong> p. 280, Cap. 11. Seção 11.8 (D — Decidir). Livro: Barbosa et al. (2021).</p>
+                                    <p style="margin: 0;"><strong>Observação:</strong> Ainda não há documento formal de cuidados éticos aplicado/assinado nesta fase.</p>
+                                </td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Não marcado: Não conforme">☐</td>
+                                <td style="text-align: center; font-size: 1.5rem;" aria-label="Marcado: Não se aplica">☒</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="doc-history">
+                <h2 id="historico" class="doc-section">
+                    <span>Histórico de Versão</span>
+                </h2>
+                <div class="table-wrapper">
+                    <table class="table-standard">
+                        <caption>Histórico de versionamento deste documento de inspeção.</caption>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">Versão</th>
+                                <th style="width: 110px;">Data</th>
+                                <th>Descrição</th>
+                                <th>Autor(es)</th>
+                                <th>Revisor(es)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.0</td>
+                                <td style="font-family: 'JetBrains Mono', monospace;">13/10/2026</td>
+                                <td>Aplicação dos itens 1 a 12 da lista de verificação do Storyboard gravada em vídeo pela equipe.</td>
+                                <td style="color: #60a5fa;">Felipe Lopes Pedroza, Matheus do Vale Lameira, Tiago Sousa Nepomuceno, Victor Andreozzi de La Rocque Couto</td>
+                                <td style="color: #34d399;">Felipe Lopes Pedroza e Victor Andreozzi de La Rocque Couto</td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: 'JetBrains Mono', monospace; font-weight: bold; color: #34d399;">1.1</td>
+                                <td style="font-family: 'JetBrains Mono', monospace;">14/10/2026</td>
+                                <td>Padronização visual e estrutural estrita ao modelo da Inspeção 3 com tabela concisa e marcações ☒/☐.</td>
+                                <td style="color: #60a5fa;">Victor Andreozzi de La Rocque Couto, Felipe Lopes Pedroza, Matheus do Vale Lameira</td>
+                                <td style="color: #34d399;">Felipe Lopes Pedroza</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="inspecao4.html"><span>← Anterior</span>Visão geral</a>
+                    <a class="next" href="inspecao4_relato-storyboard.html"><span>Próximo →</span>2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a>
+                </nav>
+            </article>
+
+            <nav class="doc-toc" aria-label="Índice desta página">
+                <p class="doc-toc-title">Índice</p>
+                <ul id="docTocList"></ul>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Documentação e verificação dos artefatos da disciplina de Interação Humano-Computador da Universidade de Brasília.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Campus UnB Gama (FGA)
+            </div>
+        </div>
+    </footer>
+
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
