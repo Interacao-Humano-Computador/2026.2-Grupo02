@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concordância com o livro, fotos de referência e referências | Entrega 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 4 · Planejamento da Avaliação do Storyboard e da Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega4.html">Visão geral</a></li>
+                        <li><a href="entrega4_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega4_storyboard.html">1. Planejamento da Avaliação do Storyboard (framework DECIDE)</a></li>
+                        <li><a href="entrega4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="entrega4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas (HTA e CTT)</a></li>
+                        <li><a href="entrega4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="entrega4_cronograma.html">5. Cronograma até 03/11/2026</a></li>
+                        <li><a href="entrega4_referencias.html">Referências</a></li>
+                        <li><a href="entrega4_metodos.html">Métodos, modos e motivos da avaliação</a></li>
+                        <li><a href="entrega4_perguntas.html">Perguntas de avaliação, dados e critérios</a></li>
+                        <li><a href="entrega4_questoes-eticas.html">Questões práticas e éticas das avaliações</a></li>
+                        <li><a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a></li>
+                        <li><a href="entrega4_logistica-sessoes.html">Cronograma e logística das sessões de avaliação</a></li>
+                        <li><a href="entrega4_relato-resultados.html">Estrutura do relato dos resultados, registro de problemas e reprojeto</a></li>
+                        <li><a href="entrega4_plano-trabalho.html">Plano de trabalho por integrante</a></li>
+                        <li><a href="entrega4_cronograma-planejado.html">Cronograma planejado e executado da Entrega 4</a></li>
+                        <li><a href="entrega4_concordancia.html" class="active" aria-current="page">Concordância com o livro, fotos de referência e referências</a></li>
+                        <li><a href="entrega4_lv-visao.html">Lista de verificação do Storyboard</a></li>
+                        <li><a href="entrega4_lv-d-objetivos.html">Lista do Storyboard: D, Determinar os objetivos</a></li>
+                        <li><a href="entrega4_lv-e-perguntas.html">Lista do Storyboard: E, Explorar as perguntas</a></li>
+                        <li><a href="entrega4_lv-c-metodos.html">Lista do Storyboard: C, Escolher os métodos</a></li>
+                        <li><a href="entrega4_lv-i-praticas.html">Lista do Storyboard: I, Questões práticas</a></li>
+                        <li><a href="entrega4_lv-d-eticas.html">Lista do Storyboard: D, Questões éticas</a></li>
+                        <li><a href="entrega4_lv-e-relato.html">Lista do Storyboard: E, Relato dos resultados</a></li>
+                        <li><a href="entrega4_lv-sintese.html">Lista do Storyboard: Síntese e referências</a></li>
+                        <li><a href="entrega4_planejamento-matheus.html">Planejamento individual da avaliação: Matheus (Simulador de IRA e Street View)</a></li>
+                        <li><a href="entrega4_agradecimentos.html">Agradecimentos e uso de IA Generativa</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega4.html">Entrega 4</a></p>
+            <h1 id="concordancia" class="doc-title doc-page-title">Concordância com o livro, fotos de referência e referências</h1>
+
+<h3 class="doc-subsection" id="concordancia-introducao">1. Introdução</h3>
+<p class="doc-text">Esta página confere o planejamento da avaliação do Grupo 02 contra duas réguas: o livro-texto (Barbosa et al., 2021) e o Plano de Ensino da disciplina. A Tabela 43 mostra, para cada etapa do framework DECIDE e para as questões práticas e éticas, o que o livro orienta (capítulo, seção, página e citação) e em que página deste site o planejamento atende. A Tabela 44 lista as fotos das páginas do livro, com o trecho destacado em amarelo. A Tabela 46 reúne as referências com as páginas usadas. A Tabela 45 confere o planejamento contra os itens da Apresentação 4 do Plano de Ensino.</p>
+<p class="doc-text">A coluna “Situação” diz com franqueza o que está atendido, o que é proposta do grupo a validar e o que ainda depende de outra página ou da montagem final do site. A distribuição de autoria dos itens com referência e foto (coluna “Autor do item (proposta)”) é <em>proposta do grupo, a validar</em>. Os métodos e seus modos estão em <a href="entrega4_metodos.html">Métodos, modos e motivos</a>, e a visão geral da etapa está em <a href="entrega4.html">Entrega 4</a>.</p>
+
+<h3 class="doc-subsection" id="concordancia-livro">2. Concordância com o livro-texto</h3>
+<p class="doc-text">A Tabela 43 segue a ordem do DECIDE (objetivos, perguntas, métodos, questões práticas, questões éticas, avaliar e apresentar) e termina com o framework como um todo. As citações são trechos literais, e a fonte de cada uma é o capítulo, a seção e a página indicados na mesma célula. As questões práticas seguem a seção 11.7.2 do livro (participantes, número, material de apoio, tempo, piloto e agendamento). As questões éticas seguem a seção 11.8 e o capítulo 7, seção 7.4.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 43 — Concordância entre o livro-texto e o planejamento do Grupo 02</caption>
+<thead><tr><th>Tema</th><th>Orientação do livro (capítulo, seção, página, citação)</th><th>Onde o planejamento do Grupo 02 atende</th><th>Situação</th></tr></thead>
+<tbody>
+<tr><td>Objetivos (D, DECIDE)</td><td>Cap. 11, seção 11.8, p. 280: “O avaliador deve determinar os objetivos gerais da avaliação e identificar por que e para quem tais objetivos são importantes.”</td><td>Etapa D do planejamento do <a href="entrega4_storyboard.html">storyboard</a> e da <a href="entrega4_analise-tarefas.html">análise de tarefas</a>, que dizem o objetivo e a quem ele importa (equipe de design e alunos).</td><td>Atendido</td></tr>
+<tr><td>Perguntas (E, DECIDE)</td><td>Cap. 11, seção 11.8, p. 280: “Para cada objetivo definido, o avaliador deve elaborar perguntas específicas a serem respondidas durante avaliação.” Cap. 11, seção 11.2, p. 265: os objetivos “precisam ser detalhados em perguntas mais específicas para torná-los operacionais”.</td><td>Cinco perguntas por artefato na etapa E do <a href="entrega4_storyboard.html">storyboard</a> e da <a href="entrega4_analise-tarefas.html">análise de tarefas</a>, desenvolvidas em <a href="entrega4_perguntas.html">Perguntas da avaliação</a>.</td><td>Atendido</td></tr>
+<tr><td>Métodos (C, DECIDE)</td><td>Cap. 11, seção 11.8, p. 280: “O avaliador deve escolher os métodos mais adequados para responder as perguntas e atingir os objetivos esperados”, considerando prazo, orçamento, equipamentos e experiência dos avaliadores.</td><td><a href="entrega4_metodos.html">Métodos, modos e motivos</a>: método, modo e motivo de cada escolha, com o método descartado e a razão. Foto na Figura 1 (p. 272) e Figura 7 (p. 280).</td><td>Atendido</td></tr>
+<tr><td>Questões práticas: perfil dos participantes (I, seção 11.7.2)</td><td>Cap. 11, seção 11.7.2, p. 274: “Os avaliadores devem buscar participantes que representem o público-alvo do sistema avaliado, ou seja, que possuam características semelhantes aos usuários típicos.”</td><td>Etapa I do <a href="entrega4_storyboard.html">storyboard</a> (alunos da UnB, calouros e veteranos, alguns que já tiveram dificuldade com faltas) e da <a href="entrega4_analise-tarefas.html">análise de tarefas</a> (alunos diferentes dos do storyboard). Detalhes em <a href="entrega4_logistica-sessoes.html">Logística das sessões</a>.</td><td>Atendido</td></tr>
+<tr><td>Questões práticas: número de participantes (I, seção 11.7.2)</td><td>Cap. 11, seção 11.7.2, p. 274: “Dumas e Redish (1999) relatam que uma avaliação de IHC em geral envolve de cinco a 12 usuários.” Na mesma página: “bastam cinco usuários para encontrarmos a maioria dos problemas na interface (85%, segundo o seu experimento)” (Nielsen, 2000). Na p. 275: a avaliação “com frequência pretende apenas obter indícios sobre a qualidade de uso do sistema”. Foto na Figura 5.</td><td>Cerca de 5 alunos para o storyboard e 3 a 5 para a HTA e a CTT (etapa I dos dois planejamentos). A razão da quantidade é o prazo curto e o objetivo de obter indícios para o reprojeto, e não resultados estatísticos. Os 3 a 5 da análise de tarefas ficam abaixo da faixa de cinco a 12, e o relato registra isso como limitação.</td><td>Atendido, com limitação registrada</td></tr>
+<tr><td>Questões práticas: material de apoio (I, seção 11.7.2)</td><td>Cap. 11, seção 11.7.2, p. 275: “Antes de começar a coletar dados, o avaliador deve preparar e imprimir o material de apoio necessário.” A lista inclui o “termo de consentimento livre e esclarecido (TCLE), de acordo com os cuidados éticos necessários”.</td><td>Etapa I dos dois planejamentos (storyboard impresso ou em tela, roteiro, TCLE, gravador; HTA e CTT, lista de verificação, planilha de discrepâncias). Uso de cada item em <a href="entrega4_metodos.html#modo-entrevista-storyboard">Métodos, seção 4</a>.</td><td>Atendido</td></tr>
+<tr><td>Questões práticas: tempo (I, seção 11.7.2)</td><td>Cap. 11, seção 11.7.2, p. 275: “O tempo estimado para um participante realizar cada tarefa não deveria ultrapassar 20 minutos.”</td><td>Sessões de 15 a 20 minutos (etapa I do <a href="entrega4_storyboard.html">storyboard</a>), com blocos de tempo em <a href="entrega4_metodos.html#modo-entrevista-storyboard">Métodos, seção 4</a> (proposta do grupo, a validar no piloto).</td><td>Atendido; blocos a validar</td></tr>
+<tr><td>Questões práticas: teste-piloto (I, seção 11.7.2)</td><td>Cap. 11, seção 11.7.2, p. 276: “O objetivo desse teste é avaliar o próprio planejamento, e analisar se a avaliação, tal como planejada, produz os dados necessários para responder a questões e objetivos do estudo.” Foto na Figura 6.</td><td><a href="entrega4_teste-piloto.html">Teste-piloto</a>: objetivo, roteiro e ficha de calibração. O <a href="entrega4_cronograma.html">cronograma</a> prevê um piloto de uma sessão entre 14 e 16/10, antes das sessões de 16 a 21/10.</td><td>Atendido</td></tr>
+<tr><td>Questões práticas: dados do piloto (I, seção 11.7.2)</td><td>Cap. 11, seção 11.7.2, p. 276: “Os dados do teste-piloto devem ser descartados, pois podem estar contaminados por problemas que ocorreram durante o piloto”.</td><td>Os dados do piloto não entram nos resultados: <a href="entrega4_teste-piloto.html">Teste-piloto</a> e <a href="entrega4_relato-resultados.html">Relato dos resultados</a>.</td><td>Atendido</td></tr>
+<tr><td>Questões práticas: agendamento (I, seção 11.7.2)</td><td>Cap. 11, seção 11.7.2, p. 276: “Confirmada a disponibilidade e o interesse do participante, o avaliador deve agendar com ele a data, o horário e o local para a realização da avaliação.”</td><td><a href="entrega4_logistica-sessoes.html">Logística das sessões</a> e <a href="entrega4_cronograma-planejado.html">Cronograma planejado</a>: janela de 16 a 21/10, com data, horário e local ou plataforma por sessão a registrar quando houver confirmação.</td><td>Atendido em outra página (conferir)</td></tr>
+<tr><td>Questões práticas: recrutamento (I, seção 11.7.2)</td><td>Cap. 11, seção 11.7.2, p. 276: “Sempre que possível, o avaliador deve evitar selecionar seus conhecidos, amigos, alunos, subordinados ou pessoas com as quais possua alguma relação próxima”.</td><td>O recrutamento é feito entre alunos da UnB (<a href="entrega4_logistica-sessoes.html">Logística das sessões</a>). Proposta do grupo, a validar: priorizar alunos sem relação próxima com o integrante que conduz a sessão e registrar essa relação no relato.</td><td>Proposta a validar</td></tr>
+<tr><td>Questões éticas: visão geral (D, DECIDE)</td><td>Cap. 11, seção 11.8, p. 280: “Sempre que usuários são envolvidos numa avaliação, o avaliador deve tomar os cuidados éticos necessários (veja Seção 7.4).”</td><td>Etapa D de <a href="entrega4_storyboard.html">storyboard</a> e <a href="entrega4_analise-tarefas.html">análise de tarefas</a>, desenvolvida em <a href="entrega4_questoes-eticas.html">Questões éticas</a>.</td><td>Atendido</td></tr>
+<tr><td>Questões éticas: consentimento</td><td>Cap. 7, seção 7.4, p. 141: “A participação na pesquisa deve ocorrer apenas com o consentimento livre e esclarecido dos participantes.”</td><td>TCLE em todas as sessões (<a href="entrega4_questoes-eticas.html">Questões éticas</a>; uso na sessão em <a href="entrega4_metodos.html#modo-entrevista-storyboard">Métodos, seção 4</a>).</td><td>Atendido</td></tr>
+<tr><td>Questões éticas: desistência</td><td>Cap. 7, seção 7.4, p. 142: “O participante tem o direito e a liberdade de se recusar a participar ou retirar seu consentimento e abandonar o estudo em qualquer fase da pesquisa, sem ser penalizado por isso.”</td><td>Direito de desistir a qualquer momento (etapa D dos dois planejamentos; <a href="entrega4_questoes-eticas.html">Questões éticas</a>).</td><td>Atendido</td></tr>
+<tr><td>Questões éticas: gravação</td><td>Cap. 7, seção 7.4, p. 141: “É necessário obter permissão para gravar a voz ou imagem de qualquer pessoa, antes de começar a gravação.”</td><td>Gravação somente de áudio e somente com autorização (etapa D dos dois planejamentos; <a href="entrega4_questoes-eticas.html">Questões éticas</a>).</td><td>Atendido</td></tr>
+<tr><td>Questões éticas: anonimato</td><td>Cap. 7, seção 7.4, p. 141: “Ao divulgar os resultados da avaliação, o avaliador deve garantir o anonimato dos participantes, a preservação das suas imagens e a utilização cuidadosa das informações coletadas.” Foto na Figura 8.</td><td>Anonimato dos participantes (etapa D dos dois planejamentos) e relato sem identificação (<a href="entrega4_relato-resultados.html">Relato dos resultados</a>).</td><td>Atendido</td></tr>
+<tr><td>Questões éticas: confidencialidade e guarda dos dados</td><td>Cap. 7, seção 7.4, p. 141: “O pesquisador deve garantir aos participantes a confidencialidade e a privacidade dos dados brutos coletados.” Na p. 143: “os dados devem ser mantidos apenas enquanto forem relevantes. Quando não precisarem mais ser utilizados, devem ser descartados.”</td><td>Termos guardados fora do repositório público (etapa D dos dois planejamentos). O prazo de guarda e descarte dos áudios é detalhado em <a href="entrega4_questoes-eticas.html">Questões éticas</a>.</td><td>Atendido em outra página (conferir)</td></tr>
+<tr><td>Questões éticas: quem é avaliado</td><td>Cap. 7, seção 7.4, p. 142: “devemos enfatizar que é o produto que será avaliado, e não o participante.”</td><td>Os participantes avaliam os modelos e não são avaliados (etapa D da análise de tarefas); o storyboard usa dados fictícios, e ninguém precisa relatar a própria frequência (etapa D do storyboard).</td><td>Atendido</td></tr>
+<tr><td>Analisar e apresentar (E, DECIDE): análise por participante</td><td>Cap. 11, seção 11.7.4, p. 278: “Em geral, o avaliador se concentra inicialmente na interpretação dos dados coletados de cada participante individualmente, buscando respostas às questões específicas definidas no planejamento da avaliação.”</td><td>Análise por participante e depois consolidada: <a href="entrega4_relato-storyboard.html">Relato do storyboard</a> e <a href="entrega4_relato-tarefas.html">Relato da análise de tarefas</a>.</td><td>Atendido</td></tr>
+<tr><td>Analisar e apresentar (E, DECIDE): consolidação (seção 11.7.5)</td><td>Cap. 11, seção 11.7.5, p. 279: “Nessa atividade, os avaliadores buscam recorrências nos resultados de acordo com o método selecionado.” E: “Os resultados de uma avaliação de IHC normalmente indicam tendências de problemas, e não uma certeza de que eles vão ocorrer durante o uso do sistema.”</td><td>Recorrências separadas de opiniões isoladas e resultados tratados como tendências (etapa E de <a href="entrega4_storyboard.html">storyboard</a> e <a href="entrega4_analise-tarefas.html">análise de tarefas</a>; <a href="entrega4_relato-resultados.html">Relato dos resultados</a>).</td><td>Atendido</td></tr>
+<tr><td>Analisar e apresentar (E, DECIDE): estrutura do relato (seção 11.7.5)</td><td>Cap. 11, seção 11.7.5, p. 279: “Finalmente, os avaliadores devem relatar os resultados consolidados, que costumam incluir:” objetivos e escopo, método, número e perfil de participantes e avaliadores, sumário dos dados, interpretação, lista de problemas e planejamento do reprojeto.</td><td>Os itens aparecem na tabela de itens do relato de <a href="entrega4_storyboard.html">storyboard</a> e <a href="entrega4_analise-tarefas.html">análise de tarefas</a> e nas páginas de relato.</td><td>Atendido</td></tr>
+<tr><td>Analisar e apresentar (E, DECIDE): validades</td><td>Cap. 11, seção 11.8, p. 280: “e a validade ecológica do estudo (i.e., o quanto os materiais, métodos e ambiente de estudo se assemelham à situação real investigada).” A seção também trata de confiabilidade, validade interna e validade externa.</td><td>Confiabilidade, validades interna, externa e ecológica nas etapas E de <a href="entrega4_storyboard.html">storyboard</a> e <a href="entrega4_analise-tarefas.html">análise de tarefas</a>; a validade ecológica é registrada como limitação.</td><td>Atendido</td></tr>
+<tr><td>DECIDE como um todo</td><td>Cap. 11, seção 11.8, p. 280: “As atividades do framework são interligadas e executadas iterativamente, à medida que o avaliador articula os objetivos da avaliação, os dados e recursos disponíveis.” Foto na Figura 7.</td><td>As seis etapas D, E, C, I, D, E estão nos planejamentos de <a href="entrega4_storyboard.html">storyboard</a> e <a href="entrega4_analise-tarefas.html">análise de tarefas</a>, e a visão geral está em <a href="entrega4.html">Entrega 4</a>. A iteração entre etapas aparece quando o piloto (<a href="entrega4_teste-piloto.html">Teste-piloto</a>) pode alterar roteiro e tempos.</td><td>Atendido</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 7, seção 7.4, p. 141 a 143; cap. 11, seções 11.2, 11.7.2, 11.7.4, 11.7.5 e 11.8, p. 265, 274 a 276, 278 a 280. Planejamento do Grupo 02 nas páginas indicadas.</p>
+
+<h3 class="doc-subsection" id="fotos-de-referencia">3. Fotos de referência</h3>
+<p class="doc-text">Cada foto abaixo é uma imagem da página do livro com o trecho citado destacado em amarelo, precedida pela citação literal que ela mostra. A Tabela 44 resume as oito fotos e indica a que item do planejamento cada uma serve. A coluna de autoria é <em>proposta do grupo, a validar</em>: cada integrante fica com duas fotos, conforme o Plano de Ensino, que pede ao menos um item com referência e foto por integrante.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 44 — Fotos de referência do livro-texto</caption>
+<thead><tr><th>Figura</th><th>Obra, capítulo, seção, página</th><th>Assunto do trecho destacado</th><th>Serve a</th><th>Autor (proposta)</th></tr></thead>
+<tbody>
+<tr><td>Figura 1</td><td>Barbosa et al. (2021), cap. 11, seção 11.6, p. 272</td><td>Investigação com material de apoio</td><td>Métodos (item 4 do Plano)</td><td>Matheus do Vale Lameira</td></tr>
+<tr><td>Figura 2</td><td>Barbosa et al. (2021), cap. 11, seção 11.3, p. 267</td><td>Storyboards como insumo de avaliação formativa</td><td>Métodos e método descartado (item 4)</td><td>Matheus do Vale Lameira</td></tr>
+<tr><td>Figura 3</td><td>Barbosa et al. (2021), cap. 11, seção 11.6, p. 273</td><td>Objetivos e perguntas guiam a escolha do método</td><td>Objetivos e métodos (itens 3 e 4)</td><td>Felipe Lopes Pedroza</td></tr>
+<tr><td>Figura 4</td><td>Barbosa et al. (2021), cap. 11, seção 11.5, p. 271</td><td>Dados qualitativos</td><td>Tipos de dados (Tabela 11 de Métodos)</td><td>Tiago Sousa Nepomuceno</td></tr>
+<tr><td>Figura 5</td><td>Barbosa et al. (2021), cap. 11, seção 11.7.2, p. 274</td><td>Número de participantes</td><td>Questões práticas (item 5)</td><td>Tiago Sousa Nepomuceno</td></tr>
+<tr><td>Figura 6</td><td>Barbosa et al. (2021), cap. 11, seção 11.7.2, p. 276</td><td>Objetivo do teste-piloto</td><td>Teste-piloto (item 11)</td><td>Felipe Lopes Pedroza</td></tr>
+<tr><td>Figura 7</td><td>Barbosa et al. (2021), cap. 11, seção 11.8, p. 280</td><td>Escolha dos métodos no DECIDE</td><td>DECIDE (item 2)</td><td>Victor Andreozzi de La Rocque Couto</td></tr>
+<tr><td>Figura 8</td><td>Barbosa et al. (2021), cap. 7, seção 7.4, p. 141</td><td>Anonimato dos participantes</td><td>Questões éticas (item 6)</td><td>Victor Andreozzi de La Rocque Couto</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), páginas indicadas na tabela; distribuição de autoria elaborada pelo grupo (proposta, a validar).</p>
+
+<blockquote class="lv-quote" lang="pt-BR">“o uso de um sistema ou de materiais de apoio, como imagens, cenários e outros tipos de artefatos, pode contribuir para a investigação”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.6, p. 272.</p>
+<figure class="lv-foto"><img src="img/entrega4/ref-01.jpg" alt="Página 272 do capítulo 11 de Barbosa et al. (2021), com destaque amarelo na frase que diz que materiais de apoio como imagens, cenários e outros artefatos contribuem para a investigação" loading="lazy" width="1100"><figcaption>Figura 1: Barbosa et al. (2021), cap. 11, seção 11.6, p. 272</figcaption></figure>
+
+<blockquote class="lv-quote" lang="pt-BR">“Diversos artefatos que representam partes de uma solução de IHC podem servir de insumo para uma avaliação formativa, tais como: cenários de uso, esboços de tela, storyboards”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.3, p. 267.</p>
+<figure class="lv-foto"><img src="img/entrega4/ref-02.jpg" alt="Página 267 do capítulo 11 de Barbosa et al. (2021), com destaque amarelo na frase que lista cenários de uso, esboços de tela e storyboards como insumo de avaliação formativa" loading="lazy" width="1100"><figcaption>Figura 2: Barbosa et al. (2021), cap. 11, seção 11.3, p. 267</figcaption></figure>
+
+<blockquote class="lv-quote" lang="pt-BR">“Os objetivos da avaliação, detalhados por questões específicas, são os guias principais para o avaliador escolher os métodos de avaliação a serem utilizados.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.6, p. 273.</p>
+<figure class="lv-foto"><img src="img/entrega4/ref-03.jpg" alt="Página 273 do capítulo 11 de Barbosa et al. (2021), com destaque amarelo na frase que diz que os objetivos da avaliação, detalhados por questões, guiam a escolha dos métodos" loading="lazy" width="1100"><figcaption>Figura 3: Barbosa et al. (2021), cap. 11, seção 11.6, p. 273</figcaption></figure>
+
+<blockquote class="lv-quote" lang="pt-BR">“Dados qualitativos representam conceitos que não são representados numericamente, como as respostas livres coletadas em questionários e entrevistas”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.5, p. 271.</p>
+<figure class="lv-foto"><img src="img/entrega4/ref-04.jpg" alt="Página 271 do capítulo 11 de Barbosa et al. (2021), com destaque amarelo na definição de dados qualitativos" loading="lazy" width="1100"><figcaption>Figura 4: Barbosa et al. (2021), cap. 11, seção 11.5, p. 271</figcaption></figure>
+
+<blockquote class="lv-quote" lang="pt-BR">“Dumas e Redish (1999) relatam que uma avaliação de IHC em geral envolve de cinco a 12 usuários.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 274.</p>
+<figure class="lv-foto"><img src="img/entrega4/ref-05.jpg" alt="Página 274 do capítulo 11 de Barbosa et al. (2021), com destaque amarelo na frase que diz que uma avaliação de IHC em geral envolve de cinco a 12 usuários" loading="lazy" width="1100"><figcaption>Figura 5: Barbosa et al. (2021), cap. 11, seção 11.7.2, p. 274</figcaption></figure>
+
+<blockquote class="lv-quote" lang="pt-BR">“O objetivo desse teste é avaliar o próprio planejamento, e analisar se a avaliação, tal como planejada, produz os dados necessários para responder a questões e objetivos do estudo.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 276.</p>
+<figure class="lv-foto"><img src="img/entrega4/ref-06.jpg" alt="Página 276 do capítulo 11 de Barbosa et al. (2021), com destaque amarelo na frase que define o objetivo do teste-piloto" loading="lazy" width="1100"><figcaption>Figura 6: Barbosa et al. (2021), cap. 11, seção 11.7.2, p. 276</figcaption></figure>
+
+<blockquote class="lv-quote" lang="pt-BR">“O avaliador deve escolher os métodos mais adequados para responder as perguntas e atingir os objetivos esperados”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.8, p. 280.</p>
+<figure class="lv-foto"><img src="img/entrega4/ref-07.jpg" alt="Página 280 do capítulo 11 de Barbosa et al. (2021), com destaque amarelo na atividade C do framework DECIDE, escolher os métodos de avaliação" loading="lazy" width="1100"><figcaption>Figura 7: Barbosa et al. (2021), cap. 11, seção 11.8, p. 280</figcaption></figure>
+
+<blockquote class="lv-quote" lang="pt-BR">“Ao divulgar os resultados da avaliação, o avaliador deve garantir o anonimato dos participantes, a preservação das suas imagens e a utilização cuidadosa das informações coletadas.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 7, seção 7.4, p. 141.</p>
+<figure class="lv-foto"><img src="img/entrega4/ref-08.jpg" alt="Página 141 do capítulo 7 de Barbosa et al. (2021), com destaque amarelo na frase que trata do anonimato dos participantes na divulgação dos resultados" loading="lazy" width="1100"><figcaption>Figura 8: Barbosa et al. (2021), cap. 7, seção 7.4, p. 141</figcaption></figure>
+
+<h3 class="doc-subsection" id="conformidade-plano-de-ensino">4. Conformidade com o Plano de Ensino</h3>
+<p class="doc-text">A Tabela 45 confere o planejamento contra os itens da Apresentação 4 do Plano de Ensino (Planejamento da avaliação do storyboard e da análise de tarefas, e do relato dos resultados), e contra os itens gerais de desenvolvimento do projeto que dependem do conteúdo. No texto extraído do Plano, o item 1 é o bloco “Itens do desenvolvimento do projeto: todos os 10 itens” e os itens 2 a 13 são as questões numeradas. A situação reflete o que está planejado nas páginas desta etapa. Os itens atendidos por outras páginas estão marcados para conferência na consolidação do site.</p>
+<p class="doc-text">O Plano exige que cada integrante elabore ao menos um item de conteúdo com referência e foto. Os itens 4 e 11 pedem expressamente referência e foto, e o grupo acrescenta foto aos itens 2 e 5, de modo que cada integrante fique com um item (<em>proposta do grupo, a validar</em>). As Figuras 3 e 8 dão apoio extra aos itens 3 e 6.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 45 — Conformidade com o Plano de Ensino (Apresentação 4 e itens gerais)</caption>
+<thead><tr><th>Item</th><th>O que o Plano pede</th><th>Onde é atendido (página do site)</th><th>Situação</th><th>Autor do item (proposta)</th></tr></thead>
+<tbody>
+<tr><th colspan="5" scope="colgroup">Apresentação 4: itens de planejamento e conteúdo</th></tr>
+<tr><td>1</td><td>Itens do desenvolvimento do projeto (todos os 10 itens)</td><td>Ver as linhas de itens gerais ao fim desta tabela</td><td>Parcial: ver itens gerais</td><td>—</td></tr>
+<tr><td>2</td><td>O planejamento da avaliação segue o framework DECIDE?</td><td><a href="entrega4_storyboard.html">Storyboard</a>, <a href="entrega4_analise-tarefas.html">Análise de tarefas</a> e Tabela 43 desta página (linha “DECIDE como um todo”, Figura 7)</td><td>Atendido</td><td>Victor Andreozzi de La Rocque Couto</td></tr>
+<tr><td>3</td><td>Descreve os objetivos da avaliação (apropriação de tecnologia, alternativas de design, conformidade com padrão e problemas na interação e na interface)?</td><td>Etapa D de <a href="entrega4_storyboard.html">Storyboard</a> e <a href="entrega4_analise-tarefas.html">Análise de tarefas</a></td><td>Atendido</td><td>— (Figura 3 como apoio)</td></tr>
+<tr><td>4</td><td>Os métodos de avaliação a serem utilizados, com referência bibliográfica e foto do texto que os explica</td><td><a href="entrega4_metodos.html">Métodos, modos e motivos</a>; Figuras 1 e 2 desta página</td><td>Atendido</td><td>Matheus do Vale Lameira</td></tr>
+<tr><td>5</td><td>Questões práticas (recrutamento e perfil, quantidade e razão, presencial ou remota, equipamentos, prazos, orçamento, mão de obra)</td><td>Etapa I de <a href="entrega4_storyboard.html">Storyboard</a> e <a href="entrega4_analise-tarefas.html">Análise de tarefas</a>; <a href="entrega4_logistica-sessoes.html">Logística das sessões</a>; Tabela 43 (linhas de questões práticas, Figura 5). Orçamento: sem custo.</td><td>Atendido</td><td>Tiago Sousa Nepomuceno</td></tr>
+<tr><td>6</td><td>Questões éticas (participantes respeitados e não prejudicados, durante e depois)</td><td>Etapa D de <a href="entrega4_storyboard.html">Storyboard</a> e <a href="entrega4_analise-tarefas.html">Análise de tarefas</a>; <a href="entrega4_questoes-eticas.html">Questões éticas</a>; Tabela 43 (Figura 8)</td><td>Atendido</td><td>— (Figura 8 como apoio)</td></tr>
+<tr><td>7</td><td>Estrutura do relatório do resultado da avaliação (objetivos, método, número e perfil de avaliadores e participantes, tarefas executadas, lista de problemas)</td><td><a href="entrega4_relato-storyboard.html">Relato do storyboard</a>, <a href="entrega4_relato-tarefas.html">Relato da análise de tarefas</a> e <a href="entrega4_relato-resultados.html">Relato dos resultados</a>. O item cita a prototipação em papel, que é a etapa seguinte; aqui o relato descreve o método efetivamente usado (entrevista e inspeção).</td><td>Atendido em outra página (conferir)</td><td>—</td></tr>
+<tr><td>8</td><td>Cronograma com data, horário e local da avaliação do storyboard e da análise de tarefas</td><td><a href="entrega4_logistica-sessoes.html">Logística das sessões</a> e <a href="entrega4_cronograma-planejado.html">Cronograma planejado</a></td><td>Atendido em outra página (conferir)</td><td>—</td></tr>
+<tr><td>9</td><td>Cada desenho do storyboard está relacionado a uma especificação do artefato da análise de tarefas?</td><td><a href="entrega4_perguntas.html">Perguntas da avaliação</a> e <a href="entrega4_storyboard.html">Storyboard</a>, onde quadros e tarefas são ligados</td><td>Atendido em outra página (conferir)</td><td>—</td></tr>
+<tr><td>10</td><td>A quantidade de storyboards é igual à quantidade de integrantes do grupo?</td><td><a href="entrega4_storyboard.html">Storyboard</a> e <a href="entrega4_logistica-sessoes.html">Logística das sessões</a>, que mostram os storyboards por integrante</td><td>Atendido em outra página (conferir)</td><td>—</td></tr>
+<tr><td>11</td><td>Definição e data do teste-piloto antes da avaliação, com referência e foto do texto que o explica</td><td><a href="entrega4_teste-piloto.html">Teste-piloto</a> (piloto de uma sessão entre 14 e 16/10); Tabela 43 e Figura 6 desta página</td><td>Atendido</td><td>Felipe Lopes Pedroza</td></tr>
+<tr><td>12</td><td>O resultado do teste-piloto não será apresentado no resultado da avaliação?</td><td><a href="entrega4_teste-piloto.html">Teste-piloto</a>; Tabela 43 (linha “dados do piloto”)</td><td>Atendido</td><td>—</td></tr>
+<tr><td>13</td><td>O que o avaliador deve realizar e anotar durante a avaliação (listar os problemas, priorizar a correção dos não resolvidos)</td><td><a href="entrega4_metodos.html#modo-inspecao">Métodos, seções 4 a 6</a> (papel do anotador e planilha de discrepâncias) e <a href="entrega4_relato-resultados.html">Relato dos resultados</a> (registro de problemas e reprojeto)</td><td>Atendido</td><td>—</td></tr>
+<tr><th colspan="5" scope="colgroup">Itens gerais de desenvolvimento que dependem do conteúdo</th></tr>
+<tr><td>G1</td><td>Histórico de versão padronizado</td><td>Cabeçalho de cada página no site, na montagem final</td><td>A completar na montagem do site (este texto traz só o conteúdo)</td><td>—</td></tr>
+<tr><td>G2</td><td>Autores e revisores de cada artefato</td><td>Cabeçalho de cada página no site, na montagem final</td><td>A completar na montagem do site</td><td>—</td></tr>
+<tr><td>G3</td><td>Referências bibliográficas em todos os artefatos</td><td>Seção Referências desta página e de <a href="entrega4_metodos.html#referencias-metodos">Métodos</a>; Tabela 46</td><td>Atendido</td><td>—</td></tr>
+<tr><td>G4</td><td>Tabelas e imagens com legenda e fonte, chamadas no texto</td><td>Tabelas 10 a 53 e Figuras 1 a 8, todas com legenda, fonte e chamada no texto</td><td>Atendido</td><td>—</td></tr>
+<tr><td>G5</td><td>Texto de introdução dos artefatos</td><td>Seção 1 desta página e de <a href="entrega4_metodos.html#metodos-introducao">Métodos</a></td><td>Atendido</td><td>—</td></tr>
+<tr><td>G6</td><td>Tabela de contribuição no início do artefato, com a contribuição de cada integrante</td><td>Início de cada página no site, na montagem final</td><td>A completar na montagem do site (depende do registro real de contribuição)</td><td>—</td></tr>
+<tr><td>G7</td><td>Agradecimentos com o uso de Inteligência Artificial generativa</td><td>Final de cada página no site, na montagem final</td><td>A completar na montagem do site (declaração do grupo)</td><td>—</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: Plano de Ensino, Fundamentos de IHC, 2026/2, turma 01, versão 1, Apresentação 4 (p. 12 e 13 do PDF) e lista de itens gerais de desenvolvimento do projeto; autoria dos itens elaborada pelo grupo (proposta, a validar).</p>
+
+<h3 class="doc-subsection" id="referencias-concordancia">Referências</h3>
+<p class="doc-text">A Tabela 46 lista as obras usadas nesta página e em <a href="entrega4_metodos.html">Métodos, modos e motivos</a>, com as páginas consultadas e a finalidade de cada uma.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 46 — Referências usadas, com páginas</caption>
+<thead><tr><th>Obra</th><th>Capítulo e seções</th><th>Páginas usadas</th><th>Para quê</th></tr></thead>
+<tbody>
+<tr><td>Barbosa et al. (2021)</td><td>Cap. 11, Planejamento da Avaliação de IHC: seções 11.1 a 11.8</td><td>263, 265, 267, 269 a 280</td><td>Tipos de dados, tipos de método, participantes, número, material, tempo, piloto, agendamento, consolidação e DECIDE</td></tr>
+<tr><td>Barbosa et al. (2021)</td><td>Cap. 12, Métodos de Avaliação de IHC: seções 12.1.1, 12.2.1 e 12.2.4</td><td>283, 301, 320, 321</td><td>Inspeção por avaliadores independentes, teste de usabilidade e comparação de métodos</td></tr>
+<tr><td>Barbosa et al. (2021)</td><td>Cap. 7, Análise e Definição dos Requisitos: seções 7.4 e 7.5.1</td><td>141 a 146</td><td>Aspectos éticos e entrevista semiestruturada</td></tr>
+<tr><td>Preece, Rogers e Sharp (2002)</td><td>Framework DECIDE, conforme descrito por Barbosa et al. (2021), cap. 11, seção 11.8</td><td>279 e 280 (em Barbosa et al.)</td><td>Estrutura do planejamento da avaliação</td></tr>
+<tr><td>Plano de Ensino, Fundamentos de IHC, 2026/2, turma 01, v1</td><td>Apresentação 4 e itens gerais de desenvolvimento</td><td>p. 12 e 13 do PDF (Apresentação 4)</td><td>Régua da disciplina para a conformidade da Tabela 45</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: elaboração do grupo, com base nas obras listadas.</p>
+<ul class="doc-list" style="list-style: none; padding-left: 0;">
+<li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da; SILVEIRA, Milene Selbach; GASPARINI, Isabela; DARIN, Ticianne; BARBOSA, Gabriel Diniz Junqueira. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro, 2021 (versão de 03 de maio de 2021). Capítulo 11, Planejamento da Avaliação de IHC, p. 263, 265, 267, 269 a 280. Capítulo 12, Métodos de Avaliação de IHC, p. 283, 301, 320 e 321. Capítulo 7, Análise e Definição dos Requisitos, p. 141 a 146.</li>
+<li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Interaction Design: Beyond Human-Computer Interaction</em>. 2002. Framework DECIDE, citado por Barbosa et al. (2021), cap. 11, seção 11.8, p. 279 e 280.</li>
+<li>UNIVERSIDADE DE BRASÍLIA, Faculdade UnB Gama. <em>Plano de Ensino: Fundamentos de Interação Humano-Computador, 2026/2, turma 01, versão 1</em>. Apresentação 4, p. 12 e 13 do PDF.</li>
+</ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">12/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 4 (planejamento da avaliação do storyboard e da análise de tarefas) a partir do documento do grupo, dividida em artefatos, com nomes e matrículas de Felipe, Matheus e Victor (issue #59)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da lista de verificação do Storyboard (15 itens, com respostas, textos de origem, fontes e fotos dos trechos), em artefatos por atividade do DECIDE (issue #61)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Autoria da lista de verificação do Storyboard (Matheus e Felipe) e inclusão dos vídeos da lista de verificação e da apresentação da Entrega 4 (issue #62)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da parte individual de Felipe (Gerenciador de Faltas) com o cronograma até 03/11/2026, dividida em artefatos (issue #63)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza (conteúdo); Matheus do Vale Lameira (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da atribuição da parte individual (Gerenciador de Faltas, com cronograma): a entrega do documento é de Victor, Matheus e Felipe, com os três nomes e matrículas no cabeçalho (issue #64)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Retirado o rótulo de parte individual do documento do Gerenciador de Faltas (cabeçalho e parágrafo de abertura): o documento é do grupo, feito por Victor, Matheus e Felipe (issue #65)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Removido o documento do Gerenciador de Faltas (visão geral, seções 1 a 5 e referências) da Entrega 4 (issue #66)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.7</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Documento da Entrega 4 substituído pela versão com o cronograma até 03/11/2026 (seções 1 a 5), de Victor, Matheus e Felipe, sem o rótulo de parte individual; itens da lista que citam a Seção 5 ligados ao cronograma (issue #67)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.8</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Ampliação da Entrega 4 nos moldes do Plano de Ensino: métodos, modos e motivos; perguntas e critérios; questões práticas e éticas; teste-piloto; logística das sessões; estrutura do relato; cronograma planejado e executado; concordância com o livro; tabela de contribuição e agradecimentos (rascunho local, issue a abrir)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega4_cronograma-planejado.html"><span>← Anterior</span>Cronograma planejado e executado da Entrega 4</a>
+                    <a class="next" href="entrega4_lv-visao.html"><span>Próximo →</span>Lista de verificação do Storyboard</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

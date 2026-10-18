@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questões práticas e éticas das avaliações | Entrega 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 4 · Planejamento da Avaliação do Storyboard e da Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega4.html">Visão geral</a></li>
+                        <li><a href="entrega4_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega4_storyboard.html">1. Planejamento da Avaliação do Storyboard (framework DECIDE)</a></li>
+                        <li><a href="entrega4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="entrega4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas (HTA e CTT)</a></li>
+                        <li><a href="entrega4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="entrega4_cronograma.html">5. Cronograma até 03/11/2026</a></li>
+                        <li><a href="entrega4_referencias.html">Referências</a></li>
+                        <li><a href="entrega4_metodos.html">Métodos, modos e motivos da avaliação</a></li>
+                        <li><a href="entrega4_perguntas.html">Perguntas de avaliação, dados e critérios</a></li>
+                        <li><a href="entrega4_questoes-eticas.html" class="active" aria-current="page">Questões práticas e éticas das avaliações</a></li>
+                        <li><a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a></li>
+                        <li><a href="entrega4_logistica-sessoes.html">Cronograma e logística das sessões de avaliação</a></li>
+                        <li><a href="entrega4_relato-resultados.html">Estrutura do relato dos resultados, registro de problemas e reprojeto</a></li>
+                        <li><a href="entrega4_plano-trabalho.html">Plano de trabalho por integrante</a></li>
+                        <li><a href="entrega4_cronograma-planejado.html">Cronograma planejado e executado da Entrega 4</a></li>
+                        <li><a href="entrega4_concordancia.html">Concordância com o livro, fotos de referência e referências</a></li>
+                        <li><a href="entrega4_lv-visao.html">Lista de verificação do Storyboard</a></li>
+                        <li><a href="entrega4_lv-d-objetivos.html">Lista do Storyboard: D, Determinar os objetivos</a></li>
+                        <li><a href="entrega4_lv-e-perguntas.html">Lista do Storyboard: E, Explorar as perguntas</a></li>
+                        <li><a href="entrega4_lv-c-metodos.html">Lista do Storyboard: C, Escolher os métodos</a></li>
+                        <li><a href="entrega4_lv-i-praticas.html">Lista do Storyboard: I, Questões práticas</a></li>
+                        <li><a href="entrega4_lv-d-eticas.html">Lista do Storyboard: D, Questões éticas</a></li>
+                        <li><a href="entrega4_lv-e-relato.html">Lista do Storyboard: E, Relato dos resultados</a></li>
+                        <li><a href="entrega4_lv-sintese.html">Lista do Storyboard: Síntese e referências</a></li>
+                        <li><a href="entrega4_planejamento-matheus.html">Planejamento individual da avaliação: Matheus (Simulador de IRA e Street View)</a></li>
+                        <li><a href="entrega4_agradecimentos.html">Agradecimentos e uso de IA Generativa</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega4.html">Entrega 4</a></p>
+            <h1 id="questoes-eticas" class="doc-title doc-page-title">Questões práticas e éticas das avaliações</h1>
+
+<h3 class="doc-subsection" id="introducao-eticas">1. Introdução</h3>
+<p class="doc-text">Esta página detalha as duas etapas do framework DECIDE que tratam das condições de execução e do cuidado com as pessoas envolvidas: <strong>I</strong> (identificar e administrar as questões práticas) e <strong>D</strong> (decidir como lidar com as questões éticas). Ela vale para as sessões com participantes do storyboard de seis quadros e da HTA e da CTT do Gerenciador de Faltas do NoFluxoUnB, cujos objetivos, perguntas e métodos estão em <a href="entrega4_storyboard.html">Planejamento da avaliação do storyboard</a>, <a href="entrega4_analise-tarefas.html">Planejamento da avaliação da análise de tarefas</a>, <a href="entrega4_metodos.html">Métodos</a> e <a href="entrega4_perguntas.html">Perguntas</a>. O piloto está em <a href="entrega4_teste-piloto.html">Teste-piloto</a>, a agenda das sessões em <a href="entrega4_logistica-sessoes.html">Logística das sessões</a> e as datas em <a href="entrega4_cronograma-planejado.html">Cronograma planejado</a>.</p>
+<p class="doc-text">Barbosa et al. (2021) descrevem as duas atividades assim:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Identificar e administrar as questões práticas da avaliação. Existem muitas questões práticas envolvidas numa avaliação de IHC, como, por exemplo, o recrutamento dos usuários que participarão da avaliação, a preparação e o uso dos equipamentos necessários, os prazos e o orçamento disponíveis, além da mão-de-obra necessária para conduzir a avaliação.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.8 (framework DECIDE, atividade I), p. 280.</p>
+<blockquote class="lv-quote" lang="pt-BR">“Decidir como lidar com as questões éticas. Sempre que usuários são envolvidos numa avaliação, o avaliador deve tomar os cuidados éticos necessários (veja Seção 7.4). Os participantes da avaliação devem ser respeitados e não podem ser prejudicados direta ou indiretamente, nem durante os experimentos, nem após a divulgação dos resultados da avaliação.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.8 (framework DECIDE, atividade D), p. 280.</p>
+<p class="doc-text">O Plano de Ensino pede, na Apresentação 4, que o planejamento trate dessas duas atividades. O item 5 pede “o recrutamento dos usuários que participarão da avaliação (onde e o perfil), quantos usuários participarão da avaliação e a razão dessa quantidade, presencial real ou remota; a preparação e o uso dos equipamentos necessários, os prazos; o orçamento; recursos de mão-de-obra necessária para conduzir a avaliação”. O item 6 pede que se trate de “se os participantes da avaliação devem ser respeitados e não podem ser prejudicados direta ou indiretamente, nem durante os experimentos, nem após a divulgação dos resultados da avaliação”. A Tabela 20, na seção 7, mostra onde cada sub-item é atendido nesta página.</p>
+<p class="doc-text"><strong>Estado deste documento.</strong> Isto é um planejamento. Nenhum participante foi recrutado e nenhuma sessão foi realizada até aqui. Tudo o que o grupo já documentou (cerca de 5 alunos para o storyboard, 3 a 5 para a HTA e a CTT, sessões de 15 a 20 minutos, um facilitador e um anotador, TCLE, gravação de áudio só com autorização, termos fora do repositório público, sem custo) aparece como decisão firmada. O que é decisão nova deste detalhamento está marcado como <em>proposta do grupo, a validar</em>. Campos de registro (códigos, datas e modalidade por participante) serão preenchidos na execução e ficam fora do repositório público quando identificarem pessoas.</p>
+
+<h3 class="doc-subsection" id="perfil-participantes">2. Perfil dos participantes, quantidade e recrutamento</h3>
+
+<p class="doc-text"><strong>2.1 Perfil, critérios de inclusão e de exclusão.</strong> O livro orienta a buscar quem represente o público-alvo e lista fatores para descrever o perfil:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Os avaliadores devem buscar participantes que representem o público-alvo do sistema avaliado, ou seja, que possuam características semelhantes aos usuários típicos. A definição dos perfis de participantes pode considerar fatores como: idade, sexo, formação acadêmica, grau de conhecimento sobre o domínio, nível de experiência na realização das tarefas e nível de experiência no uso do sistema avaliado e de sistemas semelhantes, por exemplo. Sempre que possível e pertinente, o avaliador deve buscar equilibrar o número de homens e mulheres.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2 (Preparação), p. 274.</p>
+<p class="doc-text">O público-alvo do Gerenciador de Faltas são alunos de graduação da UnB, e o documento do grupo pede perfis variados (calouro e veterano) e, de preferência, alguns que já tiveram dificuldade para controlar faltas. A Tabela 16 transforma isso em critérios. As linhas marcadas como proposta são decisões novas do grupo, a validar.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 16 — Critérios de inclusão e de exclusão dos participantes</caption><thead><tr><th>Cód.</th><th>Tipo</th><th>Critério</th><th>Base</th><th>Situação</th></tr></thead><tbody>
+<tr><td>I1</td><td>Inclusão</td><td>Ser aluno de graduação da UnB com matrícula ativa no semestre.</td><td>Público-alvo do projeto; BARBOSA et al. (2021), cap. 11, p. 274.</td><td>Documentado pelo grupo</td></tr>
+<tr><td>I2</td><td>Inclusão</td><td>Ter 18 anos ou mais.</td><td>BARBOSA et al. (2021), cap. 7, 7.4, p. 141 e 142 (menores de idade são vulneráveis e exigem termo assinado pelo responsável legal).</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>I3</td><td>Inclusão</td><td>Incluir calouros e veteranos. Definição operacional sugerida: calouro é quem está até o 2º semestre; veterano, a partir do 3º.</td><td>Perfil variado pedido pelo grupo; fator “nível de experiência” em BARBOSA et al. (2021), cap. 11, p. 274.</td><td>Perfis documentados; corte de semestres é proposta do grupo, a validar</td></tr>
+<tr><td>I4</td><td>Inclusão (preferência)</td><td>Ter tido dificuldade para controlar faltas. Não é obrigatório para todos, apenas desejável para alguns.</td><td>Documentado pelo grupo; “grau de conhecimento sobre o domínio”, p. 274.</td><td>Documentado pelo grupo</td></tr>
+<tr><td>I5</td><td>Inclusão</td><td>Estar cursando pelo menos uma disciplina neste semestre, para que o assunto “faltas” seja concreto para a pessoa.</td><td>Decisão do grupo a partir do domínio do problema.</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>I6</td><td>Inclusão</td><td>Ter disponibilidade de 15 a 20 minutos entre 16 e 21/10, de forma presencial ou remota.</td><td>Sessões de 15 a 20 minutos e janela do cronograma; BARBOSA et al. (2021), cap. 11, p. 276 (agendar data, horário e local).</td><td>Documentado pelo grupo</td></tr>
+<tr><td>I7</td><td>Inclusão</td><td>Equilibrar homens e mulheres sempre que possível e pertinente.</td><td>BARBOSA et al. (2021), cap. 11, p. 274.</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>E1</td><td>Exclusão</td><td>Integrantes do grupo e qualquer pessoa que tenha participado do planejamento, do design ou da preparação dos artefatos.</td><td>BARBOSA et al. (2021), cap. 11, p. 263 e 276.</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>E2</td><td>Exclusão (sempre que possível)</td><td>Conhecidos, amigos, subordinados ou pessoas com relação próxima ou hierárquica com o facilitador da sessão.</td><td>BARBOSA et al. (2021), cap. 11, p. 276 (citação abaixo).</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>E3</td><td>Exclusão</td><td>Menores de 18 anos.</td><td>BARBOSA et al. (2021), cap. 7, p. 141 e 142.</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>E4</td><td>Exclusão</td><td>Quem participou do teste-piloto não participa das sessões definitivas.</td><td>BARBOSA et al. (2021), cap. 7, 7.1, p. 137 e cap. 11, p. 276.</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>E5</td><td>Exclusão (HTA e CTT)</td><td>Quem participou da sessão do storyboard não participa da sessão da HTA e da CTT.</td><td>Documentado pelo grupo (“diferentes dos que avaliaram o storyboard, para reduzir viés”).</td><td>Documentado pelo grupo</td></tr>
+<tr><td>—</td><td>Não é critério de exclusão</td><td>Recusar a gravação de áudio. A pessoa participa mesmo assim, com anotações.</td><td>BARBOSA et al. (2021), cap. 7, p. 141 (permissão para gravar).</td><td>Documentado pelo grupo</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: elaboração do grupo, com base em BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 274 e 276; cap. 7, seção 7.4, p. 141 e 142.</p>
+<p class="doc-text">A razão do critério E2 está no livro:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Sempre que possível, o avaliador deve evitar selecionar seus conhecidos, amigos, alunos, subordinados ou pessoas com as quais possua alguma relação próxima, para evitar que a relação entre ele e o participante influencie ou contamine os dados coletados.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 276.</p>
+<figure class="lv-foto"><img src="img/entrega4/etica-02.jpg" alt="Página 276 do capítulo 11 do livro de Barbosa et al. (2021), com o trecho sobre evitar conhecidos, amigos, alunos e subordinados destacado em amarelo" loading="lazy" width="1100"><figcaption>Foto do livro: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 276, trecho sobre evitar conhecidos, amigos, alunos e subordinados.</figcaption></figure>
+<p class="doc-text">Há duas observações sobre essa regra. Primeiro, a palavra “alunos” se refere a alunos do avaliador. Como os avaliadores deste grupo são estudantes, o equivalente é evitar pessoas com relação próxima ou hierárquica com quem conduz a sessão. Segundo, a regra diz “sempre que possível”: numa comunidade pequena como a de um campus, pode ser difícil evitar todos os conhecidos. Nesse caso, o livro dá a atenuação:</p>
+<blockquote class="lv-quote" lang="pt-BR">“De qualquer modo, o avaliador pode atenuar a interferência das relações entre eles esclarecendo que o objetivo da avaliação é encontrar problemas na interface e que a opinião dos participantes é importante para melhorá-la.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 276.</p>
+<p class="doc-text">Há ainda uma limitação que o grupo reconhece: cada integrante conduz as sessões sobre os próprios artefatos, e o livro recomenda neutralidade:</p>
+<blockquote class="lv-quote" lang="pt-BR">“[...] por avaliadores que não participaram da concepção da solução, pois eles possuem melhores condições de analisar a solução sob um ponto de vista mais neutro”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.1, p. 263 (a frase começa no fim da p. 262).</p>
+<p class="doc-text">Para reduzir esse risco, o roteiro é o mesmo para todos, as perguntas são abertas e neutras, e outro integrante atua como anotador. O relato registra a limitação.</p>
+
+<p class="doc-text"><strong>2.2 Quantidade de participantes e razão.</strong> O livro traz duas referências para o número de usuários:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Dumas e Redish (1999) relatam que uma avaliação de IHC em geral envolve de cinco a 12 usuários. Nielsen (2000), por sua vez, afirma que bastam cinco usuários para encontrarmos a maioria dos problemas na interface (85%, segundo o seu experimento), alcançando uma boa relação custo–benefício.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 274.</p>
+<p class="doc-text">E avisa que o objetivo, aqui, não é uma estatística:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Por isso, uma avaliação de IHC com frequência pretende apenas obter indícios sobre a qualidade de uso do sistema e sobre como aumentá-la. Em outras palavras, mesmo quando os resultados não são estatisticamente significativos, eles podem ser úteis para o reprojeto do sistema avaliado.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 275.</p>
+<p class="doc-text">A Tabela 17 aplica essas referências. O storyboard fica com cerca de cinco participantes, o número que Nielsen considera suficiente para a maioria dos problemas e o piso da faixa de Dumas e Redish. A HTA e a CTT ficam com três a cinco, abaixo do piso de Dumas e Redish no caso de três. A razão para aceitar esse número menor é que a HTA e a CTT já passam por inspeção com dois avaliadores independentes, e o livro sugere justamente combinar métodos:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Se o objetivo da avaliação for encontrar problemas de IHC, o avaliador pode julgar mais adequado empregar um método por inspeção para cobrir (quase) toda a interface, e selecionar um pequeno número de partes importantes a serem avaliadas por um método de observação ou de investigação.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.6, p. 273.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 17 — Quantidade de participantes e justificativa teórica</caption><thead><tr><th>Atividade</th><th>Quantidade</th><th>Quem</th><th>Duração</th><th>Razão da quantidade</th></tr></thead><tbody>
+<tr><td>Sessão de avaliação do storyboard (entrevista semiestruturada)</td><td>Cerca de 5 alunos</td><td>Alunos da UnB, calouros e veteranos</td><td>15 a 20 min</td><td>Nielsen (2000): cinco usuários bastam para a maioria dos problemas; Dumas e Redish (1999): de cinco a 12. BARBOSA et al. (2021), cap. 11, p. 274.</td></tr>
+<tr><td>Sessão de comentário da HTA e da CTT, com entrevista pós-sessão</td><td>3 a 5 alunos, diferentes dos do storyboard</td><td>Alunos da UnB</td><td>15 a 20 min (proposta do grupo, a validar)</td><td>A inspeção por dois avaliadores cobre os modelos inteiros e as sessões aprofundam pontos selecionados (cap. 11, p. 273); busca de indícios, não de significância estatística (cap. 11, p. 275). A diferença em relação ao storyboard é para reduzir viés (documentado pelo grupo).</td></tr>
+<tr><td>Inspeção da HTA e da CTT com lista de verificação</td><td>2 avaliadores do grupo, independentes</td><td>Integrantes do grupo</td><td>Fora das sessões</td><td>Confiabilidade: concordância entre dois avaliadores (documentado pelo grupo).</td></tr>
+<tr><td>Teste-piloto</td><td>1 sessão</td><td>Uma pessoa com perfil semelhante, que não tenha participado do planejamento</td><td>15 a 20 min</td><td>Avaliar o próprio planejamento; dados descartados. BARBOSA et al. (2021), cap. 11, p. 276.</td></tr>
+<tr><td>Total de alunos nas sessões definitivas</td><td>De 8 a 10</td><td>Todos distintos entre si</td><td>—</td><td>Soma dos dois grupos de sessões; o piloto é uma pessoa à parte.</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: elaboração do grupo, com base no documento da Entrega 4 e em BARBOSA et al. (2021), cap. 11, p. 273 a 276. Os números valem para os artefatos do Gerenciador de Faltas; para os conjuntos de artefatos dos outros integrantes o mesmo critério se aplicaria, a confirmar.</p>
+<p class="doc-text">A duração de 15 a 20 minutos respeita o limite que o livro dá para uma tarefa:</p>
+<blockquote class="lv-quote" lang="pt-BR">“O tempo estimado para um participante realizar cada tarefa não deveria ultrapassar 20 minutos.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 275.</p>
+<p class="doc-text">Se, ao fim das três primeiras sessões da HTA e da CTT, as respostas não mostrarem recorrências, o grupo amplia até cinco participantes dentro da janela de 16 a 21/10 (proposta do grupo, a validar).</p>
+
+<p class="doc-text"><strong>2.3 Estratégia de recrutamento e agendamento.</strong> O livro descreve o recrutamento em dois passos, conferir o perfil e convidar com informação clara:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Para recrutar participantes com os perfis especificados, o avaliador pode utilizar questionários ou entrevistas curtas a fim de conferir se uma pessoa possui o perfil desejado. Ao convidar os participantes selecionados, o avaliador deve esclarecer brevemente quais são os objetivos da avaliação, como e onde ela será realizada, e quanto tempo será requerido do participante.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 276.</p>
+<p class="doc-text">A estratégia abaixo segue esses passos. O <strong>onde</strong> do recrutamento é proposta do grupo, a validar: a comunidade de estudantes de graduação da UnB, com prioridade para a Faculdade UnB Gama (FGA) por ser o campus do grupo, e os canais do próprio projeto NoFluxoUnB. Para não recrutar só quem tem relação próxima com os integrantes (critério E2), o convite deve circular em canais abertos de turmas e de estudantes, e cada integrante recruta preferencialmente fora do próprio círculo.</p>
+<ol class="doc-list">
+<li><strong>Convite (14 a 16/10).</strong> Mensagem curta com o objetivo, o artefato (storyboard ou modelos), onde e como será (presencial no campus ou remoto), a duração de 15 a 20 minutos, que a gravação, se houver, é só de áudio e é opcional, e que não há pagamento. O livro manda dizer isso já no recrutamento: “Devemos informar aos participantes logo no recrutamento sobre os tipos de gravações que serão realizadas, para evitar mal-entendidos ou desistências no momento da atividade.” (BARBOSA et al., 2021, cap. 7, seção 7.4, p. 141).</li>
+<li><strong>Triagem (14 a 16/10).</strong> Questionário de poucas perguntas para conferir os critérios I1, I2, I3, I5 e E2 (proposta do grupo, a validar). Guarda-se apenas o contato necessário, fora do repositório público.</li>
+<li><strong>Seleção.</strong> Entre os que atendem, o grupo escolhe cerca de cinco para o storyboard, misturando calouros e veteranos e incluindo alguns que já tiveram dificuldade com faltas, e de três a cinco, diferentes desses, para a HTA e a CTT. Convém manter uma ou duas pessoas em reserva para faltas de última hora (proposta do grupo, a validar).</li>
+<li><strong>Agendamento (até 16/10 para as primeiras sessões).</strong> Confirmada a disponibilidade, o facilitador combina data, horário e modalidade dentro da janela de 16 a 21/10. O livro diz: “Confirmada a disponibilidade e o interesse do participante, o avaliador deve agendar com ele a data, o horário e o local para a realização da avaliação.” (BARBOSA et al., 2021, cap. 11, p. 276). O termo é enviado antes, para leitura, porque o livro pede que as informações sejam “comunicadas ao participante durante o processo de recrutamento e depois reiteradas no início da atividade através de um termo de consentimento” (cap. 7, p. 141).</li>
+<li><strong>Controle do recrutamento.</strong> Uma tabela de controle, mantida fora do repositório público, com código do participante (P01, P02 e assim por diante), perfil (calouro ou veterano), artefato, data, modalidade, termo recebido e autorização de gravação (sim ou não). Todos esses campos são de registro e serão preenchidos na execução.</li>
+<li><strong>Piloto (14 a 16/10).</strong> Uma sessão com pessoa de perfil semelhante que não tenha participado do planejamento. Segundo o livro, “Para o teste-piloto, não há muito problema em convidar um colega de trabalho, um amigo, ou uma pessoa mais próxima do avaliador, pois os dados coletados serão descartados. Entretanto, esse participante não deve ter se envolvido no planejamento e na preparação da avaliação.” (BARBOSA et al., 2021, cap. 11, p. 276). A pessoa do piloto não volta nas sessões definitivas (critério E4).</li>
+</ol>
+
+<h3 class="doc-subsection" id="recursos-infraestrutura">3. Recursos, equipamentos, infraestrutura e mão de obra</h3>
+<p class="doc-text">O livro define o que cabe a esta etapa:</p>
+<blockquote class="lv-quote" lang="pt-BR">“O planejamento de uma avaliação envolve questões práticas, que incluem alocar pessoal, recursos e equipamentos e preparar o material de apoio. Uma avaliação com usuários requer também a preparação do ambiente de teste, a realização de um teste-piloto e o recrutamento dos participantes. Ela envolve ainda questões éticas, apresentadas na Seção 7.4.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 275.</p>
+<p class="doc-text"><strong>Modalidade: presencial no campus, com remota como alternativa (proposta do grupo, a validar).</strong> O grupo escolhe a sessão presencial no campus da UnB Gama como modalidade principal e a sessão remota por videoconferência quando o aluno não puder comparecer. Os motivos são os seguintes. Primeiro, o material é visual (storyboard, HTA e CTT impressos ou em tela), e o livro diz que materiais de apoio ajudam o participante a manter o foco: “o uso de um sistema ou de materiais de apoio, como imagens, cenários e outros tipos de artefatos, pode contribuir para a investigação, ajudando os usuários a se lembrarem de suas experiências e expectativas e também a manterem o foco nas questões de interesse” (BARBOSA et al., 2021, cap. 11, seção 11.6, p. 272). Presencialmente, o artefato impresso fica ao alcance do participante e do anotador. Segundo, o termo é assinado em duas vias na hora, como o livro descreve (cap. 7, p. 141). Terceiro, uma sala simples basta: “Dependendo do método utilizado, uma sala de reunião com mesa e cadeiras pode ser um ambiente adequado para realizar uma avaliação.” (cap. 11, seção 11.4, p. 268). A alternativa remota existe para alcançar quem não pode ir ao campus, e o livro a reconhece: “é possível conduzir entrevistas por telefone ou on-line, em geral através de um sistema de comunicação síncrona (como chat ou videoconferência)” (cap. 7, seção 7.5.1, p. 147). A alternativa descartada foi usar só sessões remotas: ela dependeria da conexão de cada participante e tornaria a assinatura do termo e a guarda dos documentos menos controláveis. O contexto real de uso (acompanhar faltas ao longo do semestre) não é reproduzido nas sessões, e o grupo registra isso como limitação de validade ecológica.</p>
+<p class="doc-text"><strong>Prazos.</strong> Recrutamento, preparação dos instrumentos e piloto de uma sessão entre 14 e 16/10; sessões de 16 a 21/10; análise de 22 a 23/10; relato de 23 a 24/10; postagem em 25/10 (datas do cronograma do grupo, em <a href="entrega4_cronograma-planejado.html">Cronograma planejado</a>). O livro lembra que o plano precisa caber nos recursos: “o avaliador precisa escolher métodos de avaliação adequados ao prazo, orçamento, equipamentos, número de usuários acessíveis, número de avaliadores capacitados e experientes em cada método e demais recursos disponíveis.” (BARBOSA et al., 2021, cap. 11, seção 11.6, p. 273).</p>
+<p class="doc-text"><strong>Equipamentos.</strong> O livro diz que “Equipamentos para o registro de dados, como câmeras, máquinas fotográficas e gravadores de áudio são comumente utilizados na coleta de dados” (cap. 11, p. 275). O grupo usa só gravação de áudio, e só com autorização. A razão de não gravar imagem é do livro: “Devemos registrar apenas dados que possam contribuir com os objetivos da avaliação. Além do desperdício de recursos, registrar dados desnecessários pode tornar a sessão de uso mais artificial e constrangedora para os participantes. Por exemplo, gravar a imagem dos participantes em vídeo pode intimidá-los desnecessariamente, caso o vídeo não seja analisado.” (cap. 11, p. 276). O grupo não vai analisar imagem, e por isso não a grava. Antes de cada sessão o gravador é testado, e o piloto confere se o registro ficou audível.</p>
+<p class="doc-text"><strong>Mão de obra.</strong> Cada sessão tem um facilitador, que conduz a entrevista, e um anotador, que registra as falas e o que o participante faz com o artefato. Na inspeção da HTA e da CTT há dois avaliadores independentes, que são integrantes do grupo. Cada integrante conduz as sessões sobre os próprios artefatos, e outro integrante atua como anotador e segundo avaliador (documentado pelo grupo). Para que todos recebam o mesmo tratamento, vale o que o livro pede: “Para assegurar a validade do estudo, é importante que todos os participantes recebam o mesmo material, as mesmas informações e orientações.” (cap. 11, p. 275). A Tabela 18 reúne os recursos.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 18 — Recursos, equipamentos, infraestrutura e mão de obra</caption><thead><tr><th>Recurso</th><th>Especificação</th><th>Uso na avaliação</th><th>Responsável</th><th>Situação</th></tr></thead><tbody>
+<tr><td>Storyboard de seis quadros</td><td>Impresso ou em tela</td><td>Artefato apresentado a cada participante</td><td>Integrante que conduz a sessão</td><td>Documentado pelo grupo</td></tr>
+<tr><td>HTA e CTT</td><td>Impressas ou em tela</td><td>Modelos comentados pelo participante</td><td>Integrante que conduz a sessão</td><td>Documentado pelo grupo</td></tr>
+<tr><td>Roteiro de entrevista semiestruturada</td><td>O mesmo para todos os participantes do artefato</td><td>Guia da conversa; garante a mesma informação a todos</td><td>Facilitador</td><td>Documentado pelo grupo</td></tr>
+<tr><td>Lista de verificação e planilha de registro de discrepâncias</td><td>Versões da bibliografia da disciplina</td><td>Inspeção independente da HTA e da CTT</td><td>Dois avaliadores</td><td>Documentado pelo grupo</td></tr>
+<tr><td>TCLE</td><td>Duas vias por participante; na sessão remota, versão enviada antes e devolvida assinada ou confirmada por escrito</td><td>Consentimento e autorização de gravação</td><td>Facilitador</td><td>Duas vias documentadas; envio remoto é proposta do grupo, a validar</td></tr>
+<tr><td>Folha de anotações</td><td>Campos por pergunta, código P01 e hora</td><td>Registro do anotador; garante o dado mesmo sem gravação</td><td>Anotador</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>Gravador de áudio</td><td>Dispositivo já disponível a um integrante (por exemplo, o celular); só áudio</td><td>Gravação autorizada, para análise pela equipe</td><td>Anotador</td><td>Áudio documentado; dispositivo é proposta do grupo, a validar</td></tr>
+<tr><td>Espaço presencial</td><td>Sala silenciosa e confortável no campus UnB Gama, a reservar</td><td>Sessão sem interrupções</td><td>Integrante que conduz a sessão</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>Videoconferência</td><td>Plataforma gratuita, a definir pelo grupo; gravação só de áudio, com autorização</td><td>Sessão remota</td><td>Facilitador</td><td>Remota documentada; plataforma a definir</td></tr>
+<tr><td>Armazenamento dos dados</td><td>Pasta de acesso restrito à equipe, fora do repositório público</td><td>Termos, gravações e anotações</td><td>Equipe</td><td>Guarda fora do repositório documentada</td></tr>
+<tr><td>Facilitador</td><td>Um por sessão</td><td>Conduz a entrevista e o TCLE</td><td>Cada integrante, nos próprios artefatos</td><td>Documentado pelo grupo</td></tr>
+<tr><td>Anotador e segundo avaliador</td><td>Um por sessão; outro integrante</td><td>Registra a sessão e é o 2º avaliador na inspeção</td><td>Outro integrante</td><td>Documentado pelo grupo</td></tr>
+<tr><td>Participantes</td><td>Ver Tabelas 16 e 17</td><td>Comentam os artefatos</td><td>—</td><td>Ver seção 2</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: elaboração do grupo, com base no documento da Entrega 4 e em BARBOSA et al. (2021), cap. 11, p. 272, 275 e 276, e cap. 7, p. 141 e 147.</p>
+
+<h3 class="doc-subsection" id="orcamento-eticas">4. Orçamento</h3>
+<p class="doc-text">O orçamento previsto é zero, como o grupo documentou (“sem custo”). A escolha cabe no argumento do livro de que avaliar não é caro: “O custo de avaliar a qualidade de uso não costuma ser alto quando comparado ao orçamento global de um projeto de desenvolvimento” (BARBOSA et al., 2021, cap. 11, seção 11.1, p. 263). Métodos que usam o artefato e conversas curtas, sem laboratório, mantêm o custo baixo. A Tabela 19 detalha as linhas.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 19 — Orçamento previsto da avaliação</caption><thead><tr><th>Item</th><th>Descrição</th><th>Quantidade</th><th>Custo previsto (R$)</th><th>Observação</th></tr></thead><tbody>
+<tr><td>Pagamento aos participantes</td><td>Não há</td><td>0</td><td>0,00</td><td>No Brasil, em pesquisa científica não se paga participante (ver abaixo).</td></tr>
+<tr><td>Ressarcimento de despesas</td><td>Transporte e alimentação, se houver gasto decorrente da sessão</td><td>Sem previsão</td><td>0,00</td><td>Sessões no campus ou remotas; se surgir despesa, o ressarcimento é permitido e será registrado.</td></tr>
+<tr><td>Incentivos (brindes, vale-presente)</td><td>Não oferecidos</td><td>0</td><td>0,00</td><td>Proposta do grupo, a validar.</td></tr>
+<tr><td>Impressão de storyboard, HTA, CTT, roteiros e TCLE</td><td>Impressão própria dos integrantes ou exibição em tela</td><td>Conforme as sessões</td><td>0,00</td><td>Custo irrisório absorvido pelo integrante; nunca repassado ao participante.</td></tr>
+<tr><td>Gravação de áudio</td><td>Dispositivo que o integrante já possui</td><td>1 por sessão</td><td>0,00</td><td>Proposta do grupo, a validar.</td></tr>
+<tr><td>Videoconferência</td><td>Plataforma gratuita</td><td>Conforme as sessões remotas</td><td>0,00</td><td>Plataforma a definir.</td></tr>
+<tr><td>Espaço físico</td><td>Sala no campus UnB Gama</td><td>Conforme as sessões presenciais</td><td>0,00</td><td>Reserva a confirmar.</td></tr>
+<tr><td>Armazenamento e análise</td><td>Pasta restrita e planilhas</td><td>1</td><td>0,00</td><td>Ferramentas gratuitas.</td></tr>
+<tr><td>Mão de obra</td><td>Quatro integrantes, dentro da carga da disciplina</td><td>4</td><td>0,00</td><td>Sem remuneração; é atividade da disciplina.</td></tr>
+<tr><td><strong>Total</strong></td><td></td><td></td><td><strong>0,00</strong></td><td>Estimativa de planejamento; qualquer gasto efetivo será registrado no relato.</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: elaboração do grupo (documento da Entrega 4: “sem custo”); regra sobre pagamento em BARBOSA et al. (2021), cap. 7, seção 7.4, p. 142.</p>
+<p class="doc-text"><strong>Restrição brasileira sobre pagar participantes.</strong> O livro registra:</p>
+<blockquote class="lv-quote" lang="pt-BR">“É importante notar que no Brasil não é permitido pagar para as pessoas participarem de uma pesquisa científica, como ocorre em outros países. Para pesquisas científicas, no Brasil só é permitido ressarcir as despesas decorrentes da participação da pesquisa, basicamente transporte e alimentação nos dias de participação. Essa restrição não se aplica a pesquisas de cunho técnico ou prático, como, por exemplo, uma pesquisa visando ao reprojeto de um sistema comercial.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 7, seção 7.4, p. 142.</p>
+<p class="doc-text">A última frase mostra que a restrição não vale para pesquisa de cunho técnico. Mesmo assim, o grupo adota a regra mais restritiva: não paga, não oferece incentivo e só ressarciria despesas efetivas. O motivo é que a atividade é acadêmica e o TCLE do grupo já afirma que não há remuneração (proposta do grupo, a validar). Isso também evita que um incentivo influencie a opinião do participante.</p>
+
+<h3 class="doc-subsection" id="eticas-principios">5. Questões éticas</h3>
+<p class="doc-text">O livro atribui a responsabilidade à equipe: “É de responsabilidade da equipe de design proteger o bem-estar físico e psicológico dos participantes de qualquer estudo, pesquisa ou análise realizada” (BARBOSA et al., 2021, cap. 7, seção 7.4, p. 140). Ele também explica o estatuto das resoluções brasileiras: “Apesar de essa resolução não se aplicar à execução de métodos de avaliação com objetivos técnicos, suas recomendações são muito úteis para orientar os avaliadores no cuidado ético durante seu trabalho.” (p. 140). O grupo segue essas recomendações como orientação. Os documentos do grupo não registram análise por comitê de ética, e o texto não afirma que houve.</p>
+<p class="doc-text"><strong>5.1 Os quatro princípios aplicados a esta avaliação.</strong> O livro lista quatro princípios (p. 140). Cada um é citado a seguir e aplicado às sessões do grupo.</p>
+<blockquote class="lv-quote" lang="pt-BR">“princípio da autonomia, que envolve o consentimento livre e esclarecido dos indivíduos e a proteção a grupos vulneráveis e aos legalmente incapazes, tais como: menores de idade, alunos ou subordinados.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 7, seção 7.4, p. 140.</p>
+<ul class="doc-list">
+<li><strong>Aplicação.</strong> Os participantes são alunos, que o livro cita como grupo vulnerável, mas ele admite exceção quando os alunos são o perfil buscado: “Devemos evitar a participação de sujeitos vulneráveis, tais como: menores de idade, alunos ou subordinados, a menos que este seja explicitamente o perfil dos participantes. Nesses casos, o pesquisador deve tomar um cuidado ainda maior para não causar constrangimentos ou danos aos participantes.” (cap. 7, p. 142). Como o Gerenciador de Faltas é para alunos da UnB, o perfil é explícito, e o cuidado maior se traduz em: só maiores de 18 anos (E3), ninguém com relação hierárquica com o facilitador (E2), TCLE com duas autorizações separadas e direito de sair a qualquer momento.</li>
+</ul>
+<blockquote class="lv-quote" lang="pt-BR">“princípio da beneficência, que envolve a ponderação entre riscos e benefícios, tanto atuais como potenciais, individuais ou coletivos, comprometendo-se com o máximo de benefícios e o mínimo de danos e riscos.”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 7, seção 7.4, p. 140.</p>
+<ul class="doc-list">
+<li><strong>Aplicação.</strong> O risco é mínimo: uma conversa de 15 a 20 minutos sobre modelos, sem exigir dados pessoais. O benefício é coletivo e indireto: melhorar o Gerenciador de Faltas para a comunidade estudantil. Para manter o risco baixo, a gravação é só de áudio e opcional, e o participante não precisa dizer quantas faltas tem de verdade.</li>
+</ul>
+<blockquote class="lv-quote" lang="pt-BR">“princípio da não maleficência, que envolve a garantia de evitar danos previsíveis relacionados à pesquisa, tanto os imediatos quanto os tardios”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 7, seção 7.4, p. 140.</p>
+<ul class="doc-list">
+<li><strong>Aplicação.</strong> O dano previsível neste tema é o aluno se expor por ter muitas faltas, ou por criticar uma disciplina ou um professor, e isso chegar a terceiros (dano tardio, depois da divulgação). Por isso o storyboard usa dados fictícios, ninguém é perguntado sobre a própria frequência, nomes de professores ou de pessoas citadas são mascarados no relato (“[nome]”), e o relato apresenta recorrências do grupo, não falas atribuídas a uma pessoa identificável.</li>
+</ul>
+<blockquote class="lv-quote" lang="pt-BR">“princípio da justiça e equidade, relacionado à relevância social da pesquisa, com vantagens significativas para os participantes da pesquisa e minimização do ônus para os participantes vulneráveis”</blockquote>
+<p class="doc-source">Fonte: BARBOSA et al. (2021), cap. 7, seção 7.4, p. 140.</p>
+<ul class="doc-list">
+<li><strong>Aplicação.</strong> A relevância social está em apoiar o controle de faltas de estudantes. O ônus é pequeno: sessão curta, no campus ou remota, sem custo para a pessoa, com escolha de participantes variada (calouro e veterano) em vez de apenas quem é próximo do grupo. Os participantes avaliam os modelos e não são avaliados. O livro pede o mesmo: “no caso de observação de uso de um produto, devemos enfatizar que é o produto que será avaliado, e não o participante.” (cap. 7, p. 142). Oferecer ao participante, antes da publicação, a leitura dos trechos que o citam é proposta do grupo, a validar, e acompanha o livro (ver 5.2).</li>
+</ul>
+<figure class="lv-foto"><img src="img/entrega4/etica-01.jpg" alt="Página 140 do capítulo 7 do livro de Barbosa et al. (2021), com o início do princípio da autonomia destacado em amarelo" loading="lazy" width="1100"><figcaption>Foto do livro: BARBOSA et al. (2021), cap. 7, seção 7.4, p. 140, lista dos princípios éticos (autonomia, beneficência, não maleficência, justiça e equidade).</figcaption></figure>
+
+<p class="doc-text"><strong>5.2 Cuidados concretos do planejamento.</strong> Os cuidados que o grupo documentou (TCLE, direito de desistir, anonimato, gravação só com autorização, termos fora do repositório público, storyboard com dados fictícios, participantes não avaliados) se desdobram assim:</p>
+<ul class="doc-list">
+<li><strong>Consentimento livre e esclarecido.</strong> O livro diz: “Todo participante de qualquer estudo tem o direito de saber o objetivo do estudo, a duração estimada, os procedimentos de coleta de dados, o uso que será feito da informação coletada, os seus direitos enquanto participante do estudo e quaisquer riscos, desconfortos ou efeitos adversos relacionados à sua participação no estudo.” (cap. 7, p. 141). A minuta da seção 6 traz cada um desses itens. O termo é assinado também pelo responsável pela sessão, e uma via fica com cada parte (cap. 7, p. 141).</li>
+<li><strong>Direito de desistir e conforto.</strong> “O participante tem o direito e a liberdade de se recusar a participar ou retirar seu consentimento e abandonar o estudo em qualquer fase da pesquisa, sem ser penalizado por isso.” (cap. 7, p. 142). O facilitador interrompe a sessão ao notar constrangimento (“Sempre que o pesquisador perceber que o participante está passando por algum tipo de constrangimento ou incômodo físico, emocional ou psíquico, deve interromper a pesquisa antes que o participante tenha mais sofrimentos desnecessários.”, cap. 7, p. 142) e oferece pausa de água. O participante é tratado como colaborador, nunca como “cobaia” (cap. 7, p. 142).</li>
+<li><strong>Privacidade e confidencialidade dos dados brutos.</strong> “O pesquisador deve garantir aos participantes a confidencialidade e a privacidade dos dados brutos coletados. Com o consentimento dos participantes, os dados brutos são compartilhados apenas com os pesquisadores. Ninguém mais deve ter acesso a esses dados brutos.” (cap. 7, p. 141). Termos, gravações e anotações ficam em pasta restrita à equipe, fora do repositório público. Os dados são descartados ao final da disciplina, salvo necessidade justificada e informada, o que acompanha o livro: “os dados devem ser mantidos apenas enquanto forem relevantes. Quando não precisarem mais ser utilizados, devem ser descartados.” (cap. 7, seção 7.4, p. 143).</li>
+<li><strong>Anonimização e identificação por código.</strong> “Ao divulgar os resultados da avaliação, o avaliador deve garantir o anonimato dos participantes, a preservação das suas imagens e a utilização cuidadosa das informações coletadas. Isso significa não divulgar seus nomes ou qualquer outra informação que possa identificá-los.” (cap. 7, p. 141). O livro sugere a prática: “É comum utilizar nomes fictícios ou números em todo o material coletado para identificá-los apenas assim no relato dos resultados de uma pesquisa.” (p. 141). O grupo identifica cada pessoa por código (P01, P02 e assim por diante) em todo o material coletado e no relato. A tabela que liga código a nome, se existir, fica fora do repositório. Nomes de terceiros e de professores são mascarados: “Nem o nome do participante, nem os nomes dos seus conhecidos podem ser divulgados, devendo ser substituídos por nomes fictícios ou por alguma máscara, como “[nome]”.” (p. 141). Num grupo pequeno, o perfil pode identificar: “A idade, a profissão e o sexo dos participantes também podem identificá-los, caso o participante seja diferente dos demais” (p. 141). Por isso o relato descreve o perfil do grupo (por exemplo, “dois calouros e três veteranos”) e não o de cada pessoa. E, quando houver crítica aos dados: “o pesquisador deve relatar o que ocorreu com um grupo de participantes e os motivos para isso, em vez de criticar ou apresentar falhas de um participante específico. Sempre que possível, os participantes devem ter acesso aos resultados da pesquisa antes que eles sejam publicados.” (p. 141).</li>
+<li><strong>Autorização para gravar voz e imagem.</strong> “É necessário obter permissão para gravar a voz ou imagem de qualquer pessoa, antes de começar a gravação.” (cap. 7, p. 141). O TCLE tem uma autorização própria e separada para o áudio, e recusar não impede a participação. Não há gravação de imagem ou vídeo nesta avaliação, pela razão do livro citada na seção 3 (cap. 11, p. 276). O livro afirma que “As entrevistas costumam ser gravadas em áudio. Além dessa gravação, os entrevistadores podem fazer algumas anotações durante a entrevista.” (cap. 7, p. 147). Sem autorização, o anotador registra tudo por escrito.</li>
+<li><strong>Sem prejuízo depois da divulgação.</strong> O relato é publicado no GitHub Pages do projeto, aberto ao público. Por isso ele só contém códigos, recorrências do grupo e trechos mascarados, e os termos assinados nunca entram no repositório. Isso responde ao ponto do livro e do Plano de Ensino de que os participantes “não podem ser prejudicados direta ou indiretamente, nem durante os experimentos, nem após a divulgação dos resultados da avaliação” (cap. 11, p. 280).</li>
+</ul>
+
+<h3 class="doc-subsection" id="minuta-tcle">6. Minuta do TCLE para as sessões</h3>
+<p class="doc-text">A minuta abaixo deriva do TCLE do grupo para o NoFluxoUnB (TCLE_NoFluxoUnB.pdf, seções 1 a 10), mantendo a mesma estrutura e adaptando o conteúdo às sessões desta avaliação. É proposta do grupo, a validar. Mudanças em relação ao termo original:</p>
+<ul class="doc-list">
+<li>Objeto: o termo original avalia o NoFluxoUnB em entrevista, grupo de foco ou brainstorming de 30 minutos a 2 horas. Esta minuta trata de sessões de 15 a 20 minutos sobre o storyboard, a HTA e a CTT do Gerenciador de Faltas.</li>
+<li>Gravação: o termo original autoriza áudio e vídeo em itens separados. A minuta mantém só o áudio, porque o grupo não grava imagem.</li>
+<li>Autorizações: a minuta tem duas, separadas, a de participar (que inclui o uso anonimizado dos dados, descrito na seção 7 do termo) e a de gravar áudio. O termo original tem uma autorização própria para o uso e a divulgação anonimizada dos dados; aqui ela foi incorporada ao consentimento de participar, porque o participante é informado do uso na seção 7 antes de decidir.</li>
+<li>Menores de 18 anos: o termo original prevê assinatura do responsável legal. Esta avaliação só admite maiores de 18 anos.</li>
+<li>Foram omitidas a matrícula e as assinaturas do termo original. Os campos de assinatura ficam em branco.</li>
+</ul>
+<div class="tcle-minuta" style="border: 1px solid #888; padding: 1rem 1.25rem; margin: 1rem 0;">
+<p class="doc-text"><strong>TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO (TCLE)</strong><br>Sessões de avaliação do storyboard, da HTA e da CTT do Gerenciador de Faltas do NoFluxoUnB — Disciplina de Interação Humano-Computador</p>
+<p class="doc-text">Universidade de Brasília (UnB), Faculdade UnB Gama (FGA). Orientador: Prof. Dr. André Barros de Sales. Grupo 02: Felipe Lopes Pedroza, Matheus do Vale Lameira, Tiago Sousa Nepomuceno e Victor Andreozzi de La Rocque Couto. Responsável por esta sessão: [nome do integrante que conduz a sessão, a preencher]. Artefato desta sessão (marcar um): [ ] Storyboard   [ ] HTA e CTT. Código do participante: P__ (preenchido pela equipe).</p>
+<p class="doc-text"><strong>1. Convite e objetivo do estudo.</strong> Você está sendo convidado(a) a participar, de forma voluntária, de uma avaliação conduzida pela equipe da disciplina de Interação Humano-Computador (UnB/FGA). O objetivo é verificar se o storyboard (ou os modelos de tarefas HTA e CTT) do Gerenciador de Faltas, uma funcionalidade do NoFluxoUnB, plataforma de planejamento acadêmico para estudantes da UnB, representa bem o problema de controlar faltas e é compreendido por alunos, para orientar ajustes antes de a funcionalidade ser construída. <em>Você não está sendo avaliado(a): quem é avaliado é o material.</em></p>
+<p class="doc-text"><strong>2. Procedimentos.</strong> A sessão é individual, tem duração de cerca de 15 a 20 minutos e pode ser presencial, no campus, ou remota. Você verá o storyboard de seis quadros (ou os modelos HTA e CTT) e responderá a perguntas sobre o que entendeu e o que achou. Não há respostas certas ou erradas. O storyboard usa dados fictícios: você não precisa informar sua frequência real, nem dados acadêmicos pessoais.</p>
+<p class="doc-text"><strong>3. Gravação.</strong> Pedimos, em separado, sua autorização para gravar somente o áudio da sessão, exclusivamente para análise pela equipe. Não haverá gravação de vídeo nem de imagem. Nenhuma gravação será feita sem a sua autorização explícita, indicada na seção 10. Se você não autorizar, a sessão ocorre do mesmo jeito, com anotações escritas.</p>
+<p class="doc-text"><strong>4. Riscos e desconfortos.</strong> Os riscos são mínimos e podem envolver algum desconforto ao opinar. Você não é obrigado(a) a responder a nenhuma pergunta e pode interromper sua participação a qualquer momento, sem prejuízo. Se a equipe perceber desconforto, a sessão será interrompida.</p>
+<p class="doc-text"><strong>5. Benefícios.</strong> Não há pagamento nem benefício financeiro, conforme a legislação brasileira, que não permite pagar participantes de pesquisa científica (só o ressarcimento de despesas decorrentes da participação, quando houver). Os benefícios são indiretos: sua participação ajuda a melhorar o Gerenciador de Faltas para a comunidade estudantil da UnB.</p>
+<p class="doc-text"><strong>6. Confidencialidade e anonimato.</strong> Seu nome não será divulgado em relatório, apresentação ou material do projeto. Você será identificado(a) por um código (por exemplo, P01). Este termo, as gravações e as anotações terão acesso restrito à equipe, ficarão guardados de forma segura, fora do repositório público do projeto, e serão descartados ao final da disciplina, salvo necessidade justificada e informada de guarda por mais tempo.</p>
+<p class="doc-text"><strong>7. Uso e divulgação dos dados.</strong> Suas respostas poderão ser citadas, sempre de forma anônima, no relato da avaliação publicado no GitHub Pages do projeto e em trabalhos e apresentações da disciplina. Nomes de pessoas que você eventualmente citar serão substituídos por “[nome]”. Se você quiser, poderá ler os trechos que o(a) citam antes da publicação.</p>
+<p class="doc-text"><strong>8. Participação voluntária e direito de desistência.</strong> Sua participação é voluntária. Você pode se recusar a participar ou retirar seu consentimento a qualquer momento, antes, durante ou depois da sessão, sem justificativa e sem prejuízo. Esta avaliação é destinada a pessoas com 18 anos ou mais.</p>
+<p class="doc-text"><strong>9. Contato.</strong> Em caso de dúvidas, procure o integrante responsável pela sessão ou a equipe do Grupo 02, na Faculdade UnB Gama, sob orientação do Prof. Dr. André Barros de Sales. Contato da equipe: [canal a definir antes das sessões].</p>
+<p class="doc-text"><strong>10. Declaração de consentimento.</strong> De posse das informações acima, e tendo tido a oportunidade de esclarecer minhas dúvidas, declaro:</p>
+<p class="doc-text"><strong>Autorização 1 — Participação e uso anonimizado dos dados (Seção 7).</strong><br>( ) Dou meu consentimento livre e esclarecido para participar da sessão descrita neste termo.<br>( ) Não consinto em participar.</p>
+<p class="doc-text"><strong>Autorização 2 — Gravação de áudio (separada; recusar não impede a participação).</strong><br>( ) Autorizo a gravação do áudio da sessão.<br>( ) Não autorizo a gravação.</p>
+<p class="doc-text">Local: ____________________   Data: ___/___/______<br>Assinatura do(a) participante: ____________________<br>Assinatura do(a) responsável pela sessão: ____________________<br>Nome do(a) participante: ____________________   Nome do(a) responsável: ____________________</p>
+<p class="doc-text">Este termo é redigido em duas vias de igual teor: uma fica com o(a) participante e a outra com a equipe. Em sessão remota, o termo é enviado antes e devolvido assinado ou confirmado por escrito (proposta do grupo, a validar).</p>
+</div>
+<p class="doc-source">Fonte: derivado de TCLE_NoFluxoUnB (Grupo 02, 25/09/2026), seções 1 a 10; estrutura e cuidados conforme BARBOSA et al. (2021), cap. 7, seção 7.4, p. 141 e 142 (exemplo de termo na p. 142).</p>
+
+<h3 class="doc-subsection" id="conformidade-eticas">7. Conformidade</h3>
+<p class="doc-text"><strong>7.1 Itens 5 e 6 do Plano de Ensino.</strong> A Tabela 20 liga cada sub-item pedido para a Apresentação 4 ao ponto desta página em que ele é tratado. Fonte do pedido: SALES (2026), Plano de Ensino, Apresentação 4, itens 5 e 6, p. 13 do PDF.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 20 — Conformidade com os itens 5 e 6 do Plano de Ensino</caption><thead><tr><th>Item</th><th>Sub-item pedido</th><th>Onde está nesta página</th><th>Como é atendido</th></tr></thead><tbody>
+<tr><td>5</td><td>Recrutamento dos usuários: onde</td><td>Seção 2.3</td><td>Comunidade de alunos de graduação da UnB, prioridade FGA, e canais do projeto (proposta do grupo, a validar).</td></tr>
+<tr><td>5</td><td>Recrutamento dos usuários: perfil</td><td>Seção 2.1, Tabela 16</td><td>Critérios de inclusão (I1 a I7) e de exclusão (E1 a E5).</td></tr>
+<tr><td>5</td><td>Quantos usuários participarão e a razão dessa quantidade</td><td>Seção 2.2, Tabela 17</td><td>Cerca de 5 (storyboard) e 3 a 5 (HTA e CTT), com Dumas e Redish (1999) e Nielsen (2000) em BARBOSA et al. (2021), p. 274.</td></tr>
+<tr><td>5</td><td>Presencial real ou remota</td><td>Seção 3</td><td>Presencial no campus como principal, remota como alternativa, com motivos e alternativa descartada.</td></tr>
+<tr><td>5</td><td>Preparação e uso dos equipamentos</td><td>Seção 3, Tabela 18</td><td>Gravador de áudio testado antes de cada sessão, material impresso ou em tela, sala preparada, piloto para conferir o registro.</td></tr>
+<tr><td>5</td><td>Prazos</td><td>Seções 2.3 e 3</td><td>Recrutamento e piloto de 14 a 16/10; sessões de 16 a 21/10; análise de 22 a 23/10; relato de 23 a 24/10; postagem em 25/10.</td></tr>
+<tr><td>5</td><td>Orçamento</td><td>Seção 4, Tabela 19</td><td>Total previsto de R$ 0,00, com a regra brasileira sobre pagamento de participantes.</td></tr>
+<tr><td>5</td><td>Recursos de mão de obra</td><td>Seção 3, Tabela 18</td><td>Facilitador, anotador e segundo avaliador, com dois avaliadores independentes na inspeção.</td></tr>
+<tr><td>6</td><td>Participantes respeitados</td><td>Seção 5.2, seção 6</td><td>Consentimento, conforto, tratamento respeitoso, os participantes avaliam os modelos e não são avaliados.</td></tr>
+<tr><td>6</td><td>Participantes não prejudicados durante os experimentos</td><td>Seções 5.1 e 5.2</td><td>Direito de desistir, interrupção diante de constrangimento, dados fictícios, ninguém é obrigado a informar frequência real.</td></tr>
+<tr><td>6</td><td>Participantes não prejudicados após a divulgação dos resultados</td><td>Seções 5.2 e 6</td><td>Anonimato por código, perfil descrito só para o grupo, nomes de terceiros mascarados, termos fora do repositório público.</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: SALES, A. B. de. Plano de Ensino: Interação Humano-Computador. Brasília: UnB, 2026, p. 13 do PDF (Apresentação 4, itens 5 e 6), e esta página.</p>
+
+<p class="doc-text"><strong>7.2 Cuidados do livro.</strong> A Tabela 21 cruza cada cuidado do livro (incluindo as diretrizes da seção 7.4) com a página em que está e com o ponto do planejamento que o atende.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 21 — Conformidade com os cuidados éticos e práticos do livro</caption><thead><tr><th>Cuidado do livro</th><th>Fonte (obra, seção, página)</th><th>Onde o planejamento atende</th><th>Situação</th></tr></thead><tbody>
+<tr><td>Quatro princípios: autonomia, beneficência, não maleficência, justiça e equidade</td><td>BARBOSA et al. (2021), cap. 7, 7.4, p. 140</td><td>Seção 5.1 (um bloco por princípio)</td><td>Atendido no planejamento</td></tr>
+<tr><td>Proteger o bem-estar físico e psicológico dos participantes</td><td>Cap. 7, 7.4, p. 140</td><td>Seções 5.1 e 5.2; Tabela 18 (pausas e sala confortável)</td><td>Atendido no planejamento</td></tr>
+<tr><td>Explicar objetivos e como será a participação; esclarecer dúvidas</td><td>Cap. 7, 7.4, p. 141</td><td>Convite (seção 2.3), minuta do TCLE, seções 1 e 2</td><td>Atendido no planejamento</td></tr>
+<tr><td>Confidencialidade e privacidade dos dados brutos; acesso só dos pesquisadores</td><td>Cap. 7, 7.4, p. 141</td><td>Seção 5.2; minuta, seção 6; Tabela 18 (armazenamento restrito)</td><td>Atendido no planejamento</td></tr>
+<tr><td>Anonimato e preservação das imagens na divulgação</td><td>Cap. 7, 7.4, p. 141</td><td>Códigos P01 em todo o material; não há gravação de imagem</td><td>Atendido no planejamento</td></tr>
+<tr><td>Nomes fictícios ou números; máscara “[nome]” para terceiros</td><td>Cap. 7, 7.4, p. 141</td><td>Seção 5.2; minuta, seção 7</td><td>Atendido no planejamento</td></tr>
+<tr><td>Idade, profissão e sexo podem identificar; relatar por grupo e não criticar uma pessoa</td><td>Cap. 7, 7.4, p. 141</td><td>Perfil descrito só para o grupo no relato; seção 5.2</td><td>Atendido no planejamento</td></tr>
+<tr><td>Participantes com acesso aos resultados antes da publicação, sempre que possível</td><td>Cap. 7, 7.4, p. 141</td><td>Minuta, seção 7 (leitura opcional dos trechos)</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>Permissão para gravar voz ou imagem antes de gravar; avisar no recrutamento</td><td>Cap. 7, 7.4, p. 141</td><td>Convite (seção 2.3); Autorização 2 do TCLE</td><td>Atendido no planejamento</td></tr>
+<tr><td>Consentimento livre e esclarecido por termo; assinado também pelo responsável; uma via para cada parte</td><td>Cap. 7, 7.4, p. 141</td><td>Minuta do TCLE, seções 8 a 10</td><td>Atendido no planejamento</td></tr>
+<tr><td>Menores de 18 anos exigem assinatura do responsável legal</td><td>Cap. 7, 7.4, p. 141</td><td>Critérios I2 e E3: só maiores de 18 anos</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>Conforto; tratamento respeitoso; é o produto que é avaliado, e não o participante</td><td>Cap. 7, 7.4, p. 142</td><td>Seção 5.1 (justiça e equidade); minuta, seção 1</td><td>Atendido no planejamento</td></tr>
+<tr><td>Direito de recusar ou desistir sem penalidade; interromper diante de constrangimento</td><td>Cap. 7, 7.4, p. 142</td><td>Minuta, seções 4 e 8; seção 5.2</td><td>Atendido no planejamento</td></tr>
+<tr><td>Evitar sujeitos vulneráveis (alunos) salvo perfil explícito, com cuidado maior</td><td>Cap. 7, 7.4, p. 142</td><td>Seção 5.1 (autonomia); Tabela 16 (E2, E3)</td><td>Atendido no planejamento</td></tr>
+<tr><td>Não pagar participantes em pesquisa científica; só ressarcir despesas</td><td>Cap. 7, 7.4, p. 142</td><td>Seção 4, Tabela 19; minuta, seção 5</td><td>Atendido no planejamento</td></tr>
+<tr><td>Manter os dados só enquanto relevantes e descartar depois</td><td>Cap. 7, 7.4, p. 143</td><td>Minuta, seção 6 (descarte ao final da disciplina)</td><td>Atendido no planejamento</td></tr>
+<tr><td>Dados livres de tendenciosidade; informar limitações</td><td>Cap. 7, 7.4, p. 143</td><td>Mesmo roteiro para todos; perguntas neutras; limitações no relato (validade ecológica e neutralidade)</td><td>Atendido no planejamento; limitações a registrar no relato</td></tr>
+<tr><td>Respeitar os participantes e não prejudicá-los durante nem após a divulgação</td><td>BARBOSA et al. (2021), cap. 11, 11.8, p. 280</td><td>Seção 5 e Tabela 20 (item 6)</td><td>Atendido no planejamento</td></tr>
+<tr><td>Representar o público-alvo e descrever o perfil; equilibrar homens e mulheres</td><td>Cap. 11, 11.7.2, p. 274</td><td>Tabela 16</td><td>Atendido; equilíbrio é proposta do grupo, a validar</td></tr>
+<tr><td>Número de participantes: de cinco a 12 (Dumas e Redish); cinco bastam (Nielsen)</td><td>Cap. 11, 11.7.2, p. 274</td><td>Seção 2.2, Tabela 17</td><td>Atendido; 3 participantes na HTA e CTT ficam abaixo da faixa, com justificativa</td></tr>
+<tr><td>Evitar conhecidos, amigos, alunos e subordinados; atenuar a interferência</td><td>Cap. 11, 11.7.2, p. 276</td><td>Critério E2; seção 2.1</td><td>Proposta do grupo, a validar</td></tr>
+<tr><td>Recrutar com questionário ou entrevista curta; convidar explicando objetivo, local e tempo; agendar</td><td>Cap. 11, 11.7.2, p. 276</td><td>Seção 2.3</td><td>Atendido no planejamento</td></tr>
+<tr><td>Mesmo material, mesmas informações e orientações para todos</td><td>Cap. 11, 11.7.2, p. 275</td><td>Tabela 18 (roteiro único)</td><td>Atendido no planejamento</td></tr>
+<tr><td>Registrar só dados úteis; gravar vídeo pode intimidar</td><td>Cap. 11, 11.7.2, p. 276</td><td>Só áudio; seção 3</td><td>Atendido no planejamento</td></tr>
+<tr><td>Teste-piloto; dados descartados; participante do piloto não participou do planejamento</td><td>Cap. 11, 11.7.2, p. 276; cap. 7, 7.1, p. 137</td><td>Seção 2.3, passo 6; critério E4</td><td>Atendido no planejamento</td></tr>
+<tr><td>Escolher métodos adequados ao prazo, orçamento, equipamentos e número de usuários acessíveis</td><td>Cap. 11, 11.6, p. 273</td><td>Seções 3 e 4; Tabelas 18 e 19</td><td>Atendido no planejamento</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: elaboração do grupo, com base em BARBOSA et al. (2021), cap. 7, seção 7.4, p. 140 a 143, e cap. 11, seções 11.6 a 11.8, p. 273 a 280.</p>
+
+<h3 class="doc-subsection" id="referencias-questoes-eticas">Referências</h3>
+<ul class="doc-list" style="list-style: none; padding-left: 0;">
+<li>BARBOSA, S. D. J.; SILVA, B. S. da; SILVEIRA, M. S.; GASPARINI, I.; DARIN, T.; BARBOSA, G. D. J. <em>Interação Humano-Computador e Experiência do Usuário</em>. Capítulo 7, Análise e Definição dos Requisitos, seção 7.1, p. 137; seção 7.4 (Aspectos Éticos de Pesquisas Envolvendo Pessoas), p. 140 a 143; seção 7.5.1, p. 147. Rio de Janeiro, 2021.</li>
+<li>BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>. Capítulo 11, Planejamento da Avaliação de IHC, seção 11.1, p. 263; 11.4, p. 268; 11.6, p. 272 e 273; 11.7.2 (Preparação), p. 274 a 276; 11.8 (Framework DECIDE), p. 280. Rio de Janeiro, 2021.</li>
+<li>SALES, A. B. de. <em>Plano de Ensino: Interação Humano-Computador</em>. Brasília: Universidade de Brasília, Faculdade UnB Gama, 2026. Apresentação 4, itens 5 e 6, p. 13 do PDF.</li>
+<li>PREECE, J.; ROGERS, Y.; SHARP, H. <em>Interaction Design: Beyond Human-Computer Interaction</em>. Wiley, 2002 (framework DECIDE, conforme apresentado em Barbosa et al., cap. 11, p. 280).</li>
+<li>GRUPO 02. <em>TCLE do projeto de avaliação do NoFluxoUnB</em>. Universidade de Brasília, 25/09/2026 (base da minuta da seção 6; assinaturas e matrícula omitidas).</li>
+</ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">12/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 4 (planejamento da avaliação do storyboard e da análise de tarefas) a partir do documento do grupo, dividida em artefatos, com nomes e matrículas de Felipe, Matheus e Victor (issue #59)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da lista de verificação do Storyboard (15 itens, com respostas, textos de origem, fontes e fotos dos trechos), em artefatos por atividade do DECIDE (issue #61)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Autoria da lista de verificação do Storyboard (Matheus e Felipe) e inclusão dos vídeos da lista de verificação e da apresentação da Entrega 4 (issue #62)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da parte individual de Felipe (Gerenciador de Faltas) com o cronograma até 03/11/2026, dividida em artefatos (issue #63)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza (conteúdo); Matheus do Vale Lameira (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da atribuição da parte individual (Gerenciador de Faltas, com cronograma): a entrega do documento é de Victor, Matheus e Felipe, com os três nomes e matrículas no cabeçalho (issue #64)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Retirado o rótulo de parte individual do documento do Gerenciador de Faltas (cabeçalho e parágrafo de abertura): o documento é do grupo, feito por Victor, Matheus e Felipe (issue #65)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Removido o documento do Gerenciador de Faltas (visão geral, seções 1 a 5 e referências) da Entrega 4 (issue #66)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.7</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Documento da Entrega 4 substituído pela versão com o cronograma até 03/11/2026 (seções 1 a 5), de Victor, Matheus e Felipe, sem o rótulo de parte individual; itens da lista que citam a Seção 5 ligados ao cronograma (issue #67)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.8</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Ampliação da Entrega 4 nos moldes do Plano de Ensino: métodos, modos e motivos; perguntas e critérios; questões práticas e éticas; teste-piloto; logística das sessões; estrutura do relato; cronograma planejado e executado; concordância com o livro; tabela de contribuição e agradecimentos (rascunho local, issue a abrir)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega4_perguntas.html"><span>← Anterior</span>Perguntas de avaliação, dados e critérios</a>
+                    <a class="next" href="entrega4_teste-piloto.html"><span>Próximo →</span>Planejamento e protocolo do teste-piloto</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

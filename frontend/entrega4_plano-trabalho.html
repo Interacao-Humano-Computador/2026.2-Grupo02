@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de trabalho por integrante | Entrega 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 4 · Planejamento da Avaliação do Storyboard e da Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega4.html">Visão geral</a></li>
+                        <li><a href="entrega4_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega4_storyboard.html">1. Planejamento da Avaliação do Storyboard (framework DECIDE)</a></li>
+                        <li><a href="entrega4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="entrega4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas (HTA e CTT)</a></li>
+                        <li><a href="entrega4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="entrega4_cronograma.html">5. Cronograma até 03/11/2026</a></li>
+                        <li><a href="entrega4_referencias.html">Referências</a></li>
+                        <li><a href="entrega4_metodos.html">Métodos, modos e motivos da avaliação</a></li>
+                        <li><a href="entrega4_perguntas.html">Perguntas de avaliação, dados e critérios</a></li>
+                        <li><a href="entrega4_questoes-eticas.html">Questões práticas e éticas das avaliações</a></li>
+                        <li><a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a></li>
+                        <li><a href="entrega4_logistica-sessoes.html">Cronograma e logística das sessões de avaliação</a></li>
+                        <li><a href="entrega4_relato-resultados.html">Estrutura do relato dos resultados, registro de problemas e reprojeto</a></li>
+                        <li><a href="entrega4_plano-trabalho.html" class="active" aria-current="page">Plano de trabalho por integrante</a></li>
+                        <li><a href="entrega4_cronograma-planejado.html">Cronograma planejado e executado da Entrega 4</a></li>
+                        <li><a href="entrega4_concordancia.html">Concordância com o livro, fotos de referência e referências</a></li>
+                        <li><a href="entrega4_lv-visao.html">Lista de verificação do Storyboard</a></li>
+                        <li><a href="entrega4_lv-d-objetivos.html">Lista do Storyboard: D, Determinar os objetivos</a></li>
+                        <li><a href="entrega4_lv-e-perguntas.html">Lista do Storyboard: E, Explorar as perguntas</a></li>
+                        <li><a href="entrega4_lv-c-metodos.html">Lista do Storyboard: C, Escolher os métodos</a></li>
+                        <li><a href="entrega4_lv-i-praticas.html">Lista do Storyboard: I, Questões práticas</a></li>
+                        <li><a href="entrega4_lv-d-eticas.html">Lista do Storyboard: D, Questões éticas</a></li>
+                        <li><a href="entrega4_lv-e-relato.html">Lista do Storyboard: E, Relato dos resultados</a></li>
+                        <li><a href="entrega4_lv-sintese.html">Lista do Storyboard: Síntese e referências</a></li>
+                        <li><a href="entrega4_planejamento-matheus.html">Planejamento individual da avaliação: Matheus (Simulador de IRA e Street View)</a></li>
+                        <li><a href="entrega4_agradecimentos.html">Agradecimentos e uso de IA Generativa</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega4.html">Entrega 4</a></p>
+            <h1 id="plano-trabalho" class="doc-title doc-page-title">Plano de trabalho por integrante</h1>
+            <h3 class="doc-subsection" id="introducao-plano-trabalho">1. Introdução</h3>
+            <p class="doc-text">Esta página mostra o que cada integrante fará em cada etapa da Entrega 4 e dos passos seguintes até 03/11/2026, a partir do <a href="entrega4_cronograma.html">cronograma</a> e da lista de funcionalidades por integrante do documento da Entrega 4 (seção 5.3). O Plano de Ensino pede que cada integrante elabore ao menos um item de conteúdo com referência bibliográfica e foto do texto, e que o cronograma traga quem realiza cada atividade; por isso o trabalho foi dividido em partes iguais e em revezamento.</p>
+            <p class="doc-text"><strong>O que é fato e o que é proposta.</strong> Os artefatos de cada integrante (funcionalidade, storyboard, HTA, CTT e protótipo de papel) e as datas vêm do documento. A distribuição dos itens do Plano de Ensino, o revezamento de facilitador e anotador, as tarefas por etapa e as pendências são <strong>proposta do grupo, a validar</strong>. A Tabela 37 reúne as responsabilidades, a Tabela 38 o que cada um faz em cada etapa, a Tabela 39 a distribuição dos itens do Plano de Ensino e a Tabela 40 as pendências.</p>
+            <h3 class="doc-subsection" id="plano-responsabilidades">2. Responsabilidades por integrante</h3>
+            <p class="doc-text">Cada integrante é dono dos próprios artefatos. Nas sessões, quem é dono do artefato conduz como facilitador, e o integrante seguinte na ordem Felipe, Matheus, Tiago, Victor (e depois Felipe) anota e atua como segundo avaliador na inspeção independente da HTA e da CTT, como o documento prevê ("outro integrante (anotador e 2º avaliador)"). Assim cada pessoa faz duas funções, em quantidade igual.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 37 — Responsabilidades por integrante</caption>
+                    <thead><tr><th>Integrante</th><th>Funcionalidade</th><th>Storyboard</th><th>HTA</th><th>CTT</th><th>Protótipo de papel</th><th>Como facilitador</th><th>Como anotador e 2º avaliador</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Felipe Lopes Pedroza</strong></td><td>Gerenciador de Faltas</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 21/10; v2 em 24/10</td><td>Facilita as sessões de storyboard e de HTA e CTT de Gerenciador de Faltas</td><td>Anota e é 2º avaliador nas sessões de Matheus (Simulador de IRA e Street View)</td></tr>
+                        <tr><td><strong>Matheus do Vale Lameira</strong></td><td>Simulador de IRA e Street View</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 21/10; v2 em 24/10</td><td>Facilita as sessões de storyboard e de HTA e CTT de Simulador de IRA e Street View</td><td>Anota e é 2º avaliador nas sessões de Tiago (Montador de Grade)</td></tr>
+                        <tr><td><strong>Tiago Sousa Nepomuceno</strong></td><td>Montador de Grade</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 21/10; v2 em 24/10</td><td>Facilita as sessões de storyboard e de HTA e CTT de Montador de Grade</td><td>Anota e é 2º avaliador nas sessões de Victor (Avaliação das Disciplinas)</td></tr>
+                        <tr><td><strong>Victor Andreozzi de La Rocque Couto</strong></td><td>Avaliação das Disciplinas</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 13/10; v2 em 23/10</td><td>v1 em 21/10; v2 em 24/10</td><td>Facilita as sessões de storyboard e de HTA e CTT de Avaliação das Disciplinas</td><td>Anota e é 2º avaliador nas sessões de Felipe (Gerenciador de Faltas)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir da seção 5.3 do documento da Entrega 4; revezamento proposto pelo grupo.</p>
+            <h3 class="doc-subsection" id="plano-etapas">3. O que cada integrante faz em cada etapa</h3>
+            <p class="doc-text">A Tabela 38 detalha, por etapa e por integrante, as tarefas de 13/10 a 03/11/2026. As etapas e as datas são as do <a href="entrega4_cronograma-planejado.html">cronograma planejado</a>; o conteúdo de cada célula é a tarefa que cabe ao integrante naquela etapa, com Felipe como responsável por consolidar e postar, como no documento.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 38 — O que cada integrante faz em cada etapa</caption>
+                    <thead><tr><th>Período e atividade</th><th>Felipe</th><th>Matheus</th><th>Tiago</th><th>Victor</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>13/10 · Fechar versões a avaliar e postar</strong></td><td>Fecha as versões do Gerenciador de Faltas, consolida o documento e posta</td><td>Fecha as versões de Simulador de IRA e Street View (storyboard, HTA e CTT) e envia a Felipe</td><td>Fecha as versões de Montador de Grade (storyboard, HTA e CTT) e envia a Felipe</td><td>Fecha as versões de Avaliação das Disciplinas (storyboard, HTA e CTT) e envia a Felipe</td></tr>
+                        <tr><td><strong>14/10 · Inspeção do Grupo − 1</strong></td><td>Aplica a lista de verificação DECIDE ao planejamento do grupo anterior e registra o parecer</td><td>Aplica a lista de verificação DECIDE ao planejamento do grupo anterior e registra o parecer</td><td>Aplica a lista de verificação DECIDE ao planejamento do grupo anterior e registra o parecer</td><td>Aplica a lista de verificação DECIDE ao planejamento do grupo anterior e registra o parecer</td></tr>
+                        <tr><td><strong>14 a 16/10 · Recrutamento, instrumentos e piloto</strong></td><td>Recruta participantes para Gerenciador de Faltas (storyboard: cerca de 5; HTA e CTT: 3 a 5), prepara roteiro, termo e ficha; conduz o teste-piloto como facilitador</td><td>Recruta participantes para Simulador de IRA e Street View (storyboard: cerca de 5; HTA e CTT: 3 a 5), prepara roteiro, termo e ficha; anota o teste-piloto</td><td>Recruta participantes para Montador de Grade (storyboard: cerca de 5; HTA e CTT: 3 a 5), prepara roteiro, termo e ficha; é participante simulado do teste-piloto</td><td>Recruta participantes para Avaliação das Disciplinas (storyboard: cerca de 5; HTA e CTT: 3 a 5), prepara roteiro, termo e ficha; opera a gravação do teste-piloto</td></tr>
+                        <tr><td><strong>16 a 21/10 · Sessões e inspeção independente</strong></td><td>Facilita as sessões de Gerenciador de Faltas; anota e atua como 2º avaliador nas de Matheus</td><td>Facilita as sessões de Simulador de IRA e Street View; anota e atua como 2º avaliador nas de Tiago</td><td>Facilita as sessões de Montador de Grade; anota e atua como 2º avaliador nas de Victor</td><td>Facilita as sessões de Avaliação das Disciplinas; anota e atua como 2º avaliador nas de Felipe</td></tr>
+                        <tr><td><strong>17 a 21/10 · Protótipo de papel v1</strong></td><td>Desenha e monta o protótipo de papel de Gerenciador de Faltas a partir da HTA e dos quadros do storyboard</td><td>Desenha e monta o protótipo de papel de Simulador de IRA e Street View a partir da HTA e dos quadros do storyboard</td><td>Desenha e monta o protótipo de papel de Montador de Grade a partir da HTA e dos quadros do storyboard</td><td>Desenha e monta o protótipo de papel de Avaliação das Disciplinas a partir da HTA e dos quadros do storyboard</td></tr>
+                        <tr><td><strong>22 a 23/10 · Análise e reprojeto (v2)</strong></td><td>Analisa os dados de Gerenciador de Faltas, lista problemas e propõe reprojeto; revisa a consolidação de todos</td><td>Analisa os dados de Simulador de IRA e Street View, lista problemas e propõe reprojeto; envia a análise a Felipe</td><td>Analisa os dados de Montador de Grade, lista problemas e propõe reprojeto; envia a análise a Felipe</td><td>Analisa os dados de Avaliação das Disciplinas, lista problemas e propõe reprojeto; envia a análise a Felipe</td></tr>
+                        <tr><td><strong>23 a 24/10 · Relato e planejamento do protótipo</strong></td><td>Escreve o relato de Gerenciador de Faltas e o planejamento DECIDE do protótipo de papel; consolida os textos</td><td>Escreve o relato de Simulador de IRA e Street View e o planejamento DECIDE do protótipo de papel; envia a Felipe</td><td>Escreve o relato de Montador de Grade e o planejamento DECIDE do protótipo de papel; envia a Felipe</td><td>Escreve o relato de Avaliação das Disciplinas e o planejamento DECIDE do protótipo de papel; envia a Felipe</td></tr>
+                        <tr><td><strong>25/10 · Postagem</strong></td><td>Posta o relato e o planejamento do protótipo de papel</td><td>Confere a página publicada e registra no cronograma executado</td><td>Confere a página publicada e registra no cronograma executado</td><td>Confere a página publicada e registra no cronograma executado</td></tr>
+                        <tr><td><strong>26/10 · Inspeção do Grupo + 1</strong></td><td>Aplica a lista de verificação ao relato e ao planejamento do grupo seguinte</td><td>Aplica a lista de verificação ao relato e ao planejamento do grupo seguinte</td><td>Aplica a lista de verificação ao relato e ao planejamento do grupo seguinte</td><td>Aplica a lista de verificação ao relato e ao planejamento do grupo seguinte</td></tr>
+                        <tr><td><strong>27 a 30/10 · Avaliação do protótipo de papel</strong></td><td>Facilita a avaliação do protótipo de Gerenciador de Faltas; anota a de Matheus</td><td>Facilita a avaliação do protótipo de Simulador de IRA e Street View; anota a de Tiago</td><td>Facilita a avaliação do protótipo de Montador de Grade; anota a de Victor</td><td>Facilita a avaliação do protótipo de Avaliação das Disciplinas; anota a de Felipe</td></tr>
+                        <tr><td><strong>30/10 a 01/11 · Análise e esboço de alta fidelidade</strong></td><td>Analisa os resultados do protótipo de papel de Gerenciador de Faltas e esboça o protótipo de alta fidelidade</td><td>Analisa os resultados do protótipo de papel de Simulador de IRA e Street View e esboça o protótipo de alta fidelidade</td><td>Analisa os resultados do protótipo de papel de Montador de Grade e esboça o protótipo de alta fidelidade</td><td>Analisa os resultados do protótipo de papel de Avaliação das Disciplinas e esboça o protótipo de alta fidelidade</td></tr>
+                        <tr><td><strong>01 a 03/11 · Relato e postagem</strong></td><td>Consolida e posta o relato do protótipo de papel e o planejamento da alta fidelidade</td><td>Escreve o relato de Simulador de IRA e Street View e o planejamento da alta fidelidade</td><td>Escreve o relato de Montador de Grade e o planejamento da alta fidelidade</td><td>Escreve o relato de Avaliação das Disciplinas e o planejamento da alta fidelidade</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir das seções 5.1 e 5.2 do documento da Entrega 4.</p>
+            <h3 class="doc-subsection" id="plano-itens">4. Itens do Plano de Ensino por integrante</h3>
+            <p class="doc-text">O Plano de Ensino lista os itens que a Apresentação 4 deve conter e exige que cada integrante elabore ao menos um item de conteúdo com referência e foto do texto. A Tabela 39 distribui os doze itens específicos (2 a 13) em três por integrante, com revisão cruzada pelo integrante seguinte na ordem do revezamento. Os itens com foto (4, 5, 6 e 11) ficam um com cada integrante, de modo que todos cumprem a exigência.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 39 — Itens do Plano de Ensino (Apresentação 4) por integrante</caption>
+                    <thead><tr><th>Item</th><th>Onde está no site</th><th>Autor (proposta)</th><th>Revisor (proposta)</th><th>Referência</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Item 2: O planejamento segue o framework DECIDE</strong></td><td><a href="entrega4_storyboard.html">Seção 1</a> e <a href="entrega4_analise-tarefas.html">3</a> do documento</td><td>Victor</td><td>Felipe</td><td>Cap. 11, seção 11.8, p. 279–280</td></tr>
+                        <tr><td><strong>Item 3: Objetivos da avaliação</strong></td><td><a href="entrega4_perguntas.html">Perguntas, dados e critérios</a></td><td>Felipe</td><td>Matheus</td><td>Cap. 11, seção 11.2, p. 264; 11.8, p. 280</td></tr>
+                        <tr><td><strong>Item 4: Métodos de avaliação</strong></td><td><a href="entrega4_metodos.html">Métodos, modos e motivos</a></td><td>Matheus</td><td>Tiago</td><td>Cap. 11, seção 11.6, p. 272 (com foto)</td></tr>
+                        <tr><td><strong>Item 5: Questões práticas</strong></td><td><a href="entrega4_questoes-eticas.html">Questões práticas e éticas</a></td><td>Tiago</td><td>Victor</td><td>Cap. 11, seção 11.7.2, p. 274 a 275 (com foto)</td></tr>
+                        <tr><td><strong>Item 6: Questões éticas</strong></td><td><a href="entrega4_questoes-eticas.html">Questões práticas e éticas</a></td><td>Victor</td><td>Felipe</td><td>Cap. 7, seção 7.4, p. 140 (com foto)</td></tr>
+                        <tr><td><strong>Item 7: Estrutura do relatório do resultado</strong></td><td><a href="entrega4_relato-resultados.html">Estrutura do relato</a></td><td>Felipe</td><td>Matheus</td><td>Cap. 11, seção 11.7.5, p. 279</td></tr>
+                        <tr><td><strong>Item 8: Cronograma (data e horário) e local</strong></td><td><a href="entrega4_logistica-sessoes.html">Logística das sessões</a></td><td>Matheus</td><td>Tiago</td><td>Plano de Ensino (Apresentação 4, item 8)</td></tr>
+                        <tr><td><strong>Item 9: Cada desenho do storyboard ligado à análise de tarefas</strong></td><td><a href="entrega4_perguntas.html">Quadros e análise de tarefas</a></td><td>Tiago</td><td>Victor</td><td>Plano de Ensino (Apresentação 4, item 9)</td></tr>
+                        <tr><td><strong>Item 10: Quantidade de storyboards igual à de integrantes</strong></td><td><a href="entrega4_perguntas.html">Storyboards por integrante</a></td><td>Victor</td><td>Felipe</td><td>Plano de Ensino (Apresentação 4, item 10)</td></tr>
+                        <tr><td><strong>Item 11: Teste-piloto e data</strong></td><td><a href="entrega4_teste-piloto.html">Teste-piloto</a></td><td>Felipe</td><td>Matheus</td><td>Cap. 11, seção 11.7.2, p. 276 (com foto)</td></tr>
+                        <tr><td><strong>Item 12: Resultado do piloto fora do resultado final</strong></td><td><a href="entrega4_teste-piloto.html">Teste-piloto</a></td><td>Matheus</td><td>Tiago</td><td>Plano de Ensino (Apresentação 4, item 12)</td></tr>
+                        <tr><td><strong>Item 13: O que o avaliador anota na sessão</strong></td><td><a href="entrega4_relato-resultados.html">Estrutura do relato</a></td><td>Tiago</td><td>Victor</td><td>Cap. 11, seção 11.7.5, p. 279</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026), a partir do Plano de Ensino (Sales, 2026) e das páginas desta entrega.</p>
+            <h3 class="doc-subsection" id="plano-pendencias">5. O que falta o grupo definir</h3>
+            <p class="doc-text">A Tabela 40 lista o que ainda precisa de decisão ou de dado do grupo para o planejamento ficar fechado, com responsável e prazo propostos.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 40 — Pendências, responsáveis e prazos (propostos)</caption>
+                    <thead><tr><th>Pendência</th><th>Responsável (proposta)</th><th>Prazo (proposta)</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Confirmar os participantes (nomes só no registro interno, nunca no site)</strong></td><td>Cada integrante, para os próprios artefatos</td><td>Até 16/10</td></tr>
+                        <tr><td><strong>Confirmar data, horário e local de cada sessão (campus UnB Gama ou remoto)</strong></td><td>Cada integrante</td><td>Até 16/10</td></tr>
+                        <tr><td><strong>Fixar a data do teste-piloto</strong></td><td>Felipe</td><td>Até 16/10</td></tr>
+                        <tr><td><strong>Publicar no site o storyboard, a HTA e a CTT dos quatro integrantes (hoje só o documento descreve o Gerenciador de Faltas)</strong></td><td>Cada integrante</td><td>Antes das sessões</td></tr>
+                        <tr><td><strong>Definir o período de gravação da apresentação de cada etapa e o de revisão e ajustes pós-feedback no cronograma</strong></td><td>Felipe, que consolida o cronograma</td><td>Antes da entrega de 25/10</td></tr>
+                        <tr><td><strong>Confirmar que os vídeos estão como "não listados" no YouTube</strong></td><td>Matheus, que publica o site</td><td>Antes da próxima publicação</td></tr>
+                        <tr><td><strong>Validar as propostas desta entrega (critérios, roteiros, termo, papéis e revezamento)</strong></td><td>Todos</td><td>Antes das sessões de 16/10</td></tr>
+                        <tr><td><strong>Preencher o cronograma executado ao fim de cada etapa</strong></td><td>Cada integrante, nas próprias atividades</td><td>Ao fim de cada etapa</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: elaborado pelo grupo (2026).</p>
+            <h3 class="doc-subsection" id="referencias-plano-trabalho">Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>SALES, A. B. de. <em>Plano de Ensino: Interação Humano-Computador</em>. Brasília: Universidade de Brasília, Faculdade UnB Gama, 2026 (arquivo <code>Plano_de_Ensino FIHC 022026 Turma 01 v1.pdf</code>). Apresentação 4, itens 2 a 13, e itens gerais de planejamento e desenvolvimento (cronograma com responsáveis, tabela de contribuição, item com referência e foto por integrante).</li>
+                <li>BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro: Autopublicação, 2021. Cap. 11, p. 264 a 280, e cap. 7, p. 140.</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">12/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 4 (planejamento da avaliação do storyboard e da análise de tarefas) a partir do documento do grupo, dividida em artefatos, com nomes e matrículas de Felipe, Matheus e Victor (issue #59)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da lista de verificação do Storyboard (15 itens, com respostas, textos de origem, fontes e fotos dos trechos), em artefatos por atividade do DECIDE (issue #61)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Autoria da lista de verificação do Storyboard (Matheus e Felipe) e inclusão dos vídeos da lista de verificação e da apresentação da Entrega 4 (issue #62)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da parte individual de Felipe (Gerenciador de Faltas) com o cronograma até 03/11/2026, dividida em artefatos (issue #63)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza (conteúdo); Matheus do Vale Lameira (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da atribuição da parte individual (Gerenciador de Faltas, com cronograma): a entrega do documento é de Victor, Matheus e Felipe, com os três nomes e matrículas no cabeçalho (issue #64)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Retirado o rótulo de parte individual do documento do Gerenciador de Faltas (cabeçalho e parágrafo de abertura): o documento é do grupo, feito por Victor, Matheus e Felipe (issue #65)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Removido o documento do Gerenciador de Faltas (visão geral, seções 1 a 5 e referências) da Entrega 4 (issue #66)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.7</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Documento da Entrega 4 substituído pela versão com o cronograma até 03/11/2026 (seções 1 a 5), de Victor, Matheus e Felipe, sem o rótulo de parte individual; itens da lista que citam a Seção 5 ligados ao cronograma (issue #67)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.8</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Ampliação da Entrega 4 nos moldes do Plano de Ensino: métodos, modos e motivos; perguntas e critérios; questões práticas e éticas; teste-piloto; logística das sessões; estrutura do relato; cronograma planejado e executado; concordância com o livro; tabela de contribuição e agradecimentos (rascunho local, issue a abrir)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega4_relato-resultados.html"><span>← Anterior</span>Estrutura do relato dos resultados, registro de problemas e reprojeto</a>
+                    <a class="next" href="entrega4_cronograma-planejado.html"><span>Próximo →</span>Cronograma planejado e executado da Entrega 4</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
