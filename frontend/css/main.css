@@ -1024,8 +1024,8 @@ body.alto-contraste em {
 .doc-stagenav li.doc-stagenav-group {
     margin: 1.25rem 0 0.35rem;
     padding: 0 0.75rem;
-    color: #71717a;
-    font-size: 0.7rem;
+    color: #a855f7;
+    font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1171,6 +1171,8 @@ body.alto-contraste .doc-artifact-list a { color: #004085 !important; }
     text-transform: uppercase;
 }
 .lv-fields dd { margin: 0.25rem 0 0; color: #e4e4e7; line-height: 1.7; }
+/* Fonte logo abaixo de uma citação: sem a margem negativa pensada para tabelas */
+.lv-quote + .doc-source { margin: 0.4rem 0 1.5rem; text-align: left; }
 .lv-quote {
     margin: 0;
     padding-left: 1rem;
