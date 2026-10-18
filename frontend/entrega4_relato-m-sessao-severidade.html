@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento do relato dos resultados: ficha da sessão, método de análise e severidade | Entrega 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 4 · Planejamento da Avaliação do Storyboard e da Análise de Tarefas</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega4.html">Visão geral</a></li>
+                        <li><a href="entrega4_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega4_referencias.html">Referências</a></li>
+                        <li><a href="entrega4_agradecimentos.html">Agradecimentos e uso de IA Generativa</a></li>
+                        <li class="doc-stagenav-group">Documento do grupo (Gerenciador de Faltas)</li>
+                        <li><a href="entrega4_storyboard.html">1. Planejamento da Avaliação do Storyboard (framework DECIDE)</a></li>
+                        <li><a href="entrega4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="entrega4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas (HTA e CTT)</a></li>
+                        <li><a href="entrega4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="entrega4_cronograma.html">5. Cronograma até 03/11/2026</a></li>
+                        <li class="doc-stagenav-group">Planejamento ampliado (Plano de Ensino)</li>
+                        <li><a href="entrega4_metodos.html">Métodos, modos e motivos da avaliação</a></li>
+                        <li><a href="entrega4_perguntas.html">Perguntas de avaliação, dados e critérios</a></li>
+                        <li><a href="entrega4_questoes-eticas.html">Questões práticas e éticas das avaliações</a></li>
+                        <li><a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a></li>
+                        <li><a href="entrega4_logistica-sessoes.html">Cronograma e logística das sessões de avaliação</a></li>
+                        <li><a href="entrega4_relato-resultados.html">Estrutura do relato dos resultados, registro de problemas e reprojeto</a></li>
+                        <li><a href="entrega4_plano-trabalho.html">Plano de trabalho por integrante</a></li>
+                        <li><a href="entrega4_cronograma-planejado.html">Cronograma planejado e executado da Entrega 4</a></li>
+                        <li><a href="entrega4_concordancia.html">Concordância com o livro, fotos de referência e referências</a></li>
+                        <li class="doc-stagenav-group">Lista de verificação do Storyboard</li>
+                        <li><a href="entrega4_lv-visao.html">Lista de verificação do Storyboard</a></li>
+                        <li><a href="entrega4_lv-d-objetivos.html">Lista do Storyboard: D, Determinar os objetivos</a></li>
+                        <li><a href="entrega4_lv-e-perguntas.html">Lista do Storyboard: E, Explorar as perguntas</a></li>
+                        <li><a href="entrega4_lv-c-metodos.html">Lista do Storyboard: C, Escolher os métodos</a></li>
+                        <li><a href="entrega4_lv-i-praticas.html">Lista do Storyboard: I, Questões práticas</a></li>
+                        <li><a href="entrega4_lv-d-eticas.html">Lista do Storyboard: D, Questões éticas</a></li>
+                        <li><a href="entrega4_lv-e-relato.html">Lista do Storyboard: E, Relato dos resultados</a></li>
+                        <li><a href="entrega4_lv-sintese.html">Lista do Storyboard: Síntese e referências</a></li>
+                        <li class="doc-stagenav-group">Planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega4_planejamento-relato-matheus.html">Planejamento do relato: visão geral, objetivos e estrutura</a></li>
+                                <li><a href="entrega4_relato-m-sessao-severidade.html" class="active" aria-current="page">Planejamento do relato: ficha da sessão e severidade</a></li>
+                                <li><a href="entrega4_relato-m-resultados.html">Planejamento do relato: modelos de resultados</a></li>
+                                <li><a href="entrega4_relato-m-hipoteses-comunicacao.html">Planejamento do relato: hipóteses e comunicação do storyboard</a></li>
+                                <li><a href="entrega4_relato-m-problemas-reprojeto.html">Planejamento do relato: problemas, reprojeto e rastreabilidade</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega4.html">Entrega 4</a> › Planejamentos individuais</p>
+            <h1 id="planejamento-relato-matheus-1" class="doc-title doc-page-title">Planejamento do relato dos resultados: ficha da sessão, método de análise e severidade</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidades:</strong> Gerenciador de Faltas e Simulador de IRA e Street View · <strong>Artefatos:</strong> storyboard, HTA e CTT, versão 1 (13/10/2026) · <strong>Tabelas:</strong> 50 e 51</p>
+                <p><strong>Outros artefatos do planejamento:</strong> <a href="entrega4_planejamento-relato-matheus.html">Visão geral, objetivos e estrutura</a> · <a href="entrega4_relato-m-resultados.html">Modelos de resultados</a> · <a href="entrega4_relato-m-hipoteses-comunicacao.html">Hipóteses e comunicação do storyboard</a> · <a href="entrega4_relato-m-problemas-reprojeto.html">Problemas, reprojeto e rastreabilidade</a></p>
+            </div>
+            <h3 class="doc-subsection" id="introducao-relato-matheus">Introdução</h3>
+            <p class="doc-text">Este artefato do <a href="entrega4_planejamento-relato-matheus.html">planejamento do relato dos resultados</a> define a ficha de identificação de cada sessão e como os dados serão analisados e classificados por severidade, para o Gerenciador de Faltas e o Simulador de IRA e Street View. As Tabelas 50 e 51 são modelos: nenhuma sessão foi realizada até aqui, e as células de resultado ficam como “a registrar”.</p>
+
+            <h3 class="doc-subsection" id="rm-sessao">1. Registro da sessão</h3>
+            <p class="doc-text">Cada sessão (S1 a S5, H1 a H5 e I1 do Gerenciador de Faltas, conforme a <a href="entrega4_logistica-sessoes.html">logística</a>; MS1 a MS5, MH1 a MH3 e MI1 do Simulador de IRA e Street View) recebe uma ficha de identificação, preenchida por quem anotou. Como o autor do relato nem sempre conduz a sessão, a ficha garante que o relato seja escrito com os mesmos campos para todas. O relato usa apenas dados cuja coleta foi informada e autorizada no termo de consentimento, e nunca registra dado pessoal ou acadêmico do participante, como o IRA real.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 50 — Ficha de identificação de cada sessão (modelo)</caption>
+                    <thead><tr><th>Campo</th><th>Registro: Gerenciador de Faltas</th><th>Registro: Simulador de IRA e Street View</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Sessão e tipo</strong></td><td>S1 a S5 (storyboard), H1 a H5 (HTA e CTT; H4 e H5 se houver) ou I1 (inspeção). A registrar o código realizado.</td><td>MS1 a MS5 (storyboard), MH1 a MH3 (HTA e CTT) ou MI1 (inspeção). A registrar o código realizado.</td></tr>
+                        <tr><td><strong>Data, horário, modalidade e duração efetiva</strong></td><td>A registrar. Duração prevista: 15 a 20 minutos.</td><td>A registrar. Duração prevista: 15 a 20 minutos.</td></tr>
+                        <tr><td><strong>Facilitador</strong></td><td>Felipe Lopes Pedroza (1º avaliador na inspeção).</td><td>Matheus do Vale Lameira (1º avaliador na inspeção).</td></tr>
+                        <tr><td><strong>Anotador e 2º avaliador</strong></td><td>Victor Andreozzi de La Rocque Couto.</td><td>Felipe Lopes Pedroza.</td></tr>
+                        <tr><td><strong>Autor do relato</strong></td><td>Matheus do Vale Lameira, a partir das fichas e anotações.</td><td>Matheus do Vale Lameira.</td></tr>
+                        <tr><td><strong>Participante</strong></td><td>A registrar (código P01 em diante; HTA e CTT com participantes diferentes dos do storyboard).</td><td>A registrar (código P01 em diante; HTA e CTT com participantes diferentes dos do storyboard).</td></tr>
+                        <tr><td><strong>Perfil do participante</strong></td><td>A registrar: curso, período e experiência com o controle de faltas, sem identificação.</td><td>A registrar: curso, período e experiência com a estimativa do IRA, sem identificação.</td></tr>
+                        <tr><td><strong>Versão dos artefatos apresentados</strong></td><td>Versão 1 de 13/10 do storyboard, da HTA e da CTT.</td><td>Versão 1 de 13/10 do storyboard, da HTA e da CTT.</td></tr>
+                        <tr><td><strong>Forma de registro autorizada</strong></td><td>A registrar: anotações, áudio ou ambos, conforme o consentimento (a gravação é item separado do aceite).</td><td>A registrar: anotações, áudio ou ambos, conforme o consentimento.</td></tr>
+                        <tr><td><strong>Intercorrências e desvios do protocolo</strong></td><td>A registrar.</td><td>A registrar.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026); sessões e papéis do Gerenciador de Faltas da <a href="entrega4_logistica-sessoes.html">Tabela 27</a> e do Simulador de IRA e Street View do <a href="entrega4_plano-trabalho.html">plano de trabalho</a>. Campos: proposta do autor, a validar.</p>
+            <p class="doc-text"><strong>Materiais que sustentam o relato:</strong></p>
+            <ul class="doc-list">
+                <li>anotações do anotador, feitas durante a sessão sem interromper o participante, com o minuto da gravação e a fala literal mais relevante;</li>
+                <li>áudio da sessão, somente com autorização, com gravação de reserva;</li>
+                <li>ficha do avaliador na inspeção (A1 e A2, sem consulta entre os dois) e planilha de discrepâncias discutidas na reunião de 21/10;</li>
+                <li>comentários finais e sugestões espontâneas do participante.</li>
+            </ul>
+            <p class="doc-text">Termos de consentimento e gravações ficam fora do repositório público e são descartados quando deixam de ser necessários, como em <a href="entrega4_questoes-eticas.html">Questões práticas e éticas</a>.</p>
+
+            <h3 class="doc-subsection" id="rm-metodologia">2. Metodologia de análise e critérios de severidade</h3>
+            <p class="doc-text">A análise é qualitativa e tem duas etapas: primeiro cada sessão é interpretada por si (análise intraparticipante) e depois os resultados são consolidados (análise interparticipante). Os passos são:</p>
+            <ol class="doc-list">
+                <li>Revisar as anotações e, se houver autorização, o áudio, no mesmo dia da sessão.</li>
+                <li>Escrever, para cada pergunta, uma síntese fiel da resposta e a evidência: fala literal curta, com o código do participante e o minuto da gravação, sem alterar o sentido.</li>
+                <li>Marcar os trechos em que o participante hesita ou pede explicação, interpreta de outro jeito o que o artefato queria mostrar, descreve uma prática diferente da modelada ou sugere algo que não está nos artefatos.</li>
+                <li>Separar o que o participante disse, o que o avaliador observou e o que o avaliador interpretou, sem completar lacunas por suposição.</li>
+                <li>Consolidar as sessões de cada funcionalidade, buscando recorrências. “Recorrente” segue a definição do grupo (<a href="entrega4_perguntas.html">Perguntas, dados e critérios</a>): apontado por pelo menos 2 participantes ou pelos dois avaliadores, de forma independente. A contagem é dada como “n de N participantes”, nunca como porcentagem isolada.</li>
+                <li>Classificar cada problema por natureza (representação ou conteúdo) e por severidade, com a escala da Tabela 51. Os dois avaliadores atribuem a severidade cada um por si e depois chegam a um acordo; se um deles discorda de que o item seja problema, atribui o grau zero.</li>
+                <li>Responder a cada questão do estudo ou justificar por que ela ficou sem resposta (Tabela 61).</li>
+            </ol>
+            <p class="doc-text">O livro traz a escala de severidade, de problema cosmético a catastrófico, e permite o grau zero quando o avaliador discorda de que o item seja problema. A Tabela 51 usa essa escala e a liga às quatro prioridades que o grupo já definiu no <a href="entrega4_relato-resultados.html">relato coletivo</a>, para que os relatos sejam comparáveis.</p>
+            <figure class="lv-foto"><img src="img/entrega4/relato-04.jpg" alt="Página 284 do capítulo 12 de Barbosa et al. (2021), com destaque amarelo nos extremos da escala de severidade, problema cosmético e problema catastrófico" loading="lazy" width="1100"><figcaption>Figura 4: Barbosa et al. (2021), cap. 12, seção 12.1.1, p. 284</figcaption></figure>
+            <figure class="lv-foto"><img src="img/entrega4/relato-07.jpg" alt="Página 284 do capítulo 12 de Barbosa et al. (2021), com destaque amarelo na frase que permite o grau de severidade zero quando o avaliador discorda de que o item seja um problema" loading="lazy" width="1100"><figcaption>Figura 5: Barbosa et al. (2021), cap. 12, seção 12.1.1, p. 284</figcaption></figure>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 51 — Escala de severidade e prioridade correspondente</caption>
+                    <thead><tr><th>Nível</th><th>Classificação (livro)</th><th>Significado</th><th>Prioridade do grupo</th><th>Exemplo: Gerenciador de Faltas</th><th>Exemplo: Simulador de IRA e Street View</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>0</strong></td><td>Não é um problema</td><td>O avaliador discorda de que o item seja problema, ou o comentário não afeta a compreensão nem a tarefa.</td><td>Não entra na lista</td><td>Participante sugere outra cor para o desenho do painel.</td><td>Participante sugere outra cor para um desenho do quadro.</td></tr>
+                        <tr><td><strong>1</strong></td><td>Cosmético</td><td>Não precisa ser consertado a menos que haja tempo no cronograma.</td><td>Baixa</td><td>Participante estranha o rótulo “limite”, mas entende pelo contexto.</td><td>Participante estranha o rótulo “menção esperada”, mas entende pelo contexto.</td></tr>
+                        <tr><td><strong>2</strong></td><td>Pequeno</td><td>O conserto pode receber baixa prioridade.</td><td>Média</td><td>Participante só entende o número ao lado do limite depois da sondagem do avaliador.</td><td>Participante só entende que o número é uma projeção depois de reler o quadro.</td></tr>
+                        <tr><td><strong>3</strong></td><td>Grande</td><td>Importante de consertar; prejudica fatores de usabilidade tidos como importantes para o projeto.</td><td>Alta</td><td>Participante conclui que o esforço de registrar cada falta supera o benefício e desistiria de registrar (OBJ-S3).</td><td>Participante conclui que precisaria refazer a conta fora do sistema a cada troca de disciplina (passo 3.1 da HTA).</td></tr>
+                        <tr><td><strong>4</strong></td><td>Catastrófico</td><td>Extremamente importante de consertar; se mantido, provavelmente impede o usuário de realizar a tarefa.</td><td>Urgente</td><td>Participante entende o total do painel como dado oficial do SIGAA e confia além do que o sistema garante (OBJ-S5).</td><td>Participante entende o número do simulador como o IRA oficial do SIGAA (M-OBJ-S3).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: escala de Nielsen (1994a), citada por BARBOSA et al. (2021), cap. 12, seção 12.1.1, p. 284; prioridades do grupo no <a href="entrega4_relato-resultados.html">relato coletivo</a>. Exemplos: Matheus do Vale Lameira (2026), proposta do autor, a validar.</p>
+
+            <h3 class="doc-subsection" id="rm-ia-1">3. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada como apoio de estruturação e de revisão da estrutura do documento e na conferência das citações contra os PDFs de referência da disciplina. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Matheus do Vale Lameira, e a validação pelo autor e pelo grupo está pendente.</p>
+
+            <h3 class="doc-subsection" id="referencias-relato-1">4. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, S. D. J.; SILVA, B. S. da; SILVEIRA, M. S.; GASPARINI, I.; DARIN, T.; BARBOSA, G. D. J. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro: Autopublicação, 2021. Cap. 12, seção 12.1.1, p. 284 e 285.</li>
+                <li>NIELSEN, J. Escala de severidade de problemas de usabilidade (1994a), como citada em Barbosa et al. (2021), cap. 12, seção 12.1.1, p. 284.</li>
+                <li>UNIVERSIDADE DE BRASÍLIA. <em>Plano de Ensino: Fundamentos de Interação Humano-Computador</em>, turma 01, 2026.2. Apresentação 4, item 13 (o que o avaliador anota).</li>
+                <li>GRUPO 02. <em>Entrega 4</em>: <a href="entrega4_perguntas.html">Perguntas, dados e critérios</a>, <a href="entrega4_logistica-sessoes.html">logística das sessões</a>, <a href="entrega4_plano-trabalho.html">plano de trabalho</a> e <a href="entrega4_relato-resultados.html">estrutura do relato dos resultados</a>. Universidade de Brasília, 2026.</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">18/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Criação do artefato ficha da sessão e severidade, dividido a partir do planejamento do relato dos resultados (issue #86)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): apoio na estruturação e na revisão da estrutura do documento e na conferência das citações</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega4_planejamento-relato-matheus.html"><span>← Anterior</span>Planejamento do relato: Visão geral, objetivos e estrutura</a>
+                    <a class="next" href="entrega4_relato-m-resultados.html"><span>Próximo →</span>Planejamento do relato: Modelos de resultados</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
