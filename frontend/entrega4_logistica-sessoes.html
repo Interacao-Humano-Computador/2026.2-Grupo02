@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma e logística das sessões de avaliação | Entrega 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 4 · Planejamento da Avaliação do Storyboard e da Análise de Tarefas</p>
+                    <ul>
+                        <li><a href="entrega4.html">Visão geral</a></li>
+                        <li><a href="entrega4_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega4_storyboard.html">1. Planejamento da Avaliação do Storyboard (framework DECIDE)</a></li>
+                        <li><a href="entrega4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="entrega4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas (HTA e CTT)</a></li>
+                        <li><a href="entrega4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="entrega4_cronograma.html">5. Cronograma até 03/11/2026</a></li>
+                        <li><a href="entrega4_referencias.html">Referências</a></li>
+                        <li><a href="entrega4_metodos.html">Métodos, modos e motivos da avaliação</a></li>
+                        <li><a href="entrega4_perguntas.html">Perguntas de avaliação, dados e critérios</a></li>
+                        <li><a href="entrega4_questoes-eticas.html">Questões práticas e éticas das avaliações</a></li>
+                        <li><a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a></li>
+                        <li><a href="entrega4_logistica-sessoes.html" class="active" aria-current="page">Cronograma e logística das sessões de avaliação</a></li>
+                        <li><a href="entrega4_relato-resultados.html">Estrutura do relato dos resultados, registro de problemas e reprojeto</a></li>
+                        <li><a href="entrega4_plano-trabalho.html">Plano de trabalho por integrante</a></li>
+                        <li><a href="entrega4_cronograma-planejado.html">Cronograma planejado e executado da Entrega 4</a></li>
+                        <li><a href="entrega4_concordancia.html">Concordância com o livro, fotos de referência e referências</a></li>
+                        <li><a href="entrega4_lv-visao.html">Lista de verificação do Storyboard</a></li>
+                        <li><a href="entrega4_lv-d-objetivos.html">Lista do Storyboard: D, Determinar os objetivos</a></li>
+                        <li><a href="entrega4_lv-e-perguntas.html">Lista do Storyboard: E, Explorar as perguntas</a></li>
+                        <li><a href="entrega4_lv-c-metodos.html">Lista do Storyboard: C, Escolher os métodos</a></li>
+                        <li><a href="entrega4_lv-i-praticas.html">Lista do Storyboard: I, Questões práticas</a></li>
+                        <li><a href="entrega4_lv-d-eticas.html">Lista do Storyboard: D, Questões éticas</a></li>
+                        <li><a href="entrega4_lv-e-relato.html">Lista do Storyboard: E, Relato dos resultados</a></li>
+                        <li><a href="entrega4_lv-sintese.html">Lista do Storyboard: Síntese e referências</a></li>
+                        <li><a href="entrega4_planejamento-matheus.html">Planejamento individual da avaliação: Matheus (Simulador de IRA e Street View)</a></li>
+                        <li><a href="entrega4_agradecimentos.html">Agradecimentos e uso de IA Generativa</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega4.html">Entrega 4</a></p>
+            <h1 id="logistica-sessoes" class="doc-title doc-page-title">Cronograma e logística das sessões de avaliação</h1>
+
+<h3 class="doc-subsection" id="logistica-introducao">1. Introdução e premissas</h3>
+<p class="doc-text">Esta página organiza as sessões de coleta de dados do Grupo 02 sobre o Gerenciador de Faltas: quem conduz, quando, onde, com quem e com quais recursos. O item 8 da lista de verificação do Plano de Ensino exige um cronograma com data, horário e local para a avaliação do storyboard e da análise de tarefas. O documento da Entrega 4 do grupo fixa apenas janelas (recrutamento e piloto de 14 a 16/10; sessões de 16 a 21/10). Por isso, as datas e os horários das sessões individuais abaixo são <strong>proposta do grupo, a validar</strong>, sempre dentro dessas janelas, e nenhum participante foi recrutado ainda: todos aparecem como “a recrutar”. O protocolo do piloto está em <a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a>.</p>
+<p class="doc-text">Premissas, tiradas do documento do grupo:</p>
+<ul class="doc-list">
+<li>Storyboard: cerca de 5 alunos da UnB, com calouros e veteranos, de preferência alguns que já tiveram dificuldade com faltas.</li>
+<li>HTA e CTT: 3 a 5 alunos, de preferência diferentes dos do storyboard, para reduzir viés, e inspeção independente por dois avaliadores do grupo com lista de verificação.</li>
+<li>Sessões de 15 a 20 minutos, presenciais ou remotas, com um facilitador e um anotador, em entrevista semiestruturada, com TCLE, gravação de áudio só com autorização e termos guardados fora do repositório público.</li>
+<li>Sem custo. Teste-piloto de uma sessão antes da coleta.</li>
+<li>Cronograma geral: sessões de 16 a 21/10, análise de 22 a 23/10, relato de 23 a 24/10 e postagem em 25/10 (ver <a href="entrega4_cronograma-planejado.html">Cronograma planejado</a>).</li>
+</ul>
+<p class="doc-text">Regra de revezamento dos papéis (proposta do grupo, a validar): cada integrante é facilitador das sessões dos próprios artefatos e anotador e 2º avaliador do integrante seguinte, na ordem Felipe, Matheus, Tiago, Victor, voltando ao Felipe.</p>
+<ul class="doc-list">
+<li>Artefatos de Felipe Lopes Pedroza (Gerenciador de Faltas): facilitador Felipe; anotador e 2º avaliador Victor Andreozzi de La Rocque Couto.</li>
+<li>Artefatos de Matheus do Vale Lameira (Simulador de IRA e Street View): facilitador Matheus; anotador e 2º avaliador Felipe.</li>
+<li>Artefatos de Tiago Sousa Nepomuceno (Montador de Grade): facilitador Tiago; anotador e 2º avaliador Matheus.</li>
+<li>Artefatos de Victor (Avaliação das Disciplinas): facilitador Victor; anotador e 2º avaliador Tiago.</li>
+</ul>
+<p class="doc-text">As tabelas desta página tratam só do Gerenciador de Faltas. As sessões dos demais conjuntos seguem a mesma regra e são planejadas nos respectivos documentos.</p>
+
+<h3 class="doc-subsection" id="logistica-fundamentacao">2. Fundamentação da entrevista semiestruturada</h3>
+<p class="doc-text"><strong>Método.</strong> A avaliação do storyboard é uma investigação por entrevista semiestruturada guiada por um artefato visual. Para Barbosa et al. (2021), a entrevista é técnica comum e tem forma definida:</p>
+<blockquote class="lv-quote" lang="pt-BR">“A entrevista é uma das técnicas mais utilizadas de coleta de dados e levantamento de requisitos.”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 7, seção 7.5.1 (Entrevistas), p. 144.</p>
+<blockquote class="lv-quote" lang="pt-BR">“Trata-se de uma conversa guiada por um roteiro de perguntas ou tópicos, na qual um entrevistador busca obter informação de um entrevistado”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 7, seção 7.5.1, p. 144.</p>
+<p class="doc-text"><strong>Motivo de ser semiestruturada.</strong> O livro descreve três tipos: a estruturada, que se mantém fiel ao roteiro e se parece com um questionário; a não estruturada, em que o único compromisso do entrevistador é com o tópico; e a semiestruturada, que fica no meio (BARBOSA et al., 2021, cap. 7, p. 145). Para o grupo (justificativa proposta, a validar), a estruturada foi descartada porque deixa pouca liberdade para explorar o que o aluno disser sobre o esforço de registrar faltas (pergunta 3 do storyboard), e a não estruturada foi descartada porque não garante que as cinco perguntas sejam respondidas por todos. O livro justifica a escolha do meio-termo:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Em geral, buscamos um meio termo, e conduzimos entrevistas semiestruturadas.”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 7, seção 7.5.1, p. 145.</p>
+<blockquote class="lv-quote" lang="pt-BR">“O entrevistador tem liberdade para explorar em maior profundidade as respostas fornecidas pelo entrevistado e até mesmo modificar a ordem dos tópicos abordados, mas deve manter o foco nos objetivos da entrevista.”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 7, seção 7.5.1, p. 145.</p>
+<p class="doc-text"><strong>Motivo de usar o storyboard na entrevista.</strong> Entre os métodos de investigação, o capítulo 11 aceita materiais de apoio:</p>
+<blockquote class="lv-quote" lang="pt-BR">“o uso de um sistema ou de materiais de apoio, como imagens, cenários e outros tipos de artefatos, pode contribuir para a investigação, ajudando os usuários a se lembrarem de suas experiências e expectativas e também a manterem o foco nas questões de interesse.”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 11, seção 11.6 (Qual tipo de método de avaliação escolher?), p. 272.</p>
+<p class="doc-text"><strong>Limite do método.</strong> O mesmo parágrafo avisa que “a qualidade dos dados coletados através de métodos de investigação, como entrevistas, depende fortemente da habilidade do participante em articular suas ideias e em se lembrar de acontecimentos relevantes.” (BARBOSA et al., 2021, cap. 11, p. 272). Por isso a Tabela 31 traz o risco de respostas pouco informativas e a sondagem por perguntas adicionais.</p>
+<p class="doc-text"><strong>Modo.</strong> A estrutura da sessão segue a que o livro descreve:</p>
+<blockquote class="lv-quote" lang="pt-BR">“uma apresentação, na qual o entrevistador se apresenta e explica o objetivo da entrevista; um período de aquecimento, no qual são feitas perguntas de fácil resposta, como dados demográficos; a parte principal da entrevista, na qual o roteiro é explorado; um período de desaquecimento, para desfazer alguma tensão que tenha surgido”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 7, seção 7.5.1, p. 145.</p>
+<blockquote class="lv-quote" lang="pt-BR">“conclusão, na qual o entrevistador agradece ao entrevistado pelo seu tempo, desliga o gravador e guarda suas anotações, indicando que a entrevista terminou”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 7, seção 7.5.1, p. 146.</p>
+<p class="doc-text"><strong>Gravação e modalidade remota.</strong> O documento do grupo prevê sessões presenciais ou remotas e gravação de áudio. O livro dá a base:</p>
+<blockquote class="lv-quote" lang="pt-BR">“As entrevistas costumam ser gravadas em áudio.”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 7, seção 7.5.1, p. 147.</p>
+<blockquote class="lv-quote" lang="pt-BR">“é possível conduzir entrevistas por telefone ou on-line, em geral através de um sistema de comunicação síncrona (como chat ou videoconferência)”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 7, seção 7.5.1, p. 147.</p>
+<p class="doc-text"><strong>Treinamento.</strong> “Os entrevistadores devem ser treinados para realizar a entrevista.” (BARBOSA et al., 2021, cap. 7, seção 7.5.1, p. 148). O piloto cumpre esse papel para o facilitador e o anotador.</p>
+<p class="doc-text"><strong>Tempo da sessão.</strong> O livro pede atenção ao tempo: “O tempo estimado para um participante realizar cada tarefa não deveria ultrapassar 20 minutos.” (BARBOSA et al., 2021, cap. 11, seção 11.7.2, p. 275). A sessão de 15 a 20 minutos do grupo respeita esse limite.</p>
+<p class="doc-text"><strong>Mesmo material para todos.</strong> “Para assegurar a validade do estudo, é importante que todos os participantes recebam o mesmo material, as mesmas informações e orientações.” (BARBOSA et al., 2021, cap. 11, p. 275). Por isso o roteiro e o storyboard são iguais em todas as sessões.</p>
+<p class="doc-text"><strong>Sobre Preece, Rogers e Sharp.</strong> A edição brasileira de <em>Design de Interação</em> (Bookman) está no material do grupo apenas em parte. O sumário desse PDF lista, no capítulo 13, a seção 13.2.4 (Entrevistas semiestruturadas), na p. 416. As páginas do texto dessa seção não constam do PDF, então o grupo não cita trecho dela. A fundamentação acima vem de Barbosa et al. (2021), que se apoia em Sharp et al. (2019) nesse tema.</p>
+
+<h3 class="doc-subsection" id="logistica-sessoes">3. Quadro das sessões por janela</h3>
+<p class="doc-text">A Tabela 27 lista as sessões planejadas para o Gerenciador de Faltas. As janelas vêm do documento do grupo: piloto de 14 a 16/10 e sessões de 16 a 21/10. Dentro delas, a data e o horário de cada sessão são proposta do grupo, a validar com os participantes, e serão ajustados no agendamento. Datas em 17 e 18/10 caem em fim de semana e só são usadas para atividades sem participante e sem sala. Os códigos P01 a P10 serão atribuídos aos participantes na ordem de realização, para o anonimato; o piloto usa o código PILOTO. O tamanho de cada sessão é de 15 a 20 minutos; o horário reserva 40 minutos para arrumação e troca. As sessões H4 e H5 só ocorrem se houver 4 ou 5 participantes de HTA e CTT.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 27 — Quadro das sessões do Gerenciador de Faltas por janela (datas e horários: proposta do grupo, a validar)</caption>
+<thead><tr><th>ID</th><th>Tipo</th><th>Janela do documento</th><th>Data proposta</th><th>Horário proposto</th><th>Local ou plataforma</th><th>Facilitador</th><th>Anotador e 2º avaliador</th><th>Participante</th></tr></thead>
+<tbody>
+<tr><td>Piloto</td><td>Teste-piloto (roteiro do storyboard)</td><td>14 a 16/10</td><td>15/10 (qui); reserva 16/10 (sex)</td><td>14h00; reserva 10h00</td><td>Campus UnB Gama, sala a reservar, ou remoto</td><td>Felipe</td><td>Victor</td><td>A recrutar (código PILOTO)</td></tr>
+<tr><td>S1</td><td>Storyboard</td><td>16 a 21/10</td><td>16/10 (sex)</td><td>15h00</td><td>Campus UnB Gama, sala a reservar</td><td>Felipe</td><td>Victor</td><td>A recrutar (P01)</td></tr>
+<tr><td>S2</td><td>Storyboard</td><td>16 a 21/10</td><td>16/10 (sex)</td><td>15h40</td><td>Campus UnB Gama, sala a reservar</td><td>Felipe</td><td>Victor</td><td>A recrutar (P02)</td></tr>
+<tr><td>S3</td><td>Storyboard</td><td>16 a 21/10</td><td>19/10 (seg)</td><td>10h00</td><td>Remoto, videoconferência (ferramenta a definir)</td><td>Felipe</td><td>Victor</td><td>A recrutar (P03)</td></tr>
+<tr><td>S4</td><td>Storyboard</td><td>16 a 21/10</td><td>19/10 (seg)</td><td>14h00</td><td>Campus UnB Gama, sala a reservar</td><td>Felipe</td><td>Victor</td><td>A recrutar (P04)</td></tr>
+<tr><td>S5</td><td>Storyboard</td><td>16 a 21/10</td><td>20/10 (ter)</td><td>10h00</td><td>Remoto, videoconferência (ferramenta a definir)</td><td>Felipe</td><td>Victor</td><td>A recrutar (P05)</td></tr>
+<tr><td>H1</td><td>HTA e CTT (comentário dos modelos e entrevista pós-sessão)</td><td>16 a 21/10</td><td>20/10 (ter)</td><td>14h00</td><td>Campus UnB Gama, sala a reservar</td><td>Felipe</td><td>Victor</td><td>A recrutar (P06), diferente de P01 a P05</td></tr>
+<tr><td>H2</td><td>HTA e CTT</td><td>16 a 21/10</td><td>20/10 (ter)</td><td>14h40</td><td>Remoto, videoconferência (ferramenta a definir)</td><td>Felipe</td><td>Victor</td><td>A recrutar (P07)</td></tr>
+<tr><td>H3</td><td>HTA e CTT</td><td>16 a 21/10</td><td>21/10 (qua)</td><td>10h00</td><td>Campus UnB Gama, sala a reservar</td><td>Felipe</td><td>Victor</td><td>A recrutar (P08)</td></tr>
+<tr><td>H4 (se houver)</td><td>HTA e CTT</td><td>16 a 21/10</td><td>21/10 (qua)</td><td>14h00</td><td>Remoto, videoconferência (ferramenta a definir)</td><td>Felipe</td><td>Victor</td><td>A recrutar (P09)</td></tr>
+<tr><td>H5 (se houver)</td><td>HTA e CTT</td><td>16 a 21/10</td><td>21/10 (qua)</td><td>14h40</td><td>Remoto, videoconferência (ferramenta a definir)</td><td>Felipe</td><td>Victor</td><td>A recrutar (P10)</td></tr>
+<tr><td>I1</td><td>Inspeção independente da HTA e da CTT, sem participante</td><td>16 a 21/10</td><td>17 a 20/10, horário livre de cada avaliador; reunião de discrepâncias em 21/10 (qua)</td><td>Reunião às 17h00</td><td>Remoto, cada avaliador no próprio computador</td><td>Felipe (1º avaliador)</td><td>Victor (2º avaliador)</td><td>Não se aplica</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: Documento da Entrega 4 do Grupo 02, seção 5.2 (janelas e papéis), com a regra de revezamento proposta pelo grupo. Datas, horários, locais e códigos são proposta, a validar.</p>
+<p class="doc-text">Motivo de ter dois avaliadores: “É recomendável que pelo menos dois avaliadores trabalhem na coleta de dados” (BARBOSA et al., 2021, cap. 11, seção 11.7.3, p. 277), recomendação que o grupo adota também nas entrevistas. Na inspeção, a independência vem de cada avaliador aplicar a lista de verificação sozinho, antes da reunião de discrepâncias.</p>
+
+<h3 class="doc-subsection" id="logistica-recrutamento">4. Recrutamento</h3>
+<p class="doc-text">A Tabela 28 traz os canais propostos e os prazos, todos dentro da janela de 14 a 16/10. O livro diz o que o convite deve conter e o que fazer depois do aceite:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Ao convidar os participantes selecionados, o avaliador deve esclarecer brevemente quais são os objetivos da avaliação, como e onde ela será realizada, e quanto tempo será requerido do participante.”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 276.</p>
+<blockquote class="lv-quote" lang="pt-BR">“Confirmada a disponibilidade e o interesse do participante, o avaliador deve agendar com ele a data, o horário e o local para a realização da avaliação.”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 11, seção 11.7.2, p. 276.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 28 — Recrutamento: canais, prazos e responsáveis (proposta do grupo, a validar)</caption>
+<thead><tr><th>Etapa</th><th>Canal proposto</th><th>Quem se alcança</th><th>Prazo</th><th>Responsável</th><th>Motivo e base</th></tr></thead>
+<tbody>
+<tr><td>1. Convite aberto</td><td>Grupos de mensagens de turmas da UnB Gama</td><td>Calouros e alunos em disciplinas iniciais</td><td>14 a 15/10</td><td>Felipe Lopes Pedroza</td><td>Perfil variado (calouro e veterano), como no documento do grupo.</td></tr>
+<tr><td>2. Convite por indicação</td><td>Indicação de colegas de outros cursos e semestres</td><td>Veteranos, de preferência alguns que já tiveram dificuldade com faltas</td><td>14 a 15/10</td><td>Felipe Lopes Pedroza</td><td>Documento do grupo: perfis variados, de preferência com dificuldade prévia com faltas.</td></tr>
+<tr><td>3. Cuidado na escolha</td><td>Priorizar pessoas fora do círculo próximo dos avaliadores</td><td>Alunos sem relação próxima com o facilitador</td><td>14 a 16/10</td><td>Felipe Lopes Pedroza</td><td>O livro diz que o avaliador deve evitar “seus conhecidos, amigos, alunos, subordinados ou pessoas com as quais possua alguma relação próxima, para evitar que a relação entre ele e o participante influencie ou contamine os dados coletados.” (BARBOSA et al., 2021, cap. 11, p. 276).</td></tr>
+<tr><td>4. Triagem breve</td><td>Duas ou três perguntas por mensagem: curso, semestre, calouro ou veterano e, opcional, se já teve dificuldade com faltas</td><td>Interessados que responderam ao convite</td><td>14 a 16/10</td><td>Felipe Lopes Pedroza</td><td>O livro admite “questionários ou entrevistas curtas” para conferir o perfil (BARBOSA et al., 2021, cap. 11, p. 276).</td></tr>
+<tr><td>5. Separação das listas</td><td>Duas listas: participantes do storyboard e participantes da HTA e da CTT, sem repetir pessoas</td><td>Cerca de 5 e de 3 a 5 alunos</td><td>Até 16/10</td><td>Felipe Lopes Pedroza</td><td>Documento do grupo: HTA e CTT, de preferência com alunos diferentes, para reduzir viés.</td></tr>
+<tr><td>6. Informar sobre a gravação</td><td>Mensagem do convite diz que haverá gravação de áudio, que ela é opcional e que pode ser recusada</td><td>Todos os convidados</td><td>No primeiro contato</td><td>Felipe Lopes Pedroza</td><td>“Devemos informar aos participantes logo no recrutamento sobre os tipos de gravações que serão realizadas, para evitar mal-entendidos ou desistências no momento da atividade.” (BARBOSA et al., 2021, cap. 7, seção 7.4, p. 141).</td></tr>
+<tr><td>7. Confirmação e agendamento</td><td>Mensagem com data, horário e local ou link, e lembrete no dia anterior</td><td>Aceitos</td><td>Até 16/10; lembrete no dia anterior a cada sessão</td><td>Felipe Lopes Pedroza</td><td>Data, horário e local acordados com cada participante (BARBOSA et al., 2021, cap. 11, p. 276).</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: Documento da Entrega 4 do Grupo 02 e BARBOSA et al. (2021), cap. 11 e cap. 7. O responsável segue o documento (cada integrante recruta para os próprios artefatos); canais, prazos e textos são proposta do grupo.</p>
+<p class="doc-text">Quantidade. O documento prevê cerca de 5 alunos no storyboard e 3 a 5 na HTA e na CTT. Para o livro, “Dumas e Redish (1999) relatam que uma avaliação de IHC em geral envolve de cinco a 12 usuários.” (BARBOSA et al., 2021, cap. 11, seção 11.7.2, p. 274), e o mesmo parágrafo informa que Nielsen afirma que bastam cinco usuários para encontrar a maioria dos problemas, com boa relação custo-benefício. O limite inferior de 3 na HTA e na CTT é decisão do grupo, para quando o recrutamento render menos, e é proposta a validar. Os resultados indicam tendências, e não certezas.</p>
+
+<h3 class="doc-subsection" id="logistica-recursos">5. Recursos</h3>
+<p class="doc-text">A etapa de questões práticas do DECIDE pede que se cuide dos recursos. Barbosa et al. (2021) dizem:</p>
+<blockquote class="lv-quote" lang="pt-BR">“Existem muitas questões práticas envolvidas numa avaliação de IHC, como, por exemplo, o recrutamento dos usuários que participarão da avaliação, a preparação e o uso dos equipamentos necessários, os prazos e o orçamento disponíveis, além da mão-de-obra necessária para conduzir a avaliação.”</blockquote>
+<p class="doc-source">BARBOSA et al. (2021), cap. 11, seção 11.8 (O Framework DECIDE), p. 280.</p>
+<ul class="doc-list">
+<li><strong>Plataforma.</strong> Presencial no campus UnB Gama, em sala reservada, ou remoto por videoconferência com a ferramenta a definir. A escolha é do participante, dentro dos horários da Tabela 27.</li>
+<li><strong>Gravação principal e de reserva.</strong> Áudio, só com autorização. Um segundo aparelho grava em paralelo, para o caso de falha do primeiro. Na sessão remota, a gravação nativa da ferramenta pode servir de reserva, se o participante autorizar.</li>
+<li><strong>Materiais.</strong> Storyboard impresso e em arquivo; HTA e CTT impressas e em arquivo; roteiro da entrevista; TCLE em duas vias; formulário do anotador; lista de verificação; planilha de registro de discrepâncias; cronômetro.</li>
+<li><strong>Armazenamento seguro.</strong> Gravações, termos assinados e anotações ficam em pasta privada, fora do repositório público do projeto, com nomes de arquivo que usam apenas o código do participante. O livro exige: “O pesquisador deve garantir aos participantes a confidencialidade e a privacidade dos dados brutos coletados.” (BARBOSA et al., 2021, cap. 7, seção 7.4, p. 141). O descarte segue o TCLE do grupo: ao final da disciplina.</li>
+<li><strong>Mão de obra.</strong> Dois integrantes por sessão (facilitador e anotador), pela regra de revezamento.</li>
+<li><strong>Orçamento.</strong> Sem custo, conforme o documento do grupo. O TCLE do grupo não prevê pagamento a participantes.</li>
+</ul>
+
+<h3 class="doc-subsection" id="logistica-linha-tempo">6. Linha do tempo de uma sessão</h3>
+<p class="doc-text">A Tabela 29 distribui os 15 a 20 minutos em blocos, para a sessão de storyboard e para a de HTA e CTT. A sessão de HTA e CTT segue o documento: o participante comenta os modelos e conta como controla suas faltas hoje, com entrevista pós-sessão. O documento não dá duração separada para essa sessão; o grupo propõe os mesmos 15 a 20 minutos, a validar no piloto e na análise de risco R4 (Tabela 31). O roteiro do piloto em minutos está em <a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a>.</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 29 — Linha do tempo de uma sessão, em minutos (proposta do grupo, a validar)</caption>
+<thead><tr><th>Etapa</th><th>Sessão de storyboard</th><th>Sessão de HTA e CTT</th><th>Quem conduz</th><th>Base</th></tr></thead>
+<tbody>
+<tr><td>1. Acolhida e quebra-gelo</td><td>1</td><td>1</td><td>Facilitador</td><td>Apresentação (BARBOSA et al., 2021, cap. 7, p. 145)</td></tr>
+<tr><td>2. Explicação do estudo, TCLE e autorização da gravação</td><td>2 a 3</td><td>2 a 3</td><td>Facilitador; anotador confere as assinaturas</td><td>Consentimento antes da coleta (cap. 7, seção 7.4, p. 141)</td></tr>
+<tr><td>3. Aquecimento</td><td>1 (curso e semestre; calouro ou veterano)</td><td>2 (perfil e como controla as faltas hoje)</td><td>Facilitador</td><td>Aquecimento com perguntas de fácil resposta (cap. 7, p. 145)</td></tr>
+<tr><td>4. Contato com o artefato</td><td>2 (leitura silenciosa dos seis quadros)</td><td>6 a 8 (apresentação dos modelos e comentário livre)</td><td>Participante; anotador registra dúvidas e tempo</td><td>Material de apoio (cap. 11, p. 272)</td></tr>
+<tr><td>5. Entrevista</td><td>7 a 9 (cinco perguntas e sondagens)</td><td>3 a 4 (entrevista pós-sessão)</td><td>Facilitador; anotador registra falas literais</td><td>Parte principal e sondagem (cap. 7, p. 145 e 147)</td></tr>
+<tr><td>6. Desaquecimento e encerramento</td><td>2</td><td>1 a 2</td><td>Facilitador; anotador desliga o gravador</td><td>Conclusão (cap. 7, p. 146)</td></tr>
+<tr><td>7. Margem para imprevistos</td><td>0 a 2</td><td>0</td><td>Os dois</td><td>Proposta do grupo</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>15 a 20</strong></td><td><strong>15 a 20</strong></td><td></td><td>Documento do grupo: 15 a 20 minutos</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: Elaboração do grupo a partir do documento da Entrega 4 e de BARBOSA et al. (2021), cap. 7 e cap. 11. Tempos são proposta do grupo.</p>
+
+<h3 class="doc-subsection" id="logistica-calendario">7. Calendário</h3>
+<p class="doc-text">A Tabela 30 coloca as atividades desta página no calendário de 14 a 25/10. A coluna “Origem” diz se a linha vem do documento do grupo ou é proposta a validar. Os dias de semana conferem com o documento (13/10 é terça-feira e 25/10 é domingo).</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 30 — Calendário das sessões e atividades ligadas (14 a 25/10/2026)</caption>
+<thead><tr><th>Data</th><th>Atividade</th><th>Horário</th><th>Origem</th></tr></thead>
+<tbody>
+<tr><td>14/10 (qua)</td><td>Início do recrutamento; preparação do roteiro, da lista de verificação e dos termos; parecer sobre o Grupo −1 (entrega do dia)</td><td>Ao longo do dia</td><td>Documento (14 a 16/10 e entrega de 14/10)</td></tr>
+<tr><td>15/10 (qui)</td><td>Teste-piloto de uma sessão; correção dos materiais; continuação do recrutamento</td><td>Piloto às 14h00</td><td>Janela do documento; data e horário são proposta</td></tr>
+<tr><td>16/10 (sex)</td><td>Reserva do piloto, se a ficha de calibração reprovar; fim do prazo de recrutamento e agendamento; S1 e S2</td><td>10h00 (reserva); 15h00 e 15h40</td><td>Janelas do documento; datas e horários são proposta</td></tr>
+<tr><td>17 e 18/10 (sáb e dom)</td><td>Inspeção independente da HTA e da CTT, por cada avaliador, sozinho. Sem sessões com participantes</td><td>Livre</td><td>Janela do documento (16 a 21/10); datas são proposta</td></tr>
+<tr><td>19/10 (seg)</td><td>S3 (remota) e S4 (presencial)</td><td>10h00 e 14h00</td><td>Proposta</td></tr>
+<tr><td>20/10 (ter)</td><td>S5 (remota); H1 (presencial) e H2 (remota)</td><td>10h00; 14h00 e 14h40</td><td>Proposta</td></tr>
+<tr><td>21/10 (qua)</td><td>H3; H4 e H5, se houver; reunião de discrepâncias da inspeção; fim das sessões</td><td>10h00; 14h00 e 14h40; 17h00</td><td>Fim da janela do documento; horários são proposta</td></tr>
+<tr><td>22 a 23/10</td><td>Análise dos dados, por participante e consolidada</td><td>A definir</td><td>Documento</td></tr>
+<tr><td>23 a 24/10</td><td>Escrita do relato</td><td>A definir</td><td>Documento</td></tr>
+<tr><td>25/10 (dom)</td><td>Postagem do relato e do planejamento do protótipo de papel</td><td>Até 23h59</td><td>Documento (todos os prazos vencem às 23h59)</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: Documento da Entrega 4 do Grupo 02, seção 5. Linhas marcadas como proposta são decisão nova de planejamento, a validar.</p>
+
+<h3 class="doc-subsection" id="logistica-riscos">8. Matriz de riscos</h3>
+<p class="doc-text">A Tabela 31 cobre os riscos mais prováveis nas sessões. Probabilidade e impacto são estimativas do grupo (proposta, a validar).</p>
+<div class="table-wrapper"><table class="table-standard"><caption>Tabela 31 — Matriz de riscos das sessões e contingência</caption>
+<thead><tr><th>ID</th><th>Risco</th><th>Probabilidade</th><th>Impacto</th><th>Prevenção</th><th>Contingência</th></tr></thead>
+<tbody>
+<tr><td>R1</td><td>O participante falta</td><td>Média</td><td>Alto</td><td>Lembrete no dia anterior; convidar mais pessoas do que o mínimo</td><td>Remarcar para um horário livre dentro de 16 a 21/10. Se não houver, chamar o reserva da triagem. O storyboard exige cerca de 5 e a HTA e a CTT, de 3 a 5.</td></tr>
+<tr><td>R2</td><td>A conexão cai na sessão remota</td><td>Média</td><td>Médio</td><td>Testar o link antes; pedir que o participante use rede estável</td><td>Reconectar e retomar do ponto em que parou. Se a queda passar de 3 minutos, continuar por áudio com o artefato já enviado ou remarcar.</td></tr>
+<tr><td>R3</td><td>A gravação falha</td><td>Média</td><td>Alto</td><td>Teste de 30 segundos antes; segundo aparelho gravando</td><td>Usar a gravação de reserva. Se as duas falharem, o anotador reconstrói as falas das anotações em até uma hora e marca a sessão como “sem áudio”.</td></tr>
+<tr><td>R4</td><td>A sessão passa do tempo (20 minutos)</td><td>Alta</td><td>Médio</td><td>Cronômetro visível; sondagens só quando a resposta for curta; piloto cronometrado</td><td>Pular sondagens das perguntas já respondidas, sem cortar a pergunta 5. Na HTA e na CTT, reduzir o comentário livre. Anotar o que não foi coberto e tratar como limitação no relato.</td></tr>
+<tr><td>R5</td><td>Poucos participantes recrutados (menos de 3 na HTA e na CTT ou de 5 no storyboard)</td><td>Média</td><td>Alto</td><td>Convites a partir de 14/10; dois canais ao mesmo tempo</td><td>Ampliar o convite até 19/10. Se continuar, relatar o número menor como limitação e tratar os resultados como indícios, como o livro admite (p. 275).</td></tr>
+<tr><td>R6</td><td>O anotador ou o facilitador não pode comparecer</td><td>Baixa</td><td>Alto</td><td>Confirmar a escala com a regra de revezamento na véspera</td><td>Outro integrante assume o papel, desde que tenha lido o roteiro. A sessão não ocorre sem os dois papéis.</td></tr>
+<tr><td>R7</td><td>A sala não está disponível</td><td>Baixa</td><td>Médio</td><td>Reservar com antecedência</td><td>Trocar para sessão remota, com aviso ao participante.</td></tr>
+<tr><td>R8</td><td>Respostas muito curtas ou pouco informativas</td><td>Média</td><td>Médio</td><td>Perguntas abertas e sondagem pelo roteiro</td><td>Fazer perguntas adicionais, como orienta o livro (cap. 7, seção 7.5.1, p. 147), e registrar a limitação.</td></tr>
+<tr><td>R9</td><td>Arquivos com voz ou termos saem do local seguro</td><td>Baixa</td><td>Alto</td><td>Pasta privada, nomes só com código</td><td>Mover os arquivos, avisar o participante afetado e registrar o incidente.</td></tr>
+</tbody></table></div>
+<p class="doc-source">Fonte: Elaboração do grupo a partir de BARBOSA et al. (2021), cap. 7 e cap. 11, e do documento da Entrega 4 do Grupo 02.</p>
+
+<h3 class="doc-subsection" id="logistica-checklist">9. Checklist da etapa</h3>
+<p class="doc-text">O Plano de Ensino pede, na lista de verificação do planejamento da avaliação, itens que esta página e o piloto atendem. Conferência do grupo:</p>
+<ul class="doc-list">
+<li><strong>Item 5, questões práticas</strong> (recrutamento, onde e perfil, quantidade e razão, presencial ou remoto, equipamentos, prazos, orçamento, mão de obra): atendido nas seções 1, 4 e 5 e na Tabela 28. A razão da quantidade está na seção 4, com base em BARBOSA et al. (2021), cap. 11, p. 274.</li>
+<li><strong>Item 8, cronograma com data, horário e local</strong> para a avaliação do storyboard e da análise de tarefas: atendido nas Tabelas 27 e 30, com datas, horários e locais como proposta do grupo, a validar.</li>
+<li><strong>Fundamentação com referência</strong>: atendido na seção 2, com obra, capítulo, seção e página.</li>
+<li><strong>Item 11, definição do teste-piloto e data</strong>: atendido em <a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a>, com data proposta de 15/10/2026 e reserva em 16/10/2026, referência bibliográfica e foto do trecho.</li>
+<li><strong>Item 12, resultado do piloto fora do resultado da avaliação</strong>: atendido na seção 9 da página do piloto.</li>
+<li><strong>Pendências do grupo</strong>: confirmar a regra de revezamento, reservar a sala, escolher a ferramenta de videoconferência, recrutar os participantes e ajustar o TCLE à duração de 15 a 20 minutos.</li>
+</ul>
+
+<h3 class="doc-subsection" id="referencias-logistica-sessoes">Referências</h3>
+<ul class="doc-list" style="list-style: none; padding-left: 0;">
+<li>BARBOSA, S. D. J.; SILVA, B. S. da; SILVEIRA, M. S.; GASPARINI, I.; DARIN, T.; BARBOSA, G. D. J. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro, 2021. Cap. 7, Identificação de Necessidades dos Usuários e Definição dos Requisitos de IHC, seção 7.4, p. 141; seção 7.5.1 (Entrevistas), p. 144 a 148. Cap. 11, Planejamento da Avaliação de IHC, seção 11.6, p. 272; seção 11.7.2, p. 274 a 276; seção 11.7.3, p. 277; seção 11.8, p. 280.</li>
+<li>PREECE, J.; ROGERS, Y.; SHARP, H. <em>Design de Interação: além da interação homem-computador</em>. Porto Alegre: Bookman. Sumário (cap. 13, seção 13.2.4, Entrevistas semiestruturadas, p. 416). O texto da seção não consta do PDF do grupo e não foi citado.</li>
+<li>SALES, A. B. de. <em>Plano de Ensino: Interação Humano-Computador</em> (02/2026, Turma 01). Brasília: Universidade de Brasília, Faculdade UnB Gama, 2026. Lista de verificação do planejamento da avaliação, itens 5, 8, 11 e 12, p. 13 do PDF.</li>
+</ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">12/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da Entrega 4 (planejamento da avaliação do storyboard e da análise de tarefas) a partir do documento do grupo, dividida em artefatos, com nomes e matrículas de Felipe, Matheus e Victor (issue #59)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão da lista de verificação do Storyboard (15 itens, com respostas, textos de origem, fontes e fotos dos trechos), em artefatos por atividade do DECIDE (issue #61)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Autoria da lista de verificação do Storyboard (Matheus e Felipe) e inclusão dos vídeos da lista de verificação e da apresentação da Entrega 4 (issue #62)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da parte individual de Felipe (Gerenciador de Faltas) com o cronograma até 03/11/2026, dividida em artefatos (issue #63)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza (conteúdo); Matheus do Vale Lameira (publicação)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da atribuição da parte individual (Gerenciador de Faltas, com cronograma): a entrega do documento é de Victor, Matheus e Felipe, com os três nomes e matrículas no cabeçalho (issue #64)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.5</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Retirado o rótulo de parte individual do documento do Gerenciador de Faltas (cabeçalho e parágrafo de abertura): o documento é do grupo, feito por Victor, Matheus e Felipe (issue #65)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.6</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Removido o documento do Gerenciador de Faltas (visão geral, seções 1 a 5 e referências) da Entrega 4 (issue #66)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.7</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Documento da Entrega 4 substituído pela versão com o cronograma até 03/11/2026 (seções 1 a 5), de Victor, Matheus e Felipe, sem o rótulo de parte individual; itens da lista que citam a Seção 5 ligados ao cronograma (issue #67)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.8</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Ampliação da Entrega 4 nos moldes do Plano de Ensino: métodos, modos e motivos; perguntas e critérios; questões práticas e éticas; teste-piloto; logística das sessões; estrutura do relato; cronograma planejado e executado; concordância com o livro; tabela de contribuição e agradecimentos (rascunho local, issue a abrir)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto, Matheus do Vale Lameira e Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega4_teste-piloto.html"><span>← Anterior</span>Planejamento e protocolo do teste-piloto</a>
+                    <a class="next" href="entrega4_relato-resultados.html"><span>Próximo →</span>Estrutura do relato dos resultados, registro de problemas e reprojeto</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
