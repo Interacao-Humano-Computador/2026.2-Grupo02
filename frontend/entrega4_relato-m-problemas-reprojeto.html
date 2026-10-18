@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento do relato dos resultados: problemas, reprojeto, rastreabilidade e limitações | Entrega 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 4 · Planejamento da Avaliação do Storyboard e da Análise de Tarefas</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega4.html">Visão geral</a></li>
+                        <li><a href="entrega4_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega4_referencias.html">Referências</a></li>
+                        <li><a href="entrega4_agradecimentos.html">Agradecimentos e uso de IA Generativa</a></li>
+                        <li class="doc-stagenav-group">Documento do grupo: Gerenciador de Faltas</li>
+                        <li><a href="entrega4_storyboard.html">1. Planejamento da Avaliação do Storyboard com o framework DECIDE</a></li>
+                        <li><a href="entrega4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="entrega4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas com HTA e CTT</a></li>
+                        <li><a href="entrega4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="entrega4_cronograma.html">5. Cronograma até 03/11/2026</a></li>
+                        <li class="doc-stagenav-group">Planejamento ampliado do Plano de Ensino</li>
+                        <li><a href="entrega4_metodos.html">Métodos, modos e motivos da avaliação</a></li>
+                        <li><a href="entrega4_perguntas.html">Perguntas de avaliação, dados e critérios</a></li>
+                        <li><a href="entrega4_questoes-eticas.html">Questões práticas e éticas das avaliações</a></li>
+                        <li><a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a></li>
+                        <li><a href="entrega4_logistica-sessoes.html">Cronograma e logística das sessões de avaliação</a></li>
+                        <li><a href="entrega4_relato-resultados.html">Estrutura do relato dos resultados, registro de problemas e reprojeto</a></li>
+                        <li><a href="entrega4_plano-trabalho.html">Plano de trabalho por integrante</a></li>
+                        <li><a href="entrega4_cronograma-planejado.html">Cronograma planejado e executado da Entrega 4</a></li>
+                        <li><a href="entrega4_concordancia.html">Concordância com o livro, fotos de referência e referências</a></li>
+                        <li class="doc-stagenav-group">Lista de verificação do Storyboard</li>
+                        <li><a href="entrega4_lv-visao.html">Lista de verificação do Storyboard</a></li>
+                        <li><a href="entrega4_lv-d-objetivos.html">Lista do Storyboard: D, Determinar os objetivos</a></li>
+                        <li><a href="entrega4_lv-e-perguntas.html">Lista do Storyboard: E, Explorar as perguntas</a></li>
+                        <li><a href="entrega4_lv-c-metodos.html">Lista do Storyboard: C, Escolher os métodos</a></li>
+                        <li><a href="entrega4_lv-i-praticas.html">Lista do Storyboard: I, Questões práticas</a></li>
+                        <li><a href="entrega4_lv-d-eticas.html">Lista do Storyboard: D, Questões éticas</a></li>
+                        <li><a href="entrega4_lv-e-relato.html">Lista do Storyboard: E, Relato dos resultados</a></li>
+                        <li><a href="entrega4_lv-sintese.html">Lista do Storyboard: Síntese e referências</a></li>
+                        <li class="doc-stagenav-group">Planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega4_planejamento-relato-matheus.html">Planejamento do relato: visão geral, objetivos e estrutura</a></li>
+                                <li><a href="entrega4_relato-m-sessao-severidade.html">Planejamento do relato: ficha da sessão e severidade</a></li>
+                                <li><a href="entrega4_relato-m-resultados.html">Planejamento do relato: modelos de resultados</a></li>
+                                <li><a href="entrega4_relato-m-hipoteses-comunicacao.html">Planejamento do relato: hipóteses e comunicação do storyboard</a></li>
+                                <li><a href="entrega4_relato-m-problemas-reprojeto.html" class="active" aria-current="page">Planejamento do relato: problemas, reprojeto e rastreabilidade</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega4.html">Entrega 4</a> › Planejamentos individuais</p>
+            <h1 id="planejamento-relato-matheus-4" class="doc-title doc-page-title">Planejamento do relato dos resultados: problemas, reprojeto, rastreabilidade e limitações</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidades:</strong> Gerenciador de Faltas e Simulador de IRA e Street View · <strong>Artefatos:</strong> storyboard, HTA e CTT, versão 1 (13/10/2026) · <strong>Tabelas:</strong> 58 a 62</p>
+                <p><strong>Outros artefatos do planejamento:</strong> <a href="entrega4_planejamento-relato-matheus.html">Visão geral, objetivos e estrutura</a> · <a href="entrega4_relato-m-sessao-severidade.html">Ficha da sessão e severidade</a> · <a href="entrega4_relato-m-resultados.html">Modelos de resultados</a> · <a href="entrega4_relato-m-hipoteses-comunicacao.html">Hipóteses e comunicação do storyboard</a></p>
+            </div>
+            <h3 class="doc-subsection" id="introducao-relato-matheus">Introdução</h3>
+            <p class="doc-text">Este artefato do <a href="entrega4_planejamento-relato-matheus.html">planejamento do relato dos resultados</a> traz o registro de problemas, o planejamento do reprojeto, a matriz de rastreabilidade e as limitações do estudo, para o Gerenciador de Faltas e o Simulador de IRA e Street View. As Tabelas 58 a 62 são modelos: nenhuma sessão foi realizada até aqui, e as células de resultado ficam como “a registrar”.</p>
+
+            <h3 class="doc-subsection" id="rm-problemas">1. Registro e priorização de problemas</h3>
+            <p class="doc-text">Cada problema é registrado uma única vez, mesmo quando aparece em mais de uma pergunta, reunindo as ocorrências de sessões, hipóteses e falhas. Os campos seguem o que o livro pede para relatar problemas: local, fatores prejudicados, descrição e justificativa, prioridade e sugestões de correção.</p>
+            <figure class="lv-foto"><img src="img/entrega4/relato-05.jpg" alt="Página 319 do capítulo 12 de Barbosa et al. (2021), com destaque amarelo na lista dos campos que descrevem os problemas ainda não corrigidos: local, fatores de usabilidade prejudicados, descrição e justificativa, prioridade e sugestões de correção" loading="lazy" width="1100"><figcaption>Figura 14: Barbosa et al. (2021), cap. 12, seção 12.2.3, p. 319</figcaption></figure>
+            <p class="doc-text">No storyboard o “local” é o quadro; na HTA e na CTT é o nó, o plano ou o operador. Os problemas do Gerenciador de Faltas recebem os prefixos PS (storyboard) e PT (HTA e CTT), como no <a href="entrega4_relato-resultados.html">relato coletivo</a> (Tabela 35); os do Simulador de IRA e Street View, M-PS e M-PT.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 58: Registro e priorização de problemas, modelo</caption>
+                    <thead><tr><th>ID</th><th>Artefato e local</th><th>Natureza (representação ou conteúdo)</th><th>Origem (pergunta, hipótese ou falha)</th><th>Descrição e evidência</th><th>Severidade (0 a 4) e prioridade</th><th>Impacto na compreensão ou na tarefa</th><th>Recomendação</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>PS-01</strong></td><td>Gerenciador de Faltas: storyboard; a registrar o quadro</td><td>A registrar</td><td>A registrar (QS, HP ou COM)</td><td>A registrar</td><td>A registrar</td><td>A registrar</td><td>A registrar</td></tr>
+                        <tr><td><strong>PT-01</strong></td><td>Gerenciador de Faltas: HTA ou CTT; a registrar o nó, plano ou operador</td><td>A registrar</td><td>A registrar (QT ou HP)</td><td>A registrar</td><td>A registrar</td><td>A registrar</td><td>A registrar</td></tr>
+                        <tr><td><strong>M-PS01</strong></td><td>Simulador de IRA e Street View: storyboard; a registrar o quadro</td><td>A registrar</td><td>A registrar (M-QS, M-HP ou COM)</td><td>A registrar</td><td>A registrar</td><td>A registrar</td><td>A registrar</td></tr>
+                        <tr><td><strong>M-PT01</strong></td><td>Simulador de IRA e Street View: HTA ou CTT; a registrar o nó, plano ou operador</td><td>A registrar</td><td>A registrar (M-QT ou M-HP)</td><td>A registrar</td><td>A registrar</td><td>A registrar</td><td>A registrar</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026), com campos inspirados em BARBOSA et al. (2021), cap. 12, seção 12.2.3, p. 319. Acrescentam-se linhas conforme os problemas encontrados. Todas as células de resultado são campos de registro.</p>
+
+            <h3 class="doc-subsection" id="rm-reprojeto">2. Planejamento do reprojeto e lista de ajustes</h3>
+            <p class="doc-text">Cada problema da Tabela 58 vira um ajuste da Tabela 59. O ciclo segue o cronograma do grupo: a versão 1 de storyboard, HTA e CTT (13/10) é avaliada, e a versão 2 (23/10) incorpora o reprojeto. Como proposta, o autor do artefato executa o ajuste (Felipe, no Gerenciador de Faltas; Matheus, no Simulador de IRA e Street View) e o outro revisa a consolidação. O que a versão 2 não resolver permanece na lista, com a mesma prioridade, e passa para o planejamento do protótipo de papel.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 59: Lista de ajustes a incorporar, modelo</caption>
+                    <thead><tr><th>ID</th><th>Funcionalidade</th><th>Problema de origem</th><th>Ajuste proposto</th><th>Artefato afetado</th><th>Prioridade</th><th>Responsável</th><th>Situação</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>AJ-01</strong></td><td>Gerenciador de Faltas</td><td>PS ou PT (a confirmar)</td><td>A registrar</td><td>Storyboard, HTA ou CTT da versão 2</td><td>A registrar</td><td>Felipe (proposta)</td><td>A fazer, em andamento, feito na versão 2, adiado para o protótipo de papel ou descartado (com justificativa)</td></tr>
+                        <tr><td><strong>AJ-02</strong></td><td>Simulador de IRA e Street View</td><td>M-PS ou M-PT (a confirmar)</td><td>A registrar</td><td>Storyboard, HTA ou CTT da versão 2</td><td>A registrar</td><td>Matheus (proposta)</td><td>A registrar</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026). Campos e valores de situação: proposta do autor, a validar.</p>
+            <p class="doc-text"><strong>Alterações já previstas, a reavaliar depois das sessões.</strong> Elas são candidatas a ajuste e só entram na Tabela 59 se a hipótese correspondente for confirmada:</p>
+            <ul class="doc-list">
+                <li>Gerenciador de Faltas, HP2: simplificar o registro de faltas (exemplo já citado no <a href="entrega4_relato-resultados.html">relato coletivo</a>).</li>
+                <li>Gerenciador de Faltas, HP4: reforçar, nos quadros 4 a 6, que o total vem dos registros do aluno.</li>
+                <li>Gerenciador de Faltas, HP6: avaliar um quadro para corrigir um registro e outro para conferir o total com o SIGAA.</li>
+                <li>Simulador de IRA e Street View, M-HP1: exibir o IRA atual e os créditos integralizados no painel do estudante.</li>
+                <li>Simulador de IRA e Street View, M-HP2: oferecer cenários prontos (otimista, provável e pessimista) ao estimar as menções.</li>
+                <li>Simulador de IRA e Street View, M-HP3: permitir marcar a disciplina como “trancar” e ver o efeito separadamente.</li>
+                <li>Simulador de IRA e Street View, M-HP4 e M-HP5: calcular no sistema, com a fórmula documentada em linguagem simples, e deixar a Darcy apenas explicar o resultado.</li>
+                <li>Simulador de IRA e Street View, M-HP6: recalcular o IRA projetado automaticamente a cada alteração da grade.</li>
+            </ul>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 60: Tratamento dos problemas por severidade e prazo</caption>
+                    <thead><tr><th>Severidade</th><th>Prioridade</th><th>Tratamento</th><th>Prazo</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>4</strong></td><td>Urgente</td><td>Corrigir na versão 2, antes de qualquer outra alteração.</td><td>Até 23/10</td></tr>
+                        <tr><td><strong>3</strong></td><td>Alta</td><td>Corrigir na versão 2.</td><td>Até 23/10</td></tr>
+                        <tr><td><strong>2</strong></td><td>Média</td><td>Corrigir na versão 2 se houver tempo, ou levar como requisito para o protótipo de papel.</td><td>Até 23/10, ou protótipo de papel (versão 2 em 24/10)</td></tr>
+                        <tr><td><strong>1</strong></td><td>Baixa</td><td>Registrar e corrigir se houver tempo.</td><td>Sem prazo fixo</td></tr>
+                        <tr><td><strong>0</strong></td><td>Não entra na lista</td><td>Registrar a decisão e, se houver, a sugestão, sem ação obrigatória.</td><td>Não se aplica</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026), com as prioridades do <a href="entrega4_relato-resultados.html">relato coletivo</a> e as datas do <a href="entrega4_plano-trabalho.html">plano de trabalho</a>. Tratamento: proposta do autor, a validar.</p>
+
+            <h3 class="doc-subsection" id="rm-rastreabilidade">3. Interpretação e rastreabilidade</h3>
+            <p class="doc-text">A Tabela 61 liga cada objetivo da avaliação às perguntas que o investigam e recebe, depois das sessões, a evidência, a conclusão, o artefato afetado e a ação. Assim cada conclusão aponta para a evidência que a sustenta, e cada questão do estudo é respondida ou tem a ausência de resposta justificada.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 61: Matriz de rastreabilidade dos resultados, modelo</caption>
+                    <thead><tr><th>Objetivo da avaliação</th><th>Perguntas relacionadas</th><th>Evidência</th><th>Conclusão</th><th>Artefato</th><th>Ação decorrente</th></tr></thead>
+                    <tbody>
+                        <tr><th colspan="6">Gerenciador de Faltas</th></tr>
+                        <tr><td><strong>OBJ-S1</strong></td><td>QS01, QS11</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-S2</strong></td><td>QS02, QS10</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-S3</strong></td><td>QS03, QS06, QS07</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-S4</strong></td><td>QS04, QS09</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-S5</strong></td><td>QS05, QS08</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-T1</strong></td><td>QT01, QT06, QT07, QT09, QT10</td><td>A registrar</td><td>A registrar</td><td>HTA e CTT</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-T2</strong></td><td>QT02</td><td>A registrar</td><td>A registrar</td><td>HTA</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-T3</strong></td><td>QT03, QT08</td><td>A registrar</td><td>A registrar</td><td>HTA e CTT</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-T4</strong></td><td>QT04</td><td>A registrar</td><td>A registrar</td><td>HTA, CTT e storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>OBJ-T5</strong></td><td>QT05</td><td>A registrar</td><td>A registrar</td><td>HTA e CTT</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><th colspan="6">Simulador de IRA e Street View</th></tr>
+                        <tr><td><strong>M-OBJ-S1</strong></td><td>M-QS01, M-QS02, M-QS07</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>M-OBJ-S2</strong></td><td>M-QS01, M-QS03, M-QS06, M-QS07</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>M-OBJ-S3</strong></td><td>M-QS03, M-QS04, M-QS07</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>M-OBJ-S4</strong></td><td>M-QS05, M-QS07</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>M-OBJ-S5</strong></td><td>M-QS06, M-QS07</td><td>A registrar</td><td>A registrar</td><td>Storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>M-OBJ-T1</strong></td><td>M-QT01, M-QT04, M-QT07</td><td>A registrar</td><td>A registrar</td><td>HTA e CTT</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>M-OBJ-T2</strong></td><td>M-QT03, M-QT04, M-QT06</td><td>A registrar</td><td>A registrar</td><td>HTA e CTT</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>M-OBJ-T3</strong></td><td>M-QT01, M-QT02</td><td>A registrar</td><td>A registrar</td><td>HTA e CTT</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                        <tr><td><strong>M-OBJ-T4</strong></td><td>M-QT05</td><td>A registrar</td><td>A registrar</td><td>HTA, CTT e storyboard</td><td>Manter, revisar ou verificar (a registrar)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026); objetivos e perguntas do Gerenciador de Faltas da <a href="entrega4_perguntas.html">Tabela 13</a> e do Simulador de IRA e Street View das Tabelas 48, 52 e 53. Evidência, conclusão e ação são campos de registro.</p>
+            <p class="doc-text">A Tabela 62 mostra de onde vem cada elemento deste relato, para que o leitor encontre a página do grupo e o trecho do livro correspondentes.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 62: Rastreabilidade entre este relato, as páginas do grupo e o livro</caption>
+                    <thead><tr><th>Elemento deste relato</th><th>Origem</th><th>Tabela do relato coletivo</th><th>Fonte no livro</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Objetivos do relato (Tabela 47)</strong></td><td>Objetivos OBJ-S e OBJ-T (Perguntas, Tabela 13) e M-OBJ (Tabela 48)</td><td>Tabela 32</td><td>Cap. 11, seção 11.7.5, p. 279</td></tr>
+                        <tr><td><strong>Ficha da sessão (Tabela 50)</strong></td><td>Sessões S, H e I (Logística, Tabela 27) e sessões MS, MH e MI</td><td>Tabela 34</td><td>Cap. 11, seção 11.7.5, p. 279</td></tr>
+                        <tr><td><strong>Respostas do storyboard (Tabela 52)</strong></td><td>Perguntas QS (Perguntas, Tabela 14) e M-QS</td><td>Tabela 33</td><td>Cap. 11, seção 11.7.5, p. 279</td></tr>
+                        <tr><td><strong>Respostas da HTA e da CTT (Tabela 53)</strong></td><td>Perguntas QT (Perguntas, Tabela 14) e M-QT</td><td>Tabela 33</td><td>Cap. 11, seção 11.7.5, p. 279</td></tr>
+                        <tr><td><strong>Hipóteses (Tabela 55)</strong></td><td>Perguntas, Tabelas 13 e 15 (Gerenciador); TAR-04, Tabela 14 da Entrega 2 (Simulador)</td><td>Tabela 34</td><td>Cap. 11, seção 11.7.5, p. 279</td></tr>
+                        <tr><td><strong>Severidade (Tabela 51)</strong></td><td>Não se aplica</td><td>Subseção 4.3 do relato coletivo</td><td>Cap. 12, seção 12.1.1, p. 284</td></tr>
+                        <tr><td><strong>Problemas (Tabela 58)</strong></td><td>Não se aplica</td><td>Tabela 35</td><td>Cap. 12, seção 12.2.3, p. 319</td></tr>
+                        <tr><td><strong>Ajustes e reprojeto (Tabela 59 e Tabela 60)</strong></td><td>Não se aplica</td><td>Tabela 36</td><td>Cap. 11, seção 11.7.5, p. 279</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+
+            <h3 class="doc-subsection" id="rm-limitacoes">4. Limitações e o que o relato não poderá afirmar</h3>
+            <p class="doc-text">Antes de concluir, o avaliador considera a confiabilidade dos dados e as validades interna, externa e ecológica do estudo. O relato declara as limitações abaixo.</p>
+            <figure class="lv-foto"><img src="img/entrega4/relato-06.jpg" alt="Página 280 do capítulo 11 de Barbosa et al. (2021), com destaque amarelo na atividade E do framework DECIDE, que cita a confiabilidade e as validades interna, externa e ecológica" loading="lazy" width="1100"><figcaption>Figura 15: Barbosa et al. (2021), cap. 11, seção 11.8, p. 280</figcaption></figure>
+            <ul class="doc-list">
+                <li>Poucos participantes (cerca de 5 no storyboard e 3 a 5 na HTA e na CTT, em cada funcionalidade): os resultados são indícios qualitativos, e não estatística.</li>
+                <li>Os artefatos não são interativos. Por isso o relato não traz métricas de desempenho (tempo, erros, cliques); o tempo por bloco serve apenas para ajustar a sessão.</li>
+                <li>O participante vê um cenário fictício. No Gerenciador de Faltas ele não registra faltas reais ao longo do semestre, o que limita as respostas sobre a viabilidade do registro (QS03, QS06 e QS07); no Simulador ele não informa o IRA real.</li>
+                <li>Sessões remotas reduzem a validade ecológica; o ambiente é registrado em cada ficha.</li>
+                <li>No Gerenciador de Faltas o autor do relato não conduz as sessões e depende das anotações de Felipe e Victor; por isso a ficha e os campos de evidência são padronizados.</li>
+                <li>Em cada funcionalidade o autor do artefato conduz as sessões, o que pode inibir críticas; o avaliador atenua explicando que o objetivo é encontrar problemas nos artefatos, e não avaliar o participante.</li>
+                <li>Os quadros do storyboard e o diagrama da CTT do Simulador ainda não estão publicados no site; enquanto isso, as perguntas indicam “a ligar aos quadros” ou “a registrar”.</li>
+                <li>Informações sobre o lançamento oficial de faltas e o cálculo oficial do IRA ditas por participantes são hipóteses até serem conferidas na fonte oficial.</li>
+            </ul>
+            <p class="doc-text">O relato não poderá afirmar que os storyboards, as HTA ou as CTT foram validados para todos os estudantes. A formulação adequada é que as sessões forneceram indícios favoráveis, ou evidências de aspectos a revisar, no escopo avaliado.</p>
+
+            <h3 class="doc-subsection" id="rm-ia-4">5. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada como apoio de estruturação e de revisão da estrutura do documento e na conferência das citações contra os PDFs de referência da disciplina. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Matheus do Vale Lameira, e a validação pelo autor e pelo grupo está pendente.</p>
+
+            <h3 class="doc-subsection" id="referencias-relato-4">6. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, S. D. J.; SILVA, B. S. da; SILVEIRA, M. S.; GASPARINI, I.; DARIN, T.; BARBOSA, G. D. J. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro: Autopublicação, 2021. Cap. 11, seção 11.8, p. 280; cap. 12, seção 12.2.3, p. 318 e 319.</li>
+                <li>GRUPO 02. <em>Entrega 4</em>: <a href="entrega4_relato-resultados.html">estrutura do relato dos resultados</a> (Tabelas 35 e 36), <a href="entrega4_plano-trabalho.html">plano de trabalho</a> e <a href="entrega4_perguntas.html">Perguntas, dados e critérios</a>. Universidade de Brasília, 2026.</li>
+                <li>GRUPO 02. <em>Entrega 2</em>: análise de tarefas, TAR-04 (<a href="entrega2_tarefas.html#tar-04">simulação do IRA</a>), Tabela 14. Universidade de Brasília, 2026.</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">18/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Criação do artefato problemas, reprojeto e rastreabilidade, dividido a partir do planejamento do relato dos resultados (issue #86)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): apoio na estruturação e na revisão da estrutura do documento e na conferência das citações</td>
+                        </tr>
+                                            <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">18/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Travessões removidos, parênteses retirados dos títulos e figuras renumeradas de 9 a 15 (issues #87, #88 e #89)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): apoio na estruturação e na revisão da estrutura do documento e na conferência das citações</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega4_relato-m-hipoteses-comunicacao.html"><span>← Anterior</span>Planejamento do relato: Hipóteses e comunicação do storyboard</a>
+                    <a class="next" href="entrega4_agradecimentos.html"><span>Próximo →</span>Agradecimentos e uso de IA Generativa</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
