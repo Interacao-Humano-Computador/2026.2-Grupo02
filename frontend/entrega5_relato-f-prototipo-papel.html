@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento da avaliação do protótipo de papel e do relato | Entrega 5 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 5 · Relato do Storyboard e da Análise de Tarefas e Planejamento do Protótipo de Papel</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega5.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-felipe.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-f-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-f-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-f-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-f-prototipo-papel.html" class="active" aria-current="page">Planejamento da avaliação do protótipo de papel e do relato</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega5.html">Entrega 5</a> › Relatos e planejamentos individuais</p>
+            <h1 id="f-prototipo" class="doc-title doc-page-title">Planejamento da avaliação do protótipo de papel e do relato</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Felipe Lopes Pedroza, matrícula 231026330 · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidade:</strong> Gerenciador de Faltas · <strong>Conteúdo desta página:</strong> seções 6 e 7 do documento</p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega5_relato-planejamento-felipe.html">Visão geral, funcionalidade e storyboard</a> · <a href="entrega5_relato-f-storyboard.html">Relato dos resultados da avaliação do storyboard</a> · <a href="entrega5_relato-f-analise-tarefas.html">Análise de tarefas: HTA e CTT</a> · <a href="entrega5_relato-f-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></p>
+            </div>
+            <h3 class="doc-subsection" id="f-pp-decide">1. Planejamento da avaliação do protótipo de papel com o framework DECIDE</h3>
+            <p class="doc-text">O Protótipo de Papel é uma representação de baixa fidelidade das telas do Gerenciador de Faltas (lista de disciplinas, registro de falta, painel de situação e edição de registro), desenhada à mão e manipulada pelo avaliador, que faz o papel do computador.</p>
+
+            <h4 class="doc-h4" id="f-pp-d1">D: Determinar os objetivos da avaliação</h4>
+            <ul class="doc-list">
+                <li>Verificar se o estudante consegue registrar, consultar e corrigir faltas usando apenas o protótipo.</li>
+                <li>Avaliar a clareza de rótulos, da organização das telas e do alerta de risco de reprovação por falta.</li>
+                <li>Identificar problemas de usabilidade antes da implementação.</li>
+            </ul>
+
+            <h4 class="doc-h4" id="f-pp-e1">E: Explorar as perguntas a serem respondidas</h4>
+            <ol class="doc-list">
+                <li>O usuário encontra e entende o ponto de acesso ao Gerenciador de Faltas?</li>
+                <li>Ele consegue registrar uma falta sem ajuda, e com quantos erros?</li>
+                <li>O painel de faltas acumuladas e limite é compreendido, e o alerta é percebido?</li>
+                <li>O usuário consegue corrigir ou excluir um registro equivocado?</li>
+                <li>Que partes das telas geram dúvida, hesitação ou insatisfação?</li>
+            </ol>
+
+            <h4 class="doc-h4" id="f-pp-c">C: Escolher os métodos de avaliação</h4>
+            <p class="doc-text">Teste de usabilidade com protótipo de papel, com observação e protocolo de pensar em voz alta, seguido de breve questionário pós-teste (Barbosa e Silva, 2010; Preece, Rogers e Sharp, 2005). Cada participante executa cenários de tarefa: registrar uma falta, consultar a situação de uma disciplina e corrigir um registro.</p>
+
+            <h4 class="doc-h4" id="f-pp-i">I: Identificar e tratar as questões práticas e éticas</h4>
+            <ul class="doc-list">
+                <li><strong>Participantes:</strong> 5 estudantes de graduação da UnB, de diferentes semestres e cursos.</li>
+                <li><strong>Recursos e materiais:</strong> telas em papel, post-its para estados e mensagens, roteiro de cenários, TCLE, gravador de áudio e folha de observação.</li>
+                <li><strong>Prazos e local:</strong> sessões presenciais de cerca de 20 minutos no campus UnB Gama, em ambiente reservado.</li>
+                <li><strong>Aspectos éticos:</strong> TCLE assinado previamente, anonimato, participação voluntária e uso exclusivamente acadêmico.</li>
+            </ul>
+
+            <h4 class="doc-h4" id="f-pp-d2">D: Decidir como avaliar e tratar os dados</h4>
+            <ul class="doc-list">
+                <li><strong>Quantitativos:</strong> taxa de sucesso por tarefa, tempo de execução, número de erros e escala Likert (1 a 5) de facilidade e utilidade.</li>
+                <li><strong>Qualitativos:</strong> falas e observações transcritas e submetidas à análise de conteúdo para extrair padrões e problemas.</li>
+                <li>Problemas classificados por severidade: Cosmético, Leve, Grande ou Catastrófico (Barbosa e Silva, 2010).</li>
+            </ul>
+
+            <h4 class="doc-h4" id="f-pp-e2">E: Avaliar, interpretar e apresentar os dados</h4>
+            <p class="doc-text">Os dados serão consolidados em tabelas e em uma lista de problemas priorizados, e as recomendações alimentarão a revisão do protótipo de papel e a construção do protótipo de média ou alta fidelidade.</p>
+
+            <h3 class="doc-subsection" id="f-pp-relato">2. Planejamento do relato dos resultados da avaliação do protótipo de papel</h3>
+            <p class="doc-text">O relato final seguirá a estrutura recomendada por Barbosa e Silva (2010):</p>
+            <ol class="doc-list">
+                <li><strong>Objetivo e escopo da avaliação:</strong> metas e justificativa da validação do Protótipo de Papel do Gerenciador de Faltas.</li>
+                <li><strong>Metodologia utilizada:</strong> condução dos testes, cenários de tarefa, protocolo de pensar em voz alta e questionário pós-teste.</li>
+                <li><strong>Perfil dos participantes:</strong> características gerais dos estudantes, sem expor nomes ou dados sensíveis.</li>
+                <li><strong>Sumário dos resultados e achados:</strong> taxas de sucesso, tempos, erros, satisfação, aspectos positivos e problemas por severidade.</li>
+                <li><strong>Aspectos éticos e termos de consentimento:</strong> aplicação e arquivamento dos TCLEs e garantia de anonimato.</li>
+                <li><strong>Sugestões de redesenho e recomendações:</strong> ações corretivas priorizadas para o protótipo seguinte.</li>
+            </ol>
+
+            <h3 class="doc-subsection" id="f-pp-ia">3. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada para converter o documento PDF do autor em páginas do site, no padrão das páginas da Entrega 4. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Felipe Lopes Pedroza, e a validação pelo grupo está pendente.</p>
+
+            <h3 class="doc-subsection" id="f-pp-referencias">4. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier / Campus, 2010.</li>
+                <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: Além da Interação Homem-Computador</em>. Porto Alegre: Bookman, 2005.</li>
+                <li>PEDROZA, Felipe Lopes. <em>Relatos e Planejamentos de Avaliação de IHC: Módulo de Faltas (No Fluxo UnB)</em>. Universidade de Brasília, 2026 (arquivo <a href="docs/PlajRelatoStoryBoarProtPapeldNoFluxo.pdf" target="_blank" rel="noopener"><code>PlajRelatoStoryBoarProtPapeldNoFluxo.pdf</code></a>).</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">19/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação do planejamento da avaliação do protótipo de papel do Gerenciador de Faltas (framework DECIDE) e do planejamento do relato dos resultados, a partir do PDF do autor</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): conversão do PDF do autor para páginas do site no padrão da Entrega 4; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega5_relato-f-tarefas.html"><span>← Anterior</span>Relato dos resultados da avaliação da análise de tarefas</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
