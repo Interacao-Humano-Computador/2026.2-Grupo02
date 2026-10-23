@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento da Avaliação do Storyboard | Felipe Lopes Pedroza | Entrega 4 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-standard a { color: #d8b4fe; }
+
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 4 · Planejamento da Avaliação do Storyboard e da Análise de Tarefas</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega4.html">Visão geral</a></li>
+                        <li><a href="entrega4_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega4_referencias.html">Referências</a></li>
+                        <li><a href="entrega4_agradecimentos.html">Agradecimentos e uso de IA Generativa</a></li>
+                        <li class="doc-stagenav-group">Documento do grupo: Gerenciador de Faltas</li>
+                        <li><a href="entrega4_storyboard.html">1. Planejamento da Avaliação do Storyboard com o framework DECIDE</a></li>
+                        <li><a href="entrega4_relato-storyboard.html">2. Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                        <li><a href="entrega4_analise-tarefas.html">3. Planejamento da Avaliação da Análise de Tarefas com HTA e CTT</a></li>
+                        <li><a href="entrega4_relato-tarefas.html">4. Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                        <li><a href="entrega4_cronograma.html">5. Cronograma até 03/11/2026</a></li>
+                        <li class="doc-stagenav-group">Planejamento ampliado do Plano de Ensino</li>
+                        <li><a href="entrega4_metodos.html">Métodos, modos e motivos da avaliação</a></li>
+                        <li><a href="entrega4_perguntas.html">Perguntas de avaliação, dados e critérios</a></li>
+                        <li><a href="entrega4_questoes-eticas.html">Questões práticas e éticas das avaliações</a></li>
+                        <li><a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a></li>
+                        <li><a href="entrega4_logistica-sessoes.html">Cronograma e logística das sessões de avaliação</a></li>
+                        <li><a href="entrega4_relato-resultados.html">Estrutura do relato dos resultados, registro de problemas e reprojeto</a></li>
+                        <li><a href="entrega4_plano-trabalho.html">Plano de trabalho por integrante</a></li>
+                        <li><a href="entrega4_cronograma-planejado.html">Cronograma planejado e executado da Entrega 4</a></li>
+                        <li><a href="entrega4_concordancia.html">Concordância com o livro, fotos de referência e referências</a></li>
+                        <li class="doc-stagenav-group">Lista de verificação do Storyboard</li>
+                        <li><a href="entrega4_lv-visao.html">Lista de verificação do Storyboard</a></li>
+                        <li><a href="entrega4_lv-d-objetivos.html">Lista do Storyboard: D, Determinar os objetivos</a></li>
+                        <li><a href="entrega4_lv-e-perguntas.html">Lista do Storyboard: E, Explorar as perguntas</a></li>
+                        <li><a href="entrega4_lv-c-metodos.html">Lista do Storyboard: C, Escolher os métodos</a></li>
+                        <li><a href="entrega4_lv-i-praticas.html">Lista do Storyboard: I, Questões práticas</a></li>
+                        <li><a href="entrega4_lv-d-eticas.html">Lista do Storyboard: D, Questões éticas</a></li>
+                        <li><a href="entrega4_lv-e-relato.html">Lista do Storyboard: E, Relato dos resultados</a></li>
+                        <li><a href="entrega4_lv-sintese.html">Lista do Storyboard: Síntese e referências</a></li>
+                        <li class="doc-stagenav-group">Planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega4_planejamento-avaliacao-storyboard-felipe.html" class="active" aria-current="page">Planejamento da Avaliação do Storyboard</a></li>
+                                <li><a href="entrega4_planejamento-avaliacao-tarefas-felipe.html">Planejamento da Avaliação da Análise de Tarefas com HTA e CTT</a></li>
+                                <li><a href="entrega4_planejamento-relato-storyboard-felipe.html">Planejamento do Relato dos Resultados da Avaliação do Storyboard</a></li>
+                                <li><a href="entrega4_planejamento-relato-tarefas-felipe.html">Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega4_planejamento-relato-matheus.html">Planejamento do relato: visão geral, objetivos e estrutura</a></li>
+                                <li><a href="entrega4_relato-m-sessao-severidade.html">Planejamento do relato: ficha da sessão e severidade</a></li>
+                                <li><a href="entrega4_relato-m-resultados.html">Planejamento do relato: modelos de resultados</a></li>
+                                <li><a href="entrega4_relato-m-hipoteses-comunicacao.html">Planejamento do relato: hipóteses e comunicação do storyboard</a></li>
+                                <li><a href="entrega4_relato-m-problemas-reprojeto.html">Planejamento do relato: problemas, reprojeto e rastreabilidade</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega4_planejamento-avaliacao-storyboard-victor.html">Planejamento Da Avaliação do StoryBoard</a></li>
+                                <li><a href="entrega4_planejamento-avaliacao-tarefas-victor.html">Planejamento da Avaliação da Analise de Tarefas (HTA e CTT)</a></li>
+                                <li><a href="entrega4_planejamento-relato-storyboard-victor.html">Planejamento do relato dos Resultados da Avaliação do Storyboard</a></li>
+                                <li><a href="entrega4_planejamento-relato-tarefas-victor.html">Planejamento do relato dos resultados da avaliação da analise de tarefas (HTA e CTT)</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega4.html">Entrega 4</a> › Planejamentos individuais</p>
+            <h1 id="planejamento-avaliacao-storyboard-felipe" class="doc-title doc-page-title">Planejamento da Avaliação do Storyboard</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Felipe Lopes Pedroza (matrícula 231026330) · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidade:</strong> Gerenciador de Faltas · <strong>Artefato:</strong> Storyboard de seis quadros (versão 1, 13/10/2026)</p>
+                <p><strong>Outros artefatos do planejamento individual:</strong> <a href="entrega4_planejamento-avaliacao-tarefas-felipe.html">Planejamento da Avaliação da Análise de Tarefas com HTA e CTT</a> · <a href="entrega4_planejamento-relato-storyboard-felipe.html">Planejamento do Relato dos Resultados da Avaliação do Storyboard</a> · <a href="entrega4_planejamento-relato-tarefas-felipe.html">Planejamento do Relato dos Resultados da Avaliação da Análise de Tarefas</a></p>
+            </div>
+
+            <h3 class="doc-subsection" id="introducao">1. Introdução</h3>
+            <p class="doc-text">Este documento detalha o planejamento individual da <strong>avaliação do Storyboard</strong> da funcionalidade <strong>Gerenciador de Faltas</strong> do No Fluxo UnB. Muitos professores só lançam as faltas no fim do semestre, e o aluno perde a conta de quantas já acumulou. No Gerenciador de Faltas, o aluno registra manualmente cada falta nas disciplinas em que está matriculado e acompanha um painel com faltas, limite e alerta.</p>
+            <p class="doc-text">O storyboard tem seis quadros: o aluno decide faltar a uma aula; dois meses depois não sabe quantas faltas tem; descobre o gerenciador de faltas no No Fluxo UnB; vê suas disciplinas e registra a falta; consulta o painel; e conclui que sabe quanto ainda pode faltar. O planejamento abaixo detalha, para o meu conjunto de artefatos, o que o documento do grupo (seção 1) apresenta em visão geral.</p>
+
+            <h3 class="doc-subsection" id="decide-storyboard">2. Planejamento via Framework DECIDE</h3>
+            <p class="doc-text">O planejamento segue as seis etapas do framework <strong>DECIDE</strong> (Preece et al., 2002; Barbosa et al., 2021, cap. 11, seção 11.8).</p>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 1: Planejamento DECIDE da avaliação do Storyboard do Gerenciador de Faltas</caption>
+                    <thead><tr><th>Etapa</th><th>Planejamento específico</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>D: Determinar os objetivos</strong></td><td>Verificar se o storyboard representa o problema real dos alunos (perder a conta das faltas quando o professor só lança no fim) e se a solução, registrar manualmente e acompanhar um painel com limite e alerta, é compreendida e considerada útil.</td></tr>
+                        <tr><td><strong>E: Explorar as perguntas</strong></td><td>1. A sequência dos quadros é compreendida sem explicação adicional?<br>2. O problema dos quadros 1 e 2 é reconhecido como real e frequente?<br>3. Registrar cada falta manualmente (quadro 4) parece viável?<br>4. O painel do quadro 5 responde à pergunta “quantas faltas ainda posso ter?”<br>5. O aluno entende que o total vem dos registros dele, e o quadro 6 não promete mais do que o sistema entrega?</td></tr>
+                        <tr><td><strong>C: Escolher os métodos</strong></td><td>Investigação por entrevista semiestruturada guiada pelo storyboard, com leitura silenciosa dos quadros e perguntas abertas e neutras. Complementarmente, inspeção dos avaliadores com lista de verificação de consistência entre storyboard, personas e cenários.</td></tr>
+                        <tr><td><strong>I: Identificar as questões práticas</strong></td><td>Cerca de 5 alunos da UnB, calouros e veteranos, de preferência alguns com dificuldade prévia para controlar faltas. Sessões de 15 a 20 minutos, presenciais ou remotas, com facilitador (eu) e anotador (Victor). Material: storyboard impresso ou em tela, roteiro, TCLE em duas vias e gravador de áudio com aparelho reserva. Sem custo.</td></tr>
+                        <tr><td><strong>D: Decidir as questões éticas</strong></td><td>TCLE com direito de desistir a qualquer momento, anonimato por código (P01, P02...), gravação somente com autorização em campo separado, arquivos fora do repositório público. O participante avalia o storyboard e não é avaliado; o storyboard usa dados fictícios, então ninguém precisa expor a própria frequência.</td></tr>
+                        <tr><td><strong>E: Avaliar, interpretar e apresentar os dados</strong></td><td>Mesmo roteiro para todos (confiabilidade); perguntas ligadas aos objetivos e sem induzir respostas (validade interna); resultados válidos para alunos de perfil semelhante (validade externa); limitação de que o participante vê um cenário fictício e não registra faltas reais ao longo do semestre, sobretudo para a pergunta 3 (validade ecológica).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Felipe Lopes Pedroza (2026), a partir do documento do grupo e de Preece et al. (2002).</p>
+
+            <h3 class="doc-subsection" id="instrumentos-coleta">3. Instrumentos de coleta e roteiro</h3>
+            <p class="doc-text">A sessão segue a estrutura de entrevista descrita por Barbosa et al. (2021, cap. 7, seção 7.5.1, p. 145 e 146):</p>
+            <ul class="doc-list">
+                <li><strong>Bloco 1, abertura:</strong> acolhida, explicação de que o storyboard é avaliado e não a pessoa, leitura e assinatura do TCLE, autorização de gravação e duas perguntas de aquecimento (curso; calouro ou veterano).</li>
+                <li><strong>Bloco 2, leitura do storyboard:</strong> o participante lê os seis quadros em silêncio; o anotador registra dúvidas espontâneas e o tempo.</li>
+                <li><strong>Bloco 3, perguntas:</strong> cinco perguntas abertas, uma para cada pergunta de avaliação, com sondagem só quando a resposta for curta.</li>
+                <li><strong>Bloco 4, encerramento:</strong> pergunta final aberta, agradecimento, fim da gravação.</li>
+            </ul>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 2: Perguntas do roteiro e quadro observado</caption>
+                    <thead><tr><th>Pergunta de avaliação</th><th>Pergunta feita ao participante</th><th>Quadro observado</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1. Sequência compreendida</strong></td><td>“Conte com suas palavras o que acontece em cada quadro.”</td><td>1 a 6</td></tr>
+                        <tr><td><strong>2. Problema reconhecido</strong></td><td>“Como a situação dos quadros 1 e 2 se compara com o que acontece com você ou com colegas?”</td><td>1 e 2</td></tr>
+                        <tr><td><strong>3. Registro viável</strong></td><td>“Como seria, para você, fazer o que o quadro 4 mostra?”</td><td>4</td></tr>
+                        <tr><td><strong>4. Painel útil</strong></td><td>“O que você consegue saber olhando o painel do quadro 5?”</td><td>5</td></tr>
+                        <tr><td><strong>5. Origem do total e promessa</strong></td><td>“De onde você acha que vem o número do painel?” e, separada, “O que o quadro 6 promete a você?”</td><td>5 e 6</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Felipe Lopes Pedroza (2026), a partir das perguntas-modelo do piloto do grupo.</p>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 3: Modelo de registro do anotador por quadro</caption>
+                    <thead><tr><th>Quadro</th><th>Compreensão do participante (fala literal)</th><th>Dúvidas e críticas</th><th>Necessidade de ajuste?</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Quadro 1</strong></td><td>a registrar na sessão</td><td>a registrar na sessão</td><td>a registrar</td></tr>
+                        <tr><td><strong>Quadro 2</strong></td><td>a registrar na sessão</td><td>a registrar na sessão</td><td>a registrar</td></tr>
+                        <tr><td><strong>Quadro 3</strong></td><td>a registrar na sessão</td><td>a registrar na sessão</td><td>a registrar</td></tr>
+                        <tr><td><strong>Quadro 4</strong></td><td>a registrar na sessão</td><td>a registrar na sessão</td><td>a registrar</td></tr>
+                        <tr><td><strong>Quadro 5</strong></td><td>a registrar na sessão</td><td>a registrar na sessão</td><td>a registrar</td></tr>
+                        <tr><td><strong>Quadro 6</strong></td><td>a registrar na sessão</td><td>a registrar na sessão</td><td>a registrar</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Felipe Lopes Pedroza (2026).</p>
+
+            <h3 class="doc-subsection" id="cronograma-piloto">4. Teste-piloto e cronograma individual</h3>
+            <p class="doc-text">O piloto avalia o próprio planejamento, e não o artefato: “O objetivo desse teste é avaliar o próprio planejamento, e analisar se a avaliação, tal como planejada, produz os dados necessários para responder a questões e objetivos do estudo.” (BARBOSA et al., 2021, cap. 11, seção 11.7.2, p. 276). Os dados do piloto são descartados e não entram nos resultados; o protocolo completo está em <a href="entrega4_teste-piloto.html">Planejamento e protocolo do teste-piloto</a>.</p>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 4: Cronograma individual da avaliação do Storyboard</caption>
+                    <thead><tr><th>Data</th><th>Atividade</th><th>Situação</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>13/10/2026</strong></td><td>Versão 1 do storyboard fechada e planejamento DECIDE postado</td><td>Concluído</td></tr>
+                        <tr><td><strong>22/10/2026</strong></td><td>Teste-piloto de uma sessão, com o roteiro do storyboard (papéis previstos pelo grupo: facilitador Felipe, anotador Victor)</td><td>Realizado</td></tr>
+                        <tr><td><strong>23/10/2026</strong></td><td>Entrevista de avaliação do storyboard com participante</td><td>Em andamento, resultado a registrar</td></tr>
+                        <tr><td><strong>24/10/2026</strong></td><td>Análise intraparticipante e consolidada; storyboard versão 2</td><td>Planejado</td></tr>
+                        <tr><td><strong>25/10/2026</strong></td><td>Postagem do relato (ver <a href="entrega4_planejamento-relato-storyboard-felipe.html">planejamento do relato</a>)</td><td>Planejado, prazo até 23:59</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Felipe Lopes Pedroza (2026), a partir do cronograma do documento do grupo, ajustado às datas reais do piloto e da entrevista.</p>
+
+            <h3 class="doc-subsection" id="declaracao-ia">5. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta Claude (Anthropic), usada pelo Claude Code, apoiou a redação do rascunho e a estruturação do HTML a partir do documento do grupo. As decisões de planejamento, o piloto, a entrevista e a revisão são de responsabilidade do autor.</p>
+
+            <h3 class="doc-subsection" id="referencias">6. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, S. D. J.; SILVA, B. S. da; SILVEIRA, M. S.; GASPARINI, I.; DARIN, T.; BARBOSA, G. D. J. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro, 2021. Cap. 7, seção 7.5.1, p. 144 a 148; cap. 11, seções 11.7.2 e 11.8, p. 274 a 280.</li>
+                <li>PREECE, J.; ROGERS, Y.; SHARP, H. <em>Interaction Design: Beyond Human-Computer Interaction</em>. Wiley, 2002 (framework DECIDE).</li>
+            </ul>
+
+
+            <div class="doc-history">
+                <section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+                    <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+                    <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                                    <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                                    <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                                    <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                                    <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                                    <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                                    <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                                    <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Criação do planejamento individual da avaliação do Storyboard do Gerenciador de Faltas</td>
+                                    <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                                    <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                                    <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic), via Claude Code, apoiou a redação do rascunho e a estruturação do HTML a partir do documento do grupo; as decisões e a revisão são do autor</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                <a class="prev" href="entrega4.html"><span>← Anterior</span>Entrega 4: Visão geral</a>
+                <a class="next" href="entrega4_planejamento-avaliacao-tarefas-felipe.html"><span>Próximo →</span>Planejamento da Avaliação da Análise de Tarefas com HTA e CTT</a>
+            </nav>
+            </article>
+
+            <nav class="doc-toc" aria-label="Índice desta página">
+                <p class="doc-toc-title">Índice</p>
+                <ul id="docTocList"></ul>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
