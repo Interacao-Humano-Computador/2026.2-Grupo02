@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão geral e funcionalidades | Entrega 5 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 5 · Relato do Storyboard e da Análise de Tarefas e Planejamento do Protótipo de Papel</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega5.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-felipe.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-f-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-f-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-f-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-f-prototipo-papel.html">Planejamento da avaliação do protótipo de papel e do relato</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-matheus.html" class="active" aria-current="page">Visão geral e funcionalidades</a></li>
+                                <li><a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a></li>
+                                <li><a href="entrega5_relato-m-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega5_relato-m-anexos-d-g.html">Anexos D a G: roteiro, formulário, ficha e cartões</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-victor.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-v-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-v-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-v-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-v-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega5.html">Entrega 5</a> › Relatos e planejamentos individuais</p>
+            <h1 id="m-m0" class="doc-title doc-page-title">Visão geral e funcionalidades</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira, matrícula 202070064 · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidades:</strong> Simulador de IRA e Street View · <strong>Conteúdo desta página:</strong> sumário e seção 1</p>
+                <p><strong>Vídeo da apresentação (Entrega 5):</strong> <!-- LINK-VIDEO-1 --><span class="link-pendente">a publicar</span></p>
+                <p><strong>Vídeo do teste-piloto:</strong> <!-- LINK-VIDEO-2 --><span class="link-pendente">a publicar</span></p>
+                <p><strong>Vídeo da sessão com o participante P01:</strong> <!-- LINK-VIDEO-3 --><span class="link-pendente">a publicar</span></p>
+                <p><strong>PDF da parte de Matheus do Vale Lameira:</strong> <a href="docs/Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final.pdf" target="_blank" rel="noopener">Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final.pdf</a></p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a> · <a href="entrega5_relato-m-analise-tarefas.html">Análise de tarefas: HTA e CTT</a> · <a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a> · <a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a> · <a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a> · <a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a> · <a href="entrega5_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a> · <a href="entrega5_relato-m-anexos-d-g.html">Anexos D a G: roteiro, formulário, ficha e cartões</a></p>
+            </div>
+
+            <div class="header-info">
+                <p><strong><strong>ETAPA 5: SIMULADOR DE IRA E STREET VIEW, NoFluxoUnB</strong></strong></p>
+                <p><strong>Relato do storyboard e da análise de tarefas e planejamento da avaliação do protótipo de papel</strong></p>
+                <p>Universidade: Universidade de Brasília (UnB)</p>
+                <p>Faculdade: Faculdade UnB Gama (FGA)</p>
+                <p>Disciplina: Interação Humano-Computador (IHC)</p>
+                <p>Professor: Prof. Dr. André Barros de Sales</p>
+                <p>Estudante / Discente: Matheus do Vale Lameira</p>
+                <p>Matrícula: 202070064 · Grupo Nro: 2</p>
+                <p>Projeto: NoFluxoUnB (Grupo 02)</p>
+                <p>Data: 23/10/2026</p>
+            </div>
+            <figure class="doc-figure lv-foto" style="max-width: 220px;">
+                <img src="img/entrega5/m-logo-capa.png" alt="Logotipo da Universidade de Brasília (UnB)">
+            </figure>
+
+            <h3 class="doc-subsection" id="m-sumario">Sumário</h3>
+            <p class="doc-text"><strong>Itens da etapa 5 (Plano de Ensino):</strong></p>
+            <ul class="doc-list">
+                <li style="margin-bottom: 0.4rem;">Relato dos resultados do storyboard e da análise de tarefas: <a href="entrega5_relato-m-resultados.html#m-s4-6">seção 4.6</a></li>
+                <li style="margin-bottom: 0.4rem;">Planejamento da avaliação do protótipo de papel: <a href="entrega5_relato-m-prototipo-papel.html#m-s5">seção 5</a></li>
+                <li style="margin-bottom: 0.4rem;">Planejamento do relato dos resultados da avaliação do protótipo de papel: <a href="entrega5_relato-m-relato-prototipo.html#m-s6">seção 6</a></li>
+            </ul>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-planejamento-matheus.html#m-s1">1. As funcionalidades</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-storyboard.html#m-s2">2. Storyboard: enredo</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-analise-tarefas.html#m-s3">3. Análise de tarefas: HTA e CTT</a>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-analise-tarefas.html#m-s3-1">3.1 Simulador de IRA: HTA</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-analise-tarefas.html#m-s3-2">3.2 Simulador de IRA: CTT</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-analise-tarefas.html#m-s3-3">3.3 Street View: HTA</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-analise-tarefas.html#m-s3-4">3.4 Street View: CTT</a></li>
+                    </ul></li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-planejamento-avaliacao.html#m-s4">4. Avaliação do storyboard e da análise de tarefas</a>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-planejamento-avaliacao.html#m-s4-1">4.1 Planejamento com o framework DECIDE</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-planejamento-avaliacao.html#m-s4-2">4.2 Objetivos e perguntas</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-planejamento-avaliacao.html#m-s4-3">4.3 O que espero da avaliação</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-planejamento-avaliacao.html#m-s4-4">4.4 Teste-piloto</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-planejamento-avaliacao.html#m-s4-5">4.5 Instrumentos da sessão</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-resultados.html#m-s4-6">4.6 Relato dos resultados do storyboard e da análise de tarefas</a></li>
+                    </ul></li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-prototipo-papel.html#m-s5">5. Planejamento da avaliação do protótipo de papel</a>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-prototipo-papel.html#m-s5-1">5.1 D: objetivos</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-prototipo-papel.html#m-s5-2">5.2 E: perguntas</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-prototipo-papel.html#m-s5-3">5.3 C: método</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-prototipo-papel.html#m-s5-4">5.4 I: questões práticas</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-prototipo-papel.html#m-s5-5">5.5 D: questões éticas</a></li>
+                        <li style="margin-bottom: 0.3rem;"><a href="entrega5_relato-m-prototipo-papel.html#m-s5-6">5.6 E: avaliar, interpretar e apresentar os dados</a></li>
+                    </ul></li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-relato-prototipo.html#m-s6">6. Planejamento do relato dos resultados da avaliação do protótipo de papel</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-planejamento-matheus.html#m-s7">7. Declaração sobre o uso de IA Generativa</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-planejamento-matheus.html#m-s8">8. Referências</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-anexos-a-c.html#m-anexo-a">Anexo A. Termo de consentimento livre e esclarecido</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-anexos-a-c.html#m-anexo-b">Anexo B. Questionário pré-teste</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-anexos-a-c.html#m-anexo-c">Anexo C. Instruções e cenários para o participante</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-anexos-d-g.html#m-anexo-d">Anexo D. Roteiro da entrevista, para mim</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-anexos-d-g.html#m-anexo-e">Anexo E. Formulário de acompanhamento da observação</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-anexos-d-g.html#m-anexo-f">Anexo F. Ficha de calibração do teste-piloto</a>
+                </li>
+                <li style="margin-bottom: 0.4rem;"><a href="entrega5_relato-m-anexos-d-g.html#m-anexo-g">Anexo G. Cartões de passos para o participante</a>
+                </li>
+            </ul>
+
+            <p class="doc-text">Este documento reúne o que a etapa 5 pede para as duas funcionalidades do NoFluxoUnB pelas quais sou responsável: o Simulador de IRA e o Street View. Apresento as funcionalidades, o enredo do storyboard, a análise de tarefas (HTA e CTT), a avaliação do storyboard e da análise de tarefas, com o teste-piloto e os instrumentos da sessão, o planejamento da avaliação do protótipo de papel e o planejamento do relato dos resultados dessa avaliação. As duas funcionalidades são independentes: o Simulador de IRA ajuda o aluno a estimar o rendimento acadêmico, e o Street View ajuda o aluno a achar e identificar salas. Cada uma tem o seu storyboard, a sua HTA e a sua CTT. A fundamentação é Barbosa e Silva (2010).</p>
+            <h3 class="doc-subsection" id="m-s1">1. As funcionalidades</h3>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th></th><th><strong>Simulador de IRA</strong></th><th><strong>Street View</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Necessidade</strong></td><td>Saber o efeito das disciplinas planejadas no IRA antes de se matricular. Hoje a conta é feita fora do NoFluxo, e a fórmula do IRA da UnB é conhecida por poucos estudantes.</td><td>Saber onde fica a sala da aula e reconhecê-la ao chegar, em especial para quem ainda não conhece o campus.</td></tr>
+                        <tr><td class="td-strong"><strong>O que o sistema faz</strong></td><td>Mostra o IRA atual e os créditos a partir do histórico importado, calcula o IRA projetado com as menções que o aluno espera (com cenários prontos e opção de trancar), recalcula a cada mudança da grade e conta com a Darcy para explicar o resultado.</td><td>Permite achar a sala procurada e identificá-la, em formato Street View.</td></tr>
+                        <tr><td class="td-strong"><strong>Quem usa</strong></td><td>Larissa Mendes (persona primária, 21 anos, 5º semestre de Engenharia de Software, reprovou em Cálculo 2) e Diego Rocha (formando de Engenharia Elétrica).</td><td>Caio Ferreira (persona secundária, 18 anos, calouro, primeira semana de aula).</td></tr>
+                        <tr><td class="td-strong"><strong>Origem</strong></td><td>Tarefa TAR-04 da Entrega 2, a sugestão mais recorrente da pesquisa com usuários (achado 3.1).</td><td>Funcionalidade do NoFluxoUnB de minha autoria.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <h3 class="doc-subsection" id="m-s7">7. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">Usei a ferramenta de IA Generativa Claude (Anthropic) como apoio na organização e na redação deste documento e na leitura do livro. O conteúdo, as decisões e a revisão final são de minha responsabilidade.</p>
+            <h3 class="doc-subsection" id="m-s8">8. Referências</h3>
+            <ul class="doc-list">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. Interação Humano-Computador. Rio de Janeiro: Elsevier / Campus, 2010. Cap. 5 (p. 133 a 151), cap. 6 (p. 183 a 205), cap. 9 (p. 289 a 313) e cap. 10 (p. 320 e 358 a 362).</li>
+                <li>GRUPO 02. NoFluxoUnB: Entrega 2 (personas, cenários e análise de tarefas, TAR-04) e Entrega 4 (planejamento da avaliação e do relato). Universidade de Brasília, 2026. Disponível em: https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação de Visão geral e funcionalidades, a partir do documento Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final, sem alteração do conteúdo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 5 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega5_relato-f-prototipo-papel.html"><span>← Anterior</span>Felipe: planejamento do protótipo de papel</a>
+                    <a class="next" href="entrega5_relato-m-storyboard.html"><span>Próximo →</span>Storyboard: enredo</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
