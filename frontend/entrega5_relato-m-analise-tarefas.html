@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de tarefas: HTA e CTT | Entrega 5 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 5 · Relato do Storyboard e da Análise de Tarefas e Planejamento do Protótipo de Papel</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega5.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-felipe.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-f-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-f-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-f-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-f-prototipo-papel.html">Planejamento da avaliação do protótipo de papel e do relato</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-matheus.html">Visão geral e funcionalidades</a></li>
+                                <li><a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a></li>
+                                <li><a href="entrega5_relato-m-analise-tarefas.html" class="active" aria-current="page">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega5_relato-m-anexos-d-g.html">Anexos D a G: roteiro, formulário, ficha e cartões</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-victor.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-v-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-v-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-v-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-v-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega5.html">Entrega 5</a> › Relatos e planejamentos individuais</p>
+            <h1 id="m-m2" class="doc-title doc-page-title">Análise de tarefas: HTA e CTT</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira, matrícula 202070064 · <strong>Validador:</strong> Matheus do Vale Lameira</p>
+                <p><strong>Funcionalidades:</strong> Simulador de IRA e Street View · <strong>Conteúdo desta página:</strong> seção 3 · Tabelas 1 e 2 · Quadros 1 a 5 · Figuras 1 a 14</p>
+                <p><strong>Documento completo em PDF:</strong> <a href="docs/Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final.pdf" download>Baixar Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final.pdf</a></p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega5_relato-planejamento-matheus.html">Visão geral e funcionalidades</a> · <a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a> · <a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a> · <a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a> · <a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a> · <a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a> · <a href="entrega5_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a> · <a href="entrega5_relato-m-anexos-d-g.html">Anexos D a G: roteiro, formulário, ficha e cartões</a></p>
+            </div>
+
+            <h3 class="doc-subsection" id="m-s3">3. Análise de tarefas: HTA e CTT</h3>
+            <p class="doc-text">Elaborei a HTA e a CTT de cada funcionalidade conforme Barbosa e Silva (2010), capítulo 6, seção 6.4 (p. 191 a 205). Na HTA, defino objetivos (e não listas de ações), decomponho cada objetivo em subobjetivos mutuamente exclusivos e exaustivos e indico em cada objetivo o plano que relaciona os seus subobjetivos: sequência (1&gt;2), seleção (1/2) ou paralelo (1+2). No nível mais baixo estão as operações, sublinhadas nos diagramas (p. 192 e 193). Na tabela, cada objetivo ou operação traz input, feedback, plano, problemas e recomendações (Tabela 6.3, p. 194). Na CTT, uso as tarefas abstrata, do usuário, do sistema e interativa e os operadores de relação entre tarefas do livro (p. 203 e 204). Os níveis hierárquicos são lidos como “para considerar T1 realizada, T2 e T3 devem ter sido realizadas” (p. 203).</p>
+            <p class="doc-text"><em>Os Quadros 1 a 5 complementam as figuras e as tabelas desta seção com os planos da HTA, a legenda da CTT e a especificação dos nós, para consulta sem depender da imagem. Eles são derivados do próprio documento e não alteram nenhuma figura nem tabela.</em></p>
+            <h4 class="doc-h4" id="m-s3-1">3.1 Simulador de IRA: HTA</h4>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 1: HTA do Simulador de IRA, objetivo 0 e subobjetivos 1 a 4.</figcaption>
+                <img src="img/entrega5/m-hta-simulador-1.png" alt="Diagrama da HTA do Simulador de IRA: o objetivo 0, Estimar o IRA do próximo semestre, com plano 1&gt;2&gt;3&gt;4, e os subobjetivos 1 a 4 (conhecer o IRA e os créditos atuais, definir as menções esperadas, obter o IRA projetado e decidir o plano do semestre), com a legenda de objetivo, operação e planos.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 2: HTA do Simulador de IRA, decomposição dos objetivos 1 e 2.</figcaption>
+                <img src="img/entrega5/m-hta-simulador-2.png" alt="Diagrama da HTA do Simulador de IRA: o objetivo 1, Conhecer o IRA e os créditos atuais, com as operações 1.1 Abrir o Simulador de IRA e 1.2 Ler o IRA atual e os créditos integralizados; e o objetivo 2, Definir as menções esperadas, com 2.1 Atribuir a menção esperada às disciplinas (2.1.1 Escolher um cenário pronto ou 2.1.2 Informar a menção de cada disciplina) e 2.2 Marcar a disciplina a trancar.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 3: HTA do Simulador de IRA, decomposição dos objetivos 3 e 4.</figcaption>
+                <img src="img/entrega5/m-hta-simulador-3.png" alt="Diagrama da HTA do Simulador de IRA: o objetivo 3, Obter o IRA projetado, com as operações 3.1 Pedir a simulação, 3.2 Ler o IRA projetado e a fórmula e 3.3 Pedir à Darcy que explique o resultado; e o objetivo 4, Decidir o plano do semestre, com 4.1 Comparar os cenários de IRA e 4.2 Ajustar a grade.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 1: HTA do Simulador de IRA, no formato da Tabela 6.3 do livro (p. 194).</caption>
+                    <thead><tr><th><strong>objetivos / operações</strong></th><th><strong>problemas e recomendações</strong></th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td class="td-strong">0. Estimar o IRA do próximo semestre&nbsp;&nbsp;1&gt;2&gt;3&gt;4</td><td>input: dúvida da aluna sobre o efeito das disciplinas planejadas no IRA, na semana de matrícula<br>feedback: IRA projetado conhecido e usado na decisão do semestre<br>plano: conhecer o IRA atual, definir as menções, obter o IRA projetado e decidir o plano, nessa ordem; a aluna pode voltar do 4 ao 2 para testar outro cenário<br>problema: o NoFluxo não oferecia simulação de IRA, e a estimativa era feita fora do sistema<br>recomendação: simulador de IRA integrado ao montador de grade, calculado pelo sistema a partir do histórico importado</td></tr>
+                        <tr class="tr-main"><td class="td-strong">1. Conhecer o IRA e os créditos atuais&nbsp;&nbsp;1.1&gt;1.2</td><td>input: histórico importado ao NoFluxo<br>feedback: IRA atual e créditos integralizados lidos<br>plano: abrir o simulador e depois ler os valores<br>problema: o IRA está no histórico do SIGAA, mas não aparece no NoFluxo depois da importação<br>recomendação: exibir o IRA atual e os créditos integralizados no painel do estudante</td></tr>
+                        <tr><td class="td-strong">1.1 Abrir o Simulador de IRA</td><td>input: NoFluxo aberto<br>feedback: simulador aberto</td></tr>
+                        <tr><td class="td-strong">1.2 Ler o IRA atual e os créditos integralizados</td><td>input: simulador aberto<br>feedback: valores lidos</td></tr>
+                        <tr class="tr-main"><td class="td-strong">2. Definir as menções esperadas&nbsp;&nbsp;2.1&gt;2.2</td><td>input: disciplinas planejadas para o próximo semestre<br>feedback: menções esperadas definidas<br>plano: atribuir as menções e, se for o caso, marcar o trancamento<br>problema: o estudante não tem referência de quão difícil cada disciplina é para estimar a menção<br>recomendação: mostrar a dificuldade média das avaliações de disciplinas do próprio NoFluxo</td></tr>
+                        <tr><td class="td-strong">2.1 Atribuir a menção esperada às disciplinas&nbsp;&nbsp;2.1.1/2.1.2</td><td>plano: escolher um cenário pronto ou informar a menção de cada disciplina<br>problema: tendência ao otimismo, com a menção máxima em todas as disciplinas<br>recomendação: oferecer cenários prontos (otimista, provável e pessimista)</td></tr>
+                        <tr><td class="td-strong">2.1.1 Escolher um cenário pronto de menções</td><td>input: lista de disciplinas<br>feedback: menções preenchidas pelo cenário</td></tr>
+                        <tr><td class="td-strong">2.1.2 Informar a menção de cada disciplina</td><td>input: lista de disciplinas<br>feedback: menção registrada em cada disciplina</td></tr>
+                        <tr><td class="td-strong">2.2 Marcar a disciplina a trancar, se for o caso</td><td>input: dúvida sobre trancar<br>feedback: efeito do trancamento mostrado<br>problema: o efeito de um trancamento no IRA não é intuitivo<br>recomendação: opção de marcar a disciplina como “trancar” e ver o efeito separadamente</td></tr>
+                        <tr class="tr-main"><td class="td-strong">3. Obter o IRA projetado&nbsp;&nbsp;3.1&gt;3.2&gt;3.3</td><td>input: menções esperadas<br>feedback: IRA projetado exibido com a fórmula<br>plano: pedir a simulação, ler o resultado e, se houver dúvida, pedir à Darcy que explique<br>problema: a fórmula do IRA da UnB pondera as menções pelos créditos e pelo período e desconta trancamentos, e poucos estudantes a conhecem<br>recomendação: cálculo feito pelo sistema, com a fórmula documentada em linguagem simples</td></tr>
+                        <tr><td class="td-strong">3.1 Pedir a simulação</td><td>input: menções definidas<br>feedback: simulação executada<br>problema: calcular em planilha ou calculadora externa tira a tarefa do NoFluxo e sujeita a erro de digitação e de fórmula<br>recomendação: eliminar esse passo com o simulador integrado</td></tr>
+                        <tr><td class="td-strong">3.2 Ler o IRA projetado e a fórmula</td><td>input: resultado exibido<br>feedback: valor e fórmula compreendidos</td></tr>
+                        <tr><td class="td-strong">3.3 Pedir à Darcy que explique o resultado, se tiver dúvida</td><td>input: dúvida sobre o número<br>feedback: explicação recebida<br>problema: modelos de linguagem erram aritmética, e o número pode sair errado com aparência de certo<br>recomendação: a Darcy só explica o resultado; o cálculo vem de código determinístico do sistema</td></tr>
+                        <tr class="tr-main"><td class="td-strong">4. Decidir o plano do semestre&nbsp;&nbsp;4.1&gt;4.2</td><td>input: IRA projetado de cada cenário<br>feedback: grade do semestre decidida<br>plano: comparar os cenários e ajustar a grade; repetir de 2 a 4 para testar outro cenário<br>problema: sem ligação entre o IRA simulado e a grade, o estudante refaz a conta a cada troca de disciplina<br>recomendação: recalcular o IRA projetado automaticamente a cada alteração da grade</td></tr>
+                        <tr><td class="td-strong">4.1 Comparar os cenários de IRA</td><td>input: IRA projetado de cada cenário<br>feedback: cenário preferido escolhido</td></tr>
+                        <tr><td class="td-strong">4.2 Ajustar a grade</td><td>input: cenário escolhido<br>feedback: grade ajustada e IRA recalculado</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Quadro 1: Planos da HTA do Simulador de IRA</caption>
+                    <thead><tr><th>Plano</th><th>Tipo</th><th>Descrição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">0</td><td>Sequência</td><td>1&gt;2&gt;3&gt;4: conhecer o IRA atual, definir as menções, obter o IRA projetado e decidir o plano do semestre, nessa ordem; a aluna pode voltar do 4 ao 2 para testar outro cenário.</td></tr>
+                        <tr><td class="td-strong">1</td><td>Sequência</td><td>1.1&gt;1.2: abrir o simulador e depois ler o IRA atual e os créditos.</td></tr>
+                        <tr><td class="td-strong">2</td><td>Sequência</td><td>2.1&gt;2.2: atribuir as menções e, se for o caso, marcar o trancamento.</td></tr>
+                        <tr><td class="td-strong">2.1</td><td>Seleção</td><td>2.1.1/2.1.2: escolher um cenário pronto ou informar a menção de cada disciplina.</td></tr>
+                        <tr><td class="td-strong">3</td><td>Sequência</td><td>3.1&gt;3.2&gt;3.3: pedir a simulação, ler o resultado e a fórmula e, se houver dúvida, pedir à Darcy que explique.</td></tr>
+                        <tr><td class="td-strong">4</td><td>Sequência</td><td>4.1&gt;4.2: comparar os cenários e ajustar a grade; o IRA é recalculado.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026), derivado das Figuras 1 a 14 e das Tabelas 1 e 2; complementa o documento sem alterá-lo.</p>
+            <h4 class="doc-h4" id="m-s3-2">3.2 Simulador de IRA: CTT</h4>
+            <p class="doc-text">A CTT descreve a solução de interação do Simulador (p. 205). O objetivo se divide em quatro tarefas abstratas em sequência; a menção definida passa para o cálculo ([]&gt;&gt;) e o IRA projetado passa para a decisão ([]&gt;&gt;). Escolher um cenário pronto e informar a menção de cada disciplina são alternativas ([]). O livro não traz um operador de iteração; a repetição de 2 a 4 aparece no plano 4 da HTA.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Quadro 2: Legenda da CTT: tipos de tarefa e operadores usados nas Figuras 4 a 14</caption>
+                    <thead><tr><th>Elemento</th><th>Representação</th><th>Significado e uso nas figuras</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Tarefa abstrata</td><td>Nuvem</td><td>Composição de tarefas que auxilia a decomposição; não é uma tarefa em si (p. 203).</td></tr>
+                        <tr><td class="td-strong">Tarefa do usuário</td><td>Figura de pessoa</td><td>Realizada fora do sistema (p. 203).</td></tr>
+                        <tr><td class="td-strong">Tarefa do sistema</td><td>Computador</td><td>O sistema processa sem interagir com o usuário (p. 203).</td></tr>
+                        <tr><td class="td-strong">Tarefa interativa</td><td>Pessoa e computador com seta dupla</td><td>Ocorre o diálogo entre usuário e sistema (p. 203).</td></tr>
+                        <tr><td class="td-strong">&gt;&gt;</td><td>Ativação</td><td>A segunda tarefa só inicia depois que a primeira termina (p. 203). Usado nas Figuras 4 a 14.</td></tr>
+                        <tr><td class="td-strong">[]&gt;&gt;</td><td>Ativação com passagem de informação</td><td>Além da ordem, a informação produzida pela primeira tarefa passa para a segunda (p. 203). Usado nas Figuras 4 a 9, 12 e 13.</td></tr>
+                        <tr><td class="td-strong">[]</td><td>Escolha</td><td>Tarefas alternativas: ao iniciar uma, a outra é desabilitada (p. 203). Usado nas Figuras 6 e 14.</td></tr>
+                        <tr><td class="td-strong">|[]|</td><td>Tarefas concorrentes e comunicantes</td><td>Podem ser feitas em qualquer ordem ou ao mesmo tempo e trocam informações (p. 204). Usado na Figura 14.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026), a partir das legendas das figuras e de Barbosa e Silva (2010), seção 6.4.3, p. 203 e 204; complementa o documento sem alterá-lo.</p>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 4: CTT do Simulador de IRA, nível superior.</figcaption>
+                <img src="img/entrega5/m-ctt-simulador-1.png" alt="Diagrama da CTT do Simulador de IRA, nível superior: a tarefa abstrata Estimar o IRA do próximo semestre com as quatro subtarefas em sequência, ligadas pelos operadores &gt;&gt;, []&gt;&gt; e []&gt;&gt;, e a legenda dos tipos de tarefa e dos operadores.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 5: CTT do Simulador de IRA, tarefa “Conhecer o IRA e os créditos atuais”.</figcaption>
+                <img src="img/entrega5/m-ctt-simulador-2.png" alt="Diagrama da CTT da tarefa abstrata Conhecer o IRA e os créditos atuais: a tarefa interativa Abrir o Simulador de IRA ativa (&gt;&gt;) a tarefa do sistema Exibir o IRA atual e os créditos, que ativa com passagem de informação ([]&gt;&gt;) a tarefa do usuário Ler o IRA e os créditos; com a legenda dos tipos de tarefa e dos operadores.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 6: CTT do Simulador de IRA, tarefa “Definir as menções esperadas”.</figcaption>
+                <img src="img/entrega5/m-ctt-simulador-3.png" alt="Diagrama da CTT da tarefa abstrata Definir as menções esperadas: a tarefa abstrata Atribuir a menção esperada ativa (&gt;&gt;) a tarefa interativa opcional Marcar a disciplina a trancar; Atribuir a menção esperada tem como alternativas ([]) as tarefas interativas Escolher um cenário pronto e Informar a menção de cada disciplina; com a legenda dos tipos de tarefa e dos operadores.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 7: CTT do Simulador de IRA, tarefa “Obter o IRA projetado”.</figcaption>
+                <img src="img/entrega5/m-ctt-simulador-4.png" alt="Diagrama da CTT da tarefa abstrata Obter o IRA projetado: a tarefa interativa Pedir a simulação ativa com passagem de informação ([]&gt;&gt;) a tarefa do sistema Calcular o IRA projetado, que ativa com passagem de informação ([]&gt;&gt;) a tarefa do sistema Exibir o IRA projetado e a fórmula, que ativa (&gt;&gt;) a tarefa interativa opcional Pedir à Darcy que explique o resultado; com a legenda dos tipos de tarefa e dos operadores.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 8: CTT do Simulador de IRA, tarefa “Decidir o plano do semestre”.</figcaption>
+                <img src="img/entrega5/m-ctt-simulador-5.png" alt="Diagrama da CTT da tarefa abstrata Decidir o plano do semestre: a tarefa do usuário Comparar os cenários de IRA ativa (&gt;&gt;) a tarefa interativa Ajustar a grade, que ativa com passagem de informação ([]&gt;&gt;) a tarefa do sistema Recalcular o IRA projetado; com a legenda dos tipos de tarefa e dos operadores.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Quadro 3: Especificação dos nós da CTT do Simulador de IRA</caption>
+                    <thead><tr><th>Nó</th><th>Categoria</th><th>Operador com a tarefa seguinte</th><th>Correspondência na HTA</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Estimar o IRA do próximo semestre</td><td>Abstrata</td><td>Não se aplica (raiz)</td><td>Objetivo 0</td></tr>
+                        <tr><td class="td-strong">Conhecer o IRA e os créditos atuais</td><td>Abstrata</td><td>&gt;&gt;</td><td>Objetivo 1</td></tr>
+                        <tr><td class="td-strong">Abrir o Simulador de IRA</td><td>Interativa</td><td>&gt;&gt;</td><td>1.1</td></tr>
+                        <tr><td class="td-strong">Exibir o IRA atual e os créditos</td><td>Sistema</td><td>[]&gt;&gt;</td><td>Feedback de 1.1 e entrada de 1.2</td></tr>
+                        <tr><td class="td-strong">Ler o IRA e os créditos</td><td>Usuário</td><td>Não se aplica (última da subárvore)</td><td>1.2</td></tr>
+                        <tr><td class="td-strong">Definir as menções esperadas</td><td>Abstrata</td><td>[]&gt;&gt;</td><td>Objetivo 2</td></tr>
+                        <tr><td class="td-strong">Atribuir a menção esperada</td><td>Abstrata</td><td>&gt;&gt;</td><td>2.1</td></tr>
+                        <tr><td class="td-strong">Escolher um cenário pronto</td><td>Interativa</td><td>[]</td><td>2.1.1</td></tr>
+                        <tr><td class="td-strong">Informar a menção de cada disciplina</td><td>Interativa</td><td>Não se aplica (última da subárvore)</td><td>2.1.2</td></tr>
+                        <tr><td class="td-strong">Marcar a disciplina a trancar (opcional)</td><td>Interativa</td><td>Não se aplica (última da subárvore)</td><td>2.2</td></tr>
+                        <tr><td class="td-strong">Obter o IRA projetado</td><td>Abstrata</td><td>[]&gt;&gt;</td><td>Objetivo 3</td></tr>
+                        <tr><td class="td-strong">Pedir a simulação</td><td>Interativa</td><td>[]&gt;&gt;</td><td>3.1</td></tr>
+                        <tr><td class="td-strong">Calcular o IRA projetado</td><td>Sistema</td><td>[]&gt;&gt;</td><td>Cálculo feito pelo sistema, sem a Darcy (3.1 e 3.3)</td></tr>
+                        <tr><td class="td-strong">Exibir o IRA projetado e a fórmula</td><td>Sistema</td><td>&gt;&gt;</td><td>Feedback de 3.1; leitura em 3.2</td></tr>
+                        <tr><td class="td-strong">Pedir à Darcy que explique o resultado (opcional)</td><td>Interativa</td><td>Não se aplica (última da subárvore)</td><td>3.3</td></tr>
+                        <tr><td class="td-strong">Decidir o plano do semestre</td><td>Abstrata</td><td>Não se aplica (última tarefa)</td><td>Objetivo 4</td></tr>
+                        <tr><td class="td-strong">Comparar os cenários de IRA</td><td>Usuário</td><td>&gt;&gt;</td><td>4.1</td></tr>
+                        <tr><td class="td-strong">Ajustar a grade</td><td>Interativa</td><td>[]&gt;&gt;</td><td>4.2</td></tr>
+                        <tr><td class="td-strong">Recalcular o IRA projetado</td><td>Sistema</td><td>Não se aplica (última da subárvore)</td><td>Feedback de 4.2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026), derivado das Figuras 1 a 14 e das Tabelas 1 e 2; complementa o documento sem alterá-lo.</p>
+            <h4 class="doc-h4" id="m-s3-3">3.3 Street View: HTA</h4>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 9: HTA do Street View, objetivo 0 e subobjetivos 1 a 3.</figcaption>
+                <img src="img/entrega5/m-hta-street-view-1.png" alt="Diagrama da HTA do Street View: o objetivo 0, Achar e identificar a sala da aula, com plano 1&gt;2&gt;3, e os subobjetivos 1 Localizar a sala procurada (1.1&gt;1.2&gt;1.3), 2 Reconhecer o caminho até a sala (2.1&gt;2.2) e 3 Identificar a sala (3.1&gt;3.2), com a legenda de objetivo, operação e planos.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 10: HTA do Street View, decomposição dos objetivos 1 e 2.</figcaption>
+                <img src="img/entrega5/m-hta-street-view-2.png" alt="Diagrama da HTA do Street View: o objetivo 1, Localizar a sala procurada, com as operações 1.1 Abrir o Street View, 1.2 Informar a sala procurada e 1.3 Ver onde a sala fica; e o objetivo 2, Reconhecer o caminho até a sala, com 2.1 Percorrer o trajeto no Street View e 2.2 Observar o entorno para se situar.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 11: HTA do Street View, decomposição do objetivo 3.</figcaption>
+                <img src="img/entrega5/m-hta-street-view-3.png" alt="Diagrama da HTA do Street View: o objetivo 3, Identificar a sala, com as operações 3.1 Reconhecer a entrada e a identificação da sala e 3.2 Confirmar que é a sala procurada.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 2: HTA do Street View, no formato da Tabela 6.3 do livro (p. 194). Os problemas são potenciais e serão verificados na avaliação (p. 193).</caption>
+                    <thead><tr><th><strong>objetivos / operações</strong></th><th><strong>problemas e recomendações</strong></th></tr></thead>
+                    <tbody>
+                        <tr class="tr-main"><td class="td-strong">0. Achar e identificar a sala da aula&nbsp;&nbsp;1&gt;2&gt;3</td><td>input: aula marcada em uma sala que o aluno não conhece<br>feedback: aluno na sala procurada, a tempo da aula<br>plano: localizar a sala, reconhecer o caminho e identificar a sala; se a sala identificada não for a procurada, voltar ao 1<br>problema: quem chega há pouco ao campus não sabe onde ficam as salas nem como reconhecê-las<br>recomendação: Street View para achar e identificar salas</td></tr>
+                        <tr class="tr-main"><td class="td-strong">1. Localizar a sala procurada&nbsp;&nbsp;1.1&gt;1.2&gt;1.3</td><td>input: nome ou número da sala<br>feedback: localização da sala vista<br>plano: abrir o Street View, informar a sala e ver onde ela fica<br>problema potencial: o aluno informa a sala de um jeito diferente do cadastrado<br>recomendação: aceitar variações do nome e do número da sala</td></tr>
+                        <tr><td class="td-strong">1.1 Abrir o Street View</td><td>input: NoFluxo aberto<br>feedback: Street View aberto</td></tr>
+                        <tr><td class="td-strong">1.2 Informar a sala procurada</td><td>input: nome ou número da sala<br>feedback: sala informada aceita</td></tr>
+                        <tr><td class="td-strong">1.3 Ver onde a sala fica</td><td>input: sala informada<br>feedback: localização da sala exibida</td></tr>
+                        <tr class="tr-main"><td class="td-strong">2. Reconhecer o caminho até a sala&nbsp;&nbsp;2.1&gt;2.2</td><td>input: localização da sala<br>feedback: caminho reconhecido<br>plano: percorrer o trajeto e observar o entorno<br>problema potencial: o trajeto na tela não corresponde ao que o aluno vê ao andar<br>recomendação: mostrar pontos de referência do entorno ao longo do trajeto</td></tr>
+                        <tr><td class="td-strong">2.1 Percorrer o trajeto no Street View</td><td>input: localização da sala<br>feedback: imagem atualizada a cada avanço</td></tr>
+                        <tr><td class="td-strong">2.2 Observar o entorno para se situar</td><td>input: imagem do trajeto<br>feedback: aluno se sente situado</td></tr>
+                        <tr class="tr-main"><td class="td-strong">3. Identificar a sala&nbsp;&nbsp;3.1&gt;3.2</td><td>input: porta ou entrada diante do aluno e imagem do Street View<br>feedback: sala confirmada<br>plano: reconhecer a entrada e a identificação e confirmar; se não for a sala procurada, voltar ao 1<br>problema potencial: portas e corredores parecidos, com a identificação da sala pouco visível<br>recomendação: destacar a identificação da sala no Street View</td></tr>
+                        <tr><td class="td-strong">3.1 Reconhecer a entrada e a identificação da sala</td><td>input: porta e imagem do Street View<br>feedback: identificação lida</td></tr>
+                        <tr><td class="td-strong">3.2 Confirmar que é a sala procurada</td><td>input: identificação lida<br>feedback: confirmação ou volta à busca</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Quadro 4: Planos da HTA do Street View</caption>
+                    <thead><tr><th>Plano</th><th>Tipo</th><th>Descrição</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">0</td><td>Sequência</td><td>1&gt;2&gt;3: localizar a sala, reconhecer o caminho e identificar a sala; se a sala identificada não for a procurada, voltar ao 1.</td></tr>
+                        <tr><td class="td-strong">1</td><td>Sequência</td><td>1.1&gt;1.2&gt;1.3: abrir o Street View, informar a sala e ver onde ela fica.</td></tr>
+                        <tr><td class="td-strong">2</td><td>Sequência</td><td>2.1&gt;2.2: percorrer o trajeto e observar o entorno.</td></tr>
+                        <tr><td class="td-strong">3</td><td>Sequência</td><td>3.1&gt;3.2: reconhecer a entrada e a identificação e confirmar; se não for a sala procurada, voltar ao 1.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026), derivado das Figuras 1 a 14 e das Tabelas 1 e 2; complementa o documento sem alterá-lo.</p>
+            <h4 class="doc-h4" id="m-s3-4">3.4 Street View: CTT</h4>
+            <p class="doc-text">Na CTT do Street View, o objetivo se divide em três tarefas abstratas em sequência. A localização da sala passa para o reconhecimento do caminho ([]&gt;&gt;), e o reconhecimento do caminho precede a identificação da sala (&gt;&gt;). Percorrer o trajeto e observar o entorno acontecem juntos e trocam informação (|[]|). Depois de reconhecer a entrada e a identificação, o aluno confirma a sala ou volta à busca, que são alternativas ([]).</p>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 12: CTT do Street View, nível superior.</figcaption>
+                <img src="img/entrega5/m-ctt-street-view-1.png" alt="Diagrama da CTT do Street View, nível superior: a tarefa abstrata Localizar a sala procurada ativa com passagem de informação ([]&gt;&gt;) a tarefa abstrata Reconhecer o caminho até a sala, que ativa (&gt;&gt;) a tarefa abstrata Identificar a sala; com a legenda dos tipos de tarefa e dos operadores.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 13: CTT do Street View, tarefa “Localizar a sala procurada”.</figcaption>
+                <img src="img/entrega5/m-ctt-street-view-2.png" alt="Diagrama da CTT da tarefa abstrata Localizar a sala procurada: a tarefa interativa Abrir o Street View ativa (&gt;&gt;) a tarefa interativa Informar a sala procurada, que ativa com passagem de informação ([]&gt;&gt;) a tarefa do sistema Exibir a localização da sala; com a legenda dos tipos de tarefa e dos operadores.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 14: CTT do Street View, tarefas “Reconhecer o caminho até a sala” e “Identificar a sala”.</figcaption>
+                <img src="img/entrega5/m-ctt-street-view-3.png" alt="Dois diagramas da CTT. Em Reconhecer o caminho até a sala, a tarefa interativa Percorrer o trajeto no Street View e a tarefa do usuário Observar o entorno para se situar são concorrentes e comunicantes (|[]|). Em Identificar a sala, a tarefa do usuário Reconhecer a entrada e a identificação da sala ativa (&gt;&gt;) a tarefa do usuário Confirmar que é a sala procurada, que é alternativa ([]) à tarefa interativa Voltar à busca, se não for a sala; com a legenda dos tipos de tarefa e dos operadores.">
+                <p class="doc-source">Fonte: Matheus do Vale Lameira (2026).</p>
+            </figure>
+
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Quadro 5: Especificação dos nós da CTT do Street View</caption>
+                    <thead><tr><th>Nó</th><th>Categoria</th><th>Operador com a tarefa seguinte</th><th>Correspondência na HTA</th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Achar e identificar a sala da aula</td><td>Abstrata</td><td>Não se aplica (raiz)</td><td>Objetivo 0</td></tr>
+                        <tr><td class="td-strong">Localizar a sala procurada</td><td>Abstrata</td><td>[]&gt;&gt;</td><td>Objetivo 1</td></tr>
+                        <tr><td class="td-strong">Abrir o Street View</td><td>Interativa</td><td>&gt;&gt;</td><td>1.1</td></tr>
+                        <tr><td class="td-strong">Informar a sala procurada</td><td>Interativa</td><td>[]&gt;&gt;</td><td>1.2</td></tr>
+                        <tr><td class="td-strong">Exibir a localização da sala</td><td>Sistema</td><td>Não se aplica (última da subárvore)</td><td>1.3</td></tr>
+                        <tr><td class="td-strong">Reconhecer o caminho até a sala</td><td>Abstrata</td><td>&gt;&gt;</td><td>Objetivo 2</td></tr>
+                        <tr><td class="td-strong">Percorrer o trajeto no Street View</td><td>Interativa</td><td>|[]|</td><td>2.1</td></tr>
+                        <tr><td class="td-strong">Observar o entorno para se situar</td><td>Usuário</td><td>Não se aplica (última da subárvore)</td><td>2.2</td></tr>
+                        <tr><td class="td-strong">Identificar a sala</td><td>Abstrata</td><td>Não se aplica (última tarefa)</td><td>Objetivo 3</td></tr>
+                        <tr><td class="td-strong">Reconhecer a entrada e a identificação da sala</td><td>Usuário</td><td>&gt;&gt;</td><td>3.1</td></tr>
+                        <tr><td class="td-strong">Confirmar que é a sala procurada</td><td>Usuário</td><td>[]</td><td>3.2</td></tr>
+                        <tr><td class="td-strong">Voltar à busca, se não for a sala</td><td>Interativa</td><td>Não se aplica (última da subárvore)</td><td>3.2, com retorno ao objetivo 1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Matheus do Vale Lameira (2026), derivado das Figuras 1 a 14 e das Tabelas 1 e 2; complementa o documento sem alterá-lo.</p>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação de Análise de tarefas, HTA e CTT, a partir do documento Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final, sem alteração do conteúdo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 5 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão dos Quadros 1 a 5, com os planos da HTA, a legenda da CTT e a especificação dos nós, e do texto alternativo detalhado de cada diagrama</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 5 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega5_relato-m-storyboard.html"><span>← Anterior</span>Storyboard: enredo</a>
+                    <a class="next" href="entrega5_relato-m-planejamento-avaliacao.html"><span>Próximo →</span>Planejamento da avaliação do storyboard e da análise de tarefas</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
