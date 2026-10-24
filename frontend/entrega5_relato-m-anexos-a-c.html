@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anexos A a C: termo, questionário e instruções | Entrega 5 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 5 · Relato do Storyboard e da Análise de Tarefas e Planejamento do Protótipo de Papel</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega5.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-felipe.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-f-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-f-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-f-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-f-prototipo-papel.html">Planejamento da avaliação do protótipo de papel e do relato</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-matheus.html">Visão geral e funcionalidades</a></li>
+                                <li><a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a></li>
+                                <li><a href="entrega5_relato-m-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-anexos-a-c.html" class="active" aria-current="page">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega5_relato-m-anexos-d-g.html">Anexos D a G: roteiro, formulário, ficha e cartões</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-victor.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-v-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-v-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-v-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-v-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega5.html">Entrega 5</a> › Relatos e planejamentos individuais</p>
+            <h1 id="m-m7" class="doc-title doc-page-title">Anexos A a C: termo, questionário e instruções</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira, matrícula 202070064 · <strong>Validador:</strong> Matheus do Vale Lameira</p>
+                <p><strong>Funcionalidades:</strong> Simulador de IRA e Street View · <strong>Conteúdo desta página:</strong> Anexos A a C</p>
+                <p><strong>Documento completo em PDF:</strong> <a href="docs/Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final.pdf" download>Baixar Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final.pdf</a></p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega5_relato-planejamento-matheus.html">Visão geral e funcionalidades</a> · <a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a> · <a href="entrega5_relato-m-analise-tarefas.html">Análise de tarefas: HTA e CTT</a> · <a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a> · <a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a> · <a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a> · <a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a> · <a href="entrega5_relato-m-anexos-d-g.html">Anexos D a G: roteiro, formulário, ficha e cartões</a></p>
+            </div>
+
+            <h3 class="doc-subsection" id="m-anexo-a">Anexo A. Termo de consentimento livre e esclarecido</h3>
+            <p class="doc-text">Sou estudante de Engenharia de Software da Universidade de Brasília (Faculdade UnB Gama) e, na disciplina Interação Humano-Computador, participo do projeto do NoFluxoUnB, um sistema web que apoia estudantes da UnB no planejamento do curso. Nesta etapa do projeto, quero saber o que estudantes pensam de duas funcionalidades que ainda estão em desenho: um Simulador de IRA e um Street View para achar e identificar salas. Elas são apresentadas em histórias desenhadas (storyboard) e em passos de tarefa.</p>
+            <p class="doc-text">Solicito o seu consentimento para a realização e a gravação em áudio de uma entrevista. Para decidir, é importante que você conheça as seguintes informações:</p>
+            <ul class="doc-list">
+                <li>O que será feito: você vai ver as histórias e os passos e responder a perguntas. A sessão dura cerca de 45 minutos. Os dados coletados são as suas respostas, as minhas anotações e, se você autorizar, a gravação em áudio. Eles serão analisados para encontrar partes do material que podem ser melhoradas.</li>
+                <li>É o material que está sendo avaliado, e não você. Não existem respostas certas ou erradas.</li>
+                <li>Os dados destinam-se apenas às atividades da disciplina e ao projeto NoFluxoUnB.</li>
+                <li>O seu anonimato será preservado em todos os documentos: no lugar do seu nome será usado um código. Os dados brutos (anotações e áudio) serão acessados apenas pela equipe do projeto e ficarão guardados fora do repositório público.</li>
+                <li>O consentimento é uma escolha livre. A entrevista pode ser interrompida a qualquer momento, e você pode pedir uma pausa ou desistir sem nenhum prejuízo.</li>
+                <li>A gravação em áudio só começa depois da sua autorização abaixo.</li>
+                <li>Este termo é assinado em duas vias: uma fica comigo e a outra com você. Se você tiver menos de 18 anos, o termo deve ser assinado também pelo seu responsável legal.</li>
+            </ul>
+            <p class="doc-text">E-mail para contato: ______________________________________</p>
+            <h4 class="doc-h4" id="m-de-posse-dessas-informacoes-peco-que-voc">De posse dessas informações, peço que você se pronuncie:</h4>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) Dou meu consentimento para a realização da entrevista e para a gravação em áudio.</p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) Dou meu consentimento para a realização da entrevista, mas não para a gravação em áudio.</p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) Não consinto com a realização da entrevista.</p>
+            <p class="doc-text">Local: ______________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data: ____ / ____ / 2026</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Entrevistador</strong></th><th><strong>Participante</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><br><br>______________________________<br>Assinatura</td><td><br><br>______________________________<br>Assinatura</td></tr>
+                        <tr><td class="td-strong">Nome: Matheus do Vale Lameira</td><td>Nome: ______________________________</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="doc-subsection" id="m-anexo-b">Anexo B. Questionário pré-teste</h3>
+            <p class="doc-text">Código do participante: ______ (preenchido por mim). Marque uma opção em cada pergunta. Se preferir não responder, marque “prefiro não responder”. Posso ler as perguntas em voz alta e marcar as suas respostas.</p>
+            <p class="doc-text"><strong>1. Qual é o seu curso?</strong></p>
+            <p class="doc-text">______________________________</p>
+            <p class="doc-text"><strong>2. Em que semestre do curso você está?</strong></p>
+            <p class="doc-text">______</p>
+            <p class="doc-text"><strong>3. Qual é a sua faixa de idade?</strong></p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) 18 a 20 anos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) 21 a 24 anos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) 25 anos ou mais&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) prefiro não responder</p>
+            <p class="doc-text"><strong>4. Com que frequência você usa o celular para assuntos da universidade (horários, histórico, matrícula)?</strong></p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) todo dia<br>(&nbsp;&nbsp;&nbsp;) algumas vezes por semana<br>(&nbsp;&nbsp;&nbsp;) raramente<br>(&nbsp;&nbsp;&nbsp;) nunca<br>(&nbsp;&nbsp;&nbsp;) prefiro não responder</p>
+            <p class="doc-text"><strong>5. Você já usou o NoFluxoUnB?</strong></p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) não&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) não lembro</p>
+            <p class="doc-text"><strong>6. Você já consultou o seu histórico ou o seu IRA no SIGAA?</strong></p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) não&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) não lembro</p>
+            <p class="doc-text"><strong>7. Alguma vez você precisou estimar o seu IRA para decidir o que cursar?</strong></p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) sim, mais de uma vez&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) sim, uma vez&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) não&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) não lembro</p>
+            <p class="doc-text"><strong>8. Há quanto tempo você estuda neste campus?</strong></p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) menos de 1 semestre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) 1 a 2 semestres&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) mais de 2 semestres</p>
+            <p class="doc-text"><strong>9. Quando precisa achar uma sala nova no campus, o que você costuma fazer? (pode marcar mais de uma)</strong></p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) pergunto a alguém<br>(&nbsp;&nbsp;&nbsp;) uso o celular ou um mapa<br>(&nbsp;&nbsp;&nbsp;) procuro placas e indicações<br>(&nbsp;&nbsp;&nbsp;) outro: ______________________</p>
+            <p class="doc-text"><strong>10. Você já usou ferramentas de mapa com imagens do local, como o Street View?</strong></p>
+            <p class="doc-text">(&nbsp;&nbsp;&nbsp;) sim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) não&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;&nbsp;) não lembro</p>
+            <h3 class="doc-subsection" id="m-anexo-c">Anexo C. Instruções e cenários para o participante</h3>
+            <p class="doc-text">Obrigado por participar. Vou mostrar duas histórias desenhadas em seis quadros e alguns cartões com passos de tarefa. Depois de cada parte, vou fazer algumas perguntas.</p>
+            <ul class="doc-list">
+                <li>Leia cada história na ordem dos quadros, no seu ritmo. Eu não vou explicar nada enquanto você lê.</li>
+                <li>Não existem respostas certas ou erradas. O que está sendo avaliado é o material, e não você.</li>
+                <li>Se quiser, pode falar em voz alta o que está pensando enquanto lê. Se preferir, fique em silêncio.</li>
+                <li>Você pode pedir uma pausa ou parar a qualquer momento.</li>
+                <li>Se alguma pergunta não fizer sentido, diga. Isso me ajuda a melhorar o material.</li>
+            </ul>
+            <h4 class="doc-h4" id="m-tarefas">Tarefas</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Parte</strong></th><th><strong>O que você vai fazer</strong></th><th><strong>Tempo estimado</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>1</strong></td><td>Ler a história da Larissa (seis quadros) e responder a perguntas sobre ela.</td><td>10 minutos</td></tr>
+                        <tr><td class="td-strong"><strong>2</strong></td><td>Ler a história do Caio (seis quadros) e responder a perguntas sobre ela.</td><td>10 minutos</td></tr>
+                        <tr><td class="td-strong"><strong>3</strong></td><td>Olhar os cartões de passos de cada história e dizer se correspondem ao que você faria.</td><td>10 minutos</td></tr>
+                        <tr><td class="td-strong"><strong>4</strong></td><td>Conversar comigo sobre como foi a experiência.</td><td>5 minutos</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="doc-h4" id="m-cenarios">Cenários</h4>
+            <p class="doc-text">História 1. Larissa está no 5º semestre e quer saber o efeito das disciplinas do próximo semestre no seu IRA antes de se matricular.</p>
+            <p class="doc-text">História 2. Caio está na primeira semana de aula e precisa achar a sala da primeira aula no campus.</p>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação de Anexos A a C, termo, questionário e instruções, a partir do documento Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final, sem alteração do conteúdo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 5 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega5_relato-m-relato-prototipo.html"><span>← Anterior</span>Planejamento do relato dos resultados do protótipo de papel</a>
+                    <a class="next" href="entrega5_relato-m-anexos-d-g.html"><span>Próximo →</span>Anexos D a G: roteiro, formulário, ficha e cartões</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anexos D a G: roteiro, formulário, ficha e cartões | Entrega 5 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 5 · Relato do Storyboard e da Análise de Tarefas e Planejamento do Protótipo de Papel</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega5.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-felipe.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-f-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-f-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-f-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-f-prototipo-papel.html">Planejamento da avaliação do protótipo de papel e do relato</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-matheus.html">Visão geral e funcionalidades</a></li>
+                                <li><a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a></li>
+                                <li><a href="entrega5_relato-m-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega5_relato-m-anexos-d-g.html" class="active" aria-current="page">Anexos D a G: roteiro, formulário, ficha e cartões</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-victor.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-v-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-v-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-v-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-v-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega5.html">Entrega 5</a> › Relatos e planejamentos individuais</p>
+            <h1 id="m-m8" class="doc-title doc-page-title">Anexos D a G: roteiro, formulário, ficha e cartões</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira, matrícula 202070064 · <strong>Validador:</strong> Matheus do Vale Lameira</p>
+                <p><strong>Funcionalidades:</strong> Simulador de IRA e Street View · <strong>Conteúdo desta página:</strong> Anexos D a G</p>
+                <p><strong>Documento completo em PDF:</strong> <a href="docs/Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final.pdf" download>Baixar Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final.pdf</a></p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega5_relato-planejamento-matheus.html">Visão geral e funcionalidades</a> · <a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a> · <a href="entrega5_relato-m-analise-tarefas.html">Análise de tarefas: HTA e CTT</a> · <a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a> · <a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a> · <a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a> · <a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a> · <a href="entrega5_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></p>
+            </div>
+
+            <h3 class="doc-subsection" id="m-anexo-d">Anexo D. Roteiro da entrevista, para mim</h3>
+            <p class="doc-text">Entrevista semiestruturada com roteiro híbrido: tópicos com perguntas de exemplo e sondagens (Barbosa e Silva, 2010, p. 145 a 148). As perguntas são abertas e neutras; evito perguntas de “sim ou não”, perguntas compostas e termos técnicos (HTA, CTT, operador, plano). Se a resposta for curta, sondo com perguntas adicionais (p. 147). Aguardo a resposta em silêncio por alguns segundos.</p>
+            <h4 class="doc-h4" id="m-estrutura-da-sessao-p-146-e-308-a-310">Estrutura da sessão, p. 146 e 308 a 310</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Minuto</strong></th><th><strong>Etapa</strong></th><th><strong>O que faço</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>−10 a 0</strong></td><td>Preparação</td><td>Testo 30 segundos de gravação nos dois aparelhos, separo o TCLE em duas vias e zero o cronômetro.</td></tr>
+                        <tr><td class="td-strong"><strong>0 a 2</strong></td><td>Acolhida e quebra-gelo</td><td>Recebo o participante, converso sobre o trajeto e digo que o material é avaliado, e não ele.</td></tr>
+                        <tr><td class="td-strong"><strong>2 a 6</strong></td><td>Apresentação e TCLE</td><td>Explico objetivo, duração, procedimento e cuidados éticos; entrego o TCLE em duas vias, já assinadas por mim; pergunto sobre a gravação em campo separado.</td></tr>
+                        <tr><td class="td-strong"><strong>6 a 9</strong></td><td>Questionário pré-teste</td><td>Leio as perguntas do <a href="entrega5_relato-m-anexos-a-c.html#m-anexo-b">Anexo B</a> e marco as respostas, como numa entrevista estruturada.</td></tr>
+                        <tr><td class="td-strong"><strong>9 a 10</strong></td><td>Instruções</td><td>Entrego e leio o <a href="entrega5_relato-m-anexos-a-c.html#m-anexo-c">Anexo C</a>; esclareço dúvidas.</td></tr>
+                        <tr><td class="td-strong"><strong>10 a 20</strong></td><td>Parte 1: Simulador de IRA</td><td>Participante lê a história; faço as perguntas do bloco 1.</td></tr>
+                        <tr><td class="td-strong"><strong>20 a 30</strong></td><td>Parte 2: Street View</td><td>Participante lê a história; faço as perguntas do bloco 2.</td></tr>
+                        <tr><td class="td-strong"><strong>30 a 40</strong></td><td>Parte 3: cartões de passos</td><td>Mostro os cartões do <a href="entrega5_relato-m-anexos-d-g.html#m-anexo-g">Anexo G</a>; faço as perguntas do bloco 3.</td></tr>
+                        <tr><td class="td-strong"><strong>40 a 45</strong></td><td>Entrevista pós-teste</td><td>Faço as perguntas do bloco 4.</td></tr>
+                        <tr><td class="td-strong"><strong>45 a 47</strong></td><td>Encerramento</td><td>Agradeço, explico o destino dos dados, desligo o gravador e guardo as anotações.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="doc-h4" id="m-bloco-1">Bloco 1. Storyboard do Simulador de IRA, Larissa</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Tópico</strong></th><th><strong>Pergunta de exemplo</strong></th><th><strong>Sondagem</strong></th><th><strong>ID</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Compreensão da história</strong></td><td>Conte com suas palavras o que acontece nesta história.</td><td>O que o levou a pensar isso neste quadro?</td><td>M-QS01</td></tr>
+                        <tr><td class="td-strong"><strong>Situação inicial</strong></td><td>Como essa situação dos primeiros quadros se compara com o que você faz, ou já fez, ao planejar um semestre?</td><td>O que você faz hoje para saber o efeito de uma disciplina no seu IRA?</td><td>M-QS02</td></tr>
+                        <tr><td class="td-strong"><strong>O que o sistema faz</strong></td><td>O que o sistema faz com as informações que a personagem fornece?</td><td>O que acontece depois que ela escolhe as menções?</td><td>M-QS03</td></tr>
+                        <tr><td class="td-strong"><strong>Origem do número</strong></td><td>De onde você acha que vem o número que aparece no resultado?</td><td>Depois, em outra pergunta: O quanto você confiaria nele?</td><td>M-QS04</td></tr>
+                        <tr><td class="td-strong"><strong>Uso</strong></td><td>Como seria, para você, usar isso ao planejar o semestre?</td><td>Depois, em outra pergunta: O que você mudaria?</td><td>M-QS06</td></tr>
+                        <tr><td class="td-strong"><strong>Melhorias</strong></td><td>O que você mudaria nesta história?</td><td>Alguma parte ficou menos clara para você?</td><td>M-QS07</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="doc-h4" id="m-bloco-2">Bloco 2. Storyboard do Street View, Caio</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Tópico</strong></th><th><strong>Pergunta de exemplo</strong></th><th><strong>Sondagem</strong></th><th><strong>ID</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Compreensão da história</strong></td><td>Conte com suas palavras o que acontece nesta história.</td><td>O que o levou a pensar isso neste quadro?</td><td>M-QS01</td></tr>
+                        <tr><td class="td-strong"><strong>Situação inicial</strong></td><td>Como você faz hoje para achar uma sala nova no campus?</td><td>O que acontece quando você não acha?</td><td>M-QS02</td></tr>
+                        <tr><td class="td-strong"><strong>O que o sistema faz</strong></td><td>O que o sistema faz com a sala que o personagem informa?</td><td>O que aparece depois que ele informa a sala?</td><td>M-QS03</td></tr>
+                        <tr><td class="td-strong"><strong>Street View</strong></td><td>O que o Street View mostra e para que serve nesta história?</td><td>Como você explicaria isso para um colega?</td><td>M-QS05</td></tr>
+                        <tr><td class="td-strong"><strong>Uso</strong></td><td>Como seria, para você, usar isso para achar uma sala?</td><td>Depois, em outra pergunta: O que você mudaria?</td><td>M-QS06</td></tr>
+                        <tr><td class="td-strong"><strong>Melhorias</strong></td><td>O que você mudaria nesta história?</td><td>Alguma parte ficou menos clara para você?</td><td>M-QS07</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="doc-h4" id="m-bloco-3">Bloco 3. Cartões de passos, Anexo G</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Tópico</strong></th><th><strong>Pergunta de exemplo</strong></th><th><strong>Sondagem</strong></th><th><strong>ID</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Sequência (Simulador)</strong></td><td>Para estimar o IRA do próximo semestre, o que você faria primeiro, depois e por último? Como isso se compara com o cartão?</td><td>Algum passo do cartão você faria em outra ordem?</td><td>M-QT01</td></tr>
+                        <tr><td class="td-strong"><strong>Menções</strong></td><td>Que informação você usaria para decidir a menção que espera em cada disciplina?</td><td>O que você pensaria sobre trancar uma disciplina?</td><td>M-QT02</td></tr>
+                        <tr><td class="td-strong"><strong>Cálculo</strong></td><td>Como você faria hoje para chegar ao IRA do próximo semestre?</td><td>O que você usaria para fazer essa conta?</td><td>M-QT03</td></tr>
+                        <tr><td class="td-strong"><strong>Decisão</strong></td><td>Depois de ver o resultado, o que você faria antes de decidir o semestre?</td><td>O que você faria se quisesse testar outra possibilidade?</td><td>M-QT04</td></tr>
+                        <tr><td class="td-strong"><strong>Palavras</strong></td><td>Quais palavras deste cartão você usaria de outro jeito?</td><td>Como você chamaria este passo?</td><td>M-QT05</td></tr>
+                        <tr><td class="td-strong"><strong>Quem faz cada passo</strong></td><td>Neste cartão, quem faz cada passo: você, o sistema ou os dois?</td><td>Algum passo deveria ser de outra pessoa?</td><td>M-QT06</td></tr>
+                        <tr><td class="td-strong"><strong>Quantidade de passos</strong></td><td>O que você acha da quantidade de passos?</td><td>Que passos parecem mais difíceis, se algum?</td><td>M-QT07</td></tr>
+                        <tr><td class="td-strong"><strong>Sequência (Street View)</strong></td><td>Para achar uma sala no campus, que passos você faria?</td><td>O que você faria depois de ver onde a sala fica?</td><td>SV-QT1</td></tr>
+                        <tr><td class="td-strong"><strong>Identificação</strong></td><td>Como você saberia que chegou à sala certa?</td><td>O que você olharia na porta ou na entrada?</td><td>SV-QT2</td></tr>
+                        <tr><td class="td-strong"><strong>Passos do Street View</strong></td><td>Que passo você tiraria ou acrescentaria neste cartão?</td><td>Algum passo parece desnecessário?</td><td>SV-QT3</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="doc-h4" id="m-bloco-4">Bloco 4. Entrevista pós-teste, p. 310</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Tópico</strong></th><th><strong>Pergunta de exemplo</strong></th><th><strong>Sondagem</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Experiência</strong></td><td>Como foi para você ver estas histórias e estes passos?</td><td>O que você sentiu em algum momento?</td></tr>
+                        <tr><td class="td-strong"><strong>Pontos fortes e fracos</strong></td><td>O que você mais gostou? E o que menos gostou?</td><td>Houve algum momento em que você não soube o que vinha em seguida?</td></tr>
+                        <tr><td class="td-strong"><strong>Sugestões</strong></td><td>O que você sugeriria para melhorar?</td><td>Qual mudança faria mais diferença para você?</td></tr>
+                        <tr><td class="td-strong"><strong>Fecho</strong></td><td>Quer acrescentar algo que eu não perguntei?</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="doc-subsection" id="m-anexo-e">Anexo E. Formulário de acompanhamento da observação</h3>
+            <p class="doc-text">Participante (código): P01&nbsp;&nbsp;&nbsp;Data: 23 / 10 / 2026&nbsp;&nbsp;&nbsp;Início: 14:17&nbsp;&nbsp;&nbsp;Término: ____:____&nbsp;&nbsp;&nbsp;Piloto (&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;Sessão (X)</p>
+            <p class="doc-text">Registro falas espontâneas, se o participante entendeu sem ajuda, se precisei ajudar, dúvidas e comentários, e o minuto da gravação (p. 306).</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Item</strong></th><th><strong>Falas espontâneas</strong></th><th><strong>Entendeu? (S, P, N)</strong></th><th><strong>Ajuda dada</strong></th><th><strong>Dúvidas e comentários</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Simulador: quadro 1</strong></td><td>Indagação</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Simulador: quadro 2</strong></td><td>Preocupação</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Simulador: quadro 3</strong></td><td>Encontrou a solução</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Simulador: quadro 4</strong></td><td>Sem fala</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Simulador: quadro 5</strong></td><td>Como que vai reduzir os danos</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Simulador: quadro 6</strong></td><td>Agradecimento</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Simulador: perguntas M-QS01 a M-QS07</strong></td><td>“cálculos muito doidos que a UnB faz”; “ajudaria demais”; “o desconhecimento dela deveria ser mais divulgado”</td><td>P (M-QS04)</td><td>Expliquei o enredo antes das perguntas</td><td>Não sabe se o sistema calcula o IRA; M-QS04 (confiança) não perguntada</td></tr>
+                        <tr><td class="td-strong"><strong>Street View: quadro 1</strong></td><td>Preocupação, ansiedade e angústia: será que vai achar a sala?</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Street View: quadro 2</strong></td><td>Frustração: as portas são muito parecidas ou difíceis de encontrar</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Street View: quadro 3</strong></td><td>É mobile?</td><td>S</td><td>Expliquei mais a fundo sobre o software</td><td>Perguntou se a interface é exatamente assim como no storyboard</td></tr>
+                        <tr><td class="td-strong"><strong>Street View: quadro 4</strong></td><td>Felicidade e alegria por existir um auxílio para chegar</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Street View: quadro 5</strong></td><td>Sem comentários</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Street View: quadro 6</strong></td><td>Gratidão</td><td>S</td><td>N</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>Street View: perguntas M-QS01 a M-QS07</strong></td><td>Facilitaria a vida de todos os ingressantes; “importantíssimo”</td><td>S</td><td>v</td><td>Fiz uma dinâmica de perguntas rápidas para evitar cansaço</td></tr>
+                        <tr><td class="td-strong"><strong>Cartão de passos do Simulador (M-QT)</strong></td><td>Respondeu M-QT01 e M-QT02 sobre os quadros; “nunca parei para pensar nisso” (menção)</td><td>S</td><td>Reformulei M-QT02</td><td>Perguntas feitas antes do cartão 1</td></tr>
+                        <tr><td class="td-strong"><strong>Cartão de passos do Street View (SV-QT)</strong></td><td>Descreveu como acha salas hoje: tenta sozinho, pergunta às pessoas ao redor e procura um segurança; “eu acho que nada, está bem” sobre o cartão</td><td>S</td><td>N</td><td>Descreveu o caminho de hoje antes de comparar com o cartão</td></tr>
+                        <tr><td class="td-strong"><strong>Entrevista pós-teste</strong></td><td>“Eu achei tudo muito bom”; “colocar o bloco, campus”; “branco em cima de branco”; “parece uma fita de DNA”</td><td>S</td><td>N</td><td>Sugestões sobre o Street View: campus e bloco, cor, logotipo e busca pela matéria</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="doc-text"><em>S = entendeu sem ajuda; P = entendeu em parte; N = não entendeu.</em></p>
+            <h3 class="doc-subsection" id="m-anexo-f">Anexo F. Ficha de calibração do teste-piloto</h3>
+            <p class="doc-text">Preencho a ficha logo após o piloto. O piloto avalia o meu planejamento: linguagem e materiais, equipamentos, tempo e se os dados respondem às perguntas (p. 307).</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>ID</strong></th><th><strong>Item verificado</strong></th><th><strong>Critério de aprovação</strong></th><th><strong>Resultado</strong></th><th><strong>Ação</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>C01</strong></td><td>Duração da sessão</td><td>Entre 45 e 50 minutos, sem passar de 1 hora</td><td>Não medida</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>C02</strong></td><td>Clareza do TCLE e das instruções</td><td>O participante diz com as próprias palavras o que vai acontecer e que pode desistir</td><td>Medido</td><td>Oratória</td></tr>
+                        <tr><td class="td-strong"><strong>C03</strong></td><td>Legibilidade dos quadros</td><td>O participante percorre os quadros e conta a história sem explicação</td><td>Medido</td><td>Visualização</td></tr>
+                        <tr><td class="td-strong"><strong>C04</strong></td><td>Compreensão das perguntas</td><td>Pelo menos 80% das perguntas entendidas na primeira leitura</td><td>Medido</td><td>Leitura</td></tr>
+                        <tr><td class="td-strong"><strong>C05</strong></td><td>Neutralidade</td><td>Nenhuma pergunta induzida, conferida na gravação</td><td>Conferido: nenhuma pergunta induzida</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>C06</strong></td><td>Cartões de passos</td><td>O participante entende os cartões sem os termos HTA e CTT</td><td>Conferido: cartões HTA e CTT</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>C07</strong></td><td>Dados respondem às perguntas</td><td>Cada pergunta gerou ao menos uma resposta interpretável</td><td>Sim</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>C08</strong></td><td>Gravação e autorização</td><td>Áudio compreensível; autorização registrada antes de ligar o gravador</td><td>Áudio do celular ok; áudio da câmera estranho</td><td>Usar o áudio do celular como registro principal</td></tr>
+                        <tr><td class="td-strong"><strong>C09</strong></td><td>Formulário de observação</td><td>Preenchi sem pedir pausa e sem perder trechos</td><td>Sim</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>C10</strong></td><td>Questionário pré-teste</td><td>O participante respondeu sem dúvidas e sem constrangimento</td><td>Algumas dúvidas</td><td>Explicadas na sessão</td></tr>
+                        <tr><td class="td-strong"><strong>C11</strong></td><td>Armazenamento</td><td>Arquivos com o código PILOTO em pasta privada</td><td>Pasta privada</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="doc-text">Decisão: ( x ) aprovado&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;) ajustar e seguir&nbsp;&nbsp;&nbsp;(&nbsp;&nbsp;) repetir o piloto.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Os dados do piloto são descartados (p. 307).</p>
+            <h3 class="doc-subsection" id="m-anexo-g">Anexo G. Cartões de passos para o participante</h3>
+            <p class="doc-text">Estes cartões mostram, em linguagem simples, os passos que imaginei para cada história. Eles vêm da HTA e da CTT da seção <a href="entrega5_relato-m-analise-tarefas.html#m-s3">3</a>.</p>
+            <h4 class="doc-h4" id="m-cartao-1">Cartão 1. Estimar o IRA do próximo semestre</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Passo</strong></th><th><strong>O que a pessoa faz ou o que o sistema faz</strong></th><th><strong>Quem faz</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>1</strong></td><td>Conhecer o IRA e os créditos atuais: abrir o Simulador de IRA e ler o IRA atual e os créditos</td><td>Você e o sistema</td></tr>
+                        <tr><td class="td-strong"><strong>2</strong></td><td>Definir as menções esperadas: escolher um cenário pronto ou informar a menção de cada disciplina; marcar uma disciplina a trancar, se for o caso</td><td>Você</td></tr>
+                        <tr><td class="td-strong"><strong>3</strong></td><td>Obter o IRA projetado: pedir a simulação, ler o resultado e a fórmula e, se tiver dúvida, pedir à Darcy que explique</td><td>Você e o sistema</td></tr>
+                        <tr><td class="td-strong"><strong>4</strong></td><td>Decidir o plano do semestre: comparar os cenários e ajustar a grade; o sistema recalcula o IRA</td><td>Você e o sistema</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 class="doc-h4" id="m-cartao-2">Cartão 2. Achar e identificar a sala da aula</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong>Passo</strong></th><th><strong>O que a pessoa faz ou o que o sistema faz</strong></th><th><strong>Quem faz</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>1</strong></td><td>Localizar a sala procurada: abrir o Street View, informar a sala e ver onde ela fica</td><td>Você e o sistema</td></tr>
+                        <tr><td class="td-strong"><strong>2</strong></td><td>Reconhecer o caminho até a sala: percorrer o trajeto no Street View e observar o entorno</td><td>Você e o sistema</td></tr>
+                        <tr><td class="td-strong"><strong>3</strong></td><td>Identificar a sala: reconhecer a entrada e a identificação da sala e confirmar que é a sala procurada; se não for, voltar ao passo 1</td><td>Você</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação de Anexos D a G, roteiro, formulário, ficha e cartões, a partir do documento Grupo2MatheusdoValeEtapa5SimuladorIRAStreetView_Final, sem alteração do conteúdo</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 5 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Atualização das falas do Street View no formulário de acompanhamento com a transcrição completa da sessão com o P01</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 5 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega5_relato-m-anexos-a-c.html"><span>← Anterior</span>Anexos A a C: termo, questionário e instruções</a>
+                    <a class="next" href="entrega5_relato-planejamento-victor.html"><span>Próximo →</span>Victor Andreozzi: Visão geral</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

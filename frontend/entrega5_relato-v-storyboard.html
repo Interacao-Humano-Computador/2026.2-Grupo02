@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relato dos resultados da avaliação do storyboard | Entrega 5 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 5 · Relato do Storyboard e da Análise de Tarefas e Planejamento do Protótipo de Papel</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega5.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-felipe.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-f-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-f-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-f-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-f-prototipo-papel.html">Planejamento da avaliação do protótipo de papel e do relato</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-matheus.html">Visão geral e funcionalidades</a></li>
+                                <li><a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a></li>
+                                <li><a href="entrega5_relato-m-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega5_relato-m-anexos-d-g.html">Anexos D a G: roteiro, formulário, ficha e cartões</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-victor.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-v-storyboard.html" class="active" aria-current="page">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-v-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-v-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-v-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega5.html">Entrega 5</a> › Relatos e planejamentos individuais</p>
+            <h1 id="v-relato-storyboard" class="doc-title doc-page-title">Relato dos resultados da avaliação do storyboard</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto, matrícula 221029285 · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidade:</strong> Avaliação de Disciplinas · <strong>Conteúdo desta página:</strong> relato dos resultados da avaliação do storyboard · Tabelas 3 a 6 · Figura 2</p>
+                <p><strong>Vídeo da entrevista com usuário:</strong> <a href="https://youtu.be/mDZLnSCCeec" target="_blank" rel="noopener">https://youtu.be/mDZLnSCCeec</a></p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega5_relato-planejamento-victor.html">Visão geral, funcionalidade e storyboard</a> · <a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a> · <a href="entrega5_relato-v-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a> · <a href="entrega5_relato-v-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a> · <a href="entrega5_relato-v-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></p>
+            </div>
+            <p class="doc-text">O relato segue a estrutura recomendada por Barbosa e Silva (2010) e o planejamento do relato do autor. A sessão de avaliação foi gravada em vídeo: <a href="https://youtu.be/mDZLnSCCeec" target="_blank" rel="noopener">https://youtu.be/mDZLnSCCeec</a>.</p>
+
+            <h3 class="doc-subsection" id="v-rs-objetivo">1. Objetivo e escopo da avaliação</h3>
+            <p class="doc-text">Verificar se a narrativa do Storyboard da Avaliação de Disciplinas é verossímil para estudantes da UnB, se o objetivo da história (consultar avaliações para montar a grade e, depois, avaliar a disciplina para ajudar outros alunos) é compreendido e se a proposta de valor é percebida, identificando ambiguidades antes da prototipação das telas.</p>
+            <p class="doc-text">Escopo: os seis quadros do Storyboard (Figura 2; a descrição de cada quadro está na <a href="entrega5_relato-planejamento-victor.html#v-storyboard">Tabela 2</a>), que mostram um aluno que, depois de um semestre difícil, lembra do No Fluxo UnB, avalia as disciplinas que cursou e fica aliviado por ajudar os próximos alunos a não montarem uma grade só com disciplinas difíceis.</p>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 2: Storyboard avaliado</figcaption>
+                <img src="img/entrega5/v-storyboard-avaliacao-disciplina.jpg" alt="Storyboard desenhado à mão em seis quadros sobre a Avaliação de Disciplinas no No Fluxo UnB" loading="lazy" width="1100" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            </figure>
+
+            <h3 class="doc-subsection" id="v-rs-metodologia">2. Metodologia utilizada</h3>
+            <p class="doc-text">Entrevista estruturada com inspeção conjunta do Storyboard. O Storyboard impresso foi entregue ao participante, que leu os quadros e descreveu o que entendia de cada um e do contexto geral (leitura comentada, na linha do pensar em voz alta). Em seguida, o avaliador fez perguntas abertas sobre o <strong>realismo</strong> da situação, a <strong>clareza do objetivo</strong> da história e, indiretamente, a <strong>utilidade</strong> percebida. A Tabela 3 registra a sessão.</p>
+            <p class="doc-text">Além das perguntas abertas, o participante preencheu em papel uma tabela com notas de 1 a 5 (escala Likert: 1 = discordo totalmente, 5 = concordo totalmente) para Realismo, Clareza e Utilidade. As notas estão na Tabela 5, ao lado das respostas abertas.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 3: Ficha da sessão de avaliação</caption>
+                    <thead><tr><th>Sessão</th><th>Data e horário</th><th>Local</th><th>Duração</th><th>Avaliador</th><th>Participante</th><th>Registro</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>S1</strong></td><td>23/10/2026, 9h50</td><td>UnB, Campus Gama (presencial)</td><td>8 min 23 s</td><td>Victor Andreozzi (avaliador único)</td><td>P1</td><td><a href="https://youtu.be/mDZLnSCCeec" target="_blank" rel="noopener">Gravação em vídeo</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+
+            <h3 class="doc-subsection" id="v-rs-participantes">3. Perfil dos participantes</h3>
+            <p class="doc-text">Foi entrevistado um estudante da UnB, identificado pelo código P1 para preservar o anonimato. O próprio autor conduziu a sessão como avaliador único, acumulando os papéis de moderador, entrevistador e anotador.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 4: Perfil do participante</caption>
+                    <thead><tr><th>Código</th><th>Curso</th><th>Semestre</th><th>Idade</th><th>Perfil</th><th>Uso do No Fluxo UnB</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>P1</strong></td><td>Engenharia de Energia</td><td>15º semestre</td><td>25 anos</td><td>Aluno atrasado no fluxo</td><td>Nunca utilizou a plataforma</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+
+            <h3 class="doc-subsection" id="v-rs-resultados">4. Sumário dos resultados e achados</h3>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 5: Resultados por critério</caption>
+                    <thead><tr><th>Critério</th><th>Pergunta feita</th><th>Resposta do participante</th><th>Nota (1 a 5)</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Realismo</strong></td><td>A situação descrita reflete uma situação real e cotidiana de uso da plataforma?</td><td>Sim, “com certeza”. Considera a dificuldade de montar a grade um problema enfrentado pela maioria dos estudantes e uma situação normal no cotidiano do aluno.</td><td>5</td></tr>
+                        <tr><td><strong>Clareza</strong></td><td>O objetivo (o aluno avaliar a disciplina ) está claro na história?</td><td>Sim. Identificou que, no final, o aluno usa a plataforma para que outros não montem a grade de forma muito difícil, ou seja, para ajudar outros alunos.</td><td>4</td></tr>
+                        <tr><td><strong>Utilidade</strong></td><td>Sem pergunta específica; percebida na leitura espontânea.</td><td>Descreveu a plataforma como algo que “avalia as matérias” e ajuda o aluno a decidir a grade do semestre, “facilitando muito a vida do estudante”.</td><td>4</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <ul class="doc-list">
+                <li><strong>Nível de aceitação da narrativa e utilidade percebida:</strong> alto. O participante entendeu a história sem ajuda do avaliador: o aluno está em dúvida sobre quais disciplinas cursar por causa da dificuldade, usa o No Fluxo UnB e consegue decidir a grade.</li>
+                <li><strong>Aspectos positivos identificados:</strong> realismo do problema (montar a grade), clareza do objetivo colaborativo da avaliação e reconhecimento do valor da plataforma por um aluno atrasado no fluxo, perfil que mais sofre com a escolha de disciplinas.</li>
+                <li><strong>Problemas e ambiguidades por relevância:</strong> o participante não relatou problemas. A análise da sessão, porém, aponta três pontos que o storyboard não comunica bem (Tabela 6).</li>
+                <li><strong>Limitações:</strong> um único participante e um único avaliador, sem triangulação; comentários sobre o storyboard como um todo, e não quadro a quadro. Os resultados são indicativos, não generalizáveis.</li>
+            </ul>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 6: Problemas identificados na avaliação do storyboard</caption>
+                    <thead><tr><th>ID</th><th>Quadro</th><th>Descrição e justificativa</th><th>Severidade</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong style="white-space:nowrap">A-01</strong></td><td>Quadro 5</td><td>A tela de avaliação não indica que a avaliação é anônima. Ao descrever a história e o objetivo, o participante não mencionou o anonimato em nenhum momento, o que indica que a garantia não é percebida. Sem ela, o estudante pode ter receio de retaliação acadêmica ao avaliar disciplinas e professores.</td><td>2 (Grande)</td></tr>
+                        <tr><td><strong style="white-space:nowrap">A-02</strong></td><td>Quadros 4 e 5</td><td>O ato de avaliar é menos saliente que a consulta. Na leitura espontânea, o participante descreveu a plataforma como algo que “avalia as matérias” e ajuda a decidir a grade, sem citar que o personagem registra a própria avaliação; só identificou isso quando perguntado sobre o objetivo, apontando que aparece “no final”.</td><td>1 (Leve)</td></tr>
+                        <tr><td><strong style="white-space:nowrap">A-03</strong></td><td>Quadro 5</td><td>A avaliação mostrada se limita a “muito difícil” por disciplina. O quadro não representa a nota de cobrança do professor nem o comentário anônimo, que fazem parte da funcionalidade e da HTA, e o participante não comentou essas dimensões.</td><td>1 (Leve)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026). Severidade conforme Barbosa e Silva (2010), escala de 0 a 3: 0 Cosmético, 1 Leve, 2 Grande, 3 Catastrófico.</p>
+
+            <h3 class="doc-subsection" id="v-rs-etica">5. Aspectos éticos e termos de consentimento</h3>
+            <p class="doc-text">O TCLE não pôde ser impresso: foi apresentado ao participante em meio digital, lido por ele e aceito verbalmente na gravação. O avaliador explicou a finalidade do estudo (avaliação da plataforma No Fluxo UnB, com uso exclusivamente acadêmico dos dados), garantiu o anonimato, declarando que não usaria a imagem nem o nome do participante, e informou ao final que ele poderia desistir da participação a qualquer momento.</p>
+            <p class="doc-text">A gravação está publicada no YouTube como vídeo não listado, acessível apenas a quem tem o link.</p>
+
+            <h3 class="doc-subsection" id="v-rs-redesenho">6. Sugestões de redesenho e recomendações</h3>
+            <ul class="doc-list">
+                <li><strong>A-01 (Quadro 5):</strong> incluir na tela do No Fluxo um selo ou aviso “avaliação anônima”. Levar a mesma garantia para o protótipo de papel, no cabeçalho do formulário de avaliação.</li>
+                <li><strong>A-02 (Quadros 4 e 5):</strong> mostrar o personagem diante do formulário de avaliação, escolhendo as notas, para que o ciclo consultar → avaliar fique evidente; no Quadro 6, mostrar também a tela em que ele consulta as avaliações de outros alunos.</li>
+                <li><strong>A-03 (Quadro 5):</strong> representar as três dimensões da avaliação: nível de dificuldade, nível de cobrança do professor (escala de 1 a 5) e comentário anônimo.</li>
+                <li><strong>Para o protótipo de papel:</strong> testar com estudantes atrasados no fluxo, que reconheceram o valor da funcionalidade, repetindo a tabela de notas de 1 a 5 para comparar os resultados.</li>
+            </ul>
+
+            <h3 class="doc-subsection" id="v-rs-ia">7. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada para estruturar a página no padrão da Entrega 5 e extrair os dados da transcrição automática da entrevista gravada. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Victor Andreozzi de La Rocque Couto, e a validação pelo grupo está pendente.</p>
+
+            <h3 class="doc-subsection" id="v-rs-referencias">8. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier / Campus, 2010.</li>
+                <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: Além da Interação Homem-Computador</em>. Porto Alegre: Bookman, 2005.</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Criação da estrutura inicial do relato dos resultados da avaliação do storyboard</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): criação da estrutura inicial da página no padrão da Entrega 5; o conteúdo será do autor</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Preenchimento com os dados da entrevista (sessão S1, participante P1) e registro dos problemas A-01 a A-03, com base nos seis quadros do storyboard (Figura 2)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): preenchimento a partir da transcrição automática da entrevista e dos documentos do autor; revisão e resultados finais são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega5_relato-planejamento-victor.html"><span>← Anterior</span>Visão geral, funcionalidade e storyboard</a>
+                    <a class="next" href="entrega5_relato-v-analise-tarefas.html"><span>Próximo →</span>Análise de tarefas: HTA e CTT</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

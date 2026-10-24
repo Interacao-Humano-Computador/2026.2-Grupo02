@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relato dos resultados da avaliação da análise de tarefas | Entrega 5 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 5 · Relato do Storyboard e da Análise de Tarefas e Planejamento do Protótipo de Papel</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega5.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-felipe.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-f-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-f-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-f-tarefas.html">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-f-prototipo-papel.html">Planejamento da avaliação do protótipo de papel e do relato</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-matheus.html">Visão geral e funcionalidades</a></li>
+                                <li><a href="entrega5_relato-m-storyboard.html">Storyboard: enredo</a></li>
+                                <li><a href="entrega5_relato-m-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-m-planejamento-avaliacao.html">Planejamento da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-resultados.html">Relato dos resultados da avaliação do storyboard e da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-m-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega5_relato-m-anexos-d-g.html">Anexos D a G: roteiro, formulário, ficha e cartões</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega5_relato-planejamento-victor.html">Visão geral, funcionalidade e storyboard</a></li>
+                                <li><a href="entrega5_relato-v-storyboard.html">Relato dos resultados da avaliação do storyboard</a></li>
+                                <li><a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a></li>
+                                <li><a href="entrega5_relato-v-tarefas.html" class="active" aria-current="page">Relato dos resultados da avaliação da análise de tarefas</a></li>
+                                <li><a href="entrega5_relato-v-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega5_relato-v-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega5.html">Entrega 5</a> › Relatos e planejamentos individuais</p>
+            <h1 id="v-relato-tarefas" class="doc-title doc-page-title">Relato dos resultados da avaliação da análise de tarefas</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto, matrícula 221029285 · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidade:</strong> Avaliação de Disciplinas · <strong>Conteúdo desta página:</strong> relato dos resultados da avaliação da análise de tarefas · Tabelas 9 a 11</p>
+                <p><strong>Vídeo da entrevista com usuário:</strong> <a href="https://youtu.be/mDZLnSCCeec" target="_blank" rel="noopener">https://youtu.be/mDZLnSCCeec</a></p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega5_relato-planejamento-victor.html">Visão geral, funcionalidade e storyboard</a> · <a href="entrega5_relato-v-storyboard.html">Relato dos resultados da avaliação do storyboard</a> · <a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a> · <a href="entrega5_relato-v-prototipo-papel.html">Planejamento da avaliação do protótipo de papel</a> · <a href="entrega5_relato-v-relato-prototipo.html">Planejamento do relato dos resultados do protótipo de papel</a></p>
+            </div>
+            <p class="doc-text">A HTA e a CTT avaliadas estão em <a href="entrega5_relato-v-analise-tarefas.html">Análise de tarefas: HTA e CTT</a>. A sessão com o participante foi gravada em vídeo: <a href="https://youtu.be/mDZLnSCCeec" target="_blank" rel="noopener">https://youtu.be/mDZLnSCCeec</a>.</p>
+
+            <h3 class="doc-subsection" id="v-rt-proposito">1. Introdução e propósito</h3>
+            <p class="doc-text">Validar se a hierarquia de tarefas da Avaliação de Disciplinas corresponde ao modelo mental dos estudantes, se a sequência dos planos respeita a ordem em que o aluno age, se há etapas ausentes, rotas de cancelamento e recuperação de erro, e se as relações temporais da CTT (concorrência e interrupção) estão corretas, antes da prototipação.</p>
+
+            <h3 class="doc-subsection" id="v-rt-metodologia">2. Metodologia e procedimentos</h3>
+            <ul class="doc-list">
+                <li><strong>Percurso Cognitivo</strong> (Polson et al., 1992) sobre as operações da HTA, conduzido pelo autor com as quatro perguntas: Q1, o usuário saberá o que fazer? Q2, notará que a ação está disponível? Q3, associará a ação ao efeito desejado? Q4, verá o progresso em direção à meta?</li>
+                <li><strong>Verificação da CTT</strong> pelo autor: categoria de cada nó, consistência dos operadores temporais e escopo da desativação no cancelamento.</li>
+                <li><strong>Checagem com o usuário</strong> (<em>member checking</em>) na mesma sessão da avaliação do storyboard, em 23/10/2026, às 9h50, na UnB Campus Gama. A HTA (com os planos) e a CTT (com a legenda dos operadores) foram mostradas ao participante no celular, porque não puderam ser impressas, e ele respondeu se a ordem das tarefas estava correta, se algum ponto (filtros de busca, cancelamento) traria dificuldade e se o diagrama CTT era compreensível.</li>
+            </ul>
+            <p class="doc-text">O planejamento previa de 3 a 5 estudantes e 2 especialistas em IHC; a avaliação foi feita com 1 estudante e 1 avaliador.</p>
+
+            <h3 class="doc-subsection" id="v-rt-avaliadores">3. Avaliadores e participantes</h3>
+            <p class="doc-text"><strong>Avaliador:</strong> Victor Andreozzi de La Rocque Couto, autor do artefato, avaliador único: conduziu o Percurso Cognitivo, a verificação da CTT e a sessão de checagem.</p>
+            <p class="doc-text"><strong>Participante:</strong> P1, estudante de Engenharia de Energia no 15º semestre, aluno atrasado no fluxo, que nunca usou o No Fluxo UnB (perfil completo na <a href="entrega5_relato-v-storyboard.html#v-rs-participantes">Tabela 4</a>).</p>
+
+            <h3 class="doc-subsection" id="v-rt-problemas">4. Problemas de tarefas identificados</h3>
+            <p class="doc-text"><strong>Checagem com o participante.</strong> P1 confirmou a ordem das tarefas da HTA: “não tem como você avaliar sem antes localizar a disciplina”, e por isso considerou o fluxo de uso correto. Não viu dificuldade nos filtros de busca nem no cancelamento de uma ação no meio do processo, e achou a CTT clara, com as legendas no próprio diagrama ajudando a entender o que acontece ao mesmo tempo e para onde vai a informação. Ressalvou, porém, que “talvez essa dúvida aconteça na hora da prática”, o que reforça os problemas de busca e cancelamento encontrados no Percurso Cognitivo.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 9: Percurso Cognitivo sobre as operações da HTA</caption>
+                    <thead><tr><th>Operação</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Problema identificado</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1.2</strong> Buscar disciplina</td><td>Não</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Faltam filtros por departamento ou docente.</td></tr>
+                        <tr><td><strong>2.1</strong> Preencher formulário</td><td>Sim</td><td>Não</td><td>Sim</td><td>Sim</td><td>O botão de confirmar fica fora da área visível.</td></tr>
+                        <tr><td><strong>2.3</strong> Digitar comentário</td><td>Sim</td><td>Sim</td><td>Não</td><td>Sim</td><td>A mensagem de limite de caracteres é vaga.</td></tr>
+                        <tr><td><strong>Plano 2</strong> Envio e confirmação</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Não</td><td>Não há rota descrita para descartar o rascunho.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 10: Problemas de tarefas identificados</caption>
+                    <thead><tr><th>ID</th><th>Localização</th><th>Descrição e justificativa</th><th>Severidade</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong style="white-space:nowrap">B-01</strong></td><td>HTA, Plano 2 / CTT, Cancelar / Sair</td><td>O Plano 0 prevê o descarte, mas o Plano 2 (preenchimento e envio) não descreve a rota para descartar o rascunho (Q4 = Não), e na CTT a desativação <span class="ctt-op">[&gt;</span> está ligada só a Preencher Avaliação, e não à tarefa inteira. O usuário pode perder ou deixar comentários sem saber como sair.</td><td>3 (Catastrófico)</td></tr>
+                        <tr><td><strong style="white-space:nowrap">B-02</strong></td><td>HTA, 2.1 e 3.2 Submeter</td><td>O botão de confirmar pode ficar fora da área visível e sem indicação de processamento (Q2 = Não), causando rolagem excessiva e dúvida sobre o envio.</td><td>2 (Grande)</td></tr>
+                        <tr><td><strong style="white-space:nowrap">B-03</strong></td><td>CTT, Consultar Relatórios</td><td>A habilitação <span class="ctt-op">[]&gt;&gt;</span> obriga a terminar a consulta antes de preencher, impedindo ler os relatórios enquanto se atribui a nota e exigindo memorização.</td><td>2 (Grande)</td></tr>
+                        <tr><td><strong style="white-space:nowrap">B-04</strong></td><td>HTA, 0 e 3.1</td><td>A garantia de anonimato aparece apenas na revisão final (3.1). O participante também não percebeu o anonimato no storyboard (problema A-01).</td><td>2 (Grande)</td></tr>
+                        <tr><td><strong style="white-space:nowrap">B-05</strong></td><td>HTA, 1.2 e 1.3 Busca</td><td>Sem filtros por departamento ou docente, a lista de disciplinas fica extensa (Q1 = Não). O participante ressalvou que dúvidas na busca podem surgir na prática.</td><td>1 (Leve)</td></tr>
+                        <tr><td><strong style="white-space:nowrap">B-06</strong></td><td>HTA, 2.1 e 2.2 Notas</td><td>Os extremos da escala de dificuldade não têm rótulo, e “cobrança do professor” pode ser confundida com exigência de presença.</td><td>1 (Leve)</td></tr>
+                        <tr><td><strong style="white-space:nowrap">B-07</strong></td><td>HTA, 2.3 Comentário</td><td>A mensagem de limite de caracteres é vaga ou ausente (Q3 = Não).</td><td>1 (Leve)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026). Severidade conforme Barbosa e Silva (2010), escala de 0 a 3: 0 Cosmético, 1 Leve, 2 Grande, 3 Catastrófico.</p>
+
+            <h3 class="doc-subsection" id="v-rt-redesenho">5. Análise de tarefas redesenhada</h3>
+            <p class="doc-text">A Tabela 11 lista as alterações que as versões corrigidas da HTA e da CTT devem incorporar.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 11: Alterações na HTA e na CTT</caption>
+                    <thead><tr><th>Artefato</th><th>Alteração</th><th>Problema resolvido</th></tr></thead>
+                    <tbody>
+                        <tr><td>HTA</td><td>Novo Plano 2b, Abortar / Descartar: a qualquer momento do preenchimento, o usuário pode descartar o rascunho, com confirmação.</td><td>B-01</td></tr>
+                        <tr><td>CTT</td><td>Mover o nó Cancelar / Sair, com <span class="ctt-op">[&gt;</span>, para a raiz da subárvore, para que interrompa qualquer etapa da tarefa.</td><td>B-01</td></tr>
+                        <tr><td>HTA</td><td>Reorganizar o layout do formulário para manter o botão de envio visível e incluir um indicador de processamento (spinner) em 3.2.</td><td>B-02</td></tr>
+                        <tr><td>CTT</td><td>Trocar <span class="ctt-op">[]&gt;&gt;</span> entre Consultar Relatórios e Preencher Avaliação por concorrência <span class="ctt-op">|||</span>, permitindo consultar enquanto avalia.</td><td>B-03</td></tr>
+                        <tr><td>HTA</td><td>Deixar explícito no cabeçalho do formulário que a avaliação é 100% anônima, desde o início da tarefa 2.</td><td>B-04</td></tr>
+                        <tr><td>HTA</td><td>Incluir a submeta 1.2.1, Filtrar busca por departamento ou docente, e um atalho direto para a busca na página inicial.</td><td>B-05</td></tr>
+                        <tr><td>HTA</td><td>Rótulos nos extremos da escala (1 = muito fácil, 5 = muito difícil) e tooltip em cobrança: “carga de trabalho e rigor nas avaliações e correções”.</td><td>B-06</td></tr>
+                        <tr><td>HTA</td><td>Contador de caracteres em tempo real e aviso de diretrizes do comentário.</td><td>B-07</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+
+            <h3 class="doc-subsection" id="v-rt-conclusao">6. Conclusão e recomendações para a prototipação</h3>
+            <p class="doc-text">A checagem com o participante validou a estrutura geral da HTA e a clareza da CTT: a sequência localizar → preencher → enviar corresponde ao modo como o aluno pensa a tarefa. O Percurso Cognitivo, no entanto, encontrou problemas que só aparecem na interação, como o participante antecipou. Para o protótipo de papel, recomenda-se:</p>
+            <ul class="doc-list">
+                <li>incluir um botão “Descartar avaliação”, sempre visível, com confirmação (B-01);</li>
+                <li>manter o botão de envio na área visível e mostrar o estado de processamento e a confirmação do envio (B-02);</li>
+                <li>exibir os relatórios e comentários de outros alunos ao lado do formulário de avaliação (B-03);</li>
+                <li>mostrar o aviso de anonimato no topo do formulário (B-04);</li>
+                <li>oferecer filtros por departamento e por professor na busca (B-05);</li>
+                <li>rotular as escalas de 1 a 5 e explicar o que é “cobrança” (B-06);</li>
+                <li>exibir o contador de caracteres do comentário (B-07);</li>
+                <li>testar essas telas com estudantes atrasados no fluxo e com mais de um avaliador, para superar as limitações desta avaliação.</li>
+            </ul>
+
+            <h3 class="doc-subsection" id="v-rt-ia">7. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada para estruturar a página no padrão da Entrega 5, consolidar os problemas do documento de análise de tarefas do autor e extrair os dados da checagem da transcrição automática da entrevista gravada. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Victor Andreozzi de La Rocque Couto, e a validação pelo grupo está pendente.</p>
+
+            <h3 class="doc-subsection" id="v-rt-referencias">8. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier / Campus, 2010.</li>
+                <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: Além da Interação Homem-Computador</em>. Porto Alegre: Bookman, 2005.</li>
+                <li>PATERNÒ, Fabio. <em>Model-Based Design and Evaluation of Interactive Applications</em>. London: Springer-Verlag, 1999.</li>
+                <li>POLSON, Peter G. et al. Cognitive Walkthroughs: A Method for Theory-Based Evaluation of User Interfaces. <em>International Journal of Man-Machine Studies</em>, v. 36, n. 5, p. 741-773, 1992.</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Criação da estrutura inicial do relato dos resultados da avaliação da análise de tarefas</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): criação da estrutura inicial da página no padrão da Entrega 5; o conteúdo será do autor</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">23/10/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Preenchimento com o Percurso Cognitivo, a checagem com o participante P1, os problemas B-01 a B-07 e as alterações na HTA e na CTT</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): preenchimento a partir da transcrição automática da entrevista e dos documentos do autor; revisão e resultados finais são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega5_relato-v-analise-tarefas.html"><span>← Anterior</span>Análise de tarefas: HTA e CTT</a>
+                    <a class="next" href="entrega5_relato-v-prototipo-papel.html"><span>Próximo →</span>Planejamento da avaliação do protótipo de papel</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
