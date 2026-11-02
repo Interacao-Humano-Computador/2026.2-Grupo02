@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento da avaliação do protótipo de alta fidelidade | Entrega 6 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 6 · Relato dos Resultados da Avaliação do Protótipo de Baixa Fidelidade e Planejamento da Avaliação do Protótipo de Alta Fidelidade</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega6.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <!-- artefatos de Felipe (entrega6_relato-f-*.html) -->
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <!-- artefatos de Matheus (entrega6_relato-m-*.html) -->
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega6_relato-v-prototipo-papel.html">Relato dos resultados da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega6_relato-v-alta-fidelidade.html" class="active" aria-current="page">Planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega6_relato-v-relato-alta-fidelidade.html">Planejamento do relato dos resultados do protótipo de alta fidelidade</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega6.html">Entrega 6</a> › Relatos e planejamentos individuais</p>
+            <h1 id="v6-alta-fidelidade" class="doc-title doc-page-title">Planejamento da avaliação do protótipo de alta fidelidade</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto, matrícula 221029285 · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidade:</strong> Avaliação de Disciplinas · <strong>Conteúdo desta página:</strong> planejamento da avaliação do protótipo de alta fidelidade (DECIDE) · Tabelas 10 a 15</p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega6_relato-v-prototipo-papel.html">Relato dos resultados da avaliação do protótipo de papel</a> · <a href="entrega6_relato-v-relato-alta-fidelidade.html">Planejamento do relato dos resultados do protótipo de alta fidelidade</a></p>
+            </div>
+            <p class="doc-text">O Protótipo de Alta Fidelidade da Avaliação de Disciplinas é uma versão interativa da funcionalidade, construída com os materiais esperados no produto final e com aparência muito próxima de algo acabado (Preece, Rogers e Sharp, 2005, seção 8.2.4). Ele parte do protótipo de papel corrigido nos ciclos de avaliação e reprojeto da Entrega 6 e segue o guia de estilo definido na Entrega 3.</p>
+            <p class="doc-text">Segundo a Tabela 8.1 de Preece, Rogers e Sharp (2005), o protótipo de alta fidelidade é totalmente interativo, tem o uso conduzido pelo próprio usuário, define claramente o esquema de navegação e tem o mesmo <em>look and feel</em> do produto final. São justamente os pontos que o protótipo de papel não cobria: nele o “uso” era conduzido pelo facilitador e havia limitações de fluxo e navegação. Em contrapartida, protótipos de alta fidelidade são mais caros e demorados de construir, e um único <em>bug</em> pode interromper o teste. Por isso o protótipo será <strong>vertical</strong> (Preece, Rogers e Sharp, 2005, seção 8.2.5): cobre com detalhes apenas o fluxo da Avaliação de Disciplinas, sem as demais funções do No Fluxo UnB.</p>
+            <p class="doc-text">O protótipo será construído em [preencher: ferramenta de prototipação, por exemplo Figma], com as telas e estados da Tabela 10.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 10: Telas e estados do protótipo de alta fidelidade</caption>
+                    <thead><tr><th>Tela / estado</th><th>Conteúdo</th><th>Origem</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>T1</strong> Busca de disciplinas</td><td>Campo de busca por código ou nome, filtros por departamento e por professor e atalho na página inicial.</td><td>HTA 1.1 a 1.3; B-05</td></tr>
+                        <tr><td><strong>T2</strong> Resultados da busca</td><td>Lista de disciplinas com código, nome e departamento; estado “nenhum resultado”.</td><td>HTA 1.4</td></tr>
+                        <tr><td><strong>T3</strong> Página da disciplina</td><td>Médias de dificuldade e de cobrança de semestres anteriores, comentários de outros alunos e botão “Avaliar esta disciplina”.</td><td>CTT Consultar Relatórios; A-02, B-03</td></tr>
+                        <tr><td><strong>T4</strong> Formulário de avaliação</td><td>Aviso de anonimato no topo, escalas de 1 a 5 com rótulos nos extremos, dica de “cobrança”, comentário com contador de caracteres, resumo dos relatórios ao lado e botões “Enviar avaliação” e “Descartar”.</td><td>HTA 2.1 a 2.3; A-01, A-03, B-02 a B-04, B-06, B-07</td></tr>
+                        <tr><td><strong>T5</strong> Revisão</td><td>Resumo das notas e do comentário, termo de anonimato e botões “Confirmar envio” e “Voltar e editar”.</td><td>HTA 3.1 e 3.2</td></tr>
+                        <tr><td><strong>T6</strong> Confirmação</td><td>Mensagem “Avaliação concluída” e link para as avaliações da disciplina.</td><td>HTA 3.3; Quadro 6 do storyboard</td></tr>
+                        <tr><td><strong>Estados</strong></td><td>Indicador “Enviando…”, mensagem de erro de envio com “Tentar novamente”, diálogo “Descartar avaliação? Seu rascunho será perdido”.</td><td>HTA 3.3; B-01, B-02</td></tr>
+                        <tr><td><strong>Correções do papel</strong></td><td>[preencher: correções vindas do relato do protótipo de papel (PP-xx)]</td><td><a href="entrega6_relato-v-prototipo-papel.html">Relato do protótipo de papel</a>, Tabelas 7 e 8</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+
+            <h3 class="doc-subsection" id="v6-af-decide">1. Planejamento da avaliação do protótipo de alta fidelidade com o framework DECIDE</h3>
+            <p class="doc-text">O planejamento segue o framework DECIDE, proposto por Sharp, Rogers e Preece (2007) para orientar o planejamento, a execução e a análise de uma avaliação de IHC (Barbosa e Silva, 2010, seção 9.8). As atividades são interligadas e iterativas: se uma decisão mudar durante a preparação, as demais são revistas.</p>
+            <h4 class="doc-h4" id="v6-af-d1">D: Determinar os objetivos da avaliação</h4>
+            <ul class="doc-list">
+                <li>Medir a eficácia, a eficiência e a satisfação dos estudantes ao avaliar e consultar uma disciplina no protótipo interativo, comparando os resultados com as metas de usabilidade da Entrega 3.</li>
+                <li>Verificar se as correções incorporadas a partir do protótipo de papel (PP-xx) resolvem os problemas encontrados e se os problemas das avaliações anteriores (A-01 a A-03 e B-01 a B-07) não reaparecem com a interface interativa.</li>
+                <li>Identificar problemas de fluxo, navegação e aparência que o protótipo de papel não podia revelar, como rolagem, tempo de resposta, estados de carregamento e erro, e consistência com o guia de estilo.</li>
+            </ul>
+            <p class="doc-text">Os objetivos interessam à equipe do No Fluxo UnB, que vai implementar a funcionalidade e precisa de uma especificação validada, e aos estudantes, que dependem de avaliações confiáveis e de um processo rápido e seguro de avaliar para montar a grade.</p>
+            <h4 class="doc-h4" id="v6-af-e1">E: Explorar as perguntas a serem respondidas</h4>
+            <p class="doc-text">No teste de usabilidade, cada pergunta é associada a um dado mensurável (Barbosa e Silva, 2010, seção 10.2.1). As metas partem da Tabela 3 da <a href="entrega3_metas.html">Entrega 3</a> e foram adaptadas a esta funcionalidade; como ainda não há linha de base, as faixas serão calibradas com os resultados.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 11: Perguntas, medidas e metas da avaliação</caption>
+                    <thead><tr><th>Nº</th><th>Pergunta</th><th>Medida</th><th>Meta aceitável</th><th>Meta ideal</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong></td><td>O estudante conclui a avaliação de uma disciplina sem ajuda?</td><td>Participantes que concluem a Tarefa 1 sem ajuda.</td><td>3 de 5 (60%)</td><td>5 de 5</td></tr>
+                        <tr><td><strong>2</strong></td><td>Quanto tempo leva para avaliar uma disciplina?</td><td>Tempo da Tarefa 1, do início da busca até a tela de confirmação.</td><td>Até 3 min</td><td>Até 2 min</td></tr>
+                        <tr><td><strong>3</strong></td><td>Ele encontra a disciplina pela busca e pelos filtros sem desvios?</td><td>Desvios do caminho mais eficiente previsto na HTA.</td><td>Até 1 desvio por tarefa</td><td>Nenhum desvio</td></tr>
+                        <tr><td><strong>4</strong></td><td>Ele percebe, antes de enviar, que a avaliação é anônima?</td><td>Menção espontânea ou resposta correta no pós-teste.</td><td>4 de 5</td><td>5 de 5</td></tr>
+                        <tr><td><strong>5</strong></td><td>Ele interpreta corretamente as escalas e seus extremos?</td><td>Notas coerentes com o cenário e respostas no pós-teste.</td><td>4 de 5</td><td>5 de 5</td></tr>
+                        <tr><td><strong>6</strong></td><td>Ele consulta os relatórios enquanto preenche a avaliação?</td><td>Uso do resumo ao lado do formulário na Tarefa 2.</td><td>3 de 5</td><td>4 de 5 ou mais</td></tr>
+                        <tr><td><strong>7</strong></td><td>Ele se recupera do erro de envio na tentativa seguinte?</td><td>Recuperação do erro simulado na Tarefa 2.</td><td>De 50% a 80%</td><td>Mais de 80%</td></tr>
+                        <tr><td><strong>8</strong></td><td>Ele desiste de uma avaliação sem enviá-la e sem perder o controle?</td><td>Conclusão da Tarefa 3 sem ajuda e sem envio acidental.</td><td>4 de 5</td><td>5 de 5</td></tr>
+                        <tr><td><strong>9</strong></td><td>Quão satisfeito ele fica e quanto confia no anonimato?</td><td>Média das notas de 1 a 5 do pós-teste.</td><td>De 3,5 a 4,2</td><td>Mais de 4,2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir das metas de usabilidade da Entrega 3 (satisfação e segurança no uso) e de Barbosa e Silva (2010, seção 10.2.1).</p>
+            <h4 class="doc-h4" id="v6-af-c">C: Escolher os métodos de avaliação</h4>
+            <p class="doc-text">O método escolhido é o <strong>teste de usabilidade</strong> (Rubin, 1994, citado por Barbosa e Silva, 2010, seção 10.2.1), uma avaliação por observação em que usuários-alvo realizam tarefas no sistema em ambiente controlado enquanto são registrados dados de desempenho e de opinião. Ele é adequado porque o protótipo de alta fidelidade permite que o próprio participante conduza o uso, o que torna possível medir tempo, erros e desvios, medidas sem sentido no protótipo de papel, em que o facilitador fazia o papel do sistema. O teste fornece também resultados qualitativos: para cada problema observado, os dados de gravação, falas e anotações são analisados em conjunto para explicar sua origem (Rubin e Chisnell, 2008, citados por Barbosa e Silva, 2010, seção 10.2.1).</p>
+            <p class="doc-text">O teste é combinado com:</p>
+            <ul class="doc-list">
+                <li>questionário pré-teste lido pelo avaliador, como entrevista estruturada (curso, semestre, situação no fluxo e uso do No Fluxo UnB);</li>
+                <li>comentários espontâneos durante as tarefas, sem pedir que o participante pense em voz alta o tempo todo, para não distorcer as medidas de tempo;</li>
+                <li>entrevista pós-teste com perguntas abertas e a mesma tabela de notas de 1 a 5 usada no protótipo de papel, para que os resultados sejam comparáveis.</li>
+            </ul>
+            <p class="doc-text">Os cenários de tarefa repetem os do protótipo de papel, também para permitir a comparação (Tabela 12). Desta vez, o erro de envio da Tarefa 2 é um estado programado no protótipo, e não uma intervenção do avaliador.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 12: Cenários de tarefa da avaliação</caption>
+                    <thead><tr><th>Tarefa</th><th>Cenário entregue ao participante</th><th>Perguntas investigadas</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong> Avaliar uma disciplina</td><td>“Você terminou o semestre e achou Cálculo 2 muito difícil. Avalie a disciplina no No Fluxo UnB, dando as notas de dificuldade e de cobrança do professor e deixando um comentário para os próximos alunos.”</td><td>1, 2, 3, 4, 5</td></tr>
+                        <tr><td><strong>2</strong> Consultar e avaliar</td><td>“Antes de avaliar Banco de Dados, você quer ver o que outros alunos acharam da disciplina. Consulte as avaliações e depois registre a sua.” No primeiro envio, o protótipo exibe a mensagem de erro de conexão.</td><td>3, 6, 7</td></tr>
+                        <tr><td><strong>3</strong> Desistir da avaliação</td><td>“Você começou a avaliar Estruturas de Dados, mas mudou de ideia e prefere avaliar depois. Saia sem enviar a avaliação.”</td><td>8</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <h4 class="doc-h4" id="v6-af-i">I: Identificar e administrar as questões práticas</h4>
+            <ul class="doc-list">
+                <li><strong>Participantes:</strong> 5 estudantes de graduação da UnB, número com o qual se encontra a maioria dos problemas de uma interface (Nielsen, 2000, citado por Barbosa e Silva, 2010, seção 9.7.2). Serão recrutados estudantes que <strong>não</strong> participaram da avaliação do protótipo de papel, para evitar o efeito de aprendizado sobre as medidas de tempo e de erro. O perfil-alvo são estudantes que já cursaram disciplinas e montam a grade, com prioridade para alunos atrasados no fluxo e pelo menos um que nunca usou o No Fluxo UnB, buscando equilíbrio entre homens e mulheres. Como recomendam Barbosa e Silva (2010, seção 9.7.2), serão evitados amigos próximos do avaliador.</li>
+                <li><strong>Avaliadores:</strong> dois. Victor Andreozzi de La Rocque Couto conduz a sessão (moderador), e [preencher: nome do colega] observa, cronometra e preenche a folha de observação.</li>
+                <li><strong>Equipamentos:</strong> notebook com o protótipo aberto no navegador em modo de apresentação e mouse; gravação da tela e do áudio da sessão (por exemplo, OBS Studio), sem imagem do rosto do participante; cronômetro; e uma cópia impressa das telas como reserva caso o protótipo falhe.</li>
+                <li><strong>Materiais impressos:</strong> TCLE em duas vias, questionário pré-teste, cenários de tarefa, roteiro da entrevista pós-teste, tabela de notas de 1 a 5 e folha de observação com espaço para sucesso, tempo, erros, desvios e falas de cada tarefa (Barbosa e Silva, 2010, seção 9.7.2).</li>
+                <li><strong>Local e duração:</strong> sala ou laboratório reservado na UnB Campus Gama; cerca de 30 minutos por sessão, abaixo do limite de uma hora recomendado para evitar cansaço (Barbosa e Silva, 2010, seção 9.7.2).</li>
+                <li><strong>Preparação do protótipo:</strong> antes do piloto, todos os caminhos das três tarefas serão percorridos no protótipo, porque basta um <em>bug</em> para interromper o teste (Preece, Rogers e Sharp, 2005, seção 8.2.4).</li>
+                <li><strong>Teste-piloto:</strong> uma sessão completa com um estudante que não participou do planejamento, para verificar a clareza dos cenários, o funcionamento do protótipo e da gravação e o tempo das tarefas. Os dados do piloto serão descartados (Barbosa e Silva, 2010, seção 9.7.2).</li>
+            </ul>
+            <h4 class="doc-h4" id="v6-af-d2">D: Decidir como lidar com as questões éticas</h4>
+            <ul class="doc-list">
+                <li>O avaliador explica os objetivos, o procedimento e os cuidados éticos e entrega o TCLE em duas vias já assinadas por ele; o participante lê, assina e fica com uma via (Barbosa e Silva, 2010, seções 5.4 e 9.7.3).</li>
+                <li>O avaliador esclarece que quem está sendo avaliado é o protótipo, não o participante, e que dificuldades indicam problemas da interface.</li>
+                <li>Os participantes são identificados por códigos (P1 a P5), sem nome ou matrícula, e a gravação registra apenas a tela e a voz.</li>
+                <li>A participação é voluntária, com direito de desistir a qualquer momento, e os dados são usados exclusivamente para fins acadêmicos, com as gravações armazenadas com acesso restrito, fora do repositório público.</li>
+            </ul>
+            <h4 class="doc-h4" id="v6-af-e2">E: Avaliar, interpretar e apresentar os dados</h4>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 13: Dados a coletar e forma de análise</caption>
+                    <thead><tr><th>Dado</th><th>Como coletar</th><th>Como analisar</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Sucesso na tarefa</strong></td><td>Folha de observação: concluiu sem ajuda, concluiu com ajuda ou não concluiu.</td><td>Contagem e percentual por tarefa, comparados às metas da Tabela 11.</td></tr>
+                        <tr><td><strong>Tempo por tarefa</strong></td><td>Cronômetro e gravação de tela, do início da tarefa até a tela final.</td><td>Média, desvio padrão e número de participantes dentro da meta (Barbosa e Silva, 2010, seção 10.2.1).</td></tr>
+                        <tr><td><strong>Erros e desvios</strong></td><td>Gravação de tela: cliques errados, caminhos fora do previsto na HTA e pedidos de ajuda.</td><td>Contagem por tarefa e por tela, associada às perguntas da Tabela 11.</td></tr>
+                        <tr><td><strong>Falas e comentários</strong></td><td>Áudio da gravação e anotações do observador.</td><td>Análise conjunta com a gravação para explicar a origem de cada problema.</td></tr>
+                        <tr><td><strong>Notas de 1 a 5</strong></td><td>Tabela preenchida pelo participante no pós-teste.</td><td>Média, mediana e valores mínimo e máximo por critério, comparados aos do protótipo de papel.</td></tr>
+                        <tr><td><strong>Problemas de usabilidade</strong></td><td>Interpretação de cada sessão pelos dois avaliadores (análise intraparticipante).</td><td>Consolidação entre participantes, em busca de recorrências (Barbosa e Silva, 2010, seção 9.7.5); classificação por severidade (0 a 3) e frequência.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <p class="doc-text">Na consolidação, os problemas serão agrupados por categoria, indicando em que partes da interface ocorrem, seu impacto na usabilidade, as hipóteses sobre suas causas e as sugestões de melhoria (Kuniavsky, 2003, citado por Barbosa e Silva, 2010, seção 10.2.1).</p>
+            <p class="doc-text">Na interpretação, serão considerados a confiabilidade e a validade do estudo (Barbosa e Silva, 2010, seção 9.8). Com cinco participantes, os resultados indicam tendências, não certezas, e as médias de tempo não têm significância estatística. A validade ecológica é maior que a do protótipo de papel, porque o participante usa a interface sozinho, com rolagem e estados reais, mas continua limitada: os dados das disciplinas são fictícios e o teste ocorre em sala controlada, e não no momento real de montar a grade. Os resultados serão apresentados no relato descrito em <a href="entrega6_relato-v-relato-alta-fidelidade.html">Planejamento do relato dos resultados do protótipo de alta fidelidade</a>.</p>
+
+            <h3 class="doc-subsection" id="v6-af-cronograma">2. Cronograma</h3>
+            <p class="doc-text">O cronograma vai da construção do protótipo até a entrega do relato. As datas são uma proposta inicial e devem ser ajustadas ao prazo da disciplina, [preencher: data de entrega do relato do protótipo de alta fidelidade].</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 14: Cronograma da avaliação do protótipo de alta fidelidade</caption>
+                    <thead><tr><th>Data</th><th>Etapa</th><th>Atividades</th><th>Responsável</th></tr></thead>
+                    <tbody>
+                        <tr><td>03/11 a 09/11</td><td>Construção do protótipo</td><td>Montar as telas T1 a T6 e os estados com as correções do protótipo de papel; percorrer todos os caminhos das três tarefas.</td><td>Victor</td></tr>
+                        <tr><td>10/11</td><td>Teste-piloto e materiais</td><td>Sessão-piloto; ajustes no protótipo, nos cenários e no tempo; impressão do TCLE, questionário, cenários, roteiro e folhas de observação.</td><td>Victor</td></tr>
+                        <tr><td>11/11</td><td>Recrutamento</td><td>Convidar 5 estudantes que não participaram do teste em papel; confirmar o colega observador; reservar a sala e agendar as sessões.</td><td>Victor</td></tr>
+                        <tr><td>12/11 a 14/11</td><td>Sessões de teste</td><td>Sessões com P1 a P5 (cerca de 30 minutos cada); anotações e interpretação individual após cada sessão.</td><td>Victor (moderador) e colega observador</td></tr>
+                        <tr><td>15/11 a 16/11</td><td>Consolidação</td><td>Revisar as gravações; tabular sucesso, tempo, erros e notas; consolidar os problemas com severidade e frequência.</td><td>Victor e colega observador</td></tr>
+                        <tr><td>17/11 a 18/11</td><td>Relato dos resultados</td><td>Redigir o relato conforme o planejamento do relato e publicar a página no site.</td><td>Victor</td></tr>
+                        <tr><td>19/11</td><td>Revisão</td><td>Revisão pelo grupo.</td><td>Grupo</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+
+            <h3 class="doc-subsection" id="v6-af-ia">3. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada para redigir o planejamento a partir dos documentos do autor, do planejamento e dos resultados das avaliações anteriores e das obras de referência, no padrão da Entrega 6. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Victor Andreozzi de La Rocque Couto, e a validação pelo grupo está pendente.</p>
+
+            <h3 class="doc-subsection" id="v6-af-referencias">4. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier / Campus, 2010.</li>
+                <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: Além da Interação Homem-Computador</em>. Porto Alegre: Bookman, 2005.</li>
+                <li>SHARP, Helen; ROGERS, Yvonne; PREECE, Jennifer. <em>Interaction Design: Beyond Human-Computer Interaction</em>. 2. ed. John Wiley &amp; Sons, 2007.</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">02/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Planejamento da avaliação do protótipo de alta fidelidade com o framework DECIDE: telas, objetivos, perguntas e metas, método, questões práticas e éticas, análise dos dados e cronograma</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): redação a partir dos documentos do autor e das obras de referência; decisões e revisão final são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega6_relato-v-prototipo-papel.html"><span>← Anterior</span>Relato dos resultados da avaliação do protótipo de papel</a>
+                    <a class="next" href="entrega6_relato-v-relato-alta-fidelidade.html"><span>Próximo →</span>Planejamento do relato dos resultados do protótipo de alta fidelidade</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

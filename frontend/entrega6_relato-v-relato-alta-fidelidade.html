@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento do relato dos resultados do protótipo de alta fidelidade | Entrega 6 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 6 · Relato dos Resultados da Avaliação do Protótipo de Baixa Fidelidade e Planejamento da Avaliação do Protótipo de Alta Fidelidade</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega6.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <!-- artefatos de Felipe (entrega6_relato-f-*.html) -->
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <!-- artefatos de Matheus (entrega6_relato-m-*.html) -->
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega6_relato-v-prototipo-papel.html">Relato dos resultados da avaliação do protótipo de papel</a></li>
+                                <li><a href="entrega6_relato-v-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega6_relato-v-relato-alta-fidelidade.html" class="active" aria-current="page">Planejamento do relato dos resultados do protótipo de alta fidelidade</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega6.html">Entrega 6</a> › Relatos e planejamentos individuais</p>
+            <h1 id="v6-relato-alta-fidelidade" class="doc-title doc-page-title">Planejamento do relato dos resultados do protótipo de alta fidelidade</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto, matrícula 221029285 · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Funcionalidade:</strong> Avaliação de Disciplinas · <strong>Conteúdo desta página:</strong> planejamento do relato dos resultados da avaliação do protótipo de alta fidelidade · Tabelas 15 a 19</p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega6_relato-v-prototipo-papel.html">Relato dos resultados da avaliação do protótipo de papel</a> · <a href="entrega6_relato-v-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade</a></p>
+            </div>
+            <p class="doc-text">Este artefato define como os resultados do teste de usabilidade do protótipo de alta fidelidade da Avaliação de Disciplinas serão relatados. A estrutura segue o que Barbosa e Silva (2010) indicam para o relato de um teste de usabilidade (seção 10.2.1), complementado pelos itens gerais do relato de qualquer avaliação de IHC (seção 9.7.5).</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 15: Origem das seções do relato</caption>
+                    <thead><tr><th>Seção do relato</th><th>Item indicado por Barbosa e Silva (2010)</th><th>Seção do livro</th></tr></thead>
+                    <tbody>
+                        <tr><td>1.1</td><td>Os objetivos e o escopo da avaliação</td><td>9.7.5 e 10.2.1</td></tr>
+                        <tr><td>1.2</td><td>Uma breve descrição do método de teste de usabilidade</td><td>10.2.1</td></tr>
+                        <tr><td>1.3</td><td>O número e o perfil dos avaliadores e dos participantes</td><td>9.7.5 e 10.2.1</td></tr>
+                        <tr><td>1.4</td><td>As tarefas executadas pelos participantes</td><td>10.2.1</td></tr>
+                        <tr><td>1.5</td><td>Tabelas e gráficos que sumarizam as medições realizadas</td><td>9.7.5 e 10.2.1</td></tr>
+                        <tr><td>1.6</td><td>Um relato da interpretação e análise dos dados</td><td>9.7.5</td></tr>
+                        <tr><td>1.7</td><td>Uma lista de problemas encontrados, com local, descrição e justificativa, discussão dos fatores de usabilidade prejudicados e sugestões de solução</td><td>9.7.5 e 10.2.1</td></tr>
+                        <tr><td>1.8</td><td>Um planejamento para o reprojeto do sistema</td><td>9.7.5</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+
+            <h3 class="doc-subsection" id="v6-raf-estrutura">1. Estrutura do relato</h3>
+            <h4 class="doc-h4" id="v6-raf-objetivo">1.1 Objetivos e escopo da avaliação</h4>
+            <p class="doc-text">Retomar os três objetivos e as nove perguntas definidos no <a href="entrega6_relato-v-alta-fidelidade.html">planejamento</a> e delimitar o escopo: protótipo vertical da Avaliação de Disciplinas, telas T1 a T6, estados de envio, erro e descarte, e as três tarefas. Ao final do relato, cada pergunta deve ser respondida ou ter justificado por que não foi (Barbosa e Silva, 2010, seção 9.7.5).</p>
+            <h4 class="doc-h4" id="v6-raf-metodo">1.2 Breve descrição do método</h4>
+            <p class="doc-text">Descrever o teste de usabilidade em poucas linhas: tarefas em ambiente controlado, papel do moderador e do observador, questionário pré-teste, entrevista pós-teste, gravação de tela e áudio e teste-piloto. Informar as datas, horários, local e duração das sessões e a ferramenta usada no protótipo, registrando qualquer desvio em relação ao planejado.</p>
+            <h4 class="doc-h4" id="v6-raf-participantes">1.3 Número e perfil dos avaliadores e participantes</h4>
+            <p class="doc-text">Informar os dois avaliadores e o perfil dos cinco participantes (código, curso, semestre, situação no fluxo e uso do No Fluxo UnB), sem nomes nem matrículas, no mesmo formato da Tabela 2 do relato do protótipo de papel. Registrar que nenhum deles participou do teste em papel.</p>
+            <h4 class="doc-h4" id="v6-raf-tarefas">1.4 Tarefas executadas pelos participantes</h4>
+            <p class="doc-text">Reproduzir os três cenários da Tabela 12 do planejamento, indicando as perguntas investigadas em cada um e o erro de envio programado na Tarefa 2.</p>
+            <h4 class="doc-h4" id="v6-raf-medicoes">1.5 Tabelas e gráficos que sumarizam as medições</h4>
+            <p class="doc-text">Apresentar as medições por tarefa e por participante e compará-las às metas. Os modelos abaixo serão usados, acompanhados de um gráfico de barras com o tempo de cada participante na Tarefa 1 e uma linha marcando a meta de 2 minutos.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 16: Modelo: eficácia e eficiência por tarefa</caption>
+                    <thead><tr><th>Tarefa</th><th>Sem ajuda</th><th>Com ajuda</th><th>Não concluíram</th><th>Tempo médio (desvio padrão)</th><th>Erros e desvios (total)</th><th>Meta atingida?</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong> Avaliar uma disciplina</td><td>x de 5</td><td>x de 5</td><td>x de 5</td><td>m:ss (± s)</td><td>—</td><td>Ideal / Aceitável / Não</td></tr>
+                        <tr><td><strong>2</strong> Consultar e avaliar</td><td>x de 5</td><td>x de 5</td><td>x de 5</td><td>m:ss (± s)</td><td>—</td><td>Ideal / Aceitável / Não</td></tr>
+                        <tr><td><strong>3</strong> Desistir da avaliação</td><td>x de 5</td><td>x de 5</td><td>x de 5</td><td>m:ss (± s)</td><td>—</td><td>Ideal / Aceitável / Não</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 17: Modelo: satisfação no pós-teste, comparada ao protótipo de papel</caption>
+                    <thead><tr><th>Critério</th><th>Média (alta fidelidade)</th><th>Mediana</th><th>Mín. e máx.</th><th>Mediana no protótipo de papel</th><th>Meta atingida?</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Facilidade de uso</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>Ideal / Aceitável / Não</td></tr>
+                        <tr><td><strong>Clareza das escalas</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>Ideal / Aceitável / Não</td></tr>
+                        <tr><td><strong>Utilidade da funcionalidade</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>Ideal / Aceitável / Não</td></tr>
+                        <tr><td><strong>Confiança no anonimato</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>Ideal / Aceitável / Não</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <h4 class="doc-h4" id="v6-raf-interpretacao">1.6 Interpretação e análise dos dados</h4>
+            <p class="doc-text">Relatar a análise de cada participante (intraparticipante) e a consolidação entre participantes (interparticipante), destacando as recorrências, que distinguem características do grupo das idiossincrasias individuais (Barbosa e Silva, 2010, seção 9.7.5). Responder às nove perguntas no formato da Tabela 18 e discutir os limites de confiabilidade e de validade do estudo: os resultados indicam tendências de problemas, e não a certeza de que eles ocorrerão no uso real.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 18: Modelo: respostas às perguntas da avaliação</caption>
+                    <thead><tr><th>Nº</th><th>Pergunta</th><th>Resultado medido</th><th>Interpretação</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong></td><td>O estudante conclui a avaliação sem ajuda?</td><td>x de 5</td><td>—</td></tr>
+                        <tr><td><strong>…</strong></td><td>…</td><td>…</td><td>…</td></tr>
+                        <tr><td><strong>9</strong></td><td>Quão satisfeito ele fica e quanto confia no anonimato?</td><td>Média x,x</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <h4 class="doc-h4" id="v6-raf-problemas">1.7 Lista de problemas encontrados</h4>
+            <p class="doc-text">Listar os problemas consolidados, agrupados por categoria quando houver recorrência, com a hipótese sobre a causa de cada um (Kuniavsky, 2003, citado por Barbosa e Silva, 2010, seção 10.2.1). Indicar também se algum problema das avaliações anteriores (A-01 a A-03, B-01 a B-07 e PP-xx) reapareceu.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 19: Modelo: problemas encontrados no teste de usabilidade</caption>
+                    <thead><tr><th>ID</th><th>Local (tela ou estado)</th><th>Descrição e justificativa</th><th>Discussão: fatores de usabilidade prejudicados</th><th>Severidade (0 a 3)</th><th>Frequência</th><th>Sugestão de solução</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong style="white-space:nowrap">AF-01</strong></td><td>T4</td><td>—</td><td>Ex.: eficiência, segurança no uso</td><td>—</td><td>x de 5</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026). Severidade conforme Barbosa e Silva (2010), escala de 0 a 3: 0 Cosmético, 1 Leve, 2 Grande, 3 Catastrófico. Prioridade definida pela severidade e pela frequência do problema.</p>
+            <h4 class="doc-h4" id="v6-raf-reprojeto">1.8 Planejamento para o reprojeto</h4>
+            <p class="doc-text">Priorizar as correções pela severidade e pela frequência e indicar, para cada uma, a tela afetada e a mudança proposta para a implementação da funcionalidade. Incluir capturas de tela do protótipo antes e depois das correções e recomendar se uma nova rodada de testes é necessária antes da implementação.</p>
+
+            <h3 class="doc-subsection" id="v6-raf-apresentacao">2. Forma de apresentação</h3>
+            <ul class="doc-list">
+                <li>O relato será publicado como página deste site, no mesmo padrão dos relatos anteriores, com histórico de versão e declaração de IA.</li>
+                <li>As medições serão apresentadas em tabelas e gráficos, com médias, desvios padrão e percentuais, como recomendam Barbosa e Silva (2010, seção 10.2.1) para o teste de usabilidade.</li>
+                <li>As capturas de tela e trechos das gravações serão citados como figuras e links, sem identificar os participantes.</li>
+                <li>Os resultados serão comparados com os do protótipo de papel, mostrando a evolução da funcionalidade entre as duas avaliações.</li>
+            </ul>
+
+            <h3 class="doc-subsection" id="v6-raf-ia">3. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada para redigir o planejamento do relato a partir das obras de referência e do planejamento da avaliação do autor, no padrão da Entrega 6. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Victor Andreozzi de La Rocque Couto, e a validação pelo grupo está pendente.</p>
+
+            <h3 class="doc-subsection" id="v6-raf-referencias">4. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier / Campus, 2010.</li>
+                <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: Além da Interação Homem-Computador</em>. Porto Alegre: Bookman, 2005.</li>
+            </ul>
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">02/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Planejamento do relato dos resultados do protótipo de alta fidelidade: estrutura segundo Barbosa e Silva (2010, seções 9.7.5 e 10.2.1), modelos de tabelas de medições e de problemas e forma de apresentação</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): redação a partir das obras de referência e do planejamento do autor; revisão final é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega6_relato-v-alta-fidelidade.html"><span>← Anterior</span>Planejamento da avaliação do protótipo de alta fidelidade</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
