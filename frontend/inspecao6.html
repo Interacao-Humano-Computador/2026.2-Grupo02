@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Relatório de Inspeção da Etapa 6 (Protótipo de Papel, Relato dos Resultados da Avaliação e Planejamento da Avaliação do Protótipo de Alta Fidelidade), Grupo 3.">
+    <title>Visão geral | Inspeção Etapa 6 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1080px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        /* Estilos do Documento */
+        .doc-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(9, 9, 11, 0.6);
+            backdrop-filter: blur(12px);
+            font-size: 0.88rem;
+            margin-bottom: 3rem;
+            border-radius: 12px;
+            position: sticky;
+            top: 1rem;
+            z-index: 50;
+        }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: all 0.2s; padding: 0.35rem 0.75rem; border-radius: 6px; }
+        .doc-nav a:hover { color: #fafafa; background: rgba(255,255,255,0.05); }
+        .doc-nav a.highlight-back { color: #34d399; font-weight: 600; }
+        
+        .header-info {
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .header-info { grid-template-columns: 1fr; }
+        }
+        .header-info-content { color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info-content strong { color: #fafafa; }
+        .header-info-content a { color: #10b981; text-decoration: none; }
+        .header-info-content a:hover { text-decoration: underline; }
+
+        .btn-download-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: #ffffff !important;
+            padding: 0.85rem 1.4rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-download-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+            color: #ffffff !important;
+        }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; letter-spacing: -0.5px; }
+        h2.doc-section { font-size: 1.75rem; color: #10b981; margin-top: 3.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        h3.doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        
+        p.doc-text, ul.doc-list li, ol.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list, ol.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        /* Dashboard de Métricas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .stat-card {
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+
+        .stat-header { display: flex; justify-content: space-between; align-items: center; }
+        .stat-group-name { font-size: 1.1rem; font-weight: 700; color: #ffffff; }
+        .stat-target { font-size: 0.8rem; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 999px;
+            overflow: hidden;
+            display: flex;
+        }
+        .progress-segment { height: 100%; transition: width 0.6s ease; }
+        .segment-conforme { background-color: #10b981; }
+        .segment-nao-se-aplica { background-color: #3b82f6; }
+        .segment-nao-conforme { background-color: #ef4444; }
+
+        .stat-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.8rem;
+            color: #d4d4d8;
+        }
+        .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+        .legend-indicator { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+        /* Tabelas padronizadas */
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: #09090b;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard caption { text-align: left; padding: 1.25rem 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); }
+        .table-standard td { padding: 1.1rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+        .table-standard tr:hover td { background: rgba(255,255,255,0.015); }
+        .table-standard tr:last-child td { border-bottom: none; }
+
+        /* Badges de Status */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-conforme {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .badge-nao-se-aplica {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .badge-nao-conforme {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .badge-incompleto { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .segment-incompleto { background-color: #f59e0b; }
+        body.alto-contraste .badge-incompleto { background: #fff7e6 !important; color: #000000 !important; border-color: #000000 !important; }
+
+        .note-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            color: #d1fae5;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .note-box strong { color: #ffffff; }
+
+        body.alto-contraste .landing-body { background: #ffffff !important; color: #000000 !important; }
+        body.alto-contraste .doc-nav { background: #f4f4f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .doc-nav a { color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #10b981; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Inspeção da Etapa 6, Grupo 3</p>
+                    <ul>
+                        <li><a href="inspecao6.html" class="active" aria-current="page">Visão geral</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+            <div class="header-info">
+                <div class="header-info-content">
+                    <p><strong>Universidade de Brasília (UnB), Faculdade UnB Gama (FGA)</strong></p>
+                    <p><strong>Disciplina:</strong> Interação Humano-Computador (IHC) | <strong>Semestre:</strong> 2026.2</p>
+                    <p><strong>Professor:</strong> Prof. Dr. André Barros de Sales</p>
+                    <p><strong>Projeto:</strong> NoFluxoUnB (Grupo 02)</p>
+                    <p><strong>Grupo Inspetor:</strong> Grupo 2</p>
+                    <p><strong>Inspetores (Grupo 2):</strong></p>
+                    <p>Felipe Lopes Pedroza, matrícula: 231026330<br>Matheus do Vale Lameira, matrícula: 202070064<br>Victor Andreozzi de La Rocque Couto, matrícula: 221029285</p>
+                    <p><strong>Grupo inspecionado:</strong> Grupo 3</p>
+                    <p><strong>Etapa inspecionada:</strong> Entrega 6 (inspeção do Grupo +1 em 04/11/2026)</p>
+                    <p><strong>Data da avaliação:</strong> 04/11/2026</p>
+                </div>
+                <div>
+                    <a href="docs/Lista_Verificacao_Entrega6_Inspecao_Grupo2_para_Grupo3.pdf" target="_blank" class="btn-download-pdf" title="Abrir arquivo PDF original da inspeção">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Baixar / Visualizar PDF</span>
+                    </a>
+                </div>
+            </div>
+
+            <h1 class="doc-title">Entrega 6: Protótipo de Papel, Relato dos Resultados e Planejamento da Avaliação do Protótipo de Alta Fidelidade<span class="text-gradient">.</span></h1>
+
+            <h2 class="doc-section">Lista de Verificação aplicada na Inspeção do Grupo 3</h2>
+            <p class="doc-text"><strong>Vídeo da apresentação (inspeção do Grupo 3 realizada pelo Grupo 2):</strong> <a href="https://youtu.be/Ls1QXtju0Is" target="_blank" rel="noopener">https://youtu.be/Ls1QXtju0Is</a><br>
+            <strong>GitHub Pages do projeto:</strong> <a href="https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html" target="_blank" rel="noopener">https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html</a></p>
+
+            <p class="doc-text">
+                A lista de verificação foi aplicada à Entrega 6 do Grupo 3, com base em Barbosa e Silva (2010). Cada artefato tem três itens, respondidos com Conforme, Não conforme ou Incompleto, com a fonte (página e capítulo) e o trecho do livro que os sustentam. A inspeção avaliou os seguintes artefatos:
+            </p>
+            <ul class="doc-list">
+                <li><strong>Protótipo de papel (baixa fidelidade):</strong> itens 1 a 3.</li>
+                <li><strong>Relato dos resultados da avaliação do protótipo de papel:</strong> itens 4 a 6.</li>
+                <li><strong>Planejamento da avaliação do protótipo de alta fidelidade, framework DECIDE:</strong> itens 7 a 9.</li>
+                <li><strong>Planejamento do relato dos resultados da avaliação do protótipo de alta fidelidade:</strong> itens 10 a 12.</li>
+            </ul>
+
+            <h2 class="doc-section">Métricas e Resultado da Inspeção</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-group-name">Lista de Verificação, Entrega 6</span>
+                        <span class="stat-target">12 itens avaliados</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-segment segment-incompleto" style="width: 25.00%;" title="Incompleto: 3"></div>
+                        <div class="progress-segment segment-nao-conforme" style="width: 75.00%;" title="Não conforme: 9"></div>
+                    </div>
+                    <div class="stat-legend">
+                        <div class="legend-item"><span class="legend-indicator" style="background: #10b981;"></span> Conforme: 0 (0,0%)</div>
+                        <div class="legend-item"><span class="legend-indicator" style="background: #f59e0b;"></span> Incompleto: 3 (25,0%)</div>
+                        <div class="legend-item"><span class="legend-indicator" style="background: #ef4444;"></span> Não conforme: 9 (75,0%)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <strong>Resultado geral:</strong> nenhum dos 12 itens foi considerado conforme. Os três itens do planejamento da avaliação do protótipo de alta fidelidade (DECIDE) ficaram incompletos, e os outros nove, referentes ao protótipo de papel, ao relato dos resultados e ao planejamento do relato, ficaram não conformes.
+            </div>
+
+            <h2 class="doc-section">Tabela Consolidada de Verificação</h2>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 1: Resultado da inspeção com a lista de verificação aplicada à Entrega 6 do Grupo 3.</caption>
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Nº</th>
+                            <th style="width: 200px;">Artefato e item</th>
+                            <th>Pergunta</th>
+                            <th style="width: 150px;">Resposta</th>
+                            <th>Fonte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1</strong></td>
+                            <td>Protótipo de papel (baixa fidelidade), item 1</td>
+                            <td>O protótipo de baixa fidelidade é um rascunho ou esboço da interface, sem muita preocupação com os detalhes dos aspectos gráficos, e pode ser feito manualmente?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 7, p. 249. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2</strong></td>
+                            <td>Protótipo de papel (baixa fidelidade), item 2</td>
+                            <td>As telas do sistema estão representadas em papel, em geral desenhadas à mão livre, sem detalhes de interface que não sejam relevantes para a avaliação, e destacam os elementos principais com os quais o usuário vai interagir?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 10, p. 358. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3</strong></td>
+                            <td>Protótipo de papel (baixa fidelidade), item 3</td>
+                            <td>Além das telas estáticas, o protótipo inclui outros pedaços de papel com as partes da interface que se modificam durante a interação, como menus, dicas, itens de lista, resultados de busca e diálogos?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 10, p. 358. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4</strong></td>
+                            <td>Relato dos resultados da avaliação do protótipo de papel, item 1</td>
+                            <td>O relato comunica os objetivos da avaliação, uma breve descrição do método de prototipação em papel, o número e o perfil dos avaliadores e dos participantes e as tarefas executadas pelos participantes?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 10, p. 361. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5</strong></td>
+                            <td>Relato dos resultados da avaliação do protótipo de papel, item 2</td>
+                            <td>O relato traz a lista de problemas de usabilidade corrigidos durante os ciclos de avaliação e reprojeto, indicando local onde ocorreu, fatores de usabilidade prejudicados, descrição e justificativa, correção realizada no protótipo e se o problema voltou a ocorrer depois da correção?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 10, p. 361. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6</strong></td>
+                            <td>Relato dos resultados da avaliação do protótipo de papel, item 3</td>
+                            <td>O relato traz a lista dos problemas de usabilidade ainda não corrigidos, indicando local, fatores de usabilidade prejudicados, descrição e justificativa, prioridade para correção e sugestões de correção, além das partes do sistema que podem ser mais bem elaboradas?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 10, p. 362. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7</strong></td>
+                            <td>Planejamento da avaliação do protótipo de alta fidelidade (DECIDE), item 1</td>
+                            <td>O planejamento determina os objetivos gerais da avaliação (por que e para quem são importantes) e explora, para cada objetivo, as perguntas específicas a serem respondidas, considerando o perfil dos usuários-alvo e suas atividades (D e E do framework DECIDE)?</td>
+                            <td><span class="badge badge-incompleto">◐ Incompleto</span></td>
+                            <td>Cap. 9, p. 313. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>8</strong></td>
+                            <td>Planejamento da avaliação do protótipo de alta fidelidade (DECIDE), item 2</td>
+                            <td>O planejamento escolhe o método de avaliação adequado, considerando prazo, orçamento, equipamentos e experiência dos avaliadores, e define as questões práticas: recrutamento dos participantes, equipamentos, prazos, orçamento e mão de obra (C e I do framework DECIDE)?</td>
+                            <td><span class="badge badge-incompleto">◐ Incompleto</span></td>
+                            <td>Cap. 9, p. 313. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>9</strong></td>
+                            <td>Planejamento da avaliação do protótipo de alta fidelidade (DECIDE), item 3</td>
+                            <td>O planejamento decide como lidar com as questões éticas e prevê avaliar, interpretar e apresentar os dados considerando a confiabilidade dos dados e as validades interna, externa e ecológica do estudo (D e E do framework DECIDE)?</td>
+                            <td><span class="badge badge-incompleto">◐ Incompleto</span></td>
+                            <td>Cap. 9, p. 313. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>10</strong></td>
+                            <td>Planejamento do relato dos resultados da avaliação do protótipo de alta fidelidade, item 1</td>
+                            <td>O planejamento do relato prevê comunicar os objetivos e o escopo da avaliação, a forma como a avaliação foi realizada, o número e o perfil de usuários e avaliadores e um sumário dos dados coletados, incluindo tabelas e gráficos?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 9, p. 312. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>11</strong></td>
+                            <td>Planejamento do relato dos resultados da avaliação do protótipo de alta fidelidade, item 2</td>
+                            <td>O planejamento do relato prevê responder às questões que motivaram o estudo (ou justificar por que alguma resposta não foi encontrada), a interpretação e análise dos dados, a lista dos problemas encontrados e um planejamento para o reprojeto do sistema?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 9, p. 312. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>12</strong></td>
+                            <td>Planejamento do relato dos resultados da avaliação do protótipo de alta fidelidade, item 3</td>
+                            <td>No caso do teste de usabilidade, o planejamento do relato prevê tabelas e gráficos que sumarizam as medições e a lista de problemas encontrados, indicando local onde ocorreu, descrição e justificativa, discussão com os fatores de usabilidade prejudicados e sugestões de solução?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Cap. 10, p. 343. Barbosa e Silva (2010).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="doc-section">Síntese da inspeção</h2>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 2: Síntese da inspeção por artefato.</caption>
+                    <thead><tr><th>Artefato</th><th>Itens</th><th>Conforme</th><th>Incompleto</th><th>Não conforme</th></tr></thead>
+                    <tbody>
+                        <tr><td>Protótipo de papel (baixa fidelidade)</td><td>1 a 3</td><td>0</td><td>0</td><td>3</td></tr>
+                        <tr><td>Relato dos resultados da avaliação do protótipo de papel</td><td>4 a 6</td><td>0</td><td>0</td><td>3</td></tr>
+                        <tr><td>Planejamento da avaliação do protótipo de alta fidelidade (DECIDE)</td><td>7 a 9</td><td>0</td><td>3</td><td>0</td></tr>
+                        <tr><td>Planejamento do relato dos resultados da avaliação do protótipo de alta fidelidade</td><td>10 a 12</td><td>0</td><td>0</td><td>3</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="doc-section">Referências</h2>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. 1. ed. Rio de Janeiro: Elsevier / Campus, 2010. Cap. 7 (p. 249), cap. 9 (p. 312 e 313) e cap. 10 (p. 343 e 358 a 362).</li>
+            </ul>
+
+            </article>
+
+            <nav class="doc-toc" aria-label="Índice desta página">
+                <p class="doc-toc-title">Índice</p>
+                <ul id="docTocList"></ul>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Documentação e verificação dos artefatos da disciplina de Interação Humano-Computador da Universidade de Brasília.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Campus UnB Gama (FGA)
+            </div>
+        </div>
+    </footer>
+
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
