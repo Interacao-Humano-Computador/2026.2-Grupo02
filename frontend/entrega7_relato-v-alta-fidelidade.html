@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relato dos resultados da avaliação do protótipo de alta fidelidade | Entrega 7 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+        .v7-svg { font-family: Inter, Arial, sans-serif; }
+        .v7-svg .grid { stroke: #27272a; stroke-width: 1; }
+        .v7-svg .axis { stroke: #a1a1aa; stroke-width: 1; }
+        .v7-svg .bar { fill: #c4b5fd; }
+        .v7-svg .meta { stroke: #e4e4e7; stroke-width: 1.2; stroke-dasharray: 6 4; }
+        .v7-svg .tick, .v7-svg .axtitle { fill: #a1a1aa; font-size: 12px; }
+        .v7-svg .val { fill: #fafafa; font-size: 12px; }
+        .v7-svg .metalbl { fill: #e4e4e7; font-size: 11px; }
+        body.alto-contraste .v7-svg .grid { stroke: #d4d4d8 !important; }
+        body.alto-contraste .v7-svg .axis, body.alto-contraste .v7-svg .meta { stroke: #000000 !important; }
+        body.alto-contraste .v7-svg .bar { fill: #6b21a8 !important; }
+        body.alto-contraste .v7-svg text { fill: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 7 · Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega7.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-f-prototipo-alta-fidelidade.html">Visão geral e protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-f-planejamento-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade (método de Krug)</a></li>
+                                <li><a href="entrega7_relato-f-relato-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-f-anexo-tcle.html">Anexo A: termo de consentimento (TCLE) da avaliação de alta fidelidade</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-m-prototipo-alta-fidelidade.html">Visão geral e protótipo de alta fidelidade</a></li>
+                                <li><a href="prototipo-matheus/index.html" target="_blank" rel="noopener">Protótipo de alta fidelidade: busca da sala e trajeto 360 até a S7</a></li>
+                                <li><a href="entrega7_relato-m-planejamento-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-m-relato-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário, instruções e cartão de satisfação</a></li>
+                                <li><a href="entrega7_relato-m-anexos-d-f.html">Anexos D a F: formulários de observação, roteiro e ficha de calibração</a></li>
+                                <li><a href="entrega7_aval-professor.html">Matheus: Aval do professor e complexidade do Street View</a></li>
+                                <li><a href="entrega7_legenda.html">Matheus: Legenda dos códigos</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-v-alta-fidelidade.html" class="active" aria-current="page">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-group">Entrega anterior</li>
+                        <li><a href="entrega6.html">Entrega 6: planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+            <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega7.html">Entrega 7</a> › Relatos individuais</p>
+            <h1 id="v7-relato-alta-fidelidade" class="doc-title doc-page-title">Relato dos resultados da avaliação do protótipo de alta fidelidade</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto, matrícula 221029285 · <strong>Revisor:</strong> Victor Andreozzi de La Rocque Couto</p>
+                <p><strong>Funcionalidade:</strong> Avaliação de Disciplinas · <strong>Conteúdo desta página:</strong> relato dos resultados do teste de usabilidade do protótipo de alta fidelidade com cinco participantes · Tabelas 1 a 12 · Figura 1</p>
+                <p><strong>Vídeo da apresentação:</strong> <a href="https://www.youtube.com/watch?v=vO76Ck3ILlQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=vO76Ck3ILlQ</a></p>
+                <p><strong>Artefatos da Entrega 6 em que este relato se baseia:</strong> <a href="entrega6_relato-v-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade</a> · <a href="entrega6_relato-v-relato-alta-fidelidade.html">Planejamento do relato dos resultados</a> · <a href="entrega6_relato-v-prototipo-papel.html">Relato dos resultados do protótipo de papel</a></p>
+            </div>
+
+            <p class="doc-text">Este artefato relata os resultados do teste de usabilidade do Protótipo de Alta Fidelidade da Avaliação de Disciplinas, conforme o <a href="entrega6_relato-v-relato-alta-fidelidade.html">planejamento do relato</a> da Entrega 6. A estrutura segue os itens que Barbosa e Silva (2010) indicam para o relato de um teste de usabilidade (seção 10.2.1) e de qualquer avaliação de IHC (seção 9.7.5): objetivos e escopo, método, avaliador e participantes, tarefas, tabelas e gráficos das medições, interpretação e análise, lista de problemas e planejamento do reprojeto.</p>
+
+            <h3 class="doc-subsection" id="v7-objetivos">1. Objetivos e escopo da avaliação</h3>
+            <p class="doc-text">Em um teste de usabilidade, os objetivos determinam quais critérios de usabilidade são medidos, e cada critério é explorado por perguntas associadas a um dado mensurável (Barbosa e Silva, 2010, seção 10.2.1). A avaliação teve três objetivos, definidos no <a href="entrega6_relato-v-alta-fidelidade.html">planejamento com o framework DECIDE</a> (Barbosa e Silva, 2010, seção 9.8):</p>
+            <ul class="doc-list">
+                <li>medir a eficácia, a eficiência e a satisfação dos estudantes ao avaliar e consultar uma disciplina no protótipo interativo, comparando os resultados com as metas de usabilidade;</li>
+                <li>verificar se as correções feitas a partir do protótipo de papel (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-01">PP-01</a> a <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-06">PP-06</a>) resolveram os problemas e se os problemas das avaliações anteriores (<a class="code-ref" href="entrega5_relato-v-storyboard.html#a-01">A-01</a> a <a class="code-ref" href="entrega5_relato-v-storyboard.html#a-03">A-03</a> e <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-01">B-01</a> a <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-07">B-07</a>) não reapareceram;</li>
+                <li>identificar problemas de fluxo, navegação e aparência que o protótipo de papel não podia revelar, como rolagem, estados de envio e descarte e consistência visual.</li>
+            </ul>
+            <p class="doc-text">O escopo é o protótipo vertical da Avaliação de Disciplinas, construído em HTML, CSS e JavaScript: busca e resultados (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t1">T1</a> e <a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t2">T2</a>), página da disciplina (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t3">T3</a>), formulário de avaliação (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t4">T4</a>), revisão (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t5">T5</a>) e confirmação (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t6">T6</a>), com os estados de envio e descarte (Preece, Rogers e Sharp, 2005, seção 8.2.5). As oito perguntas da avaliação são respondidas na Tabela 9, como pedem Barbosa e Silva (2010, seção 9.7.5).</p>
+
+            <h3 class="doc-subsection" id="v7-metodo">2. Método: como a avaliação foi realizada</h3>
+            <p class="doc-text">O método foi o teste de usabilidade (Rubin, 1994; Rubin e Chisnell, 2008, citados por Barbosa e Silva, 2010, seção 10.2.1): usuários-alvo realizaram tarefas no protótipo enquanto eram registrados dados sobre o seu desempenho e as suas opiniões. Cada sessão seguiu a coleta de dados descrita por Barbosa e Silva (2010, seção 9.7.3): apresentação dos objetivos e do consentimento, sessão de observação com a técnica de pensar em voz alta (<em>think aloud</em>) e uma entrevista pós-teste curta sobre a experiência. A tela, o áudio e o vídeo foram gravados, e o avaliador reviu as gravações para medir tempos, caminhos e falas.</p>
+            <p class="doc-text">Barbosa e Silva (2010, seção 9.7.5) observam que os resultados são fortemente influenciados pelo ambiente de avaliação, por isso o relato registra como a avaliação foi de fato realizada. A Tabela 1 compara o <a href="entrega6_relato-v-alta-fidelidade.html">planejamento</a>, em sua versão ajustada, com o que foi realizado. A diferença que restou está nas tarefas de <a class="code-ref" href="#p1">P1</a> a <a class="code-ref" href="#p3">P3</a>.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 1: Forma da avaliação: planejado e realizado</caption>
+                    <thead><tr><th>Item</th><th>Planejado (Entrega 6, versão ajustada)</th><th>Realizado</th><th>Efeito nos resultados</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Data e horário</strong></td><td>12/11 e 14/11/2026</td><td><a class="code-ref" href="#p1">P1</a> a <a class="code-ref" href="#p3">P3</a> em 12/11/2026 (8h53, 9h14 e 9h45); <a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a> em 14/11/2026 (19h41 e 19h55), horário de Brasília</td><td>Como planejado.</td></tr>
+                        <tr><td><strong>Duração</strong></td><td>Cerca de 10 minutos por sessão</td><td>Gravações de 3 min 14 s a 6 min 5 s</td><td>Como planejado; a entrevista pós-teste foi breve.</td></tr>
+                        <tr><td><strong>Consentimento</strong></td><td>TCLE mostrado ao participante e aceite registrado na gravação</td><td>Como planejado, com o direito de sair a qualquer momento informado</td><td>O consentimento foi registrado, mas sem via assinada.</td></tr>
+                        <tr><td><strong>Gravação</strong></td><td>Reunião do Microsoft Teams com tela, áudio e câmera</td><td>Como planejado, com o avaliador ao lado do participante</td><td>O rosto aparece nos vídeos, que ficam com acesso restrito, fora do repositório público.</td></tr>
+                        <tr><td><strong>Perfil</strong></td><td>Curso registrado pelo avaliador</td><td>Como planejado (Tabela 2)</td><td>Semestre e situação no fluxo não foram coletados.</td></tr>
+                        <tr><td><strong>Fala durante as tarefas</strong></td><td>Pensar em voz alta</td><td>Como planejado</td><td>As falas explicam cada passo, mas aumentam o tempo das tarefas (Barbosa e Silva, 2010, seção 9.7.3).</td></tr>
+                        <tr><td><strong>Tarefas</strong></td><td>Três cenários com disciplinas escolhidas pelo participante: avaliar, buscar e avaliar, começar e descartar</td><td><a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a> fizeram os três cenários. <a class="code-ref" href="#p1">P1</a> a <a class="code-ref" href="#p3">P3</a> fizeram só uma tarefa aberta, avaliar uma disciplina já cursada</td><td>A Tarefa 1 foi medida com os cinco, e as Tarefas 2 e 3 só com <a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a>.</td></tr>
+                        <tr><td><strong>Pós-teste</strong></td><td>Entrevista com perguntas abertas</td><td>Perguntas sobre o que confundiu, o que poderia melhorar e acessibilidade</td><td>A satisfação é analisada pelas falas (Tabela 8).</td></tr>
+                        <tr><td><strong>Avaliador</strong></td><td>Um, que revê as gravações depois</td><td>Victor conduziu as cinco sessões sozinho e reviu e transcreveu todas as gravações</td><td>Como planejado.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir das gravações das sessões.</p>
+            <p class="doc-text">Deixar o participante escolher disciplinas que realmente cursou aproximou o teste do uso real: cada um avaliou experiências suas, e não um cenário inventado. Em contrapartida, com <a class="code-ref" href="#p1">P1</a> a <a class="code-ref" href="#p3">P3</a>, as tarefas foram apresentadas como uma só instrução aberta; a partir de <a class="code-ref" href="#p4">P4</a>, os três cenários foram apresentados um a um. O pensar em voz alta foi útil para a análise qualitativa, mas, como alertam Barbosa e Silva (2010, seção 9.7.3), o participante pode gastar mais tempo falando e pensando, o que deve ser considerado ao comparar os tempos com as metas.</p>
+
+            <h3 class="doc-subsection" id="v7-participantes">3. Avaliador e participantes</h3>
+            <p class="doc-text">O avaliador foi Victor Andreozzi de La Rocque Couto, que apresentou o teste, observou, conduziu a entrevista pós-teste e depois reviu as gravações. Os participantes são identificados por códigos, na ordem em que as sessões ocorreram, sem nome nem matrícula. Nenhum deles participou do teste do protótipo de papel, como previa o planejamento, e o grupo teve três homens e duas mulheres.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 2: Perfil dos participantes</caption>
+                    <thead><tr><th>Código</th><th>Sessão</th><th>Gênero</th><th>Curso</th><th>Disciplinas avaliadas no teste</th></tr></thead>
+                    <tbody>
+                        <tr id="p1"><td><strong>P1</strong></td><td>12/11/2026, 8h53</td><td>Masculino</td><td>Engenharia de Software</td><td>Interação Humano-Computador (FGA0210) e Teoria Política Moderna (IPO0205)</td></tr>
+                        <tr id="p2"><td><strong>P2</strong></td><td>12/11/2026, 9h14</td><td>Masculino</td><td>Engenharia de Software</td><td>Orientação a Objetos (FGA0158)</td></tr>
+                        <tr id="p3"><td><strong>P3</strong></td><td>12/11/2026, 9h45</td><td>Feminino</td><td>Engenharia de Software</td><td>Cálculo 1 (MAT0025)</td></tr>
+                        <tr id="p4"><td><strong>P4</strong></td><td>14/11/2026, 19h41</td><td>Masculino</td><td>Audiovisual</td><td>Teorias da Comunicação (FAC0115) e Cálculo 2 (MAT0026); começou e descartou Introdução à Álgebra Linear (MAT0031)</td></tr>
+                        <tr id="p5"><td><strong>P5</strong></td><td>14/11/2026, 19h55</td><td>Feminino</td><td>Psicologia</td><td>Psicologia do Trabalho (PST0001) e Psicologia Cognitiva 1 (PPB0046); começou e descartou Psicopatologia 1 (PCL0021)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <p class="doc-text">Todos são estudantes de graduação da UnB que já cursaram as disciplinas que avaliaram. <a class="code-ref" href="#p1">P1</a>, <a class="code-ref" href="#p2">P2</a> e <a class="code-ref" href="#p3">P3</a> cursam Engenharia de Software, <a class="code-ref" href="#p4">P4</a> cursa Audiovisual e <a class="code-ref" href="#p5">P5</a> cursa Psicologia. A variedade de cursos permitiu testar a busca e a avaliação com disciplinas de áreas distintas (engenharia, comunicação, ciência política e psicologia), e não só com as do curso do avaliador. O número de cinco participantes segue Nielsen (1993), segundo quem cinco usuários revelam cerca de 85% dos problemas de usabilidade (Santa Rosa e Moraes, 2008, p. 156 e 157); Barbosa e Silva (2010, seção 9.7.2) também citam esse número para avaliações com observação de usuários.</p>
+
+            <h3 class="doc-subsection" id="v7-tarefas">4. Tarefas executadas pelos participantes</h3>
+            <p class="doc-text">Barbosa e Silva (2010, seção 10.2.1) pedem que o relato descreva as tarefas executadas. A Tabela 3 mostra as tarefas planejadas na Tabela 12 do planejamento e como foram aplicadas. O caminho mais eficiente previsto na HTA, usado para contar os desvios, é: tela inicial, Avaliações, encontrar a disciplina, Avaliar, preencher as escalas, Revisar e enviar, Confirmar envio.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 3: Tarefas planejadas e aplicadas</caption>
+                    <thead><tr><th>Tarefa</th><th>Cenário planejado</th><th>Cenário aplicado</th><th>Participantes</th><th>Perguntas investigadas</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong> Avaliar uma disciplina</td><td>Avaliar uma disciplina já cursada, escolhendo-a direto na lista, sem busca.</td><td>“Avalie uma disciplina que você já cursou.” Para <a class="code-ref" href="#p5">P5</a>, “sem fazer nenhuma busca”.</td><td><a class="code-ref" href="#p1">P1</a> a <a class="code-ref" href="#p5">P5</a></td><td>1, 2, 3, 4 e 5</td></tr>
+                        <tr><td><strong>2</strong> Buscar e avaliar</td><td>Buscar pelo nome uma disciplina do seu curso e avaliá-la.</td><td>Avaliar uma segunda disciplina; <a class="code-ref" href="#p5">P5</a> “buscando por uma disciplina do seu curso” e <a class="code-ref" href="#p4">P4</a> “sem digitar”, escolhendo na lista.</td><td><a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a> (<a class="code-ref" href="#p1">P1</a> fez uma segunda avaliação por iniciativa própria)</td><td>3 e 6</td></tr>
+                        <tr><td><strong>3</strong> Desistir da avaliação</td><td>Começar a avaliar outra disciplina, parar no meio e descartar.</td><td>“Comece uma avaliação, pare no meio e descarte tudo o que fez.”</td><td><a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a></td><td>7</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir das gravações das sessões.</p>
+
+            <h3 class="doc-subsection" id="v7-medicoes">5. Medições realizadas</h3>
+            <p class="doc-text">Para cada tarefa de cada participante, foram medidos o grau de sucesso, os erros e desvios, os pedidos de ajuda e o tempo, dados que Barbosa e Silva (2010, seção 10.2.1) citam como típicos do teste de usabilidade. Os tempos foram medidos nas gravações pela mudança de tela registrada na barra de endereço do protótipo, até a tela “Avaliação concluída”. O início foi o aparecimento da tela inicial (<a class="code-ref" href="#p1">P1</a> a <a class="code-ref" href="#p3">P3</a>) ou o fim das instruções do avaliador, quando a tela inicial já estava aberta durante a explicação (<a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a>). As medidas são apresentadas por participante, com média e desvio padrão, e comparadas às metas da Tabela 11 do planejamento (meta ideal de até 2 minutos e aceitável de até 3 minutos), como no exemplo de Barbosa e Silva (2010, seção 10.2.1).</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 4: Desempenho de cada participante na Tarefa 1</caption>
+                    <thead><tr><th>Participante</th><th>Resultado</th><th>Tempo total</th><th>Como encontrou a disciplina</th><th>Desvios do caminho previsto</th><th>Pedidos de ajuda</th><th>Avaliação registrada</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong><a class="code-ref" href="#p1">P1</a></strong></td><td>Concluiu sem ajuda</td><td>1 min 38 s</td><td>Abriu o filtro de professor para conhecer as opções, digitou “int” na busca e abriu “Ver avaliações” antes de avaliar.</td><td>0 (a consulta foi uma escolha, e não um erro)</td><td>0</td><td>Dificuldade 5 e cobrança 5, semestre 2025.2, com professor e comentário.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p2">P2</a></strong></td><td>Concluiu sem ajuda</td><td>2 min 9 s</td><td>Rolou a lista até Orientação a Objetos, sem usar a busca, e clicou em “Avaliar”.</td><td>0</td><td>0</td><td>Dificuldade 3 e cobrança 2, semestre 2025.1, “Prefiro não informar” o professor, com comentário.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p3">P3</a></strong></td><td>Concluiu sem ajuda</td><td>1 min 47 s</td><td>Clicou em “Avaliar” em Cálculo 1, primeiro item da lista.</td><td>0</td><td>0</td><td>Dificuldade 4 e cobrança 3, semestre 2026.1, com professor e comentário.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p4">P4</a></strong></td><td>Concluiu sem ajuda</td><td>1 min 37 s</td><td>Digitou “comuni” na busca, abriu “Ver avaliações” de Teorias da Comunicação e depois “Avaliar esta disciplina”.</td><td>0 (a consulta foi uma escolha)</td><td>0 (as perguntas feitas foram sobre o teste, antes de começar)</td><td>Dificuldade 3 e cobrança 4, semestre 2024.2, com professor e comentário.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p5">P5</a></strong></td><td>Concluiu sem ajuda</td><td>1 min 19 s</td><td>Digitou “psci” na busca e clicou em “Avaliar” em Psicologia do Trabalho.</td><td>0</td><td>0</td><td>Dificuldade 2 e cobrança 3, semestre 2026.1, “Prefiro não informar” o professor, com comentário.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir das gravações das sessões.</p>
+
+            <figure class="doc-figure" id="v7-figura-tempo">
+                <figcaption>Figura 1: Tempo de cada participante na Tarefa 1, comparado às metas</figcaption>
+                <svg class="v7-svg" viewBox="0 0 580 340" role="img" aria-labelledby="v7-fig1-desc" style="width: 100%; max-width: 640px; height: auto; display: block; margin: 0 auto;">
+                      <desc id="v7-fig1-desc">Gráfico de barras verticais do tempo na Tarefa 1: <a class="code-ref" href="#p1">P1</a> 1 minuto e 38 segundos, <a class="code-ref" href="#p2">P2</a> 2 minutos e 9 segundos, <a class="code-ref" href="#p3">P3</a> 1 minuto e 47 segundos, <a class="code-ref" href="#p4">P4</a> 1 minuto e 37 segundos e <a class="code-ref" href="#p5">P5</a> 1 minuto e 19 segundos. Linhas tracejadas marcam a meta ideal de 2 minutos e a meta aceitável de 3 minutos.</desc>
+                      <line class="grid" x1="70" y1="280.0" x2="550" y2="280.0"/>
+                      <text class="tick" x="62" y="284.0" text-anchor="end">0:00</text>
+                      <line class="grid" x1="70" y1="238.3" x2="550" y2="238.3"/>
+                      <text class="tick" x="62" y="242.3" text-anchor="end">0:30</text>
+                      <line class="grid" x1="70" y1="196.7" x2="550" y2="196.7"/>
+                      <text class="tick" x="62" y="200.7" text-anchor="end">1:00</text>
+                      <line class="grid" x1="70" y1="155.0" x2="550" y2="155.0"/>
+                      <text class="tick" x="62" y="159.0" text-anchor="end">1:30</text>
+                      <line class="grid" x1="70" y1="113.3" x2="550" y2="113.3"/>
+                      <text class="tick" x="62" y="117.3" text-anchor="end">2:00</text>
+                      <line class="grid" x1="70" y1="71.7" x2="550" y2="71.7"/>
+                      <text class="tick" x="62" y="75.7" text-anchor="end">2:30</text>
+                      <line class="grid" x1="70" y1="30.0" x2="550" y2="30.0"/>
+                      <text class="tick" x="62" y="34.0" text-anchor="end">3:00</text>
+                      <rect class="bar" x="96.0" y="143.9" width="44" height="136.1"/>
+                      <text class="val" x="118.0" y="137.9" text-anchor="middle">1:38</text>
+                      <text class="tick" x="118.0" y="298" text-anchor="middle"><a class="code-ref" href="#p1">P1</a></text>
+                      <rect class="bar" x="192.0" y="100.8" width="44" height="179.2"/>
+                      <text class="val" x="214.0" y="94.8" text-anchor="middle">2:09</text>
+                      <text class="tick" x="214.0" y="298" text-anchor="middle"><a class="code-ref" href="#p2">P2</a></text>
+                      <rect class="bar" x="288.0" y="131.4" width="44" height="148.6"/>
+                      <text class="val" x="310.0" y="125.4" text-anchor="middle">1:47</text>
+                      <text class="tick" x="310.0" y="298" text-anchor="middle"><a class="code-ref" href="#p3">P3</a></text>
+                      <rect class="bar" x="384.0" y="145.3" width="44" height="134.7"/>
+                      <text class="val" x="406.0" y="139.3" text-anchor="middle">1:37</text>
+                      <text class="tick" x="406.0" y="298" text-anchor="middle"><a class="code-ref" href="#p4">P4</a></text>
+                      <rect class="bar" x="480.0" y="170.3" width="44" height="109.7"/>
+                      <text class="val" x="502.0" y="164.3" text-anchor="middle">1:19</text>
+                      <text class="tick" x="502.0" y="298" text-anchor="middle"><a class="code-ref" href="#p5">P5</a></text>
+                      <line class="meta" x1="70" y1="113.3" x2="550" y2="113.3"/>
+                      <text class="metalbl" x="550" y="108.3" text-anchor="end">Meta ideal (2 min)</text>
+                      <line class="meta" x1="70" y1="30.0" x2="550" y2="30.0"/>
+                      <text class="metalbl" x="550" y="25.0" text-anchor="end">Meta aceitável (3 min)</text>
+                      <line class="axis" x1="70" y1="280" x2="550" y2="280"/>
+                      <line class="axis" x1="70" y1="280" x2="70" y2="20"/>
+                      <text class="axtitle" x="310" y="324" text-anchor="middle">Participante</text>
+                      <text class="axtitle" transform="translate(18 155) rotate(-90)" text-anchor="middle">Tempo na Tarefa 1 (min:s)</text>
+                    </svg>
+                <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026). As linhas tracejadas marcam as metas da Tabela 11 do planejamento.</p>
+            </figure>
+
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 5: Eficácia e eficiência por tarefa</caption>
+                    <thead><tr><th>Tarefa</th><th>Sem ajuda</th><th>Com ajuda</th><th>Não concluíram</th><th>Tempo médio (desvio padrão)</th><th>Erros e desvios (total)</th><th>Meta atingida?</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong> Avaliar uma disciplina</td><td>5 de 5</td><td>0 de 5</td><td>0 de 5</td><td>1 min 42 s (± 18 s)</td><td>0</td><td>Sucesso: ideal. Tempo: média na meta ideal; 4 de 5 na meta ideal e 5 de 5 na aceitável.</td></tr>
+                        <tr><td><strong>2</strong> Buscar e avaliar</td><td>2 de 2</td><td>0 de 2</td><td>0 de 2</td><td>43 s (± 16 s)</td><td>0</td><td>Sucesso: ideal.</td></tr>
+                        <tr><td><strong>3</strong> Desistir da avaliação</td><td>2 de 2</td><td>0 de 2</td><td>0 de 2</td><td>29 s (± 16 s)</td><td>0 envios acidentais</td><td>Ideal para os dois participantes que a realizaram.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026). Desvio padrão amostral. Os tempos incluem as falas do pensar em voz alta. Tarefas 2 e 3 medidas com <a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a> (Tabela 7).</p>
+
+            <p class="doc-text">Para entender onde o tempo foi gasto, a Tarefa 1 foi dividida em quatro etapas, também medidas pela mudança de tela (Tabela 6). O preenchimento do formulário foi a etapa mais longa para todos, o que é esperado, porque inclui escolher o semestre e o professor, dar as duas notas e escrever o comentário. A revisão foi curta, com exceção de <a class="code-ref" href="#p2">P2</a>, que leu em voz alta cada item antes de confirmar; <a class="code-ref" href="#p5">P5</a> confirmou em menos de 4 segundos, sem ler a revisão.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 6: Tempo por etapa da Tarefa 1</caption>
+                    <thead><tr><th>Etapa (telas)</th><th><a class="code-ref" href="#p1">P1</a></th><th><a class="code-ref" href="#p2">P2</a></th><th><a class="code-ref" href="#p3">P3</a></th><th><a class="code-ref" href="#p4">P4</a></th><th><a class="code-ref" href="#p5">P5</a></th><th>Média</th></tr></thead>
+                    <tbody>
+                        <tr><td>Até a página de Avaliações</td><td>7 s</td><td>26 s</td><td>17 s</td><td>1 s</td><td>5 s</td><td>11 s</td></tr>
+                        <tr><td>Encontrar a disciplina e abrir o formulário (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t1">T1</a> a <a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t3">T3</a>)</td><td>31 s</td><td>20 s</td><td>12 s</td><td>38 s</td><td>18 s</td><td>24 s</td></tr>
+                        <tr><td>Preencher o formulário (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t4">T4</a>)</td><td>47 s</td><td>56 s</td><td>70 s</td><td>41 s</td><td>52 s</td><td>53 s</td></tr>
+                        <tr><td>Revisar e confirmar (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t5">T5</a>)</td><td>13 s</td><td>27 s</td><td>9 s</td><td>17 s</td><td>4 s</td><td>14 s</td></tr>
+                        <tr><td><strong>Total</strong></td><td><strong>1:38</strong></td><td><strong>2:09</strong></td><td><strong>1:47</strong></td><td><strong>1:37</strong></td><td><strong>1:19</strong></td><td><strong>1:42</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir das gravações das sessões.</p>
+
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 7: Desempenho nas Tarefas 2 e 3 e nas avaliações seguintes</caption>
+                    <thead><tr><th>Participante</th><th>Tarefa</th><th>O que fez</th><th>Tempo</th><th>Resultado</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong><a class="code-ref" href="#p4">P4</a></strong></td><td>2 Avaliar outra disciplina, sem digitar</td><td>Clicou em “Avaliar” em Cálculo 2 na lista, preencheu, revisou e confirmou: “segue o mesmo caminho”.</td><td>32 s</td><td>Concluiu sem ajuda.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p5">P5</a></strong></td><td>2 Buscar e avaliar</td><td>Buscou Psicologia Cognitiva 1, preencheu, revisou e confirmou.</td><td>54 s</td><td>Concluiu sem ajuda.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p4">P4</a></strong></td><td>3 Desistir</td><td>Abriu Introdução à Álgebra Linear, escolheu o semestre, o professor e a dificuldade, clicou em “Descartar” e confirmou no diálogo; leu em voz alta que o rascunho seria perdido e que nada foi enviado.</td><td>18 s</td><td>Saiu sem enviar, sem ajuda.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p5">P5</a></strong></td><td>3 Desistir</td><td>Buscou Psicopatologia 1, deu as notas e hesitou (“E aí eu paro aqui? Eu só saio?”) antes de escolher “Descartar” e confirmar.</td><td>40 s</td><td>Saiu sem enviar, sem ajuda, com uma breve hesitação.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p1">P1</a></strong></td><td>Segunda avaliação, por iniciativa própria</td><td>Clicou em “Avaliar outra disciplina” e avaliou Teoria Política Moderna sem comentário, “que é opcional”.</td><td>cerca de 40 s</td><td>Concluiu sem ajuda.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir das gravações das sessões.</p>
+            <p class="doc-text">Os três participantes que avaliaram uma segunda disciplina levaram bem menos tempo na segunda vez: <a class="code-ref" href="#p1">P1</a> passou de 1 min 38 s para cerca de 40 s, <a class="code-ref" href="#p4">P4</a> de 1 min 37 s para 32 s e <a class="code-ref" href="#p5">P5</a> de 1 min 19 s para 54 s. A queda sugere que o fluxo é aprendido logo no primeiro uso, o que é coerente com a meta de facilidade de aprendizado da Entrega 3.</p>
+
+            <p class="doc-text">Como previsto no planejamento, a satisfação é analisada pelas falas espontâneas e pela entrevista pós-teste, que Barbosa e Silva (2010, seção 9.7.3) descrevem como a oportunidade de coletar a opinião do participante sobre a experiência que acabou de viver e de esclarecer suas intenções e interpretações durante as tarefas (Tabela 8).</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 8: Falas sobre a experiência de uso</caption>
+                    <thead><tr><th>Participante</th><th>Momento</th><th>Fala (resumida)</th><th>Leitura</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong><a class="code-ref" href="#p1">P1</a></strong></td><td>Depois da primeira avaliação</td><td>Voltou às avaliações da disciplina e comentou que a sua já aparecia; em seguida, avaliou outra disciplina sem comentário, “que é opcional”.</td><td>Conferiu a publicação; entendeu que o comentário é opcional.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p1">P1</a></strong></td><td>Pós-teste</td><td>Disse que explorou tudo o que tinha interesse, que achou a funcionalidade bem bacana, mais do que imaginava, e que gostou bastante da ideia.</td><td>Satisfação e utilidade percebida altas.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p2">P2</a></strong></td><td>Tela de confirmação</td><td>Disse que deu certo e que as informações apareceram, “só não apareceu aqui o comentário”; depois encontrou o comentário em “Ver avaliações”.</td><td>Dúvida sobre o envio do comentário (<a class="code-ref" href="#af-01">AF-01</a>).</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p2">P2</a></strong></td><td>Pós-teste</td><td>Achou muito bom, fácil de entender e rápido, “não foi muito burocrático”, sem um questionário grande.</td><td>Satisfação alta; o formulário curto foi visto como vantagem.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p3">P3</a></strong></td><td>Formulário e pós-teste</td><td>Leu o aviso de que a avaliação é anônima, notou o que outros alunos acharam e achou o fluxo “bem intuitivo”.</td><td>Satisfação alta.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p4">P4</a></strong></td><td>Revisão e pós-teste</td><td>Leu o termo de anonimato na revisão e achou “bem intuitivo”; no fim, disse que estava “super tranquilo”, que não havia “muito o que confundir” e que a avaliação estava “funcionando muito bem”.</td><td>Satisfação alta.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="#p5">P5</a></strong></td><td>Pós-teste</td><td>Disse que não tinha visto que dava para escolher o professor e que teria escolhido, porque a cobrança depende do professor; achou bom pesquisar e voltar para a página, “muito tranquilo”.</td><td>Campo de professor pouco percebido (<a class="code-ref" href="#af-03">AF-03</a>); satisfação alta com a busca e a navegação.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir da transcrição das gravações.</p>
+
+            <h3 class="doc-subsection" id="v7-interpretacao">6. Interpretação e análise dos dados</h3>
+            <h4 class="doc-h4" id="v7-intra">6.1 Análise de cada participante (intraparticipante)</h4>
+            <p class="doc-text">Barbosa e Silva (2010, seção 9.7.4) recomendam interpretar primeiro os dados de cada participante, buscando respostas às perguntas do planejamento. Para cada sessão, a gravação da tela, as falas e as anotações foram analisadas em conjunto, como sugerem Rubin e Chisnell (2008, citados por Barbosa e Silva, 2010, seção 10.2.1), porque a análise conjunta revela o que um único tipo de dado não mostraria.</p>
+            <ul class="doc-list">
+                <li><strong><a class="code-ref" href="#p1">P1</a></strong> explorou a interface antes de avaliar: abriu o filtro de professor “para ter noção do que tem”, usou a busca com parte do nome e consultou as avaliações da disciplina antes de clicar em “Avaliar esta disciplina”. No formulário, notou os comentários recentes ao lado e, na revisão, leu o termo de anonimato. Concluiu sem ajuda, conferiu que a avaliação já aparecia e avaliou outra disciplina sem comentário.</li>
+                <li><strong><a class="code-ref" href="#p2">P2</a></strong> leu a tela inicial com calma e chegou às avaliações pelo cartão “Avaliar disciplinas”. Rolou a lista até a disciplina, notou as médias de dificuldade e cobrança, trocou o semestre sugerido e preferiu não informar o professor. Na revisão, leu o termo de anonimato e conferiu cada campo. Na confirmação, percebeu que o comentário não aparecia e só se tranquilizou ao encontrá-lo em “Ver avaliações”.</li>
+                <li><strong><a class="code-ref" href="#p3">P3</a></strong> encontrou o cartão “Avaliar disciplinas” “no canto superior direito” da tela inicial, clicou em “Avaliar” no primeiro item da lista e leu o aviso de anonimato logo no início do formulário. Concluiu sem hesitar e achou o fluxo intuitivo.</li>
+                <li><strong><a class="code-ref" href="#p4">P4</a></strong> fez perguntas sobre o teste antes de começar (se avaliaria só a funcionalidade ou o sistema todo e se todas as disciplinas da UnB estavam no protótipo). Durante as tarefas, não pediu ajuda: buscou a disciplina, consultou as avaliações, leu o termo de anonimato na revisão, avaliou uma segunda disciplina “seguindo o mesmo caminho” e descartou a terceira lendo em voz alta a mensagem de que nada foi enviado.</li>
+                <li><strong><a class="code-ref" href="#p5">P5</a></strong> usou a busca nas três tarefas, mesmo quando o cenário pedia para avaliar “sem fazer nenhuma busca”, o que indica que a busca é o caminho que ela prefere. Manteve “Prefiro não informar” no professor nas duas avaliações e o semestre sugerido (2026.1), e confirmou a revisão sem lê-la. Na Tarefa 3, hesitou sobre como sair, mas encontrou “Descartar” sozinha. No pós-teste, contou que não tinha visto que dava para escolher o professor.</li>
+            </ul>
+            <h4 class="doc-h4" id="v7-inter">6.2 Consolidação entre participantes (interparticipante)</h4>
+            <p class="doc-text">Na consolidação, buscam-se recorrências, que distinguem características do grupo das idiossincrasias de cada participante (Barbosa e Silva, 2010, seção 9.7.5). As recorrências encontradas foram:</p>
+            <ul class="doc-list">
+                <li><strong>Todos concluíram as tarefas sem ajuda e sem desvios.</strong> Os cinco encontraram a funcionalidade pela tela inicial, chegaram às disciplinas por caminhos diferentes (busca em 3 de 5, rolagem e primeiro item da lista) e usaram “Revisar e enviar” e “Confirmar envio” sem hesitar.</li>
+                <li><strong>O fluxo é aprendido rápido.</strong> Nas segundas avaliações, o tempo caiu para menos da metade em <a class="code-ref" href="#p1">P1</a> e <a class="code-ref" href="#p4">P4</a> e em um terço em <a class="code-ref" href="#p5">P5</a>.</li>
+                <li><strong>O anonimato foi percebido por quatro dos cinco.</strong> <a class="code-ref" href="#p3">P3</a> leu o aviso do formulário e <a class="code-ref" href="#p1">P1</a>, <a class="code-ref" href="#p2">P2</a> e <a class="code-ref" href="#p4">P4</a> leram o termo da revisão, sem que o avaliador perguntasse. <a class="code-ref" href="#p5">P5</a> não comentou o anonimato e passou pela revisão em menos de 4 segundos.</li>
+                <li><strong>A informação dos outros alunos foi usada.</strong> <a class="code-ref" href="#p1">P1</a> e <a class="code-ref" href="#p4">P4</a> abriram “Ver avaliações” antes de avaliar, <a class="code-ref" href="#p1">P1</a> e <a class="code-ref" href="#p3">P3</a> comentaram o resumo ao lado do formulário e <a class="code-ref" href="#p2">P2</a> comentou as médias na lista.</li>
+                <li><strong>Os valores já preenchidos tendem a ficar como estão (<a class="code-ref" href="#af-02">AF-02</a> e <a class="code-ref" href="#af-03">AF-03</a>).</strong> O semestre vem com 2026.1 e o professor com “Prefiro não informar”. <a class="code-ref" href="#p3">P3</a> e <a class="code-ref" href="#p5">P5</a> mantiveram o semestre sugerido, e <a class="code-ref" href="#p2">P2</a> e <a class="code-ref" href="#p5">P5</a> mantiveram o professor sem informação; <a class="code-ref" href="#p5">P5</a> afirmou que não viu o campo e que teria escolhido o professor.</li>
+                <li><strong>O descarte funcionou.</strong> Os dois participantes que fizeram a Tarefa 3 saíram sem enviar, confirmando no diálogo de descarte, e nenhum envio acidental ocorreu.</li>
+            </ul>
+            <p class="doc-text">Como idiossincrasias, <a class="code-ref" href="#p1">P1</a> foi o único a explorar os filtros, <a class="code-ref" href="#p2">P2</a> o único a ler cada item da revisão em voz alta e <a class="code-ref" href="#p2">P2</a> o único a sentir falta do comentário na confirmação (<a class="code-ref" href="#af-01">AF-01</a>). Mesmo não recorrentes, esses comportamentos são registrados porque podem indicar problemas que cinco participantes não bastam para confirmar.</p>
+
+            <h4 class="doc-h4" id="v7-respostas">6.3 Respostas às perguntas da avaliação</h4>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 9: Metas e resultados por pergunta</caption>
+                    <thead><tr><th>Nº</th><th>Pergunta</th><th>Meta aceitável / ideal</th><th>Resultado medido</th><th>Interpretação</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong></td><td>O estudante conclui a avaliação sem ajuda?</td><td>3 de 5 / 5 de 5</td><td>5 de 5</td><td>Meta ideal atingida.</td></tr>
+                        <tr><td><strong>2</strong></td><td>Quanto tempo leva para avaliar uma disciplina?</td><td>Até 3 min / até 2 min</td><td>Média de 1 min 42 s (± 18 s); 4 de 5 abaixo de 2 min e 5 de 5 abaixo de 3 min</td><td>Meta ideal atingida pela média, mesmo com o tempo das falas; <a class="code-ref" href="#p2">P2</a> ficou na meta aceitável porque leu a tela inicial e a revisão em voz alta.</td></tr>
+                        <tr><td><strong>3</strong></td><td>Ele encontra a disciplina pela busca e pelos filtros sem desvios?</td><td>Até 1 desvio / nenhum</td><td>0 desvios em todas as tarefas; 3 de 5 usaram a busca, com parte do nome (“int”, “comuni”, “psci”)</td><td>Meta ideal atingida. A busca por parte do nome funcionou em todas as tentativas.</td></tr>
+                        <tr><td><strong>4</strong></td><td>Ele percebe, antes de enviar, que a avaliação é anônima?</td><td>4 de 5 / 5 de 5</td><td>4 de 5 leram o aviso ou o termo espontaneamente</td><td>Meta aceitável atingida; <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-02">PP-02</a> resolvido. <a class="code-ref" href="#p5">P5</a> confirmou a revisão sem lê-la.</td></tr>
+                        <tr><td><strong>5</strong></td><td>Ele interpreta corretamente as escalas e seus extremos?</td><td>4 de 5 / 5 de 5</td><td>5 de 5 sem dúvidas; <a class="code-ref" href="#p3">P3</a>, <a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a> associaram as notas aos rótulos (“fácil”, “média”, “alta”)</td><td>Meta ideal atingida, com base nas falas; como as notas do teste são hipotéticas, não se avaliou se combinam com a disciplina real.</td></tr>
+                        <tr><td><strong>6</strong></td><td>Ele consulta os relatórios enquanto preenche a avaliação?</td><td>3 de 5 / 4 de 5</td><td>3 de 5 (<a class="code-ref" href="#p1">P1</a>, <a class="code-ref" href="#p3">P3</a> e <a class="code-ref" href="#p4">P4</a>) consultaram as avaliações ou o resumo ao lado</td><td>Meta aceitável atingida. Quem consultou o fez antes de avaliar, por iniciativa própria.</td></tr>
+                        <tr><td><strong>7</strong></td><td>Ele desiste de uma avaliação sem enviá-la e sem perder o controle?</td><td>4 de 5 / 5 de 5</td><td>2 de 2 (<a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a>) descartaram sem enviar e sem ajuda</td><td>Resultado ideal nos dois casos testados; <a class="code-ref" href="#p5">P5</a> hesitou por alguns segundos sobre como sair.</td></tr>
+                        <tr><td><strong>8</strong></td><td>Quão satisfeito ele fica com a experiência de avaliar?</td><td>4 de 5 / 5 de 5</td><td>5 de 5 avaliaram a experiência de forma positiva (Tabela 8)</td><td>Meta ideal atingida (“bem intuitivo”, “não foi burocrático”, “muito tranquilo”); a única crítica, de <a class="code-ref" href="#p5">P5</a>, virou o problema <a class="code-ref" href="#af-03">AF-03</a>.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir das metas da Tabela 11 do planejamento.</p>
+
+            <h4 class="doc-h4" id="v7-limites">6.4 Confiabilidade e validade</h4>
+            <p class="doc-text">Os resultados de uma avaliação de IHC indicam tendências de problemas, e não a certeza de que vão ocorrer no uso real; da mesma forma, não encontrar um problema não prova que ele não exista, apenas que o estudo não o revelou no escopo avaliado (Barbosa e Silva, 2010, seção 9.7.5). Neste teste, os limites são:</p>
+            <ul class="doc-list">
+                <li>cinco participantes revelam a maior parte dos problemas, mas as médias de tempo não têm significância estatística, e as Tarefas 2 e 3 foram feitas por apenas dois participantes;</li>
+                <li>o pensar em voz alta aumentou os tempos e pode ter levado os participantes a ler a interface com mais atenção do que no uso real (Barbosa e Silva, 2010, seção 9.7.3);</li>
+                <li>o avaliador estava ao lado do participante, e os participantes eram estudantes próximos do contexto do avaliador, o que pode tê-los deixado menos críticos (Barbosa e Silva, 2010, seção 9.7.2);</li>
+                <li>os dados das disciplinas são fictícios.</li>
+            </ul>
+            <p class="doc-text">Por outro lado, a validade ecológica é maior que a do protótipo de papel: cada participante usou a interface sozinho, com rolagem, digitação e estados reais, e avaliou disciplinas que de fato cursou.</p>
+
+            <h3 class="doc-subsection" id="v7-problemas">7. Problemas encontrados</h3>
+            <p class="doc-text">Como pedem Barbosa e Silva (2010, seção 10.2.1), cada problema é apresentado com o local, a descrição e a justificativa, a discussão dos fatores de usabilidade prejudicados e a sugestão de solução. Seguindo Kuniavsky (2003, citado por Barbosa e Silva, 2010, seção 10.2.1), os problemas foram agrupados por categoria e acompanhados de uma hipótese sobre a causa. A severidade segue a escala de 0 a 3 usada nas avaliações anteriores.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 10: Problemas encontrados no teste de usabilidade</caption>
+                    <thead><tr><th>ID</th><th>Local</th><th>Descrição e justificativa</th><th>Discussão: fatores de usabilidade prejudicados</th><th>Severidade (0 a 3)</th><th>Frequência</th><th>Sugestão de solução</th></tr></thead>
+                    <tbody>
+                        <tr><td colspan="7"><strong>Categoria: valores já preenchidos no formulário</strong></td></tr>
+                        <tr id="af-03"><td><strong style="white-space:nowrap">AF-03</strong></td><td><a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t4">T4</a> Formulário, campo “Professor (opcional)”</td><td>O campo vem com “Prefiro não informar”. <a class="code-ref" href="#p5">P5</a> manteve esse valor nas duas avaliações e disse no pós-teste que não tinha visto que dava para escolher o professor, e que teria escolhido, porque “depois você avalia se ele cobra ou não”. Hipótese: o rótulo “opcional” e o valor já preenchido fazem o campo parecer resolvido, e ele fica longe da escala de cobrança, que depende dele.</td><td>Eficácia e utilidade: uma nota de “cobrança do professor” sem professor perde sentido para quem consulta os relatórios por professor, que é o uso principal da funcionalidade.</td><td>2 Grande</td><td>1 de 5 não percebeu o campo; 2 de 5 mantiveram o valor padrão</td><td>Deixar o campo sem valor, exigir uma escolha (com “Prefiro não informar” como opção explícita) e repetir o nome do professor escolhido no título da escala de cobrança.</td></tr>
+                        <tr id="af-02"><td><strong style="white-space:nowrap">AF-02</strong></td><td><a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t4">T4</a> Formulário, campo “Semestre em que cursou”</td><td>O campo vem com o semestre atual (2026.1). <a class="code-ref" href="#p1">P1</a>, <a class="code-ref" href="#p2">P2</a> e <a class="code-ref" href="#p4">P4</a> trocaram para o semestre em que cursaram a disciplina; <a class="code-ref" href="#p3">P3</a> e <a class="code-ref" href="#p5">P5</a> mantiveram 2026.1. Hipótese: um valor padrão parece já respondido, e o estudante pode não revisá-lo.</td><td>Eficácia e segurança no uso: a avaliação pode ser publicada com o semestre errado, o que distorce as médias por semestre e por professor.</td><td>1 Leve</td><td>3 de 5 precisaram trocar; 2 de 5 mantiveram o padrão</td><td>Deixar o campo sem valor e torná-lo obrigatório, ou sugerir o último semestre concluído e destacar o campo na revisão.</td></tr>
+                        <tr><td colspan="7"><strong>Categoria: retorno do sistema depois do envio</strong></td></tr>
+                        <tr id="af-01"><td><strong style="white-space:nowrap">AF-01</strong></td><td><a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t6">T6</a> Confirmação</td><td>O resumo da confirmação mostra dificuldade, cobrança, semestre e “Anônima”, mas não o comentário. <a class="code-ref" href="#p2">P2</a> disse que “só não apareceu aqui o comentário” e só se tranquilizou ao encontrá-lo em “Ver avaliações”; <a class="code-ref" href="#p1">P1</a> também foi conferir a avaliação publicada. Hipótese: como o resto da avaliação aparece no resumo, a ausência do comentário é lida como possível falha no envio.</td><td>Segurança no uso e satisfação: o participante fica em dúvida se a ação foi concluída e precisa conferir em outra tela (visibilidade do estado do sistema).</td><td>1 Leve</td><td>1 de 5 (<a class="code-ref" href="#p2">P2</a>); 2 de 5 conferiram a publicação</td><td>Incluir o comentário, ou um trecho dele, no resumo da confirmação; quando não houver comentário, mostrar “Sem comentário”.</td></tr>
+                        <tr><td colspan="7"><strong>Categoria: atenção à revisão</strong></td></tr>
+                        <tr id="af-04"><td><strong style="white-space:nowrap">AF-04</strong></td><td><a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t5">T5</a> Revisão</td><td><a class="code-ref" href="#p5">P5</a> confirmou as duas avaliações em menos de 4 segundos, sem ler a revisão nem o termo de anonimato, e foi a única que não percebeu o anonimato. Hipótese: depois do formulário, o botão “Confirmar envio” fica em destaque e a revisão é vista como uma etapa a pular.</td><td>Segurança no uso: a revisão, criada para corrigir <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-03">PP-03</a>, só protege quem a lê; os erros de <a class="code-ref" href="#af-02">AF-02</a> e <a class="code-ref" href="#af-03">AF-03</a> passariam por ela sem ser notados.</td><td>1 Leve</td><td>1 de 5</td><td>Destacar na revisão os campos com valor padrão (semestre e professor), com um aviso do tipo “Confira o semestre e o professor”.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026). Severidade conforme Barbosa e Silva (2010): 0 Cosmético, 1 Leve, 2 Grande, 3 Catastrófico. Problemas ordenados pela prioridade (severidade e frequência).</p>
+            <p class="doc-text">Nenhum problema catastrófico foi observado, e nenhum impediu a conclusão de uma tarefa. Esse resultado é coerente com a Entrega 6: os problemas mais graves do protótipo de papel foram corrigidos antes do teste, e o teste interno do protótipo HTML corrigiu outros seis. Os quatro problemas encontrados afetam a qualidade dos dados registrados (semestre e professor) e a confiança no envio, e não a capacidade de avaliar.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 11: Situação dos problemas das avaliações anteriores</caption>
+                    <thead><tr><th>Problema anterior</th><th>Correção no protótipo</th><th>Situação no teste</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong><a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-01">PP-01</a></strong> Escala de estrelas lida como nota geral</td><td>Escalas de 1 a 5 com rótulos nos extremos</td><td>Resolvido: nenhum participante teve dúvida sobre as escalas.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-02">PP-02</a></strong> Sem aviso de anonimato</td><td>Aviso no formulário e termo na revisão</td><td>Resolvido: 4 de 5 leram o aviso ou o termo; ver <a class="code-ref" href="#af-04">AF-04</a>.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-03">PP-03</a></strong> Sem revisão nem confirmação</td><td>Tela de revisão e tela de confirmação</td><td>Resolvido: 5 de 5 passaram pela revisão e pela confirmação; surgiram os ajustes <a class="code-ref" href="#af-01">AF-01</a> e <a class="code-ref" href="#af-04">AF-04</a>.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-04">PP-04</a></strong> “Ver disciplina” lido como ementa</td><td>“Ver avaliações” e médias nos resultados</td><td>Resolvido: <a class="code-ref" href="#p1">P1</a> e <a class="code-ref" href="#p4">P4</a> usaram “Ver avaliações” com o sentido esperado, e <a class="code-ref" href="#p2">P2</a> leu as médias na lista.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-05">PP-05</a></strong> Sem “Descartar”</td><td>Botão “Descartar” na barra inferior e diálogo de confirmação</td><td>Resolvido: <a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a> descartaram sem enviar e leram que nada foi enviado.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-06">PP-06</a></strong> Comentário lido como sugestão ao curso</td><td>Título “Comentário para os próximos alunos” e texto de apoio</td><td>Resolvido: os comentários foram dirigidos a outros alunos (“a matéria é bastante reflexiva”, “Professor atencioso”).</td></tr>
+                        <tr><td><strong><a class="code-ref" href="entrega5_relato-v-tarefas.html#b-01">B-01</a></strong> Sem caminho para descartar o rascunho</td><td>Botão “Descartar” sempre visível e diálogo de confirmação</td><td>Resolvido: <a class="code-ref" href="#p4">P4</a> e <a class="code-ref" href="#p5">P5</a> descartaram sem enviar (ver também <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-05">PP-05</a>).</td></tr>
+                        <tr><td><strong><a class="code-ref" href="entrega5_relato-v-tarefas.html#b-02">B-02</a></strong> Botão de confirmar fora da área visível e sem indicação de processamento</td><td>“Revisar e enviar” e “Confirmar envio” na barra inferior e estado “Enviando…”</td><td>Resolvido: ninguém precisou procurar o botão de envio, e o estado “Enviando…” apareceu sem causar dúvida.</td></tr>
+                        <tr><td><strong><a class="code-ref" href="entrega5_relato-v-storyboard.html#a-01">A-01</a> a <a class="code-ref" href="entrega5_relato-v-storyboard.html#a-03">A-03</a> e <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-03">B-03</a> a <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-07">B-07</a></strong></td><td>Ver Tabela 10 do planejamento</td><td>Nenhum reapareceu.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir do relato do protótipo de papel (Tabela 7) e do planejamento da avaliação (Tabela 10).</p>
+
+            <h3 class="doc-subsection" id="v7-reprojeto">8. Planejamento para o reprojeto</h3>
+            <p class="doc-text">O relato termina com um planejamento para o reprojeto do sistema (Barbosa e Silva, 2010, seção 9.7.5). As correções foram priorizadas pela severidade e pela frequência, e as explicações qualitativas de cada problema justificam as mudanças propostas, como recomendam Rubin e Chisnell (2008, citados por Barbosa e Silva, 2010, seção 10.2.1).</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 12: Prioridades do reprojeto</caption>
+                    <thead><tr><th>Prioridade</th><th>Problema</th><th>Tela</th><th>Mudança proposta</th><th>Como verificar</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong></td><td><a class="code-ref" href="#af-03">AF-03</a></td><td><a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t4">T4</a> Formulário</td><td>Professor sem valor padrão e obrigatório, com “Prefiro não informar” como escolha explícita; nome do professor no título da escala de cobrança.</td><td>Observar se os participantes escolhem o professor sem que o avaliador mencione o campo.</td></tr>
+                        <tr><td><strong>2</strong></td><td><a class="code-ref" href="#af-02">AF-02</a></td><td><a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t4">T4</a> Formulário</td><td>Semestre sem valor padrão e obrigatório, com a mensagem de validação junto ao campo.</td><td>Conferir se o semestre registrado corresponde ao que o participante diz ter cursado.</td></tr>
+                        <tr><td><strong>3</strong></td><td><a class="code-ref" href="#af-04">AF-04</a></td><td><a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t5">T5</a> Revisão</td><td>Destacar o semestre e o professor na revisão, com o aviso “Confira o semestre e o professor”.</td><td>Medir o tempo na revisão e se algum participante volta para editar.</td></tr>
+                        <tr><td><strong>4</strong></td><td><a class="code-ref" href="#af-01">AF-01</a></td><td><a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t6">T6</a> Confirmação</td><td>Mostrar o comentário (ou um trecho) no resumo, ou “Sem comentário”.</td><td>Observar se o participante procura o comentário depois de confirmar.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+
+            <h3 class="doc-subsection" id="v7-conclusao">9. Conclusão</h3>
+            <p class="doc-text">O protótipo de alta fidelidade da Avaliação de Disciplinas atingiu as metas de eficácia e eficiência: os cinco participantes avaliaram uma disciplina sem ajuda e sem desvios, em média em 1 min 42 s, e os que repetiram a tarefa levaram menos da metade do tempo. As correções do protótipo de papel funcionaram, em especial o aviso de anonimato, a revisão, o “Ver avaliações” e o descarte. Os problemas que restam são leves ou grandes, mas não impedem o uso: os valores já preenchidos de semestre e professor podem gerar avaliações com dados errados, o que ameaça justamente a utilidade dos relatórios para quem monta a grade.</p>
+            <p class="doc-text">Como o design de IHC é iterativo, recomenda-se aplicar as mudanças da Tabela 12 e fazer uma rodada curta de testes antes da implementação, que verifique se as correções resolvem os problemas sem criar outros (Barbosa e Silva, 2010, seção 9.7.5).</p>
+
+            <h3 class="doc-subsection" id="v7-etica">10. Cuidados éticos</h3>
+            <p class="doc-text">Os cinco participantes foram informados dos objetivos e do procedimento, viram o termo de consentimento e autorizaram em voz alta, na gravação, o uso de imagem e áudio, cientes de que podiam sair a qualquer momento (Barbosa e Silva, 2010, seção 5.4). Neste relato, eles são identificados apenas por códigos, e nomes ditos durante as sessões foram omitidos. Como as gravações mostram o rosto, elas não são publicadas no site e ficam com acesso restrito ao avaliador.</p>
+
+            <h3 class="doc-subsection" id="v7-ia">11. Declaração sobre o uso de IA Generativa</h3>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada para transcrever o áudio das cinco sessões (com o modelo Whisper, executado localmente), medir os tempos pelas mudanças de tela das gravações e redigir este relato a partir das gravações, das transcrições, dos planejamentos da Entrega 6 e das obras de referência. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Victor Andreozzi de La Rocque Couto.</p>
+
+            <h3 class="doc-subsection" id="v7-referencias">12. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier / Campus, 2010.</li>
+                <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: Além da Interação Homem-Computador</em>. Porto Alegre: Bookman, 2005.</li>
+                <li>SANTA ROSA, José Guilherme; MORAES, Anamaria de. <em>Avaliação e projeto no design de interfaces</em>. Teresópolis: 2AB, 2008.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Relato parcial dos resultados do teste de usabilidade do protótipo de alta fidelidade com P1, P2 e P3: forma da avaliação, perfil, tarefas, medições de tempo e sucesso, falas, análise intra e interparticipante, respostas às perguntas, problemas AF-01 e AF-02, situação dos problemas anteriores, reprojeto e ajustes para P4 e P5</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): transcrição das gravações (Whisper, executado localmente), medição dos tempos pelas gravações e redação a partir dos dados e dos planejamentos do autor; revisão final é do autor</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Relato final com os cinco participantes: inclusão das sessões de P4 e P5, das Tarefas 2 e 3 (Tabela 7), das medições consolidadas, das respostas às nove perguntas, dos problemas AF-03 e AF-04, do reprojeto, da conclusão e do link do vídeo da apresentação</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): transcrição das gravações (Whisper, executado localmente), medição dos tempos pelas gravações e redação a partir dos dados e dos planejamentos do autor; revisão final é do autor</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Figura 1 refeita como gráfico de barras verticais; cursos dos participantes (Tabela 2); comparação com o planejamento em sua versão ajustada (Tabela 1); satisfação medida pelas falas do pós-teste (pergunta 9); códigos com hiperlinks para onde são definidos</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): transcrição das gravações (Whisper, executado localmente), medição dos tempos pelas gravações e redação a partir dos dados e dos planejamentos do autor; revisão final é do autor</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Retirada do erro de envio programado (pergunta 7 do planejamento, linha da Tabela 1 e item do reprojeto); perguntas renumeradas de 1 a 8; cenários planejados da Tabela 3 alinhados ao planejamento ajustado; B-01 e B-02 separados na Tabela 11 conforme a Entrega 5</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): transcrição das gravações (Whisper, executado localmente), medição dos tempos pelas gravações e redação a partir dos dados e dos planejamentos do autor; revisão final é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega7.html"><span>← Anterior</span>Visão geral da Entrega 7</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

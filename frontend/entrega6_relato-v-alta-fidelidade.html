@@ -216,26 +216,26 @@
                 <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega6.html">Entrega 6</a> › Relatos e planejamentos individuais</p>
             <h1 id="v6-alta-fidelidade" class="doc-title doc-page-title">Planejamento da avaliação do protótipo de alta fidelidade</h1>
             <div class="header-info" style="border-left: 4px solid #a855f7;">
-                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto, matrícula 221029285 · <strong>Revisor:</strong> a definir (validação pendente)</p>
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto, matrícula 221029285 · <strong>Revisor:</strong> Victor Andreozzi de La Rocque Couto</p>
                 <p><strong>Funcionalidade:</strong> Avaliação de Disciplinas · <strong>Conteúdo desta página:</strong> planejamento da avaliação do protótipo de alta fidelidade (DECIDE) · Tabelas 10 a 15</p>
                 <p><strong>Outros artefatos do autor:</strong> <a href="entrega6_relato-v-prototipo-papel.html">Relato dos resultados da avaliação do protótipo de papel</a> · <a href="entrega6_relato-v-relato-alta-fidelidade.html">Planejamento do relato dos resultados do protótipo de alta fidelidade</a></p>
             </div>
             <p class="doc-text">O Protótipo de Alta Fidelidade da Avaliação de Disciplinas é uma versão interativa da funcionalidade, construída com os materiais esperados no produto final e com aparência muito próxima de algo acabado (Preece, Rogers e Sharp, 2005, seção 8.2.4). Ele parte do protótipo de papel corrigido nos ciclos de avaliação e reprojeto da Entrega 6 e segue o guia de estilo definido na Entrega 3.</p>
             <p class="doc-text">Segundo a Tabela 8.1 de Preece, Rogers e Sharp (2005), o protótipo de alta fidelidade é totalmente interativo, tem o uso conduzido pelo próprio usuário, define claramente o esquema de navegação e tem o mesmo <em>look and feel</em> do produto final. São justamente os pontos que o protótipo de papel não cobria: nele o “uso” era conduzido pelo facilitador e havia limitações de fluxo e navegação. Em contrapartida, protótipos de alta fidelidade são mais caros e demorados de construir, e um único <em>bug</em> pode interromper o teste. Por isso o protótipo será <strong>vertical</strong> (Preece, Rogers e Sharp, 2005, seção 8.2.5): cobre com detalhes apenas o fluxo da Avaliação de Disciplinas, sem as demais funções do No Fluxo UnB.</p>
-            <p class="doc-text">O protótipo será construído em [preencher: ferramenta de prototipação, por exemplo Figma], com as telas e estados da Tabela 10.</p>
+            <p class="doc-text">O protótipo foi construído em HTML, CSS e JavaScript, como uma página web interativa que abre no navegador e reproduz o tema, as fontes e o cabeçalho do site do No Fluxo UnB, com as telas e estados da Tabela 10. Por ser uma página real, o participante digita de verdade na busca e no comentário e escolhe qualquer nota nas escalas. Um modo do facilitador, escondido do participante, reinicia o protótipo entre uma sessão e outra.</p>
             <div class="table-wrapper">
                 <table class="table-standard table-hta">
                     <caption>Tabela 10: Telas e estados do protótipo de alta fidelidade</caption>
                     <thead><tr><th>Tela / estado</th><th>Conteúdo</th><th>Origem</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>T1</strong> Busca de disciplinas</td><td>Campo de busca por código ou nome, filtros por departamento e por professor e atalho na página inicial.</td><td>HTA 1.1 a 1.3; B-05</td></tr>
-                        <tr><td><strong>T2</strong> Resultados da busca</td><td>Lista de disciplinas com código, nome e departamento; estado “nenhum resultado”.</td><td>HTA 1.4</td></tr>
-                        <tr><td><strong>T3</strong> Página da disciplina</td><td>Médias de dificuldade e de cobrança de semestres anteriores, comentários de outros alunos e botão “Avaliar esta disciplina”.</td><td>CTT Consultar Relatórios; A-02, B-03</td></tr>
-                        <tr><td><strong>T4</strong> Formulário de avaliação</td><td>Aviso de anonimato no topo, escalas de 1 a 5 com rótulos nos extremos, dica de “cobrança”, comentário com contador de caracteres, resumo dos relatórios ao lado e botões “Enviar avaliação” e “Descartar”.</td><td>HTA 2.1 a 2.3; A-01, A-03, B-02 a B-04, B-06, B-07</td></tr>
-                        <tr><td><strong>T5</strong> Revisão</td><td>Resumo das notas e do comentário, termo de anonimato e botões “Confirmar envio” e “Voltar e editar”.</td><td>HTA 3.1 e 3.2</td></tr>
-                        <tr><td><strong>T6</strong> Confirmação</td><td>Mensagem “Avaliação concluída” e link para as avaliações da disciplina.</td><td>HTA 3.3; Quadro 6 do storyboard</td></tr>
-                        <tr><td><strong>Estados</strong></td><td>Indicador “Enviando…”, mensagem de erro de envio com “Tentar novamente”, diálogo “Descartar avaliação? Seu rascunho será perdido”.</td><td>HTA 3.3; B-01, B-02</td></tr>
-                        <tr><td><strong>Correções do papel</strong></td><td>Escalas de 1 a 5 com rótulos no lugar das estrelas (PP-01), aviso de anonimato (PP-02), revisão e confirmação do envio (PP-03), “Ver avaliações” com médias nos resultados (PP-04), botão “Descartar” (PP-05) e texto de apoio no comentário (PP-06).</td><td><a href="entrega6_relato-v-prototipo-papel.html">Relato do protótipo de papel</a>, Tabelas 7 e 9</td></tr>
+                        <tr id="t1"><td><strong><a class="code-ref" href="entrega5_relato-v-prototipo-papel.html#tela-t1">T1</a></strong> Busca de disciplinas</td><td>Campo de busca por código ou nome (sem acento e por parte do nome) e filtros por departamento e por professor; acesso pelo cartão “Avaliar disciplinas” da tela inicial e pelo item “Avaliações” do menu.</td><td>HTA 1.1 a 1.3; <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-05">B-05</a></td></tr>
+                        <tr id="t2"><td><strong><a class="code-ref" href="entrega5_relato-v-prototipo-papel.html#tela-t2">T2</a></strong> Resultados da busca</td><td>Lista de disciplinas com código, nome, departamento e médias de dificuldade e de cobrança, com os botões “Ver avaliações” e “Avaliar”; estado “nenhum resultado”.</td><td>HTA 1.4; <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-04">PP-04</a></td></tr>
+                        <tr id="t3"><td><strong><a class="code-ref" href="entrega5_relato-v-prototipo-papel.html#tela-t3">T3</a></strong> Página da disciplina</td><td>Médias de dificuldade e de cobrança de semestres anteriores, comentários de outros alunos e botão “Avaliar esta disciplina”.</td><td>CTT Consultar Relatórios; <a class="code-ref" href="entrega5_relato-v-storyboard.html#a-02">A-02</a>, <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-03">B-03</a></td></tr>
+                        <tr id="t4"><td><strong><a class="code-ref" href="entrega5_relato-v-prototipo-papel.html#tela-t4">T4</a></strong> Formulário de avaliação</td><td>Aviso de anonimato no topo, escalas de 1 a 5 com rótulos nos extremos, dica de “cobrança”, comentário com texto de apoio e contador de caracteres, resumo dos relatórios ao lado e botões “Revisar e enviar” e “Descartar” sempre visíveis na barra inferior; mensagens de validação junto às escalas não preenchidas.</td><td>HTA 2.1 a 2.3; <a class="code-ref" href="entrega5_relato-v-storyboard.html#a-01">A-01</a>, <a class="code-ref" href="entrega5_relato-v-storyboard.html#a-03">A-03</a>, <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-02">B-02</a> a <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-04">B-04</a>, <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-06">B-06</a>, <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-07">B-07</a></td></tr>
+                        <tr id="t5"><td><strong><a class="code-ref" href="entrega5_relato-v-prototipo-papel.html#tela-t5">T5</a></strong> Revisão</td><td>Resumo das notas e do comentário, termo de anonimato e botões “Confirmar envio” e “Voltar e editar”.</td><td>HTA 3.1 e 3.2</td></tr>
+                        <tr id="t6"><td><strong><a class="code-ref" href="entrega5_relato-v-prototipo-papel.html#tela-t6">T6</a></strong> Confirmação</td><td>Mensagem “Avaliação concluída” e link para as avaliações da disciplina.</td><td>HTA 3.3; Quadro 6 do storyboard</td></tr>
+                        <tr><td><strong>Estados</strong></td><td>Indicador “Enviando…” e diálogo “Descartar avaliação? Seu rascunho será perdido”.</td><td>HTA 3.3; <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-01">B-01</a>, <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-02">B-02</a></td></tr>
+                        <tr><td><strong>Correções do papel</strong></td><td>Escalas de 1 a 5 com rótulos no lugar das estrelas (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-01">PP-01</a>), aviso de anonimato (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-02">PP-02</a>), revisão e confirmação do envio (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-03">PP-03</a>), “Ver avaliações” com médias nos resultados (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-04">PP-04</a>), botão “Descartar” (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-05">PP-05</a>) e texto de apoio no comentário (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-06">PP-06</a>).</td><td><a href="entrega6_relato-v-prototipo-papel.html">Relato do protótipo de papel</a>, Tabelas 7 e 9</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -246,8 +246,8 @@
             <h4 class="doc-h4" id="v6-af-d1">D: Determinar os objetivos da avaliação</h4>
             <ul class="doc-list">
                 <li>Medir a eficácia, a eficiência e a satisfação dos estudantes ao avaliar e consultar uma disciplina no protótipo interativo, comparando os resultados com as metas de usabilidade da Entrega 3.</li>
-                <li>Verificar se as correções incorporadas a partir do protótipo de papel (PP-xx) resolvem os problemas encontrados e se os problemas das avaliações anteriores (A-01 a A-03 e B-01 a B-07) não reaparecem com a interface interativa.</li>
-                <li>Identificar problemas de fluxo, navegação e aparência que o protótipo de papel não podia revelar, como rolagem, tempo de resposta, estados de carregamento e erro, e consistência com o guia de estilo.</li>
+                <li>Verificar se as correções incorporadas a partir do protótipo de papel (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-01">PP-01</a> a <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-06">PP-06</a>) resolvem os problemas encontrados e se os problemas das avaliações anteriores (<a class="code-ref" href="entrega5_relato-v-storyboard.html#a-01">A-01</a> a <a class="code-ref" href="entrega5_relato-v-storyboard.html#a-03">A-03</a> e <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-01">B-01</a> a <a class="code-ref" href="entrega5_relato-v-tarefas.html#b-07">B-07</a>) não reaparecem com a interface interativa.</li>
+                <li>Identificar problemas de fluxo, navegação e aparência que o protótipo de papel não podia revelar, como rolagem, estados de envio e descarte e consistência com o guia de estilo.</li>
             </ul>
             <p class="doc-text">Os objetivos interessam à equipe do No Fluxo UnB, que vai implementar a funcionalidade e precisa de uma especificação validada, e aos estudantes, que dependem de avaliações confiáveis e de um processo rápido e seguro de avaliar para montar a grade.</p>
             <h4 class="doc-h4" id="v6-af-e1">E: Explorar as perguntas a serem respondidas</h4>
@@ -261,11 +261,10 @@
                         <tr><td><strong>2</strong></td><td>Quanto tempo leva para avaliar uma disciplina?</td><td>Tempo da Tarefa 1, do início da busca até a tela de confirmação.</td><td>Até 3 min</td><td>Até 2 min</td></tr>
                         <tr><td><strong>3</strong></td><td>Ele encontra a disciplina pela busca e pelos filtros sem desvios?</td><td>Desvios do caminho mais eficiente previsto na HTA.</td><td>Até 1 desvio por tarefa</td><td>Nenhum desvio</td></tr>
                         <tr><td><strong>4</strong></td><td>Ele percebe, antes de enviar, que a avaliação é anônima?</td><td>Menção espontânea ou resposta correta no pós-teste.</td><td>4 de 5</td><td>5 de 5</td></tr>
-                        <tr><td><strong>5</strong></td><td>Ele interpreta corretamente as escalas e seus extremos?</td><td>Notas coerentes com o cenário e respostas no pós-teste.</td><td>4 de 5</td><td>5 de 5</td></tr>
-                        <tr><td><strong>6</strong></td><td>Ele consulta os relatórios enquanto preenche a avaliação?</td><td>Uso do resumo ao lado do formulário na Tarefa 2.</td><td>3 de 5</td><td>4 de 5 ou mais</td></tr>
-                        <tr><td><strong>7</strong></td><td>Ele se recupera do erro de envio na tentativa seguinte?</td><td>Recuperação do erro simulado na Tarefa 2.</td><td>De 50% a 80%</td><td>Mais de 80%</td></tr>
-                        <tr><td><strong>8</strong></td><td>Ele desiste de uma avaliação sem enviá-la e sem perder o controle?</td><td>Conclusão da Tarefa 3 sem ajuda e sem envio acidental.</td><td>4 de 5</td><td>5 de 5</td></tr>
-                        <tr><td><strong>9</strong></td><td>Quão satisfeito ele fica e quanto confia no anonimato?</td><td>Média das notas de 1 a 5 do pós-teste.</td><td>De 3,5 a 4,2</td><td>Mais de 4,2</td></tr>
+                        <tr><td><strong>5</strong></td><td>Ele interpreta corretamente as escalas e seus extremos?</td><td>Falas durante o uso e escolha das notas de acordo com os rótulos das escalas.</td><td>4 de 5</td><td>5 de 5</td></tr>
+                        <tr><td><strong>6</strong></td><td>Ele consulta os relatórios enquanto preenche a avaliação?</td><td>Consulta às avaliações da disciplina ou ao resumo ao lado do formulário, em qualquer tarefa.</td><td>3 de 5</td><td>4 de 5 ou mais</td></tr>
+                        <tr><td><strong>7</strong></td><td>Ele desiste de uma avaliação sem enviá-la e sem perder o controle?</td><td>Conclusão da Tarefa 3 sem ajuda e sem envio acidental.</td><td>4 de 5</td><td>5 de 5</td></tr>
+                        <tr><td><strong>8</strong></td><td>Quão satisfeito ele fica com a experiência de avaliar?</td><td>Participantes que avaliam a experiência de forma positiva na entrevista pós-teste.</td><td>4 de 5</td><td>5 de 5</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -274,86 +273,102 @@
             <p class="doc-text">O método escolhido é o <strong>teste de usabilidade</strong> (Rubin, 1994, citado por Barbosa e Silva, 2010, seção 10.2.1), uma avaliação por observação em que usuários-alvo realizam tarefas no sistema em ambiente controlado enquanto são registrados dados de desempenho e de opinião. Ele é adequado porque o protótipo de alta fidelidade permite que o próprio participante conduza o uso, o que torna possível medir tempo, erros e desvios, medidas sem sentido no protótipo de papel, em que o facilitador fazia o papel do sistema. O teste fornece também resultados qualitativos: para cada problema observado, os dados de gravação, falas e anotações são analisados em conjunto para explicar sua origem (Rubin e Chisnell, 2008, citados por Barbosa e Silva, 2010, seção 10.2.1).</p>
             <p class="doc-text">O teste é combinado com:</p>
             <ul class="doc-list">
-                <li>questionário pré-teste lido pelo avaliador, como entrevista estruturada (curso, semestre, situação no fluxo e uso do No Fluxo UnB);</li>
-                <li>comentários espontâneos durante as tarefas, sem pedir que o participante pense em voz alta o tempo todo, para não distorcer as medidas de tempo;</li>
-                <li>entrevista pós-teste com perguntas abertas e a mesma tabela de notas de 1 a 5 usada no protótipo de papel, para que os resultados sejam comparáveis.</li>
+                <li>registro do curso do participante pelo avaliador, no início da sessão;</li>
+                <li>técnica de pensar em voz alta (<em>think aloud</em>) durante as tarefas, para que o avaliador tenha acesso ao que o participante pensa e faz (Ericsson e Simon, 1993, citados por Barbosa e Silva, 2010, seção 9.7.3). Como a técnica pode aumentar o tempo das tarefas, os tempos são interpretados levando isso em conta;</li>
+                <li>entrevista pós-teste com perguntas abertas sobre o que confundiu, o que poderia ser melhorado ou simplificado e a acessibilidade, para coletar a opinião do participante sobre a experiência que acabou de viver (Barbosa e Silva, 2010, seção 9.7.3).</li>
             </ul>
-            <p class="doc-text">Os cenários de tarefa repetem os do protótipo de papel, também para permitir a comparação (Tabela 12). Desta vez, o erro de envio da Tarefa 2 é um estado programado no protótipo, e não uma intervenção do avaliador.</p>
+            <p class="doc-text">Os cenários seguem as três tarefas do protótipo de papel (avaliar, consultar e avaliar, desistir), mas o participante escolhe disciplinas que já cursou, para que avalie uma experiência real e não um caso inventado (Tabela 12).</p>
             <div class="table-wrapper">
                 <table class="table-standard table-hta">
                     <caption>Tabela 12: Cenários de tarefa da avaliação</caption>
                     <thead><tr><th>Tarefa</th><th>Cenário entregue ao participante</th><th>Perguntas investigadas</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>1</strong> Avaliar uma disciplina</td><td>“Você terminou o semestre e achou Cálculo 2 muito difícil. Avalie a disciplina no No Fluxo UnB, dando as notas de dificuldade e de cobrança do professor e deixando um comentário para os próximos alunos.”</td><td>1, 2, 3, 4, 5</td></tr>
-                        <tr><td><strong>2</strong> Consultar e avaliar</td><td>“Antes de avaliar Banco de Dados, você quer ver o que outros alunos acharam da disciplina. Consulte as avaliações e depois registre a sua.” No primeiro envio, o protótipo exibe a mensagem de erro de conexão.</td><td>3, 6, 7</td></tr>
-                        <tr><td><strong>3</strong> Desistir da avaliação</td><td>“Você começou a avaliar Estruturas de Dados, mas mudou de ideia e prefere avaliar depois. Saia sem enviar a avaliação.”</td><td>8</td></tr>
+                        <tr><td><strong>1</strong> Avaliar uma disciplina</td><td>“Avalie uma disciplina que você já cursou, escolhendo-a direto na lista, sem fazer busca.”</td><td>1, 2, 3, 4, 5</td></tr>
+                        <tr><td><strong>2</strong> Buscar e avaliar</td><td>“Busque pelo nome uma disciplina do seu curso e avalie-a.”</td><td>3, 6</td></tr>
+                        <tr><td><strong>3</strong> Desistir da avaliação</td><td>“Comece a avaliar outra disciplina, pare no meio e descarte tudo o que fez.”</td><td>7</td></tr>
                     </tbody>
                 </table>
             </div>
             <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
             <h4 class="doc-h4" id="v6-af-i">I: Identificar e administrar as questões práticas</h4>
             <ul class="doc-list">
-                <li><strong>Participantes:</strong> 5 estudantes de graduação da UnB, número com o qual se encontra a maioria dos problemas de uma interface (Nielsen, 2000, citado por Barbosa e Silva, 2010, seção 9.7.2). Serão recrutados estudantes que <strong>não</strong> participaram da avaliação do protótipo de papel, para evitar o efeito de aprendizado sobre as medidas de tempo e de erro. O perfil-alvo são estudantes que já cursaram disciplinas e montam a grade, com prioridade para alunos atrasados no fluxo e pelo menos um que nunca usou o No Fluxo UnB, buscando equilíbrio entre homens e mulheres. Como recomendam Barbosa e Silva (2010, seção 9.7.2), serão evitados amigos próximos do avaliador.</li>
-                <li><strong>Avaliadores:</strong> dois. Victor Andreozzi de La Rocque Couto conduz a sessão (moderador), e [preencher: nome do colega] observa, cronometra e preenche a folha de observação.</li>
-                <li><strong>Equipamentos:</strong> notebook com o protótipo aberto no navegador em modo de apresentação e mouse; gravação da tela e do áudio da sessão (por exemplo, OBS Studio), sem imagem do rosto do participante; cronômetro; e uma cópia impressa das telas como reserva caso o protótipo falhe.</li>
-                <li><strong>Materiais impressos:</strong> TCLE em duas vias, questionário pré-teste, cenários de tarefa, roteiro da entrevista pós-teste, tabela de notas de 1 a 5 e folha de observação com espaço para sucesso, tempo, erros, desvios e falas de cada tarefa (Barbosa e Silva, 2010, seção 9.7.2).</li>
-                <li><strong>Local e duração:</strong> sala ou laboratório reservado na UnB Campus Gama; cerca de 30 minutos por sessão, abaixo do limite de uma hora recomendado para evitar cansaço (Barbosa e Silva, 2010, seção 9.7.2).</li>
-                <li><strong>Preparação do protótipo:</strong> antes do piloto, todos os caminhos das três tarefas serão percorridos no protótipo, porque basta um <em>bug</em> para interromper o teste (Preece, Rogers e Sharp, 2005, seção 8.2.4).</li>
-                <li><strong>Teste-piloto:</strong> uma sessão completa com um estudante que não participou do planejamento, para verificar a clareza dos cenários, o funcionamento do protótipo e da gravação e o tempo das tarefas. Os dados do piloto serão descartados (Barbosa e Silva, 2010, seção 9.7.2).</li>
+                <li><strong>Participantes:</strong> 5 estudantes de graduação da UnB, seguindo a recomendação de Nielsen (1993): com cinco participantes, cerca de 85% dos problemas de usabilidade são descobertos, a melhor relação entre custo e benefício; para chegar a 90%, seria preciso o dobro de participantes (Virzi, 1989, citado por Santa Rosa e Moraes, 2008, p. 155 a 157). Barbosa e Silva (2010, seção 9.7.2) também citam esse número. A Tabela 13 compara o número de participantes sugerido por outros autores. Foram recrutados estudantes que <strong>não</strong> participaram da avaliação do protótipo de papel, para evitar o efeito de aprendizado sobre as medidas de tempo e de erro. O perfil-alvo são estudantes que já cursaram disciplinas e montam a grade, de cursos diferentes, para que a funcionalidade seja testada com disciplinas de áreas distintas: três de Engenharia de Software, um de Audiovisual e uma de Psicologia, com três homens e duas mulheres. Como alguns participantes são do convívio acadêmico do avaliador, ele esclarece no início que o objetivo é encontrar problemas na interface, o que atenua a influência dessa relação (Barbosa e Silva, 2010, seção 9.7.2).</li>
+                <li><strong>Avaliador:</strong> um. Victor Andreozzi de La Rocque Couto conduz a sessão sozinho: apresenta as tarefas, observa e preenche o questionário de observação. Como não há um segundo avaliador, a gravação é revista depois de cada sessão para medir os tempos pelas mudanças de tela e conferir erros e falas que tenham escapado durante a observação.</li>
+                <li><strong>Equipamentos:</strong> notebook com o protótipo HTML aberto no navegador; gravação da sessão em uma reunião do Microsoft Teams, que registra a tela compartilhada, o áudio e a câmera; os tempos são medidos depois, na gravação.</li>
+                <li><strong>Materiais:</strong> TCLE em arquivo, mostrado ao participante; cenários de tarefa, apresentados oralmente pelo avaliador; e um questionário de uma página com os itens a observar nas tarefas e as perguntas do pós-teste (Barbosa e Silva, 2010, seção 9.7.2).</li>
+                <li><strong>Local e duração:</strong> sessões presenciais, com o avaliador ao lado do participante, em local combinado com ele; cerca de 10 minutos por sessão, incluindo a apresentação, bem abaixo do limite de uma hora recomendado para evitar cansaço (Barbosa e Silva, 2010, seção 9.7.2).</li>
+                <li><strong>Preparação do protótipo:</strong> antes das sessões, todos os caminhos das três tarefas foram percorridos no protótipo, porque basta um <em>bug</em> para interromper o teste (Preece, Rogers e Sharp, 2005, seção 8.2.4). Esse teste interno encontrou e corrigiu seis problemas, como a busca por “calculo 2” trazer também Cálculo 1 e 3 e o termo de anonimato da revisão ficar escondido atrás da barra inferior.</li>
+                <li><strong>Teste-piloto:</strong> o funcionamento do protótipo foi verificado no teste interno descrito acima, e não em uma sessão-piloto com estudante. As três primeiras sessões (<a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p1">P1</a> a <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p3">P3</a>) cumpriram parte desse papel: mostraram que os cenários precisavam ser apresentados um a um, o que foi feito com <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p4">P4</a> e <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p5">P5</a> (Barbosa e Silva, 2010, seção 9.7.2).</li>
             </ul>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 13: Número de participantes sugerido por autores de IHC</caption>
+                    <thead><tr><th>Autor</th><th>Participantes</th><th>Justificativa</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Nielsen</strong></td><td>5</td><td>Com cinco participantes, 85% dos problemas de usabilidade são descobertos.</td></tr>
+                        <tr><td><strong>Rubin</strong></td><td>8</td><td>Com quatro participantes, a maioria dos problemas aparece, mas alguns erros sérios podem ser ignorados.</td></tr>
+                        <tr><td><strong>Dumas</strong></td><td>6 a 12</td><td>Três participantes é o mínimo por subgrupo.</td></tr>
+                        <tr><td><strong>Krug</strong></td><td>3 ou 4</td><td>Com três ou quatro, a maioria dos problemas é detectada, e a análise pode ser feita no mesmo dia.</td></tr>
+                        <tr><td><strong>Virzi</strong></td><td>10</td><td>Com dez participantes, 90% dos problemas são descobertos.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Santa Rosa e Moraes (2008, p. 157, Quadro 4), a partir de Santa-Rosa (2005).</p>
+            <p class="doc-text">Este planejamento adota os cinco participantes de Nielsen: o número fica dentro da faixa de três a dez usuários em que os autores concordam (Santa Rosa e Moraes, 2008, p. 156), cabe no prazo da Etapa 7 e deve revelar a maior parte dos problemas do protótipo.</p>
             <h4 class="doc-h4" id="v6-af-d2">D: Decidir como lidar com as questões éticas</h4>
             <ul class="doc-list">
-                <li>O avaliador explica os objetivos, o procedimento e os cuidados éticos e entrega o TCLE em duas vias já assinadas por ele; o participante lê, assina e fica com uma via (Barbosa e Silva, 2010, seções 5.4 e 9.7.3).</li>
+                <li>O avaliador explica os objetivos, o procedimento e os cuidados éticos e mostra o TCLE ao participante, que dá o seu aceite em voz alta, registrado na gravação (Barbosa e Silva, 2010, seções 5.4 e 9.7.3).</li>
                 <li>O avaliador esclarece que quem está sendo avaliado é o protótipo, não o participante, e que dificuldades indicam problemas da interface.</li>
-                <li>Os participantes são identificados por códigos (P1 a P5), sem nome ou matrícula, e a gravação registra apenas a tela e a voz.</li>
+                <li>Os participantes são identificados por códigos (<a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p1">P1</a> a <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p5">P5</a>), sem nome ou matrícula. Como a gravação do Teams registra também a câmera, o participante autoriza o uso da imagem e do áudio.</li>
                 <li>A participação é voluntária, com direito de desistir a qualquer momento, e os dados são usados exclusivamente para fins acadêmicos, com as gravações armazenadas com acesso restrito, fora do repositório público.</li>
             </ul>
             <h4 class="doc-h4" id="v6-af-e2">E: Avaliar, interpretar e apresentar os dados</h4>
             <div class="table-wrapper">
                 <table class="table-standard table-hta">
-                    <caption>Tabela 13: Dados a coletar e forma de análise</caption>
+                    <caption>Tabela 14: Dados a coletar e forma de análise</caption>
                     <thead><tr><th>Dado</th><th>Como coletar</th><th>Como analisar</th></tr></thead>
                     <tbody>
-                        <tr><td><strong>Sucesso na tarefa</strong></td><td>Folha de observação: concluiu sem ajuda, concluiu com ajuda ou não concluiu.</td><td>Contagem e percentual por tarefa, comparados às metas da Tabela 11.</td></tr>
-                        <tr><td><strong>Tempo por tarefa</strong></td><td>Cronômetro e gravação de tela, do início da tarefa até a tela final.</td><td>Média, desvio padrão e número de participantes dentro da meta (Barbosa e Silva, 2010, seção 10.2.1).</td></tr>
+                        <tr><td><strong>Sucesso na tarefa</strong></td><td>Questionário de observação e gravação: concluiu sem ajuda, concluiu com ajuda ou não concluiu.</td><td>Contagem e percentual por tarefa, comparados às metas da Tabela 11.</td></tr>
+                        <tr><td><strong>Tempo por tarefa</strong></td><td>Gravação da tela, pelas mudanças de tela registradas na barra de endereço, do início da tarefa até a tela final.</td><td>Média, desvio padrão e número de participantes dentro da meta (Barbosa e Silva, 2010, seção 10.2.1).</td></tr>
                         <tr><td><strong>Erros e desvios</strong></td><td>Gravação de tela: cliques errados, caminhos fora do previsto na HTA e pedidos de ajuda.</td><td>Contagem por tarefa e por tela, associada às perguntas da Tabela 11.</td></tr>
-                        <tr><td><strong>Falas e comentários</strong></td><td>Áudio da gravação e anotações do observador.</td><td>Análise conjunta com a gravação para explicar a origem de cada problema.</td></tr>
-                        <tr><td><strong>Notas de 1 a 5</strong></td><td>Tabela preenchida pelo participante no pós-teste.</td><td>Média, mediana e valores mínimo e máximo por critério, comparados aos do protótipo de papel.</td></tr>
-                        <tr><td><strong>Problemas de usabilidade</strong></td><td>Interpretação de cada sessão pelos dois avaliadores (análise intraparticipante).</td><td>Consolidação entre participantes, em busca de recorrências (Barbosa e Silva, 2010, seção 9.7.5); classificação por severidade (0 a 3) e frequência.</td></tr>
+                        <tr><td><strong>Falas e comentários</strong></td><td>Áudio da gravação e anotações do avaliador.</td><td>Análise conjunta com a gravação para explicar a origem de cada problema.</td></tr>
+                        <tr><td><strong>Opinião sobre a experiência</strong></td><td>Respostas da entrevista pós-teste, na gravação.</td><td>Classificação de cada participante como positivo ou negativo, com as falas que justificam a classificação.</td></tr>
+                        <tr><td><strong>Problemas de usabilidade</strong></td><td>Interpretação de cada sessão pelo avaliador, revendo a gravação (análise intraparticipante).</td><td>Consolidação entre participantes, em busca de recorrências (Barbosa e Silva, 2010, seção 9.7.5); classificação por severidade (0 a 3) e frequência.</td></tr>
                     </tbody>
                 </table>
             </div>
             <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
             <p class="doc-text">Na consolidação, os problemas serão agrupados por categoria, indicando em que partes da interface ocorrem, seu impacto na usabilidade, as hipóteses sobre suas causas e as sugestões de melhoria (Kuniavsky, 2003, citado por Barbosa e Silva, 2010, seção 10.2.1).</p>
-            <p class="doc-text">Na interpretação, serão considerados a confiabilidade e a validade do estudo (Barbosa e Silva, 2010, seção 9.8). Com cinco participantes, os resultados indicam tendências, não certezas, e as médias de tempo não têm significância estatística. A validade ecológica é maior que a do protótipo de papel, porque o participante usa a interface sozinho, com rolagem e estados reais, mas continua limitada: os dados das disciplinas são fictícios e o teste ocorre em sala controlada, e não no momento real de montar a grade. Os resultados serão apresentados no relato descrito em <a href="entrega6_relato-v-relato-alta-fidelidade.html">Planejamento do relato dos resultados do protótipo de alta fidelidade</a>.</p>
+            <p class="doc-text">Na interpretação, serão considerados a confiabilidade e a validade do estudo (Barbosa e Silva, 2010, seção 9.8). Com cinco participantes, espera-se encontrar cerca de 85% dos problemas (Nielsen, 1993, citado por Santa Rosa e Moraes, 2008, p. 156); os resultados indicam tendências, não certezas, e as médias de tempo não têm significância estatística. A validade ecológica é maior que a do protótipo de papel, porque o participante usa a interface sozinho, com rolagem e estados reais, mas continua limitada: os dados das disciplinas são fictícios e o teste ocorre com o avaliador ao lado, e não no momento real de montar a grade; por outro lado, cada participante avalia disciplinas que de fato cursou. Os resultados serão apresentados no relato descrito em <a href="entrega6_relato-v-relato-alta-fidelidade.html">Planejamento do relato dos resultados do protótipo de alta fidelidade</a>.</p>
 
             <h3 class="doc-subsection" id="v6-af-cronograma">2. Cronograma</h3>
-            <p class="doc-text">O cronograma vai da construção do protótipo até a entrega do relato. As datas são uma proposta inicial e devem ser ajustadas ao prazo da disciplina, [preencher: data de entrega do relato do protótipo de alta fidelidade].</p>
+            <p class="doc-text">O cronograma vai da construção do protótipo até a apresentação do relato e segue as datas combinadas pelo grupo para a Etapa 7: o relato dos resultados é entregue em 15/11/2026 e apresentado em 17/11/2026.</p>
             <div class="table-wrapper">
                 <table class="table-standard table-hta">
-                    <caption>Tabela 14: Cronograma da avaliação do protótipo de alta fidelidade</caption>
+                    <caption>Tabela 15: Cronograma da avaliação do protótipo de alta fidelidade</caption>
                     <thead><tr><th>Data</th><th>Etapa</th><th>Atividades</th><th>Responsável</th></tr></thead>
                     <tbody>
-                        <tr><td>03/11 a 09/11</td><td>Construção do protótipo</td><td>Montar as telas T1 a T6 e os estados com as correções do protótipo de papel; percorrer todos os caminhos das três tarefas.</td><td>Victor</td></tr>
-                        <tr><td>10/11</td><td>Teste-piloto e materiais</td><td>Sessão-piloto; ajustes no protótipo, nos cenários e no tempo; impressão do TCLE, questionário, cenários, roteiro e folhas de observação.</td><td>Victor</td></tr>
-                        <tr><td>11/11</td><td>Recrutamento</td><td>Convidar 5 estudantes que não participaram do teste em papel; confirmar o colega observador; reservar a sala e agendar as sessões.</td><td>Victor</td></tr>
-                        <tr><td>12/11 a 14/11</td><td>Sessões de teste</td><td>Sessões com P1 a P5 (cerca de 30 minutos cada); anotações e interpretação individual após cada sessão.</td><td>Victor (moderador) e colega observador</td></tr>
-                        <tr><td>15/11 a 16/11</td><td>Consolidação</td><td>Revisar as gravações; tabular sucesso, tempo, erros e notas; consolidar os problemas com severidade e frequência.</td><td>Victor e colega observador</td></tr>
-                        <tr><td>17/11 a 18/11</td><td>Relato dos resultados</td><td>Redigir o relato conforme o planejamento do relato e publicar a página no site.</td><td>Victor</td></tr>
-                        <tr><td>19/11</td><td>Revisão</td><td>Revisão pelo grupo.</td><td>Grupo</td></tr>
+                        <tr><td>03/11 a 08/11</td><td>Construção do protótipo</td><td>Construir em HTML as telas <a class="code-ref" href="#t1">T1</a> a <a class="code-ref" href="#t6">T6</a> e os estados com as correções do protótipo de papel (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-01">PP-01</a> a <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-06">PP-06</a>); percorrer todos os caminhos das três tarefas (teste interno).</td><td>Victor</td></tr>
+                        <tr><td>09/11 a 11/11</td><td>Materiais e recrutamento</td><td>Preparar o TCLE, os cenários e o questionário de observação; convidar 5 estudantes que não participaram do teste em papel.</td><td>Victor</td></tr>
+                        <tr><td>12/11</td><td>Sessões de teste (<a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p1">P1</a> a <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p3">P3</a>)</td><td>Sessões com <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p1">P1</a>, <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p2">P2</a> e <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p3">P3</a>; revisão das gravações e interpretação individual.</td><td>Victor</td></tr>
+                        <tr><td>14/11</td><td>Sessões de teste (<a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p4">P4</a> e <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p5">P5</a>)</td><td>Sessões com <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p4">P4</a> e <a class="code-ref" href="entrega7_relato-v-alta-fidelidade.html#p5">P5</a>, com os três cenários apresentados um a um; revisão das gravações e interpretação individual.</td><td>Victor</td></tr>
+                        <tr><td>14/11 e 15/11</td><td>Consolidação</td><td>Transcrever e revisar as gravações; tabular sucesso, tempo, desvios e opiniões; consolidar os problemas com severidade e frequência.</td><td>Victor</td></tr>
+                        <tr><td>15/11</td><td>Entrega do relato (Etapa 7)</td><td>Redigir o relato conforme o planejamento do relato e publicar a página no site.</td><td>Victor</td></tr>
+                        <tr><td>17/11</td><td>Apresentação do relato (Etapa 7)</td><td>Apresentação dos resultados pelo grupo.</td><td>Grupo</td></tr>
                     </tbody>
                 </table>
             </div>
             <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
 
             <h3 class="doc-subsection" id="v6-af-ia">3. Declaração sobre o uso de IA Generativa</h3>
-            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada para redigir o planejamento a partir dos documentos do autor, do planejamento e dos resultados das avaliações anteriores e das obras de referência, no padrão da Entrega 6. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Victor Andreozzi de La Rocque Couto, e a validação pelo grupo está pendente.</p>
+            <p class="doc-text">A ferramenta de IA Generativa Claude (Anthropic) foi usada para redigir o planejamento a partir dos documentos do autor, do planejamento e dos resultados das avaliações anteriores e das obras de referência, no padrão da Entrega 6. O conteúdo, as decisões e a revisão final são responsabilidade do autor, Victor Andreozzi de La Rocque Couto.</p>
 
             <h3 class="doc-subsection" id="v6-af-referencias">4. Referências</h3>
             <ul class="doc-list" style="list-style: none; padding-left: 0;">
                 <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier / Campus, 2010.</li>
                 <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: Além da Interação Homem-Computador</em>. Porto Alegre: Bookman, 2005.</li>
                 <li>SHARP, Helen; ROGERS, Yvonne; PREECE, Jennifer. <em>Interaction Design: Beyond Human-Computer Interaction</em>. 2. ed. John Wiley &amp; Sons, 2007.</li>
+                <li>SANTA ROSA, José Guilherme; MORAES, Anamaria de. <em>Avaliação e projeto no design de interfaces</em>. Teresópolis: 2AB, 2008.</li>
             </ul>
 <div class="doc-history">
 <section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
@@ -371,13 +386,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
                             <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
                             <td style="padding: 1.5rem 1rem; color: #a1a1aa;">02/11/2026</td>
                             <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Planejamento da avaliação do protótipo de alta fidelidade com o framework DECIDE: telas, objetivos, perguntas e metas, método, questões práticas e éticas, análise dos dados e cronograma</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
-                            <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
                             <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): redação a partir dos documentos do autor e das obras de referência; decisões e revisão final são do autor</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.2</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">13/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Protótipo construído em HTML (telas da Tabela 10 atualizadas); número de participantes justificado pelo método de Nielsen, com cinco usuários para cerca de 85% dos problemas (Tabela 13); avaliador único, cronograma alinhado às datas do grupo para a Etapa 7 e correções PP-01 a PP-06</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): ajuste do texto conforme as decisões do autor e o capítulo de teste de usabilidade de Santa Rosa e Moraes (2008)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.3</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Planejamento ajustado ao que foi executado: cenários com disciplinas escolhidas pelo participante, pensar em voz alta, entrevista pós-teste aberta (pergunta 9), gravação pelo Microsoft Teams, consentimento registrado em voz alta, cursos dos participantes, teste interno no lugar da sessão-piloto e cronograma real das sessões; códigos com hiperlinks para onde são definidos</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): ajuste do texto a partir das gravações das sessões e das decisões do autor; revisão final é do autor</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.4</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Retirada do erro de envio programado (estado de erro, modo do facilitador e pergunta 7); perguntas renumeradas de 1 a 8</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): ajuste do texto a pedido do autor; revisão final é do autor</td>
                         </tr>
                     </tbody>
                 </table>
