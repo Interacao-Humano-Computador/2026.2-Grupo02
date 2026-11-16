@@ -200,7 +200,26 @@
             <p class="doc-text">O Gerenciador de Faltas é a funcionalidade do NoFluxo UnB em que o aluno registra as faltas de cada disciplina e descobre quantas ainda pode ter. O protótipo de alta fidelidade cobre duas <a href="entrega6_geral-p2-prototipo-papel.html#g2-s2-2">telas</a>: <strong>G1</strong>, registro de faltas, e <strong>G2</strong>, progresso e limite de faltas (barra, mensagem e gráfico). A tarefa avaliada é a <a href="entrega6_geral-p2-prototipo-papel.html#g2-s2-3"><strong>T1</strong></a>: registrar uma falta e descobrir quantas faltas ainda pode ter. O protótipo inclui os <a href="entrega6_geral-p2-relato-prototipo-papel.html#g2-s3-8">ajustes do relato do protótipo de papel</a>.</p>
 
             <h3 class="doc-subsection" id="f7-p2">2. Protótipo</h3>
-            <p class="doc-text"><a href="prototipo-felipe/index.html" target="_blank" rel="noopener">Abrir o protótipo de alta fidelidade do Gerenciador de Faltas</a>, pensado para uso no celular, que é o aparelho usado nas sessões de avaliação.</p>
+            <p class="doc-text"><a href="prototipo-felipe/index.html" target="_blank" rel="noopener">Abrir o protótipo de alta fidelidade do Gerenciador de Faltas</a>, pensado para uso no celular, que é o aparelho usado nas sessões de avaliação. O código-fonte é o arquivo <code>frontend/prototipo-felipe/index.html</code> do repositório.</p>
+
+            <h4 class="doc-h4" id="f7-p2-1">2.1 Como rodar</h4>
+            <p class="doc-text">O protótipo é uma página única, em HTML, CSS e JavaScript, sem servidor, banco de dados nem instalação. Há duas formas de abrir:</p>
+            <ul class="doc-list">
+                <li><strong>Pelo GitHub Pages:</strong> abra o <a href="prototipo-felipe/index.html" target="_blank" rel="noopener">link do protótipo</a> no navegador do celular ou do computador. Foi assim que as sessões de 12/11/2026 foram feitas.</li>
+                <li><strong>Pelo repositório, na própria máquina:</strong> clone o repositório, abra a pasta <code>frontend/prototipo-felipe/</code> e dê dois cliques em <code>index.html</code>. Também funciona com um servidor local, por exemplo <code>python -m http.server</code> dentro de <code>frontend/</code>, e depois <code>http://localhost:8000/prototipo-felipe/</code>.</li>
+            </ul>
+            <p class="doc-text">Para ver a tela como no celular, no computador, abra as ferramentas do desenvolvedor do navegador (tecla F12) e ative o modo de dispositivo móvel. Sem internet o protótipo abre normalmente, só troca a fonte Inter por uma fonte padrão do sistema.</p>
+
+            <h4 class="doc-h4" id="f7-p2-2">2.2 Como usar para a tarefa T1</h4>
+            <ol class="doc-list">
+                <li>Na tela inicial, toque no cartão "Gerenciador de Faltas" (o cartão "Fluxograma" fica desativado, por estar fora do escopo da avaliação). Abre a tela G1, com as disciplinas de exemplo.</li>
+                <li>Escolha uma disciplina e registre uma falta tocando em "+" e escolhendo a data da aula na janela que abre. Datas futuras são bloqueadas.</li>
+                <li>Toque no nome da disciplina para abrir a tela G2 e ver a barra de progresso, a mensagem de quantas faltas ainda podem ocorrer e o gráfico. É ali que se responde "quantas faltas ainda posso ter".</li>
+                <li>Se errar, use "Desfazer" no aviso que aparece, toque em "−" para remover um dia, ou edite e exclua o registro no histórico da G2. O botão de tema, no topo, alterna entre claro e escuro.</li>
+            </ol>
+
+            <h4 class="doc-h4" id="f7-p2-3">2.3 Dados e limites</h4>
+            <p class="doc-text">As disciplinas e as faltas iniciais são dados de exemplo, fixos no código (não vêm do NoFluxo UnB real). O que a pessoa registra fica salvo só no navegador dela (<code>localStorage</code>), por isso não vai para o servidor nem aparece para outras pessoas. O botão "Restaurar dados de exemplo", no rodapé, volta ao estado inicial, e convém usá-lo antes de cada sessão de teste. Limpar os dados do site no navegador tem o mesmo efeito. O protótipo cobre apenas as telas G1 e G2, e outras partes do NoFluxo UnB não existem nele.</p>
 
             <h3 class="doc-subsection" id="f7-p3">3. Recursos exercitados nas sessões</h3>
             <p class="doc-text">Os participantes exploraram os recursos abaixo durante a avaliação (anotações das sessões de 12/11/2026, detalhadas no <a href="entrega7_relato-f-relato-alta-fidelidade.html">relato dos resultados</a>):</p>
