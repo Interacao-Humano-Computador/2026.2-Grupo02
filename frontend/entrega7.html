@@ -110,6 +110,13 @@
         body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
     </style>
     <style>:root { --doc-accent: #a855f7; }</style>
+    <style>
+        .doc-content p a, .doc-content li a, .doc-content td a, .doc-content figcaption a { color: #d8b4fe; text-decoration: underline; text-decoration-color: rgba(216, 180, 254, 0.4); text-underline-offset: 2px; }
+        .doc-content p a:hover, .doc-content li a:hover, .doc-content td a:hover { text-decoration-color: #d8b4fe; }
+        .links-entrega a { word-break: break-all; }
+        .doc-content abbr[title] { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+        body.alto-contraste .doc-content p a, body.alto-contraste .doc-content li a, body.alto-contraste .doc-content td a { color: #1d4ed8 !important; -webkit-text-fill-color: #1d4ed8 !important; }
+    </style>
 </head>
 <body class="landing-body">
     
@@ -161,39 +168,86 @@
                     <ul>
                         <li class="doc-stagenav-group">Visão geral</li>
                         <li><a href="entrega7.html" class="active" aria-current="page">Visão geral</a></li>
-                        <li class="doc-stagenav-group">Relatos e planejamentos individuais</li>
-                        <li class="doc-stagenav-pessoa"><details open><summary>Felipe Lopes Pedroza</summary>
+                        <li class="doc-stagenav-group">Relatos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
                             <ul>
                                 <li><a href="entrega7_relato-f-prototipo-alta-fidelidade.html">Visão geral e protótipo de alta fidelidade</a></li>
                                 <li><a href="entrega7_relato-f-planejamento-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade (método de Krug)</a></li>
                                 <li><a href="entrega7_relato-f-relato-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
                                 <li><a href="entrega7_relato-f-anexo-tcle.html">Anexo A: termo de consentimento (TCLE) da avaliação de alta fidelidade</a></li>
                             </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-m-planejamento.html">Folha de bolso e preparação da sessão</a></li>
+                                <li><a href="entrega7_relato-m-roteiro.html">Roteiro da sessão</a></li>
+                                <li><a href="entrega7_relato-m-quadros-360.html">Os seis quadros 360</a></li>
+                                <li><a href="entrega7_relato-m-registro.html">Registro, ajuda, severidade, pós-sessão e desvios</a></li>
+                                <li><a href="entrega7_relato-m-execucao.html">Execução das sessões e número de participantes</a></li>
+                                <li><a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega7_relato-m-anexo-d.html">Anexo D: formulários de observação (P01 e P02)</a></li>
+                                <li><a href="entrega7_relato-m-anexos-e-f.html">Anexos E e F: roteiro da entrevista pós-teste e ficha de calibração</a></li>
+                                <li><a href="entrega7_relato-m-anexo-g.html">Anexo G: consolidação dos dados</a></li>
+                                <li><a href="entrega7_relato-m-cartao.html">Cartão de satisfação</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li>Em elaboração</li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-group">Aval do professor</li>
+                        <li><a href="entrega7_aval-professor.html">Aval do professor e complexidade do Street View</a></li>
+                        <li class="doc-stagenav-group">Legenda</li>
+                        <li><a href="entrega7_legenda.html">Legenda dos códigos</a></li>
+                        <li class="doc-stagenav-group">Entrega anterior</li>
+                        <li><a href="entrega6.html">Entrega 6: planejamento da avaliação do protótipo de alta fidelidade</a></li>
                     </ul>
                 </aside>
             <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega7.html">Entrega 7</a> › Visão geral</p>
             <div class="header-info">
                 <p><strong>Universidade de Brasília, Faculdade UnB Gama</strong></p>
                 <p>Disciplina: Interação Humano-Computador</p>
                 <p>Professor: André Barros de Sales</p>
-                <p>Aluno: Felipe Lopes Pedroza, matrícula: 231026330</p>
-                <p>Projeto: No Fluxo UnB (Grupo 02), Entrega 7: Protótipo de Alta Fidelidade, parte individual (Gerenciador de Faltas)</p>
+                <p>Integrantes:</p>
+                <p>Felipe Lopes Pedroza, matrícula: 231026330</p>
+                <p>Matheus do Vale Lameira, matrícula: 202070064</p>
+                <p>Victor Andreozzi de La Rocque Couto, matrícula: 221029285</p>
+                <p>Projeto: No Fluxo UnB (Grupo 02), Entrega 7: Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade</p>
             </div>
 
-            <h1 class="doc-title">Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade<span class="text-gradient">.</span></h1>
+            <h1 class="doc-title">Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade</h1>
 
-            <div class="header-info" style="border-left: 4px solid #a855f7;">
+            <div class="header-info links-entrega" style="border-left: 4px solid #a855f7;">
                 <p style="color: #fafafa; font-weight: 600; margin-bottom: 0.5rem;">Links da entrega</p>
-                <p><strong>Vídeo da apresentação (Entrega 7):</strong> a publicar</p>
+                <p><strong>Vídeo da apresentação do Gerenciador de Faltas (Felipe Lopes Pedroza):</strong> a publicar</p>
+                <p><strong>Vídeo do teste-piloto:</strong> <a href="https://youtu.be/-4N_pkfInGk" target="_blank" rel="noopener">https://youtu.be/-4N_pkfInGk</a></p>
+                <p><strong>Vídeo da sessão do participante P01 (Street View):</strong> <a href="https://youtu.be/72ukxd1-WYo" target="_blank" rel="noopener">https://youtu.be/72ukxd1-WYo</a></p>
+                <p><strong>Vídeo da sessão do participante P02 (Street View):</strong> <a href="https://youtu.be/64iYZ0kyk9I" target="_blank" rel="noopener">https://youtu.be/64iYZ0kyk9I</a></p>
                 <p><strong>GitHub Pages do projeto (Entrega 7):</strong> <a href="https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html" target="_blank" rel="noopener">https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html</a></p>
-                <p><strong>Protótipo de alta fidelidade:</strong> <a href="prototipo-felipe/index.html" target="_blank" rel="noopener">Gerenciador de Faltas</a></p>
+                <p><strong>Protótipo de alta fidelidade do Gerenciador de Faltas:</strong> <a href="prototipo-felipe/index.html" target="_blank" rel="noopener">prototipo-felipe/index.html</a></p>
                 <p><strong>PDF da parte de Felipe Lopes Pedroza:</strong> a publicar</p>
+                <p><strong>PDF da parte de Matheus do Vale Lameira:</strong> <a href="docs/Grupo2MatheusdoValeEtapa7RelatoAvaliacaoAltaFidelidade.pdf" download>Baixar Grupo2MatheusdoValeEtapa7RelatoAvaliacaoAltaFidelidade.pdf</a></p>
+                <p><strong>PDF da parte de Victor Andreozzi de La Rocque Couto:</strong> a publicar</p>
             </div>
 
-            <p class="doc-text">Esta entrega reúne a parte individual de Felipe Lopes Pedroza para o Gerenciador de Faltas do projeto No Fluxo UnB: (1) o protótipo de alta fidelidade; (2) o <a href="entrega7_relato-f-planejamento-alta-fidelidade.html">planejamento da avaliação, atualizado para o método de Krug com 3 participantes</a>, a partir do <a href="entrega6_geral-p2-alta-fidelidade.html#g2-s4">planejamento da Entrega 6</a>; e (3) o relato dos resultados da avaliação, feita em 12/11/2026 com três participantes. A fundamentação segue Santa Rosa e Moraes (2012) e Barbosa e Silva (2010).</p>
+            <p class="doc-text">Esta entrega reúne, para cada funcionalidade do projeto No Fluxo UnB, o relato dos resultados da avaliação do protótipo de alta fidelidade, planejada na <a href="entrega6.html">Entrega 6</a>. A parte de Matheus do Vale Lameira, do Street View, traz o roteiro e os registros das duas sessões do teste de usabilidade com os quadros 360, o teste-piloto e a consolidação dos dados.</p>
+            <p class="doc-text">Cada integrante publica a sua parte em <strong>Relatos individuais</strong>, sob o próprio nome, dividida em artefatos. Os códigos usados nos artefatos estão na <a href="entrega7_legenda.html">Legenda dos códigos</a>, e o que o professor observou sobre o projeto, com o tratamento de cada ponto, está em <a href="entrega7_aval-professor.html">Aval do professor e complexidade do Street View</a>.</p>
+
+            <h2 id="contribuicao" class="doc-section">Contribuição de cada integrante e uso de ferramenta de IA</h2>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 1: contribuição de cada integrante na Entrega 7.</caption>
+                    <thead><tr><th><strong>Integrante</strong></th><th><strong>Funcionalidade</strong></th><th><strong>Contribuição nesta entrega</strong></th><th><strong>Situação</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Felipe Lopes Pedroza</td><td>Gerenciador de Faltas</td><td>Protótipo de alta fidelidade, planejamento da avaliação atualizado (método de Krug, com 3 participantes) e relato dos resultados da avaliação feita em 12/11/2026</td><td>Publicado</td></tr>
+                        <tr><td class="td-strong">Matheus do Vale Lameira</td><td>Street View</td><td>Preparação e roteiro da sessão; ferramenta e produção dos seis quadros 360; condução do teste-piloto e das sessões com P01 e P02; formulários, consolidação dos dados e relato; páginas desta entrega</td><td>Publicado</td></tr>
+                        <tr><td class="td-strong">Victor Andreozzi de La Rocque Couto</td><td>Avaliação de Disciplinas</td><td>Relato dos resultados da avaliação do protótipo de alta fidelidade</td><td>Em elaboração</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Uso de ferramenta de IA:</strong> Claude (Anthropic) foi usado apenas na estrutura das páginas deste site (organização em artefatos, menus, índices e hiperlinks) e na revisão da estrutura. O conteúdo é do autor.</p>
 
             <h2 id="artefatos" class="doc-section">Artefatos desta entrega</h2>
-            <h3 class="doc-subsection">Relatos e planejamentos individuais</h3>
+            <h3 class="doc-subsection">Relatos individuais</h3>
             <ul class="doc-list doc-artifact-list">
                 <li>Felipe Lopes Pedroza: Gerenciador de Faltas
                     <ul>
@@ -202,13 +256,47 @@
                         <li><a href="entrega7_relato-f-relato-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
                         <li><a href="entrega7_relato-f-anexo-tcle.html">Anexo A: termo de consentimento (TCLE) da avaliação de alta fidelidade</a></li>
                     </ul></li>
+                <li>Matheus do Vale Lameira: Street View
+                    <ul>
+                        <li><a href="entrega7_relato-m-planejamento.html">Folha de bolso e preparação da sessão</a></li>
+                        <li><a href="entrega7_relato-m-roteiro.html">Roteiro da sessão</a></li>
+                        <li><a href="entrega7_relato-m-quadros-360.html">Os seis quadros 360</a></li>
+                        <li><a href="entrega7_relato-m-registro.html">Registro, ajuda, severidade, pós-sessão e desvios</a></li>
+                        <li><a href="entrega7_relato-m-execucao.html">Execução das sessões e número de participantes</a></li>
+                        <li><a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                        <li><a href="entrega7_relato-m-anexo-d.html">Anexo D: formulários de observação (P01 e P02)</a></li>
+                        <li><a href="entrega7_relato-m-anexos-e-f.html">Anexos E e F: roteiro da entrevista pós-teste e ficha de calibração</a></li>
+                        <li><a href="entrega7_relato-m-anexo-g.html">Anexo G: consolidação dos dados</a></li>
+                        <li><a href="entrega7_relato-m-cartao.html">Cartão de satisfação</a></li>
+                    </ul></li>
+                <li>Victor Andreozzi de La Rocque Couto: Avaliação de Disciplinas
+                    <ul>
+                        <li>Em elaboração</li>
+                    </ul></li>
+            </ul>
+            <h3 class="doc-subsection">Aval do professor e legenda</h3>
+            <ul class="doc-list doc-artifact-list">
+                <li><a href="entrega7_aval-professor.html">Aval do professor e complexidade do Street View</a></li>
+                <li><a href="entrega7_legenda.html">Legenda dos códigos</a></li>
+            </ul>
+
+            <p class="doc-text">A parte de Felipe Lopes Pedroza, do Gerenciador de Faltas, reúne o <a href="prototipo-felipe/index.html" target="_blank" rel="noopener">protótipo de alta fidelidade</a>, o <a href="entrega7_relato-f-planejamento-alta-fidelidade.html">planejamento da avaliação, atualizado para o método de Krug com 3 participantes</a>, a partir do <a href="entrega6_geral-p2-alta-fidelidade.html#g2-s4">planejamento da Entrega 6</a>, e o relato dos resultados da avaliação, feita em 12/11/2026 com três participantes. A fundamentação segue Santa Rosa e Moraes (2012) e Barbosa e Silva (2010).</p>
+
+            <h2 id="anteriores" class="doc-section">Entregas anteriores e o que esta entrega usa delas</h2>
+            <p class="doc-text"><a href="entrega1.html">Entrega 1</a> · <a href="entrega2.html">Entrega 2</a> · <a href="entrega3.html">Entrega 3</a> · <a href="entrega4.html">Entrega 4</a> · <a href="entrega5.html">Entrega 5</a> · <a href="entrega6.html">Entrega 6</a></p>
+            <ul class="doc-list">
+                <li>Planejamento desta avaliação: <a href="entrega6_relato-m-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade</a> e <a href="entrega6_relato-m-relato-alta-fidelidade.html">Planejamento do relato dos resultados</a>, da Entrega 6.</li>
+                <li>Protótipo de papel avaliado antes: <a href="entrega6_relato-m-prototipo-papel.html">Protótipo de papel de baixa fidelidade</a> e <a href="entrega6_relato-m-relato-prototipo-papel.html">Relato dos resultados da avaliação do protótipo de papel</a>, da Entrega 6.</li>
+                <li>Análise de tarefas: <a href="entrega5_relato-m-analise-tarefas.html#m-s3-3">HTA do Street View</a> e <a href="entrega5_relato-m-analise-tarefas.html#m-s3-4">CTT do Street View</a>, da Entrega 5, cujos passos orientam o formulário de observação (<a href="entrega7_relato-m-anexo-d.html#m7-anexo-d">Anexo D</a>).</li>
+                <li>Storyboard: <a href="entrega5_relato-m-storyboard.html">Storyboard do Street View</a>, da Entrega 5.</li>
+                <li>Problemas do protótipo de papel (P-4, P-5 e P-6): <a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados">lista de problemas encontrados</a>, da Entrega 5, e <a href="entrega7_relato-m-anexo-g.html#m7-g-6">comparação no Anexo G.6</a>.</li>
             </ul>
 
             <h2 id="evolucao" class="doc-section">Evolução do Gerenciador de Faltas nas entregas</h2>
             <p class="doc-text">Cada etapa da parte individual de Felipe Lopes Pedroza parte da anterior. A tabela mostra onde cada artefato está.</p>
             <div class="table-wrapper">
                 <table class="table-standard">
-                    <caption>Tabela 1: artefatos do Gerenciador de Faltas, da Entrega 4 à Entrega 7.</caption>
+                    <caption>Tabela 2: artefatos do Gerenciador de Faltas, da Entrega 4 à Entrega 7.</caption>
                     <thead><tr><th>Entrega</th><th>O que foi feito</th><th>Páginas</th></tr></thead>
                     <tbody>
                         <tr><td class="td-strong"><a href="entrega4.html">Entrega 4</a></td><td>Planejamento da avaliação do storyboard e da análise de tarefas, e do relato dos resultados</td><td><a href="entrega4_planejamento-avaliacao-storyboard-felipe.html">Avaliação do storyboard</a> · <a href="entrega4_planejamento-avaliacao-tarefas-felipe.html">Avaliação da análise de tarefas</a> · <a href="entrega4_planejamento-relato-storyboard-felipe.html">Relato do storyboard</a> · <a href="entrega4_planejamento-relato-tarefas-felipe.html">Relato da análise de tarefas</a></td></tr>
@@ -219,6 +307,8 @@
                 </table>
             </div>
 
+
+
 <div class="doc-history">
 <section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
             <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
@@ -226,7 +316,12 @@
                 <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
                     <thead>
                         <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th><th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th><th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th><th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th><th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -236,14 +331,24 @@
                             <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Criação da página da Entrega 7, com a parte individual de Felipe Lopes Pedroza (Gerenciador de Faltas), dividida em três artefatos</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
-                            
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">Não informada</td>
                         </tr>
-                        </tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão, na visão geral da Entrega 7, da parte de Matheus do Vale Lameira (Street View), dos vídeos, da tabela de contribuição, do aval do professor e da legenda dos códigos, junto da parte de Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 6 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </section>
                 </div>
-
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="next" href="entrega7_relato-m-planejamento.html"><span>Próximo →</span>Matheus: Folha de bolso e preparação da sessão</a>
+                </nav>
             </article>
                 <nav class="doc-toc" aria-label="Índice desta página">
                     <p class="doc-toc-title">Índice</p>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro, ajuda, severidade, pós-sessão e desvios | Entrega 7 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+    <style>
+        .doc-content p a, .doc-content li a, .doc-content td a, .doc-content figcaption a { color: #d8b4fe; text-decoration: underline; text-decoration-color: rgba(216, 180, 254, 0.4); text-underline-offset: 2px; }
+        .doc-content p a:hover, .doc-content li a:hover, .doc-content td a:hover { text-decoration-color: #d8b4fe; }
+        .links-entrega a { word-break: break-all; }
+        .doc-content abbr[title] { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+        body.alto-contraste .doc-content p a, body.alto-contraste .doc-content li a, body.alto-contraste .doc-content td a { color: #1d4ed8 !important; -webkit-text-fill-color: #1d4ed8 !important; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 7 · Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega7.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-f-prototipo-alta-fidelidade.html">Visão geral e protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-f-planejamento-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade (método de Krug)</a></li>
+                                <li><a href="entrega7_relato-f-relato-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-f-anexo-tcle.html">Anexo A: termo de consentimento (TCLE) da avaliação de alta fidelidade</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-m-planejamento.html">Folha de bolso e preparação da sessão</a></li>
+                                <li><a href="entrega7_relato-m-roteiro.html">Roteiro da sessão</a></li>
+                                <li><a href="entrega7_relato-m-quadros-360.html">Os seis quadros 360</a></li>
+                                <li><a href="entrega7_relato-m-registro.html" class="active" aria-current="page">Registro, ajuda, severidade, pós-sessão e desvios</a></li>
+                                <li><a href="entrega7_relato-m-execucao.html">Execução das sessões e número de participantes</a></li>
+                                <li><a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega7_relato-m-anexo-d.html">Anexo D: formulários de observação (P01 e P02)</a></li>
+                                <li><a href="entrega7_relato-m-anexos-e-f.html">Anexos E e F: roteiro da entrevista pós-teste e ficha de calibração</a></li>
+                                <li><a href="entrega7_relato-m-anexo-g.html">Anexo G: consolidação dos dados</a></li>
+                                <li><a href="entrega7_relato-m-cartao.html">Cartão de satisfação</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li>Em elaboração</li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-group">Aval do professor</li>
+                        <li><a href="entrega7_aval-professor.html">Aval do professor e complexidade do Street View</a></li>
+                        <li class="doc-stagenav-group">Legenda</li>
+                        <li><a href="entrega7_legenda.html">Legenda dos códigos</a></li>
+                        <li class="doc-stagenav-group">Entrega anterior</li>
+                        <li><a href="entrega6.html">Entrega 6: planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega7.html">Entrega 7</a> › Relatos individuais</p>
+            <h1 id="m7-pg-registro" class="doc-title doc-page-title">Registro, ajuda, severidade, pós-sessão e desvios</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira, matrícula 202070064 · <strong>Validador:</strong> Matheus do Vale Lameira</p>
+                <p><strong>Funcionalidade:</strong> Street View · <strong>Conteúdo desta página:</strong> Registro, ajuda, severidade, pós-sessão e desvios</p>
+                <p><strong>Documento completo em PDF:</strong> <a href="docs/Grupo2MatheusdoValeEtapa7RelatoAvaliacaoAltaFidelidade.pdf" download>Baixar Grupo2MatheusdoValeEtapa7RelatoAvaliacaoAltaFidelidade.pdf</a></p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega7_relato-m-planejamento.html">Folha de bolso e preparação da sessão</a> · <a href="entrega7_relato-m-roteiro.html">Roteiro da sessão</a> · <a href="entrega7_relato-m-quadros-360.html">Os seis quadros 360</a> · <a href="entrega7_relato-m-execucao.html">Execução das sessões e número de participantes</a> · <a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a> · <a href="entrega7_relato-m-anexo-d.html">Anexo D: formulários de observação (P01 e P02)</a> · <a href="entrega7_relato-m-anexos-e-f.html">Anexos E e F: roteiro da entrevista pós-teste e ficha de calibração</a> · <a href="entrega7_relato-m-anexo-g.html">Anexo G: consolidação dos dados</a> · <a href="entrega7_relato-m-cartao.html">Cartão de satisfação</a> · <a href="entrega7_legenda.html">Legenda dos códigos</a></p>
+            </div>
+            <h3 class="doc-subsection" id="m7-s5">5. Registro, ajuda e severidade</h3>
+            <h4 class="doc-h4" id="m7-s5-1">5.1 Grau de sucesso e ajuda</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Código</strong></strong></th><th><strong><strong>Significado</strong></strong></th><th><strong><strong>Como decido</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>S</strong></td><td>Concluiu sem ajuda</td><td>Chegou ao quadro 5 e confirmou a sala sem nenhuma dica minha</td></tr>
+                        <tr><td class="td-strong"><strong>A</strong></td><td>Concluiu com ajuda</td><td>Concluiu depois de eu dar uma dica; cada dica conta como um pedido de ajuda e anoto o minuto e o que eu disse</td></tr>
+                        <tr><td class="td-strong"><strong>N</strong></td><td>Não concluiu</td><td>Disse “não consegui”, desistiu ou confirmou a sala errada sem perceber</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="doc-h4" id="m7-s5-2">5.2 Tipos de erro (Anexo D.2)</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Tipo</strong></strong></th><th><strong><strong>Descrição</strong></strong></th><th><strong><strong>Exemplo nesta tarefa</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong><abbr title="E1: erro de toque no elemento errado">E1</abbr></strong></td><td>Toque no elemento errado</td><td>Tocar em “Matéria” em vez de “Sala”; tocar em “Voltar” em vez de “Avançar”</td></tr>
+                        <tr><td class="td-strong"><strong><abbr title="E2: erro de tela errada">E2</abbr></strong></td><td>Tela errada</td><td>Abrir outra funcionalidade na tela inicial em vez do Street View</td></tr>
+                        <tr><td class="td-strong"><strong><abbr title="E3: erro de dado informado errado">E3</abbr></strong></td><td>Dado informado errado</td><td>Escolher o campus ou o bloco errado, ou digitar a sala errada</td></tr>
+                        <tr><td class="td-strong"><strong><abbr title="E4: erro de elemento não encontrado">E4</abbr></strong></td><td>Não achou o elemento</td><td>Não achar o botão “Buscar”, “Avançar” ou “É esta sala”</td></tr>
+                        <tr><td class="td-strong"><strong><abbr title="E5: erro de interpretação errada de uma informação">E5</abbr></strong></td><td>Interpretou mal uma informação</td><td>Achar que chegou antes da sala, ou confundir a placa da porta</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="doc-h4" id="m7-s5-3">5.3 Problemas, fatores de usabilidade e severidade</h4>
+            <p class="doc-text">Para cada problema anoto onde ocorreu, o que aconteceu e o fator de usabilidade prejudicado (p. 29): facilidade de aprendizado, facilidade de recordação, eficiência, segurança no uso ou satisfação do usuário. A severidade segue a escala de Nielsen (p. 320):</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Sev.</strong></strong></th><th><strong><strong>Significado</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>1</strong></td><td>Cosmético: não precisa ser consertado a menos que haja tempo no cronograma</td></tr>
+                        <tr><td class="td-strong"><strong>2</strong></td><td>Pequeno: o conserto pode receber baixa prioridade</td></tr>
+                        <tr><td class="td-strong"><strong>3</strong></td><td>Grande: importante consertar, com alta prioridade</td></tr>
+                        <tr><td class="td-strong"><strong>4</strong></td><td>Catastrófico: extremamente importante consertar antes de lançar o produto</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text">Considero recorrente o achado apontado por pelo menos 2 participantes. Com poucos participantes, os resultados indicam tendências, e não certezas (p. 312).</p>
+            <h4 class="doc-h4" id="m7-s5-4">5.4 Como verificar os problemas do protótipo de papel (AF-Q7)</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Problema</strong></strong></th><th><strong><strong>O que olho na sessão</strong></strong></th><th><strong><strong>Volta a ocorrer se</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-4</a></strong></td><td>Campus e bloco antes da sala: se o participante escolhe campus e bloco antes de informar a sala</td><td>Ele não percebe os menus de campus e de bloco, informa só a sala ou erra o campus ou o bloco (<abbr title="E1: erro de toque no elemento errado">E1</abbr>, <abbr title="E3: erro de dado informado errado">E3</abbr> ou <abbr title="E4: erro de elemento não encontrado">E4</abbr>)</td></tr>
+                        <tr><td class="td-strong"><strong><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-5</a></strong></td><td>Busca pela matéria (alternativa a avaliar): se procura pela matéria e se pergunto sobre ela no pós-teste</td><td>Ele tenta achar a sala pela matéria e não consegue, ou diz que faltou essa opção</td></tr>
+                        <tr><td class="td-strong"><strong><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-6</a></strong></td><td>Cor e contraste: se hesita, aproxima o celular ou comenta que algo é difícil de ler</td><td>Há hesitação, erro ou comentário por causa de cor, contraste, tamanho de letra ou legenda</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="doc-subsection" id="m7-s6">6. Depois da sessão</h3>
+            <h4 class="doc-h4" id="m7-no-mesmo-dia">No mesmo dia</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Item</strong></strong></th><th><strong><strong>Feito</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Completar o formulário <a href="entrega7_relato-m-anexo-d.html#m7-anexo-d" title="Anexo D.2: formulário de observação do protótipo de alta fidelidade">D.2</a> enquanto a memória está fresca (horários, falas, problemas)</td><td>( x )</td></tr>
+                        <tr><td class="td-strong">Salvar a gravação como P0n_AAAAMMDD e guardar na pasta privada (nunca no repositório público)</td><td>( x )</td></tr>
+                        <tr><td class="td-strong">Lançar os dados nas tabelas <a href="entrega7_relato-m-anexo-g.html#m7-g-1" title="G.1: medições por participante">G.1</a> (medições) e <a href="entrega7_relato-m-anexo-g.html#m7-g-3" title="G.3: percurso nos seis quadros 360">G.3</a> (percurso nos quadros 360) do <a href="entrega7_relato-m-anexo-g.html#m7-anexo-g" title="Anexo G: consolidação dos dados">Anexo G</a></td><td>( x )</td></tr>
+                        <tr><td class="td-strong">Conferir a gravação: tempo, pedidos de ajuda e erros batem com o <a href="entrega7_relato-m-anexo-d.html#m7-anexo-d" title="Anexo D.2: formulário de observação do protótipo de alta fidelidade">D.2</a>?</td><td>( x )</td></tr>
+                        <tr><td class="td-strong">Listar os problemas na tabela <a href="entrega7_relato-m-anexo-g.html#m7-g-4" title="G.4: problemas encontrados">G.4</a> (AF-P), com local, descrição, fator, severidade e participantes</td><td>( x )</td></tr>
+                        <tr><td class="td-strong">Preencher a tabela <a href="entrega7_relato-m-anexo-g.html#m7-g-6" title="G.6: comparação com os problemas do protótipo de papel">G.6</a>, comparação com o papel (<a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-4</a>, <a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-5</a> e <a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-6</a>)</td><td>( x )</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="doc-h4" id="m7-antes-de-relatar-relato-dos-resultados-secao-5-d">Antes de relatar (relato dos resultados, seção 5 da Etapa 6)</h4>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Item</strong></strong></th><th><strong><strong>Feito</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Todos os participantes lançados e o piloto fora da conta</td><td>( x )</td></tr>
+                        <tr><td class="td-strong">Média de tempo, % sem ajuda, erros, ajuda e satisfação comparados com as metas (tabela <a href="entrega7_relato-m-anexo-g.html#m7-g-2" title="G.2: resumo e metas de usabilidade">G.2</a>)</td><td>( x )</td></tr>
+                        <tr><td class="td-strong">Problemas consolidados e categorizados (<a href="entrega7_relato-m-anexo-g.html#m7-g-5" title="CAT: categoria de problemas do teste de usabilidade">CAT-1</a>, <a href="entrega7_relato-m-anexo-g.html#m7-g-5" title="CAT: categoria de problemas do teste de usabilidade">CAT-2</a>…) e ajustes do reprojeto em ordem de prioridade</td><td>( x )</td></tr>
+                        <tr><td class="td-strong">Participantes identificados só por código, sem nomes e sem informação que permita identificá-los (p. 140)</td><td>( x )</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="doc-subsection" id="m7-s7">7. Desvios a registrar no relato</h3>
+            <p class="doc-text">Conduzo e observo cada sessão sozinho, e a gravação de tela e de áudio é o registro que me permite conferir depois. Como o livro sugere dois avaliadores (p. 309), registro isso em “Desvios do planejamento”.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Desvio previsto</strong></strong></th><th><strong><strong>Como registro</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Um avaliador em vez de dois</strong></td><td>Escrevo no relato: “sessão conduzida e observada por um avaliador, com gravação de tela e áudio para conferência”</td></tr>
+                        <tr><td class="td-strong">Itens acrescentados ao <a href="entrega7_relato-m-anexos-e-f.html#m7-e-2" title="Anexo E.2: roteiro da entrevista pós-teste do protótipo de alta fidelidade">E.2</a> (Vista 360, Reconhecer a sala e Busca pela matéria)</td><td>Cito no relato como perguntas adicionais do pós-teste</td></tr>
+                        <tr><td class="td-strong"><strong>Quadros 360 no lugar das telas <abbr title="V2: tela de localização e trajeto">V2</abbr> e <abbr title="V3: tela de entrada e confirmação da sala">V3</abbr> do papel</strong></td><td>Descrevo o protótipo como a versão de alta fidelidade das telas <abbr title="H1: tela inicial do NoFluxo (home)">H1</abbr>, <abbr title="V1: tela de busca da sala">V1</abbr>, <abbr title="V2: tela de localização e trajeto">V2</abbr> e <abbr title="V3: tela de entrada e confirmação da sala">V3</abbr></td></tr>
+                        <tr><td class="td-strong"><strong>Qualquer imprevisto (equipamento, ruído, ventania, atraso)</strong></td><td>Anoto no <a href="entrega7_relato-m-anexo-d.html#m7-anexo-d" title="Anexo D.2: formulário de observação do protótipo de alta fidelidade">D.2</a> e em “Desvios do planejamento”</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação de Registro, ajuda, severidade, pós-sessão e desvios, a partir do documento Grupo2MatheusdoValeEtapa7RelatoAvaliacaoAltaFidelidade, integralmente e sem alterar o conteúdo, com hiperlinks para os artefatos desta e das entregas anteriores</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 6 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega7_relato-m-quadros-360.html"><span>← Anterior</span>Matheus: Os seis quadros 360</a>
+                    <a class="next" href="entrega7_relato-m-execucao.html"><span>Próximo →</span>Matheus: Execução das sessões e número de participantes</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
