@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anexo D: formulários de observação (P01 e P02) | Entrega 7 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+    <style>
+        .doc-content p a, .doc-content li a, .doc-content td a, .doc-content figcaption a { color: #d8b4fe; text-decoration: underline; text-decoration-color: rgba(216, 180, 254, 0.4); text-underline-offset: 2px; }
+        .doc-content p a:hover, .doc-content li a:hover, .doc-content td a:hover { text-decoration-color: #d8b4fe; }
+        .links-entrega a { word-break: break-all; }
+        .doc-content abbr[title] { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+        body.alto-contraste .doc-content p a, body.alto-contraste .doc-content li a, body.alto-contraste .doc-content td a { color: #1d4ed8 !important; -webkit-text-fill-color: #1d4ed8 !important; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 7 · Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega7.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li>Em elaboração</li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-m-planejamento.html">Folha de bolso e preparação da sessão</a></li>
+                                <li><a href="entrega7_relato-m-roteiro.html">Roteiro da sessão</a></li>
+                                <li><a href="entrega7_relato-m-quadros-360.html">Os seis quadros 360</a></li>
+                                <li><a href="entrega7_relato-m-registro.html">Registro, ajuda, severidade, pós-sessão e desvios</a></li>
+                                <li><a href="entrega7_relato-m-execucao.html">Execução das sessões e número de participantes</a></li>
+                                <li><a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega7_relato-m-anexo-d.html" class="active" aria-current="page">Anexo D: formulários de observação (P01 e P02)</a></li>
+                                <li><a href="entrega7_relato-m-anexos-e-f.html">Anexos E e F: roteiro da entrevista pós-teste e ficha de calibração</a></li>
+                                <li><a href="entrega7_relato-m-anexo-g.html">Anexo G: consolidação dos dados</a></li>
+                                <li><a href="entrega7_relato-m-cartao.html">Cartão de satisfação</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li>Em elaboração</li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-group">Aval do professor</li>
+                        <li><a href="entrega7_aval-professor.html">Aval do professor e complexidade do Street View</a></li>
+                        <li class="doc-stagenav-group">Legenda</li>
+                        <li><a href="entrega7_legenda.html">Legenda dos códigos</a></li>
+                        <li class="doc-stagenav-group">Entrega anterior</li>
+                        <li><a href="entrega6.html">Entrega 6: planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega7.html">Entrega 7</a> › Relatos individuais</p>
+            <h1 id="m7-pg-anexo-d" class="doc-title doc-page-title">Anexo D: formulários de observação (P01 e P02)</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira, matrícula 202070064 · <strong>Validador:</strong> Matheus do Vale Lameira</p>
+                <p><strong>Funcionalidade:</strong> Street View · <strong>Conteúdo desta página:</strong> Anexo D: formulários de observação (P01 e P02)</p>
+                <p><strong>Documento completo em PDF:</strong> <a href="docs/Grupo2MatheusdoValeEtapa7RelatoAvaliacaoAltaFidelidade.pdf" download>Baixar Grupo2MatheusdoValeEtapa7RelatoAvaliacaoAltaFidelidade.pdf</a></p>
+                <p><strong>Outros artefatos do autor:</strong> <a href="entrega7_relato-m-planejamento.html">Folha de bolso e preparação da sessão</a> · <a href="entrega7_relato-m-roteiro.html">Roteiro da sessão</a> · <a href="entrega7_relato-m-quadros-360.html">Os seis quadros 360</a> · <a href="entrega7_relato-m-registro.html">Registro, ajuda, severidade, pós-sessão e desvios</a> · <a href="entrega7_relato-m-execucao.html">Execução das sessões e número de participantes</a> · <a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a> · <a href="entrega7_relato-m-anexos-e-f.html">Anexos E e F: roteiro da entrevista pós-teste e ficha de calibração</a> · <a href="entrega7_relato-m-anexo-g.html">Anexo G: consolidação dos dados</a> · <a href="entrega7_relato-m-cartao.html">Cartão de satisfação</a> · <a href="entrega7_legenda.html">Legenda dos códigos</a></p>
+            </div>
+            <h3 class="doc-subsection" id="m7-anexo-d">Anexo D. Formulário de acompanhamento da observação</h3>
+            <h4 class="doc-h4" id="m7-d-2">D.2 Protótipo de alta fidelidade</h4>
+            <p class="doc-text" id="m7-d-2-p01">Participante (código): <abbr title="P01: participante 1 do teste de usabilidade, identificado só por código">P01</abbr>&nbsp;&nbsp;&nbsp;Data: 13 / 11 / 2026&nbsp;&nbsp;&nbsp;Início: 11:21&nbsp;&nbsp;&nbsp;Término: 11:35&nbsp;&nbsp;&nbsp;Piloto (&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;Sessão (X)&nbsp;&nbsp;&nbsp;Dispositivo: Computador&nbsp;&nbsp;&nbsp;Avaliador: Matheus do Vale Lameira&nbsp;&nbsp;&nbsp;Gravação: (X) sim&nbsp;&nbsp;(&nbsp;&nbsp;) não</p>
+            <p class="doc-text">Para cada tarefa registro o grau de sucesso, o tempo, os erros (por tipo), os pedidos de ajuda e a satisfação (p. 342). S = concluiu sem ajuda; A = concluiu com ajuda; N = não concluiu. Tipos de erro: <abbr title="E1: erro de toque no elemento errado">E1</abbr> toque no elemento errado; <abbr title="E2: erro de tela errada">E2</abbr> tela errada; <abbr title="E3: erro de dado informado errado">E3</abbr> dado informado errado; <abbr title="E4: erro de elemento não encontrado">E4</abbr> não achou o elemento; <abbr title="E5: erro de interpretação errada de uma informação">E5</abbr> interpretou mal uma informação.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <thead><tr><th><strong><strong>Tarefa</strong></strong></th><th><strong><strong>S, A ou N</strong></strong></th><th><strong><strong>Tempo (min:s)</strong></strong></th><th><strong><strong>Erros (total e tipos)</strong></strong></th><th><strong><strong>Pedidos de ajuda</strong></strong></th><th><strong><strong>Satisf. (1 a 5)</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>A</td><td>≈ 3:45</td><td>1 (<abbr title="E5: erro de interpretação errada de uma informação">E5</abbr>)</td><td>1</td><td>5</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Passos esperados em <abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr> (<a href="entrega5_relato-m-analise-tarefas.html#m-s3-3" title="HTA: análise hierárquica de tarefas do Street View (Entrega 5)">HTA</a> do Street View) e percurso nos quadros 360:</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Passo</strong></strong></th><th><strong><strong>HTA</strong></strong></th><th><strong><strong>S</strong></strong></th><th><strong><strong>A</strong></strong></th><th><strong><strong>N</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Abrir o Street View na tela inicial</td><td>1.1</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Informar a sala procurada: campus, bloco e sala; tocar em Buscar</td><td>1.2</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Ver onde a sala fica (localização)</td><td>1.3</td><td></td><td>x</td><td></td></tr>
+                        <tr><td class="td-strong">Percorrer o trajeto pelos quadros 360 (avançar)</td><td>2.1</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Observar o entorno para se situar (pontos de referência)</td><td>2.2</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Reconhecer a entrada e a placa de identificação da sala</td><td>3.1</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Confirmar que é a sala procurada (“É esta sala”)</td><td>3.2</td><td>x</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Quadro</strong></strong></th><th><strong><strong>Ordem de visita</strong></strong></th><th><strong><strong>Usou Voltar?</strong></strong></th><th><strong><strong>Hesitou?</strong></strong></th><th><strong><strong>Anotação</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>0 Escada</strong></td><td></td><td>(&nbsp;&nbsp;)</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>1 Corredor</strong></td><td></td><td>( x )</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>2 Corredor 2</strong></td><td></td><td>(&nbsp;&nbsp;)</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>3 Corredor 3</strong></td><td></td><td>( x )</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>4 Corredor 4</strong></td><td></td><td>(&nbsp;&nbsp;)</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>5 Sala</strong></td><td></td><td>(&nbsp;&nbsp;)</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Falas espontâneas e comentários durante a tarefa:</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Tarefa</strong></strong></th><th><strong><strong>Tela ou quadro</strong></strong></th><th><strong><strong>Fala ou comentário</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>Quadros 360</td><td>Avaliador: “Uma coisa que você pode fazer também é isso aqui.” Participante: “Ah, eu ia fazer isso, eu já estava perdida.” [03:00 a 03:13]</td></tr>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>Corredores</td><td>Participante: “Acho que eu podia ter tipo um caminhozinho, igual ao do Google, o azul. Esses becos são todos iguais; talvez contabilizar: beco um, beco dois, beco três.” [04:25 a 05:00]</td></tr>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>5 Sala</td><td>Participante: “Aqui, como tem duas fotos, é cinco e seis. Ah, não, é S6, S7, né? Eu achei que era um cinco, mas sim.” [05:11 a 05:20]</td></tr>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>5 Sala</td><td>Participante: “Aqui deveria ser sem esse treco, para você perceber se a sala tem gente ou não. Mas eu achei ótimo.” [05:48 a 06:02]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Problemas observados:</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Nº</strong></strong></th><th><strong><strong>Tarefa e tela</strong></strong></th><th><strong><strong>O que aconteceu</strong></strong></th><th><strong><strong>Fator de usabilidade prejudicado (p. 29)</strong></strong></th><th><strong><strong>Sev. (1 a 4)</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">1</td><td><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr>, quadros 1 a 4</td><td>Nos corredores iguais (“becos”), o participante não soube para onde ir. Sugeriu uma linha de direção, como no Street View, e a numeração dos corredores. [04:25 e 09:46]</td><td>Facilidade de aprendizado e eficiência</td><td>3</td></tr>
+                        <tr><td class="td-strong">2</td><td><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr>, quadro 5</td><td>Leu a numeração da sala na imagem como S5 antes de corrigir para S6 e S7 (erro <abbr title="E5: erro de interpretação errada de uma informação">E5</abbr>). [05:11 a 05:20]</td><td>Segurança no uso</td><td>2</td></tr>
+                        <tr><td class="td-strong">3</td><td><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr>, <abbr title="V1: tela de busca da sala">V1</abbr></td><td>Sugeriu buscar pelo nome da matéria, porque nem sempre a sala consta e o professor muda de sala. Contou que já foi à sala errada por isso. [09:16 e 11:36 a 12:24]</td><td>Eficiência</td><td>3</td></tr>
+                        <tr><td class="td-strong">4</td><td><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr>, todas</td><td>Sugeriu usar as cores da UnB (branco, verde e azul). Achou as cores e o tamanho das letras bons e a aparência parecida com a do Google. [12:27 a 12:53]</td><td>Satisfação</td><td>1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Os problemas do <a href="entrega6_relato-m-prototipo-papel.html">protótipo de papel</a> voltaram a ocorrer? (<a href="entrega6_relato-m-alta-fidelidade.html#m6-s4-2" title="AF-Q: pergunta da avaliação do protótipo de alta fidelidade, com dado medido e meta">AF-Q7</a>)</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Problema</strong></strong></th><th><strong><strong>Voltou? (S ou N)</strong></strong></th><th><strong><strong>Em que tela ou quadro</strong></strong></th><th><strong><strong>Observação</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-4</a>: campus e bloco antes da sala</td><td>N</td><td><abbr title="V1: tela de busca da sala">V1</abbr></td><td>Nenhuma dificuldade com campus e bloco registrada.</td></tr>
+                        <tr><td class="td-strong"><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-5</a>: busca pela matéria (alternativa)</td><td>S</td><td><abbr title="V1: tela de busca da sala">V1</abbr></td><td>Pediu a busca pela matéria e contou já ter ido à sala errada.</td></tr>
+                        <tr><td class="td-strong"><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-6</a>: cor, contraste e legibilidade</td><td>N</td><td>Todas</td><td>Achou as cores e o tamanho das letras bons; nada foi difícil de ler. Sugeriu as cores da UnB.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Desvios do planejamento (equipamento, ruído, avaliador único, outros):</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Desvio ou imprevisto</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Falha de gravação no início da sessão: o aparelho de gravação era ativado repetidamente. [00:14 a 00:31]</td></tr>
+                        <tr><td class="td-strong">Outra pessoa presente na sala, que fez perguntas ao avaliador depois da entrevista. [15:21 a 16:09]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Respostas da entrevista pós-teste (<a href="entrega7_relato-m-anexos-e-f.html#m7-e-2" title="Anexo E.2: roteiro da entrevista pós-teste do protótipo de alta fidelidade">Anexo E.2</a>), <abbr title="P01: participante 1 do teste de usabilidade, identificado só por código">P01</abbr>:</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Tópico</strong></strong></th><th><strong><strong>Pergunta feita</strong></strong></th><th><strong><strong>Resposta de P01</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Experiência</strong></td><td>“Como foi para você usar o protótipo?” “O que você sentiu em algum momento?” [07:57 a 08:08]</td><td>“Eu achei bem intuitivo.” Foi uma boa forma de saber para onde está indo. [08:00 a 08:22]</td></tr>
+                        <tr><td class="td-strong"><strong>Satisfação</strong></td><td>“O que você mais gostou e o que menos gostou?” [08:20 a 08:26]</td><td>Mais: a ideia é muito boa e serve para achar salas e anfiteatros. Menos: faltou uma linha para direcionar nos “becos” e a numeração deles. [08:24 a 08:52]</td></tr>
+                        <tr><td class="td-strong"><strong>Busca da sala</strong></td><td>“O que você mudaria nos campos de busca?” [08:57 a 09:01]</td><td>Acrescentaria a matéria, porque nem sempre a sala consta e o professor muda de sala. [09:11 a 09:39]</td></tr>
+                        <tr><td class="td-strong"><strong>Vista 360</strong></td><td>“Como foi percorrer o caminho até a sala?” “Em algum momento você não soube para onde ir ou onde estava?” [09:39 a 09:52]</td><td>Foi tranquilo, um bom facilitador. Só não soube para onde ir na parte dos becos. [09:36 a 09:52]</td></tr>
+                        <tr><td class="td-strong"><strong>Reconhecer a sala</strong></td><td>“Como você teve certeza que a sala era certa?” “O que na tela ajudou a reconhecer a sala?” [09:52 a 10:16]</td><td>Estava escrito grande numa folha de papel, S7. Na tela, ajudou o ponto que mostrava a sala e a matéria. [09:57 a 10:39]</td></tr>
+                        <tr><td class="td-strong"><strong>Busca pela matéria</strong></td><td>“Como você buscaria a sala de outro modo?” [10:37 a 10:44]</td><td>Perguntaria ou andaria procurando; no aplicativo, buscaria pela matéria, o que seria mais fácil nas primeiras semanas. [11:09 a 12:24]</td></tr>
+                        <tr><td class="td-strong"><strong>Aparência</strong></td><td>“O que você achou das cores e do tamanho das letras da parte inicial?” “Alguma coisa difícil de ler?” [12:22 a 12:50]</td><td>Gostou das cores e do tamanho das letras; talvez usar as cores da UnB. Nada foi difícil de ler. [12:27 a 12:54]</td></tr>
+                        <tr><td class="td-strong"><strong>Sugestões</strong></td><td>“Alguma coisa você mudaria?” “Dentre as mudanças, qual faria mais diferença para você?” [13:02 a 13:23]</td><td>A matéria e o caminho; a que faria mais diferença é a matéria. [13:10 a 13:56]</td></tr>
+                        <tr><td class="td-strong"><strong>Fecho</strong></td><td>“Você quer acrescentar algo que eu não perguntei?” [13:57 a 14:02]</td><td>“Acredito que não.” [14:08]</td></tr>
+                        <tr><td class="td-strong"><strong>Nota de satisfação (1 a 5)</strong></td><td><a href="entrega7_relato-m-cartao.html">Cartão de satisfação</a>, pedido por outra pessoa presente [14:32 a 14:41]</td><td>5 [14:45 a 14:55]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text" id="m7-d-2-p02">Participante (código): <abbr title="P02: participante 2 do teste de usabilidade, identificado só por código">P02</abbr>&nbsp;&nbsp;&nbsp;Data: 12 / 11 / 2026&nbsp;&nbsp;&nbsp;Início: 11:38&nbsp;&nbsp;&nbsp;Término: ____:____&nbsp;&nbsp;&nbsp;Piloto (&nbsp;&nbsp;)&nbsp;&nbsp;&nbsp;Sessão (X)&nbsp;&nbsp;&nbsp;Dispositivo: ______&nbsp;&nbsp;&nbsp;Avaliador: Matheus do Vale Lameira&nbsp;&nbsp;&nbsp;Gravação: (X) sim&nbsp;&nbsp;(&nbsp;&nbsp;) não</p>
+            <p class="doc-text">Para cada tarefa registro o grau de sucesso, o tempo, os erros (por tipo), os pedidos de ajuda e a satisfação (p. 342). S = concluiu sem ajuda; A = concluiu com ajuda; N = não concluiu. Tipos de erro: <abbr title="E1: erro de toque no elemento errado">E1</abbr> toque no elemento errado; <abbr title="E2: erro de tela errada">E2</abbr> tela errada; <abbr title="E3: erro de dado informado errado">E3</abbr> dado informado errado; <abbr title="E4: erro de elemento não encontrado">E4</abbr> não achou o elemento; <abbr title="E5: erro de interpretação errada de uma informação">E5</abbr> interpretou mal uma informação.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Tarefa</strong></strong></th><th><strong><strong>S, A ou N</strong></strong></th><th><strong><strong>Erros (total e tipos)</strong></strong></th><th><strong><strong>Pedidos de ajuda</strong></strong></th><th><strong><strong>Satisf. (1 a 5)</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>A</td><td>0</td><td>2</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Passos esperados em <abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr> (<a href="entrega5_relato-m-analise-tarefas.html#m-s3-3" title="HTA: análise hierárquica de tarefas do Street View (Entrega 5)">HTA</a> do Street View) e percurso nos quadros 360:</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Passo</strong></strong></th><th><strong><strong>HTA</strong></strong></th><th><strong><strong>S</strong></strong></th><th><strong><strong>A</strong></strong></th><th><strong><strong>N</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Abrir o Street View na tela inicial</td><td>1.1</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Informar a sala procurada: campus, bloco e sala; tocar em Buscar</td><td>1.2</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Ver onde a sala fica (localização)</td><td>1.3</td><td></td><td>x</td><td></td></tr>
+                        <tr><td class="td-strong">Percorrer o trajeto pelos quadros 360 (avançar)</td><td>2.1</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Observar o entorno para se situar (pontos de referência)</td><td>2.2</td><td>x</td><td>x</td><td></td></tr>
+                        <tr><td class="td-strong">Reconhecer a entrada e a placa de identificação da sala</td><td>3.1</td><td>x</td><td></td><td></td></tr>
+                        <tr><td class="td-strong">Confirmar que é a sala procurada (“É esta sala”)</td><td>3.2</td><td>x</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Quadro</strong></strong></th><th><strong><strong>Ordem de visita</strong></strong></th><th><strong><strong>Usou Voltar?</strong></strong></th><th><strong><strong>Hesitou?</strong></strong></th><th><strong><strong>Anotação</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>0 Escada</strong></td><td></td><td>(&nbsp;&nbsp;)</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>1 Corredor</strong></td><td></td><td>( x )</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>2 Corredor 2</strong></td><td></td><td>(&nbsp;&nbsp;)</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>3 Corredor 3</strong></td><td></td><td>(&nbsp;&nbsp;)</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>4 Corredor 4</strong></td><td></td><td>( x )</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                        <tr><td class="td-strong"><strong>5 Sala</strong></td><td></td><td>(&nbsp;&nbsp;)</td><td>(&nbsp;&nbsp;)</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Falas espontâneas e comentários durante a tarefa:</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Tarefa</strong></strong></th><th><strong><strong>Tela ou quadro</strong></strong></th><th><strong><strong>Fala ou comentário</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>Quadros 360</td><td>Participante: “Que maneiro.” e “Que legal.” [01:16 e 01:44]</td></tr>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>Quadros 360</td><td>Avaliador: “Você pode mexer… pode voltar também… essas setas aqui também são interativas.” [01:11 a 01:31]</td></tr>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>0 Escada</td><td>Participante: “Achei muito interessante que dá para ver os arredores; dá para ter certeza de qual escada eu estou acessando, porque tem mais de uma no mesmo prédio.” [02:37]</td></tr>
+                        <tr><td class="td-strong"><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr></td><td>Corredores</td><td>Participante: “Dá para ver quais salas estão ao meu redor. Também achei legal que dá para avançar no corredor: é importante para ter uma noção de quanto vou andar até chegar àquela sala, já que são 10 por andar.” [02:46]</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Problemas observados:</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Nº</strong></strong></th><th><strong><strong>Tarefa e tela</strong></strong></th><th><strong><strong>O que aconteceu</strong></strong></th><th><strong><strong>Fator de usabilidade prejudicado (p. 29)</strong></strong></th><th><strong><strong>Sev. (1 a 4)</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">1</td><td><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr>, <abbr title="V1: tela de busca da sala">V1</abbr></td><td>O campo da sala não tem lista de opções nem sugestão de preenchimento. O participante sugeriu uma lista com os nomes das salas (de I1 a I10, de S1 a S10) para quem é novo no campus. [04:25 e 06:59]</td><td>Facilidade de aprendizado</td><td>2</td></tr>
+                        <tr><td class="td-strong">2</td><td><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr>, <abbr title="V1: tela de busca da sala">V1</abbr></td><td>A busca é só pela sala. O participante sugeriu buscar também pelo nome da matéria e pelo professor, porque a mesma matéria pode ser dada por mais de um professor, em salas diferentes. [05:43 a 06:09]</td><td>Eficiência</td><td>3</td></tr>
+                        <tr><td class="td-strong">3</td><td><abbr title="T1: tarefa do teste, achar a sala e ter certeza de que é a sala certa">T1</abbr>, geral</td><td>O protótipo tem só um prédio. [03:48]</td><td>Satisfação</td><td>1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Os problemas do protótipo de papel voltaram a ocorrer? (<a href="entrega6_relato-m-alta-fidelidade.html#m6-s4-2" title="AF-Q: pergunta da avaliação do protótipo de alta fidelidade, com dado medido e meta">AF-Q7</a>)</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Problema</strong></strong></th><th><strong><strong>Voltou? (S ou N)</strong></strong></th><th><strong><strong>Em que tela ou quadro</strong></strong></th><th><strong><strong>Observação</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-4</a>: campus e bloco antes da sala</td><td>N</td><td><abbr title="V1: tela de busca da sala">V1</abbr></td><td>Nenhuma dificuldade com campus e bloco registrada.</td></tr>
+                        <tr><td class="td-strong"><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-5</a>: busca pela matéria (alternativa)</td><td>S</td><td><abbr title="V1: tela de busca da sala">V1</abbr></td><td>Pediu a busca pela matéria e pelo professor.</td></tr>
+                        <tr><td class="td-strong"><a href="entrega5_relato-m-resultados.html#m-lista-dos-problemas-encontrados" title="P-4 a P-6: problemas do protótipo de papel, da Entrega 5">P-6</a>: cor, contraste e legibilidade</td><td>N</td><td>Todas</td><td>Achou as cores e o tamanho das letras ótimos; nada foi difícil de ler.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Desvios do planejamento (equipamento, ruído, avaliador único, outros):</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Desvio ou imprevisto</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">—</td></tr>
+                        <tr><td class="td-strong">—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text"><strong>Respostas da entrevista pós-teste (<a href="entrega7_relato-m-anexos-e-f.html#m7-e-2" title="Anexo E.2: roteiro da entrevista pós-teste do protótipo de alta fidelidade">Anexo E.2</a>), <abbr title="P02: participante 2 do teste de usabilidade, identificado só por código">P02</abbr>:</strong></p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th><strong><strong>Tópico</strong></strong></th><th><strong><strong>Pergunta feita</strong></strong></th><th><strong><strong>Resposta de P02</strong></strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong"><strong>Experiência</strong></td><td>“Como foi para você usar o protótipo?” “O que você sentiu em algum momento?” [03:04 a 03:16]</td><td>“Achei bem fácil e intuitivo.” [03:04 a 03:16]</td></tr>
+                        <tr><td class="td-strong"><strong>Satisfação</strong></td><td>“O que você mais gostou e o que menos gostou?” “O que você faria de diferente?” [03:19 a 03:57]</td><td>Mais: dá para ver ao redor, a interação é fácil e os campos são fáceis de identificar. Menos: só tem um prédio. [03:31 a 03:57]</td></tr>
+                        <tr><td class="td-strong"><strong>Busca da sala</strong></td><td>“Como foi informar a sala procurada?” “O que você mudaria no campo de busca?” [03:58 a 04:25]</td><td>Foi bem fácil, e o exemplo no campo já indicava como é a sinalização da sala. Mudaria: uma lista de salas, com sugestão de preenchimento ao digitar. [04:03 a 04:56]</td></tr>
+                        <tr><td class="td-strong"><strong>Vista 360</strong></td><td>“Como foi percorrer o caminho até a sala certa?” “Em algum momento você não soube para onde ir ou onde estava?” [04:55 a 05:09]</td><td>Foi bem fácil e soube onde estava o tempo todo. [04:55 a 05:09]</td></tr>
+                        <tr><td class="td-strong"><strong>Reconhecer a sala</strong></td><td>“Como você teve certeza que era a sala certa?” “O que na tela ajudou a reconhecer a sala?” [05:11 a 05:29]</td><td>Olhou a sinalização, em que estava escrito S7. O que ajudou na tela foi o número escrito na porta. [05:11 a 05:33]</td></tr>
+                        <tr><td class="td-strong"><strong>Busca pela matéria</strong></td><td>“Você buscaria a sala de outro jeito? Se sim, como?” [05:31 a 05:38]</td><td>Perguntaria a alguém; no aplicativo, buscaria pelo nome da matéria e também pelo professor. [05:36 a 06:09]</td></tr>
+                        <tr><td class="td-strong"><strong>Aparência</strong></td><td>“O que você achou das cores e do tamanho das letras?” “Alguma coisa foi difícil de ler?” [06:10 a 06:38]</td><td>“Ótimo”, com tamanho bacana; nada foi difícil de ler. [06:13 a 06:38]</td></tr>
+                        <tr><td class="td-strong"><strong>Sugestões</strong></td><td>“Alguma sugestão do que poderia ser dado, além dos professores?” “Tem opção de áudio nos campos?” “Qual mudança faria mais diferença para você?” [06:47 a 07:04]</td><td>Lista com os nomes das salas, para ajudar quem não conhece o campus. Sobre o áudio nos campos, a resposta não está clara na legenda. [06:59 a 07:22]</td></tr>
+                        <tr><td class="td-strong"><strong>Fecho</strong></td><td>“Você quer acrescentar algo que eu não perguntei?” [07:21 a 07:26]</td><td>Sem acréscimos. [07:22]</td></tr>
+                        <tr><td class="td-strong"><strong>Nota de satisfação (1 a 5)</strong></td><td>—</td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação de Anexo D: formulários de observação (P01 e P02), a partir do documento Grupo2MatheusdoValeEtapa7RelatoAvaliacaoAltaFidelidade, integralmente e sem alterar o conteúdo, com hiperlinks para os artefatos desta e das entregas anteriores</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 6 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega7_relato-m-anexos-a-c.html"><span>← Anterior</span>Matheus: Anexos A a C: termo, questionário e instruções</a>
+                    <a class="next" href="entrega7_relato-m-anexos-e-f.html"><span>Próximo →</span>Matheus: Anexos E e F: roteiro da entrevista pós-teste e ficha de calibração</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

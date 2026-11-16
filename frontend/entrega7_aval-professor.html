@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aval do professor e complexidade do Street View | Entrega 7 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+    <style>
+        .doc-content p a, .doc-content li a, .doc-content td a, .doc-content figcaption a { color: #d8b4fe; text-decoration: underline; text-decoration-color: rgba(216, 180, 254, 0.4); text-underline-offset: 2px; }
+        .doc-content p a:hover, .doc-content li a:hover, .doc-content td a:hover { text-decoration-color: #d8b4fe; }
+        .links-entrega a { word-break: break-all; }
+        .doc-content abbr[title] { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+        body.alto-contraste .doc-content p a, body.alto-contraste .doc-content li a, body.alto-contraste .doc-content td a { color: #1d4ed8 !important; -webkit-text-fill-color: #1d4ed8 !important; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 7 · Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega7.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li>Em elaboração</li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-m-planejamento.html">Folha de bolso e preparação da sessão</a></li>
+                                <li><a href="entrega7_relato-m-roteiro.html">Roteiro da sessão</a></li>
+                                <li><a href="entrega7_relato-m-quadros-360.html">Os seis quadros 360</a></li>
+                                <li><a href="entrega7_relato-m-registro.html">Registro, ajuda, severidade, pós-sessão e desvios</a></li>
+                                <li><a href="entrega7_relato-m-execucao.html">Execução das sessões e número de participantes</a></li>
+                                <li><a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário e instruções</a></li>
+                                <li><a href="entrega7_relato-m-anexo-d.html">Anexo D: formulários de observação (P01 e P02)</a></li>
+                                <li><a href="entrega7_relato-m-anexos-e-f.html">Anexos E e F: roteiro da entrevista pós-teste e ficha de calibração</a></li>
+                                <li><a href="entrega7_relato-m-anexo-g.html">Anexo G: consolidação dos dados</a></li>
+                                <li><a href="entrega7_relato-m-cartao.html">Cartão de satisfação</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li>Em elaboração</li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-group">Aval do professor</li>
+                        <li><a href="entrega7_aval-professor.html" class="active" aria-current="page">Aval do professor e complexidade do Street View</a></li>
+                        <li class="doc-stagenav-group">Legenda</li>
+                        <li><a href="entrega7_legenda.html">Legenda dos códigos</a></li>
+                        <li class="doc-stagenav-group">Entrega anterior</li>
+                        <li><a href="entrega6.html">Entrega 6: planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega7.html">Entrega 7</a> › Aval do professor</p>
+            <h1 id="m7-pg-aval" class="doc-title doc-page-title">Aval do professor e complexidade do Street View</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Matheus do Vale Lameira, matrícula 202070064 · <strong>Validador:</strong> Matheus do Vale Lameira</p>
+                <p><strong>Funcionalidade:</strong> Street View · <strong>Fonte:</strong> áudio com as considerações do professor sobre o projeto, de 05/11/2026. O texto abaixo é um resumo escrito pelo autor, e não a transcrição literal.</p>
+            </div>
+
+            <p class="doc-text">Esta página reúne o que o professor apontou sobre o projeto e como a Entrega 7 responde a cada ponto. Também reúne o que o Street View já envolve e as evoluções propostas a partir do aval e do teste de usabilidade, já que o professor achou as funcionalidades simples.</p>
+
+            <h3 class="doc-subsection" id="m7-aval-obs">Observações do professor e como a entrega as trata</h3>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 1: observações do professor e tratamento nesta entrega.</caption>
+                    <thead><tr><th><strong>Tema</strong></th><th><strong>O que o professor observou</strong></th><th><strong>O que foi feito</strong></th><th><strong>Onde</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Usabilidade e acessibilidade do próprio projeto</td><td>Sentiu falta dos termos usabilidade e acessibilidade e achou difícil andar na documentação: os dois menus laterais confundem e a pessoa se perde, principalmente com a tela reduzida. Disse que o projeto também deve ser pensado para usabilidade e acessibilidade, e não só o aplicativo.</td><td>Em tela reduzida, o menu da entrega passou a ser uma lista vertical com os grupos e os nomes por extenso, em vez de uma fila lateral que rolava para o lado. Cada página tem trilha de navegação, índice e botões Anterior e Próximo.</td><td><a href="entrega7.html">Visão geral</a> e todas as páginas</td></tr>
+                        <tr><td class="td-strong">Links para o storyboard, o HTA e a análise de tarefas</td><td>Ao olhar a funcionalidade, quis ver o storyboard, o HTA e a análise de tarefas, e não havia link para chegar até eles.</td><td>A visão geral e o texto das páginas têm hiperlinks para o storyboard, a HTA e a CTT do Street View, o protótipo de papel, o planejamento da Entrega 6, os anexos e a figura dos quadros 360.</td><td><a href="entrega7.html#anteriores">Entregas anteriores</a></td></tr>
+                        <tr><td class="td-strong">Tabela de contribuição e uso de ferramenta de IA</td><td>Pediu, no início, uma tabela de quem fez o quê e a indicação de onde foi usada ferramenta de IA.</td><td>A visão geral traz a tabela de contribuição e a declaração de uso de ferramenta de IA; cada página tem ainda o histórico de versão com a declaração.</td><td><a href="entrega7.html#contribuicao">Contribuição</a></td></tr>
+                        <tr><td class="td-strong">Abreviações</td><td>Códigos como T1, AF-OBJ1 e CAT-1 dificultam a leitura. Nos pontos principais, evitar a abreviação; se usar, colocar hiperlink ou o texto explicativo ao passar o mouse.</td><td>Os códigos das páginas têm o significado ao passar o mouse e, quando levam a outra parte, hiperlink. A página de legenda reúne todos os códigos, com o significado e onde aparecem.</td><td><a href="entrega7_legenda.html">Legenda dos códigos</a></td></tr>
+                        <tr><td class="td-strong">Perfil dos avaliadores e dos participantes</td><td>O perfil dos avaliadores já é conhecido e deveria constar no relato, em vez de ficar para ser escrito depois.</td><td>O perfil do avaliador e dos dois participantes está no quadro abaixo, a partir do questionário pré-teste.</td><td><a href="#m7-aval-perfil">Perfil dos avaliadores e dos participantes</a></td></tr>
+                        <tr><td class="td-strong">Anexos repetidos e difíceis de localizar</td><td>Quando todas as linhas apontam para o mesmo anexo, a repetição polui, e o leitor não sabe em que página do anexo está a informação.</td><td>Cada anexo é uma página própria, e cada referência leva direto à tabela: G.1 a G.6 e o formulário D.2 de cada participante. As tabelas do documento original, como a ficha de calibração, foram mantidas como estão no PDF.</td><td><a href="entrega7_relato-m-anexo-g.html">Anexo G</a> e <a href="entrega7_relato-m-anexo-d.html">Anexo D</a></td></tr>
+                        <tr><td class="td-strong">Contraste</td><td>A imagem do vídeo estava ruim e um teste de contraste não passaria; o cuidado vale também para o projeto apresentado.</td><td>Conferi o contraste do texto das páginas desta entrega, e três textos de apoio (trilha de navegação, título do menu e rodapé) estavam abaixo de 4,5:1 e foram corrigidos para todo o site.</td><td>Todas as páginas</td></tr>
+                        <tr><td class="td-strong">Medição de tempo e ambiente</td><td>Ao medir tempo, é preciso definir o ambiente e onde a medição é feita.</td><td>O ambiente da sessão está no checklist de preparação, a regra de início e fim do cronômetro está na folha de bolso, e os tempos estão no formulário D.2 e na tabela G.1.</td><td><a href="entrega7_relato-m-planejamento.html#m7-s2">Preparação</a>, <a href="entrega7_relato-m-planejamento.html#m7-s1">Folha de bolso</a> e <a href="entrega7_relato-m-anexo-g.html#m7-g-1">G.1</a></td></tr>
+                        <tr><td class="td-strong">Complexidade das funcionalidades</td><td>O Gerenciador de Faltas e o Street View pareceram simples (marcar falta; localizar salas, um mapa interativo). Na análise de tarefas, a impressão era de duas ou três tarefas. Sugeriu, para o Street View, mostrar o caminho percorrido até a sala.</td><td>Os dois quadros seguintes mostram a complexidade que o Street View já tem e as evoluções propostas a partir do aval e do teste.</td><td><a href="#m7-aval-complexidade">Complexidade do Street View</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="doc-subsection" id="m7-aval-perfil">Perfil dos avaliadores e dos participantes</h3>
+            <p class="doc-text">As respostas completas estão no <a href="entrega7_relato-m-anexos-a-c.html#m7-anexo-b" title="Anexo B: questionário pré-teste">Anexo B</a>, e o desvio de haver um avaliador só, no <a href="entrega7_relato-m-registro.html#m7-s7">item 7 do registro</a>.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 2: perfil do avaliador e dos participantes.</caption>
+                    <thead><tr><th><strong>Papel</strong></th><th><strong>Código</strong></th><th><strong>Perfil</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Avaliador</td><td>—</td><td>Matheus do Vale Lameira, estudante de Engenharia de Software da UnB (Faculdade UnB Gama). Conduziu e observou as sessões sozinho, com gravação de tela e de áudio para conferência.</td></tr>
+                        <tr><td class="td-strong">Participante</td><td>P01</td><td>Farmácia, com mais de 2 semestres de curso e 25 anos ou mais. Usa o celular para assuntos da universidade todo dia, nunca usou o NoFluxoUnB, estuda no campus há mais de 2 semestres, costuma perguntar a alguém para achar uma sala e já usou ferramentas de mapa com imagens do local. Sessão em 13/11/2026.</td></tr>
+                        <tr><td class="td-strong">Participante</td><td>P02</td><td>Engenharia Aeroespacial, com mais de 2 semestres de curso e 25 anos ou mais. Mesmas respostas de P01 nas demais perguntas do questionário. Sessão em 12/11/2026.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="doc-subsection" id="m7-aval-complexidade">Complexidade do Street View</h3>
+            <p class="doc-text">O professor viu o Street View como um localizador de salas, um mapa interativo, e achou que a complexidade poderia crescer. O quadro abaixo mostra o que a funcionalidade já envolve, com os pontos de cada artefato.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 3: o que o Street View envolve.</caption>
+                    <thead><tr><th><strong>Aspecto</strong></th><th><strong>O que envolve</strong></th><th><strong>Onde ver</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Análise de tarefas</td><td>A HTA do Street View tem 1 objetivo geral, 3 subobjetivos e 7 operações, com 4 planos em sequência e 2 pontos de retorno (“se não for a sala procurada, voltar ao 1”).</td><td><a href="entrega5_relato-m-analise-tarefas.html#m-s3-3">HTA do Street View (Entrega 5)</a></td></tr>
+                        <tr><td class="td-strong">Telas e fluxos</td><td>Quatro telas, de H1 a V3, em três fluxos: buscar a sala, reconhecer o caminho e identificar a sala. A localização, o trajeto e a confirmação da sala são feitos pelos quadros 360.</td><td><a href="entrega7_relato-m-quadros-360.html">Os seis quadros 360</a></td></tr>
+                        <tr><td class="td-strong">Imagens em 360 graus</td><td>Seis pontos em 360 graus, percorridos em sequência com Avançar e Voltar. Eles vêm de uma ferramenta que o autor desenvolveu para unir várias fotos de ângulos diferentes em um único ponto, a partir de 24 a 30 fotos por ponto (240 fotos no prédio do protótipo).</td><td><a href="entrega7_relato-m-execucao.html">Execução das sessões</a></td></tr>
+                        <tr><td class="td-strong">Busca da sala</td><td>A sala é achada por campus, bloco e sala, com uma tela de busca (V1) e a comparação com a busca pela matéria, alternativa do protótipo de papel.</td><td><a href="entrega7_relato-m-planejamento.html#m7-s1">Folha de bolso</a></td></tr>
+                        <tr><td class="td-strong">Avaliação</td><td>Quatro objetivos, oito perguntas com metas, cinco tipos de erro, severidade de 1 a 4 e comparação com três problemas do protótipo de papel.</td><td><a href="entrega7_relato-m-planejamento.html#m7-s1">Folha de bolso</a> e <a href="entrega7_relato-m-registro.html">Registro</a></td></tr>
+                        <tr><td class="td-strong">Resultados</td><td>Seis problemas em três categorias, dos quais um recorrente (a busca pela matéria, pedida pelos dois participantes).</td><td><a href="entrega7_relato-m-anexo-g.html#m7-g-4">G.4</a> e <a href="entrega7_relato-m-anexo-g.html#m7-g-5">G.5</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="doc-subsection" id="m7-aval-evolucao">Evolução proposta a partir do aval e do teste</h3>
+            <p class="doc-text">As evoluções abaixo vêm do aval do professor e dos problemas do <a href="entrega7_relato-m-anexo-g.html#m7-g-4" title="G.4: problemas encontrados">Anexo G.4</a>. São propostas de reprojeto, com a sugestão de solução registrada nesse anexo, e a decisão de implementar cabe ao grupo.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 4: evoluções propostas para o Street View.</caption>
+                    <thead><tr><th><strong>Evolução proposta</strong></th><th><strong>Origem</strong></th><th><strong>Problema registrado</strong></th><th><strong>O que acrescenta à funcionalidade</strong></th></tr></thead>
+                    <tbody>
+                        <tr><td class="td-strong">Caminho percorrido até a sala, com linha de direção e numeração dos corredores</td><td>Professor (“o caminho percorrido até a sala”) e P01 (uma linha de direção, como no Street View do Google, e a numeração dos corredores)</td><td>AF-P3, severidade 3</td><td>Exige uma rota entre os pontos, desenhada sobre as vistas 360 e atualizada a cada avanço.</td></tr>
+                        <tr><td class="td-strong">Busca por matéria e professor, com a sala e o horário</td><td>P01 e P02; é o problema P-5 do protótipo de papel, que voltou</td><td>AF-P1, severidade 3 (recorrente)</td><td>Exige relacionar matéria, professor, horário e sala, além da busca por sala.</td></tr>
+                        <tr><td class="td-strong">Lista de salas e sugestão de preenchimento ao digitar</td><td>P02</td><td>AF-P2, severidade 2</td><td>Busca com autocompletar a partir das salas cadastradas.</td></tr>
+                        <tr><td class="td-strong">Destaque da placa da sala na imagem</td><td>P01 leu S5 antes de corrigir para S6 e S7</td><td>AF-P4, severidade 2</td><td>Marcação sobre a vista 360 da sala.</td></tr>
+                        <tr><td class="td-strong">Outros blocos do campus</td><td>P02</td><td>AF-P5, severidade 1</td><td>Mais pontos 360 a produzir com a ferramenta de composição de fotos.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-text">O professor também sugeriu, para o Gerenciador de Faltas (parte de Felipe Lopes Pedroza), integrar o sistema acadêmico (SIGAA), para comparar as faltas lançadas pelo professor com as marcadas no aplicativo. Esse ponto é tratado na parte dele.</p>
+
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">0.1</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">15/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação do aval do professor sobre o projeto, com o tratamento de cada observação, o perfil dos avaliadores e dos participantes, a complexidade do Street View e as evoluções propostas</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Matheus do Vale Lameira</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da Entrega 6 e revisão da estrutura; o conteúdo é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega7_relato-m-cartao.html"><span>← Anterior</span>Matheus: Cartão de satisfação</a>
+                    <a class="next" href="entrega7_legenda.html"><span>Próximo →</span>Legenda dos códigos</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
