@@ -685,7 +685,7 @@ body.alto-contraste .botao-fonte-icon:hover:not(:disabled) {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #71717a;
+    color: #a1a1aa;
     font-weight: 700;
     margin-bottom: 0.25rem;
     padding-left: 0.5rem;
@@ -1074,9 +1074,11 @@ body.alto-contraste em {
     font-weight: 600;
 }
 
-.doc-breadcrumb { margin: 0 0 1rem; font-size: 0.85rem; color: #71717a; }
+.doc-breadcrumb { margin: 0 0 1rem; font-size: 0.85rem; color: #a1a1aa; }
 .doc-breadcrumb a { color: #a1a1aa; text-decoration: none; }
 .doc-breadcrumb a:hover { color: var(--doc-accent, #a855f7); text-decoration: underline; }
+/* Contraste mínimo de 4,5:1 (WCAG AA) no texto do rodapé, que usava #71717a em estilo inline */
+.footer-institutional [style*="#71717a"] { color: #a1a1aa !important; }
 
 .doc-artifact-list { padding-left: 1.5rem; }
 .doc-artifact-list a { color: var(--doc-accent, #a855f7); text-decoration: none; }
@@ -1114,12 +1116,12 @@ body.alto-contraste em {
 }
 @media (max-width: 1100px) {
     .doc-layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding: 4rem 1rem 3rem; }
-    .doc-stagenav { position: static; max-height: none; }
+    /* Menu da entrega em tela reduzida: lista vertical com rolagem, mantendo os grupos e os nomes por extenso */
+    .doc-stagenav { position: static; max-height: 18rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 0.75rem 1rem; background: rgba(9, 9, 11, 0.5); }
     .doc-stagenav-title { border-bottom: none; padding-bottom: 0; }
-    .doc-stagenav ul { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; }
-    .doc-stagenav li a { white-space: nowrap; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 99px; }
-    .doc-stagenav li a.active { border-left-width: 1px; }
-    .doc-stagenav li.doc-stagenav-group { display: none; }
+    .doc-stagenav ul { display: block; overflow: visible; padding-bottom: 0; }
+    .doc-stagenav li a { white-space: normal; }
+    .doc-stagenav li.doc-stagenav-group { display: block; }
     .doc-prevnext a { max-width: 100%; }
     .doc-prevnext { flex-direction: column; }
 }
