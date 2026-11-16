@@ -1,0 +1,20 @@
+[
+ {
+  "sala": "S7",
+  "campus": "FGA – UnB Gama",
+  "bloco": "UED",
+  "andar": "2º andar",
+  "materias": [
+   "Interação Humano-Computador (IHC)"
+  ],
+  "horarios": [],
+  "inicio": "escada",
+  "destino": "corredor-5",
+  "porta": {
+   "yaw": 111,
+   "pitch": -8
+  },
+  "inicio_id": "9acd6573b3fb",
+  "destino_id": "f1afb1762188"
+ }
+]

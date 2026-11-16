@@ -1,0 +1,196 @@
+{
+ "scenes": [
+  {
+   "id": "cbc113b0a15f",
+   "slug": "corredor-3",
+   "title": "corredor 3",
+   "block": "escada",
+   "floor": "2",
+   "panorama_url": "panos/cbc113b0a15f/preview.jpg",
+   "preview_url": "panos/cbc113b0a15f/preview.jpg",
+   "tiles_url": "panos/cbc113b0a15f/tiles",
+   "width": 2048,
+   "annotations": [
+    {
+     "id": "amwdkv93e",
+     "kind": "link",
+     "yaw": 0.8,
+     "pitch": -15.17,
+     "text": null,
+     "target": "corredor-4",
+     "rotation": 0.0,
+     "color": "#ffffff",
+     "size": 1.0,
+     "target_id": "12857ad6e4d9",
+     "target_title": "corredor 4",
+     "arrival_yaw": null
+    }
+   ]
+  },
+  {
+   "id": "f1afb1762188",
+   "slug": "corredor-5",
+   "title": "corredor 5",
+   "block": "escada",
+   "floor": "2",
+   "panorama_url": "panos/f1afb1762188/preview.jpg",
+   "preview_url": "panos/f1afb1762188/preview.jpg",
+   "tiles_url": "panos/f1afb1762188/tiles",
+   "width": 2048,
+   "annotations": [
+    {
+     "id": "amwdkttdk",
+     "kind": "label",
+     "yaw": 110.92,
+     "pitch": 14.73,
+     "text": "IHC",
+     "target": null,
+     "rotation": 0.0,
+     "color": "#ffffff",
+     "size": 1.8
+    }
+   ]
+  },
+  {
+   "id": "7de42f1ac7a2",
+   "slug": "corredor-2",
+   "title": "corredor 2",
+   "block": "escada",
+   "floor": "2",
+   "panorama_url": "panos/7de42f1ac7a2/preview.jpg",
+   "preview_url": "panos/7de42f1ac7a2/preview.jpg",
+   "tiles_url": "panos/7de42f1ac7a2/tiles",
+   "width": 2048,
+   "annotations": [
+    {
+     "id": "amwdkrr3b",
+     "kind": "link",
+     "yaw": -10.91,
+     "pitch": -16.31,
+     "text": null,
+     "target": "corredor-3",
+     "rotation": 0.0,
+     "color": "#ffffff",
+     "size": 1.0,
+     "target_id": "cbc113b0a15f",
+     "target_title": "corredor 3",
+     "arrival_yaw": null
+    }
+   ]
+  },
+  {
+   "id": "12857ad6e4d9",
+   "slug": "corredor-4",
+   "title": "corredor 4",
+   "block": "escada",
+   "floor": "2",
+   "panorama_url": "panos/12857ad6e4d9/preview.jpg",
+   "preview_url": "panos/12857ad6e4d9/preview.jpg",
+   "tiles_url": "panos/12857ad6e4d9/tiles",
+   "width": 2048,
+   "annotations": [
+    {
+     "id": "amwdksidq",
+     "kind": "link",
+     "yaw": -99.55,
+     "pitch": -26.67,
+     "text": null,
+     "target": "corredor-5",
+     "rotation": 0.0,
+     "color": "#ffffff",
+     "size": 1.0,
+     "target_id": "f1afb1762188",
+     "target_title": "corredor 5",
+     "arrival_yaw": null
+    },
+    {
+     "id": "amwdkxd4u",
+     "kind": "arrow",
+     "yaw": -27.7,
+     "pitch": 6.16,
+     "text": "S7",
+     "target": null,
+     "rotation": -90.0,
+     "color": "#ffffff",
+     "size": 1.7
+    }
+   ]
+  },
+  {
+   "id": "000baf25e1b6",
+   "slug": "corredor",
+   "title": "corredor",
+   "block": "escada",
+   "floor": "2",
+   "panorama_url": "panos/000baf25e1b6/preview.jpg",
+   "preview_url": "panos/000baf25e1b6/preview.jpg",
+   "tiles_url": "panos/000baf25e1b6/tiles",
+   "width": 2048,
+   "annotations": [
+    {
+     "id": "amwdkos7a",
+     "kind": "link",
+     "yaw": -126.09,
+     "pitch": -20.48,
+     "text": null,
+     "target": "corredor-3",
+     "rotation": 0.0,
+     "color": "#ffffff",
+     "size": 1.0,
+     "target_id": "cbc113b0a15f",
+     "target_title": "corredor 3",
+     "arrival_yaw": null
+    }
+   ]
+  },
+  {
+   "id": "9acd6573b3fb",
+   "slug": "escada",
+   "title": "escada",
+   "block": "escada",
+   "floor": "1",
+   "panorama_url": "panos/9acd6573b3fb/preview.jpg",
+   "preview_url": "panos/9acd6573b3fb/preview.jpg",
+   "tiles_url": "panos/9acd6573b3fb/tiles",
+   "width": 2048,
+   "annotations": [
+    {
+     "id": "amwdk6pvl",
+     "kind": "link",
+     "yaw": -65.84,
+     "pitch": -14.14,
+     "text": null,
+     "target": "corredor-2",
+     "rotation": 0.0,
+     "color": "#ffffff",
+     "size": 1.0,
+     "target_id": "7de42f1ac7a2",
+     "target_title": "corredor 2",
+     "arrival_yaw": null
+    },
+    {
+     "id": "amwdk7wud",
+     "kind": "arrow",
+     "yaw": -67.3,
+     "pitch": -63.01,
+     "text": null,
+     "target": null,
+     "rotation": 0.0,
+     "color": "#ffffff",
+     "size": 1.0
+    },
+    {
+     "id": "amwdk8mdx",
+     "kind": "label",
+     "yaw": -37.94,
+     "pitch": 16.74,
+     "text": "ESCADA",
+     "target": null,
+     "rotation": 0.0,
+     "color": "#ffffff",
+     "size": 1.0
+    }
+   ]
+  }
+ ]
+}
