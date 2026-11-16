@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b4f8a">
+<title>Caminho até a sala · NoFluxo</title>
+<link rel="stylesheet" href="vendor/pannellum.css">
+<link rel="stylesheet" href="hotspots.css">
+<style>
+  :root { --brand: #0b4f8a; --ok: #1a7f37; --bad: #b42318; --panel: rgba(12, 18, 26, .86); }
+  html, body { margin: 0; height: 100%; background: #111; color: #fff; font: 16px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }
+  #pano { position: fixed; inset: 0; }
+  .bar { position: fixed; left: 0; right: 0; z-index: 10; background: var(--panel); backdrop-filter: blur(6px); }
+  #top { top: 0; padding: max(10px, env(safe-area-inset-top)) 14px 10px 56px; }
+  #top .dest { font-weight: 700; font-size: 17px; }
+  #top .step { font-size: 14px; opacity: .9; }
+  .dots { display: flex; gap: 6px; margin-top: 6px; }
+  .dots span { flex: 1; height: 5px; border-radius: 3px; background: rgba(255,255,255,.28); }
+  .dots span.done { background: #8fc1ef; }
+  .dots span.now { background: #f2a900; }
+  #bottom { bottom: 0; padding: 12px 14px max(12px, env(safe-area-inset-bottom)); }
+  .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 560px; margin: 0 auto; }
+  button { font: inherit; font-weight: 700; font-size: 17px; padding: 14px 10px; border-radius: 12px; border: 2px solid #fff; cursor: pointer; }
+  .ghost { background: transparent; color: #fff; }
+  .main { background: #fff; color: #0b2a47; }
+  .yes { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .no { background: transparent; border-color: #ffb4a8; color: #ffd9d3; }
+  button:focus-visible { outline: 3px solid #f2a900; outline-offset: 2px; }
+  #arrive p { margin: 0 0 10px; text-align: center; max-width: 560px; margin-inline: auto; }
+  #arrive b { font-size: 18px; }
+  #done { position: fixed; inset: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: center;
+          gap: 14px; text-align: center; padding: 24px; background: rgba(8, 40, 22, .94); }
+  #done .big { font-size: 26px; font-weight: 800; }
+  #msg { position: fixed; inset: 0; z-index: 40; display: none; flex-direction: column; gap: 12px; align-items: center;
+         justify-content: center; text-align: center; padding: 24px; background: #111; }
+  #msg a { color: #8fc1ef; }
+  .door { width: max-content; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .door .ring { width: 54px; height: 54px; border-radius: 50%; border: 5px solid #f2a900; box-shadow: 0 0 0 4px rgba(0,0,0,.35);
+                animation: pulse 1.4s ease-in-out infinite; }
+  .door .tag { background: #f2a900; color: #1b1300; font-weight: 800; padding: 4px 10px; border-radius: 6px; }
+  @keyframes pulse { 50% { transform: scale(1.25); opacity: .7; } }
+  @media (prefers-reduced-motion: reduce) { .door .ring { animation: none; } }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div id="pano"></div>
+<div class="bar" id="top" hidden>
+  <div class="dest" id="dest"></div>
+  <div class="step" id="step"></div>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+</div>
+<div class="bar" id="bottom" hidden>
+  <div class="buttons" id="nav">
+    <button class="ghost" id="back">Voltar</button>
+    <button class="main" id="next">Avançar</button>
+  </div>
+  <div id="arrive" hidden>
+    <p><b id="arriveTitle"></b><br>Confira a placa na porta marcada.</p>
+    <div class="buttons">
+      <button class="yes" id="yes">É esta sala</button>
+      <button class="no" id="no">Não é esta sala</button>
+    </div>
+  </div>
+</div>
+<div id="done" hidden>
+  <div class="big">Você encontrou a sala!</div>
+  <div id="doneText"></div>
+  <button class="main" id="again">Nova busca</button>
+</div>
+<div id="msg" role="alert"></div>
+<script>window.NOFLUXO_STATIC = true;</script>
+<script src="vendor/pannellum.js"></script>
+<script src="hotspots.js"></script>
+<script>
+(async function () {
+  // Modo estático (GitHub Pages): dados em arquivos JSON e páginas .html, sem o servidor
+  const STATIC = !!window.NOFLUXO_STATIC;
+  const HOME = STATIC ? "index.html" : "/";
+  const $ = id => document.getElementById(id);
+  const params = new URLSearchParams(location.search);
+  const salaRef = STATIC ? (params.get("sala") || "") : decodeURIComponent(location.pathname.split("/").filter(Boolean).pop());
+  const norm = s => (s || "").toString().trim().toUpperCase().replace(/[\s.-]/g, "");
+  function fatal(html) { $("msg").innerHTML = html; $("msg").style.display = "flex"; }
+
+  let rooms, tour;
+  try {
+    [rooms, tour] = await Promise.all([
+      fetch(STATIC ? "dados/salas.json" : "/salas", { cache: "no-store" }).then(r => r.json()),
+      fetch(STATIC ? "dados/tour.json" : "/tour", { cache: "no-store" }).then(r => r.json()),
+    ]);
+  } catch (e) { return fatal("Sem conexão com o servidor.<br><a href='" + HOME + "'>Voltar à busca</a>"); }
+  const room = rooms.find(r => norm(r.sala) === norm(salaRef));
+  if (!room) return fatal("Sala " + salaRef + " não encontrada.<br><a href='" + HOME + "'>Voltar à busca</a>");
+  const byId = Object.fromEntries(tour.scenes.map(s => [s.id, s]));
+  if (!byId[room.inicio_id] || !byId[room.destino_id]) return fatal("O caminho até a sala " + room.sala + " ainda não está pronto.<br><a href='" + HOME + "'>Voltar à busca</a>");
+
+  // Trajeto = menor sequência de setas do ponto de início até o ponto da porta (busca em largura)
+  function shortestPath(from, to) {
+    const prev = { [from]: null }, queue = [from];
+    while (queue.length) {
+      const cur = queue.shift();
+      if (cur === to) break;
+      for (const a of byId[cur].annotations) {
+        if (a.kind === "link" && a.target_id && byId[a.target_id] && !(a.target_id in prev)) {
+          prev[a.target_id] = cur; queue.push(a.target_id);
+        }
+      }
+    }
+    if (!(to in prev)) return null;
+    const path = []; for (let n = to; n !== null; n = prev[n]) path.unshift(n);
+    return path;
+  }
+  // Trajeto explícito da sala (quadros na ordem do relato) ou, sem ele, o caminho mais curto pelas setas
+  const explicit = (room.trajeto_ids || []).every(id => byId[id]) && (room.trajeto_ids || []).length ? room.trajeto_ids : null;
+  const path = explicit || shortestPath(room.inicio_id, room.destino_id);
+  if (!path) return fatal("Os pontos do caminho até a sala " + room.sala + " ainda não estão ligados por setas.<br>" +
+                         (STATIC ? "" : "<a href='/editor/" + room.inicio_id + "'>Abrir o editor</a> · ") + "<a href='" + HOME + "'>Voltar à busca</a>");
+
+  const title = room.sala + (params.get("materia") ? " · " + params.get("materia") : (room.materias && room.materias[0] ? " · " + room.materias[0] : ""));
+  const door = room.porta || { yaw: 0, pitch: 0 };
+
+  // Cada ponto abre olhando para a seta que leva ao próximo; o destino abre olhando para a porta.
+  function viewFor(i) {
+    const s = byId[path[i]];
+    if (i === path.length - 1) return { yaw: door.yaw, pitch: door.pitch };
+    // olha para a seta do próximo quadro; se não houver, para a seta de um quadro mais adiante no trajeto
+    const link = s.annotations.find(a => a.kind === "link" && a.target_id === path[i + 1]) ||
+                 s.annotations.find(a => a.kind === "link" && path.indexOf(a.target_id) > i);
+    return link ? { yaw: link.yaw, pitch: Math.max(-12, Math.min(0, link.pitch + 10)) } : { yaw: 0, pitch: 0 };
+  }
+  function doorHotspot() {
+    return { id: "porta", pitch: door.pitch, yaw: door.yaw, type: "info", cssClass: "ann-hs",
+             createTooltipFunc: div => {
+               div.replaceChildren();
+               const d = document.createElement("div"); d.className = "door";
+               const ring = document.createElement("div"); ring.className = "ring";
+               const tag = document.createElement("div"); tag.className = "tag"; tag.textContent = "Sala " + room.sala;
+               d.append(ring, tag); div.appendChild(d);
+             } };
+  }
+  const configs = await Promise.all(path.map(id => Ann.imageConfig(byId[id])));
+  const scenes = {};
+  path.forEach((id, i) => {
+    // só as setas que ficam dentro do trajeto (as outras levariam para fora do caminho)
+    const hs = byId[id].annotations
+      .filter(a => a.kind !== "link" || path.includes(a.target_id))
+      .map(a => Ann.toHotspot(a, a.kind === "link" ? { targetYaw: viewFor(path.indexOf(a.target_id)).yaw, targetPitch: 0 } : {}));
+    if (i === path.length - 1) hs.push(doorHotspot());
+    const v = viewFor(i);
+    scenes[id] = Object.assign({ title: byId[id].title, hfov: 100, minHfov: 40, maxHfov: 115,
+                                 yaw: v.yaw, pitch: v.pitch, hotSpots: hs }, configs[i]);
+  });
+
+  $("dest").textContent = "Rumo à sala " + title;
+  $("dots").replaceChildren(...path.map(() => document.createElement("span")));
+  $("top").hidden = $("bottom").hidden = false;
+  $("arriveTitle").textContent = "Sala " + title;
+
+  const viewer = pannellum.viewer("pano", {
+    default: { firstScene: path[0], autoLoad: true, sceneFadeDuration: 600, showZoomCtrl: false,
+               showFullscreenCtrl: false, compass: false },
+    scenes: scenes,
+  });
+
+  let index = 0;
+  function render() {
+    const last = index === path.length - 1;
+    $("step").textContent = last ? "Você chegou ao ponto da sala." : "Passo " + (index + 1) + " de " + path.length +
+      ": " + byId[path[index]].title + ". Siga a seta no chão ou toque em Avançar.";
+    [...$("dots").children].forEach((d, i) => d.className = i < index ? "done" : i === index ? "now" : "");
+    $("nav").hidden = last;
+    $("arrive").hidden = !last;
+    $("back").textContent = index === 0 ? "Nova busca" : "Voltar";
+  }
+  function go(i) {
+    if (i < 0) { location.href = HOME; return; }
+    if (i >= path.length) return;
+    const v = viewFor(i);
+    viewer.loadScene(path[i], v.pitch, v.yaw, 100);
+  }
+  viewer.on("scenechange", id => {
+    const i = path.indexOf(id);
+    if (i >= 0) { index = i; render(); }
+  });
+  $("back").onclick = () => go(index - 1);
+  $("next").onclick = () => go(index + 1);
+  $("yes").onclick = () => {
+    $("doneText").textContent = "Sala " + title + (params.get("horario") ? " · aula às " + params.get("horario") : "") + ". Boa aula!";
+    $("done").hidden = false;
+  };
+  $("no").onclick = () => { location.href = HOME + "?naoera=" + encodeURIComponent(room.sala); };
+  $("again").onclick = () => { location.href = HOME; };
+  render();
+})();
+</script>
+</body>
+</html>

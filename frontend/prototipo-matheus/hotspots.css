@@ -1,0 +1,14 @@
+/* Marcadores do tour (setas e textos). O Pannellum posiciona .ann-hs; o conteúdo é centralizado nele. */
+.pnlm-hotspot-base.ann-hs { width: 0; height: 0; cursor: default; overflow: visible; }
+.ann { position: absolute; left: 0; top: 0; width: max-content; transform: translate(-50%, -50%); display: flex; flex-direction: column;
+       align-items: center; gap: 4px; pointer-events: auto; user-select: none; }
+.ann-link, .pnlm-scene.ann-hs { cursor: pointer; }
+.ann-floor { transform: perspective(160px) rotateX(48deg); transform-origin: 50% 100%;
+             filter: drop-shadow(0 3px 4px rgba(0,0,0,.55)); transition: transform .15s; }
+.ann-link:hover .ann-floor { transform: perspective(160px) rotateX(40deg) scale(1.12); }
+.ann-arrow { filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)); line-height: 0; }
+.ann-caption, .ann-label { background: rgba(0,0,0,.62); color: #fff; padding: 4px 9px; border-radius: 6px;
+                           font: 600 14px/1.25 system-ui, sans-serif; white-space: nowrap; max-width: 260px;
+                           overflow: hidden; text-overflow: ellipsis; }
+.ann-label { font-weight: 700; text-align: center; }
+.ann.selected { outline: 3px dashed #f1c40f; outline-offset: 6px; border-radius: 8px; }

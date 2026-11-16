@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b4f8a">
+<title>NoFluxo · Street View</title>
+<style>
+  :root { color-scheme: light dark; --bg: #f3f5f8; --card: #ffffff; --text: #14181f; --muted: #555d6b; --line: #cdd3dc;
+          --brand: #0b4f8a; --brand-text: #ffffff; --focus: #f2a900; --bad-bg: #fde8e8; --bad: #9b1c1c; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f1318; --card: #1a2029; --text: #eef1f5; --muted: #a9b2c0; --line: #364052;
+            --brand: #5aa9ef; --brand-text: #0b1520; --bad-bg: #3a1717; --bad: #ffb4b4; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { background: var(--brand); color: var(--brand-text); padding: max(14px, env(safe-area-inset-top)) 16px 14px; }
+  header .logo { font-weight: 800; font-size: 22px; letter-spacing: -.01em; }
+  header .sub { opacity: .9; font-size: 15px; }
+  main { max-width: 520px; margin: 0 auto; padding: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 16px 20px; }
+  h1 { font-size: 21px; margin: 0 0 4px; }
+  p.hint { color: var(--muted); margin: 0 0 14px; font-size: 15px; }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--brand); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+  .tabs button { font: inherit; font-weight: 600; padding: 10px; border: 0; background: transparent; color: var(--brand); cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--brand); color: var(--brand-text); }
+  label { display: block; font-weight: 600; margin: 12px 0 5px; }
+  label small { font-weight: 400; color: var(--muted); }
+  option { background: var(--card); color: var(--text); }
+  select, input { width: 100%; font: inherit; padding: 12px; border: 2px solid var(--line); border-radius: 10px;
+                  background: var(--card); color: var(--text); min-height: 50px; }
+  select:focus, input:focus, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-color: var(--brand); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .primary { width: 100%; margin-top: 20px; font: inherit; font-weight: 700; font-size: 18px; padding: 15px; border: 0;
+             border-radius: 12px; background: var(--brand); color: var(--brand-text); cursor: pointer; }
+  .msg { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: var(--bad-bg); color: var(--bad); font-weight: 600; }
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 18px 16px 28px; }
+  footer a { color: inherit; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">NoFluxo</div>
+  <div class="sub">Street View do campus</div>
+</header>
+<main>
+  <form class="card" id="form" novalidate>
+    <h1>Encontre sua sala</h1>
+    <p class="hint">Informe a sala ou a matéria e veja o caminho até a porta.</p>
+
+    <div class="tabs" role="tablist" aria-label="Buscar por">
+      <button type="button" role="tab" id="tab-sala" aria-selected="true" aria-controls="painel-sala">Sala</button>
+      <button type="button" role="tab" id="tab-materia" aria-selected="false" aria-controls="painel-materia">Matéria</button>
+    </div>
+
+    <div id="painel-sala" role="tabpanel" aria-labelledby="tab-sala">
+      <label for="campus">Campus</label>
+      <select id="campus"></select>
+      <div class="row">
+        <div><label for="bloco">Bloco</label><select id="bloco"></select></div>
+        <div><label for="sala">Sala</label><input id="sala" list="salas" autocomplete="off" placeholder="Ex.: S7"></div>
+      </div>
+      <datalist id="salas"></datalist>
+    </div>
+
+    <div id="painel-materia" role="tabpanel" aria-labelledby="tab-materia" hidden>
+      <label for="materia">Matéria</label>
+      <select id="materia"></select>
+    </div>
+
+    <label for="horario">Horário <small>(opcional)</small></label>
+    <input id="horario" type="time">
+
+    <button class="primary" type="submit">Buscar</button>
+    <div class="msg" id="msg" role="alert" hidden></div>
+  </form>
+</main>
+<footer><a href="/painel">Painel de sessões</a> · <a href="/galeria">Galeria de panoramas</a></footer>
+<script>window.NOFLUXO_STATIC = true;</script>
+<script>
+(async function () {
+  // Modo estático (GitHub Pages): dados em arquivos JSON e páginas .html, sem o servidor
+  const STATIC = !!window.NOFLUXO_STATIC;
+  const API_SALAS = STATIC ? "dados/salas.json" : "/salas";
+  const routeUrl = sala => STATIC ? "rota.html?sala=" + encodeURIComponent(sala) : "/rota/" + encodeURIComponent(sala);
+  if (STATIC) document.querySelector("footer").hidden = true;
+  const $ = id => document.getElementById(id);
+  const norm = s => (s || "").toString().trim().toUpperCase().replace(/[\s.-]/g, "");
+  let rooms = [];
+  try { rooms = await (await fetch(API_SALAS, { cache: "no-store" })).json(); } catch (e) {}
+
+  const uniq = a => [...new Set(a)];
+  function fill(select, values, placeholder) {
+    select.replaceChildren(new Option(placeholder, ""), ...values.map(v => new Option(v, v)));
+  }
+  fill($("campus"), uniq(rooms.map(r => r.campus)), "Escolha o campus");
+  fill($("materia"), uniq(rooms.flatMap(r => r.materias || [])), "Escolha a matéria");
+  // com um campus só, já vem escolhido
+  if ($("campus").options.length === 2) $("campus").selectedIndex = 1;
+
+  function updateBlocks() {
+    const inCampus = rooms.filter(r => !$("campus").value || r.campus === $("campus").value);
+    fill($("bloco"), uniq(inCampus.map(r => r.bloco)), "Bloco");
+    if ($("bloco").options.length === 2) $("bloco").selectedIndex = 1;
+    updateRooms();
+  }
+  function updateRooms() {
+    const list = rooms.filter(r => (!$("campus").value || r.campus === $("campus").value) &&
+                                   (!$("bloco").value || r.bloco === $("bloco").value));
+    $("salas").replaceChildren(...list.map(r => new Option(r.sala)));
+  }
+  $("campus").onchange = updateBlocks;
+  $("bloco").onchange = updateRooms;
+  updateBlocks();
+
+  // abas Sala / Matéria
+  let mode = "sala";
+  function setTab(m) {
+    mode = m;
+    $("tab-sala").setAttribute("aria-selected", m === "sala");
+    $("tab-materia").setAttribute("aria-selected", m === "materia");
+    $("painel-sala").hidden = m !== "sala";
+    $("painel-materia").hidden = m !== "materia";
+    $("msg").hidden = true;
+  }
+  $("tab-sala").onclick = () => setTab("sala");
+  $("tab-materia").onclick = () => setTab("materia");
+
+  function error(text) { $("msg").textContent = text; $("msg").hidden = false; }
+
+  // volta de "Não é esta sala": mostra o aviso
+  const params = new URLSearchParams(location.search);
+  if (params.get("naoera")) error("Você indicou que não era a sala " + params.get("naoera") + ". Confira os dados e busque de novo.");
+
+  $("form").onsubmit = e => {
+    e.preventDefault();
+    $("msg").hidden = true;
+    let room;
+    if (mode === "sala") {
+      if (!$("campus").value) return error("Escolha o campus.");
+      if (!$("bloco").value) return error("Escolha o bloco.");
+      if (!$("sala").value.trim()) return error("Informe a sala (ex.: S7).");
+      room = rooms.find(r => r.campus === $("campus").value && r.bloco === $("bloco").value && norm(r.sala) === norm($("sala").value));
+      if (!room) return error("Não encontramos a sala " + $("sala").value.trim() + " no bloco " + $("bloco").value + ". Confira o nome na sua grade horária.");
+    } else {
+      if (!$("materia").value) return error("Escolha a matéria.");
+      room = rooms.find(r => (r.materias || []).includes($("materia").value));
+    }
+    if (!room || !room.inicio_id || !room.destino_id) return error("O caminho até esta sala ainda não foi fotografado.");
+    const q = new URLSearchParams();
+    if (mode === "materia") q.set("materia", $("materia").value);
+    if ($("horario").value) q.set("horario", $("horario").value);
+    const url = routeUrl(room.sala);
+    location.href = url + (q.toString() ? (url.includes("?") ? "&" : "?") + q : "");
+  };
+})();
+</script>
+</body>
+</html>
