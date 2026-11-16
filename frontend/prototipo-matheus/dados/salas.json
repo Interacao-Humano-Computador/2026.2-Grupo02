@@ -8,6 +8,14 @@
    "Interação Humano-Computador (IHC)"
   ],
   "horarios": [],
+  "trajeto": [
+   "escada",
+   "corredor",
+   "corredor-2",
+   "corredor-3",
+   "corredor-4",
+   "corredor-5"
+  ],
   "inicio": "escada",
   "destino": "corredor-5",
   "porta": {
@@ -15,6 +23,14 @@
    "pitch": -8
   },
   "inicio_id": "9acd6573b3fb",
-  "destino_id": "f1afb1762188"
+  "destino_id": "f1afb1762188",
+  "trajeto_ids": [
+   "9acd6573b3fb",
+   "000baf25e1b6",
+   "7de42f1ac7a2",
+   "cbc113b0a15f",
+   "12857ad6e4d9",
+   "f1afb1762188"
+  ]
  }
 ]

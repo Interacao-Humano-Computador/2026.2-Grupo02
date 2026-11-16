@@ -112,7 +112,9 @@
     const path = []; for (let n = to; n !== null; n = prev[n]) path.unshift(n);
     return path;
   }
-  const path = shortestPath(room.inicio_id, room.destino_id);
+  // Trajeto explícito da sala (quadros na ordem do relato) ou, sem ele, o caminho mais curto pelas setas
+  const explicit = (room.trajeto_ids || []).every(id => byId[id]) && (room.trajeto_ids || []).length ? room.trajeto_ids : null;
+  const path = explicit || shortestPath(room.inicio_id, room.destino_id);
   if (!path) return fatal("Os pontos do caminho até a sala " + room.sala + " ainda não estão ligados por setas.<br>" +
                          (STATIC ? "" : "<a href='/editor/" + room.inicio_id + "'>Abrir o editor</a> · ") + "<a href='" + HOME + "'>Voltar à busca</a>");
 
@@ -123,7 +125,9 @@
   function viewFor(i) {
     const s = byId[path[i]];
     if (i === path.length - 1) return { yaw: door.yaw, pitch: door.pitch };
-    const link = s.annotations.find(a => a.kind === "link" && a.target_id === path[i + 1]);
+    // olha para a seta do próximo quadro; se não houver, para a seta de um quadro mais adiante no trajeto
+    const link = s.annotations.find(a => a.kind === "link" && a.target_id === path[i + 1]) ||
+                 s.annotations.find(a => a.kind === "link" && path.indexOf(a.target_id) > i);
     return link ? { yaw: link.yaw, pitch: Math.max(-12, Math.min(0, link.pitch + 10)) } : { yaw: 0, pitch: 0 };
   }
   function doorHotspot() {
