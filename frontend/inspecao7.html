@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Relatório de Inspeção da Etapa 7 (Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade), Grupo 3, com gráficos do resultado.">
+    <title>Visão geral | Inspeção Etapa 7 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1080px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        /* Estilos do Documento */
+        .doc-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(9, 9, 11, 0.6);
+            backdrop-filter: blur(12px);
+            font-size: 0.88rem;
+            margin-bottom: 3rem;
+            border-radius: 12px;
+            position: sticky;
+            top: 1rem;
+            z-index: 50;
+        }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: all 0.2s; padding: 0.35rem 0.75rem; border-radius: 6px; }
+        .doc-nav a:hover { color: #fafafa; background: rgba(255,255,255,0.05); }
+        .doc-nav a.highlight-back { color: #34d399; font-weight: 600; }
+        
+        .header-info {
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .header-info { grid-template-columns: 1fr; }
+        }
+        .header-info-content { color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info-content strong { color: #fafafa; }
+        .header-info-content a { color: #10b981; text-decoration: none; }
+        .header-info-content a:hover { text-decoration: underline; }
+
+        .btn-download-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: #ffffff !important;
+            padding: 0.85rem 1.4rem;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-download-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+            color: #ffffff !important;
+        }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; letter-spacing: -0.5px; }
+        h2.doc-section { font-size: 1.75rem; color: #10b981; margin-top: 3.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+        h3.doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        
+        p.doc-text, ul.doc-list li, ol.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list, ol.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        /* Dashboard de Métricas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .stat-card {
+            background: rgba(9, 9, 11, 0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #34d399);
+        }
+
+        .stat-header { display: flex; justify-content: space-between; align-items: center; }
+        .stat-group-name { font-size: 1.1rem; font-weight: 700; color: #ffffff; }
+        .stat-target { font-size: 0.8rem; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 999px;
+            overflow: hidden;
+            display: flex;
+        }
+        .progress-segment { height: 100%; transition: width 0.6s ease; }
+        .segment-conforme { background-color: #10b981; }
+        .segment-nao-se-aplica { background-color: #3b82f6; }
+        .segment-nao-conforme { background-color: #ef4444; }
+
+        .stat-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.8rem;
+            color: #d4d4d8;
+        }
+        .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+        .legend-indicator { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+        /* Tabelas padronizadas */
+        .table-wrapper {
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            background: #09090b;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard caption { text-align: left; padding: 1.25rem 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); }
+        .table-standard td { padding: 1.1rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+        .table-standard tr:hover td { background: rgba(255,255,255,0.015); }
+        .table-standard tr:last-child td { border-bottom: none; }
+
+        /* Badges de Status */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .badge-conforme {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .badge-nao-se-aplica {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .badge-nao-conforme {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .badge-incompleto { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .segment-incompleto { background-color: #f59e0b; }
+        body.alto-contraste .badge-incompleto { background: #fff7e6 !important; color: #000000 !important; border-color: #000000 !important; }
+
+        .note-box {
+            background: rgba(16, 185, 129, 0.05);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            color: #d1fae5;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .note-box strong { color: #ffffff; }
+
+        body.alto-contraste .landing-body { background: #ffffff !important; color: #000000 !important; }
+        body.alto-contraste .doc-nav { background: #f4f4f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .doc-nav a { color: #000000 !important; }
+
+        /* Gráficos da inspeção */
+        .chart-card { background: rgba(9, 9, 11, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; margin: 0 0 2.5rem; }
+        .chart-card figcaption { font-weight: 700; color: #fafafa; margin-bottom: 0.35rem; line-height: 1.5; }
+        .chart-sub { color: #a1a1aa; font-size: 0.88rem; margin: 0 0 1.25rem; line-height: 1.6; }
+        .chart-source { color: #a1a1aa; font-size: 0.85rem; margin: 1.25rem 0 0; }
+        .chart-legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin: 0 0 1.25rem; padding: 0; list-style: none; font-size: 0.85rem; color: #d4d4d8; }
+        .chart-legend li { display: flex; align-items: center; gap: 0.45rem; margin: 0; }
+        .chart-swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: none; }
+        .c-conforme { background-color: #10b981; }
+        .c-incompleto { background-color: #f59e0b; }
+        .c-nao-conforme { background-color: #ef4444; }
+        .c-nao-se-aplica { background-color: #3b82f6; }
+
+        .bar-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem; margin-bottom: 0.9rem; }
+        .bar-row:last-of-type { margin-bottom: 0; }
+        .bar-label { flex: 0 0 170px; color: #e4e4e7; font-size: 0.92rem; font-weight: 600; line-height: 1.4; }
+        .bar-label small { display: block; color: #a1a1aa; font-weight: 400; font-size: 0.8rem; }
+        .bar-track { flex: 1 1 200px; height: 22px; background: rgba(255,255,255,0.05); border-radius: 0 4px 4px 0; border-left: 1px solid rgba(255,255,255,0.25); }
+        .bar-fill { height: 100%; border-radius: 0 4px 4px 0; min-width: 0; }
+        .bar-value { flex: 0 0 96px; color: #fafafa; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+        .bar-value small { color: #a1a1aa; font-size: 0.8rem; }
+
+        .stack-track { flex: 1 1 200px; height: 30px; border-left: 1px solid rgba(255,255,255,0.25); }
+        .stack-bar { display: flex; gap: 2px; height: 100%; }
+        .stack-seg { display: flex; align-items: center; justify-content: center; color: #09090b; font-weight: 700; font-size: 0.88rem; min-width: 0; }
+        .stack-seg:last-child { border-radius: 0 4px 4px 0; }
+
+        .item-group { color: #a1a1aa; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; margin: 1.25rem 0 0.6rem; }
+        .item-group:first-of-type { margin-top: 0; }
+        .item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 0.6rem; }
+        .item-tile { display: block; border: 1px solid rgba(255,255,255,0.1); border-left-width: 5px; border-radius: 6px; padding: 0.55rem 0.7rem; background: rgba(255,255,255,0.02); text-decoration: none; transition: background 0.2s; }
+        .item-tile:hover, .item-tile:focus-visible { background: rgba(255,255,255,0.07); }
+        .item-tile strong { display: block; color: #fafafa; font-size: 0.95rem; }
+        .item-tile span { color: #d4d4d8; font-size: 0.8rem; white-space: nowrap; }
+        .t-conforme { border-left-color: #10b981; }
+        .t-incompleto { border-left-color: #f59e0b; }
+        .t-nao-conforme { border-left-color: #ef4444; }
+
+        .doc-content p a, .doc-content li a { color: #34d399; text-underline-offset: 2px; }
+        tr:target td { background: rgba(16, 185, 129, 0.08); }
+
+        body.alto-contraste .chart-card { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .bar-track { background: #e5e7eb !important; border-left-color: #000000 !important; }
+        body.alto-contraste .stack-track { border-left-color: #000000 !important; }
+        body.alto-contraste .item-tile { background: #ffffff !important; border-top-color: #000000 !important; border-right-color: #000000 !important; border-bottom-color: #000000 !important; }
+        body.alto-contraste .item-tile strong { color: #000000 !important; }
+        body.alto-contraste .note-box { background: #ecfdf5 !important; }
+    </style>
+    <style>:root { --doc-accent: #10b981; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Inspeção da Etapa 7, Grupo 3</p>
+                    <ul>
+                        <li><a href="inspecao7.html" class="active" aria-current="page">Visão geral</a></li>
+                        <li><a href="ata_20261116.html">Ata da reunião de inspeção (16/11/2026)</a></li>
+                        <li><a href="entrega7_lv-visao.html">Lista de verificação da Entrega 7</a></li>
+                        <li><a href="inspecao6.html">Inspeção anterior: Etapa 6</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+            <div class="header-info">
+                <div class="header-info-content">
+                    <p><strong>Universidade de Brasília (UnB), Faculdade UnB Gama (FGA)</strong></p>
+                    <p><strong>Disciplina:</strong> Interação Humano-Computador (IHC) | <strong>Semestre:</strong> 2026.2</p>
+                    <p><strong>Professor:</strong> Prof. Dr. André Barros de Sales</p>
+                    <p><strong>Projeto:</strong> NoFluxoUnB (Grupo 02)</p>
+                    <p><strong>Grupo Inspetor:</strong> Grupo 2</p>
+                    <p><strong>Inspetores (Grupo 2):</strong></p>
+                    <p>Felipe Lopes Pedroza, matrícula: 231026330<br>Matheus do Vale Lameira, matrícula: 202070064<br>Victor Andreozzi de La Rocque Couto, matrícula: 221029285</p>
+                    <p><strong>Grupo inspecionado:</strong> Grupo 3 (projeto Avaliação do Portal de Serviços do Detran-DF)</p>
+                    <p><strong>Etapa inspecionada:</strong> Entrega 7 (relato dos resultados da avaliação do protótipo de alta fidelidade)</p>
+                    <p><strong>Data e hora da avaliação:</strong> 16/11/2026, 21:23</p>
+                </div>
+                <div>
+                    <a href="docs/LVGrupo2MatheusdoValeEntrega7Inspecao+1.pdf" target="_blank" class="btn-download-pdf" title="Abrir arquivo PDF original da inspeção">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Baixar / Visualizar PDF</span>
+                    </a>
+                </div>
+            </div>
+
+            <h1 class="doc-title">Entrega 7: Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade<span class="text-gradient">.</span></h1>
+
+            <h2 class="doc-section" id="lista-aplicada">Lista de Verificação aplicada na Inspeção do Grupo 3</h2>
+            <p class="doc-text"><strong>Vídeo da apresentação (inspeção do Grupo 3 realizada pelo Grupo 2):</strong> <a href="https://youtu.be/Gdg13hBQw9k" target="_blank" rel="noopener">https://youtu.be/Gdg13hBQw9k</a><br>
+            <strong>GitHub Pages inspecionado (Grupo 3):</strong> <a href="https://interacao-humano-computador.github.io/2026.2-Grupo03/entrega-7/relatorio/" target="_blank" rel="noopener">https://interacao-humano-computador.github.io/2026.2-Grupo03/entrega-7/relatorio/</a><br>
+            <strong>GitHub Pages do projeto (Grupo 2):</strong> <a href="https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html" target="_blank" rel="noopener">https://interacao-humano-computador.github.io/2026.2-Grupo02/index.html</a><br>
+            <strong>Ata da reunião de inspeção:</strong> <a href="ata_20261116.html">Ata de 16/11/2026</a><br>
+            <strong>Lista de verificação usada:</strong> <a href="entrega7_lv-visao.html">Lista de verificação da Entrega 7</a></p>
+
+            <p class="doc-text">
+                A lista de verificação da Entrega 7 foi aplicada ao relato dos resultados da avaliação do protótipo de alta fidelidade (teste de usabilidade) do Grupo 3. Cada item é uma pergunta respondida com Conforme, Incompleto, Não conforme ou Não se aplica, com a fonte (página e capítulo do livro, página do Plano de Ensino ou minuto do áudio do aval do professor) que a sustenta. A lista tem duas seções:
+            </p>
+            <ul class="doc-list">
+                <li><strong>A. Relato dos resultados do teste de usabilidade (protótipo de alta fidelidade):</strong> itens 1 a 11, com base em Barbosa e Silva (2010).</li>
+                <li><strong>B. Documentação e acessibilidade do site (aval do professor):</strong> itens 12 a 15, com base no aval do professor sobre o projeto do Grupo 2 e no Plano de Ensino.</li>
+            </ul>
+
+            <h2 class="doc-section" id="graficos">Gráficos do Resultado da Inspeção</h2>
+
+            <figure class="chart-card" id="grafico-1">
+                <figcaption>Gráfico 1: Distribuição das respostas dos 15 itens da lista de verificação</figcaption>
+                <p class="chart-sub">Número de itens em cada resposta e percentual sobre o total de 15 itens.</p>
+                <div role="img" aria-label="Gráfico de barras: 6 itens conformes (40%), 3 incompletos (20%), 6 não conformes (40%) e nenhum não se aplica.">
+                    <div class="bar-row" title="Conforme: 6 de 15 itens (40,0%)">
+                        <div class="bar-label">✓ Conforme</div>
+                        <div class="bar-track"><div class="bar-fill c-conforme" style="width: 100%;"></div></div>
+                        <div class="bar-value">6 <small>(40,0%)</small></div>
+                    </div>
+                    <div class="bar-row" title="Incompleto: 3 de 15 itens (20,0%)">
+                        <div class="bar-label">◐ Incompleto</div>
+                        <div class="bar-track"><div class="bar-fill c-incompleto" style="width: 50%;"></div></div>
+                        <div class="bar-value">3 <small>(20,0%)</small></div>
+                    </div>
+                    <div class="bar-row" title="Não conforme: 6 de 15 itens (40,0%)">
+                        <div class="bar-label">✗ Não conforme</div>
+                        <div class="bar-track"><div class="bar-fill c-nao-conforme" style="width: 100%;"></div></div>
+                        <div class="bar-value">6 <small>(40,0%)</small></div>
+                    </div>
+                    <div class="bar-row" title="Não se aplica: 0 de 15 itens (0,0%)">
+                        <div class="bar-label">– Não se aplica</div>
+                        <div class="bar-track"><div class="bar-fill c-nao-se-aplica" style="width: 0%;"></div></div>
+                        <div class="bar-value">0 <small>(0,0%)</small></div>
+                    </div>
+                </div>
+                <p class="chart-source">Fonte: respostas marcadas no PDF da inspeção da Entrega 7 do Grupo 3 (2026).</p>
+            </figure>
+
+            <figure class="chart-card" id="grafico-2">
+                <figcaption>Gráfico 2: Respostas por seção da lista de verificação</figcaption>
+                <p class="chart-sub">O comprimento de cada barra é o número de itens da seção. O número dentro de cada parte é a quantidade de itens com aquela resposta.</p>
+                <ul class="chart-legend" aria-hidden="true">
+                    <li><span class="chart-swatch c-conforme"></span>✓ Conforme</li>
+                    <li><span class="chart-swatch c-incompleto"></span>◐ Incompleto</li>
+                    <li><span class="chart-swatch c-nao-conforme"></span>✗ Não conforme</li>
+                </ul>
+                <div role="img" aria-label="Gráfico de barras empilhadas. Seção A, 11 itens: 4 conformes, 3 incompletos e 4 não conformes. Seção B, 4 itens: 2 conformes e 2 não conformes.">
+                    <div class="bar-row">
+                        <div class="bar-label">Seção A<small>Relato do teste de usabilidade, itens 1 a 11</small></div>
+                        <div class="stack-track">
+                            <div class="stack-bar" style="width: 100%;">
+                                <div class="stack-seg c-conforme" style="flex: 4;" title="Seção A, Conforme: 4 de 11 itens (36,4%)">4</div>
+                                <div class="stack-seg c-incompleto" style="flex: 3;" title="Seção A, Incompleto: 3 de 11 itens (27,3%)">3</div>
+                                <div class="stack-seg c-nao-conforme" style="flex: 4;" title="Seção A, Não conforme: 4 de 11 itens (36,4%)">4</div>
+                            </div>
+                        </div>
+                        <div class="bar-value">11 <small>itens</small></div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label">Seção B<small>Documentação e acessibilidade do site, itens 12 a 15</small></div>
+                        <div class="stack-track">
+                            <div class="stack-bar" style="width: 36.36%;">
+                                <div class="stack-seg c-conforme" style="flex: 2;" title="Seção B, Conforme: 2 de 4 itens (50,0%)">2</div>
+                                <div class="stack-seg c-nao-conforme" style="flex: 2;" title="Seção B, Não conforme: 2 de 4 itens (50,0%)">2</div>
+                            </div>
+                        </div>
+                        <div class="bar-value">4 <small>itens</small></div>
+                    </div>
+                </div>
+                <p class="chart-source">Fonte: síntese da inspeção no PDF da inspeção da Entrega 7 do Grupo 3 (2026). Os mesmos números estão na <a href="#sintese">Tabela 2</a>.</p>
+            </figure>
+
+            <figure class="chart-card" id="grafico-3">
+                <figcaption>Gráfico 3: Resposta de cada item da lista de verificação</figcaption>
+                <p class="chart-sub">Cada quadro é um item da lista. Selecione um quadro para ir à linha do item na Tabela 1.</p>
+                <p class="item-group">Seção A: relato dos resultados do teste de usabilidade</p>
+                <div class="item-grid">
+                    <a class="item-tile t-conforme" href="#item-1" title="Item 1: objetivos, escopo e método do relato"><strong>Item 1</strong><span>✓ Conforme</span></a>
+                    <a class="item-tile t-incompleto" href="#item-2" title="Item 2: número e perfil de avaliadores e participantes"><strong>Item 2</strong><span>◐ Incompleto</span></a>
+                    <a class="item-tile t-conforme" href="#item-3" title="Item 3: tarefas executadas e ligação com a análise de tarefas"><strong>Item 3</strong><span>✓ Conforme</span></a>
+                    <a class="item-tile t-nao-conforme" href="#item-4" title="Item 4: condições de realização da avaliação"><strong>Item 4</strong><span>✗ Não conforme</span></a>
+                    <a class="item-tile t-incompleto" href="#item-5" title="Item 5: sumarização das medições e comparação com as metas"><strong>Item 5</strong><span>◐ Incompleto</span></a>
+                    <a class="item-tile t-conforme" href="#item-6" title="Item 6: o que cada participante fez e disse"><strong>Item 6</strong><span>✓ Conforme</span></a>
+                    <a class="item-tile t-nao-conforme" href="#item-7" title="Item 7: lista de problemas, local e severidade"><strong>Item 7</strong><span>✗ Não conforme</span></a>
+                    <a class="item-tile t-nao-conforme" href="#item-8" title="Item 8: categorias, causas e sugestões de solução"><strong>Item 8</strong><span>✗ Não conforme</span></a>
+                    <a class="item-tile t-nao-conforme" href="#item-9" title="Item 9: respostas às perguntas que motivaram a avaliação"><strong>Item 9</strong><span>✗ Não conforme</span></a>
+                    <a class="item-tile t-conforme" href="#item-10" title="Item 10: teste-piloto"><strong>Item 10</strong><span>✓ Conforme</span></a>
+                    <a class="item-tile t-incompleto" href="#item-11" title="Item 11: ética e anonimato dos participantes"><strong>Item 11</strong><span>◐ Incompleto</span></a>
+                </div>
+                <p class="item-group">Seção B: documentação e acessibilidade do site</p>
+                <div class="item-grid">
+                    <a class="item-tile t-conforme" href="#item-12" title="Item 12: tabela de contribuição e ferramentas de IA generativa"><strong>Item 12</strong><span>✓ Conforme</span></a>
+                    <a class="item-tile t-nao-conforme" href="#item-13" title="Item 13: hiperlinks para storyboard, HTA, CTT, entregas anteriores, protótipo e vídeos"><strong>Item 13</strong><span>✗ Não conforme</span></a>
+                    <a class="item-tile t-conforme" href="#item-14" title="Item 14: navegação e contraste do site"><strong>Item 14</strong><span>✓ Conforme</span></a>
+                    <a class="item-tile t-nao-conforme" href="#item-15" title="Item 15: abreviações e códigos explicados"><strong>Item 15</strong><span>✗ Não conforme</span></a>
+                </div>
+                <p class="chart-source">Fonte: respostas marcadas no PDF da inspeção da Entrega 7 do Grupo 3 (2026).</p>
+            </figure>
+
+            <div class="note-box">
+                <strong>Resultado geral:</strong> dos 15 itens, 6 ficaram conformes (40,0%), 3 incompletos (20,0%) e 6 não conformes (40,0%). Na seção A, os itens não conformes se concentram no que vem depois da coleta: condições de realização (item 4), lista de problemas com local e severidade (item 7), categorias e sugestões de solução (item 8) e respostas às perguntas da avaliação (item 9). Na seção B, faltam os hiperlinks para os artefatos citados (item 13) e a explicação das abreviações e códigos (item 15).
+            </div>
+
+            <h2 class="doc-section" id="tabela-consolidada">Tabela Consolidada de Verificação</h2>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 1: Resultado da inspeção com a lista de verificação aplicada à Entrega 7 do Grupo 3.</caption>
+                    <thead>
+                        <tr>
+                            <th style="width: 60px;">Nº</th>
+                            <th>Pergunta</th>
+                            <th style="width: 150px;">Resposta</th>
+                            <th>Observação da inspeção</th>
+                            <th>Fonte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="5"><strong>A. Relato dos resultados do teste de usabilidade (protótipo de alta fidelidade)</strong></td></tr>
+                        <tr id="item-1">
+                            <td><strong>1</strong></td>
+                            <td>O relato traz os objetivos e o escopo da avaliação e uma breve descrição do método de teste de usabilidade?</td>
+                            <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                            <td>Objetivos, escopo, descrição do método de teste de usabilidade e contribuição de cada integrante conferidos no material de Henrique Schneider, o mais completo do grupo.</td>
+                            <td>Cap. 10, p. 343. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr id="item-2">
+                            <td><strong>2</strong></td>
+                            <td>O relato informa o número e o perfil dos avaliadores e dos participantes (com o papel de cada avaliador), em vez de deixar essa informação para depois?</td>
+                            <td><span class="badge badge-incompleto">◐ Incompleto</span></td>
+                            <td>Não há seção dedicada com a quantidade de participantes. Só aparece o participante P8 (21 a 30 anos, fora do perfil previsto), embora o planejamento previsse três participantes (P8 a P10).</td>
+                            <td>Cap. 10, p. 343. Barbosa e Silva (2010). Aval do professor (04:40 e 04:44).</td>
+                        </tr>
+                        <tr id="item-3">
+                            <td><strong>3</strong></td>
+                            <td>As tarefas executadas pelos participantes estão descritas e ligadas à análise de tarefas (HTA ou CTT), com complexidade suficiente para a funcionalidade avaliada (mais do que duas ou três tarefas simples)?</td>
+                            <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                            <td>Há referência à HTA (v1.2, objetivos 1 a 5, escopo de agendamento da prova com reserva de horário). Ressalva registrada na ata: a HTA não aparece no próprio relato e quase não se vê o que o participante fez.</td>
+                            <td>Cap. 10, p. 343. Barbosa e Silva (2010). Aval do professor (03:01 e 03:32).</td>
+                        </tr>
+                        <tr id="item-4">
+                            <td><strong>4</strong></td>
+                            <td>O relato diz como a avaliação foi realizada: data, horário, local, duração, equipamentos e versão do protótipo, o ambiente em que o tempo foi medido e os desvios do planejamento?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Faltam o local, a duração, os equipamentos, o ambiente e os desvios do planejamento.</td>
+                            <td>Cap. 9, p. 306 e 312. Barbosa e Silva (2010). Aval do professor (07:40).</td>
+                        </tr>
+                        <tr id="item-5">
+                            <td><strong>5</strong></td>
+                            <td>O relato traz tabelas e gráficos que sumarizam as medições (grau de sucesso, erros, tempo, uso de ajuda) e as comparam com as metas de usabilidade?</td>
+                            <td><span class="badge badge-incompleto">◐ Incompleto</span></td>
+                            <td>Há apenas um resumo da sessão. A Tabela 5 do relato traz, em sua maioria, valores "não avaliáveis" ou "não coletada", sem comparação com as metas de usabilidade.</td>
+                            <td>Cap. 10, p. 342 e 343. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr id="item-6">
+                            <td><strong>6</strong></td>
+                            <td>O relato mostra, para cada participante, o que ele fez e disse em cada tarefa (conclusão, erros, ajuda, comentários e a opinião da entrevista pós-teste e do cartão de satisfação)?</td>
+                            <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                            <td>Há transcrição do participante no relato e na página da sessão.</td>
+                            <td>Cap. 10, p. 342. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr id="item-7">
+                            <td><strong>7</strong></td>
+                            <td>O relato lista os problemas encontrados indicando, para cada um, o local onde ocorreu, a descrição e a justificativa e a severidade na escala de 1 a 4?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Os problemas não vêm com o local onde ocorreram nem categorizados. A Tabela 6 do relato tem as colunas de severidade e frequência em branco, e a tabela existente categoriza as respostas do participante.</td>
+                            <td>Cap. 10, p. 320 e 343. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr id="item-8">
+                            <td><strong>8</strong></td>
+                            <td>Os problemas estão agrupados em categorias, com os fatores de usabilidade prejudicados, as possíveis causas e as sugestões de solução (e de reprojeto) para cada um?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>O relato menciona limitações, mas não indica correções nem o que será aplicado no reprojeto.</td>
+                            <td>Cap. 10, p. 343, e cap. 9, p. 312. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr id="item-9">
+                            <td><strong>9</strong></td>
+                            <td>O relato volta às perguntas que motivaram a avaliação e responde a cada uma, ou justifica por que alguma resposta não foi encontrada?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>O relato não retoma nem responde às perguntas da avaliação.</td>
+                            <td>Cap. 9, p. 312. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr id="item-10">
+                            <td><strong>10</strong></td>
+                            <td>O teste-piloto foi feito antes das sessões, está registrado (data, vídeo, ajustes) e os dados dele ficaram fora dos resultados?</td>
+                            <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                            <td>O teste-piloto está registrado, com gravação de 2 minutos.</td>
+                            <td>Cap. 9, p. 307. Barbosa e Silva (2010). Plano de Ensino, p. 13.</td>
+                        </tr>
+                        <tr id="item-11">
+                            <td><strong>11</strong></td>
+                            <td>Os participantes aparecem só por código, com termo de consentimento assinado, permissão para gravar e direito de desistir, sem nome nem imagem que os identifique no relato?</td>
+                            <td><span class="badge badge-incompleto">◐ Incompleto</span></td>
+                            <td>O planejamento só menciona que o participante lê o material e assina o termo de consentimento. O termo, o roteiro e a página da sessão não mostram o termo nem a permissão de gravação.</td>
+                            <td>Cap. 5, p. 140 e 141. Barbosa e Silva (2010).</td>
+                        </tr>
+                        <tr><td colspan="5"><strong>B. Documentação e acessibilidade do site (aval do professor)</strong></td></tr>
+                        <tr id="item-12">
+                            <td><strong>12</strong></td>
+                            <td>O início da entrega tem a tabela de contribuição (quem fez o quê, por integrante) e informa onde foi usada ferramenta de IA generativa, com vantagens e desvantagens?</td>
+                            <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                            <td>Tabela de contribuição, ferramentas generativas com vantagens e desvantagens, agradecimentos e referências presentes.</td>
+                            <td>Plano de Ensino, p. 7. Aval do professor (00:15 e 00:21).</td>
+                        </tr>
+                        <tr id="item-13">
+                            <td><strong>13</strong></td>
+                            <td>Quando o texto cita o storyboard, a HTA, o CTT ou entregas anteriores, há hiperlink que leva direto a eles (inclusive ao protótipo e aos vídeos das sessões)?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Não há hiperlinks para o storyboard, a HTA e o CTT no formato pedido pelo professor.</td>
+                            <td>Aval do professor (00:08, 00:11 e 03:18).</td>
+                        </tr>
+                        <tr id="item-14">
+                            <td><strong>14</strong></td>
+                            <td>A navegação do site é simples (sem dois menus laterais que confundem, com o leitor sempre sabendo onde está) e o contraste de texto e imagens passa no teste de contraste?</td>
+                            <td><span class="badge badge-conforme">✓ Conforme</span></td>
+                            <td>Navegação simples e contraste adequado.</td>
+                            <td>Aval do professor (00:55, 01:03, 01:34 e 06:42).</td>
+                        </tr>
+                        <tr id="item-15">
+                            <td><strong>15</strong></td>
+                            <td>As abreviações e códigos (T1, E1, AF-OBJ1, CAT-1 etc.) são explicados em hiperlink, dica ao passar o mouse ou legenda, e as tabelas de anexos agrupam o que se repete, indicando formulário e página em vez de repetir?</td>
+                            <td><span class="badge badge-nao-conforme">✗ Não conforme</span></td>
+                            <td>Não há legenda, hiperlink nem dica para as abreviações e códigos do relato (T1, E1, AF etc.).</td>
+                            <td>Aval do professor (04:01, 04:07, 04:09, 05:16 e 05:24).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 class="doc-section" id="sintese">Síntese da inspeção</h2>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 2: Síntese da inspeção por seção.</caption>
+                    <thead><tr><th>Seção</th><th>Itens</th><th>Conforme</th><th>Incompleto</th><th>Não conforme</th><th>Não se aplica</th></tr></thead>
+                    <tbody>
+                        <tr><td>A. Relato dos resultados do teste de usabilidade (protótipo de alta fidelidade)</td><td>1 a 11</td><td>4</td><td>3</td><td>4</td><td>0</td></tr>
+                        <tr><td>B. Documentação e acessibilidade do site (aval do professor)</td><td>12 a 15</td><td>2</td><td>0</td><td>2</td><td>0</td></tr>
+                        <tr><td><strong>Total</strong></td><td>1 a 15</td><td><strong>6</strong></td><td><strong>3</strong></td><td><strong>6</strong></td><td><strong>0</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="doc-subsection" id="principais-problemas">Principais problemas encontrados</h3>
+            <p class="doc-text">O relato tem uma única sessão registrada (P8, de 21 a 30 anos, fora do perfil previsto), embora o planejamento previsse três participantes (P8 a P10), o que deixa o número e o perfil dos participantes incompletos. As tabelas de medições (Tabela 5) trazem em sua maioria valores "não avaliáveis" ou "não coletada", sem comparação com as metas de usabilidade. A lista de problemas (Tabela 6) tem as colunas de severidade e frequência em branco, sem a escala de 1 a 4 de Nielsen. Faltam o relato de como a avaliação foi realizada (duração, equipamentos, ambiente e desvios do planejamento), a resposta às perguntas que motivaram a avaliação e o planejamento do reprojeto organizado por categorias com sugestões de solução. Não há seção sobre termo de consentimento. O relato não tem hiperlinks para o storyboard, a HTA e a CTT, e as abreviações e códigos do relato não são explicados por hiperlink, dica ou legenda.</p>
+
+            <h3 class="doc-subsection" id="sugestoes">Sugestões ao Grupo inspecionado</h3>
+            <ul class="doc-list">
+                <li>Realizar as sessões previstas com os três participantes dentro do perfil definido, ou justificar o desvio no relato.</li>
+                <li>Preencher a severidade (escala de 1 a 4) de cada problema da Tabela 6 e comparar as medições com as metas de usabilidade.</li>
+                <li>Acrescentar uma seção de método com data, horário, local, duração, equipamentos e ambiente.</li>
+                <li>Incluir uma seção que retome e responda às perguntas da avaliação e agrupe os problemas por categoria, com causas e sugestões de solução.</li>
+                <li>Registrar o termo de consentimento, o uso de códigos e a permissão de gravação dos participantes.</li>
+                <li>Colocar hiperlinks para o storyboard, a HTA, a CTT, o protótipo e os vídeos das sessões e explicar as abreviações em hiperlink, dica ou legenda.</li>
+                <li>Vincular o vídeo da apresentação da etapa à página.</li>
+            </ul>
+
+            <h2 class="doc-section" id="referencias">Referências</h2>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. 1. ed. Rio de Janeiro: Elsevier / Campus, 2010. Cap. 5 (p. 140 e 141), cap. 9 (p. 306, 307 e 312) e cap. 10 (p. 320 e 341 a 343).</li>
+                <li>UNIVERSIDADE DE BRASÍLIA. Faculdade UnB Gama. <em>Plano de Ensino: Interação Humano-Computador</em>, Turma 01, 02/2026. Prof. André Barros de Sales. Páginas 7 e 13.</li>
+                <li>SALES, André Barros de. <em>Aval sobre o projeto do Grupo 2</em>. Áudio de 05/11/2026, transcrito automaticamente (trechos citados como na transcrição).</li>
+            </ul>
+
+            <div class="doc-history">
+            <h2 class="doc-section">Histórico de versão</h2>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <thead><tr><th>Versão</th><th>Data</th><th>Descrição</th><th>Autor(es)</th><th>Revisor(es)</th><th>Declaração de ferramenta de IA</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>1.0</td>
+                            <td>16/11/2026</td>
+                            <td>Publicação da inspeção da Entrega 7 do Grupo 3, a partir do PDF da lista de verificação aplicada e da ata de 16/11/2026, com os gráficos do resultado</td>
+                            <td>Felipe Lopes Pedroza, Matheus do Vale Lameira e Victor Andreozzi de La Rocque Couto</td>
+                            <td>A definir (validação pendente)</td>
+                            <td>Claude (Anthropic): estruturação da página no padrão da inspeção da Etapa 6 e montagem dos gráficos a partir das respostas do PDF; o conteúdo da inspeção é do grupo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+            </article>
+
+            <nav class="doc-toc" aria-label="Índice desta página">
+                <p class="doc-toc-title">Índice</p>
+                <ul id="docTocList"></ul>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Documentação e verificação dos artefatos da disciplina de Interação Humano-Computador da Universidade de Brasília.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Campus UnB Gama (FGA)
+            </div>
+        </div>
+    </footer>
+
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
