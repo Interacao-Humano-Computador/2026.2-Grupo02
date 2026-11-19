@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão geral e protótipo de alta fidelidade (Avaliação de Disciplinas) | Entrega 7 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 7 · Relato dos Resultados da Avaliação do Protótipo de Alta Fidelidade</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Visão geral</li>
+                        <li><a href="entrega7.html">Visão geral</a></li>
+                        <li class="doc-stagenav-group">Relatos individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Felipe Lopes Pedroza</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-f-prototipo-alta-fidelidade.html">Visão geral e protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-f-planejamento-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade (método de Krug)</a></li>
+                                <li><a href="entrega7_relato-f-relato-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-f-anexo-tcle.html">Anexo A: termo de consentimento (TCLE) da avaliação de alta fidelidade</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Matheus do Vale Lameira</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-m-prototipo-alta-fidelidade.html">Visão geral e protótipo de alta fidelidade</a></li>
+                                <li><a href="prototipo-matheus/index.html" target="_blank" rel="noopener">Protótipo de alta fidelidade: busca da sala e trajeto 360 até a S7</a></li>
+                                <li><a href="entrega7_relato-m-planejamento-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-m-relato-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-m-anexos-a-c.html">Anexos A a C: termo, questionário, instruções e cartão de satisfação</a></li>
+                                <li><a href="entrega7_relato-m-anexos-d-f.html">Anexos D a F: formulários de observação, roteiro e ficha de calibração</a></li>
+                                <li><a href="entrega7_relato-m-anexo-g-guia-aplicacao.html">Anexo G: guia de aplicação da sessão</a></li>
+                                <li><a href="entrega7_aval-professor.html">Matheus: Aval do professor e complexidade do Street View</a></li>
+                                <li><a href="entrega7_legenda.html">Matheus: Legenda dos códigos</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega7_relato-v-prototipo-alta-fidelidade.html" class="active" aria-current="page">Visão geral e protótipo de alta fidelidade</a></li>
+                                <li><a href="entrega7_relato-v-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a></li>
+                            </ul></details></li>
+                        <li class="doc-stagenav-group">Lista de verificação e inspeção</li>
+                        <li><a href="entrega7_lv-visao.html">Lista de verificação da Entrega 7</a></li>
+                        <li><a href="entrega7_lv-relato-alta-fidelidade.html">Lista: relato dos resultados do teste de usabilidade</a></li>
+                        <li><a href="entrega7_lv-aval-professor.html">Lista: documentação e acessibilidade do site</a></li>
+                        <li class="doc-stagenav-group">Entrega anterior</li>
+                        <li><a href="entrega6.html">Entrega 6: planejamento da avaliação do protótipo de alta fidelidade</a></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega7.html">Entrega 7</a> › Relatos individuais</p>
+            <h1 id="v7-prototipo" class="doc-title doc-page-title">Visão geral e protótipo de alta fidelidade</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto, matrícula 221029285 · <strong>Revisor:</strong> Victor Andreozzi de La Rocque Couto</p>
+                <p><strong>Funcionalidade:</strong> Avaliação de Disciplinas · <strong>Conteúdo desta página:</strong> visão geral, escopo, uso e recursos do protótipo · Tabelas 1 e 2</p>
+                <p><strong>Outros artefatos:</strong> <a href="entrega7_relato-v-alta-fidelidade.html">Relato dos resultados da avaliação do protótipo de alta fidelidade</a> · <a href="entrega6_relato-v-alta-fidelidade.html">Planejamento da avaliação do protótipo de alta fidelidade (Entrega 6)</a> · <a href="entrega7.html">Visão geral da Entrega 7</a></p>
+            </div>
+
+            <h3 class="doc-subsection" id="v7p-escopo">1. Funcionalidade e escopo</h3>
+            <p class="doc-text">A Avaliação de Disciplinas é a funcionalidade do NoFluxo UnB em que o estudante avalia, de forma anônima, uma disciplina que já cursou, com notas de dificuldade e de cobrança e um comentário, e consulta as avaliações dos colegas antes de montar a grade. O protótipo de alta fidelidade é vertical: cobre em detalhe só o caminho da avaliação, com a busca e os resultados (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t1">T1</a> e <a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t2">T2</a>), a página da disciplina (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t3">T3</a>), o formulário (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t4">T4</a>), a revisão (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t5">T5</a>) e a confirmação (<a class="code-ref" href="entrega6_relato-v-alta-fidelidade.html#t6">T6</a>), além dos estados de envio e de descarte (Preece, Rogers e Sharp, 2005, seções 8.2.4 e 8.2.5). As telas e os estados seguem a Tabela 10 do <a href="entrega6_relato-v-alta-fidelidade.html">planejamento da avaliação</a>.</p>
+            <p class="doc-text">As tarefas avaliadas foram três: avaliar uma disciplina sem usar a busca, buscar uma disciplina e avaliá-la, e começar uma avaliação e desistir dela (Tabela 3 do <a href="entrega7_relato-v-alta-fidelidade.html#v7-tarefas">relato dos resultados</a>). O protótipo já traz as correções do protótipo de papel, de <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-01">PP-01</a> a <a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-06">PP-06</a>, e as dos problemas da Entrega 5, como o botão “Descartar” sempre visível (<a class="code-ref" href="entrega5_relato-v-tarefas.html#b-01">B-01</a>) e o envio em duas etapas, com revisão e estado “Enviando…” (<a class="code-ref" href="entrega5_relato-v-tarefas.html#b-02">B-02</a>).</p>
+
+            <h3 class="doc-subsection" id="v7p-prototipo">2. Protótipo</h3>
+            <p class="doc-text"><a href="prototipo-victor/index.html" target="_blank" rel="noopener">Abrir o protótipo de alta fidelidade da Avaliação de Disciplinas</a>, pensado para a tela do computador, que é como as sessões de avaliação foram feitas: num notebook, com o protótipo aberto no navegador e o avaliador ao lado do participante. O cabeçalho, as cores e as fontes reproduzem o site do NoFluxo UnB. O código-fonte é o arquivo <code>frontend/prototipo-victor/index.html</code> do repositório.</p>
+
+            <h4 class="doc-h4" id="v7p-rodar">2.1 Como rodar</h4>
+            <p class="doc-text">O protótipo é uma página única, em HTML, CSS e JavaScript, sem servidor, banco de dados nem instalação. Há duas formas de abrir:</p>
+            <ul class="doc-list">
+                <li><strong>Pelo GitHub Pages:</strong> abra o <a href="prototipo-victor/index.html" target="_blank" rel="noopener">link do protótipo</a> no navegador.</li>
+                <li><strong>Pelo repositório, na própria máquina:</strong> clone o repositório, abra a pasta <code>frontend/prototipo-victor/</code> e dê dois cliques em <code>index.html</code>. Também funciona com um servidor local, por exemplo <code>python -m http.server</code> dentro de <code>frontend/</code>, e depois <code>http://localhost:8000/prototipo-victor/</code>.</li>
+            </ul>
+            <p class="doc-text">Sem internet o protótipo abre normalmente, só troca as fontes Inter e Permanent Marker por fontes padrão do sistema.</p>
+
+            <h4 class="doc-h4" id="v7p-usar">2.2 Como usar nas tarefas</h4>
+            <ol class="doc-list">
+                <li>Na tela inicial, clique no cartão “Avaliar disciplinas” ou no item “Avaliações” do menu. Abre a lista de disciplinas, com busca por código ou por nome e filtros por departamento e professor.</li>
+                <li>Encontre a disciplina rolando a lista ou pela busca, que aceita partes do nome, palavras sem acento e erros de digitação (por exemplo, “psci”). Em cada resultado aparecem as médias de dificuldade e de cobrança e os botões “Ver avaliações” e “Avaliar”.</li>
+                <li>Em “Avaliar”, escolha as notas de dificuldade e de cobrança (de 1 a 5) e, se quiser, o semestre, o professor e um comentário. O aviso de anonimato fica no topo do formulário.</li>
+                <li>Clique em “Revisar e enviar”, confira o resumo e clique em “Confirmar envio”. Aparece “Enviando…” e, em seguida, a tela “Avaliação concluída!”, com o link para as avaliações da disciplina.</li>
+                <li>Para desistir, clique em “Descartar” na barra inferior e confirme no diálogo “Descartar avaliação? Seu rascunho será perdido.”.</li>
+            </ol>
+            <p class="doc-text">O ícone de lua ou sol, no cabeçalho, alterna entre os temas escuro e claro. O ícone de acessibilidade abre as opções do site do NoFluxo UnB: alto contraste, texto ampliado, fonte de leitura facilitada, redução de movimento e foco reforçado.</p>
+
+            <h4 class="doc-h4" id="v7p-dados">2.3 Dados e limites</h4>
+            <p class="doc-text">O protótipo tem 76 disciplinas, 42 delas de Psicologia, para que estudantes de cursos diferentes pudessem avaliar uma disciplina do próprio curso. Os códigos e os nomes das disciplinas são os da UnB, mas os professores, as notas e os comentários são fictícios. As avaliações feitas ficam só na memória da página: ao recarregá-la, o protótipo volta ao estado inicial, o que serve para reiniciar entre um participante e outro. Só as preferências de tema e de acessibilidade ficam salvas no navegador (<code>localStorage</code>). Nada é enviado a um servidor, e as outras partes do NoFluxo UnB, como o fluxograma, não funcionam no protótipo.</p>
+
+            <h4 class="doc-h4" id="v7p-figma">2.4 Versão no Figma</h4>
+            <p class="doc-text">As telas também estão no <a href="https://www.figma.com/design/Tn4C3RnDo7MjkWtBH0VSK6" target="_blank" rel="noopener">arquivo do Figma</a>, com os componentes (cabeçalho, escalas e comentário) e um protótipo navegável de reserva. A versão em HTML é a mais fiel e foi a usada nas sessões, porque no Figma não é possível digitar na busca nem no comentário.</p>
+
+            <h3 class="doc-subsection" id="v7p-heuristicas">3. Heurísticas de Nielsen aplicadas</h3>
+            <p class="doc-text">O protótipo foi construído seguindo as dez heurísticas de Nielsen, que Barbosa e Silva (2010, seção 10.1.1) apresentam como diretrizes que descrevem características desejáveis da interação e da interface. A Tabela 1 mostra como cada heurística aparece no protótipo.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 1: Heurísticas de Nielsen e como o protótipo as atende</caption>
+                    <thead><tr><th>Nº</th><th>Heurística</th><th>Como o protótipo atende</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong></td><td>Visibilidade do estado do sistema</td><td>Indicador de etapas (Preencher → Revisar → Concluído); estado “Enviando…” com indicador de carregamento; contador de caracteres do comentário; contagem de resultados da busca; “Você escolheu: 5 · Muito difícil”; aviso após descartar; trilha de navegação.</td></tr>
+                        <tr><td><strong>2</strong></td><td>Correspondência entre o sistema e o mundo real</td><td>Escalas rotuladas na língua do aluno (“Muito fácil” a “Muito difícil”, “Muito baixa” a “Muito alta”) em vez de estrelas (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-01">PP-01</a>); semestre no formato 2026.1; códigos de disciplina da UnB.</td></tr>
+                        <tr><td><strong>3</strong></td><td>Controle e liberdade do usuário</td><td>“Descartar” sempre visível, com confirmação (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-05">PP-05</a>); “Voltar e editar” na revisão; Esc fecha o diálogo; sair pelo menu ou pelo Voltar do navegador com rascunho também pergunta antes de perder dados.</td></tr>
+                        <tr><td><strong>4</strong></td><td>Consistência e padronização</td><td>Mesmo cabeçalho, cores, tipografia e layout da página Disciplinas do NoFluxo UnB; botão principal sempre roxo e à direita; ação destrutiva sempre em vermelho.</td></tr>
+                        <tr><td><strong>5</strong></td><td>Prevenção de erros</td><td>Revisão obrigatória antes do envio (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-03">PP-03</a>); limite de 500 caracteres no comentário; disciplina já avaliada mostra “Avaliada” em vez de permitir avaliação duplicada; no diálogo de descarte, o foco fica no botão seguro (“Continuar avaliando”).</td></tr>
+                        <tr><td><strong>6</strong></td><td>Reconhecimento em vez de memorização</td><td>Médias visíveis já na lista de resultados (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-04">PP-04</a>); resumo dos relatórios ao lado do formulário; a revisão mostra tudo o que foi preenchido; os filtros mantêm a busca ao voltar.</td></tr>
+                        <tr><td><strong>7</strong></td><td>Flexibilidade e eficiência de uso</td><td>Busca por código ou por nome, sem acento e por parte do nome; “Avaliar” direto da lista ou pela página da disciplina; teclado nas escalas (setas); tema claro ou escuro e opções de acessibilidade.</td></tr>
+                        <tr><td><strong>8</strong></td><td>Projeto estético e minimalista</td><td>Só os campos necessários: duas notas obrigatórias, comentário, semestre e professor opcionais; a explicação de “cobrança” fica numa dica, mostrada só quando pedida.</td></tr>
+                        <tr><td><strong>9</strong></td><td>Ajudar os usuários a reconhecer, diagnosticar e recuperar-se de erros</td><td>Mensagem de validação junto à escala não preenchida, dizendo o que fazer; busca tolerante a erros de digitação, com “Você quis dizer …?”; busca sem resultado sugere buscar pelo código e oferece “Limpar busca e filtros”.</td></tr>
+                        <tr><td><strong>10</strong></td><td>Ajuda e documentação</td><td>Texto de apoio em cada pergunta; dica “O que é cobrança?”; aviso de anonimato explicando para que serve o login (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-02">PP-02</a>).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir de Nielsen, citado por Barbosa e Silva (2010, seção 10.1.1).</p>
+
+            <h3 class="doc-subsection" id="v7p-teste-interno">4. Problemas corrigidos no teste interno</h3>
+            <p class="doc-text">Antes das sessões, o autor percorreu as três tarefas no protótipo, como previa a preparação do <a href="entrega6_relato-v-alta-fidelidade.html">planejamento da avaliação</a>. Os problemas encontrados e corrigidos estão na Tabela 2, com a heurística prejudicada (numeração da Tabela 1). AF-I1 a AF-I6 vieram desse teste interno, e AF-I7, da busca por erros de digitação, foi corrigido depois dele.</p>
+            <div class="table-wrapper">
+                <table class="table-standard">
+                    <caption>Tabela 2: Problemas encontrados e corrigidos no teste interno do protótipo</caption>
+                    <thead><tr><th>Código</th><th>Problema</th><th>Heurística</th><th>Correção</th></tr></thead>
+                    <tbody>
+                        <tr id="af-i1"><td><strong>AF-I1</strong></td><td>“calculo 2” também trazia Cálculo 1 e 3 (o “2” casava com o código MAT0025)</td><td>2 e 7</td><td>Números só casam com palavras do nome, e o código exige pelo menos 3 caracteres</td></tr>
+                        <tr id="af-i2"><td><strong>AF-I2</strong></td><td>O termo de anonimato da revisão ficava escondido atrás da barra inferior</td><td>1 e 10 (<a class="code-ref" href="entrega6_relato-v-prototipo-papel.html#pp-02">PP-02</a>)</td><td>Termo movido para o topo da revisão</td></tr>
+                        <tr id="af-i3"><td><strong>AF-I3</strong></td><td>A instrução do painel direito da busca ficava fora da área visível</td><td>1</td><td>Lista com rolagem própria e painel fixo</td></tr>
+                        <tr id="af-i4"><td><strong>AF-I4</strong></td><td>Disciplina já avaliada ainda oferecia “Avaliar”, o que contradiz o aviso de avaliação única</td><td>4 e 5</td><td>O botão vira “Avaliada”, com o selo “Você já avaliou”</td></tr>
+                        <tr id="af-i5"><td><strong>AF-I5</strong></td><td>Depois de bloquear a saída pelo menu, o Voltar do navegador parecia não funcionar</td><td>3</td><td>Verificação do rascunho antes de navegar</td></tr>
+                        <tr id="af-i6"><td><strong>AF-I6</strong></td><td>O zero em fonte monoespaçada parecia “8” nas contagens</td><td>8</td><td>Contagens na fonte Inter, com números tabulares</td></tr>
+                        <tr id="af-i7"><td><strong>AF-I7</strong></td><td>Buscar “psci” (erro de digitação de “psic”) não trazia nenhuma disciplina de Psicologia; “cognição” não trazia Psicologia Cognitiva; “ihc” não achava Interação Humano-Computador</td><td>5, 7 e 9</td><td>Busca tolerante a erros de digitação, com o aviso “Você quis dizer psicologia?”; famílias de palavras (cognição e cognitiva, comportamento e comportamental); siglas (BD, ED, IHC, POO, RI e outras); tela sem resultado com “Buscas comuns”</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), teste interno do protótipo.</p>
+            <p class="doc-text">Os resultados das sessões com os cinco participantes, <a class="code-ref" href="#p1">P1</a> a <a class="code-ref" href="#p5">P5</a>, e os problemas que ainda restam, de <a class="code-ref" href="#af-01">AF-01</a> a <a class="code-ref" href="#af-04">AF-04</a>, estão no <a href="entrega7_relato-v-alta-fidelidade.html">relato dos resultados da avaliação do protótipo de alta fidelidade</a>.</p>
+
+            <h3 class="doc-subsection" id="v7p-referencias">5. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier / Campus, 2010.</li>
+                <li>PREECE, Jennifer; ROGERS, Yvonne; SHARP, Helen. <em>Design de Interação: Além da Interação Homem-Computador</em>. Porto Alegre: Bookman, 2005.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">19/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Publicação da visão geral e do protótipo de alta fidelidade da Avaliação de Disciplinas, para a Entrega 7, com as heurísticas de Nielsen aplicadas e os problemas corrigidos no teste interno</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): estruturação da página no padrão da parte de Felipe Lopes Pedroza e redação a partir do protótipo e do guia do autor; revisão final é do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="next" href="entrega7_relato-v-alta-fidelidade.html"><span>Próximo →</span>Relato dos resultados da avaliação do protótipo de alta fidelidade</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

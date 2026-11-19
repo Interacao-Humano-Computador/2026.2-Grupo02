@@ -1,0 +1,1432 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No Fluxo UnB · Avaliação de Disciplinas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lexend:wght@400;500;600;700;800&family=Permanent+Marker&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========== Tokens de tema =========== */
+:root,
+html[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#050507; --surface:#0c0c11; --surface-2:#13131a; --surface-3:#1a1a23;
+  --panel:rgba(10,10,14,.88); --header-bg:rgba(5,5,7,.78); --bar-bg:rgba(5,5,7,.9); --subbar-bg:rgba(10,10,14,.6);
+  --border:#26262c; --border-strong:#36363f; --divider:#1c1c24;
+  --text:#f7f7f8; --text-2:#e4e4e7; --text-3:#d4d4d8; --muted:#a1a1aa; --faint:#8b8b94; --placeholder:#6b6b74;
+  --accent:#9e46f6; --accent-hover:#ab5cf8; --accent-hi:#b57cff; --on-accent:#fff;
+  --accent-soft:rgba(158,70,246,.14); --accent-line:rgba(158,70,246,.45);
+  --track:#24242c; --pip:#2d2d36;
+  --ok:#22c55e; --ok-soft:rgba(34,197,94,.12); --ok-line:rgba(34,197,94,.38); --ok-text:#d1fae5;
+  --danger:#f05252; --danger-hover:#f46b6b; --danger-soft:rgba(240,82,82,.12); --danger-line:rgba(240,82,82,.45); --danger-text:#fca5a5; --err-text:#fee2e2;
+  --warn:#f59e0b;
+  --tip-bg:#1d1d26; --dialog-bg:#101016; --menu-bg:#111117;
+  --shadow:0 10px 30px rgba(0,0,0,.5); --shadow-hdr:0 0 0 1px rgba(158,70,246,.12),0 8px 32px rgba(0,0,0,.4);
+  --glow-1:rgba(158,70,246,.16); --glow-2:rgba(158,70,246,.10); --btn-glow:0 6px 24px rgba(158,70,246,.30);
+  --focus-w:2px; --focus-halo:0 0 0 0 transparent;
+}
+html[data-theme="light"]{
+  color-scheme:light;
+  --bg:#f6f5fa; --surface:#ffffff; --surface-2:#f2f1f7; --surface-3:#e9e7f1;
+  --panel:rgba(255,255,255,.92); --header-bg:rgba(255,255,255,.85); --bar-bg:rgba(255,255,255,.94); --subbar-bg:rgba(255,255,255,.6);
+  --border:#e1dfe9; --border-strong:#cbc7d8; --divider:#ebe9f2;
+  --text:#16141c; --text-2:#2a2733; --text-3:#3a3644; --muted:#5a5666; --faint:#69647a; --placeholder:#8d889a;
+  --accent:#9437f0; --accent-hover:#8226de; --accent-hi:#7322cf; --on-accent:#fff;
+  --accent-soft:rgba(148,55,240,.10); --accent-line:rgba(148,55,240,.38);
+  --track:#e4e1ee; --pip:#dcd8e8;
+  --ok:#16a34a; --ok-soft:rgba(22,163,74,.08); --ok-line:rgba(22,163,74,.35); --ok-text:#14532d;
+  --danger:#dc2626; --danger-hover:#c81e1e; --danger-soft:rgba(220,38,38,.07); --danger-line:rgba(220,38,38,.4); --danger-text:#b91c1c; --err-text:#7f1d1d;
+  --warn:#b45309;
+  --tip-bg:#ffffff; --dialog-bg:#ffffff; --menu-bg:#ffffff;
+  --shadow:0 12px 32px rgba(40,25,80,.14); --shadow-hdr:0 0 0 1px rgba(148,55,240,.10),0 8px 28px rgba(40,25,80,.08);
+  --glow-1:rgba(158,70,246,.10); --glow-2:rgba(158,70,246,.06); --btn-glow:0 6px 20px rgba(148,55,240,.22);
+}
+/* Alto contraste (WCAG 1.4.3 / 1.4.11) */
+html[data-theme="dark"][data-contrast="high"]{
+  --bg:#000; --surface:#000; --surface-2:#000; --surface-3:#1a1a1a; --panel:#000; --header-bg:#000; --bar-bg:#000; --subbar-bg:#000;
+  --border:#fff; --border-strong:#fff; --divider:#fff;
+  --text:#fff; --text-2:#fff; --text-3:#fff; --muted:#fff; --faint:#fff; --placeholder:#d0d0d0;
+  --accent:#7e22ce; --accent-hover:#6b21a8; --accent-hi:#e3c6ff; --accent-soft:#2a0a4a; --accent-line:#e3c6ff;
+  --track:#555; --pip:#555; --ok:#4ade80; --ok-soft:#000; --ok-line:#4ade80; --ok-text:#fff;
+  --danger:#b91c1c; --danger-soft:#000; --danger-line:#ff8a8a; --danger-text:#ffb3b3; --err-text:#fff;
+  --tip-bg:#000; --dialog-bg:#000; --menu-bg:#000; --glow-1:transparent; --glow-2:transparent; --btn-glow:none; --shadow-hdr:none;
+}
+html[data-theme="light"][data-contrast="high"]{
+  --bg:#fff; --surface:#fff; --surface-2:#fff; --surface-3:#eee; --panel:#fff; --header-bg:#fff; --bar-bg:#fff; --subbar-bg:#fff;
+  --border:#000; --border-strong:#000; --divider:#000;
+  --text:#000; --text-2:#000; --text-3:#000; --muted:#000; --faint:#000; --placeholder:#444;
+  --accent:#5b0fa8; --accent-hover:#4a0b8a; --accent-hi:#5b0fa8; --accent-soft:#f1e6ff; --accent-line:#5b0fa8;
+  --track:#bbb; --pip:#bbb; --ok:#0f6b2f; --ok-soft:#fff; --ok-line:#0f6b2f; --ok-text:#000;
+  --danger:#a10f0f; --danger-soft:#fff; --danger-line:#a10f0f; --danger-text:#a10f0f; --err-text:#000;
+  --tip-bg:#fff; --dialog-bg:#fff; --menu-bg:#fff; --glow-1:transparent; --glow-2:transparent; --btn-glow:none; --shadow-hdr:none;
+}
+html[data-contrast="high"] .feature.hl{background:var(--surface)}
+html[data-contrast="high"] .notice,html[data-contrast="high"] .res,html[data-contrast="high"] .card,html[data-contrast="high"] .stat{border-width:2px}
+/* Texto ampliado (WCAG 1.4.4): +12,5% em toda a interface */
+html{font-size:16px}
+html[data-text="large"]{font-size:18px}
+/* Fonte de leitura facilitada */
+html[data-font="lexend"] body,html[data-font="lexend"] button,html[data-font="lexend"] input,html[data-font="lexend"] select,html[data-font="lexend"] textarea{font-family:Lexend,Inter,system-ui,sans-serif}
+html[data-font="lexend"] .code,html[data-font="lexend"] .crumbs{font-family:Lexend,Inter,sans-serif}
+html[data-font="lexend"] .logo{font-family:'Permanent Marker',cursive}
+/* Foco reforçado (WCAG 2.4.7 / 2.4.13) */
+html[data-focus="strong"]{--focus-w:4px; --focus-halo:0 0 0 8px rgba(158,70,246,.35)}
+/* Reduzir movimento (WCAG 2.3.3) */
+html[data-motion="reduce"] *,html[data-motion="reduce"] *::before,html[data-motion="reduce"] *::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+
+:root{ --r-sm:8px; --r:12px; --r-lg:16px; --mono:'JetBrains Mono',ui-monospace,monospace; }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:.9375rem;line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(900px 500px at 85% 110%,var(--glow-1),transparent 60%),radial-gradient(700px 420px at -10% -10%,var(--glow-2),transparent 60%)}
+#app{position:relative;z-index:1}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:var(--focus-w) solid var(--accent-hi);outline-offset:2px;box-shadow:var(--focus-halo)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:16px;top:-60px;z-index:100;background:var(--accent);color:var(--on-accent);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+svg.i{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- header (réplica do site) ---------- */
+.hdr-wrap{padding:14px 18px 0;position:sticky;top:0;z-index:30}
+.hdr{max-width:1240px;margin:0 auto;height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 18px 0 44px;
+  background:var(--header-bg);backdrop-filter:blur(14px);border:1px solid var(--border);border-radius:999px;box-shadow:var(--shadow-hdr)}
+.logo{font-family:'Permanent Marker',cursive;font-size:1.3rem;letter-spacing:.5px;text-decoration:none;color:var(--text);cursor:pointer;background:none;border:0;padding:0}
+.logo b{color:var(--accent);font-weight:400}
+.nav{display:flex;gap:30px;align-items:center}
+.nav a{font-size:.8125rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--text-3);padding:6px 0;position:relative;cursor:pointer;display:flex;align-items:center;gap:6px}
+.nav a:hover,.nav a.on{color:var(--text)}
+.nav a.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:var(--accent)}
+.badge-new{font-size:.6rem;letter-spacing:.04em;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:1px 6px;font-weight:800}
+.hdr-right{display:flex;gap:8px;align-items:center;position:relative}
+.icon-btn{width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:var(--surface);display:grid;place-items:center;cursor:pointer;color:var(--text-2);position:relative}
+.icon-btn:hover{border-color:var(--border-strong)}
+.icon-btn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent-hi)}
+.icon-btn svg.i{width:17px;height:17px}
+.icon-btn .dot{position:absolute;top:2px;right:2px;width:9px;height:9px;border-radius:99px;background:var(--accent);border:2px solid var(--bg)}
+.user-chip{display:flex;align-items:center;gap:8px;padding:4px 12px 4px 4px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:.8125rem;font-weight:600}
+.avatar{width:28px;height:28px;border-radius:999px;background:linear-gradient(135deg,#9e46f6,#5b21b6);color:#fff;display:grid;place-items:center;font-size:.75rem;font-weight:800}
+
+/* ---------- menu de acessibilidade ---------- */
+.a11y-menu{position:absolute;top:calc(100% + 12px);right:96px;width:300px;background:var(--menu-bg);border:1px solid var(--border-strong);border-radius:14px;padding:6px;box-shadow:var(--shadow);z-index:40;animation:up .14s ease}
+.a11y-menu h3{margin:0;padding:8px 10px 8px;font-size:.875rem;font-weight:800;border-bottom:1px solid var(--divider);margin-bottom:4px}
+.a11y-item{width:100%;display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;border:0;background:transparent;cursor:pointer;text-align:left;font-size:.875rem;font-weight:600;color:var(--text)}
+.a11y-item:hover,.a11y-item:focus-visible{background:var(--surface-3)}
+.a11y-item svg.i{width:16px;height:16px;color:var(--accent-hi)}
+.a11y-item .lbl{flex:1;display:flex;flex-direction:column}
+.a11y-item .lbl small{font-size:.72rem;font-weight:500;color:var(--faint)}
+.switch{width:34px;height:20px;border-radius:99px;background:var(--track);position:relative;flex:none;border:1px solid var(--border-strong)}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:99px;background:var(--muted);transition:left .15s}
+.a11y-item[aria-checked="true"] .switch{background:var(--accent);border-color:var(--accent)}
+.a11y-item[aria-checked="true"] .switch::after{left:16px;background:#fff}
+.a11y-sep{height:1px;background:var(--divider);margin:4px 0}
+.a11y-item.reset{color:var(--muted)}
+.a11y-item.reset svg.i{color:var(--muted)}
+.a11y-item.reset[aria-disabled="true"]{opacity:.5;cursor:default}
+
+/* ---------- botões ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:var(--r);border:1px solid transparent;font-weight:700;font-size:.875rem;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .15s,border-color .15s,transform .05s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:var(--btn-glow)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-secondary{background:var(--surface-2);border-color:var(--border-strong);color:var(--text)}
+.btn-secondary:hover{background:var(--surface-3)}
+.btn-ghost{background:transparent;color:var(--text-3)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-danger:hover{background:var(--danger-hover)}
+.btn-danger-ghost{background:transparent;color:var(--danger-text);border-color:var(--danger-line)}
+.btn-danger-ghost:hover{background:var(--danger-soft)}
+.btn-sm{min-height:34px;padding:0 12px;font-size:.8125rem;border-radius:10px}
+.btn-lg{min-height:52px;padding:0 26px;font-size:.9375rem;letter-spacing:.04em;text-transform:uppercase}
+.btn[disabled]{opacity:.65;cursor:progress;transform:none}
+.spinner{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:spin .8s linear infinite}
+html[data-motion="reduce"] .spinner{animation:spin 1.6s linear infinite !important}
+@keyframes spin{to{transform:rotate(360deg)}}
+.link{background:none;border:0;padding:0;color:var(--accent-hi);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- home ---------- */
+.home{max-width:1240px;margin:0 auto;padding:44px 32px 40px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--accent-line);color:var(--accent-hi);background:var(--accent-soft);border-radius:999px;padding:6px 14px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{font-size:3.875rem;line-height:1;font-weight:900;letter-spacing:-.01em;margin:22px 0 22px;text-transform:uppercase}
+.hero h1 span{color:var(--accent)}
+html[data-contrast="high"] .hero h1 span,html[data-contrast="high"] .page-head h1 span{color:var(--accent-hi)}
+.hero p{color:var(--muted);font-size:1rem;max-width:520px;margin:0 0 30px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.feature{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--panel);padding:22px}
+.feature + .feature{margin-top:16px}
+.feature .ic{width:44px;height:44px;border-radius:999px;background:var(--accent);color:#fff;display:grid;place-items:center;margin-bottom:14px;box-shadow:0 0 24px var(--glow-1)}
+.feature .ic svg.i{width:20px;height:20px}
+.feature h3{margin:0 0 6px;font-size:.875rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.feature h3 span{color:var(--accent-hi)}
+.feature h3 .badge-new{color:var(--on-accent)}
+.feature p{margin:0 0 14px;color:var(--muted);font-size:.85rem}
+.feature .tag{display:inline-flex;gap:6px;align-items:center;font-size:.78rem;font-weight:600;border:1px solid var(--accent-line);border-radius:999px;padding:5px 12px;background:var(--accent-soft)}
+.feature.hl{border-color:var(--accent-line);background:linear-gradient(160deg,var(--accent-soft),var(--panel) 55%);box-shadow:0 0 0 1px var(--accent-line),0 18px 50px var(--glow-2)}
+.feature.hl .row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- barra de seção ---------- */
+.subbar{border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);background:var(--subbar-bg);margin-top:14px}
+.subbar-in{max-width:1240px;margin:0 auto;min-height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.crumbs{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);flex-wrap:wrap}
+.crumbs a{color:var(--accent-hi);text-decoration:none;cursor:pointer}
+.crumbs a:hover{text-decoration:underline}
+.crumbs .cur{color:var(--text-2)}
+.crumbs svg.i{width:13px;height:13px;color:var(--faint)}
+
+/* ---------- busca + painel ---------- */
+.split{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:380px 1fr;min-height:calc(100vh - 150px)}
+.side{border-right:1px solid var(--divider);padding:16px;display:flex;flex-direction:column;gap:12px;position:sticky;top:84px;height:calc(100vh - 84px);align-self:start}
+.side .results{flex:1;min-height:0;padding-right:4px}
+.field{position:relative}
+.field svg.i{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--faint)}
+.input{width:100%;height:2.625rem;border-radius:10px;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--text);font:inherit;font-size:.875rem;padding:0 40px 0 36px}
+.input::placeholder{color:var(--placeholder)}
+.input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.input:focus-visible{outline:var(--focus-w) solid var(--accent-hi);outline-offset:2px}
+.clear-x{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:8px;border:0;background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.clear-x:hover{background:var(--surface-3);color:var(--text)}
+.clear-x svg.i{position:static;transform:none;width:15px;height:15px}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.select{width:100%;height:2.375rem;border-radius:10px;border:1px solid var(--border-strong);background-color:var(--surface-2);color:var(--text);font:inherit;font-size:.8125rem;padding:0 30px 0 10px;appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b8b94' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.select:focus-visible{outline:var(--focus-w) solid var(--accent-hi);outline-offset:2px}
+.select option{background:var(--surface);color:var(--text)}
+.flabel{display:block;font-size:.69rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 5px 2px}
+.meta-line{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--faint);padding:2px 2px 0}
+.results{display:flex;flex-direction:column;gap:8px;overflow:auto}
+.res{border:1px solid var(--border);border-radius:var(--r);background:var(--panel);padding:12px 12px 12px 14px;transition:border-color .15s,background .15s}
+.res:hover{border-color:var(--border-strong)}
+.res.sel{border-color:var(--accent);background:var(--accent-soft)}
+.res-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.code{font-family:var(--mono);font-size:.75rem;font-weight:600;color:var(--accent-hi)}
+.dept{font-size:.66rem;font-weight:700;letter-spacing:.05em;border:1px solid var(--border-strong);color:var(--muted);border-radius:6px;padding:1px 6px}
+.res-name{font-weight:700;font-size:.9rem;margin:2px 0 8px;text-transform:uppercase;letter-spacing:.01em}
+.minis{display:flex;gap:12px;flex-wrap:wrap;font-size:.75rem;color:var(--muted);margin-bottom:10px}
+.mini{display:flex;align-items:center;gap:5px}
+.mini b{color:var(--text);font-weight:700}
+.dots{display:inline-flex;gap:2px}
+.dots i{width:6px;height:6px;border-radius:2px;background:var(--pip)}
+.dots i.f{background:var(--accent)}
+.res-actions{display:flex;gap:6px}
+.res-actions .btn{flex:1}
+.empty{border:1px dashed var(--border-strong);border-radius:var(--r);padding:20px 16px;text-align:center;color:var(--muted);font-size:.85rem}
+.empty h4{margin:8px 0 4px;color:var(--text);font-size:.9rem}
+.suggest{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:var(--r);padding:10px 12px;font-size:.82rem;color:var(--text-2)}
+.suggest svg.i{width:16px;height:16px;color:var(--accent-hi);margin-top:2px}
+.suggest .link{font-size:inherit}
+.suggest small{display:block;color:var(--faint);font-size:.72rem;margin-top:2px}
+.sugg-list{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin-top:12px;font-size:.75rem;color:var(--faint)}
+.chip-btn{border:1px solid var(--border-strong);background:var(--surface-2);color:var(--text-2);border-radius:999px;padding:4px 10px;font-size:.75rem;font-weight:600;cursor:pointer}
+.chip-btn:hover{border-color:var(--accent-line);color:var(--accent-hi)}
+.empty svg.i{width:26px;height:26px;color:var(--faint)}
+.main{padding:18px 24px 32px}
+.panel{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--panel);min-height:100%;padding:26px 28px}
+.panel.center{display:grid;place-items:center;text-align:center;color:var(--muted);min-height:0;height:calc(100vh - 190px)}
+.panel.center svg.i{width:34px;height:34px;color:var(--border-strong)}
+.panel.center .t1{margin:10px 0 2px;color:var(--text-2);font-weight:600}
+.panel.center .t2{margin:0;font-size:.85rem}
+
+/* ---------- T3 ---------- */
+.d-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.d-head h2{margin:4px 0 6px;font-size:1.75rem;font-weight:900;text-transform:uppercase;letter-spacing:-.005em}
+.d-sub{color:var(--muted);font-size:.85rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.d-sub .sep{color:var(--border-strong)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 8px}
+.stat{border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;background:var(--surface)}
+.stat .k{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);display:flex;gap:6px;align-items:center}
+.stat .v{font-size:1.875rem;font-weight:900;margin:4px 0 0;line-height:1.1}
+.stat .v small{font-size:.875rem;color:var(--faint);font-weight:600}
+.stat .lbl{font-size:.78rem;color:var(--accent-hi);font-weight:700}
+.stat .lbl.plain{color:var(--muted);font-weight:500}
+.meter{height:6px;border-radius:99px;background:var(--track);margin-top:10px;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#7c3aed,#c084fc)}
+html[data-contrast="high"] .meter i{background:var(--accent-hi)}
+.sec-title{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:26px 0 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.dist{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dist-row{display:grid;grid-template-columns:6.5rem 1fr 28px;gap:10px;align-items:center;font-size:.78rem;color:var(--muted);margin-bottom:5px}
+.dist-row .bar{height:8px;border-radius:99px;background:var(--track);overflow:hidden}
+.dist-row .bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+html[data-contrast="high"] .dist-row .bar i{background:var(--accent-hi)}
+.dist-row .n{text-align:right;font-size:.75rem;font-variant-numeric:tabular-nums;color:var(--text-3)}
+.dist h5{margin:0 0 8px;font-size:.8125rem;color:var(--text-2)}
+.comments{display:flex;flex-direction:column;gap:10px}
+.cmt{border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;background:var(--surface)}
+.cmt.mine{border-color:var(--accent-line);background:var(--accent-soft)}
+.cmt-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:.75rem;color:var(--faint);margin-bottom:8px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;border-radius:999px;padding:2px 9px;border:1px solid var(--border-strong);color:var(--text-3);background:var(--surface-2)}
+.chip.acc{border-color:var(--accent-line);color:var(--accent-hi);background:var(--accent-soft)}
+.cmt p{margin:0;font-size:.875rem;color:var(--text-2)}
+.cmt p.none{color:var(--faint);font-style:italic}
+.anon{display:inline-flex;align-items:center;gap:5px;color:var(--faint)}
+.anon svg.i{width:13px;height:13px}
+.cta-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+/* ---------- T4 ---------- */
+.page{max-width:1240px;margin:0 auto;padding:22px 24px 120px}
+.page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.page-head h1{margin:0;font-size:1.875rem;font-weight:900;text-transform:uppercase;letter-spacing:-.005em}
+.page-head h1 span{color:var(--accent)}
+.page-head .d-sub{margin-top:6px}
+.steps{display:flex;gap:6px;align-items:center;font-size:.78rem;color:var(--faint);flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;border:1px solid var(--border)}
+.step b{width:18px;height:18px;border-radius:99px;display:grid;place-items:center;font-size:.69rem;background:var(--track);color:var(--text-3)}
+.step.on{border-color:var(--accent-line);color:var(--text);background:var(--accent-soft)}
+.step.on b{background:var(--accent);color:#fff}
+.step.done b{background:var(--ok);color:#fff}
+.step-sep{width:14px;height:1px;background:var(--border-strong)}
+.form-grid{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+.card{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--panel);padding:24px}
+.notice{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--ok-line);background:var(--ok-soft);border-radius:var(--r);padding:12px 14px;font-size:.85rem;color:var(--ok-text)}
+.notice svg.i{color:var(--ok);margin-top:1px}
+.notice b{color:var(--text)}
+.notice.err{border-color:var(--danger-line);background:var(--danger-soft);color:var(--err-text)}
+.notice.err svg.i{color:var(--danger-text)}
+.notice .grow{flex:1}
+.q{padding:22px 0;border-bottom:1px solid var(--divider)}
+.q:last-of-type{border-bottom:0}
+.q-label{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1rem;margin:0 0 4px;flex-wrap:wrap}
+.q-label .req{font-size:.69rem;font-weight:700;color:var(--faint);letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--border-strong);border-radius:6px;padding:0 6px}
+.q-label .req.opt{border-color:transparent}
+.q-help{font-size:.8125rem;color:var(--muted);margin:0 0 14px}
+.tip{position:relative;display:inline-grid;place-items:center}
+.tip-btn{width:22px;height:22px;border-radius:99px;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--muted);display:grid;place-items:center;cursor:help;padding:0}
+.tip-btn svg.i{width:13px;height:13px}
+.tip-box{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);width:280px;background:var(--tip-bg);border:1px solid var(--border-strong);border-radius:10px;padding:10px 12px;font-size:.78rem;font-weight:500;color:var(--text-2);box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .12s;z-index:5;line-height:1.45}
+.tip:hover .tip-box,.tip-btn:focus-visible + .tip-box{opacity:1}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.scale button{min-height:58px;border-radius:12px;border:1px solid var(--border-strong);background:var(--surface-2);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;transition:all .12s;padding:6px 2px}
+.scale button b{font-size:1.2rem;font-weight:800;line-height:1.1}
+.scale button span{font-size:.69rem;color:var(--faint);font-weight:600}
+.scale button:hover{border-color:var(--accent-line);background:var(--surface-3)}
+.scale button[aria-checked="true"]{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:var(--btn-glow)}
+.scale button[aria-checked="true"] span{color:#f3e8ff}
+.scale-ends{display:flex;justify-content:space-between;font-size:.75rem;font-weight:700;color:var(--muted);margin-top:8px}
+.scale.invalid button{border-color:var(--danger-line)}
+.field-err{display:flex;align-items:center;gap:6px;color:var(--danger-text);font-size:.8125rem;font-weight:600;margin-top:10px}
+.field-err svg.i{width:15px;height:15px}
+.chosen{font-size:.8125rem;color:var(--accent-hi);font-weight:700;margin-top:8px;min-height:20px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.textarea{width:100%;min-height:128px;resize:vertical;border-radius:12px;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--text);font:inherit;font-size:.875rem;padding:12px 14px;line-height:1.5}
+.textarea::placeholder{color:var(--placeholder)}
+.textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.textarea:focus-visible{outline:var(--focus-w) solid var(--accent-hi);outline-offset:2px}
+.counter{display:flex;justify-content:space-between;font-size:.75rem;color:var(--faint);margin-top:6px;gap:10px}
+.counter .n.warn{color:var(--warn);font-weight:700}
+.counter .n.max{color:var(--danger-text);font-weight:700}
+.aside{position:sticky;top:104px}
+.aside h3{margin:0 0 2px;font-size:.8125rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.aside .small{font-size:.78rem;color:var(--faint);margin:0 0 14px}
+.aside .stat{padding:12px 14px}
+.aside .stat .v{font-size:1.5rem}
+.aside .stats{grid-template-columns:1fr 1fr;margin:0 0 12px}
+.aside .cmt{padding:12px 13px}
+.aside .cmt p{font-size:.8125rem}
+.aside-list{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow:auto;padding-right:2px}
+.actionbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bar-bg);backdrop-filter:blur(12px);border-top:1px solid var(--border)}
+.actionbar-in{max-width:1240px;margin:0 auto;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.actionbar .status{font-size:.78rem;color:var(--faint);display:flex;align-items:center;gap:6px}
+.actionbar .right{display:flex;gap:10px;align-items:center}
+
+/* ---------- T5 ---------- */
+.review{max-width:760px;margin:0 auto}
+.rv-row{display:grid;grid-template-columns:190px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--divider)}
+.rv-row:last-child{border-bottom:0}
+.rv-k{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding-top:2px}
+.rv-v{font-size:.9375rem}
+.rv-v .big{font-size:1.25rem;font-weight:800}
+.rv-v .muted{color:var(--muted)}
+.pips{display:inline-flex;gap:4px;vertical-align:middle;margin-right:10px}
+.pips i{width:22px;height:8px;border-radius:99px;background:var(--pip)}
+.pips i.f{background:var(--accent)}
+.quote{border-left:3px solid var(--accent);padding:2px 0 2px 12px;color:var(--text-2);white-space:pre-wrap}
+
+/* ---------- T6 ---------- */
+.done{max-width:640px;margin:30px auto 0;text-align:center}
+.done .check{width:76px;height:76px;margin:0 auto 18px;border-radius:999px;background:var(--ok-soft);border:1px solid var(--ok-line);display:grid;place-items:center}
+.done .check svg.i{width:36px;height:36px;color:var(--ok);stroke-width:2.5}
+.done h1{margin:0 0 10px;font-size:2.125rem;font-weight:900;text-transform:uppercase}
+.done p{color:var(--muted);margin:0 auto 22px;max-width:520px}
+.done p b{color:var(--text)}
+.done .summary{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.done .btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+
+/* ---------- diálogo / toast ---------- */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);display:grid;place-items:center;padding:16px;animation:fade .12s ease}
+@keyframes fade{from{opacity:0}}
+.dialog{width:100%;max-width:440px;background:var(--dialog-bg);border:1px solid var(--border-strong);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+.dialog .d-ic{width:44px;height:44px;border-radius:12px;background:var(--danger-soft);display:grid;place-items:center;margin-bottom:14px;color:var(--danger-text)}
+.dialog h2{margin:0 0 8px;font-size:1.25rem;font-weight:800}
+.dialog p{margin:0 0 22px;color:var(--muted);font-size:.875rem}
+.dialog .btns{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.toasts{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;align-items:center}
+.toast{display:flex;align-items:center;gap:10px;background:var(--menu-bg);color:var(--text);border:1px solid var(--border-strong);border-radius:12px;padding:10px 14px;font-size:.85rem;box-shadow:var(--shadow);animation:up .18s ease}
+.toast svg.i{color:var(--accent-hi)}
+@keyframes up{from{opacity:0;transform:translateY(8px)}}
+
+/* ---------- painel do facilitador ---------- */
+.fac{position:fixed;left:16px;bottom:16px;z-index:70;width:300px;background:#0f1118;color:#f4f4f5;border:1px solid #3b3b47;border-radius:14px;padding:14px;font-size:12.5px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.fac h4{margin:0 0 4px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#fbbf24}
+.fac p{margin:0 0 10px;color:#a1a1aa}
+.fac label{display:flex;gap:8px;align-items:center;margin:8px 0}
+.fac .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.fac .btn{min-height:30px;font-size:12px;padding:0 8px;background:#1a1a23;color:#f4f4f5;border-color:#36363f}
+
+footer.foot{max-width:1240px;margin:0 auto;padding:22px 32px 30px;color:var(--faint);font-size:.75rem;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid var(--divider)}
+
+@media (max-width:1020px){
+  .home{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .side{border-right:0;position:static;height:auto}
+  .side .results{max-height:420px}
+  .panel.center{height:260px}
+  .form-grid{grid-template-columns:1fr}
+  .aside{position:static}
+  .nav{gap:16px}
+  .hero h1{font-size:2.875rem}
+}
+@media (max-width:720px){
+  .hdr{padding:0 12px 0 20px}
+  .nav{display:none}
+  .user-chip span:last-child{display:none}
+  .a11y-menu{right:0;width:min(300px,calc(100vw - 32px))}
+  .stats{grid-template-columns:1fr}
+  .dist{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .rv-row{grid-template-columns:1fr;gap:4px}
+  .scale button span{display:none}
+}
+</style>
+</head>
+<body>
+<a href="#" class="skip" data-act="skip">Pular para o conteúdo</a>
+<div id="app"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div id="modal-root"></div>
+<div id="fac-root"></div>
+
+<script>
+/* =========================================================
+   Protótipo de alta fidelidade — Avaliação de Disciplinas
+   No Fluxo UnB · IHC 2026.2 · Victor Andreozzi
+   Rotas (hash):  #/  ·  #/avaliacoes  ·  #/avaliacoes/COD
+                  #/avaliar/COD  ·  #/avaliar/COD/revisao  ·  #/avaliar/COD/concluido
+   Estados para captura: ?estado=enviando | ?estado=erro | ?dialogo=descartar | ?validacao=1
+   Modo facilitador: Shift + F
+   ========================================================= */
+
+const ICONS = {
+  search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  x:'<path d="M18 6 6 18M6 6l12 12"/>',
+  eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
+  lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  star:'<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/>',
+  zap:'<path d="M13 2 4 14h7l-1 8 9-12h-7Z"/>',
+  sparkle:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+  chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/>',
+  shield:'<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/>',
+  alert:'<path d="M12 3 2 20h20Z"/><path d="M12 10v4M12 17h.01"/>',
+  trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',
+  check:'<path d="m5 12 5 5 9-10"/>',
+  chevR:'<path d="m9 6 6 6-6 6"/>',
+  arrowL:'<path d="M19 12H5M11 18l-6-6 6-6"/>',
+  arrowR:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  edit:'<path d="M4 20h4L19 9l-4-4L4 16Z"/>',
+  send:'<path d="m3 11 18-8-8 18-2-8Z"/>',
+  refresh:'<path d="M20 12a8 8 0 1 1-2.3-5.7L20 8"/><path d="M20 3v5h-5"/>',
+  book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19V5"/>',
+  a11y:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="8" r="1.2"/><path d="M8 10.5h8M12 10.5V15m0 0-2 3m2-3 2 3"/>',
+  moon:'<path d="M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10Z"/>',
+  filter:'<path d="M4 5h16l-6 8v5l-4 2v-7Z"/>',
+  list:'<path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/>',
+  cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  contrast:'<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor"/>',
+  textBig:'<path d="M3 18 7.5 6 12 18M4.7 14h5.6M14 18l3-8 3 8M15 15.5h4"/>',
+  readFont:'<path d="M4 18 8 6l4 12M5.3 14h5.4"/><circle cx="17" cy="15" r="3"/><path d="M20 12v6"/>',
+  motionOff:'<path d="M3 3l18 18"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1"/>',
+  reset:'<path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/>',
+};
+const ic = (n, extra='') => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true" ${extra}>${ICONS[n]||''}</svg>`;
+
+/* ---------------- dados fictícios ---------------- */
+const DEPTS = {
+  MAT:'Departamento de Matemática', CIC:'Departamento de Ciência da Computação', FGA:'Faculdade UnB Gama',
+  IPOL:'Instituto de Ciência Política', IREL:'Instituto de Relações Internacionais',
+  VIS:'Departamento de Artes Visuais', CEN:'Departamento de Artes Cênicas', MUS:'Departamento de Música',
+  DIR:'Faculdade de Direito', ECO:'Departamento de Economia',
+  PPB:'Departamento de Processos Psicológicos Básicos', PED:'Departamento de Psicologia Escolar e do Desenvolvimento',
+  PCL:'Departamento de Psicologia Clínica', PST:'Departamento de Psicologia Social e do Trabalho',
+  FAC:'Faculdade de Comunicação', LET:'Instituto de Letras', HIS:'Departamento de História',
+  BIO:'Instituto de Ciências Biológicas', ARQ:'Faculdade de Arquitetura e Urbanismo',
+};
+const SEMESTERS = ['2026.1','2025.2','2025.1','2024.2','2024.1','Antes de 2024'];
+const DIFF = ['', 'Muito fácil','Fácil','Média','Difícil','Muito difícil'];
+const COB  = ['', 'Muito baixa','Baixa','Média','Alta','Muito alta'];
+
+const BASE_COURSES = [
+  { code:'MAT0025', name:'Cálculo 1', dept:'MAT', profs:['Profa. Helena Duarte','Prof. Rafael Monteiro'], diff:[1,4,12,18,13], cob:[2,5,14,16,11],
+    cmts:[
+      {sem:'2025.2',prof:'Profa. Helena Duarte',d:4,c:4,t:'Muito conteúdo em pouco tempo. As listas semanais fazem diferença na prova: quem fez todas passou tranquilo.'},
+      {sem:'2025.1',prof:'Prof. Rafael Monteiro',d:3,c:3,t:'Monitoria ajuda demais. Revise trigonometria antes de começar.'},
+    ]},
+  { code:'MAT0026', name:'Cálculo 2', dept:'MAT', profs:['Prof. Rafael Monteiro','Profa. Beatriz Nogueira'], diff:[0,1,5,13,18], cob:[1,2,7,12,15],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Beatriz Nogueira',d:5,c:5,t:'Séries e EDOs pesam muito. Provas longas, sem consulta. Não acumule matéria e faça as listas antigas.'},
+      {sem:'2025.2',prof:'Prof. Rafael Monteiro',d:4,c:4,t:'Difícil, mas o professor explica bem. Vá às aulas de exercício de sexta.'},
+      {sem:'2025.1',prof:'Profa. Beatriz Nogueira',d:5,c:4,t:'Evite pegar junto com Física 2 se puder. Exige muitas horas de estudo por semana.'},
+    ]},
+  { code:'MAT0027', name:'Cálculo 3', dept:'MAT', profs:['Profa. Helena Duarte'], diff:[0,2,5,8,7], cob:[1,3,8,6,4],
+    cmts:[{sem:'2025.2',prof:'Profa. Helena Duarte',d:4,c:3,t:'Visualizar em 3D é o mais difícil. Use o GeoGebra para estudar.'}]},
+  { code:'MAT0031', name:'Introdução à Álgebra Linear', dept:'MAT', profs:['Prof. Caio Siqueira'], diff:[1,3,9,8,4], cob:[1,4,9,7,4],
+    cmts:[{sem:'2025.2',prof:'Prof. Caio Siqueira',d:3,c:3,t:'Começa fácil e fica abstrata depois da metade. Faça os exercícios do livro.'}]},
+  { code:'CIC0004', name:'Algoritmos e Programação de Computadores', dept:'CIC', profs:['Profa. Lívia Prado','Prof. Tiago Ramalho'], diff:[3,7,12,6,2], cob:[2,6,13,7,2],
+    cmts:[{sem:'2026.1',prof:'Profa. Lívia Prado',d:3,c:3,t:'Para quem nunca programou, comece cedo os trabalhos. A correção automática não perdoa.'}]},
+  { code:'CIC0090', name:'Estruturas de Dados', dept:'CIC', profs:['Prof. Tiago Ramalho','Profa. Marina Teles'], diff:[0,3,9,17,12], cob:[1,3,10,15,12],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Marina Teles',d:4,c:5,t:'Trabalhos em C toda semana. Aprenda a usar o depurador logo no começo, economiza muito tempo.'},
+      {sem:'2025.2',prof:'Prof. Tiago Ramalho',d:4,c:4,t:'Árvores e grafos são a parte pesada. As provas seguem bem as listas.'},
+    ]},
+  { code:'CIC0097', name:'Banco de Dados', dept:'CIC', profs:['Prof. Eduardo Faria','Profa. Lívia Prado'], diff:[2,6,12,7,2], cob:[1,5,10,9,4],
+    cmts:[
+      {sem:'2026.1',prof:'Prof. Eduardo Faria',d:3,c:4,t:'O projeto em grupo vale metade da nota: escolha bem o grupo. SQL é tranquilo se praticar.'},
+      {sem:'2025.2',prof:'Profa. Lívia Prado',d:2,c:3,t:'Disciplina leve e útil. A parte de normalização é a única que exige mais atenção.'},
+      {sem:'2025.1',prof:'Prof. Eduardo Faria',d:4,c:4,t:'Provas com muita álgebra relacional. Refaça os exercícios da lista 3.'},
+    ]},
+  { code:'FGA0158', name:'Orientação a Objetos', dept:'FGA', profs:['Prof. André Cunha'], diff:[3,9,11,5,1], cob:[2,8,12,6,1],
+    cmts:[{sem:'2025.2',prof:'Prof. André Cunha',d:2,c:3,t:'Projeto final em Java bem tranquilo se o grupo se organizar desde o início.'}]},
+  { code:'FGA0161', name:'Probabilidade e Estatística Aplicada à Engenharia', dept:'FGA', profs:['Profa. Sônia Matos'], diff:[1,4,10,9,5], cob:[1,5,10,9,4],
+    cmts:[{sem:'2026.1',prof:'Profa. Sônia Matos',d:4,c:3,t:'Muita fórmula, mas pode levar formulário na prova. Pratique distribuições.'}]},
+  { code:'FGA0210', name:'Interação Humano-Computador', dept:'FGA', profs:['Prof. Gustavo Lins'], diff:[4,10,8,2,0], cob:[2,7,10,4,1],
+    cmts:[{sem:'2025.2',prof:'Prof. Gustavo Lins',d:2,c:3,t:'Muitas entregas ao longo do semestre, mas nenhuma é difícil. Não deixe para a última hora.'}]},
+  { code:'FGA0003', name:'Compiladores 1', dept:'FGA', profs:['Prof. André Cunha'], diff:[0,1,3,8,10], cob:[0,1,4,9,8],
+    cmts:[{sem:'2025.1',prof:'Prof. André Cunha',d:5,c:4,t:'O trabalho prático é longo. Comece o analisador léxico na primeira semana.'}]},
+
+  /* ---------- Ciência Política ---------- */
+  { code:'IPO0101', name:'Introdução à Ciência Política', dept:'IPOL', profs:['Profa. Cecília Andrade','Prof. Henrique Barros'], diff:[5,12,14,6,1], cob:[3,9,15,9,2],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Cecília Andrade',d:2,c:3,t:'Muita leitura (Weber, Dahl, Bobbio), mas as aulas são ótimas. Faça os fichamentos toda semana.'},
+      {sem:'2025.2',prof:'Prof. Henrique Barros',d:3,c:4,t:'Prova dissertativa exigente: ele cobra os conceitos com as palavras dos autores.'},
+    ]},
+  { code:'IPO0205', name:'Teoria Política Moderna', dept:'IPOL', profs:['Prof. Henrique Barros'], diff:[1,4,9,10,5], cob:[1,3,10,10,5],
+    cmts:[{sem:'2025.2',prof:'Prof. Henrique Barros',d:4,c:4,t:'Hobbes, Locke e Rousseau no original. Leia antes da aula, senão fica impossível acompanhar.'}]},
+  { code:'IPO0312', name:'Política Brasileira Contemporânea', dept:'IPOL', profs:['Profa. Cecília Andrade','Profa. Renata Queiroz'], diff:[3,9,10,4,1], cob:[2,8,12,4,1],
+    cmts:[{sem:'2026.1',prof:'Profa. Renata Queiroz',d:2,c:3,t:'Debates em sala contam nota. Acompanhe as notícias do Congresso, ajuda muito no seminário.'}]},
+  { code:'IPO0420', name:'Métodos Quantitativos em Ciência Política', dept:'IPOL', profs:['Prof. Diego Fontes'], diff:[0,2,6,9,8], cob:[0,3,7,9,6],
+    cmts:[{sem:'2025.2',prof:'Prof. Diego Fontes',d:5,c:4,t:'Usa R desde a primeira semana. Para quem fugiu da matemática, é a mais difícil do curso.'}]},
+
+  /* ---------- Relações Internacionais ---------- */
+  { code:'IRI0110', name:'Teoria das Relações Internacionais 1', dept:'IREL', profs:['Profa. Larissa Moura','Prof. Otávio Rezende'], diff:[2,6,13,9,3], cob:[1,6,12,10,4],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Larissa Moura',d:3,c:4,t:'Realismo, liberalismo e construtivismo bem explicados. Os textos em inglês são longos, comece cedo.'},
+      {sem:'2025.1',prof:'Prof. Otávio Rezende',d:4,c:4,t:'Provas pedem aplicar as teorias a casos atuais. Treine com notícias internacionais.'},
+    ]},
+  { code:'IRI0215', name:'História das Relações Internacionais', dept:'IREL', profs:['Prof. Otávio Rezende'], diff:[2,7,12,8,2], cob:[2,7,11,8,3],
+    cmts:[{sem:'2025.2',prof:'Prof. Otávio Rezende',d:3,c:3,t:'Muito conteúdo do Congresso de Viena à Guerra Fria. Linhas do tempo salvam na prova.'}]},
+  { code:'IRI0330', name:'Política Externa Brasileira', dept:'IREL', profs:['Profa. Larissa Moura'], diff:[3,8,11,5,1], cob:[2,7,12,6,1],
+    cmts:[{sem:'2026.1',prof:'Profa. Larissa Moura',d:2,c:3,t:'Disciplina leve e muito interessante. O trabalho final é uma simulação de negociação.'}]},
+  { code:'IRI0402', name:'Economia Política Internacional', dept:'IREL', profs:['Prof. Marcelo Tavares'], diff:[1,3,8,10,6], cob:[1,4,8,9,6],
+    cmts:[{sem:'2025.2',prof:'Prof. Marcelo Tavares',d:4,c:4,t:'Ter feito Introdução à Economia ajuda bastante. Muitos gráficos e dados comerciais.'}]},
+
+  /* ---------- Artes ---------- */
+  { code:'VIS0101', name:'Desenho 1', dept:'VIS', profs:['Profa. Júlia Campos'], diff:[4,9,10,4,1], cob:[2,6,11,7,2],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Júlia Campos',d:2,c:4,t:'Exige caderno de esboços semanal. Não é sobre talento, é sobre praticar todo dia.'},
+      {sem:'2025.2',prof:'Profa. Júlia Campos',d:3,c:3,t:'Material de desenho sai caro, compre aos poucos. A professora dá ótimos retornos individuais.'},
+    ]},
+  { code:'VIS0207', name:'História da Arte Moderna', dept:'VIS', profs:['Prof. Fábio Lacerda'], diff:[3,8,12,5,1], cob:[2,7,13,5,2],
+    cmts:[{sem:'2025.2',prof:'Prof. Fábio Lacerda',d:3,c:3,t:'Prova com reconhecimento de obras. Monte um banco de imagens com autor, ano e movimento.'}]},
+  { code:'VIS0315', name:'Fotografia', dept:'VIS', profs:['Prof. Fábio Lacerda','Profa. Nina Albuquerque'], diff:[5,10,8,3,0], cob:[3,8,10,4,1],
+    cmts:[{sem:'2026.1',prof:'Profa. Nina Albuquerque',d:2,c:3,t:'Dá para fazer com celular. O portfólio final é o que mais pesa.'}]},
+  { code:'CEN0110', name:'Interpretação Teatral 1', dept:'CEN', profs:['Prof. Bruno Salgado'], diff:[3,7,9,5,2], cob:[1,4,9,8,4],
+    cmts:[{sem:'2025.2',prof:'Prof. Bruno Salgado',d:3,c:5,t:'Presença é obrigatória de verdade. Ensaios fora do horário no fim do semestre.'}]},
+  { code:'CEN0230', name:'História do Teatro', dept:'CEN', profs:['Profa. Clara Veloso'], diff:[4,10,9,3,0], cob:[3,9,10,3,1],
+    cmts:[{sem:'2026.1',prof:'Profa. Clara Veloso',d:2,c:2,t:'Leituras de peças curtas e seminários. Tranquila para quem gosta de ler.'}]},
+  { code:'MUS0101', name:'Percepção Musical 1', dept:'MUS', profs:['Prof. Lucas Peixoto'], diff:[1,3,7,9,6], cob:[1,3,8,9,5],
+    cmts:[{sem:'2025.2',prof:'Prof. Lucas Peixoto',d:4,c:4,t:'Ditados melódicos toda aula. Use aplicativos de treino de ouvido desde o começo.'}]},
+  { code:'MUS0204', name:'Harmonia 1', dept:'MUS', profs:['Prof. Lucas Peixoto','Profa. Aline Moraes'], diff:[0,3,8,9,5], cob:[1,3,9,8,4],
+    cmts:[{sem:'2026.1',prof:'Profa. Aline Moraes',d:4,c:3,t:'Exercícios de encadeamento de acordes semanais. Saber tocar um pouco de piano ajuda.'}]},
+
+  /* ---------- Outras áreas ---------- */
+  { code:'DIR0110', name:'Introdução ao Estudo do Direito', dept:'DIR', profs:['Prof. Rodrigo Pires'], diff:[2,6,14,10,4], cob:[1,5,12,12,6],
+    cmts:[{sem:'2026.1',prof:'Prof. Rodrigo Pires',d:3,c:4,t:'Prova oral no fim. Estude Kelsen e Reale com calma, ele pergunta muito sobre os dois.'}]},
+  { code:'DIR0220', name:'Direito Constitucional 1', dept:'DIR', profs:['Profa. Patrícia Leal'], diff:[1,4,11,12,6], cob:[1,4,10,12,7],
+    cmts:[{sem:'2025.2',prof:'Profa. Patrícia Leal',d:4,c:5,t:'Leia a Constituição junto com a matéria. Provas com casos do STF.'}]},
+  /* ---------- Psicologia (códigos reais da UnB; notas e comentários fictícios) ---------- */
+  { code:'PPB0014', name:'Introdução à Psicologia', dept:'PPB', profs:['Profa. Mariana Souto','Prof. Caetano Brandão'], diff:[5,12,11,3,0], cob:[3,10,13,4,1],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Mariana Souto',d:2,c:2,t:'Ótima porta de entrada no curso. Provas com questões de interpretação de casos, nada de decoreba.'},
+      {sem:'2025.2',prof:'Prof. Caetano Brandão',d:3,c:3,t:'Panorama das áreas da Psicologia. Leia os capítulos indicados antes da aula, ele faz perguntas.'},
+    ]},
+  { code:'PPB0021', name:'História da Psicologia', dept:'PPB', profs:['Prof. Caetano Brandão'], diff:[3,9,12,6,1], cob:[2,8,13,6,2],
+    cmts:[{sem:'2025.2',prof:'Prof. Caetano Brandão',d:3,c:3,t:'Muitas escolas e autores. Monte uma linha do tempo do estruturalismo ao cognitivismo, ajuda na prova.'}]},
+  { code:'PPB0001', name:'Fundamentos de Análise do Comportamento', dept:'PPB', profs:['Profa. Débora Lins','Prof. Heitor Assunção'], diff:[1,4,10,12,5], cob:[1,3,11,12,5],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Débora Lins',d:4,c:4,t:'Muito vocabulário técnico (reforço, extinção, esquemas). Faça glossário desde a primeira semana.'},
+      {sem:'2025.1',prof:'Prof. Heitor Assunção',d:3,c:4,t:'Relatórios semanais de laboratório. Não deixe acumular, a correção é rigorosa.'},
+    ]},
+  { code:'PPB0015', name:'Psicologia da Aprendizagem 1', dept:'PPB', profs:['Prof. Heitor Assunção'], diff:[1,5,11,9,3], cob:[1,5,10,10,3],
+    cmts:[{sem:'2025.2',prof:'Prof. Heitor Assunção',d:3,c:4,t:'Continua a Análise do Comportamento. Quem foi bem em Fundamentos não sofre.'}]},
+  { code:'PPB0018', name:'Psicologia Geral e Experimental', dept:'PPB', profs:['Profa. Débora Lins'], diff:[1,3,9,10,6], cob:[1,3,8,11,6],
+    cmts:[{sem:'2026.1',prof:'Profa. Débora Lins',d:4,c:4,t:'Planejar experimento e escrever relatório no formato APA dá trabalho. Comece cedo.'}]},
+  { code:'PPB0127', name:'Percepção', dept:'PPB', profs:['Prof. Otto Valadares'], diff:[1,4,9,9,4], cob:[2,5,10,7,3],
+    cmts:[{sem:'2025.2',prof:'Prof. Otto Valadares',d:3,c:3,t:'Parte de neurofisiologia da visão é pesada. As demonstrações em sala ajudam muito.'}]},
+  { code:'PED0001', name:'Processos de Desenvolvimento Humano', dept:'PED', profs:['Profa. Lúcia Fragoso','Profa. Sabrina Toledo'], diff:[3,9,13,6,1], cob:[2,7,14,7,2],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Lúcia Fragoso',d:3,c:3,t:'Piaget, Vygotsky e Wallon comparados o semestre todo. Faça quadros comparativos.'},
+      {sem:'2025.2',prof:'Profa. Sabrina Toledo',d:2,c:3,t:'Trabalho de observação de uma criança em campo. Bem interessante, mas exige organização de horário.'},
+    ]},
+  { code:'PED0024', name:'Desenvolvimento no Curso de Vida: Infância', dept:'PED', profs:['Profa. Sabrina Toledo'], diff:[2,8,12,5,1], cob:[2,7,12,6,1],
+    cmts:[{sem:'2025.2',prof:'Profa. Sabrina Toledo',d:2,c:3,t:'Leituras tranquilas e seminários em grupo. Os vídeos de casos reais são o melhor da disciplina.'}]},
+  { code:'PED0010', name:'Filosofia e Epistemologia da Psicologia', dept:'PED', profs:['Prof. Renan Quintela'], diff:[0,3,8,11,7], cob:[1,3,9,10,6],
+    cmts:[{sem:'2026.1',prof:'Prof. Renan Quintela',d:5,c:4,t:'Textos densos de filosofia da ciência. Leia com calma e participe dos debates, conta nota.'}]},
+  { code:'PCL0015', name:'Psicologia da Personalidade 1', dept:'PCL', profs:['Profa. Helena Macedo','Prof. Vítor Arruda'], diff:[2,6,13,9,3], cob:[1,6,12,10,4],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Helena Macedo',d:3,c:4,t:'Freud, Jung, Adler e as teorias de traços. A prova pede aplicar as teorias a um caso.'},
+      {sem:'2025.2',prof:'Prof. Vítor Arruda',d:4,c:4,t:'Muito conteúdo. Resumos por autor salvam na semana de prova.'},
+    ]},
+  { code:'PCL0021', name:'Psicopatologia 1', dept:'PCL', profs:['Prof. Vítor Arruda'], diff:[0,2,8,13,9], cob:[0,3,8,12,9],
+    cmts:[
+      {sem:'2026.1',prof:'Prof. Vítor Arruda',d:4,c:5,t:'Uma das mais difíceis do curso. Estude pelo DSM e pelos casos clínicos que ele passa.'},
+      {sem:'2025.1',prof:'Prof. Vítor Arruda',d:5,c:4,t:'Exame do estado mental precisa ser treinado. Faça as atividades práticas com atenção.'},
+    ]},
+  { code:'PCL0027', name:'Teorias Psicanalíticas 1', dept:'PCL', profs:['Profa. Helena Macedo'], diff:[1,4,10,11,6], cob:[1,4,11,10,6],
+    cmts:[{sem:'2025.2',prof:'Profa. Helena Macedo',d:4,c:4,t:'Leitura direta dos textos de Freud. Releia com o grupo de estudos, faz toda a diferença.'}]},
+  { code:'PCL0020', name:'Ética Profissional', dept:'PCL', profs:['Profa. Cláudia Rezende'], diff:[6,12,9,2,0], cob:[4,11,11,3,0],
+    cmts:[{sem:'2026.1',prof:'Profa. Cláudia Rezende',d:2,c:2,t:'Código de Ética do psicólogo discutido com casos. Tranquila, mas essencial para os estágios.'}]},
+  { code:'PST0010', name:'Psicologia Social 1', dept:'PST', profs:['Prof. Igor Sampaio','Profa. Natália Couto'], diff:[3,9,13,5,1], cob:[2,8,13,7,1],
+    cmts:[
+      {sem:'2026.1',prof:'Profa. Natália Couto',d:3,c:3,t:'Atitudes, preconceito e influência social. Os experimentos clássicos caem na prova.'},
+      {sem:'2025.2',prof:'Prof. Igor Sampaio',d:2,c:3,t:'Seminário em grupo vale boa parte da nota. Escolha o tema cedo.'},
+    ]},
+  { code:'PST0013', name:'Técnicas do Exame Psicológico', dept:'PST', profs:['Profa. Natália Couto'], diff:[0,3,9,12,7], cob:[0,2,9,12,8],
+    cmts:[{sem:'2025.2',prof:'Profa. Natália Couto',d:4,c:5,t:'Aplicação e correção de testes com prazos curtos. Precisão na correção é cobrada à risca.'}]},
+  { code:'PST0001', name:'Psicologia do Trabalho', dept:'PST', profs:['Prof. Igor Sampaio'], diff:[4,10,11,4,1], cob:[3,9,12,5,1],
+    cmts:[{sem:'2026.1',prof:'Prof. Igor Sampaio',d:2,c:3,t:'Estudo de caso em uma organização real. Bom para quem pensa em seguir na área organizacional.'}]},
+  ...[
+    // [código, nome, depto, professores, dificuldade 1..5, cobrança 1..5, comentários [semestre, d, c, texto]]
+    ['PCL0022','Psicopatologia 2','PCL',['Prof. Vítor Arruda'],[0,2,7,12,9],[0,2,8,12,8],[['2026.1',5,4,'Transtornos de personalidade e psicoses. Mais pesada que a 1; revise o exame do estado mental.'],['2025.2',4,5,'Discussão de casos toda semana. Quem não lê o caso antes fica perdido.']]],
+    ['PPB0046','Psicologia Cognitiva 1','PPB',['Profa. Débora Lins','Prof. Otto Valadares'],[1,4,10,11,5],[1,4,11,10,5],[['2026.1',4,4,'Atenção, memória e percepção com muitos experimentos clássicos. Faça mapas mentais por capítulo.'],['2025.2',3,4,'Prova com questões de interpretação de experimentos. Os exercícios do Sternberg ajudam.']]],
+    ['PPB0050','Psicologia Cognitiva 2','PPB',['Prof. Otto Valadares'],[0,3,9,12,6],[1,3,10,11,5],[['2025.2',4,4,'Linguagem, raciocínio e tomada de decisão. Projeto de pesquisa em dupla no fim do semestre.']]],
+    ['PPB0007','Tópicos em Cognição','PPB',['Profa. Débora Lins'],[2,7,11,6,2],[2,6,12,6,2],[['2026.1',3,3,'Seminários sobre artigos recentes de cognição. Ótima para quem quer iniciação científica.']]],
+    ['PPB0009','Percepção e Cognição: Ciência e Tecnologia','PPB',['Prof. Otto Valadares'],[2,8,10,5,1],[2,7,11,5,1],[['2025.2',3,3,'Aplica percepção e cognição a interfaces e tecnologia. Projeto prático bem interessante.']]],
+    ['PED0054','Desenvolvimento Cognitivo','PED',['Profa. Lúcia Fragoso'],[1,6,12,8,2],[1,5,13,8,2],[['2026.1',3,3,'Piaget e neopiagetianos em profundidade. Observação de crianças resolvendo tarefas.']]],
+    ['PPB0003','Terapia Cognitiva','PPB',['Profa. Alice Peixoto'],[1,5,11,9,3],[1,5,10,10,3],[['2026.1',3,4,'Role-play de sessões em sala. Leia o Beck antes; a professora cobra a técnica com rigor.']]],
+    ['PCL0014','Terapia Cognitivo-Comportamental em Grupo','PCL',['Profa. Alice Peixoto'],[2,7,12,6,1],[2,6,12,7,1],[['2025.2',3,3,'Planejamento de um grupo terapêutico do início ao fim. Bem prática.']]],
+    ['PPB0033','Psicofisiologia 1','PPB',['Prof. Heitor Assunção'],[0,2,7,13,10],[0,2,8,12,10],[['2026.1',5,5,'Muita neuroanatomia e fisiologia. Estude com atlas e faça os roteiros de laboratório.'],['2025.1',4,4,'A parte de sistema nervoso autônomo cai muito. Monitoria salva.']]],
+    ['PPB0034','Fundamentos de Neurociências','PPB',['Prof. Heitor Assunção'],[0,3,8,12,8],[0,3,9,11,8],[['2025.2',4,4,'Base para Psicofisiologia e Neuropsicologia. Desenhar as vias neurais ajuda a memorizar.']]],
+    ['PPB0047','Psicofarmacologia 1','PPB',['Prof. Caetano Brandão'],[0,2,8,12,8],[0,3,8,12,7],[['2026.1',4,4,'Muitos mecanismos de ação e classes de fármacos. Faça tabelas comparativas.']]],
+    ['PPB0043','Genética do Comportamento','PPB',['Profa. Rita Moura'],[1,4,10,10,4],[1,4,11,9,4],[['2025.2',4,3,'Exige revisar genética básica do ensino médio. Os estudos com gêmeos são o centro da disciplina.']]],
+    ['PCL0030','Avaliação e Psicodiagnóstico','PCL',['Profa. Cláudia Rezende'],[0,3,9,12,6],[0,2,9,12,7],[['2026.1',4,5,'Laudos com prazo e correção detalhada. Atenção às normas do CFP para documentos.']]],
+    ['PCL0040','Teorias Psicanalíticas 2','PCL',['Profa. Helena Macedo'],[0,3,9,12,7],[1,3,10,11,6],[['2025.2',4,4,'Lacan e Winnicott. Textos difíceis; vale ler em grupo antes de cada aula.']]],
+    ['PCL0025','Fundamentos da Psicoterapia','PCL',['Prof. Vítor Arruda','Profa. Alice Peixoto'],[2,7,12,7,2],[1,6,12,8,3],[['2026.1',3,3,'Compara as principais abordagens. Boa para decidir em qual linha fazer estágio.']]],
+    ['PCL0004','Psicologia Comunitária','PCL',['Profa. Cláudia Rezende'],[3,9,12,5,1],[2,8,12,6,2],[['2025.2',2,3,'Atividade de campo em uma comunidade do DF. Organize o transporte com antecedência.']]],
+    ['PCL0013','Psicologia e Saúde Pública','PCL',['Profa. Cláudia Rezende'],[3,9,11,5,1],[3,8,12,5,1],[['2026.1',2,3,'SUS, CAPS e políticas de saúde mental. Visitas técnicas valem nota.']]],
+    ['PED0027','Desenvolvimento no Curso de Vida: Adolescência','PED',['Profa. Sabrina Toledo'],[3,9,12,5,1],[2,8,12,6,2],[['2025.2',2,3,'Discussões muito boas sobre identidade e escola. Trabalho final em formato de podcast.']]],
+    ['PED0030','Desenvolvimento no Curso da Vida Adulta','PED',['Profa. Lúcia Fragoso'],[3,9,11,4,1],[3,8,12,4,1],[['2026.1',2,2,'Leituras curtas e entrevistas com adultos de diferentes idades. Tranquila.']]],
+    ['PED0018','Psicologia Escolar: Pesquisa e Intervenção','PED',['Profa. Sabrina Toledo'],[1,6,12,8,2],[1,5,12,9,3],[['2025.2',3,4,'Intervenção em escola pública com relatório final longo. Comece o diário de campo cedo.']]],
+    ['PED0032','Psicologia da Criatividade','PED',['Prof. Renan Quintela'],[5,11,9,3,0],[4,10,10,3,1],[['2026.1',2,2,'Optativa leve e divertida. Atividades práticas em quase toda aula.']]],
+    ['PST0012','Psicologia Social 2','PST',['Profa. Natália Couto'],[2,8,12,6,2],[2,7,13,6,2],[['2026.1',3,3,'Grupos, identidade social e representações sociais. Pesquisa de campo em dupla.']]],
+    ['PST0036','Métodos de Pesquisa em Psicologia','PST',['Prof. Igor Sampaio'],[1,4,10,11,5],[1,4,10,11,5],[['2025.2',4,4,'Projeto de pesquisa completo no fim. Aprenda normas da APA logo no início.']]],
+    ['PST0039','Medidas em Psicologia','PST',['Profa. Natália Couto'],[0,3,8,12,8],[0,3,8,12,8],[['2026.1',4,4,'Psicometria com muita estatística (validade, fidedignidade). Use o R ou o JASP desde cedo.']]],
+    ['PST0020','Análise Organizacional','PST',['Prof. Igor Sampaio'],[3,9,12,5,1],[2,8,13,5,2],[['2025.2',2,3,'Diagnóstico de uma organização real em grupo. Boa para quem quer seguir em RH.']]],
+    ['PST0034','Ergonomia','PST',['Profa. Rita Moura'],[3,8,12,5,1],[2,8,12,6,1],[['2026.1',3,3,'Análise ergonômica de um posto de trabalho com visita técnica. Prática e útil.']]],
+  ].map(([code,name,dept,profs,diff,cob,cm]) => ({ code, name, dept, profs, diff, cob,
+      cmts: cm.map(([sem,d,c,t],i) => ({ sem, prof: profs[i % profs.length], d, c, t })) })),
+  { code:'ECO0101', name:'Introdução à Economia', dept:'ECO', profs:['Prof. Marcelo Tavares','Profa. Vanessa Brito'], diff:[2,7,13,9,3], cob:[2,6,14,8,4],
+    cmts:[{sem:'2025.2',prof:'Profa. Vanessa Brito',d:3,c:3,t:'Micro e macro no mesmo semestre. Faça os exercícios de gráficos de oferta e demanda.'}]},
+  { code:'FAC0115', name:'Teorias da Comunicação', dept:'FAC', profs:['Prof. Igor Valença'], diff:[3,9,12,5,1], cob:[2,8,13,5,2],
+    cmts:[{sem:'2026.1',prof:'Prof. Igor Valença',d:3,c:3,t:'Escola de Frankfurt e estudos culturais. Seminários em grupo valem boa parte da nota.'}]},
+  { code:'LET0140', name:'Leitura e Produção de Textos', dept:'LET', profs:['Profa. Teresa Fonseca'], diff:[4,11,13,5,1], cob:[2,7,14,9,2],
+    cmts:[{sem:'2025.2',prof:'Profa. Teresa Fonseca',d:2,c:4,t:'Um texto por semana com reescrita. Vale muito a pena para quem vai fazer TCC.'}]},
+  { code:'HIS0120', name:'História do Brasil Colônia', dept:'HIS', profs:['Prof. Samuel Rocha'], diff:[2,7,12,7,2], cob:[2,6,12,8,2],
+    cmts:[{sem:'2026.1',prof:'Prof. Samuel Rocha',d:3,c:3,t:'Leituras longas, mas as aulas organizam bem tudo. Prova com questões dissertativas.'}]},
+  { code:'BIO0101', name:'Biologia Celular', dept:'BIO', profs:['Profa. Elisa Rangel'], diff:[0,3,9,12,7], cob:[0,3,9,12,7],
+    cmts:[{sem:'2025.2',prof:'Profa. Elisa Rangel',d:4,c:4,t:'Muito conteúdo para decorar e relatórios de laboratório toda semana.'}]},
+  { code:'ARQ0110', name:'Projeto de Arquitetura 1', dept:'ARQ', profs:['Prof. Vinícius Amaral'], diff:[0,2,6,11,9], cob:[0,1,5,12,10],
+    cmts:[{sem:'2026.1',prof:'Prof. Vinícius Amaral',d:5,c:5,t:'Prepare-se para virar noites na maquete. Atendimentos semanais são obrigatórios.'}]},
+];
+
+/* ---------------- estado ---------------- */
+let S;
+function freshState(){
+  return {
+    courses: JSON.parse(JSON.stringify(BASE_COURSES)),
+    search: { q:'', dept:'', prof:'' },
+    draft: null,               // rascunho do formulário
+    sending: false,
+    sendError: false,
+    failOnce: { CIC0097: true }, // Tarefa 2: 1º envio de Banco de Dados falha
+    simulateError: true,
+    returnTo: '#/avaliacoes',
+    mine: {},                  // código -> índice do comentário do usuário
+    lastDone: null,
+  };
+}
+S = freshState();
+
+/* ---------------- tema e acessibilidade (salvos neste navegador) ---------------- */
+const PREF_KEY = 'nofluxo-prototipo-prefs';
+const DEFAULT_PREFS = { theme:'dark', contrast:false, text:false, font:false, motion:false, focus:false };
+const A11Y_OPTS = [
+  { k:'contrast', icon:'contrast',  t:'Alto contraste',              d:'Texto puro e bordas fortes' },
+  { k:'text',     icon:'textBig',   t:'Texto ampliado',              d:'Fonte 12,5% maior' },
+  { k:'font',     icon:'readFont',  t:'Fonte de leitura facilitada', d:'Lexend, ajuda na dislexia' },
+  { k:'motion',   icon:'motionOff', t:'Reduzir movimento',           d:'Sem animações e transições' },
+  { k:'focus',    icon:'eye',       t:'Foco reforçado',              d:'Contorno de foco mais grosso' },
+];
+let P = { ...DEFAULT_PREFS };
+try { const saved = JSON.parse(localStorage.getItem(PREF_KEY) || 'null'); if (saved) P = { ...DEFAULT_PREFS, ...saved }; } catch(e){}
+function savePrefs(){ try { localStorage.setItem(PREF_KEY, JSON.stringify(P)); } catch(e){} }
+function applyPrefs(){
+  const h = document.documentElement.dataset;
+  h.theme = P.theme;
+  P.contrast ? h.contrast = 'high' : delete h.contrast;
+  P.text ? h.text = 'large' : delete h.text;
+  P.font ? h.font = 'lexend' : delete h.font;
+  P.motion ? h.motion = 'reduce' : delete h.motion;
+  P.focus ? h.focus = 'strong' : delete h.focus;
+}
+const anyA11y = () => A11Y_OPTS.some(o => P[o.k]);
+const prefersReducedMotion = () => P.motion || matchMedia('(prefers-reduced-motion: reduce)').matches;
+function themeBtn(){
+  const dark = P.theme === 'dark';
+  return `<button class="icon-btn" id="theme-btn" data-act="theme" aria-label="${dark?'Ativar tema claro':'Ativar tema escuro'}" title="${dark?'Tema claro':'Tema escuro'}">${ic(dark?'moon':'sun')}</button>`;
+}
+function refreshHeaderButtons(){
+  const t = $('#theme-btn'); if (t) t.outerHTML = themeBtn();
+  const a = $('#a11y-btn');
+  if (a){ const d = a.querySelector('.dot'); if (anyA11y() && !d) a.insertAdjacentHTML('beforeend','<span class="dot" aria-hidden="true"></span>'); if (!anyA11y() && d) d.remove(); }
+}
+function menuHTML(){
+  return `<div class="a11y-menu" id="a11y-menu" role="menu" aria-label="Acessibilidade">
+    <h3 aria-hidden="true">Acessibilidade</h3>
+    ${A11Y_OPTS.map(o=>`<button class="a11y-item" role="menuitemcheckbox" aria-checked="${!!P[o.k]}" data-act="pref" data-k="${o.k}" tabindex="-1">
+      ${ic(o.icon)}<span class="lbl">${o.t}<small>${o.d}</small></span><span class="switch" aria-hidden="true"></span></button>`).join('')}
+    <div class="a11y-sep" role="separator"></div>
+    <button class="a11y-item reset" role="menuitem" data-act="a11y-reset" tabindex="-1" aria-disabled="${!anyA11y()}">${ic('reset')}<span class="lbl">Restaurar padrões</span></button>
+  </div>`;
+}
+function openA11y(focusIdx=0){
+  closeA11y(false);
+  const btn = $('#a11y-btn'); if (!btn) return;
+  btn.setAttribute('aria-expanded','true');
+  btn.parentElement.insertAdjacentHTML('beforeend', menuHTML());
+  const items = [...document.querySelectorAll('#a11y-menu [role^="menuitem"]')];
+  items[Math.min(focusIdx, items.length-1)].focus();
+}
+function closeA11y(returnFocus=true){
+  const m = $('#a11y-menu'); if (!m) return;
+  m.remove();
+  const btn = $('#a11y-btn'); if (btn){ btn.setAttribute('aria-expanded','false'); if (returnFocus) btn.focus(); }
+}
+applyPrefs();
+
+/* ---------------- utilidades ---------------- */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
+const fmt = n => n.toFixed(1).replace('.', ',');
+const total = d => d.reduce((a,b)=>a+b,0);
+const avg = d => total(d) ? d.reduce((a,v,i)=>a+v*(i+1),0)/total(d) : 0;
+const course = code => S.courses.find(c => c.code === code);
+const label = (arr, v) => arr[Math.min(5, Math.max(1, Math.round(v)))];
+const dots = v => `<span class="dots" aria-hidden="true">${[1,2,3,4,5].map(i=>`<i class="${i<=Math.round(v)?'f':''}"></i>`).join('')}</span>`;
+const pips = v => `<span class="pips" aria-hidden="true">${[1,2,3,4,5].map(i=>`<i class="${i<=v?'f':''}"></i>`).join('')}</span>`;
+
+function toast(msg, icon='info'){
+  const t = document.createElement('div');
+  t.className = 'toast'; t.innerHTML = ic(icon) + `<span>${msg}</span>`;
+  $('#toasts').appendChild(t);
+  setTimeout(()=>t.remove(), 3200);
+}
+
+function parseRoute(){
+  const h = location.hash.slice(1) || '/';
+  const [path, qs] = h.split('?');
+  return { path, parts: path.split('/').filter(Boolean), params: new URLSearchParams(qs||'') };
+}
+function go(hash){
+  if (location.hash === hash) { skipGuard = false; render(); return; }
+  if (leavesDraft(location.hash || '#/', hash)) { openDiscard(hash); return; }
+  location.hash = hash;
+}
+// true quando a navegação abandonaria um rascunho preenchido (formulário ou revisão)
+function leavesDraft(fromHash, toHash){
+  if (skipGuard || !S.draft || !isDirty() || S.sending) return false;
+  const p = fromHash.slice(1).split('?')[0].split('/').filter(Boolean);
+  return p[0]==='avaliar' && p[2]!=='concluido' && !toHash.startsWith('#/avaliar/'+S.draft.code);
+}
+
+/* ---------------- cabeçalho ---------------- */
+function header(active){
+  return `
+  <div class="hdr-wrap"><header class="hdr">
+    <button class="logo" data-go="#/" aria-label="No Fluxo UnB, página inicial">NOFLX<b>UNB</b></button>
+    <nav class="nav" aria-label="Principal">
+      <a data-oos="Fluxogramas">Fluxogramas</a>
+      <a data-oos="Disciplinas">Disciplinas</a>
+      <a data-go="#/avaliacoes" class="${active==='aval'?'on':''}" ${active==='aval'?'aria-current="page"':''}>Avaliações <span class="badge-new">NOVO</span></a>
+    </nav>
+    <div class="hdr-right">
+      <button class="icon-btn" id="a11y-btn" data-act="a11y" aria-label="Acessibilidade" aria-haspopup="menu" aria-expanded="false" aria-controls="a11y-menu">${ic('a11y')}${anyA11y()?'<span class="dot" aria-hidden="true"></span>':''}</button>
+      ${themeBtn()}
+      <span class="user-chip" title="Você está logado"><span class="avatar">E</span>Estudante</span>
+    </div>
+  </header></div>`;
+}
+function subbar(crumbs){
+  return `<div class="subbar"><div class="subbar-in"><nav class="crumbs" aria-label="Você está aqui">${
+    crumbs.map((c,i)=> i<crumbs.length-1
+      ? `<a data-go="${c[1]}">${esc(c[0])}</a>${ic('chevR')}`
+      : `<span class="cur" aria-current="page">${esc(c[0])}</span>`).join('')
+  }</nav><span class="crumbs">Protótipo · dados fictícios</span></div></div>`;
+}
+const footer = () => `<footer class="foot"><span>No Fluxo UnB · Protótipo de alta fidelidade da Avaliação de Disciplinas</span><span>IHC · Grupo 02 · 2026.2</span></footer>`;
+
+/* ---------------- H1 · página inicial ---------------- */
+function viewHome(){
+  return header('home') + `
+  <main id="main" class="home">
+    <section class="hero">
+      <span class="pill">${ic('sparkle')} Plataforma inteligente da UnB</span>
+      <h1>Tenha seu<br><span>fluxograma</span><br>muito<br><span>rápido</span></h1>
+      <p>Visualize, monte e personalize fluxogramas de qualquer curso com o poder da IA. Agora você também pode avaliar as disciplinas que cursou e consultar o que outros alunos acharam antes de montar a sua grade.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary btn-lg" data-oos="Fluxogramas">${ic('zap')} Acessar nosso sistema</button>
+      </div>
+    </section>
+    <section aria-label="Recursos">
+      <div class="feature hl">
+        <div class="ic">${ic('star')}</div>
+        <h3>Avaliar <span>disciplinas</span> <span class="badge-new" style="vertical-align:3px;margin-left:4px">NOVO</span></h3>
+        <p>Conte como foi cursar uma disciplina (dificuldade e cobrança do professor) e veja as avaliações de outros alunos. Sua avaliação é anônima.</p>
+        <div class="row">
+          <button class="btn btn-primary btn-sm" data-go="#/avaliacoes" id="home-avaliar">${ic('star')} Avaliar disciplina</button>
+          <button class="btn btn-secondary btn-sm" data-go="#/avaliacoes">${ic('eye')} Ver avaliações</button>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="ic">${ic('eye')}</div>
+        <h3>Consultar como <span>visitante</span></h3>
+        <p>Explore fluxogramas de qualquer curso da UnB sem fazer login. Faça a sua consulta rápida sem cadastro.</p>
+        <span class="tag">${ic('user')} Acesso livre e imediato</span>
+      </div>
+      <div class="feature">
+        <div class="ic">${ic('lock')}</div>
+        <h3>Recursos <span>exclusivos com login</span></h3>
+        <p>Faça upload do histórico em PDF, ganhe sugestões com IA e salve seu progresso em um só lugar.</p>
+        <span class="tag">${ic('star')} Potencialize seus estudos</span>
+      </div>
+    </section>
+  </main>` + footer();
+}
+
+/* ---------------- T1/T2/T3 · busca, resultados e página da disciplina ---------------- */
+/* Busca tolerante a erros (heurística 9): aceita erros de digitação comuns
+   (letra trocada, faltando, sobrando ou invertida, ex.: "psci", "calcolo", "pscicopatologia")
+   e entende siglas usadas pelos alunos (BD, ED, IHC...). */
+const ALIASES = {
+  bd:'banco de dados', ed:'estruturas de dados', eda:'estruturas de dados', ihc:'interacao humano computador',
+  oo:'orientacao a objetos', poo:'orientacao a objetos', apc:'algoritmos e programacao', ri:'relacoes internacionais',
+  ial:'introducao a algebra linear',
+};
+// Famílias de palavras: buscar uma traz as outras (cognição → cognitiva, cognitivo...)
+const STEMS = { cognicao:'cogni', cognitiva:'cogni', cognitivo:'cogni', cognitivas:'cogni', cognitivos:'cogni',
+  comportamento:'comport', comportamental:'comport', comportamentais:'comport',
+  psicoterapia:'psicoterap', psicoterapias:'psicoterap', terapia:'terap', terapias:'terap' };
+const STOP = new Set(['a','e','o','de','da','do','das','dos','em','no','na']);
+function osa(a, b){ // distância de edição com transposição (Damerau restrita)
+  const d = Array.from({length:a.length+1}, (_,i)=>[i, ...Array(b.length).fill(0)]);
+  for (let j=1;j<=b.length;j++) d[0][j]=j;
+  for (let i=1;i<=a.length;i++) for (let j=1;j<=b.length;j++){
+    const cost = a[i-1]===b[j-1]?0:1;
+    d[i][j] = Math.min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+cost);
+    if (i>1 && j>1 && a[i-1]===b[j-2] && a[i-2]===b[j-1]) d[i][j] = Math.min(d[i][j], d[i-2][j-2]+1);
+  }
+  return d[a.length][b.length];
+}
+// 0 = começa igual; 1-2 = erro de digitação tolerado; -1 = não casa
+function tokScore(tok, word){
+  if (word.startsWith(tok)) return 0;
+  if (tok.length < 3 || /^\d+$/.test(tok)) return -1;
+  const maxE = tok.length <= 4 ? 1 : 2;
+  let best = 99;
+  for (let k=Math.max(1,tok.length-maxE); k<=Math.min(word.length, tok.length+maxE); k++) best = Math.min(best, osa(tok, word.slice(0,k)));
+  return best <= maxE ? best : -1;
+}
+function search(){
+  const { q, dept, prof } = S.search;
+  let nq = norm(q), alias = null;
+  if (ALIASES[nq]) { alias = ALIASES[nq]; nq = alias; }
+  const toks = nq.split(/[\s\-:,]+/).filter(t => t && !(STOP.has(t) && nq.split(' ').length > 1)).map(t => STEMS[t] || t);
+  const hits = [];
+  for (const c of S.courses){
+    if (dept && c.dept !== dept) continue;
+    if (prof && !c.profs.includes(prof)) continue;
+    if (!toks.length){ hits.push({c, score:0, used:[]}); continue; }
+    const words = norm(c.name).split(/[\s\-:,]+/).filter(Boolean), code = norm(c.code);
+    let score = 0, ok = true; const used = [];
+    for (const tok of toks){
+      if (tok.length>=3 && code.includes(tok)) { used.push(null); continue; }
+      let best = -1, bw = null;
+      for (const w of words){ const s = tokScore(tok, w); if (s>=0 && (best<0 || s<best)) { best = s; bw = w; } }
+      if (best < 0) { ok = false; break; }
+      score += best; used.push(best > 0 ? bw : null);
+    }
+    if (ok) hits.push({c, score, used});
+  }
+  hits.sort((a,b) => a.score - b.score);
+  const exact = hits.filter(h => h.score === 0);
+  // Sugestão "Você quis dizer": troca cada termo errado pela palavra mais comum entre os resultados
+  let suggestion = null;
+  if (!exact.length && hits.length){
+    const fixed = toks.map((tok, i) => {
+      const count = {};
+      hits.forEach(h => { const w = h.used[i]; if (w) count[w] = (count[w]||0) + 1; });
+      const top = Object.entries(count).sort((a,b) => b[1]-a[1])[0];
+      return top ? top[0] : tok;
+    });
+    suggestion = fixed.join(' ');
+  }
+  return { list: exact.length ? exact.map(h => h.c) : hits.map(h => h.c), approx: !exact.length && hits.length > 0, suggestion, alias };
+}
+const filtered = () => search().list;
+// Palavras exibidas com acento na sugestão (a busca ignora acentos)
+function pretty(s){
+  const map = {};
+  S.courses.forEach(c => c.name.toLowerCase().split(/[\s\-:,]+/).forEach(w => { map[norm(w)] = w; }));
+  return s.split(' ').map(w => map[w] || w).join(' ');
+}
+function allProfs(dept){
+  const set = new Set();
+  S.courses.filter(c => !dept || c.dept === dept).forEach(c => c.profs.forEach(p => set.add(p)));
+  return [...set].sort((a,b)=>a.replace(/^Profa?\. /,'').localeCompare(b.replace(/^Profa?\. /,'')));
+}
+
+const COMMON = ['Psicologia','Psicopatologia','Cognitiva','Cálculo','Banco de Dados','Direito','Relações Internacionais','Desenho'];
+function resultsHTML(selected){
+  const { list, approx, suggestion, alias } = search();
+  const { q, dept, prof } = S.search;
+  const hasFilter = q || dept || prof;
+  if (!list.length){
+    return `<div class="empty" role="status">${ic('search')}
+      <h4>Nenhuma disciplina encontrada${q?` para “${esc(q)}”`:''}</h4>
+      Confira a grafia ou busque pelo código (ex.: MAT0026).${(dept||prof)?' Os filtros também podem estar restringindo a busca.':''}
+      <div class="sugg-list"><span>Buscas comuns:</span>${COMMON.map(t=>`<button class="chip-btn" data-act="suggest" data-q="${esc(t)}">${esc(t)}</button>`).join('')}</div>
+      <div style="margin-top:12px"><button class="btn btn-secondary btn-sm" data-act="clear-all">${ic('x')} Limpar busca e filtros</button></div></div>`;
+  }
+  const tip = approx && suggestion
+    ? `<div class="suggest" role="status">${ic('sparkle')}<div>Nenhum resultado exato para “${esc(q)}”. Você quis dizer <button class="link" data-act="suggest" data-q="${esc(pretty(suggestion))}">${esc(pretty(suggestion))}</button>?<small>Mostrando disciplinas com nomes parecidos.</small></div></div>`
+    : alias ? `<div class="suggest" role="status">${ic('info')}<div>Mostrando resultados para <b>${esc(pretty(alias))}</b> (“${esc(q)}”).</div></div>` : '';
+  const head = tip + `<div class="meta-line" role="status"><span>${hasFilter ? `${list.length} ${list.length===1?(approx?'disciplina parecida':'disciplina encontrada'):(approx?'disciplinas parecidas':'disciplinas encontradas')}` : `Todas as disciplinas avaliadas (${list.length})`}</span>${hasFilter?`<button class="link" style="font-size:12px" data-act="clear-all">Limpar</button>`:''}</div>`;
+  return head + list.map(c => {
+    const n = total(c.diff), d = avg(c.diff), b = avg(c.cob);
+    return `<article class="res ${selected===c.code?'sel':''}" aria-label="${esc(c.name)}">
+      <div class="res-top"><span class="code">${c.code}</span><span class="dept" title="${DEPTS[c.dept]}">${c.dept}</span></div>
+      <div class="res-name">${esc(c.name)}</div>
+      <div class="minis">
+        <span class="mini" title="Dificuldade média: ${fmt(d)} de 5">Dificuldade <b>${fmt(d)}</b> ${dots(d)}</span>
+        <span class="mini" title="Cobrança média do professor: ${fmt(b)} de 5">Cobrança <b>${fmt(b)}</b> ${dots(b)}</span>
+        <span class="mini">${ic('chat','style="width:13px;height:13px"')} ${n} avaliações</span>
+      </div>
+      <div class="res-actions">
+        <button class="btn btn-secondary btn-sm" data-go="#/avaliacoes/${c.code}">${ic('eye')} Ver avaliações</button>
+        ${S.mine[c.code]!=null
+          ? `<button class="btn btn-secondary btn-sm" disabled style="cursor:default" title="Você já avaliou esta disciplina">${ic('check')} Avaliada</button>`
+          : `<button class="btn btn-primary btn-sm" data-avaliar="${c.code}" data-from="#/avaliacoes">${ic('star')} Avaliar</button>`}
+      </div>
+    </article>`;
+  }).join('');
+}
+
+function commentHTML(m, mine=false){
+  return `<article class="cmt ${mine?'mine':''}">
+    <div class="cmt-meta">
+      ${mine?'<span class="chip acc">Sua avaliação</span>':''}
+      <span class="chip">Dificuldade ${m.d} · ${DIFF[m.d]}</span>
+      <span class="chip">Cobrança ${m.c} · ${COB[m.c]}</span>
+      <span>${esc(m.prof||'Professor não informado')}</span><span>·</span><span>${m.sem}</span>
+      <span class="anon">${ic('lock')} Anônimo</span>
+    </div>
+    ${m.t?`<p>${esc(m.t)}</p>`:`<p class="none">Sem comentário.</p>`}
+  </article>`;
+}
+
+function distHTML(d, labels){
+  const max = Math.max(...d, 1);
+  return [5,4,3,2,1].map(i => `<div class="dist-row"><span>${i} · ${labels[i]}</span><span class="bar"><i style="width:${(d[i-1]/max)*100}%"></i></span><span class="n">${d[i-1]}</span></div>`).join('');
+}
+
+function coursePanel(c){
+  const n = total(c.diff), d = avg(c.diff), b = avg(c.cob);
+  const mineIdx = S.mine[c.code];
+  return `<div class="panel">
+    <div class="d-head">
+      <div>
+        <span class="code">${c.code}</span>
+        <h2>${esc(c.name)}</h2>
+        <div class="d-sub"><span>${DEPTS[c.dept]}</span><span class="sep">|</span><span>${c.profs.map(esc).join(', ')}</span></div>
+      </div>
+      <div class="cta-row">
+        ${mineIdx!=null
+          ? `<span class="chip acc" style="padding:8px 14px;font-size:13px">${ic('check','style="width:15px;height:15px"')} Você já avaliou esta disciplina</span>`
+          : `<button class="btn btn-primary" data-avaliar="${c.code}" data-from="#/avaliacoes/${c.code}" id="btn-avaliar-esta">${ic('star')} Avaliar esta disciplina</button>`}
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="k">Dificuldade média</div><div class="v">${fmt(d)} <small>/ 5</small></div><div class="lbl">${label(DIFF,d)}</div><div class="meter"><i style="width:${d/5*100}%"></i></div></div>
+      <div class="stat"><div class="k">Cobrança do professor</div><div class="v">${fmt(b)} <small>/ 5</small></div><div class="lbl">${label(COB,b)}</div><div class="meter"><i style="width:${b/5*100}%"></i></div></div>
+      <div class="stat"><div class="k">Avaliações</div><div class="v">${n}</div><div class="lbl" style="color:var(--muted);font-weight:500">de 2024.1 a 2026.1</div></div>
+    </div>
+    <div class="sec-title">Distribuição das notas</div>
+    <div class="dist">
+      <div><h5>Dificuldade da disciplina</h5>${distHTML(c.diff, DIFF)}</div>
+      <div><h5>Cobrança do professor</h5>${distHTML(c.cob, COB)}</div>
+    </div>
+    <div class="sec-title"><span>Comentários dos alunos (${c.cmts.length})</span><span class="anon" style="text-transform:none;letter-spacing:0;font-weight:500">${ic('lock')} Todas as avaliações são anônimas</span></div>
+    <div class="comments">${c.cmts.map((m,i)=>commentHTML(m, i===mineIdx)).join('')}</div>
+  </div>`;
+}
+
+function viewSearch(code){
+  const c = code ? course(code) : null;
+  const { q, dept, prof } = S.search;
+  const crumbs = [['Início','#/'],['Avaliações','#/avaliacoes']];
+  if (c) crumbs.push([c.name, '#/avaliacoes/'+c.code]);
+  return header('aval') + subbar(crumbs) + `
+  <main id="main" class="split">
+    <aside class="side" aria-label="Buscar disciplinas">
+      <div>
+        <label class="flabel" for="q">Buscar disciplina</label>
+        <div class="field">${ic('search')}
+          <input id="q" class="input" type="search" autocomplete="off" placeholder="Ex.: Cálculo 2 ou MAT0026" value="${esc(q)}">
+          ${q?`<button class="clear-x" data-act="clear-q" aria-label="Limpar busca">${ic('x')}</button>`:''}
+        </div>
+      </div>
+      <div class="filters">
+        <div><label class="flabel" for="f-dept">Departamento</label>
+          <select id="f-dept" class="select"><option value="">Todos</option>${Object.keys(DEPTS).map(k=>`<option value="${k}" ${dept===k?'selected':''}>${k} · ${DEPTS[k].replace('Departamento de ','')}</option>`).join('')}</select></div>
+        <div><label class="flabel" for="f-prof">Professor</label>
+          <select id="f-prof" class="select"><option value="">Todos</option>${allProfs(dept).map(p=>`<option ${prof===p?'selected':''}>${esc(p)}</option>`).join('')}</select></div>
+      </div>
+      <div class="results" id="results">${resultsHTML(code)}</div>
+    </aside>
+    <section class="main" aria-live="polite">
+      ${c ? coursePanel(c) : `<div class="panel center"><div>${ic('book')}<p class="t1">Selecione uma disciplina para ver as avaliações</p><p class="t2">Ou clique em <b>Avaliar</b> para registrar a sua.</p></div></div>`}
+    </section>
+  </main>`;
+}
+
+/* ---------------- T4 · formulário ---------------- */
+function ensureDraft(code){
+  if (!S.draft || S.draft.code !== code){
+    S.draft = { code, prof:'', sem:'2026.1', d:null, c:null, t:'', showErrors:false };
+  }
+  return S.draft;
+}
+const isDirty = () => S.draft && (S.draft.d || S.draft.c || S.draft.t.trim() || S.draft.prof || S.draft.sem!=='2026.1');
+
+function stepsHTML(n){
+  const names = ['Preencher','Revisar','Concluído'];
+  return `<div class="steps" aria-label="Etapa ${n} de 3">${names.map((s,i)=>{
+    const k=i+1; const ok = k<n || n===3; const cls = ok?'done':(k===n?'on':'');
+    return (i?'<span class="step-sep"></span>':'') + `<span class="step ${cls}" ${k===n?'aria-current="step"':''}><b>${ok?'✓':k}</b>${s}</span>`;
+  }).join('')}</div>`;
+}
+
+function scaleHTML(key, labels, value, err){
+  return `<div class="scale ${err?'invalid':''}" role="radiogroup" aria-labelledby="lbl-${key}" id="scale-${key}">
+    ${[1,2,3,4,5].map(i=>`<button type="button" role="radio" aria-checked="${value===i}" tabindex="${(value?value===i:i===1)?0:-1}" data-scale="${key}" data-v="${i}" aria-label="${i}, ${labels[i]}"><b>${i}</b><span>${labels[i]}</span></button>`).join('')}
+  </div>
+  <div class="scale-ends"><span>← ${labels[1]}</span><span>${labels[5]} →</span></div>
+  ${err?`<div class="field-err" role="alert">${ic('alert')} ${err}</div>`:`<div class="chosen">${value?`Você escolheu: ${value} · ${labels[value]}`:''}</div>`}`;
+}
+
+function viewForm(code, params){
+  const c = course(code);
+  if (!c) return viewNotFound();
+  const dr = ensureDraft(code);
+  if (params.get('validacao')) dr.showErrors = true;
+  const eD = dr.showErrors && !dr.d ? 'Escolha um valor de 1 a 5 para a dificuldade da disciplina.' : '';
+  const eC = dr.showErrors && !dr.c ? 'Escolha um valor de 1 a 5 para a cobrança do professor.' : '';
+  const len = dr.t.length;
+  const recent = c.cmts.slice(0,3);
+  return header('aval') + subbar([['Início','#/'],['Avaliações','#/avaliacoes'],[c.name,'#/avaliacoes/'+c.code],['Avaliar','#']]) + `
+  <main id="main" class="page">
+    <div class="page-head">
+      <div><span class="code">${c.code}</span><h1>Avaliar <span>${esc(c.name)}</span></h1></div>
+      ${stepsHTML(1)}
+    </div>
+    <div class="form-grid">
+      <form class="card" id="form" novalidate>
+        <div class="notice">${ic('shield')}<div><b>Sua avaliação é anônima.</b> Seu nome e sua matrícula não aparecem para outros alunos nem para os professores. O login serve apenas para evitar avaliações repetidas.</div></div>
+
+        <div class="q two" style="border-bottom:1px solid #1c1c24">
+          <div><label class="flabel" for="f-sem">Semestre em que cursou</label>
+            <select id="f-sem" class="select">${SEMESTERS.map(s=>`<option ${dr.sem===s?'selected':''}>${s}</option>`).join('')}</select></div>
+          <div><label class="flabel" for="f-p">Professor <span style="text-transform:none;font-weight:500">(opcional)</span></label>
+            <select id="f-p" class="select"><option value="">Prefiro não informar</option>${c.profs.map(p=>`<option ${dr.prof===p?'selected':''}>${esc(p)}</option>`).join('')}</select></div>
+        </div>
+
+        <div class="q">
+          <p class="q-label" id="lbl-d">Dificuldade da disciplina <span class="req">Obrigatório</span></p>
+          <p class="q-help">Quão difícil foi acompanhar o conteúdo e ser aprovado?</p>
+          ${scaleHTML('d', DIFF, dr.d, eD)}
+        </div>
+
+        <div class="q">
+          <p class="q-label" id="lbl-c">Cobrança do professor <span class="req">Obrigatório</span>
+            <span class="tip"><button type="button" class="tip-btn" aria-label="O que é cobrança?" aria-describedby="tip-c">${ic('info')}</button><span class="tip-box" role="tooltip" id="tip-c">Quanto o professor exige dos alunos: volume de listas e trabalhos, rigor na correção e nível das provas. Não é uma nota para o professor.</span></span>
+          </p>
+          <p class="q-help">Quanto o professor exigiu: listas, trabalhos, rigor na correção e nível das provas.</p>
+          ${scaleHTML('c', COB, dr.c, eC)}
+        </div>
+
+        <div class="q">
+          <label class="q-label" for="f-t">Comentário para os próximos alunos <span class="req" style="border-color:transparent">Opcional</span></label>
+          <p class="q-help">Dicas e relatos ajudam quem ainda vai montar a grade. Evite citar nomes de colegas.</p>
+          <textarea id="f-t" class="textarea" maxlength="500" placeholder="Conte aos próximos alunos como foi cursar esta disciplina: o que ajudou, o que pesou, dicas de estudo…">${esc(dr.t)}</textarea>
+          <div class="counter"><span>Visível para todos, sem identificação.</span><span class="n ${len>=500?'max':len>=450?'warn':''}" id="count" aria-live="polite">${len}/500 caracteres</span></div>
+        </div>
+      </form>
+
+      <aside class="card aside" aria-label="Resumo das avaliações de outros alunos">
+        <h3>O que outros alunos acharam</h3>
+        <p class="small">${total(c.diff)} avaliações anteriores · use como referência</p>
+        <div class="stats">
+          <div class="stat"><div class="k">Dificuldade</div><div class="v">${fmt(avg(c.diff))}<small> /5</small></div><div class="lbl">${label(DIFF,avg(c.diff))}</div></div>
+          <div class="stat"><div class="k">Cobrança</div><div class="v">${fmt(avg(c.cob))}<small> /5</small></div><div class="lbl">${label(COB,avg(c.cob))}</div></div>
+        </div>
+        <div class="sec-title" style="margin:6px 0 10px">Comentários recentes</div>
+        <div class="aside-list">${recent.map(m=>commentHTML(m)).join('')}</div>
+      </aside>
+    </div>
+  </main>
+  <div class="actionbar"><div class="actionbar-in">
+    <button class="btn btn-danger-ghost" data-act="discard">${ic('trash')} Descartar</button>
+    <span class="status">${ic('lock','style="width:14px;height:14px"')} Anônima · nada é enviado antes da revisão</span>
+    <div class="right"><button class="btn btn-primary" data-act="to-review" id="btn-revisar">Revisar e enviar ${ic('arrowR')}</button></div>
+  </div></div>`;
+}
+
+/* ---------------- T5 · revisão ---------------- */
+function viewReview(code, params){
+  const c = course(code);
+  if (!c) return viewNotFound();
+  const dr = S.draft;
+  if (!dr || dr.code !== code || !dr.d || !dr.c){
+    // acesso direto sem rascunho: volta ao formulário (ou cria exemplo para captura)
+    if (params.get('exemplo')) { const ex = c.cmts[0]; S.draft = { code, prof:ex.prof, sem:'2026.1', d:ex.d, c:ex.c, t:ex.t, showErrors:false }; }
+    else { setTimeout(()=>go('#/avaliar/'+code),0); return ''; }
+  }
+  const d = S.draft;
+  const st = params.get('estado');
+  if (st==='enviando') S.sending = true;
+  if (st==='erro') S.sendError = true;
+  return header('aval') + subbar([['Início','#/'],['Avaliações','#/avaliacoes'],[c.name,'#/avaliacoes/'+c.code],['Avaliar','#/avaliar/'+c.code],['Revisão','#']]) + `
+  <main id="main" class="page">
+    <div class="review">
+      <div class="page-head">
+        <div><span class="code">${c.code}</span><h1>Revise sua <span>avaliação</span></h1><div class="d-sub">Confira antes de enviar. Depois de enviada, ela aparece para os próximos alunos.</div></div>
+        ${stepsHTML(2)}
+      </div>
+      <div id="send-error">${S.sendError?errorBanner():''}</div>
+      <div class="notice" style="margin-top:14px">${ic('shield')}<div><b>Termo de anonimato.</b> Ao confirmar, sua avaliação é publicada sem seu nome, matrícula ou foto. Nem os professores nem a equipe do No Fluxo veem quem avaliou.</div></div>
+      <div class="card" style="margin-top:14px">
+        <div class="rv-row"><div class="rv-k">Disciplina</div><div class="rv-v"><b>${esc(c.name)}</b> <span class="muted">· ${c.code}</span></div></div>
+        <div class="rv-row"><div class="rv-k">Semestre · Professor</div><div class="rv-v">${d.sem} <span class="muted">·</span> ${d.prof?esc(d.prof):'<span class="muted">Professor não informado</span>'}</div></div>
+        <div class="rv-row"><div class="rv-k">Dificuldade</div><div class="rv-v">${pips(d.d)}<span class="big">${d.d}</span> <span class="muted">/ 5 · ${DIFF[d.d]}</span></div></div>
+        <div class="rv-row"><div class="rv-k">Cobrança do professor</div><div class="rv-v">${pips(d.c)}<span class="big">${d.c}</span> <span class="muted">/ 5 · ${COB[d.c]}</span></div></div>
+        <div class="rv-row"><div class="rv-k">Comentário</div><div class="rv-v">${d.t.trim()?`<div class="quote">${esc(d.t.trim())}</div>`:'<span class="muted">Sem comentário.</span>'}</div></div>
+      </div>
+    </div>
+  </main>
+  <div class="actionbar"><div class="actionbar-in">
+    <button class="btn btn-secondary" data-act="back-edit" ${S.sending?'disabled':''}>${ic('arrowL')} Voltar e editar</button>
+    <span class="status" id="send-status" aria-live="polite">${S.sending?'Enviando sua avaliação…':''}</span>
+    <div class="right"><button class="btn btn-primary" data-act="confirm" id="btn-confirmar" ${S.sending?'disabled':''}>${S.sending?'<span class="spinner"></span> Enviando…':`${ic('send')} Confirmar envio`}</button></div>
+  </div></div>`;
+}
+function errorBanner(){
+  return `<div class="notice err" role="alert">${ic('alert')}<div class="grow"><b>Não foi possível enviar sua avaliação.</b> A conexão com o servidor falhou. Suas respostas continuam aqui, nada foi perdido.</div><button class="btn btn-secondary btn-sm" data-act="confirm">${ic('refresh')} Tentar novamente</button></div>`;
+}
+
+/* ---------------- T6 · confirmação ---------------- */
+function viewDone(code){
+  const c = course(code);
+  if (!c) return viewNotFound();
+  const r = S.lastDone && S.lastDone.code===code ? S.lastDone : { d:5, c:4, sem:'2026.1' };
+  return header('aval') + subbar([['Início','#/'],['Avaliações','#/avaliacoes'],[c.name,'#/avaliacoes/'+c.code],['Concluído','#']]) + `
+  <main id="main" class="page">
+    <div style="display:flex;justify-content:center">${stepsHTML(3)}</div>
+    <div class="done" role="status">
+      <div class="check">${ic('check')}</div>
+      <h1>Avaliação concluída!</h1>
+      <p>Obrigado! Sua avaliação de <b>${esc(c.name)}</b> foi registrada de forma anônima e já aparece para os próximos alunos.</p>
+      <div class="summary"><span class="chip">Dificuldade ${r.d} · ${DIFF[r.d]}</span><span class="chip">Cobrança ${r.c} · ${COB[r.c]}</span><span class="chip">${r.sem}</span><span class="chip acc">${ic('lock','style="width:12px;height:12px"')} Anônima</span></div>
+      <div class="btns">
+        <button class="btn btn-primary" data-go="#/avaliacoes/${c.code}" id="btn-ver-aval">${ic('eye')} Ver avaliações de ${esc(c.name)}</button>
+        <button class="btn btn-secondary" data-go="#/avaliacoes">${ic('star')} Avaliar outra disciplina</button>
+      </div>
+      <p style="margin-top:18px"><button class="link" data-go="#/">Voltar ao início</button></p>
+    </div>
+  </main>`;
+}
+
+function viewNotFound(){
+  return header('aval') + `<main class="page"><div class="empty">${ic('alert')}<h4>Disciplina não encontrada</h4><button class="btn btn-secondary btn-sm" data-go="#/avaliacoes">Voltar às avaliações</button></div></main>`;
+}
+
+/* ---------------- diálogo de descarte ---------------- */
+let pendingTarget = null;
+function openDiscard(target){
+  pendingTarget = target || S.returnTo || '#/avaliacoes';
+  const prev = document.activeElement;
+  $('#modal-root').innerHTML = `<div class="overlay" data-act="discard-cancel">
+    <div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dlg-t" aria-describedby="dlg-d">
+      <div class="d-ic">${ic('trash')}</div>
+      <h2 id="dlg-t">Descartar avaliação?</h2>
+      <p id="dlg-d">Seu rascunho será perdido. Nada foi enviado até agora.</p>
+      <div class="btns">
+        <button class="btn btn-secondary" data-act="discard-cancel" id="dlg-cancel">Continuar avaliando</button>
+        <button class="btn btn-danger" data-act="discard-ok">${ic('trash')} Descartar</button>
+      </div>
+    </div></div>`;
+  $('#dlg-cancel').focus();
+  openDiscard.prev = prev;
+}
+function closeDialog(){ $('#modal-root').innerHTML=''; openDiscard.prev && openDiscard.prev.focus && openDiscard.prev.focus(); }
+
+/* ---------------- envio ---------------- */
+function submit(){
+  if (S.sending) return;
+  const d = S.draft; const code = d.code;
+  S.sending = true; S.sendError = false; render();
+  setTimeout(()=>{
+    S.sending = false;
+    if (S.simulateError && S.failOnce[code]){
+      S.failOnce[code] = false;
+      S.sendError = true; render();
+      const b = $('#send-error .btn'); b && b.focus();
+      return;
+    }
+    const c = course(code);
+    c.diff[d.d-1]++; c.cob[d.c-1]++;
+    c.cmts.unshift({ sem:d.sem, prof:d.prof, d:d.d, c:d.c, t:d.t.trim() });
+    // índices de “meus” comentários deslocam
+    Object.keys(S.mine).forEach(k=>{ if(k===code) S.mine[k]++; });
+    S.mine[code] = 0;
+    S.lastDone = { code, d:d.d, c:d.c, sem:d.sem };
+    S.draft = null; S.sendError = false;
+    go('#/avaliar/'+code+'/concluido');
+  }, 1400);
+}
+
+/* ---------------- render + eventos ---------------- */
+let lastHash = location.hash || '#/';
+function render(){
+  const { parts, params } = parseRoute();
+  let html;
+  if (!parts.length) html = viewHome();
+  else if (parts[0]==='avaliacoes') html = viewSearch(parts[1] && course(parts[1]) ? parts[1] : null);
+  else if (parts[0]==='avaliar' && parts[2]==='revisao') html = viewReview(parts[1], params);
+  else if (parts[0]==='avaliar' && parts[2]==='concluido') html = viewDone(parts[1]);
+  else if (parts[0]==='avaliar') html = viewForm(parts[1], params);
+  else html = viewHome();
+  $('#app').innerHTML = html;
+  document.title = titleFor(parts);
+  if (params.get('dialogo')==='descartar') openDiscard();
+  bindInputs();
+  if (parts[0]==='avaliacoes' && !parts[1] && $('#q')) $('#q').focus();
+}
+function titleFor(p){
+  const c = p[1] && course(p[1]);
+  if (!p.length) return 'No Fluxo UnB';
+  if (p[0]==='avaliacoes') return (c?c.name+' · ':'') + 'Avaliações · No Fluxo UnB';
+  if (p[2]==='revisao') return 'Revisar avaliação · No Fluxo UnB';
+  if (p[2]==='concluido') return 'Avaliação concluída · No Fluxo UnB';
+  return 'Avaliar ' + (c?c.name:'') + ' · No Fluxo UnB';
+}
+
+function bindInputs(){
+  const q = $('#q');
+  if (q){
+    q.addEventListener('input', e => {
+      S.search.q = e.target.value;
+      refreshResults();
+    });
+    q.addEventListener('keydown', e => { if (e.key==='Escape' && q.value){ S.search.q=''; q.value=''; refreshResults(); } });
+  }
+  const fd = $('#f-dept');
+  if (fd) fd.addEventListener('change', e => { S.search.dept = e.target.value; if (S.search.prof && !allProfs(S.search.dept).includes(S.search.prof)) S.search.prof=''; render(); });
+  const fp = $('#f-prof');
+  if (fp) fp.addEventListener('change', e => { S.search.prof = e.target.value; refreshResults(); });
+
+  const t = $('#f-t');
+  if (t) t.addEventListener('input', e => {
+    S.draft.t = e.target.value;
+    const n = e.target.value.length, el = $('#count');
+    el.textContent = `${n}/500 caracteres`;
+    el.className = 'n ' + (n>=500?'max':n>=450?'warn':'');
+  });
+  const sem = $('#f-sem'); if (sem) sem.addEventListener('change', e => S.draft.sem = e.target.value);
+  const pf = $('#f-p'); if (pf) pf.addEventListener('change', e => S.draft.prof = e.target.value);
+}
+function refreshResults(){
+  const { parts } = parseRoute();
+  const r = $('#results'); if (r) r.innerHTML = resultsHTML(parts[1]||null);
+  const q = $('#q'); const wrap = q && q.parentElement;
+  if (wrap){
+    const x = wrap.querySelector('.clear-x');
+    if (S.search.q && !x) wrap.insertAdjacentHTML('beforeend', `<button class="clear-x" data-act="clear-q" aria-label="Limpar busca">${ic('x')}</button>`);
+    if (!S.search.q && x) x.remove();
+  }
+}
+
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-go],[data-act],[data-avaliar],[data-scale],[data-oos]');
+  if (!el) return;
+  if (el.dataset.oos){ e.preventDefault(); toast(`“${el.dataset.oos}” não faz parte deste protótipo. Use <b>Avaliações</b>.`); return; }
+  if (el.dataset.go){ e.preventDefault(); if (el.dataset.go !== '#') go(el.dataset.go); return; }
+  if (el.dataset.avaliar){
+    e.preventDefault();
+    S.returnTo = el.dataset.from || '#/avaliacoes';
+    if (S.draft && S.draft.code !== el.dataset.avaliar && isDirty()){ openDiscard('#/avaliar/'+el.dataset.avaliar); return; }
+    go('#/avaliar/'+el.dataset.avaliar); return;
+  }
+  if (el.dataset.scale){
+    const k = el.dataset.scale, v = +el.dataset.v;
+    S.draft[k] = v;
+    const wrap = el.closest('.q');
+    const labels = k==='d'?DIFF:COB;
+    const html = scaleHTML(k, labels, v, '');
+    const tmp = document.createElement('div'); tmp.innerHTML = html;
+    // substitui escala, extremos e mensagem
+    const sc = wrap.querySelector('.scale'); const ends = wrap.querySelector('.scale-ends'); const msg = ends.nextElementSibling;
+    sc.replaceWith(tmp.children[0]); ends.replaceWith(tmp.children[0]); msg.replaceWith(tmp.children[0]);
+    wrap.querySelector(`[data-v="${v}"]`).focus();
+    return;
+  }
+  const act = el.dataset.act;
+  if (act==='skip'){ e.preventDefault(); const m=$('#main'); if(m){ m.setAttribute('tabindex','-1'); m.focus(); } return; }
+  if (act==='a11y'){ $('#a11y-menu') ? closeA11y() : openA11y(); return; }
+  if (act==='theme'){
+    P.theme = P.theme==='dark' ? 'light' : 'dark'; savePrefs(); applyPrefs(); refreshHeaderButtons();
+    $('#theme-btn').focus(); toast(P.theme==='dark'?'Tema escuro ativado.':'Tema claro ativado.', P.theme==='dark'?'moon':'sun'); return;
+  }
+  if (act==='pref'){
+    const k = el.dataset.k; P[k] = !P[k]; savePrefs(); applyPrefs();
+    el.setAttribute('aria-checked', String(P[k]));
+    const r = $('#a11y-menu .reset'); if (r) r.setAttribute('aria-disabled', String(!anyA11y()));
+    refreshHeaderButtons(); return;
+  }
+  if (act==='a11y-reset'){
+    if (!anyA11y()) return;
+    A11Y_OPTS.forEach(o => P[o.k] = false); savePrefs(); applyPrefs(); refreshHeaderButtons();
+    const idx = A11Y_OPTS.length; openA11y(idx); toast('Preferências de acessibilidade restauradas.','reset'); return;
+  }
+  if (act==='suggest'){ S.search.q = el.dataset.q; const q=$('#q'); if(q){ q.value = el.dataset.q; q.focus(); } refreshResults(); return; }
+  if (act==='clear-q'){ S.search.q=''; const q=$('#q'); if(q){q.value='';q.focus();} refreshResults(); }
+  if (act==='clear-all'){ S.search={q:'',dept:'',prof:''}; render(); $('#q') && $('#q').focus(); }
+  if (act==='discard'){
+    if (isDirty()) openDiscard(S.returnTo);
+    else { S.draft=null; go(S.returnTo); }
+  }
+  if (act==='discard-cancel'){ if (el.classList.contains('overlay') && e.target!==el) return; closeDialog(); }
+  if (act==='discard-ok'){
+    const target = pendingTarget || S.returnTo; S.draft = null; S.sendError=false;
+    $('#modal-root').innerHTML=''; skipGuard = true; go(target); toast('Avaliação descartada. Nada foi enviado.', 'trash');
+  }
+  if (act==='to-review'){
+    const d = S.draft;
+    if (!d.d || !d.c){
+      d.showErrors = true; render();
+      const first = !d.d ? $('#scale-d') : $('#scale-c');
+      first.scrollIntoView({behavior: prefersReducedMotion() ? 'auto' : 'smooth', block:'center'});
+      first.querySelector('button').focus({preventScroll:true});
+      return;
+    }
+    d.showErrors = false; go('#/avaliar/'+d.code+'/revisao');
+  }
+  if (act==='back-edit'){ S.sendError=false; go('#/avaliar/'+S.draft.code); }
+  if (act==='confirm') submit();
+});
+
+// teclado nas escalas (setas) + Esc fecha diálogo
+// fecha o menu de acessibilidade ao clicar fora
+document.addEventListener('mousedown', e => { if ($('#a11y-menu') && !e.target.closest('#a11y-menu,#a11y-btn')) closeA11y(false); });
+
+document.addEventListener('keydown', e => {
+  if (e.key==='Escape' && $('#modal-root').innerHTML){ closeDialog(); return; }
+  const menu = $('#a11y-menu');
+  if (menu){
+    const items = [...menu.querySelectorAll('[role^="menuitem"]')];
+    const i = items.indexOf(document.activeElement);
+    if (e.key==='Escape'){ e.preventDefault(); closeA11y(); return; }
+    if (e.key==='ArrowDown'){ e.preventDefault(); items[(i+1)%items.length].focus(); return; }
+    if (e.key==='ArrowUp'){ e.preventDefault(); items[(i-1+items.length)%items.length].focus(); return; }
+    if (e.key==='Home'){ e.preventDefault(); items[0].focus(); return; }
+    if (e.key==='End'){ e.preventDefault(); items[items.length-1].focus(); return; }
+    if (e.key==='Tab'){ closeA11y(false); }
+  }
+  if (e.target.id==='a11y-btn' && (e.key==='ArrowDown')){ e.preventDefault(); openA11y(); return; }
+  const b = e.target.closest && e.target.closest('[data-scale]');
+  if (b && ['ArrowRight','ArrowLeft','ArrowUp','ArrowDown'].includes(e.key)){
+    e.preventDefault();
+    const v = +b.dataset.v + (e.key==='ArrowRight'||e.key==='ArrowDown' ? 1 : -1);
+    const nb = b.parentElement.querySelector(`[data-v="${Math.min(5,Math.max(1,v))}"]`);
+    nb && nb.click();
+  }
+  if (e.shiftKey && (e.key==='F' || e.key==='f') && !/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){ toggleFac(); }
+});
+
+// protege o rascunho ao sair por navegação (link, voltar do navegador)
+let skipGuard = false;
+window.addEventListener('hashchange', () => {
+  const next = location.hash || '#/';
+  // só chega aqui por botão Voltar/Avançar do navegador ou URL digitada
+  const leavingDraft = leavesDraft(lastHash, next);
+  skipGuard = false;
+  if (leavingDraft){
+    history.replaceState(null, '', lastHash);
+    openDiscard(next);
+    return;
+  }
+  lastHash = next;
+  if (!next.includes('/revisao')) { S.sending=false; }
+  render();
+  window.scrollTo(0,0);
+  const m = $('#main'); if (m) m.setAttribute('tabindex','-1');
+});
+
+/* ---------------- painel do facilitador (Shift+F) ---------------- */
+function toggleFac(){
+  const root = $('#fac-root');
+  if (root.innerHTML){ root.innerHTML=''; return; }
+  root.innerHTML = `<div class="fac" role="dialog" aria-label="Modo facilitador">
+    <h4>Modo facilitador</h4><p>Só para o avaliador. Shift+F fecha.</p>
+    <label><input type="checkbox" id="fac-err" ${S.simulateError?'checked':''}> Erro no 1º envio de Banco de Dados (Tarefa 2)</label>
+    <div class="grid">
+      <button class="btn btn-secondary" id="fac-reset">Reiniciar tudo</button>
+      <button class="btn btn-secondary" data-go="#/">Tela inicial</button>
+      <button class="btn btn-secondary" id="fac-t3">Tarefa 3 (ED)</button>
+      <button class="btn btn-secondary" data-go="#/avaliacoes">Avaliações</button>
+    </div></div>`;
+  $('#fac-err').onchange = e => { S.simulateError = e.target.checked; S.failOnce.CIC0097 = e.target.checked; };
+  $('#fac-reset').onclick = () => { S = freshState(); P = { ...DEFAULT_PREFS }; savePrefs(); applyPrefs(); skipGuard = true; toggleFac(); go('#/'); toast('Protótipo reiniciado para o próximo participante.','refresh'); };
+  $('#fac-t3').onclick = () => { S.returnTo='#/avaliacoes'; S.draft={code:'CIC0090',prof:'',sem:'2026.1',d:4,c:null,t:'Trabalhos semanais em C',showErrors:false}; skipGuard=true; toggleFac(); go('#/avaliar/CIC0090'); };
+}
+
+render();
+</script>
+</body>
+</html>
