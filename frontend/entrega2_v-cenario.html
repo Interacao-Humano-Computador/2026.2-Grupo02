@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Cenário da Avaliação de Disciplinas | Entrega 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+        .e8-res { font-weight: 700; white-space: nowrap; }
+        .e8-c { color: #4ade80; }
+        .e8-nc { color: #f87171; }
+        .e8-na { color: #a1a1aa; }
+        .e8-pend { color: #fbbf24; font-weight: 600; }
+        .e8-q { color: #d4d4d8; }
+        body.alto-contraste .e8-c { color: #065f46 !important; }
+        body.alto-contraste .e8-nc { color: #991b1b !important; }
+        body.alto-contraste .e8-na { color: #3f3f46 !important; }
+        body.alto-contraste .e8-pend { color: #92400e !important; }
+        body.alto-contraste .e8-q { color: #18181b !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+
+    <style>
+        .e1-hm td.hm { font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center; color: #fafafa; }
+        .e1-hm td.hm-7 { background: rgba(168, 85, 247, 0.85); }
+        .e1-hm td.hm-6 { background: rgba(168, 85, 247, 0.62); }
+        .e1-hm td.hm-5 { background: rgba(168, 85, 247, 0.42); }
+        .e1-hm td.hm-4 { background: rgba(168, 85, 247, 0.26); }
+        .e1-hm td.hm-3 { background: rgba(168, 85, 247, 0.14); }
+        .e1-hm td.hm-2 { background: rgba(168, 85, 247, 0.06); color: #a1a1aa; }
+        .e1-legenda { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: #a1a1aa; font-size: 0.85rem; margin: -1.5rem 0 2.5rem; }
+        .e1-legenda span { display: inline-block; min-width: 2.2rem; text-align: center; padding: 0.2rem 0.4rem; border-radius: 4px; color: #fafafa; font-family: 'JetBrains Mono', monospace; }
+        .e1-team { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .e1-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1rem; text-align: center; background: rgba(9, 9, 11, 0.5); }
+        .e1-card img, .e1-card .e1-ini { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.75rem; display: block; border: 2px solid rgba(168, 85, 247, 0.5); }
+        .e1-card .e1-ini { display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: #d8b4fe; background: rgba(168, 85, 247, 0.12); }
+        .e1-card h4 { margin: 0 0 0.35rem; color: #fafafa; font-size: 1rem; }
+        .e1-card p { margin: 0; color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; }
+        .e1-ativo { color: #4ade80 !important; font-weight: 600; }
+        .e1-inativo { color: #a1a1aa !important; }
+        .e1-sim { color: #4ade80; font-weight: 700; }
+        .e1-nao { color: #f87171; font-weight: 700; }
+        .e1-inc { color: #fbbf24; font-weight: 700; }
+        .e1-shot img { border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .table-standard td { vertical-align: top; }
+        .lv-lista { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .lv-item { border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(9, 9, 11, 0.6); }
+        .lv-item[open] { border-color: rgba(168, 85, 247, 0.5); }
+        .lv-item summary { cursor: pointer; padding: 1rem 1.25rem; display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 0.35rem 1rem; align-items: start; list-style: none; }
+        .lv-item summary::-webkit-details-marker { display: none; }
+        .lv-num::before { content: "▸ "; color: #a855f7; }
+        .lv-item[open] .lv-num::before { content: "▾ "; }
+        .lv-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #d8b4fe; }
+        .lv-q { color: #fafafa; line-height: 1.6; }
+        .lv-r { white-space: nowrap; }
+        .lv-ev { grid-column: 2 / 4; color: #a1a1aa; font-size: 0.92rem; line-height: 1.6; }
+        .lv-body { padding: 0 1.25rem 1.25rem 7.75rem; color: #e4e4e7; font-size: 0.95rem; line-height: 1.7; }
+        .lv-fotos { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.75rem; }
+        .lv-foto { margin: 0; }
+        .lv-foto-livro { max-width: 620px; flex: 1 1 100%; }
+        .lv-foto-fagan { max-width: 300px; }
+        .lv-pdf { margin-top: 0.75rem; }
+        .lv-foto img { width: 100%; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: block; }
+        .lv-foto figcaption { color: #a1a1aa; font-size: 0.85rem; text-align: center; margin-top: 0.3rem; }
+        @media (max-width: 700px) { .lv-item summary { grid-template-columns: 1fr; } .lv-ev { grid-column: 1; } .lv-body { padding-left: 1.25rem; } }
+        body.alto-contraste .lv-item { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .lv-q, body.alto-contraste .lv-body, body.alto-contraste .lv-ev, body.alto-contraste .lv-num { color: #000000 !important; }
+
+        body.alto-contraste .e1-hm td.hm { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .e1-hm td.hm-7 { background: #6b21a8 !important; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+        body.alto-contraste .e1-hm td.hm-6 { background: #a855f7 !important; }
+        body.alto-contraste .e1-hm td.hm-5 { background: #d8b4fe !important; }
+        body.alto-contraste .e1-hm td.hm-4 { background: #e9d5ff !important; }
+        body.alto-contraste .e1-hm td.hm-3, body.alto-contraste .e1-hm td.hm-2 { background: #ffffff !important; }
+        body.alto-contraste .e1-card { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .e1-card h4, body.alto-contraste .e1-card p { color: #000000 !important; }
+        body.alto-contraste .e1-card .e1-ini { color: #000000 !important; background: #e9d5ff !important; }
+        body.alto-contraste .e1-sim { color: #065f46 !important; }
+        body.alto-contraste .e1-nao { color: #991b1b !important; }
+        body.alto-contraste .e1-inc { color: #92400e !important; }
+        body.alto-contraste .e1-legenda span { color: #000000 !important; border: 1px solid #000000; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Documento do grupo</li>
+                        <li><a href="entrega2.html">Visão geral</a></li>
+                        <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega2_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
+                        <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
+                        <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
+                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
+                        <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
+                        <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
+                        <li><a href="entrega2_referencias.html">10. Referências</a></li>
+                        <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
+                        <li><a href="entrega2_lv-coleta.html">Lista de verificação — Coleta de dados</a></li>
+                        <li><a href="entrega2_lv-perfil.html">Lista de verificação — Perfil do usuário</a></li>
+                        <li><a href="entrega2_lv-personas.html">Lista de verificação — Personas e elenco de personas</a></li>
+                        <li><a href="entrega2_lv-cenarios.html">Lista de verificação — Cenários</a></li>
+                        <li><a href="entrega2_lv-hta.html">Lista de verificação — HTA</a></li>
+                        <li><a href="entrega2_lv-ctt.html">Lista de verificação — CTT</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_atributos.html">Atributos dos perfis de usuário</a></li>
+                        <li class="doc-stagenav-group">Partes individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega2_v-visao-geral.html">1. Visão geral e planejamento</a></li>
+                                <li><a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a></li>
+                                <li><a href="entrega2_v-perfil.html">3. Perfil de usuário</a></li>
+                                <li><a href="entrega2_v-persona.html">4. Persona Talita Farias</a></li>
+                                <li><a href="entrega2_v-cenario.html" class="active" aria-current="page">5. Cenário da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-verificacao.html">8. Verificação com as listas</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a> › Parte individual de Victor Andreozzi de La Rocque Couto</p>
+            <h1 id="v2-topo" class="doc-title doc-page-title">5. Cenário da Avaliação de Disciplinas</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto · <strong>Revisor:</strong> Felipe Lopes Pedroza</p>
+                <p><strong>Entrega:</strong> 2, Perfil do Usuário, Personas e Análise de Tarefas (parte individual, feita em 27/11/2026 a partir dos artefatos que Victor elaborou na Entrega 2 e na <a href="entrega5.html">Entrega 5</a>) · <strong>Funcionalidade de Victor no projeto:</strong> Avaliação de Disciplinas</p>
+                <p><strong>Outros artefatos desta parte:</strong> <a href="entrega2_v-visao-geral.html">1. Visão geral e planejamento</a> · <a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a> · <a href="entrega2_v-perfil.html">3. Perfil de usuário</a> · <a href="entrega2_v-persona.html">4. Persona Talita Farias</a> · <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a> · <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a> · <a href="entrega2_v-verificacao.html">8. Verificação com as listas</a></p>
+            </div>
+            <h3 class="doc-subsection" id="v2-intro">1. Introdução</h3>
+            <p class="doc-text">Cenário é “uma história sobre pessoas realizando uma atividade”, uma narrativa concreta e rica em detalhes de contexto (Barbosa e Silva (2010, p. 183). O livro lista os elementos de um cenário (ambiente, atores, objetivos, planejamento, ações, eventos e avaliação) e diz que, quando há personas, os atores são as próprias personas (p. 183–184), como mostram a <a href="#fig-10">Figura 10</a> e a <a href="#fig-11">Figura 11</a>.</p>
+            <p class="doc-text">Na versão de setembro, o <a href="entrega2_cenarios.html">Cenário 6</a> da Talita tratava da mudança de curso. Como a funcionalidade de Victor passou a ser a Avaliação de Disciplinas, esta página traz dois cenários novos da Talita. O <a href="#v2-6a">Cenário 6A</a> é um cenário de problema, que conta como ela escolhe disciplinas hoje, sem a funcionalidade. O <a href="#v2-6b">Cenário 6B</a> é um cenário de interação com o NoFluxo UnB e inclui uma exceção (falha no envio). Os dois corrigem a <a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf#page=2" target="_blank" rel="noopener">DI-03</a> da <a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf" target="_blank" rel="noopener">inspeção de Felipe</a>: têm ambiente (quando e onde) e terminam com a avaliação da persona.</p>
+            <figure class="doc-figure lv-foto" id="fig-10">
+                <figcaption>Figura 10: Definição de cenário e enredo</figcaption>
+                <img src="img/entrega2/v-livro-p183-cenarios.jpg" alt="Página 183 do livro de Barbosa e Silva, início da seção 6.3 Cenários" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 183, Capítulo 6. Organização do Espaço de Problema, seção 6.3.</p>
+            </figure>
+            <figure class="doc-figure lv-foto" id="fig-11">
+                <figcaption>Figura 11: Elementos de um cenário e atores como personas</figcaption>
+                <img src="img/entrega2/v-livro-p184-cenarios-elementos.jpg" alt="Página 184 do livro de Barbosa e Silva, com os elementos objetivos, planejamento, ações, eventos e avaliação, e a regra de que os atores são as personas" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 184, Capítulo 6. Organização do Espaço de Problema, seção 6.3.</p>
+            </figure>
+            <h3 class="doc-subsection" id="v2-6a">2. Cenário 6A: “Ninguém sabe como o professor cobra”</h3>
+            <p class="doc-text"><strong>Tipo:</strong> cenário de problema (como a atividade acontece sem a funcionalidade). <strong>Atores:</strong> <a href="entrega2_v-persona.html">Talita Farias</a> (persona) e colegas do grupo de mensagens do curso. <strong>Situação inicial:</strong> semana de matrícula do 6º semestre, com o estágio já marcado à tarde. <strong>Cenário relacionado:</strong> 6B (mesmo objetivo, com a funcionalidade).</p>
+            <p class="doc-text">Numa segunda-feira à noite de julho, na semana de matrícula, Talita está no quarto, com o notebook aberto no SIGAA e o celular na mão. Ela precisa escolher entre duas optativas que cabem no horário do estágio, Política Externa Brasileira e Economia Política Internacional, e quer evitar outro semestre como o anterior, quando juntou duas disciplinas pesadas. Decide perguntar no grupo do curso. Escreve: “Alguém fez EPI? Como o professor cobra?”. Em vinte minutos chegam três respostas: uma diz que é tranquila, outra diz que “depende de quem dá” e a terceira é um áudio de dois minutos sobre outro professor, que deu a disciplina no ano anterior. Talita procura conversas antigas no grupo, mas as mensagens se perderam no meio de avisos. Às 23h, escolhe Política Externa Brasileira mais pelo horário do que pela informação. Fecha o notebook frustrada: <em>“Se eu soubesse como cada professor cobra, não ia escolher no escuro. E eu mesma podia ter contado como foi Introdução à Economia”.</em></p>
+            <h3 class="doc-subsection" id="v2-6b">3. Cenário 6B: “Avaliar antes de esquecer”</h3>
+            <p class="doc-text"><strong>Tipo:</strong> cenário de interação com o NoFluxo UnB. <strong>Atores:</strong> <a href="entrega2_v-persona.html">Talita Farias</a> (persona) e o NoFluxo UnB. <strong>Situação inicial:</strong> último dia de aulas do semestre, com quatro disciplinas concluídas. <strong>Cenário relacionado:</strong> 6A (o problema que este cenário resolve).</p>
+            <p class="doc-text">Na sexta-feira, último dia de aulas de dezembro, Talita está no ônibus de volta para Taguatinga, às 18h, com o celular. Lembra da semana de matrícula e decide avaliar as disciplinas enquanto ainda tem tudo fresco na memória. Abre o NoFluxo UnB, toca em “Avaliar disciplina” e digita “politica externa” na busca, sem acento. A lista mostra Política Externa Brasileira com as médias dos colegas: dificuldade 3,1 e cobrança 3,8, de 14 avaliações. Ela toca em “Avaliar”. No topo do formulário, o aviso diz que a avaliação é anônima e que o login serve só para evitar avaliações duplicadas. Primeiro, Talita dá nota 4 (“Difícil”) para a dificuldade da disciplina. Depois avalia a cobrança do professor: toca na dica “O que é cobrança?” e lê que a nota é sobre o quanto o professor exige dos alunos (volume de listas e trabalhos, rigor na correção e nível das provas), e não uma nota para o professor. Como o professor pedia leitura toda semana e corrigia os seminários com rigor, ela dá nota 5 (“Muito alta”) para a cobrança. Escolhe o semestre 2026.2 e o professor e escreve: “Muita leitura toda semana; os seminários contam mais que a prova”. Toca em “Revisar e enviar”, confere o resumo e toca em “Confirmar envio”.</p>
+            <p class="doc-text">Nesse momento o ônibus entra num trecho sem sinal. Aparece “Enviando…” e, depois, a mensagem de que não foi possível enviar, com o botão “Tentar novamente”; o rascunho continua na tela. Dois minutos depois, com sinal, ela toca no botão e recebe “Avaliação concluída!”. Volta à lista para avaliar Introdução à Economia, mas vê o selo “Você já avaliou”: tinha feito isso no semestre anterior. Fecha o aplicativo satisfeita: <em>“Levou três minutos e nem perdi o que tinha escrito. Agora quem for pegar essa disciplina vai saber como é”.</em></p>
+            <h3 class="doc-subsection" id="v2-elementos">4. Elementos dos cenários</h3>
+            <p class="doc-text">A <a href="#tab-12">Tabela 12</a> identifica, nos dois cenários, os sete elementos do livro (p. 183–184).</p>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption><span id="tab-12"></span>Tabela 12: Elementos dos Cenários 6A e 6B</caption>
+                    <thead><tr><th>Elemento</th><th><a href="#v2-6a">Cenário 6A</a> (problema)</th><th><a href="#v2-6b">Cenário 6B</a> (interação)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Ambiente</td><td>Segunda-feira à noite, semana de matrícula, quarto de casa, notebook e celular</td><td>Sexta-feira, 18h, último dia de aulas, ônibus, celular com sinal instável</td></tr>
+                        <tr><td>Atores</td><td><a href="entrega2_v-persona.html">Talita Farias</a> e colegas do grupo de mensagens</td><td><a href="entrega2_v-persona.html">Talita Farias</a> e o NoFluxo UnB</td></tr>
+                        <tr><td>Objetivos</td><td>Escolher uma optativa sem juntar disciplinas difíceis</td><td>Avaliar as disciplinas cursadas para ajudar os próximos estudantes</td></tr>
+                        <tr><td>Planejamento</td><td>Decide perguntar no grupo do curso</td><td>Decide avaliar ainda no ônibus, enquanto lembra de tudo</td></tr>
+                        <tr><td>Ações</td><td>Pergunta no grupo, procura mensagens antigas, escolhe pelo horário</td><td>Busca a disciplina, dá a nota de dificuldade, consulta a dica e dá a nota de cobrança do professor, escreve o comentário, revisa e confirma; tenta de novo após a falha</td></tr>
+                        <tr><td>Eventos</td><td>Respostas soltas e contraditórias; mensagens antigas perdidas</td><td>Médias dos colegas na lista; falha de envio sem sinal; selo “Você já avaliou” em outra disciplina</td></tr>
+                        <tr><td>Avaliação</td><td>Frustração: escolheu “no escuro” e percebe que poderia ter ajudado outros</td><td>Satisfação: a avaliação foi rápida, o rascunho não se perdeu e a opinião vai ajudar os próximos</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <p class="doc-text">O <a href="#v2-6b">Cenário 6B</a> percorre os <a href="entrega2_v-hta.html#tab-13">planos 0, 1, 3 e 4</a> da HTA (<a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a>) e inclui a exceção prevista no <a href="entrega2_v-hta.html#tab-13">plano 4</a> (falha no envio). O descarte (<a href="entrega2_v-hta.html#tab-13">plano 5</a>) e a consulta às avaliações (<a href="entrega2_v-hta.html#tab-13">plano 2</a>) são variantes da mesma tarefa, cobertas pela HTA e pela CTT.</p>
+            <h3 class="doc-subsection" id="v2-referencias">5. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</li>
+                <li>GRUPO 02. <em>Entrega 2: Perfil do Usuário, Personas e Análise de Tarefas</em> (documento do grupo, versões 1.0 a 1.10). Universidade de Brasília, 2026. Disponível em: &lt;https://interacao-humano-computador.github.io/2026.2-Grupo02/entrega2.html&gt;.</li>
+                <li>PEDROZA, Felipe Lopes. <em>Inspeção dos artefatos de Victor Andreozzi de La Rocque Couto (Entregas 2 a 7)</em>. Universidade de Brasília, 2026. Disponível em: &lt;https://interacao-humano-computador.github.io/2026.2-Grupo02/docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf&gt;.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Parte individual da Entrega 2: Cenários 6A (problema) e 6B (interação) da Talita na Avaliação de Disciplinas, com os sete elementos (correção da DI-03)</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): leitura da transcrição automática do vídeo da sessão, contagem das menções, organização das páginas e das tabelas a partir dos artefatos de Victor na Entrega 2 e na Entrega 5 e captura das páginas do livro; a escolha da técnica, as decisões de projeto e as conclusões são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega2_v-persona.html"><span>← Anterior</span>4. Persona Talita Farias</a>
+                    <a class="next" href="entrega2_v-hta.html"><span>Próximo →</span>6. HTA da Avaliação de Disciplinas</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

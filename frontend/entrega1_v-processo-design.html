@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Processo de design | Entrega 1 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+        .e8-res { font-weight: 700; white-space: nowrap; }
+        .e8-c { color: #4ade80; }
+        .e8-nc { color: #f87171; }
+        .e8-na { color: #a1a1aa; }
+        .e8-pend { color: #fbbf24; font-weight: 600; }
+        .e8-q { color: #d4d4d8; }
+        body.alto-contraste .e8-c { color: #065f46 !important; }
+        body.alto-contraste .e8-nc { color: #991b1b !important; }
+        body.alto-contraste .e8-na { color: #3f3f46 !important; }
+        body.alto-contraste .e8-pend { color: #92400e !important; }
+        body.alto-contraste .e8-q { color: #18181b !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+
+    <style>
+        .e1-hm td.hm { font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center; color: #fafafa; }
+        .e1-hm td.hm-7 { background: rgba(168, 85, 247, 0.85); }
+        .e1-hm td.hm-6 { background: rgba(168, 85, 247, 0.62); }
+        .e1-hm td.hm-5 { background: rgba(168, 85, 247, 0.42); }
+        .e1-hm td.hm-4 { background: rgba(168, 85, 247, 0.26); }
+        .e1-hm td.hm-3 { background: rgba(168, 85, 247, 0.14); }
+        .e1-hm td.hm-2 { background: rgba(168, 85, 247, 0.06); color: #a1a1aa; }
+        .e1-legenda { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: #a1a1aa; font-size: 0.85rem; margin: -1.5rem 0 2.5rem; }
+        .e1-legenda span { display: inline-block; min-width: 2.2rem; text-align: center; padding: 0.2rem 0.4rem; border-radius: 4px; color: #fafafa; font-family: 'JetBrains Mono', monospace; }
+        .e1-team { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .e1-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1rem; text-align: center; background: rgba(9, 9, 11, 0.5); }
+        .e1-card img, .e1-card .e1-ini { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.75rem; display: block; border: 2px solid rgba(168, 85, 247, 0.5); }
+        .e1-card .e1-ini { display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: #d8b4fe; background: rgba(168, 85, 247, 0.12); }
+        .e1-card h4 { margin: 0 0 0.35rem; color: #fafafa; font-size: 1rem; }
+        .e1-card p { margin: 0; color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; }
+        .e1-ativo { color: #4ade80 !important; font-weight: 600; }
+        .e1-inativo { color: #a1a1aa !important; }
+        .e1-sim { color: #4ade80; font-weight: 700; }
+        .e1-nao { color: #f87171; font-weight: 700; }
+        .e1-inc { color: #fbbf24; font-weight: 700; }
+        .e1-shot img { border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .table-standard td { vertical-align: top; }
+        body.alto-contraste .e1-hm td.hm { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .e1-hm td.hm-7 { background: #6b21a8 !important; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+        body.alto-contraste .e1-hm td.hm-6 { background: #a855f7 !important; }
+        body.alto-contraste .e1-hm td.hm-5 { background: #d8b4fe !important; }
+        body.alto-contraste .e1-hm td.hm-4 { background: #e9d5ff !important; }
+        body.alto-contraste .e1-hm td.hm-3, body.alto-contraste .e1-hm td.hm-2 { background: #ffffff !important; }
+        body.alto-contraste .e1-card { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .e1-card h4, body.alto-contraste .e1-card p { color: #000000 !important; }
+        body.alto-contraste .e1-card .e1-ini { color: #000000 !important; background: #e9d5ff !important; }
+        body.alto-contraste .e1-sim { color: #065f46 !important; }
+        body.alto-contraste .e1-nao { color: #991b1b !important; }
+        body.alto-contraste .e1-inc { color: #92400e !important; }
+        body.alto-contraste .e1-legenda span { color: #000000 !important; border: 1px solid #000000; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 1 · Planejamento do Projeto</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Documento do grupo</li>
+                        <li><a href="entrega1.html">Visão geral</a></li>
+                        <li><a href="entrega1_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega1_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega1_equipe.html">2. Equipe</a></li>
+                        <li><a href="entrega1_heatmap.html">3. Heatmap de Disponibilidade dos Integrantes</a></li>
+                        <li><a href="entrega1_ferramentas.html">4. Ferramentas do Projeto</a></li>
+                        <li><a href="entrega1_design.html">5. Processo de Design Selecionado</a></li>
+                        <li><a href="entrega1_sites.html">6. Sites Avaliados e Site Selecionado</a></li>
+                        <li><a href="entrega1_cronograma.html">7. Cronograma Detalhado das Atividades</a></li>
+                        <li><a href="entrega1_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega1_referencias.html">Referências</a></li>
+                        <li class="doc-stagenav-group">Partes individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega1_v-planejamento.html">1. Planejamento do projeto</a></li>
+                                <li><a href="entrega1_v-equipe.html">2. Equipe</a></li>
+                                <li><a href="entrega1_v-heatmap.html">3. Heatmap de disponibilidade</a></li>
+                                <li><a href="entrega1_v-ferramentas.html">4. Ferramentas do projeto</a></li>
+                                <li><a href="entrega1_v-processo-design.html" class="active" aria-current="page">5. Processo de design</a></li>
+                                <li><a href="entrega1_v-sites.html">6. Sites avaliados e site selecionado</a></li>
+                                <li><a href="entrega1_v-cronograma.html">7. Cronograma das atividades</a></li>
+                                <li><a href="entrega1_v-verificacao.html">8. Verificação com as listas</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega1.html">Entrega 1</a> › Parte individual de Victor Andreozzi de La Rocque Couto</p>
+            <h1 id="v1-topo" class="doc-title doc-page-title">5. Processo de design</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto · <strong>Revisor:</strong> Felipe Lopes Pedroza</p>
+                <p><strong>Entrega:</strong> 1, Planejamento do Projeto (parte individual, feita em 27/11/2026 a partir dos artefatos que Victor elaborou em agosto e setembro de 2026) · <strong>Funcionalidade de Victor no projeto:</strong> Avaliação de Disciplinas</p>
+                <p><strong>Outros artefatos desta parte:</strong> <a href="entrega1_v-planejamento.html">1. Planejamento do projeto</a> · <a href="entrega1_v-equipe.html">2. Equipe</a> · <a href="entrega1_v-heatmap.html">3. Heatmap de disponibilidade</a> · <a href="entrega1_v-ferramentas.html">4. Ferramentas do projeto</a> · <a href="entrega1_v-sites.html">6. Sites avaliados e site selecionado</a> · <a href="entrega1_v-cronograma.html">7. Cronograma das atividades</a> · <a href="entrega1_v-verificacao.html">8. Verificação com as listas</a></p>
+            </div>
+            <h3 class="doc-subsection" id="v1-processo">1. Engenharia de Usabilidade de Nielsen</h3>
+            <p class="doc-text">O grupo adotou a Engenharia de Usabilidade de Nielsen como processo de design (<a href="entrega1_design.html">Entrega 1</a>). Nielsen a define como “um conjunto de atividades que devem ocorrer durante todo o ciclo de vida do produto” e propõe dez atividades (Barbosa e Silva, 2010, p. 104). A Figura 3 mostra o trecho do livro.</p>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 3: Engenharia de Usabilidade de Nielsen e as seis primeiras atividades</figcaption>
+                <img src="img/entrega1/v-livro-p104-engenharia-usabilidade.jpg" alt="Página 104 do livro de Barbosa e Silva, seção 4.3.2 Engenharia de Usabilidade de Nielsen, com a lista das atividades 1 a 6" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 104, Capítulo 4, Processos de Design de IHC, Seção 4.3.2 Engenharia de Usabilidade de Nielsen.</p>
+            </figure>
+            <h3 class="doc-subsection" id="v1-mapa">2. Atividades do processo nas entregas</h3>
+            <p class="doc-text">A Tabela 9 liga cada atividade às entregas do projeto e aos artefatos de Victor. Ela mostra que o processo escolhido na Entrega 1 foi o que o projeto seguiu até a Entrega 8.</p>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption>Tabela 9: Atividades da Engenharia de Usabilidade nas entregas e nos artefatos de Victor</caption>
+                    <thead><tr><th>Atividade (Barbosa e Silva, 2010, p. 104 e 105)</th><th>Entrega</th><th>Artefato de Victor</th></tr></thead>
+                    <tbody>
+                        <tr><td>1. Conheça seu usuário</td><td>Entrega 2</td><td>Persona Talita, Cenário 6 e análise das tarefas TAR-09 e TAR-10 (<a href="entrega2_personas.html">personas</a>, <a href="entrega2_cenarios.html">cenários</a>, <a href="entrega2_tarefas.html">tarefas</a>)</td></tr>
+                        <tr><td>2. Realize uma análise competitiva</td><td>Entrega 1</td><td>Avaliação heurística dos sites candidatos (<a href="entrega1_v-sites.html">6. Sites avaliados e site selecionado</a>)</td></tr>
+                        <tr><td>3. Defina as metas de usabilidade</td><td>Entrega 3</td><td><a href="entrega3_metas.html">Metas de usabilidade</a> do grupo, revisadas por Victor</td></tr>
+                        <tr><td>4. Faça designs paralelos</td><td>Entregas 4 a 7</td><td>Cada integrante projetou uma funcionalidade; a de Victor é a Avaliação de Disciplinas (<a href="entrega4_planejamento-avaliacao-storyboard-victor.html">storyboard planejado</a>)</td></tr>
+                        <tr><td>5. Adote o design participativo</td><td>Entregas 5 e 6</td><td>Storyboard e protótipo de papel avaliados com estudantes (<a href="entrega5_relato-v-storyboard.html">storyboard</a>, <a href="entrega6_relato-v-prototipo-papel.html">protótipo de papel</a>)</td></tr>
+                        <tr><td>6. Faça o design coordenado da interface como um todo</td><td>Entrega 3</td><td><a href="entrega3_guia.html">Guia de estilo</a> do grupo</td></tr>
+                        <tr><td>7. Aplique diretrizes e análise heurística</td><td>Entregas 1, 3 e 8</td><td>Heurísticas de Nielsen nos sites (<a href="entrega1_v-sites.html">6. Sites avaliados e site selecionado</a>) e inspeção dos artefatos de Matheus (<a href="docs/Grupo2InspecaoArtefatosMatheusPorVictor.pdf" target="_blank" rel="noopener">PDF</a>)</td></tr>
+                        <tr><td>8. Faça protótipos</td><td>Entregas 6 e 7</td><td><a href="entrega7_relato-v-prototipo-alta-fidelidade.html">Protótipo de alta fidelidade</a> da Avaliação de Disciplinas</td></tr>
+                        <tr><td>9. Realize testes empíricos</td><td>Entrega 7</td><td><a href="entrega7_relato-v-alta-fidelidade.html">Relato do teste com usuários</a></td></tr>
+                        <tr><td>10. Pratique design iterativo</td><td>Entregas 6 a 8</td><td>Ajustes do protótipo depois de cada avaliação e correções depois da inspeção da Entrega 8</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <h3 class="doc-subsection" id="v1-competitiva">3. Análise competitiva e a escolha do site</h3>
+            <p class="doc-text">A análise competitiva “consiste em examinar produtos com funcionalidades semelhantes ou complementares” que, por já estarem prontos, “podem ser inspecionados e testados” (Barbosa e Silva, 2010, p. 105). É a atividade que liga o processo à escolha do site: Victor inspecionou os sites candidatos antes de confirmar o NoFluxo UnB (página 6). A Figura 4 mostra o trecho.</p>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 4: Atividades 7 a 10, estudo do usuário e análise competitiva</figcaption>
+                <img src="img/entrega1/v-livro-p105-analise-competitiva.jpg" alt="Página 105 do livro de Barbosa e Silva, com as atividades 7 a 10 de Nielsen e os parágrafos sobre conhecer o usuário e a análise competitiva" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 105, Capítulo 4, Processos de Design de IHC, Seção 4.3.2 Engenharia de Usabilidade de Nielsen.</p>
+            </figure>
+            <h3 class="doc-subsection" id="v1-referencias">4. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</li>
+                <li>GRUPO 02. <em>Entrega 1: Planejamento do Projeto</em> (documento do grupo, versões 1.0 a 1.3). Universidade de Brasília, 2026. Disponível em: &lt;https://interacao-humano-computador.github.io/2026.2-Grupo02/entrega1.html&gt;.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Parte individual da Entrega 1: processo de design (Engenharia de Usabilidade de Nielsen) ligado às entregas e aos artefatos de Victor, com fotos do livro</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): organização das páginas, redação das tabelas a partir dos artefatos de Victor na Entrega 1 (equipe, heatmap e cronograma), levantamento das datas no histórico do repositório e captura das telas dos sites; a escolha dos critérios, as notas e as conclusões são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega1_v-ferramentas.html"><span>← Anterior</span>4. Ferramentas do projeto</a>
+                    <a class="next" href="entrega1_v-sites.html"><span>Próximo →</span>6. Sites avaliados e site selecionado</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

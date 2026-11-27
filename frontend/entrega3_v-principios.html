@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Princípios gerais de projeto | Entrega 3 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+        .e8-res { font-weight: 700; white-space: nowrap; }
+        .e8-c { color: #4ade80; }
+        .e8-nc { color: #f87171; }
+        .e8-na { color: #a1a1aa; }
+        .e8-pend { color: #fbbf24; font-weight: 600; }
+        .e8-q { color: #d4d4d8; }
+        body.alto-contraste .e8-c { color: #065f46 !important; }
+        body.alto-contraste .e8-nc { color: #991b1b !important; }
+        body.alto-contraste .e8-na { color: #3f3f46 !important; }
+        body.alto-contraste .e8-pend { color: #92400e !important; }
+        body.alto-contraste .e8-q { color: #18181b !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+
+    <style>
+        .e1-hm td.hm { font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center; color: #fafafa; }
+        .e1-hm td.hm-7 { background: rgba(168, 85, 247, 0.85); }
+        .e1-hm td.hm-6 { background: rgba(168, 85, 247, 0.62); }
+        .e1-hm td.hm-5 { background: rgba(168, 85, 247, 0.42); }
+        .e1-hm td.hm-4 { background: rgba(168, 85, 247, 0.26); }
+        .e1-hm td.hm-3 { background: rgba(168, 85, 247, 0.14); }
+        .e1-hm td.hm-2 { background: rgba(168, 85, 247, 0.06); color: #a1a1aa; }
+        .e1-legenda { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: #a1a1aa; font-size: 0.85rem; margin: -1.5rem 0 2.5rem; }
+        .e1-legenda span { display: inline-block; min-width: 2.2rem; text-align: center; padding: 0.2rem 0.4rem; border-radius: 4px; color: #fafafa; font-family: 'JetBrains Mono', monospace; }
+        .e1-team { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .e1-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1rem; text-align: center; background: rgba(9, 9, 11, 0.5); }
+        .e1-card img, .e1-card .e1-ini { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.75rem; display: block; border: 2px solid rgba(168, 85, 247, 0.5); }
+        .e1-card .e1-ini { display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: #d8b4fe; background: rgba(168, 85, 247, 0.12); }
+        .e1-card h4 { margin: 0 0 0.35rem; color: #fafafa; font-size: 1rem; }
+        .e1-card p { margin: 0; color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; }
+        .e1-ativo { color: #4ade80 !important; font-weight: 600; }
+        .e1-inativo { color: #a1a1aa !important; }
+        .e1-sim { color: #4ade80; font-weight: 700; }
+        .e1-nao { color: #f87171; font-weight: 700; }
+        .e1-inc { color: #fbbf24; font-weight: 700; }
+        .e1-shot img { border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .table-standard td { vertical-align: top; }
+        .lv-lista { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .lv-item { border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(9, 9, 11, 0.6); }
+        .lv-item[open] { border-color: rgba(168, 85, 247, 0.5); }
+        .lv-item summary { cursor: pointer; padding: 1rem 1.25rem; display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 0.35rem 1rem; align-items: start; list-style: none; }
+        .lv-item summary::-webkit-details-marker { display: none; }
+        .lv-num::before { content: "▸ "; color: #a855f7; }
+        .lv-item[open] .lv-num::before { content: "▾ "; }
+        .lv-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #d8b4fe; }
+        .lv-q { color: #fafafa; line-height: 1.6; }
+        .lv-r { white-space: nowrap; }
+        .lv-ev { grid-column: 2 / 4; color: #a1a1aa; font-size: 0.92rem; line-height: 1.6; }
+        .lv-body { padding: 0 1.25rem 1.25rem 7.75rem; color: #e4e4e7; font-size: 0.95rem; line-height: 1.7; }
+        .lv-fotos { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.75rem; }
+        .lv-foto { margin: 0; }
+        .lv-foto-livro { max-width: 620px; flex: 1 1 100%; }
+        .lv-foto-fagan { max-width: 300px; }
+        .lv-pdf { margin-top: 0.75rem; }
+        .lv-foto img { width: 100%; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: block; }
+        .lv-foto figcaption { color: #a1a1aa; font-size: 0.85rem; text-align: center; margin-top: 0.3rem; }
+        @media (max-width: 700px) { .lv-item summary { grid-template-columns: 1fr; } .lv-ev { grid-column: 1; } .lv-body { padding-left: 1.25rem; } }
+        body.alto-contraste .lv-item { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .lv-q, body.alto-contraste .lv-body, body.alto-contraste .lv-ev, body.alto-contraste .lv-num { color: #000000 !important; }
+
+        body.alto-contraste .e1-hm td.hm { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .e1-hm td.hm-7 { background: #6b21a8 !important; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+        body.alto-contraste .e1-hm td.hm-6 { background: #a855f7 !important; }
+        body.alto-contraste .e1-hm td.hm-5 { background: #d8b4fe !important; }
+        body.alto-contraste .e1-hm td.hm-4 { background: #e9d5ff !important; }
+        body.alto-contraste .e1-hm td.hm-3, body.alto-contraste .e1-hm td.hm-2 { background: #ffffff !important; }
+        body.alto-contraste .e1-card { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .e1-card h4, body.alto-contraste .e1-card p { color: #000000 !important; }
+        body.alto-contraste .e1-card .e1-ini { color: #000000 !important; background: #e9d5ff !important; }
+        body.alto-contraste .e1-sim { color: #065f46 !important; }
+        body.alto-contraste .e1-nao { color: #991b1b !important; }
+        body.alto-contraste .e1-inc { color: #92400e !important; }
+        body.alto-contraste .e1-legenda span { color: #000000 !important; border: 1px solid #000000; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 3 · Princípios Gerais de Projeto, Metas de Usabilidade e Guia de Estilo</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Documento do grupo</li>
+                        <li><a href="entrega3.html">Visão geral</a></li>
+                        <li><a href="entrega3_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega3_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega3_principios.html">2. Princípios gerais de projeto</a></li>
+                        <li><a href="entrega3_plataforma.html">3. Características da plataforma</a></li>
+                        <li><a href="entrega3_metas.html">4. Metas de usabilidade</a></li>
+                        <li><a href="entrega3_guia.html">5. Guia de estilo</a></li>
+                        <li><a href="entrega3_questoes.html">6. Questões em aberto</a></li>
+                        <li><a href="entrega3_referencias.html">7. Referências</a></li>
+                        <li><a href="entrega3_lv-principios.html">Lista de verificação — Princípios gerais de projeto</a></li>
+                        <li><a href="entrega3_lv-plataforma.html">Lista de verificação — Características da plataforma</a></li>
+                        <li><a href="entrega3_lv-metas.html">Lista de verificação — Metas de usabilidade</a></li>
+                        <li><a href="entrega3_lv-guia.html">Lista de verificação — Guia de estilo</a></li>
+                        <li class="doc-stagenav-group">Partes individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega3_v-visao-geral.html">1. Visão geral e planejamento</a></li>
+                                <li><a href="entrega3_v-plataforma.html">2. Características da plataforma</a></li>
+                                <li><a href="entrega3_v-principios.html" class="active" aria-current="page">3. Princípios gerais de projeto</a></li>
+                                <li><a href="entrega3_v-metas.html">4. Metas de usabilidade</a></li>
+                                <li><a href="entrega3_v-guia.html">5. Guia de estilo da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega3_v-verificacao.html">6. Verificação com as listas</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega3.html">Entrega 3</a> › Parte individual de Victor Andreozzi de La Rocque Couto</p>
+            <h1 id="v3-topo" class="doc-title doc-page-title">3. Princípios gerais de projeto</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto · <strong>Revisor:</strong> Felipe Lopes Pedroza</p>
+                <p><strong>Entrega:</strong> 3, Princípios Gerais de Projeto, Metas de Usabilidade e Guia de Estilo (parte individual, feita em 27/11/2026 para a funcionalidade de Victor, a partir do que ele entregou nas Entregas 4 a 7) · <strong>Funcionalidade de Victor no projeto:</strong> Avaliação de Disciplinas</p>
+                <p><strong>Outros artefatos desta parte:</strong> <a href="entrega3_v-visao-geral.html">1. Visão geral e planejamento</a> · <a href="entrega3_v-plataforma.html">2. Características da plataforma</a> · <a href="entrega3_v-metas.html">4. Metas de usabilidade</a> · <a href="entrega3_v-guia.html">5. Guia de estilo da Avaliação de Disciplinas</a> · <a href="entrega3_v-verificacao.html">6. Verificação com as listas</a></p>
+            </div>
+            <h3 class="doc-subsection" id="v3-intro">1. Introdução</h3>
+            <p class="doc-text">O livro distingue três níveis de orientação: princípios são objetivos gerais e de alto nível, diretrizes são regras gerais observadas na prática e padrões são soluções para contextos bem delimitados (Barbosa e Silva (2010, p. 264). Os autores ressaltam que princípios e diretrizes não substituem a análise, o design e a avaliação, e que precisam ser escolhidos e adaptados à situação de design (p. 264). A Seção 8.2 reúne os princípios em nove tópicos (p. 265), como mostram as <a href="#fig-5">Figura 5</a> e <a href="#fig-6">Figura 6</a>.</p>
+            <figure class="doc-figure lv-foto" id="fig-5">
+                <figcaption>Figura 5: Princípios, diretrizes e padrões</figcaption>
+                <img src="img/entrega3/v-livro-p264.jpg" alt="Página 264 do livro de Barbosa e Silva com a distinção entre princípio, diretriz e padrão grifada" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 264, Capítulo 8. Princípios e Diretrizes para o Design de IHC, seção 8.1. Trechos grifados pelo autor.</p>
+            </figure>
+            <figure class="doc-figure lv-foto" id="fig-6">
+                <figcaption>Figura 6: Os tópicos dos princípios e diretrizes gerais</figcaption>
+                <img src="img/entrega3/v-livro-p265.jpg" alt="Página 265 do livro de Barbosa e Silva com os tópicos da seção 8.2 grifados" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 265, Capítulo 8. Princípios e Diretrizes para o Design de IHC, seção 8.2. Trechos grifados pelo autor.</p>
+            </figure>
+            <h3 class="doc-subsection" id="v3-principios">2. Princípios adotados na Avaliação de Disciplinas</h3>
+            <p class="doc-text">A <a href="#tab-5">Tabela 5</a> traz os nove tópicos do livro, que incluem os oito pedidos no plano de ensino (no plano, consistência e eficiência aparecem juntas). Para cada um, há a decisão de projeto tomada na Avaliação de Disciplinas, a origem que a motivou e onde ela está no <a href="prototipo-victor/index.html" target="_blank" rel="noopener">protótipo de alta fidelidade</a>. As decisões ficam registradas no guia de estilo de <a href="entrega3_v-guia.html">5. Guia de estilo da Avaliação de Disciplinas</a>.</p>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption><span id="tab-5"></span>Tabela 5: Princípios gerais de projeto, decisões e origem</caption>
+                    <thead><tr><th>Princípio (seção e página)</th><th>Decisão de projeto</th><th>Origem</th><th>No protótipo</th></tr></thead>
+                    <tbody>
+                        <tr><td>Correspondência com as expectativas dos usuários (8.2.1, p. 265)</td><td>Escalas rotuladas na língua do estudante (“Muito fácil” a “Muito difícil”; “Muito baixa” a “Muito alta”), em vez de estrelas; semestre no formato 2026.1 e códigos de disciplina da UnB; média e comentários como num aplicativo de notas de filmes</td><td>Brainstorming (“Letterboxd das disciplinas”); <a href="entrega6_relato-v-prototipo-papel.html#pp-01">PP-01</a></td><td>Formulário e lista de resultados</td></tr>
+                        <tr><td>Simplicidade nas estruturas das tarefas (8.2.2, p. 267)</td><td>Só duas notas obrigatórias; semestre, professor e comentário opcionais; avaliar direto da lista, sem passar pela página da disciplina</td><td><a href="entrega2_v-hta.html">HTA</a> (plano 3); <a href="entrega5_relato-v-tarefas.html#b-02">B-02</a></td><td>Botão “Avaliar” em cada resultado</td></tr>
+                        <tr><td>Controle e liberdade do usuário (8.2.3, p. 267)</td><td>“Descartar” sempre visível, com confirmação; “Voltar e editar” na revisão; saída pelo menu ou pelo Voltar do navegador pergunta antes de perder o rascunho</td><td><a href="entrega5_relato-v-tarefas.html#b-01">B-01</a>; <a href="entrega6_relato-v-prototipo-papel.html#pp-05">PP-05</a></td><td>Barra inferior e diálogo “Descartar avaliação?”</td></tr>
+                        <tr><td>Consistência e padronização (8.2.4, p. 270)</td><td>Mesmo cabeçalho, cores, tipografia e layout do site; botão principal sempre roxo e à direita; ação destrutiva sempre em vermelho</td><td>Guia do grupo; convenções do site</td><td>Todas as telas</td></tr>
+                        <tr><td>Eficiência do usuário (8.2.5, p. 271)</td><td>Busca por código ou por nome, sem acento e por parte do nome; filtros por departamento e professor; teclado nas escalas (setas)</td><td><a href="entrega5_relato-v-tarefas.html#b-05">B-05</a>; <a href="entrega7_relato-v-prototipo-alta-fidelidade.html#af-i7">AF-I7</a></td><td>Lista de disciplinas</td></tr>
+                        <tr><td>Antecipação (8.2.6, p. 272)</td><td>Médias visíveis já na lista e resumo das avaliações ao lado do formulário, para o estudante não ter de memorizar; sugestão “Você quis dizer…?” e “Buscas comuns” quando a busca falha</td><td><a href="entrega5_relato-v-tarefas.html#b-03">B-03</a>; <a href="entrega6_relato-v-prototipo-papel.html#pp-04">PP-04</a></td><td>Lista, formulário e busca sem resultado</td></tr>
+                        <tr><td>Visibilidade e reconhecimento (8.2.7, p. 273)</td><td>Indicador de etapas (Preencher → Revisar → Concluído); “Enviando…”; “Você escolheu: 4 · Difícil”; selo “Você já avaliou”</td><td><a href="entrega5_relato-v-tarefas.html#b-02">B-02</a>; <a href="entrega7_relato-v-prototipo-alta-fidelidade.html#af-i4">AF-I4</a></td><td>Formulário, revisão e confirmação</td></tr>
+                        <tr><td>Conteúdo relevante e expressão adequada (8.2.8, p. 275)</td><td>Aviso de anonimato curto e no topo; a explicação de cobrança fica numa dica, mostrada só quando pedida; texto de apoio de uma linha em cada pergunta</td><td><a href="entrega5_relato-v-storyboard.html#a-01">A-01</a>; <a href="entrega5_relato-v-tarefas.html#b-04">B-04</a>; <a href="entrega5_relato-v-tarefas.html#b-06">B-06</a></td><td>Formulário</td></tr>
+                        <tr><td>Projeto para erros (8.2.9, p. 277)</td><td>Revisão obrigatória antes do envio; limite de 500 caracteres com contador; avaliação duplicada bloqueada; mensagens de erro em linguagem simples, com a causa e a ação: “Não foi possível enviar sua avaliação. A conexão com o servidor falhou. Suas respostas continuam aqui, nada foi perdido.” e o botão “Tentar novamente”</td><td><a href="entrega5_relato-v-tarefas.html#b-07">B-07</a>; <a href="entrega6_relato-v-prototipo-papel.html#pp-03">PP-03</a>; <a href="entrega2_v-cenario.html#v2-6b">Cenário 6B</a></td><td>Formulário e revisão</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir de Barbosa e Silva (2010, seção 8.2) e dos problemas das avaliações das Entregas 5 a 7.</p>
+            <p class="doc-text">Duas diretrizes do livro atravessam todos os princípios. A legibilidade do texto pede alto contraste e fonte de tamanho suficiente (p. 276): no protótipo, o texto principal tem razão de contraste de 19,0:1 no tema escuro e 16,8:1 no tema claro (<a href="entrega3_v-guia.html">5. Guia de estilo da Avaliação de Disciplinas</a>, <a href="entrega3_v-guia.html#tab-9">Tabela 9</a>). E, quando a cor transmite informação, ela vem acompanhada de rótulo ou ícone (p. 277): nenhuma nota, estado ou ação depende só da cor.</p>
+            <p class="doc-text">Os princípios não substituem a análise e a avaliação: cada decisão da <a href="#tab-5">Tabela 5</a> foi testada com estudantes nas Entregas 5 a 7, e as que falharam viraram problemas corrigidos no reprojeto (<a href="entrega7_relato-v-alta-fidelidade.html">relato da avaliação da Entrega 7</a>).</p>
+            <h3 class="doc-subsection" id="v3-referencias">3. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</li>
+                <li>GRUPO 02. <em>Entrega 3: Princípios Gerais de Projeto, Metas de Usabilidade e Guia de Estilo</em> (documento do grupo, versões 1.0 a 1.4). Universidade de Brasília, 2026. Disponível em: &lt;https://interacao-humano-computador.github.io/2026.2-Grupo02/entrega3.html&gt;.</li>
+                <li>COUTO, Victor Andreozzi de La Rocque. <em>Relato dos resultados da avaliação do protótipo de alta fidelidade da Avaliação de Disciplinas</em> (<a href="entrega7.html">Entrega 7</a>). Universidade de Brasília, 2026. Disponível em: &lt;https://interacao-humano-computador.github.io/2026.2-Grupo02/entrega7_relato-v-alta-fidelidade.html&gt;.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Parte individual da Entrega 3: princípios gerais de projeto aplicados à Avaliação de Disciplinas, com decisões e origem</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): organização das páginas, redação das tabelas a partir dos artefatos de Victor nas Entregas 4 a 7 e do protótipo de alta fidelidade, cálculo das razões de contraste e captura e grifo das páginas do livro; as decisões de projeto, as metas e as conclusões são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega3_v-plataforma.html"><span>← Anterior</span>2. Características da plataforma</a>
+                    <a class="next" href="entrega3_v-metas.html"><span>Próximo →</span>4. Metas de usabilidade</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

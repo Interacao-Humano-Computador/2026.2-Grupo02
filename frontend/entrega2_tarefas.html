@@ -159,6 +159,7 @@
                     <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
                     <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
                     <ul>
+                        <li class="doc-stagenav-group">Documento do grupo</li>
                         <li><a href="entrega2.html">Visão geral</a></li>
                         <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
                         <li><a href="entrega2_intro.html">1. Introdução</a></li>
@@ -181,6 +182,18 @@
                         <li><a href="entrega2_lv-ctt.html">Lista de verificação — CTT</a></li>
                         <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
                         <li><a href="entrega2_atributos.html">Atributos dos perfis de usuário</a></li>
+                        <li class="doc-stagenav-group">Partes individuais</li>
+                        <li class="doc-stagenav-pessoa"><details><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega2_v-visao-geral.html">1. Visão geral e planejamento</a></li>
+                                <li><a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a></li>
+                                <li><a href="entrega2_v-perfil.html">3. Perfil de usuário</a></li>
+                                <li><a href="entrega2_v-persona.html">4. Persona Talita Farias</a></li>
+                                <li><a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-verificacao.html">8. Verificação com as listas</a></li>
+                            </ul></details></li>
                     </ul>
                 </aside>
             <article class="doc-content">
@@ -608,21 +621,22 @@
             <h3 class="doc-subsection">8.6 Tarefas de Victor Andreozzi de La Rocque Couto</h3>
             <h3 id="tar-09" class="doc-subsection">8.6.1 TAR-09 — Simular o aproveitamento em uma mudança de curso</h3>
             <p class="doc-text">Origem: Cenário 6 (Talita); achados da pesquisa (3.1). A decomposição hierárquica está na Figura 9, e as operações, planos, problemas e recomendações, na Tabela 19.</p>
+            <div class="note-box"><strong>Nota de revisão (27/11/2026):</strong> na versão de setembro, todos os planos eram sequência fixa, sem regra de seleção para os passos condicionais (discrepância DI-04 da <a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf" target="_blank" rel="noopener">inspeção de Felipe</a>). Os planos 0 a 3 passaram a ter regras de seleção; as operações não mudaram.</div>
             <figure class="doc-figure">
                 <figcaption>Figura 9 — Diagrama HTA da TAR-09</figcaption>
             <div class="hta-tree" role="group">
-                <div class="hta-node hta-root"><span class="hta-title">0. Simular o aproveitamento em uma mudança de curso</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3 &gt; 4.</span></div>
+                <div class="hta-node hta-root"><span class="hta-title">0. Simular o aproveitamento em uma mudança de curso</span><span class="hta-plan">Plano 0: 1 &gt; 2 &gt; 3; se houver disciplinas a cursar no destino, 4.</span></div>
                 <div class="hta-children">
                     <div class="hta-branch">
-                        <div class="hta-node hta-l1"><span class="hta-title">1. Enviar o histórico do curso atual</span><span class="hta-plan">Plano 1: 1.1 &gt; 1.2</span></div>
+                        <div class="hta-node hta-l1"><span class="hta-title">1. Enviar o histórico do curso atual</span><span class="hta-plan">Plano 1: se o histórico atual já estiver no NoFluxo, pular 1; senão, 1.1 &gt; 1.2.</span></div>
                         <ul class="hta-ops"><li>1.1 Emitir o histórico</li><li>1.2 Enviar ao NoFluxo</li></ul>
                     </div>
                     <div class="hta-branch">
-                        <div class="hta-node hta-l1"><span class="hta-title">2. Selecionar o curso de destino</span><span class="hta-plan">Plano 2: 2.1 &gt; 2.2</span></div>
+                        <div class="hta-node hta-l1"><span class="hta-title">2. Selecionar o curso de destino</span><span class="hta-plan">Plano 2: 2.1; se o curso tiver mais de um currículo ativo, 2.2; senão, usar o vigente.</span></div>
                         <ul class="hta-ops"><li>2.1 Buscar o curso</li><li>2.2 Escolher o currículo</li></ul>
                     </div>
                     <div class="hta-branch">
-                        <div class="hta-node hta-l1"><span class="hta-title">3. Analisar as equivalências</span><span class="hta-plan">Plano 3: 3.1 &gt; 3.2 &gt; 3.3</span></div>
+                        <div class="hta-node hta-l1"><span class="hta-title">3. Analisar as equivalências</span><span class="hta-plan">Plano 3: 3.1 e 3.2 em qualquer ordem; 3.3 só se houver disciplinas em análise.</span></div>
                         <ul class="hta-ops"><li>3.1 Ver as disciplinas aproveitadas</li><li>3.2 Ver as disciplinas a cursar</li><li>3.3 Ver as pendentes de análise</li></ul>
                     </div>
                     <div class="hta-branch">
@@ -638,14 +652,14 @@
                     <caption>Tabela 19 — Análise HTA da TAR-09</caption>
                     <thead><tr><th>Objetivos / Operações</th><th>Relações / Planos</th><th>Problemas identificados</th><th>Recomendações de usabilidade</th></tr></thead>
                     <tbody>
-                        <tr class="tr-main"><td><strong>0. Simular o aproveitamento em uma mudança de curso</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3 &gt; 4.</td><td>A pesquisa pediu esta simulação para a fase de decisão, antes da mudança (achado 3.1); hoje o fluxograma só mostra o curso em que o estudante já está.</td><td>Seletor "e se eu mudar para…" que aplica o histórico atual à matriz de outro curso.</td></tr>
-                        <tr class="tr-main"><td><strong>1. Enviar o histórico do curso atual</strong></td><td>Plano 1: 1.1 &gt; 1.2</td><td>Disciplinas cursadas em outra instituição (mobilidade) podem não aparecer ou aparecer só como aproveitamento.</td><td>Permitir adicionar manualmente disciplinas externas, marcadas como "a validar".</td></tr>
+                        <tr class="tr-main"><td><strong>0. Simular o aproveitamento em uma mudança de curso</strong></td><td>Plano 0: 1 &gt; 2 &gt; 3; se houver disciplinas a cursar no destino, 4.</td><td>A pesquisa pediu esta simulação para a fase de decisão, antes da mudança (achado 3.1); hoje o fluxograma só mostra o curso em que o estudante já está.</td><td>Seletor "e se eu mudar para…" que aplica o histórico atual à matriz de outro curso.</td></tr>
+                        <tr class="tr-main"><td><strong>1. Enviar o histórico do curso atual</strong></td><td>Plano 1: se o histórico atual já estiver no NoFluxo, pular 1; senão, 1.1 &gt; 1.2.</td><td>Disciplinas cursadas em outra instituição (mobilidade) podem não aparecer ou aparecer só como aproveitamento.</td><td>Permitir adicionar manualmente disciplinas externas, marcadas como "a validar".</td></tr>
                         <tr><td>1.1 Emitir o histórico</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
                         <tr><td>1.2 Enviar ao NoFluxo</td><td><em>Ação física</em></td><td>—</td><td>—</td></tr>
-                        <tr class="tr-main"><td><strong>2. Selecionar o curso de destino</strong></td><td>Plano 2: 2.1 &gt; 2.2</td><td>Cursos com mais de um currículo ativo confundem a escolha.</td><td>Mostrar o currículo vigente como padrão e explicar a diferença para os demais.</td></tr>
+                        <tr class="tr-main"><td><strong>2. Selecionar o curso de destino</strong></td><td>Plano 2: 2.1; se o curso tiver mais de um currículo ativo, 2.2; senão, usar o vigente.</td><td>Cursos com mais de um currículo ativo confundem a escolha.</td><td>Mostrar o currículo vigente como padrão e explicar a diferença para os demais.</td></tr>
                         <tr><td>2.1 Buscar o curso</td><td><em>Ação física</em></td><td>Nomes de cursos com habilitações parecidas.</td><td>Busca com campus e turno.</td></tr>
                         <tr><td>2.2 Escolher o currículo</td><td><em>Ação cognitiva</em></td><td>O estudante não sabe qual currículo se aplica a quem entra por mudança de curso.</td><td>Pré-selecionar o currículo vigente.</td></tr>
-                        <tr class="tr-main"><td><strong>3. Analisar as equivalências</strong></td><td>Plano 3: 3.1 &gt; 3.2 &gt; 3.3</td><td>Equivalências automáticas e as que dependem de análise da coordenação aparecem da mesma forma.</td><td>Três estados distintos: aproveitada, a cursar e sujeita à análise da coordenação.</td></tr>
+                        <tr class="tr-main"><td><strong>3. Analisar as equivalências</strong></td><td>Plano 3: 3.1 e 3.2 em qualquer ordem; 3.3 só se houver disciplinas em análise.</td><td>Equivalências automáticas e as que dependem de análise da coordenação aparecem da mesma forma.</td><td>Três estados distintos: aproveitada, a cursar e sujeita à análise da coordenação.</td></tr>
                         <tr><td>3.1 Ver as disciplinas aproveitadas</td><td><em>Ação cognitiva</em></td><td>Não fica claro por qual regra a disciplina foi aproveitada.</td><td>Mostrar a equivalência usada (disciplina de origem → disciplina de destino).</td></tr>
                         <tr><td>3.2 Ver as disciplinas a cursar</td><td><em>Ação cognitiva</em></td><td>A lista não indica o impacto no tempo de curso.</td><td>Somar os créditos restantes.</td></tr>
                         <tr><td>3.3 Ver as pendentes de análise</td><td><em>Ação cognitiva</em></td><td>O estudante trata como garantido o que ainda depende da coordenação.</td><td>Rótulo e cor próprios, com orientação sobre como pedir a análise.</td></tr>
@@ -663,6 +677,7 @@
             <div class="note-box"><strong>Nota de revisão:</strong> a versão original não indicava o operador entre T3 e T4, entre T4 e T5, nem entre os dois subfluxos de T3 — toda transição de uma CTT precisa de operador explícito. T3 avança para T4 por ativação; T3.1 e T3.2 são alternativos (o estudante consulta a Darcy ou explora o fluxograma sozinho para a mesma finalidade), por isso ligados por escolha; e T4 avança para T5 por ativação.</div>
             <figure class="doc-figure">
                 <figcaption>Figura 10 — Árvore CTT da TAR-10</figcaption>
+                <div class="note-box"><strong>Nota de revisão (27/11/2026):</strong> na versão de setembro, o nó T4 juntava duas tarefas (montar a grade e consultar as ementas) sem decomposição (discrepância DI-05 da <a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf" target="_blank" rel="noopener">inspeção de Felipe</a>). T4 passou a ser abstrata, com as tarefas-filhas T4.1 e T4.2 ligadas por concorrência (|||).</div>
                 <ul class="ctt-tree">
                     <li>T0 (Abstrata): Planejar e matricular-se no semestre.
                         <ul>
@@ -675,7 +690,13 @@
                                     <li>T3.2 (Interativa): Simular atrasos/adiantamentos no fluxograma</li>
                                 </ul>
                             </li>
-                            <li>T4 (Interativa): Montar grade horária <span class="ctt-op">|||</span> Consultar ementas de disciplinas <span class="ctt-op">&gt;&gt;</span></li>
+                            <li>T4 (Abstrata): Montar a grade consultando as ementas <span class="ctt-op">&gt;&gt;</span>
+                                <ul>
+                                    <li>T4.1 (Interativa): Montar grade horária</li>
+                                    <li><span class="ctt-op">|||</span> <em>(concorrência)</em></li>
+                                    <li>T4.2 (Interativa): Consultar ementas de disciplinas</li>
+                                </ul>
+                            </li>
                             <li>T5 (Interativa): Efetivar e exportar o planejamento final</li>
                         </ul>
                     </li>
@@ -880,6 +901,20 @@
                             <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Introdução e referências próprias em cada artefato: base de dados, achados, perfis, elenco, personas, cenários, análise de tarefas, questões em aberto e Apêndice A (issue #48)</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">Matheus</td>
                             <td style="padding: 1.5rem 1rem; color: #ef4444;">A definir (validação pendente)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.11</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Inclusão, no menu lateral, da parte individual de Victor Andreozzi de La Rocque Couto; mudança só no menu, sem alteração do conteúdo desta página</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.12</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Correção da HTA da TAR-09 (planos com regras de seleção, discrepância DI-04) e da CTT da TAR-10 (nó T4 decomposto em T4.1 e T4.2, discrepância DI-05), apontadas na <a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf" target="_blank" rel="noopener">inspeção de Felipe</a> (Entrega 8); operações e demais tarefas não mudaram</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
                         </tr>
                     </tbody>
                 </table>

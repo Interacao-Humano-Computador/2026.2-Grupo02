@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Verificação com as listas | Entrega 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+        .e8-res { font-weight: 700; white-space: nowrap; }
+        .e8-c { color: #4ade80; }
+        .e8-nc { color: #f87171; }
+        .e8-na { color: #a1a1aa; }
+        .e8-pend { color: #fbbf24; font-weight: 600; }
+        .e8-q { color: #d4d4d8; }
+        body.alto-contraste .e8-c { color: #065f46 !important; }
+        body.alto-contraste .e8-nc { color: #991b1b !important; }
+        body.alto-contraste .e8-na { color: #3f3f46 !important; }
+        body.alto-contraste .e8-pend { color: #92400e !important; }
+        body.alto-contraste .e8-q { color: #18181b !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+
+    <style>
+        .e1-hm td.hm { font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center; color: #fafafa; }
+        .e1-hm td.hm-7 { background: rgba(168, 85, 247, 0.85); }
+        .e1-hm td.hm-6 { background: rgba(168, 85, 247, 0.62); }
+        .e1-hm td.hm-5 { background: rgba(168, 85, 247, 0.42); }
+        .e1-hm td.hm-4 { background: rgba(168, 85, 247, 0.26); }
+        .e1-hm td.hm-3 { background: rgba(168, 85, 247, 0.14); }
+        .e1-hm td.hm-2 { background: rgba(168, 85, 247, 0.06); color: #a1a1aa; }
+        .e1-legenda { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: #a1a1aa; font-size: 0.85rem; margin: -1.5rem 0 2.5rem; }
+        .e1-legenda span { display: inline-block; min-width: 2.2rem; text-align: center; padding: 0.2rem 0.4rem; border-radius: 4px; color: #fafafa; font-family: 'JetBrains Mono', monospace; }
+        .e1-team { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .e1-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1rem; text-align: center; background: rgba(9, 9, 11, 0.5); }
+        .e1-card img, .e1-card .e1-ini { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.75rem; display: block; border: 2px solid rgba(168, 85, 247, 0.5); }
+        .e1-card .e1-ini { display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: #d8b4fe; background: rgba(168, 85, 247, 0.12); }
+        .e1-card h4 { margin: 0 0 0.35rem; color: #fafafa; font-size: 1rem; }
+        .e1-card p { margin: 0; color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; }
+        .e1-ativo { color: #4ade80 !important; font-weight: 600; }
+        .e1-inativo { color: #a1a1aa !important; }
+        .e1-sim { color: #4ade80; font-weight: 700; }
+        .e1-nao { color: #f87171; font-weight: 700; }
+        .e1-inc { color: #fbbf24; font-weight: 700; }
+        .e1-shot img { border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .table-standard td { vertical-align: top; }
+        .lv-lista { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .lv-item { border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(9, 9, 11, 0.6); }
+        .lv-item[open] { border-color: rgba(168, 85, 247, 0.5); }
+        .lv-item summary { cursor: pointer; padding: 1rem 1.25rem; display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 0.35rem 1rem; align-items: start; list-style: none; }
+        .lv-item summary::-webkit-details-marker { display: none; }
+        .lv-num::before { content: "▸ "; color: #a855f7; }
+        .lv-item[open] .lv-num::before { content: "▾ "; }
+        .lv-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #d8b4fe; }
+        .lv-q { color: #fafafa; line-height: 1.6; }
+        .lv-r { white-space: nowrap; }
+        .lv-ev { grid-column: 2 / 4; color: #a1a1aa; font-size: 0.92rem; line-height: 1.6; }
+        .lv-body { padding: 0 1.25rem 1.25rem 7.75rem; color: #e4e4e7; font-size: 0.95rem; line-height: 1.7; }
+        .lv-fotos { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.75rem; }
+        .lv-foto { margin: 0; }
+        .lv-foto-livro { max-width: 620px; flex: 1 1 100%; }
+        .lv-foto-fagan { max-width: 300px; }
+        .lv-pdf { margin-top: 0.75rem; }
+        .lv-foto img { width: 100%; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: block; }
+        .lv-foto figcaption { color: #a1a1aa; font-size: 0.85rem; text-align: center; margin-top: 0.3rem; }
+        @media (max-width: 700px) { .lv-item summary { grid-template-columns: 1fr; } .lv-ev { grid-column: 1; } .lv-body { padding-left: 1.25rem; } }
+        body.alto-contraste .lv-item { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .lv-q, body.alto-contraste .lv-body, body.alto-contraste .lv-ev, body.alto-contraste .lv-num { color: #000000 !important; }
+
+        body.alto-contraste .e1-hm td.hm { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .e1-hm td.hm-7 { background: #6b21a8 !important; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+        body.alto-contraste .e1-hm td.hm-6 { background: #a855f7 !important; }
+        body.alto-contraste .e1-hm td.hm-5 { background: #d8b4fe !important; }
+        body.alto-contraste .e1-hm td.hm-4 { background: #e9d5ff !important; }
+        body.alto-contraste .e1-hm td.hm-3, body.alto-contraste .e1-hm td.hm-2 { background: #ffffff !important; }
+        body.alto-contraste .e1-card { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .e1-card h4, body.alto-contraste .e1-card p { color: #000000 !important; }
+        body.alto-contraste .e1-card .e1-ini { color: #000000 !important; background: #e9d5ff !important; }
+        body.alto-contraste .e1-sim { color: #065f46 !important; }
+        body.alto-contraste .e1-nao { color: #991b1b !important; }
+        body.alto-contraste .e1-inc { color: #92400e !important; }
+        body.alto-contraste .e1-legenda span { color: #000000 !important; border: 1px solid #000000; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Documento do grupo</li>
+                        <li><a href="entrega2.html">Visão geral</a></li>
+                        <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega2_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
+                        <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
+                        <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
+                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
+                        <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
+                        <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
+                        <li><a href="entrega2_referencias.html">10. Referências</a></li>
+                        <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
+                        <li><a href="entrega2_lv-coleta.html">Lista de verificação — Coleta de dados</a></li>
+                        <li><a href="entrega2_lv-perfil.html">Lista de verificação — Perfil do usuário</a></li>
+                        <li><a href="entrega2_lv-personas.html">Lista de verificação — Personas e elenco de personas</a></li>
+                        <li><a href="entrega2_lv-cenarios.html">Lista de verificação — Cenários</a></li>
+                        <li><a href="entrega2_lv-hta.html">Lista de verificação — HTA</a></li>
+                        <li><a href="entrega2_lv-ctt.html">Lista de verificação — CTT</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_atributos.html">Atributos dos perfis de usuário</a></li>
+                        <li class="doc-stagenav-group">Partes individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega2_v-visao-geral.html">1. Visão geral e planejamento</a></li>
+                                <li><a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a></li>
+                                <li><a href="entrega2_v-perfil.html">3. Perfil de usuário</a></li>
+                                <li><a href="entrega2_v-persona.html">4. Persona Talita Farias</a></li>
+                                <li><a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-verificacao.html" class="active" aria-current="page">8. Verificação com as listas</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a> › Parte individual de Victor Andreozzi de La Rocque Couto</p>
+            <h1 id="v2-topo" class="doc-title doc-page-title">8. Verificação com as listas</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto · <strong>Revisor:</strong> Felipe Lopes Pedroza</p>
+                <p><strong>Entrega:</strong> 2, Perfil do Usuário, Personas e Análise de Tarefas (parte individual, feita em 27/11/2026 a partir dos artefatos que Victor elaborou na Entrega 2 e na <a href="entrega5.html">Entrega 5</a>) · <strong>Funcionalidade de Victor no projeto:</strong> Avaliação de Disciplinas</p>
+                <p><strong>Outros artefatos desta parte:</strong> <a href="entrega2_v-visao-geral.html">1. Visão geral e planejamento</a> · <a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a> · <a href="entrega2_v-perfil.html">3. Perfil de usuário</a> · <a href="entrega2_v-persona.html">4. Persona Talita Farias</a> · <a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a> · <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a> · <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a></p>
+            </div>
+            <h3 class="doc-subsection" id="v2-intro">1. Introdução</h3>
+            <p class="doc-text">Esta página aplica aos artefatos desta parte os itens 1 a 49 da <a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf" target="_blank" rel="noopener">lista de verificação geral do grupo</a>, que a lista por entrega associa à Entrega 2 (coleta e perfil, personas, cenários e HTA) e, no caso da CTT, à <a href="entrega5.html">Entrega 5</a>. Depois, aplica os doze itens da lista da Entrega 2 sugerida no plano de ensino. Cada resposta é Conforme, Não conforme ou Não se aplica. Clique em um item para ver a referência bibliográfica com a foto da página do livro e o tipo de defeito, caso a resposta fosse Não conforme. A lista completa está nas referências.</p>
+            <h3 class="doc-subsection" id="v2-lista-grupo">2. Lista de verificação do grupo</h3>
+            <div class="lv-lista">
+                <details class="lv-item" id="item-1">
+                    <summary><span class="lv-num">Item 1</span><span class="lv-q">O perfil de usuário especifica o cargo ou a ocupação dos usuários e o papel que desempenham na organização, com a experiência no cargo e as responsabilidades?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-perfil.html">3. Perfil de usuário</a>, <a href="entrega2_v-perfil.html#tab-7">Tabela 7</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 134 e 135, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.2). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item01-1-livro.jpg" alt="Trecho grifado da página 134, 135 do livro, origem do item 1" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 134 e 135)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 1" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=10" target="_blank" rel="noopener">Ver o item 1 no PDF da lista de verificação (página 10)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-2">
+                    <summary><span class="lv-num">Item 2</span><span class="lv-q">O perfil de usuário registra os idiomas que os usuários conhecem e os jargões ou o vocabulário próprio da sua profissão, atividade ou grupo social?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-perfil.html">3. Perfil de usuário</a>, <a href="entrega2_v-perfil.html#tab-7">Tabela 7</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 135, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.2). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item02-1-livro.jpg" alt="Trecho grifado da página 135 do livro, origem do item 2" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 135)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 2" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=11" target="_blank" rel="noopener">Ver o item 2 no PDF da lista de verificação (página 11)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-3">
+                    <summary><span class="lv-num">Item 3</span><span class="lv-q">O perfil de usuário indica o quanto o usuário valoriza treinamento, o seu estilo de aprendizado preferido e o tempo que pode investir para aprender a usar o produto?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-perfil.html">3. Perfil de usuário</a>, <a href="entrega2_v-perfil.html#tab-7">Tabela 7</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 135, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.2). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item03-1-livro.jpg" alt="Trecho grifado da página 135 do livro, origem do item 3" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 135)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 3" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=12" target="_blank" rel="noopener">Ver o item 3 no PDF da lista de verificação (página 12)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-4">
+                    <summary><span class="lv-num">Item 4</span><span class="lv-q">O plano de coleta de dados distingue os usuários primários (que usam o produto regularmente), os secundários (que o usam ocasionalmente) e os demais interessados afetados pelo sistema?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-perfil.html">3. Perfil de usuário</a>, seção 3</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 136, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.3). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item04-1-livro.jpg" alt="Trecho grifado da página 136 do livro, origem do item 4" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 136)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 4" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=13" target="_blank" rel="noopener">Ver o item 4 no PDF da lista de verificação (página 13)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-5">
+                    <summary><span class="lv-num">Item 5</span><span class="lv-q">Os participantes escolhidos para a coleta de dados são fontes confiáveis, relevantes e representativas dos usuários e do seu trabalho?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> 10 estudantes da UnB, usuários potenciais; a concentração em cursos da saúde é uma limitação (<a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, <a href="entrega2_v-coleta.html#tab-4">Tabela 4</a>)</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 135 e 136, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.3). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item05-1-livro.jpg" alt="Trecho grifado da página 135, 136 do livro, origem do item 5" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 135 e 136)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 5" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=14" target="_blank" rel="noopener">Ver o item 5 no PDF da lista de verificação (página 14)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-6">
+                    <summary><span class="lv-num">Item 6</span><span class="lv-q">A seleção de participantes evita conhecidos, amigos, alunos ou subordinados do avaliador, para que essa relação não influencie nem contamine os dados?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Participantes abordados na Semana Universitária da UnB, no campus Darcy Ribeiro; só um de dez era conhecido de um integrante, sem proximidade (<a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, <a href="entrega2_v-coleta.html#tab-4">Tabela 4</a>)</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 308, Capítulo 9. Planejamento da Avaliação de IHC. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item06-1-livro.jpg" alt="Trecho grifado da página 308 do livro, origem do item 6" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 308)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Outros: defeito que não se encaixa nos demais tipos, como um conteúdo na seção errada.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-61.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 6" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=15" target="_blank" rel="noopener">Ver o item 6 no PDF da lista de verificação (página 15)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-7">
+                    <summary><span class="lv-num">Item 7</span><span class="lv-q">O plano de coleta de dados garante a confidencialidade dos dados brutos e o anonimato dos participantes nos relatórios, com o uso de códigos ou nomes fictícios?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Participantes só com código <a href="entrega2_v-coleta.html#tab-4">P01 a P10</a>, sem os nomes ditos na gravação; gravação no YouTube como vídeo não listado, visível só para quem tem o link (<a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, seção 6, <a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf#page=2" target="_blank" rel="noopener">DI-01</a> corrigida)</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 140, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.4). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item07-1-livro.jpg" alt="Trecho grifado da página 140 do livro, origem do item 7" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 140)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 7" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=15" target="_blank" rel="noopener">Ver o item 7 no PDF da lista de verificação (página 15)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-8">
+                    <summary><span class="lv-num">Item 8</span><span class="lv-q">O participante é informado de que pode recusar a participação ou abandonar o estudo a qualquer momento, sem ser penalizado?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, <a href="entrega2_v-coleta.html#tab-6">Tabela 6</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 141, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.4). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item08-1-livro.jpg" alt="Trecho grifado da página 141 do livro, origem do item 8" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 141)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 8" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=16" target="_blank" rel="noopener">Ver o item 8 no PDF da lista de verificação (página 16)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-9">
+                    <summary><span class="lv-num">Item 9</span><span class="lv-q">O planejamento da entrevista define o grau de estruturação (estruturada, semiestruturada ou não estruturada) e organiza um roteiro com os tópicos ou as perguntas?</span><span class="lv-r e1-inc">Não se aplica</span><span class="lv-ev"><strong>Evidência:</strong> A técnica desta parte é o brainstorming, não a entrevista</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 146, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.5.1). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item09-1-livro.jpg" alt="Trecho grifado da página 146 do livro, origem do item 9" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 146)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 9" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=17" target="_blank" rel="noopener">Ver o item 9 no PDF da lista de verificação (página 17)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-10">
+                    <summary><span class="lv-num">Item 10</span><span class="lv-q">O roteiro e a conduta do entrevistador evitam influenciar as respostas com a formulação das perguntas, expressões faciais, gestos ou entonação de voz?</span><span class="lv-r e1-inc">Não se aplica</span><span class="lv-ev"><strong>Evidência:</strong> Idem; no brainstorming, o desvio da pergunta inicial está registrado (<a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, <a href="entrega2_v-coleta.html#tab-4">Tabela 4</a>)</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 147, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.5.1). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item10-1-livro.jpg" alt="Trecho grifado da página 147 do livro, origem do item 10" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 147)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Ambiguidade: o artefato admite mais de uma interpretação.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-72.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 10" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=18" target="_blank" rel="noopener">Ver o item 10 no PDF da lista de verificação (página 18)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-11">
+                    <summary><span class="lv-num">Item 11</span><span class="lv-q">O procedimento pede ao participante permissão para gravar a sua voz ou imagem antes de começar qualquer gravação?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, <a href="entrega2_v-coleta.html#tab-6">Tabela 6</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 140, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC (Seção 5.4). Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item11-1-livro.jpg" alt="Trecho grifado da página 140 do livro, origem do item 11" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 140)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 11" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=19" target="_blank" rel="noopener">Ver o item 11 no PDF da lista de verificação (página 19)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-12">
+                    <summary><span class="lv-num">Item 12</span><span class="lv-q">O planejamento estima quanto tempo o respondente leva para completar o questionário e verifica se esse tempo é adequado?</span><span class="lv-r e1-inc">Não se aplica</span><span class="lv-ev"><strong>Evidência:</strong> Não houve questionário</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 171, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item12-1-livro.jpg" alt="Trecho grifado da página 171 do livro, origem do item 12" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 171)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 12" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=20" target="_blank" rel="noopener">Ver o item 12 no PDF da lista de verificação (página 20)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-13">
+                    <summary><span class="lv-num">Item 13</span><span class="lv-q">A persona possui dados demográficos definidos, como idade, sexo e status socioeconômico?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-10">Tabela 10</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 137 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item13-1-livro.jpg" alt="Trecho grifado da página 137 do livro, origem do item 13" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 137)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 13" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=21" target="_blank" rel="noopener">Ver o item 13 no PDF da lista de verificação (página 21)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-14">
+                    <summary><span class="lv-num">Item 14</span><span class="lv-q">A persona detalha o nível educacional, o grau de instrução, a área de formação, os cursos realizados e o alfabetismo (o quão bem lê e a disposição para ler textos)?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-10">Tabela 10</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 137 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item14-1-livro.jpg" alt="Trecho grifado da página 137 do livro, origem do item 14" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 137)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 14" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=22" target="_blank" rel="noopener">Ver o item 14 no PDF da lista de verificação (página 22)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-15">
+                    <summary><span class="lv-num">Item 15</span><span class="lv-q">A persona descreve a experiência com computadores, com o alfabetismo computacional, a habilidade, os anos de experiência e os sistemas e equipamentos que conhece e usa?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-10">Tabela 10</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 137 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item15-1-livro.jpg" alt="Trecho grifado da página 137 do livro, origem do item 15" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 137)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 15" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=23" target="_blank" rel="noopener">Ver o item 15 no PDF da lista de verificação (página 23)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-16">
+                    <summary><span class="lv-num">Item 16</span><span class="lv-q">A persona apresenta a experiência com produtos específicos ou ferramentas semelhantes, incluindo concorrentes, hábitos de uso, preferências e descontentamentos?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-10">Tabela 10</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 137 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item16-1-livro.jpg" alt="Trecho grifado da página 137 do livro, origem do item 16" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 137)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 16" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=24" target="_blank" rel="noopener">Ver o item 16 no PDF da lista de verificação (página 24)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-17">
+                    <summary><span class="lv-num">Item 17</span><span class="lv-q">A persona detalha a tecnologia disponível para o usuário, com o equipamento (tamanho e resolução da tela, processamento) e os programas e ferramentas de acesso?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-10">Tabela 10</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 137 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item17-1-livro.jpg" alt="Trecho grifado da página 137 do livro, origem do item 17" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 137)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 17" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=25" target="_blank" rel="noopener">Ver o item 17 no PDF da lista de verificação (página 25)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-18">
+                    <summary><span class="lv-num">Item 18</span><span class="lv-q">A persona descreve atitudes e valores do usuário, como preferências de produto, medo de tecnologia e disposição para assumir riscos e explorar novidades ou preferência por caminhos já testados?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-10">Tabela 10</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 137 e 138 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item18-1-livro.jpg" alt="Trecho grifado da página 137, 138 do livro, origem do item 18" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 137 e 138)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 18" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=26" target="_blank" rel="noopener">Ver o item 18 no PDF da lista de verificação (página 26)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-19">
+                    <summary><span class="lv-num">Item 19</span><span class="lv-q">A persona define o quanto o usuário conhece do domínio e se é esperado que ele se torne especialista?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-10">Tabela 10</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 138 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item19-1-livro.jpg" alt="Trecho grifado da página 138 do livro, origem do item 19" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 138)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 19" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=27" target="_blank" rel="noopener">Ver o item 19 no PDF da lista de verificação (página 27)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-20">
+                    <summary><span class="lv-num">Item 20</span><span class="lv-q">A persona especifica os principais objetivos do usuário e como eles são alcançados atualmente?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-10">Tabela 10</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 138 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item20-1-livro.jpg" alt="Trecho grifado da página 138 do livro, origem do item 20" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 138)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 20" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=28" target="_blank" rel="noopener">Ver o item 20 no PDF da lista de verificação (página 28)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-21">
+                    <summary><span class="lv-num">Item 21</span><span class="lv-q">A persona descreve as tarefas que precisam ser apoiadas, quais são primárias e quais são secundárias, com a frequência, o tempo de realização e a experiência em tarefas semelhantes?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">4. Persona Talita Farias</a>, <a href="entrega2_v-persona.html#tab-11">Tabela 11</a> (<a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf#page=2" target="_blank" rel="noopener">DI-02</a> corrigida)</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 138 (PDF disponibilizado no Aprender), Capítulo 7, Seção 7.2. Livro: BARBOSA, S. D. J. et al. <em>Interação Humano-Computador e Experiência do Usuário</em>, 2021 (capítulo 7, PDF disponibilizado no Aprender).</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item21-1-livro.jpg" alt="Trecho grifado da página 138 do livro, origem do item 21" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 138)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 21" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=29" target="_blank" rel="noopener">Ver o item 21 no PDF da lista de verificação (página 29)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-22">
+                    <summary><span class="lv-num">Item 22</span><span class="lv-q">Cada cenário está escrito como uma narrativa concreta e rica em detalhes de contexto, isto é, uma história sobre pessoas realizando uma atividade, e não como uma lista abstrata de funcionalidades ou de requisitos?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a>, seções 2 e 3</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 183, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item22-1-livro.jpg" alt="Trecho grifado da página 183 do livro, origem do item 22" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 183)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Ambiguidade: o artefato admite mais de uma interpretação.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-72.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 22" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=30" target="_blank" rel="noopener">Ver o item 22 no PDF da lista de verificação (página 30)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-23">
+                    <summary><span class="lv-num">Item 23</span><span class="lv-q">O tipo de cada cenário está identificado e é coerente com a etapa do projeto: cenário de problema, de atividade, de informação ou de interação?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-cenario.html#v2-6a">Cenário 6A</a> de problema e 6B de interação</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 113 e 114, Capítulo 4. Processos de Design de IHC. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item23-1-livro.jpg" alt="Trecho grifado da página 113, 114 do livro, origem do item 23" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 113 e 114)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Inconsistência: partes do artefato, ou o artefato e outro artefato do projeto, são conflitantes.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-112.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 23" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=31" target="_blank" rel="noopener">Ver o item 23 no PDF da lista de verificação (página 31)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-24">
+                    <summary><span class="lv-num">Item 24</span><span class="lv-q">Cada cenário traz os componentes de identificação: um título breve, a relação dos atores, uma descrição da situação inicial e referências a outros cenários que levem ao mesmo objetivo, quando existirem?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Cabeçalho de cada cenário</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 183, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item24-1-livro.jpg" alt="Trecho grifado da página 183 do livro, origem do item 24" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 183)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 24" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=32" target="_blank" rel="noopener">Ver o item 24 no PDF da lista de verificação (página 32)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-25">
+                    <summary><span class="lv-num">Item 25</span><span class="lv-q">Em cada cenário é possível identificar um ator principal e um objetivo principal, e a história tem um enredo com uma sequência de ações e eventos (o que os usuários fazem, o que acontece com eles e que mudanças ocorrem no ambiente)?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a>, <a href="entrega2_v-cenario.html#tab-12">Tabela 12</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 183, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item25-1-livro.jpg" alt="Trecho grifado da página 183 do livro, origem do item 25" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 183)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 25" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=33" target="_blank" rel="noopener">Ver o item 25 no PDF da lista de verificação (página 33)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-26">
+                    <summary><span class="lv-num">Item 26</span><span class="lv-q">Cada cenário contém os sete elementos característicos: ambiente ou contexto, atores, objetivos, planejamento, ações, eventos e avaliação?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a>, <a href="entrega2_v-cenario.html#tab-12">Tabela 12</a> (<a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf#page=2" target="_blank" rel="noopener">DI-03</a> corrigida)</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 183 e 184, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item26-1-livro.jpg" alt="Trecho grifado da página 183, 184 do livro, origem do item 26" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 183 e 184)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 26" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=34" target="_blank" rel="noopener">Ver o item 26 no PDF da lista de verificação (página 34)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-27">
+                    <summary><span class="lv-num">Item 27</span><span class="lv-q">A descrição de cada ator inclui as características pessoais relevantes para o cenário e, quando o projeto tem personas, os atores são as próprias personas, com o mesmo nome?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-persona.html">Talita Farias</a> nos dois cenários</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 184, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item27-1-livro.jpg" alt="Trecho grifado da página 184 do livro, origem do item 27" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 184)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Inconsistência: partes do artefato, ou o artefato e outro artefato do projeto, são conflitantes.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-112.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 27" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=35" target="_blank" rel="noopener">Ver o item 27 no PDF da lista de verificação (página 35)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-28">
+                    <summary><span class="lv-num">Item 28</span><span class="lv-q">O conjunto de cenários inclui exceções, isto é, ao menos um cenário com eventos raros ou situações extremas (um dado faltando, um erro, uma interrupção da tarefa) em que o produto pode se tornar problemático?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Falha no envio e disciplina já avaliada no <a href="entrega2_v-cenario.html#v2-6b">Cenário 6B</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 185, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item28-1-livro.jpg" alt="Trecho grifado da página 185 do livro, origem do item 28" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 185)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 28" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=35" target="_blank" rel="noopener">Ver o item 28 no PDF da lista de verificação (página 35)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-29">
+                    <summary><span class="lv-num">Item 29</span><span class="lv-q">Cada cenário descreve um ator específico realizando ações específicas e segue apenas um dos caminhos possíveis da atividade, diferentemente de um caso de uso, que lista todas as ações e fluxos alternativos?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Cada cenário segue um caminho; as variantes ficam na HTA e na CTT</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 185, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item29-1-livro.jpg" alt="Trecho grifado da página 185 do livro, origem do item 29" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 185)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Informação estranha: o artefato traz informação desnecessária ou que não é usada.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-129.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 29" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=36" target="_blank" rel="noopener">Ver o item 29 no PDF da lista de verificação (página 36)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-30">
+                    <summary><span class="lv-num">Item 30</span><span class="lv-q">O conjunto de cenários é representativo do produto, cobrindo os cinco tópicos de Cooper: ciclo de vida do processo, segmentos de público, funções do produto, variantes de uma situação de tarefa e métodos para realizar uma tarefa?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> No escopo da funcionalidade: antes e depois da matrícula, consultar e avaliar, com e sem a funcionalidade, busca e lista</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 188 e 189, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item30-1-livro.jpg" alt="Trecho grifado da página 188, 189 do livro, origem do item 30" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 188 e 189)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 30" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=37" target="_blank" rel="noopener">Ver o item 30 no PDF da lista de verificação (página 37)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-31">
+                    <summary><span class="lv-num">Item 31</span><span class="lv-q">Os cenários de uso diário, com as tarefas principais e mais frequentes, foram elaborados com prioridade, deixando os de tarefas secundárias para quando houver tempo?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Os dois cenários tratam das tarefas primárias da Talita</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 189, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item31-1-livro.jpg" alt="Trecho grifado da página 189 do livro, origem do item 31" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 189)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Informação estranha: o artefato traz informação desnecessária ou que não é usada.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-129.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 31" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=38" target="_blank" rel="noopener">Ver o item 31 no PDF da lista de verificação (página 38)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-32">
+                    <summary><span class="lv-num">Item 32</span><span class="lv-q">A HTA define o objetivo de alto nível (o estado final desejado pelo usuário) e o decompõe em subobjetivos mutuamente exclusivos e exaustivos, sem sobreposição?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a>, <a href="entrega2_v-hta.html#fig-15">Figura 15</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 192, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item32-1-livro.jpg" alt="Trecho grifado da página 192 do livro, origem do item 32" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 192)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Inconsistência: partes do artefato, ou o artefato e outro artefato do projeto, são conflitantes.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-112.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 32" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=39" target="_blank" rel="noopener">Ver o item 32 no PDF da lista de verificação (página 39)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-33">
+                    <summary><span class="lv-num">Item 33</span><span class="lv-q">A HTA especifica os planos que definem a ordem dos subobjetivos, indicando se há sequência fixa, regra de seleção dependente das circunstâncias ou execução em paralelo?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a>, <a href="entrega2_v-hta.html#tab-13">Tabela 13</a> (<a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf#page=2" target="_blank" rel="noopener">DI-04</a> corrigida)</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 192 e 193, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item33-1-livro.jpg" alt="Trecho grifado da página 192, 193 do livro, origem do item 33" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 192 e 193)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 33" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=40" target="_blank" rel="noopener">Ver o item 33 no PDF da lista de verificação (página 40)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-34">
+                    <summary><span class="lv-num">Item 34</span><span class="lv-q">As operações do nível mais baixo da hierarquia estão especificadas com as circunstâncias de ativação (entradas), as ações a desempenhar e as condições de satisfação do estado final (feedback)?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a>, <a href="entrega2_v-hta.html#tab-14">Tabela 14</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 193, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item34-1-livro.jpg" alt="Trecho grifado da página 193 do livro, origem do item 34" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 193)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 34" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=41" target="_blank" rel="noopener">Ver o item 34 no PDF da lista de verificação (página 41)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-35">
+                    <summary><span class="lv-num">Item 35</span><span class="lv-q">A HTA é apresentada como diagrama hierárquico e como tabela equivalente, com colunas para objetivos ou operações, plano, entradas, ações e feedback?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a>, <a href="entrega2_v-hta.html#fig-15">Figura 15</a> e <a href="entrega2_v-hta.html#tab-14">Tabela 14</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 193, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item35-1-livro.jpg" alt="Trecho grifado da página 193 do livro, origem do item 35" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 193)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 35" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=42" target="_blank" rel="noopener">Ver o item 35 no PDF da lista de verificação (página 42)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-36">
+                    <summary><span class="lv-num">Item 36</span><span class="lv-q">Quando a tarefa envolve mais de um agente (diferentes papéis de usuário ou usuário e sistema), a HTA separa as ações de cada agente em colunas distintas?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Colunas do estudante e do sistema na <a href="entrega2_v-hta.html#tab-14">Tabela 14</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 191, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item36-1-livro.jpg" alt="Trecho grifado da página 191 do livro, origem do item 36" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 191)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 36" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=43" target="_blank" rel="noopener">Ver o item 36 no PDF da lista de verificação (página 43)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-37">
+                    <summary><span class="lv-num">Item 37</span><span class="lv-q">A HTA identifica problemas ou dificuldades de desempenho em cada subobjetivo ou operação (gargalos, etapas confusas, pontos propensos a erro) e apresenta recomendações de design para evitá-los?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a>, <a href="entrega2_v-hta.html#tab-15">Tabela 15</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 193, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item37-1-livro.jpg" alt="Trecho grifado da página 193 do livro, origem do item 37" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 193)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 37" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=44" target="_blank" rel="noopener">Ver o item 37 no PDF da lista de verificação (página 44)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-38">
+                    <summary><span class="lv-num">Item 38</span><span class="lv-q">A HTA indica que a decomposição das tarefas e os planos foram validados com as partes interessadas (usuários representativos e especialistas)?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Checagem com <a href="entrega5_relato-v-storyboard.html#v-rs-participantes">P1</a> (<a href="entrega5.html">Entrega 5</a>), sessões com <a href="entrega7_relato-v-alta-fidelidade.html#v7-participantes">P1 a P5</a> (<a href="entrega7.html">Entrega 7</a>) e validação com o professor da disciplina, especialista em IHC</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 193, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item38-1-livro.jpg" alt="Trecho grifado da página 193 do livro, origem do item 38" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 193)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 38" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=45" target="_blank" rel="noopener">Ver o item 38 no PDF da lista de verificação (página 45)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-39">
+                    <summary><span class="lv-num">Item 39</span><span class="lv-q">A HTA examina e antecipa erros humanos nas operações com base na classificação de Reason (desempenho baseado em habilidades, em regras ou em conhecimento)?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a>, <a href="entrega2_v-hta.html#tab-16">Tabela 16</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 196, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item39-1-livro.jpg" alt="Trecho grifado da página 196 do livro, origem do item 39" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 196)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Omissão: falta no artefato um elemento importante que o item exige.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-45.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 39" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=46" target="_blank" rel="noopener">Ver o item 39 no PDF da lista de verificação (página 46)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-40">
+                    <summary><span class="lv-num">Item 40</span><span class="lv-q">Cada tarefa do modelo CTT está classificada em um dos quatro tipos: tarefa do usuário (realizada fora do sistema), tarefa do sistema (processamento sem interação com o usuário), tarefa interativa (diálogo usuário-sistema) ou tarefa abstrata (composição de tarefas que auxilia a decomposição)?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-17">Tabela 17</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 203, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item40-1-livro.jpg" alt="Trecho grifado da página 203 do livro, origem do item 40" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 203)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 40" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=47" target="_blank" rel="noopener">Ver o item 40 no PDF da lista de verificação (página 47)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-41">
+                    <summary><span class="lv-num">Item 41</span><span class="lv-q">A hierarquia do diagrama CTT foi construída de modo que uma tarefa-pai só é considerada realizada quando as tarefas-filhas correspondentes tiverem sido realizadas?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> Envio como irmão de Preencher e nó das notas decomposto (<a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf#page=3" target="_blank" rel="noopener">DI-05</a> corrigida)</span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 203, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item41-1-livro.jpg" alt="Trecho grifado da página 203 do livro, origem do item 41" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 203)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 41" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=48" target="_blank" rel="noopener">Ver o item 41 no PDF da lista de verificação (página 48)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-42">
+                    <summary><span class="lv-num">Item 42</span><span class="lv-q">A relação de ativação (T1 >> T2) foi usada corretamente para indicar que a segunda tarefa só pode iniciar após a primeira terminar?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-18">Tabela 18</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 203, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item42-1-livro.jpg" alt="Trecho grifado da página 203 do livro, origem do item 42" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 203)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 42" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=49" target="_blank" rel="noopener">Ver o item 42 no PDF da lista de verificação (página 49)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-43">
+                    <summary><span class="lv-num">Item 43</span><span class="lv-q">A relação de ativação com passagem de informação (T1 []>> T2) foi usada corretamente para indicar que, além de a segunda tarefa só iniciar após a primeira, a informação produzida pela primeira é passada para a segunda?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-18">Tabela 18</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 203, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item43-1-livro.jpg" alt="Trecho grifado da página 203 do livro, origem do item 43" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 203)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 43" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=50" target="_blank" rel="noopener">Ver o item 43 no PDF da lista de verificação (página 50)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-44">
+                    <summary><span class="lv-num">Item 44</span><span class="lv-q">A relação de escolha (T1 [] T2) foi usada corretamente para indicar duas tarefas habilitadas ao mesmo tempo, das quais, ao ser iniciada uma, a outra é desabilitada?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-18">Tabela 18</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 203, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item44-1-livro.jpg" alt="Trecho grifado da página 203 do livro, origem do item 44" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 203)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 44" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=51" target="_blank" rel="noopener">Ver o item 44 no PDF da lista de verificação (página 51)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-45">
+                    <summary><span class="lv-num">Item 45</span><span class="lv-q">A relação de tarefas concorrentes (T1 ||| T2) foi usada corretamente para indicar que as tarefas podem ser realizadas em qualquer ordem ou ao mesmo tempo?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-18">Tabela 18</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 203, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item45-1-livro.jpg" alt="Trecho grifado da página 203 do livro, origem do item 45" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 203)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 45" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=52" target="_blank" rel="noopener">Ver o item 45 no PDF da lista de verificação (página 52)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-46">
+                    <summary><span class="lv-num">Item 46</span><span class="lv-q">A relação de tarefas concorrentes e comunicantes (T1 |[]| T2) foi usada corretamente para indicar que, além de poderem ser realizadas em qualquer ordem ou ao mesmo tempo, as tarefas trocam informações entre si?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-18">Tabela 18</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 204, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item46-1-livro.jpg" alt="Trecho grifado da página 204 do livro, origem do item 46" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 204)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 46" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=53" target="_blank" rel="noopener">Ver o item 46 no PDF da lista de verificação (página 53)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-47">
+                    <summary><span class="lv-num">Item 47</span><span class="lv-q">A relação de tarefas independentes (T1 |=| T2) foi usada corretamente para indicar que as tarefas podem ser realizadas em qualquer ordem, mas que, iniciada uma delas, ela precisa terminar antes que a outra comece?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-18">Tabela 18</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 204, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item47-1-livro.jpg" alt="Trecho grifado da página 204 do livro, origem do item 47" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 204)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 47" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=54" target="_blank" rel="noopener">Ver o item 47 no PDF da lista de verificação (página 54)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-48">
+                    <summary><span class="lv-num">Item 48</span><span class="lv-q">A relação de desativação (T1 [> T2) foi usada corretamente para indicar que a primeira tarefa é completamente interrompida pela segunda?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-18">Tabela 18</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 204, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item48-1-livro.jpg" alt="Trecho grifado da página 204 do livro, origem do item 48" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 204)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 48" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=55" target="_blank" rel="noopener">Ver o item 48 no PDF da lista de verificação (página 55)</a></p>
+                    </div>
+                </details>
+                <details class="lv-item" id="item-49">
+                    <summary><span class="lv-num">Item 49</span><span class="lv-q">A relação de suspensão e retomada (T1 |> T2) foi usada corretamente para indicar que a primeira tarefa pode ser interrompida pela segunda e é retomada do ponto em que parou assim que a segunda terminar?</span><span class="lv-r e1-sim">Conforme</span><span class="lv-ev"><strong>Evidência:</strong> <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, <a href="entrega2_v-ctt.html#tab-18">Tabela 18</a></span></summary>
+                    <div class="lv-body">
+                        <p><strong>Referência:</strong> Página: 204, Capítulo 6. Organização do Espaço de Problema. Livro: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-livro"><img src="img/entrega2/lv/lv-item49-1-livro.jpg" alt="Trecho grifado da página 204 do livro, origem do item 49" loading="lazy"><figcaption>Trecho de origem do item, grifado (página 204)</figcaption></figure></div>
+                        <p><strong>Tipo de defeito, se a resposta for Não conforme</strong> (Kalinowski e Spínola, 2007, p. 69): Fato incorreto: o artefato descreve algo que não é verdadeiro nas condições do projeto.</p>
+                        <div class="lv-fotos"><figure class="lv-foto lv-foto-fagan"><img src="img/entrega2/lv/lv-fagan-163.jpg" alt="Trecho grifado de Kalinowski e Spínola, página 69, com o tipo de defeito do item 49" loading="lazy"><figcaption>Kalinowski e Spínola (2007, p. 69)</figcaption></figure></div>
+                        <p class="lv-pdf"><a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf#page=56" target="_blank" rel="noopener">Ver o item 49 no PDF da lista de verificação (página 56)</a></p>
+                    </div>
+                </details>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir da lista de verificação geral do grupo (ver referências).</p>
+            <p class="doc-text">Dos 49 itens, 46 estão conformes, nenhum não conforme e 3 não se aplicam.</p>
+            <h3 class="doc-subsection" id="v2-lista-prof">3. Lista de verificação do plano de ensino</h3>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption><span id="tab-19"></span>Tabela 19: Itens da Entrega 2 na lista do plano de ensino</caption>
+                    <thead><tr><th>Item</th><th>Pergunta</th><th>Resposta</th><th>Evidência</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>O perfil do usuário é definido por mais de uma forma?</td><td><span class="e1-sim">Sim</span></td><td>Brainstorming (<a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>) e perfis do grupo, vindos de entrevistas e grupos de foco (<a href="entrega2_v-perfil.html">3. Perfil de usuário</a>)</td></tr>
+                        <tr><td>2</td><td>O perfil possui os atributos de um perfil, com referência e foto?</td><td><span class="e1-sim">Sim</span></td><td><a href="entrega2_v-perfil.html">3. Perfil de usuário</a>, Figuras <a href="entrega2_v-perfil.html#fig-6">6</a> e <a href="entrega2_v-perfil.html#fig-7">7</a> e <a href="entrega2_v-perfil.html#tab-7">Tabela 7</a></td></tr>
+                        <tr><td>3</td><td>O perfil define os grupos de atributos (idade, experiência, atitudes, tarefas primárias), com referência e foto?</td><td><span class="e1-sim">Sim</span></td><td><a href="entrega2_v-perfil.html">3. Perfil de usuário</a>, <a href="entrega2_v-perfil.html#fig-8">Figura 8</a>, <a href="entrega2_v-perfil.html#tab-8">Tabela 8</a> e <a href="entrega2_v-perfil.html#tab-9">Tabela 9</a></td></tr>
+                        <tr><td>4</td><td>Considera aspectos éticos de pesquisas envolvendo pessoas, com referência e foto?</td><td><span class="e1-sim">Sim</span></td><td><a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, seção 5</td></tr>
+                        <tr><td>5</td><td>Os quatro princípios, com referência e foto?</td><td><span class="e1-sim">Sim</span></td><td><a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, <a href="entrega2_v-coleta.html#fig-3">Figura 3</a> e <a href="entrega2_v-coleta.html#tab-6">Tabela 6</a></td></tr>
+                        <tr><td>6</td><td>Solicita permissão para gravar a voz ou a imagem antes de começar?</td><td><span class="e1-sim">Sim</span></td><td><a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, <a href="entrega2_v-coleta.html#fig-4">Figura 4</a> e <a href="entrega2_v-coleta.html#tab-6">Tabela 6</a></td></tr>
+                        <tr><td>7</td><td>O termo de consentimento livre e esclarecido, com referência e foto?</td><td><span class="e1-sim">Sim</span></td><td><a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, <a href="entrega2_v-coleta.html#fig-5">Figura 5</a> e <a href="entrega2_v-coleta.html#tab-6">Tabela 6</a>; os termos assinados não são publicados</td></tr>
+                        <tr><td>8</td><td>No mínimo duas técnicas de coleta de dados, com referência e foto?</td><td><span class="e1-sim">Sim</span></td><td>No grupo: brainstorming, grupo de foco e entrevista; nesta parte: brainstorming (<a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>, Figuras <a href="entrega2_v-coleta.html#fig-1">1</a> e <a href="entrega2_v-coleta.html#fig-2">2</a>)</td></tr>
+                        <tr><td>9</td><td>Os cenários, com referência e foto?</td><td><span class="e1-sim">Sim</span></td><td><a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a>, Figuras <a href="entrega2_v-cenario.html#fig-10">10</a> e <a href="entrega2_v-cenario.html#fig-11">11</a></td></tr>
+                        <tr><td>10</td><td>A análise de tarefas, com referência e foto?</td><td><span class="e1-sim">Sim</span></td><td><a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a> e <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a>, Figuras <a href="entrega2_v-hta.html#fig-12">12</a> a <a href="entrega2_v-hta.html#fig-14">14</a>, <a href="entrega2_v-ctt.html#fig-16">16</a> e <a href="entrega2_v-ctt.html#fig-17">17</a></td></tr>
+                        <tr><td>11</td><td>Uma atividade do integrante modelada em ao menos duas técnicas (HTA e GOMS/CTT)?</td><td><span class="e1-sim">Sim</span></td><td>Avaliação de Disciplinas em HTA (<a href="entrega2_v-hta.html#fig-15">Figura 15</a>) e em CTT (Figuras <a href="entrega2_v-ctt.html#fig-18">18</a> a <a href="entrega2_v-ctt.html#fig-20">20</a>)</td></tr>
+                        <tr><td>12</td><td>Utilizaram alguma técnica para especificar as tarefas?</td><td><span class="e1-sim">Sim</span></td><td>HTA e CTT</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir da lista de verificação da Entrega 2 sugerida no plano de ensino.</p>
+            <h3 class="doc-subsection" id="v2-pendencias">4. Pendências</h3>
+            <ul class="doc-list">
+                <li>O documento do grupo mantém a Talita, o <a href="entrega2_cenarios.html">Cenário 6</a>, a HTA da <a href="entrega2_tarefas.html#tar-09">TAR-09</a> e a CTT da <a href="entrega2_tarefas.html#tar-10">TAR-10</a> de setembro (mudança de curso), já com as correções <a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf#page=2" target="_blank" rel="noopener">DI-02</a> a <a href="docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf#page=3" target="_blank" rel="noopener">DI-05</a> (versão 1.12); a troca pela Avaliação de Disciplinas fica para quando as próximas entregas forem ajustadas.</li>
+            </ul>
+            <h3 class="doc-subsection" id="v2-referencias">5. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>GRUPO 02. <em>Lista de verificação geral dos artefatos de IHC: inspeção de artefatos pelo método de Fagan</em>, versão 1.0. Universidade de Brasília, 2026. Disponível em: <a href="docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf" target="_blank" rel="noopener">docs/Grupo2ListaVerificacaoGeralArtefatosIHC.pdf</a>.</li>
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</li>
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da; SILVEIRA, Milene Selbach; GASPARINI, Isabela; DARIN, Ticianne; BARBOSA, Gabriel Diniz Junqueira. <em>Interação Humano-Computador e Experiência do Usuário</em>. 1. ed. Rio de Janeiro: Autopublicação, 2021.</li>
+                <li>KALINOWSKI, Marcos; SPÍNOLA, Rodrigo Oliveira. Introdução à Inspeção de Software. <em>Engenharia de Software Magazine</em>, n. 1, p. 68–74, 2007.</li>
+                <li>PEDROZA, Felipe Lopes. <em>Inspeção dos artefatos de Victor Andreozzi de La Rocque Couto (Entregas 2 a 7)</em>. Universidade de Brasília, 2026. Disponível em: &lt;https://interacao-humano-computador.github.io/2026.2-Grupo02/docs/Grupo2InspecaoArtefatosVictorPorFelipe.pdf&gt;.</li>
+            </ul>
+            <script>
+            (function () {
+                function abrir() { var h = location.hash.slice(1); if (!h) return; var d = document.getElementById(h); if (d && d.tagName === 'DETAILS') { d.open = true; d.scrollIntoView({block: 'start'}); } }
+                window.addEventListener('hashchange', abrir); document.addEventListener('DOMContentLoaded', abrir); abrir();
+            })();
+            </script>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Parte individual da Entrega 2: aplicação dos itens 1 a 49 da lista do grupo e dos 12 itens da lista do plano de ensino, com as pendências</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): leitura da transcrição automática do vídeo da sessão, contagem das menções, organização das páginas e das tabelas a partir dos artefatos de Victor na Entrega 2 e na Entrega 5 e captura das páginas do livro; a escolha da técnica, as decisões de projeto e as conclusões são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega2_v-ctt.html"><span>← Anterior</span>7. CTT da Avaliação de Disciplinas</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

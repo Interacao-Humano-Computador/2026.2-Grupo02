@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Perfil de usuário | Entrega 2 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+        .e8-res { font-weight: 700; white-space: nowrap; }
+        .e8-c { color: #4ade80; }
+        .e8-nc { color: #f87171; }
+        .e8-na { color: #a1a1aa; }
+        .e8-pend { color: #fbbf24; font-weight: 600; }
+        .e8-q { color: #d4d4d8; }
+        body.alto-contraste .e8-c { color: #065f46 !important; }
+        body.alto-contraste .e8-nc { color: #991b1b !important; }
+        body.alto-contraste .e8-na { color: #3f3f46 !important; }
+        body.alto-contraste .e8-pend { color: #92400e !important; }
+        body.alto-contraste .e8-q { color: #18181b !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+
+    <style>
+        .e1-hm td.hm { font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center; color: #fafafa; }
+        .e1-hm td.hm-7 { background: rgba(168, 85, 247, 0.85); }
+        .e1-hm td.hm-6 { background: rgba(168, 85, 247, 0.62); }
+        .e1-hm td.hm-5 { background: rgba(168, 85, 247, 0.42); }
+        .e1-hm td.hm-4 { background: rgba(168, 85, 247, 0.26); }
+        .e1-hm td.hm-3 { background: rgba(168, 85, 247, 0.14); }
+        .e1-hm td.hm-2 { background: rgba(168, 85, 247, 0.06); color: #a1a1aa; }
+        .e1-legenda { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: #a1a1aa; font-size: 0.85rem; margin: -1.5rem 0 2.5rem; }
+        .e1-legenda span { display: inline-block; min-width: 2.2rem; text-align: center; padding: 0.2rem 0.4rem; border-radius: 4px; color: #fafafa; font-family: 'JetBrains Mono', monospace; }
+        .e1-team { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .e1-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1rem; text-align: center; background: rgba(9, 9, 11, 0.5); }
+        .e1-card img, .e1-card .e1-ini { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.75rem; display: block; border: 2px solid rgba(168, 85, 247, 0.5); }
+        .e1-card .e1-ini { display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: #d8b4fe; background: rgba(168, 85, 247, 0.12); }
+        .e1-card h4 { margin: 0 0 0.35rem; color: #fafafa; font-size: 1rem; }
+        .e1-card p { margin: 0; color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; }
+        .e1-ativo { color: #4ade80 !important; font-weight: 600; }
+        .e1-inativo { color: #a1a1aa !important; }
+        .e1-sim { color: #4ade80; font-weight: 700; }
+        .e1-nao { color: #f87171; font-weight: 700; }
+        .e1-inc { color: #fbbf24; font-weight: 700; }
+        .e1-shot img { border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .table-standard td { vertical-align: top; }
+        .lv-lista { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .lv-item { border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(9, 9, 11, 0.6); }
+        .lv-item[open] { border-color: rgba(168, 85, 247, 0.5); }
+        .lv-item summary { cursor: pointer; padding: 1rem 1.25rem; display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 0.35rem 1rem; align-items: start; list-style: none; }
+        .lv-item summary::-webkit-details-marker { display: none; }
+        .lv-num::before { content: "▸ "; color: #a855f7; }
+        .lv-item[open] .lv-num::before { content: "▾ "; }
+        .lv-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #d8b4fe; }
+        .lv-q { color: #fafafa; line-height: 1.6; }
+        .lv-r { white-space: nowrap; }
+        .lv-ev { grid-column: 2 / 4; color: #a1a1aa; font-size: 0.92rem; line-height: 1.6; }
+        .lv-body { padding: 0 1.25rem 1.25rem 7.75rem; color: #e4e4e7; font-size: 0.95rem; line-height: 1.7; }
+        .lv-fotos { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.75rem; }
+        .lv-foto { margin: 0; }
+        .lv-foto-livro { max-width: 620px; flex: 1 1 100%; }
+        .lv-foto-fagan { max-width: 300px; }
+        .lv-pdf { margin-top: 0.75rem; }
+        .lv-foto img { width: 100%; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; display: block; }
+        .lv-foto figcaption { color: #a1a1aa; font-size: 0.85rem; text-align: center; margin-top: 0.3rem; }
+        @media (max-width: 700px) { .lv-item summary { grid-template-columns: 1fr; } .lv-ev { grid-column: 1; } .lv-body { padding-left: 1.25rem; } }
+        body.alto-contraste .lv-item { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .lv-q, body.alto-contraste .lv-body, body.alto-contraste .lv-ev, body.alto-contraste .lv-num { color: #000000 !important; }
+
+        body.alto-contraste .e1-hm td.hm { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .e1-hm td.hm-7 { background: #6b21a8 !important; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+        body.alto-contraste .e1-hm td.hm-6 { background: #a855f7 !important; }
+        body.alto-contraste .e1-hm td.hm-5 { background: #d8b4fe !important; }
+        body.alto-contraste .e1-hm td.hm-4 { background: #e9d5ff !important; }
+        body.alto-contraste .e1-hm td.hm-3, body.alto-contraste .e1-hm td.hm-2 { background: #ffffff !important; }
+        body.alto-contraste .e1-card { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .e1-card h4, body.alto-contraste .e1-card p { color: #000000 !important; }
+        body.alto-contraste .e1-card .e1-ini { color: #000000 !important; background: #e9d5ff !important; }
+        body.alto-contraste .e1-sim { color: #065f46 !important; }
+        body.alto-contraste .e1-nao { color: #991b1b !important; }
+        body.alto-contraste .e1-inc { color: #92400e !important; }
+        body.alto-contraste .e1-legenda span { color: #000000 !important; border: 1px solid #000000; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 2 · Perfil do Usuário, Personas e Análise de Tarefas</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Documento do grupo</li>
+                        <li><a href="entrega2.html">Visão geral</a></li>
+                        <li><a href="entrega2_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega2_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega2_base.html">2. Base de dados das personas</a></li>
+                        <li><a href="entrega2_achados.html">3. Achados da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_perfis.html">4. Perfis de usuário</a></li>
+                        <li><a href="entrega2_elenco.html">5. Elenco de personas</a></li>
+                        <li><a href="entrega2_personas.html">6. Personas</a></li>
+                        <li><a href="entrega2_cenarios.html">7. Cenários</a></li>
+                        <li><a href="entrega2_tarefas.html">8. Análise de tarefas</a></li>
+                        <li><a href="entrega2_questoes.html">9. Questões em aberto</a></li>
+                        <li><a href="entrega2_referencias.html">10. Referências</a></li>
+                        <li><a href="entrega2_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega2_apendice-a.html">Apêndice A — Gravações das sessões de coleta de dados</a></li>
+                        <li><a href="entrega2_lv-coleta.html">Lista de verificação — Coleta de dados</a></li>
+                        <li><a href="entrega2_lv-perfil.html">Lista de verificação — Perfil do usuário</a></li>
+                        <li><a href="entrega2_lv-personas.html">Lista de verificação — Personas e elenco de personas</a></li>
+                        <li><a href="entrega2_lv-cenarios.html">Lista de verificação — Cenários</a></li>
+                        <li><a href="entrega2_lv-hta.html">Lista de verificação — HTA</a></li>
+                        <li><a href="entrega2_lv-ctt.html">Lista de verificação — CTT</a></li>
+                        <li><a href="entrega2_etica.html">Aspectos éticos da pesquisa com usuários</a></li>
+                        <li><a href="entrega2_atributos.html">Atributos dos perfis de usuário</a></li>
+                        <li class="doc-stagenav-group">Partes individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega2_v-visao-geral.html">1. Visão geral e planejamento</a></li>
+                                <li><a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a></li>
+                                <li><a href="entrega2_v-perfil.html" class="active" aria-current="page">3. Perfil de usuário</a></li>
+                                <li><a href="entrega2_v-persona.html">4. Persona Talita Farias</a></li>
+                                <li><a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a></li>
+                                <li><a href="entrega2_v-verificacao.html">8. Verificação com as listas</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega2.html">Entrega 2</a> › Parte individual de Victor Andreozzi de La Rocque Couto</p>
+            <h1 id="v2-topo" class="doc-title doc-page-title">3. Perfil de usuário</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto · <strong>Revisor:</strong> Felipe Lopes Pedroza</p>
+                <p><strong>Entrega:</strong> 2, Perfil do Usuário, Personas e Análise de Tarefas (parte individual, feita em 27/11/2026 a partir dos artefatos que Victor elaborou na Entrega 2 e na <a href="entrega5.html">Entrega 5</a>) · <strong>Funcionalidade de Victor no projeto:</strong> Avaliação de Disciplinas</p>
+                <p><strong>Outros artefatos desta parte:</strong> <a href="entrega2_v-visao-geral.html">1. Visão geral e planejamento</a> · <a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a> · <a href="entrega2_v-persona.html">4. Persona Talita Farias</a> · <a href="entrega2_v-cenario.html">5. Cenário da Avaliação de Disciplinas</a> · <a href="entrega2_v-hta.html">6. HTA da Avaliação de Disciplinas</a> · <a href="entrega2_v-ctt.html">7. CTT da Avaliação de Disciplinas</a> · <a href="entrega2_v-verificacao.html">8. Verificação com as listas</a></p>
+            </div>
+            <h3 class="doc-subsection" id="v2-intro">1. Introdução</h3>
+            <p class="doc-text">Perfil de usuário é “uma descrição detalhada das características dos usuários cujos objetivos devem ser apoiados pelo sistema” (Barbosa e Silva (2010, p. 174). Esta página parte dos nove <a href="entrega2_perfis.html">perfis de usuário do documento do grupo</a>, que vêm das entrevistas e dos grupos de foco, e mostra como cada um usa a Avaliação de Disciplinas: quem consulta as avaliações antes de montar a grade e quem avalia as disciplinas que já cursou. Os atributos comuns aos oito perfis de estudante foram detalhados para a funcionalidade com o brainstorming com 10 estudantes (<a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>).</p>
+            <p class="doc-text">O livro lista os tipos de dados que caracterizam um perfil, a partir de Hackos e Redish (1998) e de Courage e Baxter (2005) (Barbosa e Silva (2010, p. 134–135), e propõe agrupar os usuários por idade, experiência, atitudes e tarefas primárias (p. 175). As <a href="#fig-6">Figura 6</a>, <a href="#fig-7">Figura 7</a> e <a href="#fig-8">Figura 8</a> mostram esses trechos.</p>
+            <figure class="doc-figure lv-foto" id="fig-6">
+                <figcaption>Figura 6: Dados que caracterizam um perfil de usuário (seção 5.2, início)</figcaption>
+                <img src="img/entrega2/v-livro-p134-perfil-dados.jpg" alt="Página 134 do livro de Barbosa e Silva, seção 5.2 Que Dados Coletar, com dados demográficos, experiência no cargo, informações sobre a empresa, educação, experiência com computadores, experiência com produtos e tecnologia disponível" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 134, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC, seção 5.2.</p>
+            </figure>
+            <figure class="doc-figure lv-foto" id="fig-7">
+                <figcaption>Figura 7: Dados que caracterizam um perfil de usuário (seção 5.2, continuação)</figcaption>
+                <img src="img/entrega2/v-livro-p135-perfil-dados-2.jpg" alt="Página 135 do livro de Barbosa e Silva, com treinamento, atitudes e valores, conhecimento do domínio, objetivos, tarefas, gravidade dos erros, motivação e idiomas e jargões" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 135, Capítulo 5. Identificação de Necessidades dos Usuários e Requisitos de IHC, seção 5.2.</p>
+            </figure>
+            <figure class="doc-figure lv-foto" id="fig-8">
+                <figcaption>Figura 8: Grupos de usuários por idade, experiência, atitudes e tarefas primárias</figcaption>
+                <img src="img/entrega2/v-livro-p175-perfil-grupos.jpg" alt="Página 175 do livro de Barbosa e Silva, com os grupos comuns de perfil e o Exemplo 6.1, quadro de perfis de coordenadores de curso" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 175, Capítulo 6. Organização do Espaço de Problema, seção 6.1.</p>
+            </figure>
+            <h3 class="doc-subsection" id="v2-atributos">2. Atributos do perfil</h3>
+            <p class="doc-text">A <a href="#tab-7">Tabela 7</a> preenche cada tipo de dado do livro para o estudante que usa a Avaliação de Disciplinas, com os valores que valem para os oito perfis de estudante do grupo; o que muda de um perfil para outro está na <a href="#tab-8">Tabela 8</a>. A última coluna indica de onde saiu cada valor, com as letras explicadas na legenda abaixo da tabela.</p>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption><span id="tab-7"></span>Tabela 7: Atributos do perfil do estudante que consulta e avalia disciplinas</caption>
+                    <thead><tr><th>Tipo de dado (p. 134–135)</th><th>Valor no perfil</th><th>Origem</th></tr></thead>
+                    <tbody>
+                        <tr><td>Dados demográficos</td><td>Estudantes de graduação da UnB, de 18 a 27 anos, de todos os campi e cursos; a sessão teve estudantes de cursos da área da saúde, como Medicina Veterinária</td><td>B, G</td></tr>
+                        <tr><td>Ocupação, papel e responsabilidades (no lugar de “cargo”)</td><td>Estudante matriculado, responsável por montar a própria grade a cada semestre e por cumprir os pré-requisitos; ao fim do semestre, pode avaliar as disciplinas que cursou. Experiência: do 1º ao último semestre</td><td>B, G</td></tr>
+                        <tr><td>Instituição (no lugar de “empresa”)</td><td>Universidade de Brasília, com matrícula pelo SIGAA e mais de 3.300 usuários ativos no NoFluxo UnB</td><td>G</td></tr>
+                        <tr><td>Educação e leitura</td><td>Ensino médio completo, graduação em curso. Leem bem, mas evitam textos longos durante a matrícula; preferem notas e comentários curtos</td><td>B</td></tr>
+                        <tr><td>Experiência com computadores</td><td>Alta no celular; os participantes exploraram o site sozinhos, sem instrução, e usaram o modo visitante</td><td>B</td></tr>
+                        <tr><td>Experiência com produtos semelhantes</td><td>Usam o SIGAA a contragosto (“qualquer coisa que evite que eu entre no SIGAA”); trocam opiniões sobre disciplinas em conversas e grupos; um participante comparou a ideia a um “Letterboxd das disciplinas”</td><td>B</td></tr>
+                        <tr><td>Tecnologia disponível</td><td>Celular como dispositivo principal na sessão; computador em casa ou nos laboratórios para planejar a matrícula</td><td>B, E</td></tr>
+                        <tr><td>Treinamento</td><td>Não querem treinamento; aprendem explorando (“dá para ir descobrindo as coisinhas”)</td><td>B</td></tr>
+                        <tr><td>Atitudes e valores</td><td>Gostam de tecnologia e do NoFluxo UnB; desconfiam de números sem explicação (questionaram como a dificuldade é calculada); querem anonimato para opinar sobre professores</td><td>B, E</td></tr>
+                        <tr><td>Conhecimento do domínio</td><td>Conhecem as próprias disciplinas e professores, mas não sabem como colegas avaliaram as que ainda vão cursar; ingressantes conhecem pouco as regras acadêmicas</td><td>B, G</td></tr>
+                        <tr><td>Objetivos</td><td>Montar uma grade viável, sem juntar disciplinas difíceis no mesmo semestre, e ajudar os próximos estudantes com a própria experiência. Hoje fazem isso perguntando a veteranos</td><td>B</td></tr>
+                        <tr><td>Tarefas</td><td>Primária: consultar a dificuldade e a cobrança das disciplinas antes da matrícula (uma vez por semestre, com várias consultas). Secundária: avaliar as disciplinas cursadas ao fim do semestre</td><td>B</td></tr>
+                        <tr><td>Gravidade dos erros</td><td>Média: uma avaliação errada (disciplina ou professor trocados) distorce a média vista pelos colegas; uma escolha de grade mal informada pode atrasar o curso</td><td>B, E</td></tr>
+                        <tr><td>Motivação</td><td>Ajudar colegas e não repetir o próprio semestre difícil; motivação coletiva, sem recompensa</td><td>B, E</td></tr>
+                        <tr><td>Idiomas e jargões</td><td>Português; jargão acadêmico da UnB: fluxo, grade, trancar, IRA, optativa, ementa, cobrança do professor</td><td>B</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026). A legenda da coluna “Origem” está logo abaixo da tabela.</p>
+            <div class="header-info" style="border-left: 4px solid #a855f7; margin-top: -1rem;">                <p><strong>Legenda da coluna “Origem” da Tabela 7</strong></p>                <p><strong>B</strong> — brainstorming de 25/09/2026, com 10 estudantes (<a href="entrega2_v-coleta.html">2. Coleta por brainstorming e aspectos éticos</a>)</p>                <p><strong>G</strong> — documento do grupo: <a href="entrega2_perfis.html">perfis de usuário</a> e <a href="entrega2_atributos.html">atributos dos perfis</a></p>                <p><strong>E</strong> — avaliações da Avaliação de Disciplinas com estudantes nas Entregas 5 a 7 (<a href="entrega5_relato-v-storyboard.html">storyboard</a>, <a href="entrega5_relato-v-tarefas.html">análise de tarefas</a> e <a href="entrega7_relato-v-alta-fidelidade.html">protótipo de alta fidelidade</a>)</p>            </div>            <h3 class="doc-subsection" id="v2-grupos">3. Os perfis do grupo na Avaliação de Disciplinas</h3>
+            <p class="doc-text">O livro agrupa os usuários por idade, experiência, atitudes e tarefas primárias, como no quadro do Exemplo 6.1 (Barbosa e Silva (2010, p. 175). O grupo já fez esse agrupamento para os nove perfis, na <a href="entrega2_atributos.html#atributos-perfis">Tabela 43 dos atributos dos perfis</a>, com a faixa de 18 a 27 anos para todos. A <a href="#tab-8">Tabela 8</a> mantém esses perfis e mostra, para cada um, a experiência e a atitude que pesam na Avaliação de Disciplinas e as tarefas primárias na funcionalidade. O perfil de cada participante do brainstorming não foi registrado, então a tabela vem das descrições do grupo e não de uma contagem por perfil.</p>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption><span id="tab-8"></span>Tabela 8: Perfis do grupo na Avaliação de Disciplinas, por experiência, atitudes e tarefas primárias</caption>
+                    <thead><tr><th>Perfil do grupo</th><th>Experiência com disciplinas e professores</th><th>Atitude</th><th>Tarefas primárias na Avaliação de Disciplinas</th><th>Persona do elenco</th></tr></thead>
+                    <tbody>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 1 — Ingressante</a></td><td>Ainda não cursou nenhuma disciplina e não conhece os professores</td><td>Tem vergonha de perguntar a colegas; confia nas notas de quem já cursou</td><td>Consultar as médias e os comentários das disciplinas do próximo semestre. Só passa a avaliar depois do primeiro semestre</td><td><a href="entrega2_personas.html">Caio Ferreira</a></td></tr>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 2 — Fluxo regular</a></td><td>Cursou as disciplinas da grade sugerida, na ordem prevista</td><td>Quer rapidez e confirmação, sem susto</td><td>Consultar as disciplinas do próximo semestre antes de cada matrícula e avaliar as que acabou de cursar</td><td><a href="entrega2_personas.html">Bruna Castro</a></td></tr>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 3 — Fora do fluxo / atrasado</a></td><td>Reprovou em disciplinas e vai refazer algumas</td><td>Quer sentir que está no controle do próprio curso</td><td>Consultar a dificuldade e a cobrança para não juntar disciplinas difíceis no semestre de recuperação e escolher com quem refazer</td><td><a href="entrega2_personas.html">Larissa Mendes</a></td></tr>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 4 — Fluxo adiantado</a></td><td>Cursa disciplinas de semestres futuros, com poucos colegas da mesma etapa para perguntar</td><td>Busca autonomia sem risco</td><td>Consultar as disciplinas de semestres futuros antes de adiantá-las</td><td><a href="entrega2_personas.html">Yasmin Prado</a></td></tr>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 5 — Reintegrado</a></td><td>Ficou anos fora do curso; disciplinas e professores podem ter mudado</td><td>Está inseguro e tem medo de errar de novo</td><td>Consultar as avaliações mais recentes das disciplinas que ainda faltam</td><td><a href="entrega2_personas.html">Eduardo Sales</a></td></tr>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 6 — Mudança de curso / dupla habilitação</a></td><td>Cursou disciplinas em dois cursos, com professores diferentes</td><td>Acha a própria situação confusa e quer clareza</td><td>Avaliar as disciplinas cursadas nos dois cursos e consultar as do novo curso</td><td><a href="entrega2_v-persona.html">Talita Farias</a></td></tr>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 7 — Mobilidade acadêmica / equivalência externa</a></td><td>Cursou um semestre em outra instituição</td><td>Quer clareza e se frustra com a demora das equivalências</td><td>Consultar as disciplinas da UnB que ainda vai cursar e avaliar as que cursou na UnB</td><td><a href="entrega2_v-persona.html">Talita Farias</a></td></tr>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 8 — Formando</a></td><td>Já cursou quase todas as disciplinas; é quem mais tem o que avaliar</td><td>Quer a segurança de que nada vai passar despercebido</td><td>Avaliar as disciplinas cursadas e consultar as optativas que faltam para a grade final</td><td><a href="entrega2_personas.html">Diego Rocha</a></td></tr>
+                        <tr><td><a href="entrega2_perfis.html">Perfil 9 — Administrador</a></td><td>Não consulta nem avalia como estudante</td><td>Quer que os dados estejam corretos</td><td>Moderar os comentários das avaliações e manter os dados das disciplinas</td><td><a href="entrega2_personas.html">Helena Duarte</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir dos <a href="entrega2_perfis.html">perfis de usuário</a>, dos <a href="entrega2_atributos.html#atributos-perfis">atributos dos perfis</a> e das <a href="entrega2_personas.html">personas</a> do grupo.</p>
+            <p class="doc-text">Os oito perfis de estudante consultam e avaliam; o que muda é o peso de cada tarefa. O Perfil 1 só consulta, os Perfis 3, 4 e 5 consultam mais do que avaliam, e os Perfis 6, 7 e 8 são os que mais têm o que avaliar. O Perfil 2 faz as duas coisas a cada semestre. Essa diferença é a base dos grupos da seção 4.</p>
+            <h3 class="doc-subsection" id="v2-grupos-funcionalidade">4. Grupos de atributos da Avaliação de Disciplinas</h3>
+            <div class="header-info" style="border-left: 4px solid #a855f7;"><p><strong>Esta seção vale apenas para a Avaliação de Disciplinas.</strong> Os grupos abaixo não substituem os <a href="entrega2_perfis.html">perfis de usuário do grupo</a>, que continuam valendo para todo o NoFluxo UnB. Eles reúnem os mesmos perfis pela tarefa primária que cada um tem nesta funcionalidade, e não devem ser usados para as outras funcionalidades do sistema.</p>            </div>            <p class="doc-text">Seguindo o quadro do Exemplo 6.1 (Barbosa e Silva (2010, p. 175), a <a href="#tab-9">Tabela 9</a> separa os perfis da <a href="#tab-8">Tabela 8</a> em dois grupos, pela tarefa primária na funcionalidade. As porcentagens de cada grupo não foram medidas, e o grupo de cada participante do brainstorming não foi registrado.</p>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption><span id="tab-9"></span>Tabela 9: Grupos de atributos da Avaliação de Disciplinas por idade, experiência, atitudes e tarefas primárias</caption>
+                    <thead><tr><th>Grupo de atributos</th><th>A: quem consulta antes da matrícula</th><th>B: quem avalia depois de cursar</th></tr></thead>
+                    <tbody>
+                        <tr><td>Perfis do grupo incluídos</td><td><a href="entrega2_perfis.html">Perfis 1, 3, 4 e 5</a>, em que consultar pesa mais do que avaliar; o Perfil 2 entra aqui antes de cada matrícula</td><td><a href="entrega2_perfis.html">Perfis 6, 7 e 8</a>, que mais têm o que avaliar; o Perfil 2 entra aqui ao fim de cada semestre</td></tr>
+                        <tr><td>Idade</td><td>Jovem, de 18 a 27 anos (faixa do grupo), na maioria nos primeiros semestres; inclui quem está atrasado, adiantado ou voltou ao curso</td><td>Jovem adulto, de 18 a 27 anos (faixa do grupo), a partir do 3º semestre</td></tr>
+                        <tr><td>Experiência</td><td>Pouca experiência com as disciplinas que vai cursar: ainda não as cursou ou não conhece os professores atuais</td><td>Experiente; já cursou disciplinas fáceis e difíceis e conhece os professores</td></tr>
+                        <tr><td>Atitudes</td><td>Tecnófilo; confia nas notas dos colegas</td><td>Tecnófilo; quer anonimato e quer ver a própria avaliação contar</td></tr>
+                        <tr><td>Tarefas primárias</td><td>Consultar as médias de dificuldade e de cobrança e ler os comentários</td><td>Avaliar as disciplinas cursadas e consultar as do próximo semestre</td></tr>
+                        <tr><td>Persona que representa o grupo</td><td><a href="entrega2_personas.html">Caio Ferreira</a> (Perfil 1), do <a href="entrega2_personas.html">documento do grupo</a></td><td><a href="entrega2_v-persona.html">Talita Farias</a> (Perfis 6 e 7), em <a href="entrega2_v-persona.html">4. Persona Talita Farias</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026), a partir da <a href="#tab-8">Tabela 8</a>, do brainstorming e dos <a href="entrega2_atributos.html#atributos-perfis">atributos dos perfis</a> do grupo.</p>
+            <p class="doc-text">O <a href="entrega2_perfis.html">Perfil 9</a>, Administrador, fica fora dos dois grupos, porque não consulta nem avalia como estudante: ele modera os comentários. O grupo B é o que alimenta a funcionalidade, porque sem estudantes que avaliem não há médias para o grupo A consultar. Por isso a persona desta parte é a <a href="entrega2_v-persona.html">Talita Farias</a>, que já representa os <a href="entrega2_perfis.html">Perfis 6 e 7</a> no elenco do grupo e está no grupo B: ela cursou disciplinas em dois cursos e com professores diferentes, que é o caso em que avaliar a disciplina e o professor separadamente faz mais diferença. A persona, os cenários e a análise de tarefas desta parte seguem o grupo B. Os demais interessados são os professores e as coordenações, que podem ler as avaliações.</p>
+            <h3 class="doc-subsection" id="v2-referencias">5. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</li>
+                <li>GRUPO 02. <em>Brainstorm</em> (gravação da sessão de brainstorming de 25/09/2026). YouTube, 2026. Disponível em: &lt;https://youtu.be/r89nhXXu1R0&gt;. Acesso em: 27 nov. 2026.</li>
+                <li>GRUPO 02. <em>Entrega 2: Perfil do Usuário, Personas e Análise de Tarefas</em> (documento do grupo, versões 1.0 a 1.10). Universidade de Brasília, 2026. Disponível em: &lt;https://interacao-humano-computador.github.io/2026.2-Grupo02/entrega2.html&gt;.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Parte individual da Entrega 2: perfil de usuário da Avaliação de Disciplinas, com os atributos, os nove perfis do grupo na funcionalidade e os grupos de atributos da funcionalidade</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): leitura da transcrição automática do vídeo da sessão, contagem das menções, organização das páginas e das tabelas a partir dos artefatos de Victor na Entrega 2 e na Entrega 5 e captura das páginas do livro; a escolha da técnica, as decisões de projeto e as conclusões são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega2_v-coleta.html"><span>← Anterior</span>2. Coleta por brainstorming e aspectos éticos</a>
+                    <a class="next" href="entrega2_v-persona.html"><span>Próximo →</span>4. Persona Talita Farias</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>

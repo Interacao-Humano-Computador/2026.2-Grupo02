@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sites avaliados e site selecionado | Entrega 1 | IHC Grupo 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .landing-body {
+            background: #000000;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(216, 180, 254, 0.08) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-links { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; align-items: center; }
+        .navbar-links a { color: #a1a1aa; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #a855f7; }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #a855f7 0%, #d8b4fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .section-container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; width: 100%; }
+
+        .footer-institutional { padding: 4rem 2rem; text-align: center; background: #000000; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+
+        .doc-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(9, 9, 11, 0.4); font-size: 0.9rem; margin-bottom: 3rem; border-radius: 8px; }
+        .doc-nav a { color: #a1a1aa; font-weight: 500; text-decoration: none; transition: color 0.3s; }
+        .doc-nav a:hover { color: #a855f7; }
+        
+        .header-info { background: rgba(9, 9, 11, 0.6); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 2.5rem; color: #a1a1aa; font-size: 0.95rem; line-height: 1.8; }
+        .header-info strong { color: #fafafa; }
+        .header-info a { color: #a855f7; text-decoration: none; }
+        .header-info a:hover { text-decoration: underline; }
+
+        h1.doc-title { font-size: 2.5rem; border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding-bottom: 1rem; margin-bottom: 2rem; color: #fafafa; }
+        h2.doc-section { font-size: 1.75rem; color: #a855f7; margin-top: 3rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; margin-bottom: 1.5rem; font-weight: 600; }
+        
+        p.doc-text, ul.doc-list li { font-size: 1rem; color: #e4e4e7; line-height: 1.8; margin-bottom: 1.25rem; }
+        ul.doc-list { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+
+        .table-wrapper { overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #000000; margin-bottom: 2.5rem; }
+        .table-standard { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .table-standard th { padding: 1.25rem 1rem; font-weight: 700; color: #fafafa; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-standard td { padding: 1.25rem 1rem; color: #a1a1aa; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .table-standard tr:last-child td { border-bottom: none; }
+        .table-header-highlight { background: rgba(168, 85, 247, 0.1); color: #d8b4fe !important; text-align: center; }
+    
+        .doc-subsection { font-size: 1.25rem; color: #fafafa; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .doc-h4 { font-size: 1.05rem; color: #d8b4fe; margin: 1.75rem 0 0.75rem; font-weight: 600; }
+        .doc-source { font-size: 0.85rem; color: #a1a1aa; text-align: center; margin: -1.75rem 0 2.5rem; }
+        .table-standard caption { caption-side: top; text-align: left; padding: 1rem; color: #a1a1aa; font-style: italic; font-size: 0.9rem; }
+        .table-standard td.td-strong { color: #fafafa; }
+        .table-hta { font-size: 0.85rem; min-width: 720px; }
+        @media (max-width: 600px) { .table-hta td, .table-hta th { padding: 0.75rem 0.6rem; } }
+        .table-standard caption { position: sticky; left: 0; max-width: calc(100vw - 4rem); white-space: normal; }
+        .table-hta td { vertical-align: top; }
+        .table-hta tr.tr-main td { color: #e4e4e7; background: rgba(168, 85, 247, 0.05); }
+        .table-standard a { color: #d8b4fe; }
+
+        .persona-card { border: 1px solid rgba(255,255,255,0.08); border-left: 4px solid #a855f7; border-radius: 8px; padding: 0.5rem 1.5rem 1rem; margin-bottom: 2rem; background: rgba(9, 9, 11, 0.4); }
+        .persona-tag { font-weight: 400; color: #a1a1aa; font-size: 1rem; }
+        .persona-quote { font-style: italic; color: #d8b4fe; margin: 0 0 1rem; padding-left: 1rem; border-left: 2px solid rgba(168, 85, 247, 0.4); }
+        .persona-list dt { font-weight: 700; color: #fafafa; margin-top: 0.75rem; }
+        .persona-list dd { color: #e4e4e7; line-height: 1.7; margin: 0.25rem 0 0; }
+        .scenario-req { border-left: 3px solid #a855f7; padding-left: 1rem; }
+
+        .doc-figure { margin: 0 0 2.5rem; }
+        .doc-figure figcaption { text-align: center; font-weight: 700; color: #fafafa; margin-bottom: 1rem; }
+        .doc-figure .doc-source { margin: 1rem 0 0; }
+        .hta-tree { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; overflow-x: auto; padding: 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; }
+        .hta-node { border: 1px solid #52525b; border-radius: 8px; padding: 0.6rem 0.8rem; background: #18181b; text-align: center; }
+        .hta-root { max-width: 560px; background: rgba(168, 85, 247, 0.12); border-color: #a855f7; }
+        .hta-title { display: block; font-weight: 700; color: #fafafa; font-size: 0.85rem; }
+        .hta-plan { display: block; font-style: italic; color: #a1a1aa; font-size: 0.72rem; margin-top: 0.35rem; }
+        .hta-children { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hta-branch { flex: 1 1 170px; max-width: 230px; display: flex; flex-direction: column; gap: 0.5rem; }
+        .hta-ops { list-style: none; padding: 0 0 0 0.75rem; margin: 0; border-left: 2px solid #52525b; display: flex; flex-direction: column; gap: 0.4rem; }
+        .hta-ops li { border: 1px solid #3f3f46; border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #e4e4e7; background: #09090b; }
+        .ctt-tree, .ctt-tree ul { list-style: disc; padding-left: 1.5rem; }
+        .ctt-tree li { color: #e4e4e7; line-height: 1.8; }
+        .ctt-op { color: #d8b4fe; font-family: 'JetBrains Mono', monospace; }
+        .note-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; color: #e4e4e7; line-height: 1.7; }
+
+        body.alto-contraste .persona-card,
+        body.alto-contraste .hta-tree { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-node,
+        body.alto-contraste .hta-ops li { background: #f1f3f5 !important; border-color: #000000 !important; }
+        body.alto-contraste .hta-root { background: #e9d5ff !important; }
+        body.alto-contraste .persona-card { border-left-color: #6b21a8 !important; }
+        body.alto-contraste .persona-quote { border-left-color: #000000 !important; }
+        body.alto-contraste .hta-ops { border-left-color: #000000 !important; }
+        body.alto-contraste .persona-quote,
+        body.alto-contraste .doc-h4,
+        body.alto-contraste .ctt-op { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .table-hta tr.tr-main td { background: #f1f3f5 !important; }
+        body.alto-contraste .note-box { background: #fff7e6 !important; border-color: #000000 !important; }
+        .e8-res { font-weight: 700; white-space: nowrap; }
+        .e8-c { color: #4ade80; }
+        .e8-nc { color: #f87171; }
+        .e8-na { color: #a1a1aa; }
+        .e8-pend { color: #fbbf24; font-weight: 600; }
+        .e8-q { color: #d4d4d8; }
+        body.alto-contraste .e8-c { color: #065f46 !important; }
+        body.alto-contraste .e8-nc { color: #991b1b !important; }
+        body.alto-contraste .e8-na { color: #3f3f46 !important; }
+        body.alto-contraste .e8-pend { color: #92400e !important; }
+        body.alto-contraste .e8-q { color: #18181b !important; }
+    </style>
+    <style>:root { --doc-accent: #a855f7; }</style>
+
+    <style>
+        .e1-hm td.hm { font-family: 'JetBrains Mono', monospace; font-weight: 700; text-align: center; color: #fafafa; }
+        .e1-hm td.hm-7 { background: rgba(168, 85, 247, 0.85); }
+        .e1-hm td.hm-6 { background: rgba(168, 85, 247, 0.62); }
+        .e1-hm td.hm-5 { background: rgba(168, 85, 247, 0.42); }
+        .e1-hm td.hm-4 { background: rgba(168, 85, 247, 0.26); }
+        .e1-hm td.hm-3 { background: rgba(168, 85, 247, 0.14); }
+        .e1-hm td.hm-2 { background: rgba(168, 85, 247, 0.06); color: #a1a1aa; }
+        .e1-legenda { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; color: #a1a1aa; font-size: 0.85rem; margin: -1.5rem 0 2.5rem; }
+        .e1-legenda span { display: inline-block; min-width: 2.2rem; text-align: center; padding: 0.2rem 0.4rem; border-radius: 4px; color: #fafafa; font-family: 'JetBrains Mono', monospace; }
+        .e1-team { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+        .e1-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.25rem 1rem; text-align: center; background: rgba(9, 9, 11, 0.5); }
+        .e1-card img, .e1-card .e1-ini { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.75rem; display: block; border: 2px solid rgba(168, 85, 247, 0.5); }
+        .e1-card .e1-ini { display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: #d8b4fe; background: rgba(168, 85, 247, 0.12); }
+        .e1-card h4 { margin: 0 0 0.35rem; color: #fafafa; font-size: 1rem; }
+        .e1-card p { margin: 0; color: #a1a1aa; font-size: 0.88rem; line-height: 1.5; }
+        .e1-ativo { color: #4ade80 !important; font-weight: 600; }
+        .e1-inativo { color: #a1a1aa !important; }
+        .e1-sim { color: #4ade80; font-weight: 700; }
+        .e1-nao { color: #f87171; font-weight: 700; }
+        .e1-inc { color: #fbbf24; font-weight: 700; }
+        .e1-shot img { border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .table-standard td { vertical-align: top; }
+        body.alto-contraste .e1-hm td.hm { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+        body.alto-contraste .e1-hm td.hm-7 { background: #6b21a8 !important; color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+        body.alto-contraste .e1-hm td.hm-6 { background: #a855f7 !important; }
+        body.alto-contraste .e1-hm td.hm-5 { background: #d8b4fe !important; }
+        body.alto-contraste .e1-hm td.hm-4 { background: #e9d5ff !important; }
+        body.alto-contraste .e1-hm td.hm-3, body.alto-contraste .e1-hm td.hm-2 { background: #ffffff !important; }
+        body.alto-contraste .e1-card { background: #ffffff !important; border-color: #000000 !important; }
+        body.alto-contraste .e1-card h4, body.alto-contraste .e1-card p { color: #000000 !important; }
+        body.alto-contraste .e1-card .e1-ini { color: #000000 !important; background: #e9d5ff !important; }
+        body.alto-contraste .e1-sim { color: #065f46 !important; }
+        body.alto-contraste .e1-nao { color: #991b1b !important; }
+        body.alto-contraste .e1-inc { color: #92400e !important; }
+        body.alto-contraste .e1-legenda span { color: #000000 !important; border: 1px solid #000000; }
+    </style>
+</head>
+<body class="landing-body">
+    
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL (SIDEBAR) -->
+    <div class="app-layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text" style="color: #fff; text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7; font-weight: 900; letter-spacing: 1px; font-style: italic;">NOFLX UNB</span>
+                    </a>
+                </div>
+                <button class="sidebar-toggle-close" id="sidebarCloseBtn" aria-label="Fechar Menu">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="sidebar-section-title">Navegação</div>
+                <ul class="sidebar-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="entregas.html" class="sidebar-btn-outline">Entregas</a></li>
+                    <li><a href="atas.html">Atas</a></li>
+                    <li><a href="planejamento.html">Planejamento</a></li>
+                </ul>
+
+                <div class="sidebar-dashboard-box">
+                    <a href="dashboard.html" class="btn-dashboard">Dashboard ➔</a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-accessibility">
+                    <button id="btnContraste" class="btn-contraste-icon" aria-label="Alternar Alto Contraste" title="Alternar Alto Contraste"></button>
+                </div>
+            </div>
+        </aside>
+
+        <button class="sidebar-mobile-toggle" id="sidebarOpenBtn" aria-label="Abrir Menu">☰</button>
+
+        <div class="main-wrapper">
+
+
+    <main style="display: flex; flex-direction: column; flex: 1;">
+        <div class="doc-layout">
+                <aside class="doc-stagenav" aria-label="Artefatos desta entrega">
+                    <a class="doc-stagenav-back" href="entregas.html">← Menu de Entregas</a>
+                    <p class="doc-stagenav-title">Entrega 1 · Planejamento do Projeto</p>
+                    <ul>
+                        <li class="doc-stagenav-group">Documento do grupo</li>
+                        <li><a href="entrega1.html">Visão geral</a></li>
+                        <li><a href="entrega1_contribuicao.html">Tabela de Contribuição</a></li>
+                        <li><a href="entrega1_intro.html">1. Introdução</a></li>
+                        <li><a href="entrega1_equipe.html">2. Equipe</a></li>
+                        <li><a href="entrega1_heatmap.html">3. Heatmap de Disponibilidade dos Integrantes</a></li>
+                        <li><a href="entrega1_ferramentas.html">4. Ferramentas do Projeto</a></li>
+                        <li><a href="entrega1_design.html">5. Processo de Design Selecionado</a></li>
+                        <li><a href="entrega1_sites.html">6. Sites Avaliados e Site Selecionado</a></li>
+                        <li><a href="entrega1_cronograma.html">7. Cronograma Detalhado das Atividades</a></li>
+                        <li><a href="entrega1_agradecimentos.html">Agradecimentos</a></li>
+                        <li><a href="entrega1_referencias.html">Referências</a></li>
+                        <li class="doc-stagenav-group">Partes individuais</li>
+                        <li class="doc-stagenav-pessoa"><details open><summary>Victor Andreozzi de La Rocque Couto</summary>
+                            <ul>
+                                <li><a href="entrega1_v-planejamento.html">1. Planejamento do projeto</a></li>
+                                <li><a href="entrega1_v-equipe.html">2. Equipe</a></li>
+                                <li><a href="entrega1_v-heatmap.html">3. Heatmap de disponibilidade</a></li>
+                                <li><a href="entrega1_v-ferramentas.html">4. Ferramentas do projeto</a></li>
+                                <li><a href="entrega1_v-processo-design.html">5. Processo de design</a></li>
+                                <li><a href="entrega1_v-sites.html" class="active" aria-current="page">6. Sites avaliados e site selecionado</a></li>
+                                <li><a href="entrega1_v-cronograma.html">7. Cronograma das atividades</a></li>
+                                <li><a href="entrega1_v-verificacao.html">8. Verificação com as listas</a></li>
+                            </ul></details></li>
+                    </ul>
+                </aside>
+            <article class="doc-content">
+                <p class="doc-breadcrumb"><a href="entregas.html">Entregas</a> › <a href="entrega1.html">Entrega 1</a> › Parte individual de Victor Andreozzi de La Rocque Couto</p>
+            <h1 id="v1-topo" class="doc-title doc-page-title">6. Sites avaliados e site selecionado</h1>
+            <div class="header-info" style="border-left: 4px solid #a855f7;">
+                <p><strong>Autor:</strong> Victor Andreozzi de La Rocque Couto · <strong>Revisor:</strong> Felipe Lopes Pedroza</p>
+                <p><strong>Entrega:</strong> 1, Planejamento do Projeto (parte individual, feita em 27/11/2026 a partir dos artefatos que Victor elaborou em agosto e setembro de 2026) · <strong>Funcionalidade de Victor no projeto:</strong> Avaliação de Disciplinas</p>
+                <p><strong>Outros artefatos desta parte:</strong> <a href="entrega1_v-planejamento.html">1. Planejamento do projeto</a> · <a href="entrega1_v-equipe.html">2. Equipe</a> · <a href="entrega1_v-heatmap.html">3. Heatmap de disponibilidade</a> · <a href="entrega1_v-ferramentas.html">4. Ferramentas do projeto</a> · <a href="entrega1_v-processo-design.html">5. Processo de design</a> · <a href="entrega1_v-cronograma.html">7. Cronograma das atividades</a> · <a href="entrega1_v-verificacao.html">8. Verificação com as listas</a></p>
+            </div>
+            <h3 class="doc-subsection" id="v1-metodo">1. Método</h3>
+            <p class="doc-text">Victor avaliou os cinco sites da lista da Entrega 1 por <strong>avaliação heurística</strong>, método de inspeção em que o avaliador percorre a interface e anota as violações das heurísticas de Nielsen (Barbosa e Silva, 2010, p. 316 a 320). O planejamento está na <a href="entrega1_v-planejamento.html">1. Planejamento do projeto</a>, Tabelas 2 e 3. Em cada site, Victor fez uma tarefa curta, típica do público do site, e anotou cada problema com a heurística violada, o local, a severidade e a justificativa (Barbosa e Silva, 2010, p. 319). As Figuras 5 a 7 mostram os trechos do livro usados.</p>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 5: As heurísticas de Nielsen</figcaption>
+                <img src="img/entrega1/v-livro-p317-heuristicas.jpg" alt="Página 317 do livro de Barbosa e Silva com as heurísticas de Nielsen, de visibilidade do estado do sistema a ajuda aos usuários com erros" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 317, Capítulo 10, Métodos de Avaliação de IHC, Seção 10.1.1 Avaliação Heurística.</p>
+            </figure>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 6: Atividades da avaliação heurística</figcaption>
+                <img src="img/entrega1/v-livro-p318-avaliacao-heuristica.jpg" alt="Página 318 do livro de Barbosa e Silva com a Tabela 10.1, atividades do método de avaliação heurística" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 318, Capítulo 10, Métodos de Avaliação de IHC, Seção 10.1.1 Avaliação Heurística.</p>
+            </figure>
+            <figure class="doc-figure lv-foto">
+                <figcaption>Figura 7: Escala de severidade de Nielsen</figcaption>
+                <img src="img/entrega1/v-livro-p320-severidade.jpg" alt="Página 320 do livro de Barbosa e Silva com a escala de severidade de 1, problema cosmético, a 4, problema catastrófico" loading="lazy" style="max-width:560px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: BARBOSA, S. D. J.; SILVA, B. S. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010. Página: 320, Capítulo 10, Métodos de Avaliação de IHC, Seção 10.1.1 Avaliação Heurística.</p>
+            </figure>
+            <h3 class="doc-subsection" id="v1-sites">2. Sites avaliados</h3>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption>Tabela 10: Sites avaliados em 27/11/2026 e tarefa feita em cada um</caption>
+                    <thead><tr><th>Site</th><th>Domínio</th><th>Tarefa</th><th>Resultado do acesso</th></tr></thead>
+                    <tbody>
+                        <tr><td><a href="https://telabrasil.cultura.gov.br" target="_blank" rel="noopener">Tela Brasil</a></td><td>Audiovisual (catálogo gratuito do Ministério da Cultura)</td><td>Achar um filme pela busca (“Central do Brasil” e “deus diabo”)</td><td>Tarefa concluída com “deus diabo”; “Central do Brasil” não está no catálogo</td></tr>
+                        <tr><td><a href="https://portal.stf.jus.br" target="_blank" rel="noopener">Portal do STF</a></td><td>Justiça</td><td>Consultar um processo pelo número (4277)</td><td>Tarefa concluída</td></tr>
+                        <tr><td><a href="https://www.gov.br/anvisa/pt-br" target="_blank" rel="noopener">Portal da Anvisa</a></td><td>Saúde</td><td>Achar a consulta de produto regularizado pela busca do site</td><td>Tarefa não concluída pela busca</td></tr>
+                        <tr><td><a href="https://www.gov.br/inep/pt-br" target="_blank" rel="noopener">Portal do Inep</a></td><td>Educação</td><td>Achar os microdados do Enem pela busca do site</td><td>Tarefa não concluída pela busca</td></tr>
+                        <tr><td><a href="https://no-fluxo.crianex.com" target="_blank" rel="noopener">NoFluxo UnB</a></td><td>Vida acadêmica (UnB)</td><td>Consultar um fluxograma como visitante, sem login</td><td>Tarefa não concluída: o botão principal leva ao login</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <h3 class="doc-subsection" id="v1-problemas">3. Problemas encontrados</h3>
+            <p class="doc-text">A Tabela 11 lista os problemas, com a severidade da escala de Nielsen (Figura 7): 1 cosmético, 2 pequeno, 3 grande, 4 catastrófico. As Figuras 8 a 14 são as capturas de tela feitas durante a inspeção.</p>
+            <div class="table-wrapper">
+                <table class="table-standard table-hta">
+                    <caption>Tabela 11: Problemas encontrados na avaliação heurística</caption>
+                    <thead><tr><th>Código</th><th>Site e local</th><th>Heurística violada</th><th>Sev.</th><th>Justificativa</th><th>Recomendação</th></tr></thead>
+                    <tbody>
+                        <tr><td>PS-01</td><td>Tela Brasil, busca sem resultado (Figura 8)</td><td>Ajude os usuários a reconhecerem, diagnosticarem e se recuperarem de erros</td><td>2</td><td>A busca por um filme fora do catálogo mostra só “Nenhuma obra encontrada”, sem dizer se o termo está errado ou se a obra não existe, e sem sugerir outras obras</td><td>Explicar que a obra não está no catálogo e sugerir obras parecidas ou a busca avançada</td></tr>
+                        <tr><td>PS-02</td><td>Tela Brasil, cartão do resultado (Figura 9)</td><td>Reconhecimento em vez de memorização</td><td>1</td><td>O título aparece cortado (“DEUS E O DIABO NA…”), e o usuário precisa abrir a obra para confirmar qual é</td><td>Mostrar o título inteiro em duas linhas</td></tr>
+                        <tr><td>PS-03</td><td>STF, resultado da busca de processo (Figura 10)</td><td>Visibilidade do estado do sistema</td><td>2</td><td>Depois de pesquisar, o número digitado some do campo e a lista não repete o termo buscado; o usuário não confirma o que pesquisou</td><td>Manter o termo no campo e mostrar “Resultados para 4277”</td></tr>
+                        <tr><td>PS-04</td><td>STF, lista de resultados (Figura 10)</td><td>Correspondência entre o sistema e o mundo real</td><td>2</td><td>Os processos aparecem por siglas de classe (AC, ADI, CR, IF, Inq) sem explicação, jargão de quem é da área</td><td>Mostrar o nome da classe ao lado da sigla</td></tr>
+                        <tr><td>PS-05</td><td>STF, rodapé da página</td><td>Projeto estético e minimalista</td><td>1</td><td>O aviso de cookies fica fixo sobre os resultados até ser fechado</td><td>Aviso menor ou que some ao rolar a página</td></tr>
+                        <tr><td>PS-06</td><td>Anvisa, resultado da busca (Figura 11)</td><td>Correspondência entre o sistema e o mundo real</td><td>3</td><td>A busca por “consultar produto regularizado” traz 3.338 resultados e o primeiro serviço é sobre licenciamento de importação, não a consulta procurada</td><td>Ligar os termos que o cidadão usa ao serviço de consulta</td></tr>
+                        <tr><td>PS-07</td><td>Anvisa, página inicial</td><td>Controle e liberdade do usuário</td><td>2</td><td>Ao abrir, um balão do gov.br e o aviso de cookies aparecem juntos e escurecem a página antes de qualquer ação</td><td>Mostrar um aviso por vez</td></tr>
+                        <tr><td>PS-08</td><td>Inep, resultado da busca (Figura 12)</td><td>Correspondência entre o sistema e o mundo real</td><td>3</td><td>A busca por “microdados enem” abre na aba Serviços, com um resultado, “Fazer o Enem” (inscrição); os outros resultados ficam em abas fechadas</td><td>Abrir em “Todos” ou destacar a página de microdados</td></tr>
+                        <tr><td>PS-09</td><td>NoFluxo UnB, página inicial e login (Figuras 13 e 14)</td><td>Consistência e padronização</td><td>3</td><td>A página inicial promete “Consultar como visitante, sem fazer login”, mas o botão principal “Acessar nosso sistema” leva à tela de login</td><td>Levar o botão à consulta como visitante e deixar o login como segunda opção</td></tr>
+                        <tr><td>PS-10</td><td>NoFluxo UnB, menu superior</td><td>Visibilidade do estado do sistema</td><td>2</td><td>No teste, o clique em “Fluxogramas” não mudou a tela nem deu retorno</td><td>Dar retorno ao clique ou abrir a lista de cursos</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <figure class="doc-figure e1-shot">
+                <figcaption>Figura 8: Tela Brasil, busca por “Central do Brasil”</figcaption>
+                <img src="img/entrega1/v-site-telabrasil-busca.jpg" alt="Busca do Tela Brasil com a mensagem Nenhuma obra encontrada" loading="lazy" style="max-width:768px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: captura de tela de Victor Andreozzi de La Rocque Couto em 27/11/2026, a partir de &lt;https://telabrasil.cultura.gov.br/busca&gt;.</p>
+            </figure>
+            <figure class="doc-figure e1-shot">
+                <figcaption>Figura 9: Tela Brasil, busca por “deus diabo”</figcaption>
+                <img src="img/entrega1/v-site-telabrasil-busca-parcial.jpg" alt="Busca do Tela Brasil que encontra Deus e o Diabo na Terra do Sol, com o título cortado no cartão" loading="lazy" style="max-width:768px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: captura de tela de Victor Andreozzi de La Rocque Couto em 27/11/2026, a partir de &lt;https://telabrasil.cultura.gov.br/busca&gt;.</p>
+            </figure>
+            <figure class="doc-figure e1-shot">
+                <figcaption>Figura 10: Portal do STF depois da busca pelo processo 4277</figcaption>
+                <img src="img/entrega1/v-site-stf-busca.jpg" alt="Portal do STF com o campo de busca vazio e a lista de processos com siglas AC, ADI, CR e IF" loading="lazy" style="max-width:768px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: captura de tela de Victor Andreozzi de La Rocque Couto em 27/11/2026, a partir de &lt;https://portal.stf.jus.br&gt;.</p>
+            </figure>
+            <figure class="doc-figure e1-shot">
+                <figcaption>Figura 11: Portal da Anvisa, busca por “consultar produto regularizado”</figcaption>
+                <img src="img/entrega1/v-site-anvisa-busca.jpg" alt="Resultado da busca da Anvisa com 3.338 resultados e o primeiro serviço sobre licenciamento de importação" loading="lazy" style="max-width:768px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: captura de tela de Victor Andreozzi de La Rocque Couto em 27/11/2026, a partir de &lt;https://www.gov.br/anvisa/pt-br&gt;.</p>
+            </figure>
+            <figure class="doc-figure e1-shot">
+                <figcaption>Figura 12: Portal do Inep, busca por “microdados enem”</figcaption>
+                <img src="img/entrega1/v-site-inep-busca.jpg" alt="Resultado da busca do Inep na aba Serviços com o serviço Fazer o Enem" loading="lazy" style="max-width:768px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: captura de tela de Victor Andreozzi de La Rocque Couto em 27/11/2026, a partir de &lt;https://www.gov.br/inep/pt-br&gt;.</p>
+            </figure>
+            <figure class="doc-figure e1-shot">
+                <figcaption>Figura 13: NoFluxo UnB, página inicial</figcaption>
+                <img src="img/entrega1/v-site-nofluxo-inicio.jpg" alt="Página inicial do NoFluxo UnB com o botão Acessar nosso sistema e o cartão Consultar como visitante" loading="lazy" style="max-width:768px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: captura de tela de Victor Andreozzi de La Rocque Couto em 27/11/2026, a partir de &lt;https://no-fluxo.crianex.com&gt;.</p>
+            </figure>
+            <figure class="doc-figure e1-shot">
+                <figcaption>Figura 14: NoFluxo UnB, tela aberta pelo botão “Acessar nosso sistema”</figcaption>
+                <img src="img/entrega1/v-site-nofluxo-login.jpg" alt="Tela de login do NoFluxo UnB com campos de e-mail e senha" loading="lazy" style="max-width:768px;width:100%;margin:0 auto;">
+                <p class="doc-source">Fonte: captura de tela de Victor Andreozzi de La Rocque Couto em 27/11/2026, a partir de &lt;https://no-fluxo.crianex.com/login&gt;.</p>
+            </figure>
+            <p class="doc-text">Pontos positivos anotados: a busca do Tela Brasil aceita parte do título (“deus diabo” achou o filme) e tem botão de acessibilidade; os portais do STF, da Anvisa e do Inep têm opção de contraste, ajuste do tamanho da letra e tradução para Libras (VLibras); o NoFluxo UnB tem modo claro e escuro e botão de acessibilidade.</p>
+            <h3 class="doc-subsection" id="v1-criterios">4. Critérios de escolha e notas</h3>
+            <p class="doc-text">Para escolher o site, Victor usou cinco critérios. Os três primeiros vêm da triagem do grupo (<a href="plan_sites.html">página de sites do planejamento</a>): diversidade de domínio, relevância e acesso da equipe ao produto. Os dois últimos vêm da avaliação acima. Cada critério recebe nota de 0 a 2.</p>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption>Tabela 12: Critérios de escolha do site</caption>
+                    <thead><tr><th>Critério</th><th>Pergunta</th><th>0</th><th>1</th><th>2</th></tr></thead>
+                    <tbody>
+                        <tr><td>C1 Acesso ao produto</td><td>A equipe pode mudar o produto e falar com quem decide?</td><td>Não</td><td>Só sugerir</td><td>Sim</td></tr>
+                        <tr><td>C2 Acesso aos usuários</td><td>A equipe alcança usuários reais para as avaliações das Entregas 4 a 7?</td><td>Não</td><td>Com dificuldade</td><td>Sim, colegas da UnB</td></tr>
+                        <tr><td>C3 Problemas a resolver</td><td>A avaliação achou problemas de severidade 2 ou 3?</td><td>Nenhum</td><td>Só severidade 1 e 2</td><td>Severidade 3</td></tr>
+                        <tr><td>C4 Relação com a disciplina</td><td>O tema faz parte da vida dos estudantes de IHC?</td><td>Não</td><td>Em parte</td><td>Sim</td></tr>
+                        <tr><td>C5 Disponibilidade</td><td>O site estava no ar em 27/11/2026?</td><td>Não</td><td>Com falhas</td><td>Sim</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <div class="table-wrapper">
+                <table class="table-standard ">
+                    <caption>Tabela 13: Notas de cada site (0 a 2 por critério)</caption>
+                    <thead><tr><th>Site</th><th>C1</th><th>C2</th><th>C3</th><th>C4</th><th>C5</th><th>Total (0 a 10)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Tela Brasil</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td><strong>3</strong></td></tr>
+                        <tr><td>Portal do STF</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td><strong>3</strong></td></tr>
+                        <tr><td>Portal da Anvisa</td><td>0</td><td>0</td><td>2</td><td>0</td><td>2</td><td><strong>4</strong></td></tr>
+                        <tr><td>Portal do Inep</td><td>0</td><td>1</td><td>2</td><td>1</td><td>2</td><td><strong>6</strong></td></tr>
+                        <tr><td><strong>NoFluxo UnB</strong></td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td><strong>10</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="doc-source">Fonte: Victor Andreozzi de La Rocque Couto (2026).</p>
+            <h3 class="doc-subsection" id="v1-selecionado">5. Site selecionado</h3>
+            <p class="doc-text">O <strong>NoFluxo UnB</strong> teve a maior nota (10 de 10) e é o site do projeto, a mesma escolha do grupo na Entrega 1, agora com avaliação. As razões:</p>
+            <ul class="doc-list">
+                <li>é um produto da própria equipe, então os protótipos das Entregas 6 e 7 podem virar mudanças reais (C1);</li>
+                <li>os usuários são estudantes da UnB, que a equipe alcança para as avaliações com usuários (C2);</li>
+                <li>a avaliação já achou problemas de severidade 3, como o PS-09, em que a promessa de consulta sem login não se cumpre no botão principal (C3);</li>
+                <li>o Inep foi o segundo colocado (6 de 10): é da área de educação, mas a equipe não tem acesso ao produto nem a quem decide sobre ele.</li>
+            </ul>
+            <p class="doc-text">A funcionalidade de Victor, a Avaliação de Disciplinas, parte desse diagnóstico: o estudante que consulta o fluxograma também precisa saber como foi a disciplina para quem já a cursou.</p>
+            <h3 class="doc-subsection" id="v1-referencias">6. Referências</h3>
+            <ul class="doc-list" style="list-style: none; padding-left: 0;">
+                <li>BARBOSA, Simone Diniz Junqueira; SILVA, Bruno Santana da. <em>Interação Humano-Computador</em>. Rio de Janeiro: Elsevier, 2010.</li>
+                <li>MINISTÉRIO DA CULTURA. Tela Brasil. Disponível em: &lt;https://telabrasil.cultura.gov.br&gt;; SUPREMO TRIBUNAL FEDERAL. Portal do STF. Disponível em: &lt;https://portal.stf.jus.br&gt;; AGÊNCIA NACIONAL DE VIGILÂNCIA SANITÁRIA. Portal da Anvisa. Disponível em: &lt;https://www.gov.br/anvisa/pt-br&gt;; INSTITUTO NACIONAL DE ESTUDOS E PESQUISAS EDUCACIONAIS ANÍSIO TEIXEIRA. Portal do Inep. Disponível em: &lt;https://www.gov.br/inep/pt-br&gt;; NOFLUXO UNB. Disponível em: &lt;https://no-fluxo.crianex.com&gt;. Acessos em: 27 nov. 2026.</li>
+                <li>GRUPO 02. <em>Entrega 1: Planejamento do Projeto</em> (documento do grupo, versões 1.0 a 1.3). Universidade de Brasília, 2026. Disponível em: &lt;https://interacao-humano-computador.github.io/2026.2-Grupo02/entrega1.html&gt;.</li>
+            </ul>
+
+<div class="doc-history">
+<section class="section-container" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 1rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 400; text-align: left;">Histórico de versão</h2>
+            <div style="overflow-x: auto; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; background: #000000;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Versão</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Data</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Descrição</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Autor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Revisor(es)</th>
+                            <th style="padding: 1.5rem 1rem; font-weight: 700; color: #fafafa;">Declaração de ferramenta de IA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1.5rem 1rem; font-family: 'JetBrains Mono', monospace; color: #a1a1aa;">1.0</td>
+                            <td style="padding: 1.5rem 1rem; color: #a1a1aa;">27/11/2026</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Parte individual da Entrega 1: avaliação heurística dos cinco sites, oito problemas com severidade, critérios com notas e justificativa da escolha do NoFluxo UnB</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Victor Andreozzi de La Rocque Couto</td>
+                            <td style="padding: 1.5rem 1rem; color: #ef4444;">Felipe Lopes Pedroza</td>
+                            <td style="padding: 1.5rem 1rem; color: #e4e4e7;">Claude (Anthropic): organização das páginas, redação das tabelas a partir dos artefatos de Victor na Entrega 1 (equipe, heatmap e cronograma), levantamento das datas no histórico do repositório e captura das telas dos sites; a escolha dos critérios, as notas e as conclusões são do autor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+                </div>
+                <nav class="doc-prevnext" aria-label="Navegação entre artefatos">
+                    <a class="prev" href="entrega1_v-processo-design.html"><span>← Anterior</span>5. Processo de design</a>
+                    <a class="next" href="entrega1_v-cronograma.html"><span>Próximo →</span>7. Cronograma das atividades</a>
+                </nav>
+            </article>
+                <nav class="doc-toc" aria-label="Índice desta página">
+                    <p class="doc-toc-title">Índice</p>
+                    <ul id="docTocList"></ul>
+                </nav>
+        </div>
+    </main>
+
+    <footer class="footer-institutional">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h3 style="color: #fafafa; margin-bottom: 1rem;">IHC - Grupo 2</h3>
+            <p style="color: #a1a1aa; line-height: 1.6; margin-bottom: 2rem;">
+                Desenvolvido para acompanhar a documentação e o versionamento dos artefatos produzidos ao longo da disciplina.
+            </p>
+            <div style="padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: #71717a; font-size: 0.85rem;">
+                Universidade de Brasília (UnB) &copy; 2026<br>Equipe: darkymeubem, delvale412, felipelp2910, joaopedrosilveira, rafaelbdmelo, tiago.nepo21, wandawright
+            </div>
+        </div>
+    </footer>
+        </div> <!-- fim main-wrapper -->
+    </div> <!-- fim app-layout -->
+
+    <script src="js/components/highContrastBtn.js"></script>
+    <script src="js/components/botaoTamanhoFonte.js"></script>
+    <script src="js/components/docToc.js"></script>
+    <script src="js/components/youHere.js"></script>
+</body>
+</html>
